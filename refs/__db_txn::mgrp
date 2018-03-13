@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='815' type='DB_TXNMGR *'/>
+<offset>0</offset>
+<doc f='include/db.h' l='815'>/* Pointer to transaction manager. */</doc>

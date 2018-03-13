@@ -1,0 +1,11 @@
+<dec f='include/db.h' l='1591' type='struct (anonymous struct at /usr/include/db.h:1588:2)'/>
+<offset>3840</offset>
+<doc f='include/db.h' l='1579'>/*
+	 * !!!
+	 * Explicit representations of structures from queue.h.
+	 * TAILQ_ENTRY(__db) felink;
+	 *
+	 * Links in a list of DBs involved in file extension
+	 * during a transaction.  These are to be used only while the
+	 * metadata is locked.
+	 */</doc>

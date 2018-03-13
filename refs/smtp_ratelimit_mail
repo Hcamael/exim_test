@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='841' type='uschar *'/>
+<doc f='exim/src/globals.h' l='841'>/* Parameters for MAIL limiting */</doc>

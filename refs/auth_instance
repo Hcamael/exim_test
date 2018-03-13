@@ -1,0 +1,20 @@
+<def f='exim/src/structs.h' l='375' ll='392'/>
+<size>120</size>
+<doc f='exim/src/structs.h' l='372'>/* Structure for holding information about the configured authentication
+mechanisms */</doc>
+<mbr r='auth_instance::next' o='0' t='struct auth_instance *'/>
+<mbr r='auth_instance::name' o='64' t='uschar *'/>
+<mbr r='auth_instance::info' o='128' t='struct auth_info *'/>
+<mbr r='auth_instance::options_block' o='192' t='void *'/>
+<mbr r='auth_instance::driver_name' o='256' t='uschar *'/>
+<mbr r='auth_instance::advertise_condition' o='320' t='uschar *'/>
+<mbr r='auth_instance::client_condition' o='384' t='uschar *'/>
+<mbr r='auth_instance::public_name' o='448' t='uschar *'/>
+<mbr r='auth_instance::set_id' o='512' t='uschar *'/>
+<mbr r='auth_instance::set_client_id' o='576' t='uschar *'/>
+<mbr r='auth_instance::mail_auth_condition' o='640' t='uschar *'/>
+<mbr r='auth_instance::server_debug_string' o='704' t='uschar *'/>
+<mbr r='auth_instance::server_condition' o='768' t='uschar *'/>
+<mbr r='auth_instance::client' o='832' t='BOOL'/>
+<mbr r='auth_instance::server' o='864' t='BOOL'/>
+<mbr r='auth_instance::advertised' o='896' t='BOOL'/>

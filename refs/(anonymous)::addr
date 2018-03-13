@@ -1,0 +1,3 @@
+<dec f='exim/src/globals.h' l='317' type='address_item'/>
+<offset>832</offset>
+<doc f='exim/src/globals.h' l='317'>/* (Chain of) addresses */</doc>

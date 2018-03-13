@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='912' type='BOOL'/>
+<doc f='exim/src/globals.h' l='912'>/* TRUE if time on syslogs */</doc>

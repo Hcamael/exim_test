@@ -1,0 +1,3 @@
+<dec f='include/resolv.h' l='127' type='res_send_rhook'/>
+<offset>3904</offset>
+<doc f='include/resolv.h' l='127'>/* response hook */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='659' type='uschar []'/>
+<doc f='exim/src/globals.h' l='659'>/* For SIGUSR1 output */</doc>

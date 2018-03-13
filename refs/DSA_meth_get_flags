@@ -1,0 +1,1 @@
+<dec f='include/openssl/dsa.h' l='189' type='int DSA_meth_get_flags(DSA_METHOD * dsam)'/>

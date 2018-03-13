@@ -1,0 +1,1 @@
+<dec f='include/openssl/ssl.h' l='1709' type='SSL_CTX * SSL_get_SSL_CTX(const SSL * ssl)'/>

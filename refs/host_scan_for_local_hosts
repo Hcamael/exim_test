@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='231' type='int host_scan_for_local_hosts(host_item * , host_item ** , BOOL * )'/>

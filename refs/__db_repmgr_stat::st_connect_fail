@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1208' type='uintmax_t'/>
+<offset>256</offset>
+<doc f='include/db.h' l='1208'>/* Failed new connection attempts. */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='541' type='optionlist []'/>
+<doc f='exim/src/globals.h' l='541'>/* Option list for local_scan() */</doc>

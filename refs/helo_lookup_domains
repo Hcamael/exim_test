@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='496' type='uschar *'/>
+<doc f='exim/src/globals.h' l='496'>/* If these given, lookup host name */</doc>

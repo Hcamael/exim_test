@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='727' type='uschar *'/>
+<doc f='exim/src/globals.h' l='727'>/* lookup data for recipients */</doc>

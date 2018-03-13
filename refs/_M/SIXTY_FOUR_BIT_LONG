@@ -1,0 +1,17 @@
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<use f='include/openssl/bn.h' l='42' u='a'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<dec f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='160'/>
+<doc f='include/x86_64-linux-gnu/openssl/opensslconf.h' l='159'>/* Only one for the following should be defined */</doc>

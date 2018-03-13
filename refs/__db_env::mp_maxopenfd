@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2367' type='int'/>
+<offset>2944</offset>
+<doc f='include/db.h' l='2367'>/* Maximum open file descriptors */</doc>

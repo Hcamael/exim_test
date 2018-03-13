@@ -1,0 +1,3 @@
+<dec f='include/openssl/x509.h' l='232' type='ASN1_OCTET_STRING *'/>
+<offset>128</offset>
+<doc f='include/openssl/x509.h' l='232'>/* encrypted pub key */</doc>

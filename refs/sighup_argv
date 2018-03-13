@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='806' type='uschar **'/>
+<doc f='exim/src/globals.h' l='806'>/* Args for re-execing after SIGHUP */</doc>

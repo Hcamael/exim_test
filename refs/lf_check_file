@@ -1,0 +1,24 @@
+<dec f='exim/src/lookups/lf_functions.h' l='10' type='int lf_check_file(int , uschar * , int , int , uid_t * , gid_t * , const char * , uschar ** )'/>
+<doc f='exim/src/lookups/lf_functions.h' l='8'>/* Header for the functions that are shared by the lookups */</doc>
+<def f='exim/src/lookups/lf_check_file.c' l='40' ll='111' type='int lf_check_file(int fd, uschar * filename, int s_type, int modemask, uid_t * owners, gid_t * owngroups, const char * type, uschar ** errmsg)'/>
+<doc f='exim/src/lookups/lf_check_file.c' l='18'>/* fstat can normally be expected to work on an open file, but there are some
+NFS states where it may not.
+
+Arguments:
+  fd         an open file descriptor or -1
+  filename   a file name if fd is -1
+  s_type     type of file (S_IFREG or S_IFDIR)
+  modemask   a mask specifying mode bits that must *not* be set
+  owners     NULL or a list of of allowable uids, count in the first item
+  owngroups  NULL or a list of allowable gids, count in the first item
+  type       name of lookup type for putting in error message
+  errmsg     where to put an error message
+
+Returns:     -1 stat() or fstat() failed
+              0 OK
+             +1 something didn&apos;t match
+
+Side effect: sets errno to ERRNO_BADUGID, ERRNO_NOTREGULAR or ERRNO_BADMODE for
+             bad uid/gid, not a regular file, or bad mode; otherwise leaves it
+             to what fstat set it to.
+*/</doc>

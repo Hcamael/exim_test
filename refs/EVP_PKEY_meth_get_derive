@@ -1,0 +1,1 @@
+<dec f='include/openssl/evp.h' l='1430' type='void EVP_PKEY_meth_get_derive(EVP_PKEY_METHOD * pmeth, int (**)(EVP_PKEY_CTX *) pderive_init, int (**)(EVP_PKEY_CTX *, unsigned char *, size_t *) pderive)'/>

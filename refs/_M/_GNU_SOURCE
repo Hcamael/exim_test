@@ -1,0 +1,6 @@
+<dec f='exim/src/exim.h' l='31'/>
+<use f='include/libio.h' l='356' u='a'/>
+<doc f='exim/src/exim.h' l='26'>/* This is primarily for the Gnu C library; we define it before os.h so that
+os.h has a chance to hurriedly undef it, Just In Case.  We need C99 for some
+64-bit math support, and defining _ISOC99_SOURCE breaks &lt;resolv.h&gt; and friends.
+*/</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='223' type='BOOL'/>
+<doc f='exim/src/globals.h' l='223'>/* TRUE if AUTH was tried and failed */</doc>

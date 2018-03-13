@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='955' type='tree_node *'/>
+<doc f='exim/src/globals.h' l='955'>/* Tree of duplicate addresses */</doc>

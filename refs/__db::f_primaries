@@ -1,0 +1,11 @@
+<dec f='include/db.h' l='1577' type='struct (anonymous struct at /usr/include/db.h:1575:2)'/>
+<offset>3776</offset>
+<doc f='include/db.h' l='1566'>/*
+	 * Foreign key support.
+	 *
+	 * Linked list of primary dbs -- set in the foreign db
+	 *
+	 * !!!
+	 * Explicit representations of structures from queue.h.
+	 * LIST_HEAD(f_primaries, __db);
+	 */</doc>

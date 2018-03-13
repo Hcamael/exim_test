@@ -1,0 +1,6 @@
+<dec f='exim/src/mytypes.h' l='65'/>
+<doc f='exim/src/mytypes.h' l='59'>/* These macros save typing for the casting that is needed to cope with the
+mess that is &quot;char&quot; in ISO/ANSI C. Having now been bitten enough times by
+systems where &quot;char&quot; is actually signed, I&apos;ve converted Exim to use entirely
+unsigned chars, except in a few special places such as arguments that are
+almost always literal strings. */</doc>

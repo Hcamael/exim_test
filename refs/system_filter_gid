@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='920' type='gid_t'/>
+<doc f='exim/src/globals.h' l='920'>/* Gid for running system filter */</doc>

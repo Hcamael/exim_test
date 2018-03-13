@@ -1,0 +1,12 @@
+<def f='exim/src/structs.h' l='445' ll='452'/>
+<size>40</size>
+<doc f='exim/src/structs.h' l='440'>/* Information about a soft delivery failure, for use when calculating
+retry information. It&apos;s separate from the address block, because there
+can be a chain of them for SMTP deliveries where multiple IP addresses
+can be tried. */</doc>
+<mbr r='retry_item::next' o='0' t='struct retry_item *'/>
+<mbr r='retry_item::key' o='64' t='uschar *'/>
+<mbr r='retry_item::basic_errno' o='128' t='int'/>
+<mbr r='retry_item::more_errno' o='160' t='int'/>
+<mbr r='retry_item::message' o='192' t='uschar *'/>
+<mbr r='retry_item::flags' o='256' t='int'/>

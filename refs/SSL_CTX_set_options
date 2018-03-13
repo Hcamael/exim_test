@@ -1,0 +1,1 @@
+<dec f='include/openssl/ssl.h' l='503' type='unsigned long SSL_CTX_set_options(SSL_CTX * ctx, unsigned long op)'/>

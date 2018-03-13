@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>os.h source code [exim/build-Linux-x86_64/os.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/build-Linux-x86_64/os.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>build-Linux-x86_64</a>/<a href='os.h.html'>os.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/* Exim: OS-specific C header file for Linux */</i></td></tr>
+<tr><th id="2">2</th><td><i>/* Copyright (c) University of Cambridge 2017 */</i></td></tr>
+<tr><th id="3">3</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td></td></tr>
+<tr><th id="6">6</th><td><i>/* Some old systems we've received bug-reports for have a &lt;limits.h&gt; which</i></td></tr>
+<tr><th id="7">7</th><td><i>does not pull in &lt;features.h&gt;.  Best to just pull it in now and have done</i></td></tr>
+<tr><th id="8">8</th><td><i>with the issue. */</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><u>#include <a href="../../include/features.h.html">&lt;features.h&gt;</a></u></td></tr>
+<tr><th id="11">11</th><td><u>#include <a href="../../include/x86_64-linux-gnu/sys/types.h.html">&lt;sys/types.h&gt;</a></u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><u>#define <dfn class="macro" id="_M/CRYPT_H" data-ref="_M/CRYPT_H">CRYPT_H</dfn></u></td></tr>
+<tr><th id="15">15</th><td><u>#define <dfn class="macro" id="_M/GLIBC_IP_OPTIONS" data-ref="_M/GLIBC_IP_OPTIONS">GLIBC_IP_OPTIONS</dfn></u></td></tr>
+<tr><th id="16">16</th><td><u>#define <dfn class="macro" id="_M/HAVE_MMAP" data-ref="_M/HAVE_MMAP">HAVE_MMAP</dfn></u></td></tr>
+<tr><th id="17">17</th><td><u>#define <dfn class="macro" id="_M/HAVE_BSD_GETLOADAVG" data-ref="_M/HAVE_BSD_GETLOADAVG">HAVE_BSD_GETLOADAVG</dfn></u></td></tr>
+<tr><th id="18">18</th><td><u>#define <dfn class="macro" id="_M/HAVE_SYS_STATVFS_H" data-ref="_M/HAVE_SYS_STATVFS_H">HAVE_SYS_STATVFS_H</dfn></u></td></tr>
+<tr><th id="19">19</th><td><u>#define <dfn class="macro" id="_M/NO_IP_VAR_H" data-ref="_M/NO_IP_VAR_H">NO_IP_VAR_H</dfn></u></td></tr>
+<tr><th id="20">20</th><td><u>#define <dfn class="macro" id="_M/SIG_IGN_WORKS" data-ref="_M/SIG_IGN_WORKS">SIG_IGN_WORKS</dfn></u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><i>/* When using DKIM, setting OS_SENDFILE can increase</i></td></tr>
+<tr><th id="23">23</th><td><i>performance on outgoing mail a bit. Note: With older glibc versions</i></td></tr>
+<tr><th id="24">24</th><td><i>this setting will conflict with the _FILE_OFFSET_BITS=64 setting</i></td></tr>
+<tr><th id="25">25</th><td><i>defined as part of the Linux CFLAGS.  As of 2017 those are declared</i></td></tr>
+<tr><th id="26">26</th><td><i>to be too old to build by default. */</i></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><u>#define <dfn class="macro" id="_M/OS_SENDFILE" data-ref="_M/OS_SENDFILE">OS_SENDFILE</dfn></u></td></tr>
+<tr><th id="29">29</th><td><b>extern</b> <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#ssize_t" title='ssize_t' data-type='__ssize_t' data-ref="ssize_t">ssize_t</a> <dfn class="decl fn" id="os_sendfile" title='os_sendfile' data-ref="os_sendfile">os_sendfile</dfn>(<em>int</em>, <em>int</em>, <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#off_t" title='off_t' data-type='__off64_t' data-ref="off_t">off_t</a> *, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>);</td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#define <dfn class="macro" id="_M/F_FREESP" data-ref="_M/F_FREESP">F_FREESP</dfn>     O_TRUNC</u></td></tr>
+<tr><th id="32">32</th><td><b>typedef</b> <b>struct</b> <a class="type" href="../../include/x86_64-linux-gnu/bits/fcntl.h.html#flock" title='flock' data-ref="flock" id="flock"><a class="type" href="../../include/x86_64-linux-gnu/bits/fcntl.h.html#flock" title='flock' data-ref="flock">flock</a></a> <dfn class="typedef" id="flock_t" title='flock_t' data-type='struct flock' data-ref="flock_t">flock_t</dfn>;</td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><u>#define <dfn class="macro" id="_M/os_strsignal" data-ref="_M/os_strsignal">os_strsignal</dfn> strsignal</u></td></tr>
+<tr><th id="35">35</th><td><u>#define <dfn class="macro" id="_M/OS_STRSIGNAL" data-ref="_M/OS_STRSIGNAL">OS_STRSIGNAL</dfn></u></td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><u>#<span data-ppcond="37">if</span> defined(<span class="macro" data-ref="_M/__linux__">__linux__</span>) || defined(<span class="macro" data-ref="_M/__FreeBSD_kernel__">__FreeBSD_kernel__</span>) || defined(<span class="macro" data-ref="_M/__NetBSD_kernel__">__NetBSD_kernel__</span>)</u></td></tr>
+<tr><th id="38">38</th><td><u># define <dfn class="macro" id="_M/SIOCGIFCONF_GIVES_ADDR" data-ref="_M/SIOCGIFCONF_GIVES_ADDR">SIOCGIFCONF_GIVES_ADDR</dfn></u></td></tr>
+<tr><th id="39">39</th><td><u># define <dfn class="macro" id="_M/HAVE_SYS_MOUNT_H" data-ref="_M/HAVE_SYS_MOUNT_H">HAVE_SYS_MOUNT_H</dfn></u></td></tr>
+<tr><th id="40">40</th><td><u>#<span data-ppcond="37">endif</span></u></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><u>#<span data-ppcond="42">if</span> defined(<span class="macro" data-ref="_M/__linux__">__linux__</span>)</u></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><i>/* Some versions of Linux need explicit sync-ing of directories as well as</i></td></tr>
+<tr><th id="45">45</th><td><i>files. This setting requests that. If the directory is on NFS, it may not</i></td></tr>
+<tr><th id="46">46</th><td><i>be possible to sync it - in that case, Exim now should ignore the error. But</i></td></tr>
+<tr><th id="47">47</th><td><i>if you have problems in that area, try undefining this. But be aware that you</i></td></tr>
+<tr><th id="48">48</th><td><i>may be in a situation where files are not being properly "committed to stable</i></td></tr>
+<tr><th id="49">49</th><td><i>storage" as quickly as Exim thinks they are. */</i></td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td><u>#define <dfn class="macro" id="_M/NEED_SYNC_DIRECTORY" data-ref="_M/NEED_SYNC_DIRECTORY">NEED_SYNC_DIRECTORY</dfn></u></td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td><u>#define <dfn class="macro" id="_M/os_find_running_interfaces" data-ref="_M/os_find_running_interfaces">os_find_running_interfaces</dfn> os_find_running_interfaces_linux</u></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><i>/* Need a prototype for the Linux-specific function. The structure hasn't</i></td></tr>
+<tr><th id="56">56</th><td><i>been defined yet, so we need to pre-declare it. */</i></td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><b>struct</b> <a class="type" href="../src/structs.h.html#ip_address_item" title='ip_address_item' data-ref="ip_address_item" id="ip_address_item">ip_address_item</a>;</td></tr>
+<tr><th id="59">59</th><td><b>extern</b> <b>struct</b> <a class="type" href="../src/structs.h.html#ip_address_item" title='ip_address_item' data-ref="ip_address_item">ip_address_item</a> *<dfn class="decl fn" id="os_find_running_interfaces_linux" title='os_find_running_interfaces_linux' data-ref="os_find_running_interfaces_linux">os_find_running_interfaces_linux</dfn>(<em>void</em>);</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><u>#<span data-ppcond="42">endif</span> /* __linux__ */</u></td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td><i>/* Some folks running "unusual" setups with very old libc environments have</i></td></tr>
+<tr><th id="64">64</th><td><i>found that _GNU_SOURCE=1 before &lt;features.h&gt; is not sufficient to define some</i></td></tr>
+<tr><th id="65">65</th><td><i>constants needed for 64-bit arithmetic.  If you encounter build errors based</i></td></tr>
+<tr><th id="66">66</th><td><i>on LLONG_MIN being undefined and various other escape hatches have not helped,</i></td></tr>
+<tr><th id="67">67</th><td><i>then change the 0 to 1 in the next block. */</i></td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td><u>#<span data-ppcond="69">if</span> 0</u></td></tr>
+<tr><th id="70">70</th><td><u># define LLONG_MIN LONG_LONG_MIN</u></td></tr>
+<tr><th id="71">71</th><td><u># define LLONG_MAX LONG_LONG_MAX</u></td></tr>
+<tr><th id="72">72</th><td><u>#<span data-ppcond="69">endif</span></u></td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><u>#<span data-ppcond="74">if</span> <a class="macro" href="../../include/features.h.html#228" title="200809L" data-ref="_M/_POSIX_C_SOURCE">_POSIX_C_SOURCE</a> &gt;= 200809L || _ATFILE_SOUCE</u></td></tr>
+<tr><th id="75">75</th><td><u># define <dfn class="macro" id="_M/EXIM_HAVE_OPENAT" data-ref="_M/EXIM_HAVE_OPENAT">EXIM_HAVE_OPENAT</dfn></u></td></tr>
+<tr><th id="76">76</th><td><u>#<span data-ppcond="74">endif</span></u></td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><i>/* TCP Fast Open support */</i></td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><u>#include <a href="../../include/netinet/tcp.h.html">&lt;netinet/tcp.h&gt;</a>	/* for TCP_FASTOPEN */</u></td></tr>
+<tr><th id="81">81</th><td><u>#include <a href="../../include/x86_64-linux-gnu/sys/socket.h.html">&lt;sys/socket.h&gt;</a>		/* for MSG_FASTOPEN */</u></td></tr>
+<tr><th id="82">82</th><td><u>#<span data-ppcond="82">if</span> defined(<a class="macro" href="../../include/netinet/tcp.h.html#62" data-ref="_M/TCP_FASTOPEN">TCP_FASTOPEN</a>) &amp;&amp; !defined(<a class="macro" href="../../include/x86_64-linux-gnu/bits/socket.h.html#217" data-ref="_M/MSG_FASTOPEN">MSG_FASTOPEN</a>)</u></td></tr>
+<tr><th id="83">83</th><td><u># define MSG_FASTOPEN 0x20000000</u></td></tr>
+<tr><th id="84">84</th><td><u>#<span data-ppcond="82">endif</span></u></td></tr>
+<tr><th id="85">85</th><td><u>#define <dfn class="macro" id="_M/EXIM_HAVE_TCPI_UNACKED" data-ref="_M/EXIM_HAVE_TCPI_UNACKED">EXIM_HAVE_TCPI_UNACKED</dfn></u></td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td><i>/* End */</i></td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><i>/* Fudge added because this Linux doesn't appear to have a definition</i></td></tr>
+<tr><th id="91">91</th><td><i>for ip_options in /usr/include/linux/ip.h. */</i></td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td><u>#define <dfn class="macro" id="_M/ip_options" data-ref="_M/ip_options">ip_options</dfn> options</u></td></tr>
+<tr><th id="94">94</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../src/lookups/lf_sqlperform.c.html'>exim/src/lookups/lf_sqlperform.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

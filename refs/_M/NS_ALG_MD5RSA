@@ -1,0 +1,2 @@
+<dec f='include/arpa/nameser.h' l='382'/>
+<doc f='include/arpa/nameser.h' l='381'>/* The Algorithm field of the KEY and SIG RR&apos;s is an integer, {1..254} */</doc>

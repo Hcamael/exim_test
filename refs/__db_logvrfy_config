@@ -1,0 +1,15 @@
+<def f='include/db.h' l='2685' ll='2692'/>
+<size>72</size>
+<doc f='include/db.h' l='2682'>/*
+ * Log verification configuration structure.
+ */</doc>
+<mbr r='__db_logvrfy_config::continue_after_fail' o='0' t='int'/>
+<mbr r='__db_logvrfy_config::verbose' o='32' t='int'/>
+<mbr r='__db_logvrfy_config::cachesize' o='64' t='u_int32_t'/>
+<mbr r='__db_logvrfy_config::temp_envhome' o='128' t='const char *'/>
+<mbr r='__db_logvrfy_config::dbfile' o='192' t='const char *'/>
+<mbr r='__db_logvrfy_config::dbname' o='256' t='const char *'/>
+<mbr r='__db_logvrfy_config::start_lsn' o='320' t='DB_LSN'/>
+<mbr r='__db_logvrfy_config::end_lsn' o='384' t='DB_LSN'/>
+<mbr r='__db_logvrfy_config::start_time' o='448' t='time_t'/>
+<mbr r='__db_logvrfy_config::end_time' o='512' t='time_t'/>

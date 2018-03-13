@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='164' type='int'/>
+<doc f='exim/src/globals.h' l='164'>/* Number of arguments to ACL call */</doc>

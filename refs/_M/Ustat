@@ -1,0 +1,2 @@
+<dec f='exim/src/mytypes.h' l='95'/>
+<use f='exim/src/lookups/lf_check_file.c' l='48' u='c'/>

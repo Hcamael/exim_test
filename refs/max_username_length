@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='574' type='int'/>
+<doc f='exim/src/globals.h' l='574'>/* For systems with broken getpwnam() */</doc>

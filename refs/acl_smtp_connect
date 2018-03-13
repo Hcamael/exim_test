@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='173' type='uschar *'/>
+<doc f='exim/src/globals.h' l='173'>/* ACL run on SMTP connection */</doc>

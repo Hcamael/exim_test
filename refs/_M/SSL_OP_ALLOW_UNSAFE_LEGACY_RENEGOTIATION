@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl.h' l='299'/>
+<doc f='include/openssl/ssl.h' l='298'>/* Permit unsafe legacy renegotiation */</doc>

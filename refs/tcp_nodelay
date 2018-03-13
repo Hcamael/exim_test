@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='930' type='BOOL'/>
+<doc f='exim/src/globals.h' l='930'>/* Controls TCP_NODELAY on daemon */</doc>

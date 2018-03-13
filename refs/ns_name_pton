@@ -1,0 +1,1 @@
+<dec f='include/arpa/nameser.h' l='493' type='int ns_name_pton(const char * , u_char * , size_t )'/>

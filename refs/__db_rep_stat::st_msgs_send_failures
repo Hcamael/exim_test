@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1160' type='uintmax_t'/>
+<offset>1984</offset>
+<doc f='include/db.h' l='1160'>/* # of failed message sends.+ */</doc>

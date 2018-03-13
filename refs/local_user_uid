@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='546' type='uid_t'/>
+<doc f='exim/src/globals.h' l='546'>/* As it says; may be set in routers */</doc>

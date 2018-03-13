@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1154' type='db_ssize_t'/>
+<offset>1664</offset>
+<doc f='include/db.h' l='1154'>/* Env. ID of the current master. */</doc>

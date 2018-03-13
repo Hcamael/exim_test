@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='608' type='BOOL'/>
+<offset>28</offset>
+<doc f='exim/src/structs.h' l='608'>/* delivery used SMTP PRDR */</doc>

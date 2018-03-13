@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='754' type='int'/>
+<doc f='exim/src/globals.h' l='754'>/* When to expire retry data */</doc>

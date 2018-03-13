@@ -1,0 +1,12 @@
+<def f='include/db.h' l='2169' ll='2183'/>
+<size>40</size>
+<mbr r='__db_compact::compact_fillpercent' o='0' t='u_int32_t'/>
+<mbr r='__db_compact::compact_timeout' o='32' t='db_timeout_t'/>
+<mbr r='__db_compact::compact_pages' o='64' t='u_int32_t'/>
+<mbr r='__db_compact::compact_empty_buckets' o='96' t='u_int32_t'/>
+<mbr r='__db_compact::compact_pages_free' o='128' t='u_int32_t'/>
+<mbr r='__db_compact::compact_pages_examine' o='160' t='u_int32_t'/>
+<mbr r='__db_compact::compact_levels' o='192' t='u_int32_t'/>
+<mbr r='__db_compact::compact_deadlock' o='224' t='u_int32_t'/>
+<mbr r='__db_compact::compact_pages_truncated' o='256' t='db_pgno_t'/>
+<mbr r='__db_compact::compact_truncate' o='288' t='db_pgno_t'/>

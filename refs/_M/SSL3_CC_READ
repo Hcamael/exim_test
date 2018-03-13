@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl3.h' l='298'/>
+<doc f='include/openssl/ssl3.h' l='297'>/* These are used when changing over to a new cipher */</doc>

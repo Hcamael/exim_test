@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl3.h' l='293'/>
+<doc f='include/openssl/ssl3.h' l='292'>/* Dummy message type for handling CCS like a normal handshake message */</doc>

@@ -1,0 +1,3 @@
+<dec f='exim/src/macros.h' l='353'/>
+<doc f='exim/src/macros.h' l='350'>/* Used in globals.c for initializing bit_table structures. T will be either
+D or L corresponding to the debug and log selector bits declared below. */</doc>

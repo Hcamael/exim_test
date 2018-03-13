@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='952' type='int'/>
+<doc f='exim/src/globals.h' l='952'>/* Set to time out individual writes */</doc>

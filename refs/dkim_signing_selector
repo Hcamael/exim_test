@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='393' type='uschar *'/>
+<doc f='exim/src/globals.h' l='393'>/* Expansion variable, selector used for signing a message. */</doc>

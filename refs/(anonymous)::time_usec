@@ -1,0 +1,4 @@
+<dec f='exim/src/dbstuff.h' l='776' type='int'/>
+<offset>64</offset>
+<doc f='exim/src/dbstuff.h' l='775'>/*************/</doc>
+<doc f='exim/src/dbstuff.h' l='776'>/* Fractional part of time, from gettimeofday() */</doc>

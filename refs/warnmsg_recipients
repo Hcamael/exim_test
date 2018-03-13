@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='974' type='uschar *'/>
+<doc f='exim/src/globals.h' l='974'>/* Recipients of warning message */</doc>

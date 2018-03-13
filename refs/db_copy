@@ -1,0 +1,1 @@
+<dec f='include/db.h' l='3048' type='int db_copy(DB_ENV * , const char * , const char * , const char * )'/>

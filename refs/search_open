@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='394' type='void * search_open(uschar * , int , int , uid_t * , gid_t * )'/>

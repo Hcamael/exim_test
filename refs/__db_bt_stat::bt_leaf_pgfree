@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2164' type='uintmax_t'/>
+<offset>640</offset>
+<doc f='include/db.h' l='2164'>/* Bytes free in leaf pages. */</doc>

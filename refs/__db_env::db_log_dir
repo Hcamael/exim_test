@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2307' type='char *'/>
+<offset>1088</offset>
+<doc f='include/db.h' l='2306'>/* Application specified paths */</doc>
+<doc f='include/db.h' l='2307'>/* Database log file directory */</doc>

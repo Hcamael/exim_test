@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='151' type='int'/>
+<doc f='exim/src/local_scan.h' l='151'>/* Port number for incoming call */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/macros.h' l='266' type='2'/>
+<doc f='exim/src/macros.h' l='266'>/* Panic-die if exec fails */</doc>

@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='666' type='int32_t'/>
+<offset>608</offset>
+<doc f='include/db.h' l='666'>/* LSN offset in page. */</doc>

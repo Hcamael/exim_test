@@ -1,0 +1,6 @@
+<dec f='include/db.h' l='1436' type='DB_ENV *'/>
+<offset>320</offset>
+<doc f='include/db.h' l='1433'>/*******************************************************
+	 * Private: owned by DB.
+	 *******************************************************/</doc>
+<doc f='include/db.h' l='1436'>/* Backing public environment. */</doc>

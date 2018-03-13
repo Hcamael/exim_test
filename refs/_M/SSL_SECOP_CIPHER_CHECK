@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl.h' l='1985'/>
+<doc f='include/openssl/ssl.h' l='1984'>/* Sanity check of cipher server selects */</doc>

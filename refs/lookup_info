@@ -1,0 +1,18 @@
+<def f='exim/src/lookupapi.h' l='17' ll='46'/>
+<size>72</size>
+<doc f='exim/src/lookupapi.h' l='9'>/* The &quot;type&quot; field in each item is a set of bit flags:
+
+  lookup_querystyle     =&gt; this is a query-style lookup,
+                             else single-key (+ file) style
+  lookup_absfile        =&gt; an absolute file name is required,
+                             (for single-key style only)
+*/</doc>
+<mbr r='lookup_info::name' o='0' t='uschar *'/>
+<mbr r='lookup_info::type' o='64' t='int'/>
+<mbr r='lookup_info::open' o='128' t='void *(*)(uschar *, uschar **)'/>
+<mbr r='lookup_info::check' o='192' t='BOOL (*)(void *, uschar *, int, uid_t *, gid_t *, uschar **)'/>
+<mbr r='lookup_info::find' o='256' t='int (*)(void *, uschar *, const uschar *, int, uschar **, uschar **, uint *)'/>
+<mbr r='lookup_info::close' o='320' t='void (*)(void *)'/>
+<mbr r='lookup_info::tidy' o='384' t='void (*)(void)'/>
+<mbr r='lookup_info::quote' o='448' t='uschar *(*)(uschar *, uschar *)'/>
+<mbr r='lookup_info::version_report' o='512' t='void (*)(FILE *)'/>

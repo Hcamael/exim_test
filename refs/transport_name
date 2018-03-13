@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='941' type='uschar *'/>
+<doc f='exim/src/globals.h' l='941'>/* Name of transport last started */</doc>

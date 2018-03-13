@@ -1,0 +1,10 @@
+<dec f='exim/src/macros.h' l='65'/>
+<doc f='exim/src/macros.h' l='55'>/* Character-handling macros. It seems that the set of standard functions in
+ctype.h aren&apos;t actually all that useful. One reason for this is that email is
+international, so the concept of using a locale to vary what they do is not
+helpful. Another problem is that in different operating systems, the libraries
+yield different results, even in the default locale. For example, Linux yields
+TRUE for iscntrl() for all characters &gt; 127, whereas many other systems yield
+FALSE. For these reasons we define our own set of macros for a number of
+character testing functions. Ensure that all these tests treat their arguments
+as unsigned. */</doc>

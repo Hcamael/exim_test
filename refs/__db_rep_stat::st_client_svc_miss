@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='1140' type='uintmax_t'/>
+<offset>960</offset>
+<doc f='include/db.h' l='1140'>/* Number of client service requests
+					   missing on this client. */</doc>

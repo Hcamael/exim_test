@@ -1,0 +1,2 @@
+<dec f='exim/src/dbstuff.h' l='181'/>
+<doc f='exim/src/dbstuff.h' l='179'>/* Return values from EXIM_DBPUTB */</doc>

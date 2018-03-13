@@ -1,0 +1,2 @@
+<dec f='include/openssl/evp.h' l='107'/>
+<doc f='include/openssl/evp.h' l='105'>/* DigestAlgorithmIdentifier flags... */</doc>

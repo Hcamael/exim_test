@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='789' type='BOOL'/>
+<doc f='exim/src/globals.h' l='789'>/* Set for -bs and -bS */</doc>

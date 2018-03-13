@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='350' type='6'/>
+<doc f='include/db.h' l='350'>/* Lock is on the wait queue. */</doc>

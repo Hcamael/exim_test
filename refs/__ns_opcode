@@ -1,0 +1,4 @@
+<def f='include/arpa/nameser.h' l='177' ll='185'/>
+<doc f='include/arpa/nameser.h' l='174'>/*%
+ * Currently defined opcodes.
+ */</doc>

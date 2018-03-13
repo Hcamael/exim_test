@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='208' type='uschar *'/>
+<doc f='exim/src/globals.h' l='208'>/* Pipe command when delivering to one */</doc>

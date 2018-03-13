@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='691' type='uschar *'/>
+<doc f='exim/src/globals.h' l='691'>/* Name of queue, if nondefault spooling */</doc>

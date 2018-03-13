@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2071' type='DBC_INTERNAL *'/>
+<offset>2752</offset>
+<doc f='include/db.h' l='2071'>/* Access method private. */</doc>

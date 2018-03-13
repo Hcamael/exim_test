@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='256' type='BOOL'/>
+<doc f='exim/src/globals.h' l='256'>/* Include body in returned message */</doc>

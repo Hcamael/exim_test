@@ -1,0 +1,2 @@
+<dec f='exim/src/macros.h' l='556'/>
+<doc f='exim/src/macros.h' l='554'>/* These must be last, so all retry deferments can easily be identified */</doc>

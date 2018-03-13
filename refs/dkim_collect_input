@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='387' type='BOOL'/>
+<doc f='exim/src/globals.h' l='387'>/* Runtime flag that tracks wether SMTP input is fed to DKIM validation */</doc>

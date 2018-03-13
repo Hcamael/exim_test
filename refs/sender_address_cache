@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='777' type='unsigned int [1]'/>
+<doc f='exim/src/globals.h' l='777'>/* Cache bits for sender */</doc>

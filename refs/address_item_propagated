@@ -1,0 +1,15 @@
+<def f='exim/src/structs.h' l='489' ll='506'/>
+<size>56</size>
+<doc f='exim/src/structs.h' l='482'>/* The address_item structure contains many fields which are used at various
+times while delivering a message. Some are used only for remote deliveries;
+some only for local. A particular set of fields is copied whenever a child
+address is created. For convenience, we keep those fields in a separate
+sub-structure so they can be copied in one go. This also means I won&apos;t forget
+to edit the various copying places when new to-be-copied fields are added. */</doc>
+<mbr r='address_item_propagated::address_data' o='0' t='uschar *'/>
+<mbr r='address_item_propagated::domain_data' o='64' t='uschar *'/>
+<mbr r='address_item_propagated::localpart_data' o='128' t='uschar *'/>
+<mbr r='address_item_propagated::errors_address' o='192' t='uschar *'/>
+<mbr r='address_item_propagated::extra_headers' o='256' t='header_line *'/>
+<mbr r='address_item_propagated::remove_headers' o='320' t='uschar *'/>
+<mbr r='address_item_propagated::ignore_error' o='384' t='BOOL'/>

@@ -1,0 +1,3 @@
+<dec f='exim/src/macros.h' l='188'/>
+<doc f='exim/src/macros.h' l='185'>/* The length of the base names of spool files, which consist of an internal
+message id with a trailing &quot;-H&quot; or &quot;-D&quot; added. */</doc>

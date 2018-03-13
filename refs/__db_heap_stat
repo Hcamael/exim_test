@@ -1,0 +1,12 @@
+<def f='include/db.h' l='2207' ll='2216'/>
+<size>32</size>
+<doc f='include/db.h' l='2206'>/* Heap statistics structure. */</doc>
+<doc f='include/db.h' l='2207'>/* SHARED */</doc>
+<mbr r='__db_heap_stat::heap_magic' o='0' t='u_int32_t'/>
+<mbr r='__db_heap_stat::heap_version' o='32' t='u_int32_t'/>
+<mbr r='__db_heap_stat::heap_metaflags' o='64' t='u_int32_t'/>
+<mbr r='__db_heap_stat::heap_nrecs' o='96' t='u_int32_t'/>
+<mbr r='__db_heap_stat::heap_pagecnt' o='128' t='u_int32_t'/>
+<mbr r='__db_heap_stat::heap_pagesize' o='160' t='u_int32_t'/>
+<mbr r='__db_heap_stat::heap_nregions' o='192' t='u_int32_t'/>
+<mbr r='__db_heap_stat::heap_regionsize' o='224' t='u_int32_t'/>

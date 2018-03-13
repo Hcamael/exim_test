@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='120' type='pid_t child_open_uid(const uschar ** , const uschar ** , int , uid_t * , gid_t * , int * , int * , uschar * , BOOL )'/>

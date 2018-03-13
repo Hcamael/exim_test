@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='351' type='BOOL'/>
+<doc f='exim/src/globals.h' l='351'>/* TRUE for unprivileged delivery */</doc>

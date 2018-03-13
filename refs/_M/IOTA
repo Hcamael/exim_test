@@ -1,0 +1,5 @@
+<dec f='exim/src/macros.h' l='360'/>
+<doc f='exim/src/macros.h' l='355'>/* IOTA allows us to keep an implicit sequential count, like a simple enum,
+but we can have sequentially numbered identifiers which are not declared
+sequentially. We use this for more compact declarations of bit indexes and
+masks, alternating between sequential bit index and corresponding mask. */</doc>

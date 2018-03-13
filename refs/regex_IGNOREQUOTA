@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='738' type='const pcre *'/>
+<doc f='exim/src/globals.h' l='738'>/* For recognizing IGNOREQUOTA (LMTP) */</doc>

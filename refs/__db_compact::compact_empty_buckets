@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2175' type='u_int32_t'/>
+<offset>96</offset>
+<doc f='include/db.h' l='2174'>/* Output Stats. */</doc>
+<doc f='include/db.h' l='2175'>/* Empty hash buckets found. */</doc>

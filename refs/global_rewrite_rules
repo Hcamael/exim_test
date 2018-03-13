@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='486' type='rewrite_rule *'/>
+<doc f='exim/src/globals.h' l='486'>/* Chain of rewriting rules */</doc>

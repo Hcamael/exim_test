@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='335' type='int'/>
+<doc f='exim/src/globals.h' l='335'>/* The fd for debug_file */</doc>

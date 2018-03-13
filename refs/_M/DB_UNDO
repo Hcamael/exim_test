@@ -1,0 +1,7 @@
+<dec f='include/db.h' l='811'/>
+<doc f='include/db.h' l='805'>/*
+ * BACKWARD_ALLOC is used during the forward pass to pick up any aborted
+ * allocations for files that were created during the forward pass.
+ * The main difference between _ALLOC and _ROLL is that the entry for
+ * the file not exist during the rollforward pass.
+ */</doc>

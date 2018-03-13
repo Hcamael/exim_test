@@ -1,0 +1,10 @@
+<dec f='include/db.h' l='501'/>
+<doc f='include/db.h' l='492'>/*
+ * Application-specified log record types start at DB_user_BEGIN, and must not
+ * equal or exceed DB_debug_FLAG.
+ *
+ * DB_debug_FLAG is the high-bit of the u_int32_t that specifies a log record
+ * type.  If the flag is set, it&apos;s a log record that was logged for debugging
+ * purposes only, even if it reflects a database change -- the change was part
+ * of a non-durable transaction.
+ */</doc>

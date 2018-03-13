@@ -1,0 +1,5 @@
+<dec f='include/openssl/ssl3.h' l='180'/>
+<doc f='include/openssl/ssl3.h' l='175'>/*
+ * OpenSSL currently only uses a padding length of at most one block so the
+ * send overhead is smaller.
+ */</doc>

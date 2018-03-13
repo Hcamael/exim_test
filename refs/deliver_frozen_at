@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='355' type='time_t'/>
+<doc f='exim/src/globals.h' l='355'>/* Time of freezing */</doc>

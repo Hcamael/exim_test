@@ -1,0 +1,8 @@
+<def f='include/db.h' l='1095' ll='1106'/>
+<size>32</size>
+<doc f='include/db.h' l='1094'>/* Replication Manager site status. */</doc>
+<mbr r='__db_repmgr_site::eid' o='0' t='int'/>
+<mbr r='__db_repmgr_site::host' o='64' t='char *'/>
+<mbr r='__db_repmgr_site::port' o='128' t='u_int'/>
+<mbr r='__db_repmgr_site::status' o='160' t='u_int32_t'/>
+<mbr r='__db_repmgr_site::flags' o='192' t='u_int32_t'/>

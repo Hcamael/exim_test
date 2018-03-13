@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='981' type='db_threadid_t'/>
+<offset>128</offset>
+<doc f='include/db.h' l='981'>/* Thread owning txn ID */</doc>

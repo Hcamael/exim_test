@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='711' type='int'/>
+<doc f='exim/src/globals.h' l='711'>/* Count of RCPT commands in a message */</doc>

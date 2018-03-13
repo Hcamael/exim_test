@@ -1,0 +1,1 @@
+<dec f='include/openssl/rsa.h' l='190' type='ENGINE * RSA_get0_engine(const RSA * r)'/>

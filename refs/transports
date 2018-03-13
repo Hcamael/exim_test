@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='949' type='transport_instance *'/>
+<doc f='exim/src/globals.h' l='949'>/* Chain of instantiated transports */</doc>

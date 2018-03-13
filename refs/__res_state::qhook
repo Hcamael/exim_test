@@ -1,0 +1,4 @@
+<dec f='include/resolv.h' l='126' type='res_send_qhook'/>
+<offset>3840</offset>
+<doc f='include/resolv.h' l='125'>/* 4 byte hole here on 64-bit architectures.  */</doc>
+<doc f='include/resolv.h' l='126'>/* query hook */</doc>

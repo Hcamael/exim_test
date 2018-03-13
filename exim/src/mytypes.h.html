@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>mytypes.h source code [exim/src/mytypes.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/mytypes.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='mytypes.h.html'>mytypes.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><i>/* This header file contains type definitions and macros that I use as</i></td></tr>
+<tr><th id="10">10</th><td><i>"standard" in the code of Exim and its utilities. Make it idempotent because</i></td></tr>
+<tr><th id="11">11</th><td><i>local_scan.h includes it and exim.h includes them both (to get this earlier). */</i></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><u>#<span data-ppcond="13">ifndef</span> <span class="macro" data-ref="_M/MYTYPES_H">MYTYPES_H</span></u></td></tr>
+<tr><th id="14">14</th><td><u>#define <dfn class="macro" id="_M/MYTYPES_H" data-ref="_M/MYTYPES_H">MYTYPES_H</dfn></u></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><u>#<span data-ppcond="16">ifndef</span> <span class="macro" data-ref="_M/FALSE">FALSE</span></u></td></tr>
+<tr><th id="17">17</th><td><u># define <dfn class="macro" id="_M/FALSE" data-ref="_M/FALSE">FALSE</dfn>         0</u></td></tr>
+<tr><th id="18">18</th><td><u>#<span data-ppcond="16">endif</span></u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><u>#<span data-ppcond="20">ifndef</span> <span class="macro" data-ref="_M/TRUE">TRUE</span></u></td></tr>
+<tr><th id="21">21</th><td><u># define <dfn class="macro" id="_M/TRUE" data-ref="_M/TRUE">TRUE</dfn>          1</u></td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="20">endif</span></u></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#<span data-ppcond="24">ifndef</span> <span class="macro" data-ref="_M/TRUE_UNSET">TRUE_UNSET</span></u></td></tr>
+<tr><th id="25">25</th><td><u># define <dfn class="macro" id="_M/TRUE_UNSET" data-ref="_M/TRUE_UNSET">TRUE_UNSET</dfn>    2</u></td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="24">endif</span></u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><i>/* If gcc is being used to compile Exim, we can use its facility for checking</i></td></tr>
+<tr><th id="30">30</th><td><i>the arguments of printf-like functions. This is done by a macro. */</i></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><u>#<span data-ppcond="32">if</span> defined(<span class="macro" data-ref="_M/__GNUC__">__GNUC__</span>) || defined(<span class="macro" data-ref="_M/__clang__">__clang__</span>)</u></td></tr>
+<tr><th id="33">33</th><td><u># define <dfn class="macro" id="_M/PRINTF_FUNCTION" data-ref="_M/PRINTF_FUNCTION">PRINTF_FUNCTION</dfn>(A,B)	__attribute__((format(printf,A,B)))</u></td></tr>
+<tr><th id="34">34</th><td><u># define <dfn class="macro" id="_M/ARG_UNUSED" data-ref="_M/ARG_UNUSED">ARG_UNUSED</dfn>		__attribute__((__unused__))</u></td></tr>
+<tr><th id="35">35</th><td><u># define <dfn class="macro" id="_M/WARN_UNUSED_RESULT" data-ref="_M/WARN_UNUSED_RESULT">WARN_UNUSED_RESULT</dfn>	__attribute__((__warn_unused_result__))</u></td></tr>
+<tr><th id="36">36</th><td><u>#<span data-ppcond="32">else</span></u></td></tr>
+<tr><th id="37">37</th><td><u># define PRINTF_FUNCTION(A,B)</u></td></tr>
+<tr><th id="38">38</th><td><u># define ARG_UNUSED  /**/</u></td></tr>
+<tr><th id="39">39</th><td><u># define WARN_UNUSED_RESULT /**/</u></td></tr>
+<tr><th id="40">40</th><td><u>#<span data-ppcond="32">endif</span></u></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><u>#<span data-ppcond="42">ifdef</span> <span class="macro" data-ref="_M/WANT_DEEPER_PRINTF_CHECKS">WANT_DEEPER_PRINTF_CHECKS</span></u></td></tr>
+<tr><th id="43">43</th><td><u># define ALMOST_PRINTF(A, B) PRINTF_FUNCTION(A, B)</u></td></tr>
+<tr><th id="44">44</th><td><u>#<span data-ppcond="42">else</span></u></td></tr>
+<tr><th id="45">45</th><td><u># define <dfn class="macro" id="_M/ALMOST_PRINTF" data-ref="_M/ALMOST_PRINTF">ALMOST_PRINTF</dfn>(A, B)</u></td></tr>
+<tr><th id="46">46</th><td><u>#<span data-ppcond="42">endif</span></u></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><i>/* Some operating systems (naughtily, imo) include a definition for "uchar" in</i></td></tr>
+<tr><th id="50">50</th><td><i>the standard header files, so we use "uschar". Solaris has u_char in</i></td></tr>
+<tr><th id="51">51</th><td><i>sys/types.h. This is just a typing convenience, of course. */</i></td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td><b>typedef</b> <em>unsigned</em> <em>char</em> <dfn class="typedef" id="uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</dfn>;</td></tr>
+<tr><th id="54">54</th><td><b>typedef</b> <em>unsigned</em> <dfn class="typedef" id="BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</dfn>;</td></tr>
+<tr><th id="55">55</th><td><i>/* We also have SIGNAL_BOOL, which requires signal.h be included, so is defined</i></td></tr>
+<tr><th id="56">56</th><td><i>elsewhere */</i></td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td></td></tr>
+<tr><th id="59">59</th><td><i>/* These macros save typing for the casting that is needed to cope with the</i></td></tr>
+<tr><th id="60">60</th><td><i>mess that is "char" in ISO/ANSI C. Having now been bitten enough times by</i></td></tr>
+<tr><th id="61">61</th><td><i>systems where "char" is actually signed, I've converted Exim to use entirely</i></td></tr>
+<tr><th id="62">62</th><td><i>unsigned chars, except in a few special places such as arguments that are</i></td></tr>
+<tr><th id="63">63</th><td><i>almost always literal strings. */</i></td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><u>#define <dfn class="macro" id="_M/CS" data-ref="_M/CS">CS</dfn>   (char *)</u></td></tr>
+<tr><th id="66">66</th><td><u>#define <dfn class="macro" id="_M/CCS" data-ref="_M/CCS">CCS</dfn>  (const char *)</u></td></tr>
+<tr><th id="67">67</th><td><u>#define <dfn class="macro" id="_M/CSS" data-ref="_M/CSS">CSS</dfn>  (char **)</u></td></tr>
+<tr><th id="68">68</th><td><u>#define <dfn class="macro" id="_M/US" data-ref="_M/US">US</dfn>   (unsigned char *)</u></td></tr>
+<tr><th id="69">69</th><td><u>#define <dfn class="macro" id="_M/CUS" data-ref="_M/CUS">CUS</dfn>  (const unsigned char *)</u></td></tr>
+<tr><th id="70">70</th><td><u>#define <dfn class="macro" id="_M/USS" data-ref="_M/USS">USS</dfn>  (unsigned char **)</u></td></tr>
+<tr><th id="71">71</th><td><u>#define <dfn class="macro" id="_M/CUSS" data-ref="_M/CUSS">CUSS</dfn> (const unsigned char **)</u></td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><i>/* The C library string functions expect "char *" arguments. Use macros to</i></td></tr>
+<tr><th id="74">74</th><td><i>avoid having to write a cast each time. We do this for string and file</i></td></tr>
+<tr><th id="75">75</th><td><i>functions that are called quite often; for other calls to external libraries</i></td></tr>
+<tr><th id="76">76</th><td><i>(which are on the whole special-purpose) we just use individual casts. */</i></td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><u>#define <dfn class="macro" id="_M/Uatoi" data-ref="_M/Uatoi">Uatoi</dfn>(s)           atoi(CCS(s))</u></td></tr>
+<tr><th id="79">79</th><td><u>#define <dfn class="macro" id="_M/Uatol" data-ref="_M/Uatol">Uatol</dfn>(s)           atol(CCS(s))</u></td></tr>
+<tr><th id="80">80</th><td><u>#define <dfn class="macro" id="_M/Uchdir" data-ref="_M/Uchdir">Uchdir</dfn>(s)          chdir(CCS(s))</u></td></tr>
+<tr><th id="81">81</th><td><u>#define <dfn class="macro" id="_M/Uchmod" data-ref="_M/Uchmod">Uchmod</dfn>(s,n)        chmod(CCS(s),n)</u></td></tr>
+<tr><th id="82">82</th><td><u>#define <dfn class="macro" id="_M/Uchown" data-ref="_M/Uchown">Uchown</dfn>(s,n,m)      chown(CCS(s),n,m)</u></td></tr>
+<tr><th id="83">83</th><td><u>#define <dfn class="macro" id="_M/Ufgets" data-ref="_M/Ufgets">Ufgets</dfn>(b,n,f)      fgets(CS(b),n,f)</u></td></tr>
+<tr><th id="84">84</th><td><u>#define <dfn class="macro" id="_M/Ufopen" data-ref="_M/Ufopen">Ufopen</dfn>(s,t)        fopen(CCS(s),CCS(t))</u></td></tr>
+<tr><th id="85">85</th><td><u>#define <dfn class="macro" id="_M/Ulink" data-ref="_M/Ulink">Ulink</dfn>(s,t)         link(CCS(s),CCS(t))</u></td></tr>
+<tr><th id="86">86</th><td><u>#define <dfn class="macro" id="_M/Ulstat" data-ref="_M/Ulstat">Ulstat</dfn>(s,t)        lstat(CCS(s),t)</u></td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td><u>#<span data-ppcond="88">ifdef</span> <span class="macro" data-ref="_M/O_BINARY">O_BINARY</span>                                        /* This is for Cygwin,  */</u></td></tr>
+<tr><th id="89">89</th><td><u>#define Uopen(s,n,m)       open(CCS(s),(n)|O_BINARY,m) /* where all files must */</u></td></tr>
+<tr><th id="90">90</th><td><u>#<span data-ppcond="88">else</span>                                                  /* be opened as binary  */</u></td></tr>
+<tr><th id="91">91</th><td><u>#define <dfn class="macro" id="_M/Uopen" data-ref="_M/Uopen">Uopen</dfn>(s,n,m)       open(CCS(s),n,m)            /* to avoid problems    */</u></td></tr>
+<tr><th id="92">92</th><td><u>#<span data-ppcond="88">endif</span>                                                 /* with CRLF endings.   */</u></td></tr>
+<tr><th id="93">93</th><td><u>#define <dfn class="macro" id="_M/Uread" data-ref="_M/Uread">Uread</dfn>(f,b,l)       read(f,CS(b),l)</u></td></tr>
+<tr><th id="94">94</th><td><u>#define <dfn class="macro" id="_M/Urename" data-ref="_M/Urename">Urename</dfn>(s,t)       rename(CCS(s),CCS(t))</u></td></tr>
+<tr><th id="95">95</th><td><u>#define <dfn class="macro" id="_M/Ustat" data-ref="_M/Ustat">Ustat</dfn>(s,t)         stat(CCS(s),t)</u></td></tr>
+<tr><th id="96">96</th><td><u>#define <dfn class="macro" id="_M/Ustrcat" data-ref="_M/Ustrcat">Ustrcat</dfn>(s,t)       strcat(CS(s),CCS(t))</u></td></tr>
+<tr><th id="97">97</th><td><u>#define <dfn class="macro" id="_M/Ustrchr" data-ref="_M/Ustrchr">Ustrchr</dfn>(s,n)       US strchr(CCS(s),n)</u></td></tr>
+<tr><th id="98">98</th><td><u>#define <dfn class="macro" id="_M/CUstrchr" data-ref="_M/CUstrchr">CUstrchr</dfn>(s,n)      CUS strchr(CCS(s),n)</u></td></tr>
+<tr><th id="99">99</th><td><u>#define <dfn class="macro" id="_M/CUstrerror" data-ref="_M/CUstrerror">CUstrerror</dfn>(n)      CUS strerror(n)</u></td></tr>
+<tr><th id="100">100</th><td><u>#define <dfn class="macro" id="_M/Ustrcmp" data-ref="_M/Ustrcmp">Ustrcmp</dfn>(s,t)       strcmp(CCS(s),CCS(t))</u></td></tr>
+<tr><th id="101">101</th><td><u>#define <dfn class="macro" id="_M/Ustrcpy" data-ref="_M/Ustrcpy">Ustrcpy</dfn>(s,t)       strcpy(CS(s),CCS(t))</u></td></tr>
+<tr><th id="102">102</th><td><u>#define <dfn class="macro" id="_M/Ustrcspn" data-ref="_M/Ustrcspn">Ustrcspn</dfn>(s,t)      strcspn(CCS(s),CCS(t))</u></td></tr>
+<tr><th id="103">103</th><td><u>#define <dfn class="macro" id="_M/Ustrftime" data-ref="_M/Ustrftime">Ustrftime</dfn>(s,m,f,t) strftime(CS(s),m,f,t)</u></td></tr>
+<tr><th id="104">104</th><td><u>#define <dfn class="macro" id="_M/Ustrlen" data-ref="_M/Ustrlen">Ustrlen</dfn>(s)         (int)strlen(CCS(s))</u></td></tr>
+<tr><th id="105">105</th><td><u>#define <dfn class="macro" id="_M/Ustrncat" data-ref="_M/Ustrncat">Ustrncat</dfn>(s,t,n)    strncat(CS(s),CCS(t),n)</u></td></tr>
+<tr><th id="106">106</th><td><u>#define <dfn class="macro" id="_M/Ustrncmp" data-ref="_M/Ustrncmp">Ustrncmp</dfn>(s,t,n)    strncmp(CCS(s),CCS(t),n)</u></td></tr>
+<tr><th id="107">107</th><td><u>#define <dfn class="macro" id="_M/Ustrncpy" data-ref="_M/Ustrncpy">Ustrncpy</dfn>(s,t,n)    strncpy(CS(s),CCS(t),n)</u></td></tr>
+<tr><th id="108">108</th><td><u>#define <dfn class="macro" id="_M/Ustrpbrk" data-ref="_M/Ustrpbrk">Ustrpbrk</dfn>(s,t)      strpbrk(CCS(s),CCS(t))</u></td></tr>
+<tr><th id="109">109</th><td><u>#define <dfn class="macro" id="_M/Ustrrchr" data-ref="_M/Ustrrchr">Ustrrchr</dfn>(s,n)      US strrchr(CCS(s),n)</u></td></tr>
+<tr><th id="110">110</th><td><u>#define <dfn class="macro" id="_M/CUstrrchr" data-ref="_M/CUstrrchr">CUstrrchr</dfn>(s,n)     CUS strrchr(CCS(s),n)</u></td></tr>
+<tr><th id="111">111</th><td><u>#define <dfn class="macro" id="_M/Ustrspn" data-ref="_M/Ustrspn">Ustrspn</dfn>(s,t)       strspn(CCS(s),CCS(t))</u></td></tr>
+<tr><th id="112">112</th><td><u>#define <dfn class="macro" id="_M/Ustrstr" data-ref="_M/Ustrstr">Ustrstr</dfn>(s,t)       US strstr(CCS(s),CCS(t))</u></td></tr>
+<tr><th id="113">113</th><td><u>#define <dfn class="macro" id="_M/CUstrstr" data-ref="_M/CUstrstr">CUstrstr</dfn>(s,t)      CUS strstr(CCS(s),CCS(t))</u></td></tr>
+<tr><th id="114">114</th><td><u>#define <dfn class="macro" id="_M/Ustrtod" data-ref="_M/Ustrtod">Ustrtod</dfn>(s,t)       strtod(CCS(s),CSS(t))</u></td></tr>
+<tr><th id="115">115</th><td><u>#define <dfn class="macro" id="_M/Ustrtol" data-ref="_M/Ustrtol">Ustrtol</dfn>(s,t,b)     strtol(CCS(s),CSS(t),b)</u></td></tr>
+<tr><th id="116">116</th><td><u>#define <dfn class="macro" id="_M/Ustrtoul" data-ref="_M/Ustrtoul">Ustrtoul</dfn>(s,t,b)    strtoul(CCS(s),CSS(t),b)</u></td></tr>
+<tr><th id="117">117</th><td><u>#define <dfn class="macro" id="_M/Uunlink" data-ref="_M/Uunlink">Uunlink</dfn>(s)         unlink(CCS(s))</u></td></tr>
+<tr><th id="118">118</th><td><u>#<span data-ppcond="13">endif</span></u></td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td><i>/* End of mytypes.h */</i></td></tr>
+<tr><th id="121">121</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='local_scan.c.html'>exim/src/local_scan.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

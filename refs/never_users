@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='622' type='uid_t *'/>
+<doc f='exim/src/globals.h' l='622'>/* List of uids never to be used */</doc>

@@ -1,0 +1,11 @@
+<dec f='exim/src/local_scan.h' l='52'/>
+<doc f='exim/src/local_scan.h' l='49'>/* Return codes from the support functions lss_match_xxx(). These are also the
+codes that dynamically-loaded ${dlfunc functions must return. */</doc>
+<dec f='exim/src/macros.h' l='283'/>
+<doc f='exim/src/macros.h' l='275'>/* Returns from the routing, transport and authentication functions (not all
+apply to all of them). Some other functions also use these convenient values,
+and some additional values are used only by non-driver functions.
+
+OK, FAIL, DEFER, ERROR, and FAIL_FORCED are also declared in local_scan.h for
+use in the local_scan() function and in ${dlfunc loaded functions. Do not
+change them unilaterally. */</doc>

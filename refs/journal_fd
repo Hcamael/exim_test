@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='528' type='int'/>
+<doc f='exim/src/globals.h' l='528'>/* Fd for journal file */</doc>

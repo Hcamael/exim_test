@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='589' type='BOOL'/>
+<doc f='exim/src/globals.h' l='589'>/* TRUE to write message logs */</doc>

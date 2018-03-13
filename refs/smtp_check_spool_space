@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='821' type='BOOL'/>
+<doc f='exim/src/globals.h' l='821'>/* TRUE to check SMTP SIZE value */</doc>

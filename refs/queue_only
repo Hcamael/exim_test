@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='692' type='BOOL'/>
+<doc f='exim/src/globals.h' l='692'>/* TRUE to disable immediate delivery */</doc>

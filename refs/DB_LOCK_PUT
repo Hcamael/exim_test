@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='330' type='4'/>
+<doc f='include/db.h' l='330'>/* Release the lock. */</doc>

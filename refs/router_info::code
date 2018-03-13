@@ -1,0 +1,4 @@
+<dec f='exim/src/structs.h' l='352' type='int (*)(router_instance *, struct address_item *, struct passwd *, int, struct address_item **, struct address_item **, struct address_item **, struct address_item **)'/>
+<offset>384</offset>
+<doc f='exim/src/structs.h' l='351'>/****/</doc>
+<doc f='exim/src/structs.h' l='352'>/* Main entry point */</doc>

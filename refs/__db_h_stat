@@ -1,0 +1,21 @@
+<def f='include/db.h' l='2186' ll='2204'/>
+<size>96</size>
+<doc f='include/db.h' l='2185'>/* Hash statistics structure. */</doc>
+<doc f='include/db.h' l='2186'>/* SHARED */</doc>
+<mbr r='__db_h_stat::hash_magic' o='0' t='u_int32_t'/>
+<mbr r='__db_h_stat::hash_version' o='32' t='u_int32_t'/>
+<mbr r='__db_h_stat::hash_metaflags' o='64' t='u_int32_t'/>
+<mbr r='__db_h_stat::hash_nkeys' o='96' t='u_int32_t'/>
+<mbr r='__db_h_stat::hash_ndata' o='128' t='u_int32_t'/>
+<mbr r='__db_h_stat::hash_pagecnt' o='160' t='u_int32_t'/>
+<mbr r='__db_h_stat::hash_pagesize' o='192' t='u_int32_t'/>
+<mbr r='__db_h_stat::hash_ffactor' o='224' t='u_int32_t'/>
+<mbr r='__db_h_stat::hash_buckets' o='256' t='u_int32_t'/>
+<mbr r='__db_h_stat::hash_free' o='288' t='u_int32_t'/>
+<mbr r='__db_h_stat::hash_bfree' o='320' t='uintmax_t'/>
+<mbr r='__db_h_stat::hash_bigpages' o='384' t='u_int32_t'/>
+<mbr r='__db_h_stat::hash_big_bfree' o='448' t='uintmax_t'/>
+<mbr r='__db_h_stat::hash_overflows' o='512' t='u_int32_t'/>
+<mbr r='__db_h_stat::hash_ovfl_free' o='576' t='uintmax_t'/>
+<mbr r='__db_h_stat::hash_dup' o='640' t='u_int32_t'/>
+<mbr r='__db_h_stat::hash_dup_free' o='704' t='uintmax_t'/>

@@ -1,0 +1,7 @@
+<dec f='include/db.h' l='2283' type='db_mutex_t'/>
+<offset>64</offset>
+<doc f='include/db.h' l='2279'>/*
+	 * The DB_ENV structure can be used concurrently, so field access is
+	 * protected.
+	 */</doc>
+<doc f='include/db.h' l='2283'>/* DB_ENV structure mutex */</doc>

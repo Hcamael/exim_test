@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='162' type='BOOL'/>
+<doc f='exim/src/local_scan.h' l='162'>/* TRUE if input is via SMTP */</doc>

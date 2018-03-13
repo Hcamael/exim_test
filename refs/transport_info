@@ -1,0 +1,14 @@
+<def f='exim/src/structs.h' l='204' ll='221'/>
+<size>80</size>
+<doc f='exim/src/structs.h' l='201'>/* Structure for holding information about a type of transport. The first six
+fields must match driver_info above. */</doc>
+<mbr r='transport_info::driver_name' o='0' t='uschar *'/>
+<mbr r='transport_info::options' o='64' t='optionlist *'/>
+<mbr r='transport_info::options_count' o='128' t='int *'/>
+<mbr r='transport_info::options_block' o='192' t='void *'/>
+<mbr r='transport_info::options_len' o='256' t='int'/>
+<mbr r='transport_info::init' o='320' t='void (*)(struct transport_instance *)'/>
+<mbr r='transport_info::code' o='384' t='BOOL (*)(transport_instance *, struct address_item *)'/>
+<mbr r='transport_info::tidyup' o='448' t='void (*)(struct transport_instance *)'/>
+<mbr r='transport_info::closedown' o='512' t='void (*)(struct transport_instance *)'/>
+<mbr r='transport_info::local' o='576' t='BOOL'/>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='938' type='int'/>
+<doc f='exim/src/globals.h' l='938'>/* Max time to keep frozen messages */</doc>

@@ -1,0 +1,6 @@
+<dec f='exim/build-Linux-x86_64/config.h' l='114'/>
+<use f='exim/src/structs.h' l='620' u='c'/>
+<use f='exim/src/structs.h' l='621' u='c'/>
+<use f='exim/src/globals.h' l='777' u='c'/>
+<use f='exim/src/globals.h' l='782' u='c'/>
+<use f='exim/src/globals.h' l='787' u='c'/>

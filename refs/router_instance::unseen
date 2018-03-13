@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='324' type='BOOL'/>
+<offset>2752</offset>
+<doc f='exim/src/structs.h' l='324'>/* If TRUE carry on, even after success */</doc>

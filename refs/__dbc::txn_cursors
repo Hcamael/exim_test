@@ -1,0 +1,9 @@
+<dec f='include/db.h' l='2042' type='struct (anonymous struct at /usr/include/db.h:2039:2)'/>
+<offset>512</offset>
+<doc f='include/db.h' l='2032'>/*
+	 * Cursor queue of the owning transaction.
+	 *
+	 * !!!
+	 * Explicit representations of structures from queue.h.
+	 * TAILQ_ENTRY(__dbc) txn_cursors;
+	 */</doc>

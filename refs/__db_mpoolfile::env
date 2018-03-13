@@ -1,0 +1,13 @@
+<dec f='include/db.h' l='659' type='ENV *'/>
+<offset>256</offset>
+<doc f='include/db.h' l='649'>/*
+	 * !!!
+	 * The rest of the fields (with the exception of the MP_FLUSH flag)
+	 * are not thread-protected, even when they may be modified at any
+	 * time by the application.  The reason is the DB_MPOOLFILE handle
+	 * is single-threaded from the viewpoint of the application, and so
+	 * the only fields needing to be thread-protected are those accessed
+	 * by checkpoint or sync threads when using DB_MPOOLFILE structures
+	 * to flush buffers from the cache.
+	 */</doc>
+<doc f='include/db.h' l='659'>/* Environment */</doc>

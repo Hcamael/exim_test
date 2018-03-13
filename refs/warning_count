@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='983' type='int'/>
+<doc f='exim/src/globals.h' l='983'>/* Delay warnings sent for this msg */</doc>

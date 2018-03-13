@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='484' type='uschar *'/>
+<doc f='exim/src/globals.h' l='484'>/* To be expanded when pattern matches */</doc>

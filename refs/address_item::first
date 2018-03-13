@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='516' type='struct address_item *'/>
+<offset>128</offset>
+<doc f='exim/src/structs.h' l='516'>/* points to first after group delivery */</doc>

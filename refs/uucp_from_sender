@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='970' type='uschar *'/>
+<doc f='exim/src/globals.h' l='970'>/* For building the sender */</doc>

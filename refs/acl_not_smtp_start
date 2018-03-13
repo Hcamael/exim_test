@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='170' type='uschar *'/>
+<doc f='exim/src/globals.h' l='170'>/* ACL run at the beginning of a non-SMTP session */</doc>

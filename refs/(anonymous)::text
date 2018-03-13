@@ -1,0 +1,5 @@
+<dec f='exim/src/dbstuff.h' l='689' type='uschar [1]'/>
+<dec f='exim/src/dbstuff.h' l='748' type='uschar [1]'/>
+<offset>128</offset>
+<doc f='exim/src/dbstuff.h' l='689'>/* Text message for last failure */</doc>
+<doc f='exim/src/dbstuff.h' l='748'>/* One long character string */</doc>

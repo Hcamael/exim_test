@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='695' type='uschar *'/>
+<doc f='exim/src/globals.h' l='695'>/* Queue if file exists/not-exists */</doc>

@@ -1,0 +1,5 @@
+<dec f='exim/src/dbstuff.h' l='717' type='int'/>
+<dec f='exim/src/dbstuff.h' l='735' type='int'/>
+<offset>128</offset>
+<doc f='exim/src/dbstuff.h' l='717'>/* Random local part was accepted */</doc>
+<doc f='exim/src/dbstuff.h' l='735'>/* Random result */</doc>

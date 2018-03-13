@@ -1,0 +1,3 @@
+<dec f='exim/src/globals.h' l='90' type='uschar *'/>
+<offset>128</offset>
+<doc f='exim/src/globals.h' l='90'>/* Cipher used */</doc>

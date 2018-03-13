@@ -1,0 +1,9 @@
+<dec f='include/db.h' l='847' type='struct (anonymous struct at /usr/include/db.h:844:2)'/>
+<offset>704</offset>
+<doc f='include/db.h' l='837'>/*
+	 * !!!
+	 * Explicit representations of structures from shqueue.h.
+	 * SH_TAILQ_ENTRY xa_links;
+	 * These links link together transactions that are active in
+	 * the same thread of control.
+	 */</doc>

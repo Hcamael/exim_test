@@ -1,0 +1,5 @@
+<dec f='exim/src/macros.h' l='646'/>
+<doc f='exim/src/macros.h' l='641'>/* Values for identifying particular headers; printing characters are used, so
+they can be read in the spool file for those headers that are permanently
+marked. The lower case values don&apos;t get onto the spool; they are used only as
+return values from header_checkname(). */</doc>

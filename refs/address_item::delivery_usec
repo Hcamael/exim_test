@@ -1,0 +1,4 @@
+<dec f='exim/src/structs.h' l='625' type='unsigned int'/>
+<offset>2848</offset>
+<doc f='exim/src/structs.h' l='624'>/* (may need to hold a timestamp) */</doc>
+<doc f='exim/src/structs.h' l='625'>/* subsecond part of delivery time */</doc>

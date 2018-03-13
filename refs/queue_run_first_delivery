@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='683' type='BOOL'/>
+<doc f='exim/src/globals.h' l='683'>/* If TRUE, first deliveries only */</doc>

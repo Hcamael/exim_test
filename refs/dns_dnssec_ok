@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='422' type='int'/>
+<doc f='exim/src/globals.h' l='422'>/* When constructing DNS query, set DO flag */</doc>

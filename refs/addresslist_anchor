@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='210' type='tree_node *'/>
+<doc f='exim/src/globals.h' l='210'>/* Tree of defined address lists */</doc>

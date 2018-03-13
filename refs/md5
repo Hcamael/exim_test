@@ -1,0 +1,5 @@
+<def f='exim/src/structs.h' l='793' ll='796'/>
+<size>20</size>
+<doc f='exim/src/structs.h' l='791'>/* Structure used for holding intermediate data during MD5 computations. */</doc>
+<mbr r='md5::length' o='0' t='unsigned int'/>
+<mbr r='md5::abcd' o='32' t='unsigned int [4]'/>

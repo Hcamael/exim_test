@@ -1,0 +1,4 @@
+<dec f='exim/src/structs.h' l='545' type='uschar *'/>
+<offset>1600</offset>
+<doc f='exim/src/structs.h' l='545'>/* error message that can be sent over SMTP
+                                     or quoted in bounce message */</doc>

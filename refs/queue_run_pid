@@ -1,0 +1,3 @@
+<dec f='exim/src/globals.h' l='688' type='pid_t'/>
+<doc f='exim/src/globals.h' l='687'>/*   immediate children */</doc>
+<doc f='exim/src/globals.h' l='688'>/* PID of the queue running process or 0 */</doc>

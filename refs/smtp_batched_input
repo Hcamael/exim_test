@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='161' type='BOOL'/>
+<doc f='exim/src/local_scan.h' l='161'>/* TRUE if SMTP batch (no interaction) */</doc>

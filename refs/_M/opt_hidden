@@ -1,0 +1,11 @@
+<dec f='exim/src/macros.h' l='701'/>
+<doc f='exim/src/macros.h' l='690'>/* There&apos;s a high-ish bit which is used to flag duplicate options, kept
+for compatibility, which shouldn&apos;t be output. Also used for hidden options
+that are automatically maintained from others. Another high bit is used to
+flag driver options that although private (so as to be settable only on some
+drivers), are stored in the instance block so as to be accessible from outside.
+A third high bit is set when an option is read, so as to be able to give an
+error if any option is set twice. Finally, there&apos;s a bit which is set when an
+option is set with the &quot;hide&quot; prefix, to prevent -bP from showing it to
+non-admin callers. The next byte up in the int is used to keep the bit number
+for booleans that are kept in one bit. */</doc>

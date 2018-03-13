@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='373' type='address_item *'/>
+<doc f='exim/src/globals.h' l='373'>/* Current set of addresses */</doc>

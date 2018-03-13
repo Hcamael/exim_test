@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2350' type='u_int32_t'/>
+<offset>2496</offset>
+<doc f='include/db.h' l='2349'>/* Used during initialization */</doc>
+<doc f='include/db.h' l='2350'>/* Locker hash table size. */</doc>

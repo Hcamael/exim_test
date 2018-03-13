@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='252' type='int'/>
+<doc f='exim/src/globals.h' l='252'>/* sender declared BODY= ; 7=7BIT, 8=8BITMIME */</doc>

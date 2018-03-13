@@ -1,0 +1,3 @@
+<dec f='include/resolv.h' l='115' type='char [256]'/>
+<offset>1024</offset>
+<doc f='include/resolv.h' l='115'>/* default domain (deprecated) */</doc>

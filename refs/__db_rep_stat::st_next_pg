@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1126' type='db_pgno_t'/>
+<offset>352</offset>
+<doc f='include/db.h' l='1126'>/* Next pg we expect. */</doc>

@@ -1,0 +1,25 @@
+<dec f='include/db.h' l='1842'/>
+<doc f='include/db.h' l='1818'>/*
+ * Macros for bulk operations.  These are only intended for the C API.
+ * For C++, use DbMultiple*Iterator or DbMultiple*Builder.
+ *
+ * Bulk operations store multiple entries into a single DBT structure. The
+ * following macros assist with creating and reading these Multiple DBTs.
+ *
+ * The basic layout for single data items is:
+ *
+ * -------------------------------------------------------------------------
+ * | data1 | ... | dataN | ..... |-1 | dNLen | dNOff | ... | d1Len | d1Off |
+ * -------------------------------------------------------------------------
+ *
+ * For the DB_MULTIPLE_KEY* macros, the items are in key/data pairs, so data1
+ * would be a key, and data2 its corresponding value (N is always even).
+ *
+ * For the DB_MULTIPLE_RECNO* macros, the record number is stored along with
+ * the len/off pair in the &quot;header&quot; section, and the list is zero terminated
+ * (since -1 is a valid record number):
+ *
+ * --------------------------------------------------------------------------
+ * | d1 |..| dN |..| 0 | dNLen | dNOff | recnoN |..| d1Len | d1Off | recno1 |
+ * --------------------------------------------------------------------------
+ */</doc>

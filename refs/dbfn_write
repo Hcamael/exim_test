@@ -1,0 +1,1 @@
+<dec f='exim/src/dbfunctions.h' l='16' type='int dbfn_write(open_db * , const uschar * , void * , int )'/>

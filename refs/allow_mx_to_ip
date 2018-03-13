@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='216' type='BOOL'/>
+<doc f='exim/src/globals.h' l='216'>/* Allow MX records to -&gt; ip address */</doc>

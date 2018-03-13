@@ -1,0 +1,1 @@
+<dec f='include/openssl/ssl.h' l='1365' type='void SSL_set_verify(SSL * s, int mode, SSL_verify_cb callback)'/>

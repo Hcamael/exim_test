@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='581' type='int'/>
+<doc f='exim/src/globals.h' l='581'>/* State of message reading and how ended */</doc>

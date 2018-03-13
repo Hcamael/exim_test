@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1182' type='DB_LSN'/>
+<offset>2944</offset>
+<doc f='include/db.h' l='1182'>/* Max. LSN of current winner. */</doc>

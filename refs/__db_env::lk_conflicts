@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2338' type='u_int8_t *'/>
+<offset>2112</offset>
+<doc f='include/db.h' l='2337'>/* Locking configuration */</doc>
+<doc f='include/db.h' l='2338'>/* Two dimensional conflict matrix */</doc>

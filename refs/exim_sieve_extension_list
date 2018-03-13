@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='457' type='const uschar *[]'/>
+<doc f='exim/src/globals.h' l='457'>/* list of sieve extensions */</doc>

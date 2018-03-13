@@ -1,0 +1,4 @@
+<dec f='exim/src/structs.h' l='635' type='short'/>
+<offset>2944</offset>
+<doc f='exim/src/structs.h' l='634'>/* ( contains verify rc in sender verify cache */</doc>
+<doc f='exim/src/structs.h' l='635'>/* result of delivery attempt */</doc>

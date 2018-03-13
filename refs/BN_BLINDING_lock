@@ -1,0 +1,1 @@
+<dec f='include/openssl/bn.h' l='346' type='int BN_BLINDING_lock(BN_BLINDING * b)'/>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='810' type='int'/>
+<doc f='exim/src/globals.h' l='810'>/* Max SMTP connections */</doc>

@@ -1,0 +1,9 @@
+<dec f='include/db.h' l='2113'/>
+<doc f='include/db.h' l='2105'>/*
+ * DBC_DONTLOCK and DBC_RECOVER are used during recovery and transaction
+ * abort.  If a transaction is being aborted or recovered then DBC_RECOVER
+ * will be set and locking and logging will be disabled on this cursor.  If
+ * we are performing a compensating transaction (e.g. free page processing)
+ * then DB_DONTLOCK will be set to inhibit locking, but logging will still
+ * be required. DB_DONTLOCK is also used if the whole database is locked.
+ */</doc>

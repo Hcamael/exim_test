@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl.h' l='1607' type='const SSL_METHOD * TLS_method()'/>
+<doc f='include/openssl/ssl.h' l='1606'>/* Negotiate highest available SSL/TLS version */</doc>

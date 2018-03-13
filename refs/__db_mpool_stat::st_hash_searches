@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='746' type='u_int32_t'/>
+<offset>1056</offset>
+<doc f='include/db.h' l='746'>/* Total hash chain searches. */</doc>

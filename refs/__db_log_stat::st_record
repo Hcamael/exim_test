@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='552' type='uintmax_t'/>
+<offset>320</offset>
+<doc f='include/db.h' l='552'>/* Records entered into the log. */</doc>

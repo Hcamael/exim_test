@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>sha_ver.h source code [exim/src/sha_ver.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/sha_ver.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='sha_ver.h.html'>sha_ver.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) Jeremy Harris 2018 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* SHA routine selection */</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><u>#include <a href="exim.h.html">"exim.h"</a></u></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td><i>/* Please be aware that pulling in extra headers which are not in the system</i></td></tr>
+<tr><th id="13">13</th><td><i> * includes may require careful juggling of CFLAGS in</i></td></tr>
+<tr><th id="14">14</th><td><i> * scripts/Configure-Makefile -- that logic should be kept in sync with this.</i></td></tr>
+<tr><th id="15">15</th><td><i> * In particular, building with just something like USE_OPENSSL_PC=openssl</i></td></tr>
+<tr><th id="16">16</th><td><i> * and not massaging CFLAGS in Local/Makefile is fully supported.</i></td></tr>
+<tr><th id="17">17</th><td><i> */</i></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><u>#<span data-ppcond="19">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#143" data-ref="_M/SUPPORT_TLS">SUPPORT_TLS</a></u></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><u># define <dfn class="macro" id="_M/EXIM_HAVE_SHA2" data-ref="_M/EXIM_HAVE_SHA2">EXIM_HAVE_SHA2</dfn></u></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><u># <span data-ppcond="23">ifdef</span> <span class="macro" data-ref="_M/USE_GNUTLS">USE_GNUTLS</span></u></td></tr>
+<tr><th id="24">24</th><td><u>#  include &lt;gnutls/gnutls.h&gt;</u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><u>#  if GNUTLS_VERSION_NUMBER &gt;= 0x020a00</u></td></tr>
+<tr><th id="27">27</th><td><u>#   define SHA_GNUTLS</u></td></tr>
+<tr><th id="28">28</th><td><u>#   if GNUTLS_VERSION_NUMBER &gt;= 0x030500</u></td></tr>
+<tr><th id="29">29</th><td><u>#    define EXIM_HAVE_SHA3		/*MMMM*/</u></td></tr>
+<tr><th id="30">30</th><td><u>#   endif</u></td></tr>
+<tr><th id="31">31</th><td><u>#  else</u></td></tr>
+<tr><th id="32">32</th><td><u>#   define SHA_GCRYPT</u></td></tr>
+<tr><th id="33">33</th><td><u>#  endif</u></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><u># <span data-ppcond="23">else</span></u></td></tr>
+<tr><th id="36">36</th><td><u>#  define <dfn class="macro" id="_M/SHA_OPENSSL" data-ref="_M/SHA_OPENSSL">SHA_OPENSSL</dfn></u></td></tr>
+<tr><th id="37">37</th><td><u>#  include <a href="../../include/openssl/ssl.h.html">&lt;openssl/ssl.h&gt;</a></u></td></tr>
+<tr><th id="38">38</th><td><u>#  <span data-ppcond="38">if</span> (<a class="macro" href="../../include/openssl/opensslv.h.html#42" title="0x1010006fL" data-ref="_M/OPENSSL_VERSION_NUMBER">OPENSSL_VERSION_NUMBER</a> &gt;= 0x10101000L) &amp;&amp; !defined(<span class="macro" data-ref="_M/LIBRESSL_VERSION_NUMBER">LIBRESSL_VERSION_NUMBER</span>)</u></td></tr>
+<tr><th id="39">39</th><td><u>#   define EXIM_HAVE_SHA3</u></td></tr>
+<tr><th id="40">40</th><td><u>#  <span data-ppcond="38">endif</span></u></td></tr>
+<tr><th id="41">41</th><td><u># <span data-ppcond="23">endif</span></u></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><u>#<span data-ppcond="19">else</span></u></td></tr>
+<tr><th id="44">44</th><td><u># define SHA_NATIVE</u></td></tr>
+<tr><th id="45">45</th><td><u>#<span data-ppcond="19">endif</span></u></td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='lookups/lf_sqlperform.c.html'>exim/src/lookups/lf_sqlperform.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

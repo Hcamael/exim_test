@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='603' type='BOOL'/>
+<offset>24</offset>
+<doc f='exim/src/structs.h' l='603'>/* pass message in bounces */</doc>

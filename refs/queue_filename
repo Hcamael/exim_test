@@ -1,0 +1,6 @@
+<def f='exim/src/structs.h' l='658' ll='662'/>
+<size>16</size>
+<doc f='exim/src/structs.h' l='656'>/* Chain of file names when processing the queue */</doc>
+<mbr r='queue_filename::next' o='0' t='struct queue_filename *'/>
+<mbr r='queue_filename::dir_uschar' o='64' t='uschar'/>
+<mbr r='queue_filename::text' o='72' t='uschar [1]'/>

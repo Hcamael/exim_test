@@ -1,0 +1,19 @@
+<def f='exim/src/structs.h' l='463' ll='479'/>
+<size>112</size>
+<doc f='exim/src/structs.h' l='460'>/* Information about a constructed message that is to be sent using the
+autoreply transport. This is pointed to from the address block. */</doc>
+<mbr r='reply_item::from' o='0' t='uschar *'/>
+<mbr r='reply_item::reply_to' o='64' t='uschar *'/>
+<mbr r='reply_item::to' o='128' t='uschar *'/>
+<mbr r='reply_item::cc' o='192' t='uschar *'/>
+<mbr r='reply_item::bcc' o='256' t='uschar *'/>
+<mbr r='reply_item::subject' o='320' t='uschar *'/>
+<mbr r='reply_item::headers' o='384' t='uschar *'/>
+<mbr r='reply_item::text' o='448' t='uschar *'/>
+<mbr r='reply_item::file' o='512' t='uschar *'/>
+<mbr r='reply_item::file_expand' o='576' t='BOOL'/>
+<mbr r='reply_item::expand_forbid' o='608' t='int'/>
+<mbr r='reply_item::logfile' o='640' t='uschar *'/>
+<mbr r='reply_item::oncelog' o='704' t='uschar *'/>
+<mbr r='reply_item::once_repeat' o='768' t='time_t'/>
+<mbr r='reply_item::return_message' o='832' t='BOOL'/>

@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='359' type='BOOL retry_check_address(const uschar * , host_item * , uschar * , BOOL , uschar ** , uschar ** )'/>

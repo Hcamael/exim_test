@@ -1,0 +1,1049 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>macros.h source code [exim/src/macros.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/macros.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='macros.h.html'>macros.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><i>/* These two macros make it possible to obtain the result of macro-expanding</i></td></tr>
+<tr><th id="10">10</th><td><i>a string as a text string. This is sometimes useful for debugging output. */</i></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td><u>#define <dfn class="macro" id="_M/mac_string" data-ref="_M/mac_string">mac_string</dfn>(s) # s</u></td></tr>
+<tr><th id="13">13</th><td><u>#define <dfn class="macro" id="_M/mac_expanded_string" data-ref="_M/mac_expanded_string">mac_expanded_string</dfn>(s) mac_string(s)</u></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><i>/* Number of elements of an array */</i></td></tr>
+<tr><th id="16">16</th><td><u>#define <dfn class="macro" id="_M/nelem" data-ref="_M/nelem">nelem</dfn>(arr) (sizeof(arr) / sizeof(*arr))</u></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><i>/* Maximum of two items */</i></td></tr>
+<tr><th id="19">19</th><td><u>#<span data-ppcond="19">ifndef</span> <a class="macro" href="../../include/x86_64-linux-gnu/sys/param.h.html#103" data-ref="_M/MAX">MAX</a></u></td></tr>
+<tr><th id="20">20</th><td><u># define MAX(a,b) ((a) &gt; (b) ? (a) : (b))</u></td></tr>
+<tr><th id="21">21</th><td><u>#<span data-ppcond="19">endif</span></u></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><i>/* When running in the test harness, the load average is fudged. */</i></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><u>#define <dfn class="macro" id="_M/OS_GETLOADAVG" data-ref="_M/OS_GETLOADAVG">OS_GETLOADAVG</dfn>() \</u></td></tr>
+<tr><th id="27">27</th><td><u>  (running_in_test_harness? (test_harness_load_avg += 10) : os_getloadavg())</u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><i>/* The address_item structure has a struct full of 1-bit flags. These macros</i></td></tr>
+<tr><th id="31">31</th><td><i>manipulate them. */</i></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><u>#define <dfn class="macro" id="_M/setflag" data-ref="_M/setflag">setflag</dfn>(addr, flagname)    addr-&gt;flags.flagname = TRUE</u></td></tr>
+<tr><th id="34">34</th><td><u>#define <dfn class="macro" id="_M/clearflag" data-ref="_M/clearflag">clearflag</dfn>(addr, flagname)  addr-&gt;flags.flagname = FALSE</u></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><u>#define <dfn class="macro" id="_M/testflag" data-ref="_M/testflag">testflag</dfn>(addr, flagname)   (addr-&gt;flags.flagname)</u></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><u>#define <dfn class="macro" id="_M/copyflag" data-ref="_M/copyflag">copyflag</dfn>(addrnew, addrold, flagname) \</u></td></tr>
+<tr><th id="39">39</th><td><u>  addrnew-&gt;flags.flagname = addrold-&gt;flags.flagname</u></td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><i>/* For almost all calls to convert things to printing characters, we want to</i></td></tr>
+<tr><th id="43">43</th><td><i>allow tabs. A macro just makes life a bit easier. */</i></td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><u>#define <dfn class="macro" id="_M/string_printing" data-ref="_M/string_printing">string_printing</dfn>(s) string_printing2((s), TRUE)</u></td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><i>/* We need a special return code for "no recipients and failed to send an error</i></td></tr>
+<tr><th id="49">49</th><td><i>message". ANSI C defines only EXIT_FAILURE and EXIT_SUCCESS. On the assumption</i></td></tr>
+<tr><th id="50">50</th><td><i>that these are always 1 and 0 on Unix systems ... */</i></td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><u>#define <dfn class="macro" id="_M/EXIT_NORECIPIENTS" data-ref="_M/EXIT_NORECIPIENTS">EXIT_NORECIPIENTS</dfn> 2</u></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><i>/* Character-handling macros. It seems that the set of standard functions in</i></td></tr>
+<tr><th id="56">56</th><td><i>ctype.h aren't actually all that useful. One reason for this is that email is</i></td></tr>
+<tr><th id="57">57</th><td><i>international, so the concept of using a locale to vary what they do is not</i></td></tr>
+<tr><th id="58">58</th><td><i>helpful. Another problem is that in different operating systems, the libraries</i></td></tr>
+<tr><th id="59">59</th><td><i>yield different results, even in the default locale. For example, Linux yields</i></td></tr>
+<tr><th id="60">60</th><td><i>TRUE for iscntrl() for all characters &gt; 127, whereas many other systems yield</i></td></tr>
+<tr><th id="61">61</th><td><i>FALSE. For these reasons we define our own set of macros for a number of</i></td></tr>
+<tr><th id="62">62</th><td><i>character testing functions. Ensure that all these tests treat their arguments</i></td></tr>
+<tr><th id="63">63</th><td><i>as unsigned. */</i></td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><u>#define <dfn class="macro" id="_M/mac_iscntrl" data-ref="_M/mac_iscntrl">mac_iscntrl</dfn>(c) \</u></td></tr>
+<tr><th id="66">66</th><td><u>  ((uschar)(c) &lt; 32 || (uschar)(c) == 127)</u></td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td><u>#define <dfn class="macro" id="_M/mac_iscntrl_or_special" data-ref="_M/mac_iscntrl_or_special">mac_iscntrl_or_special</dfn>(c) \</u></td></tr>
+<tr><th id="69">69</th><td><u>  ((uschar)(c) &lt; 32 || strchr(" ()&lt;&gt;@,;:\\\".[]\177", (uschar)(c)) != NULL)</u></td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td><u>#define <dfn class="macro" id="_M/mac_isgraph" data-ref="_M/mac_isgraph">mac_isgraph</dfn>(c) \</u></td></tr>
+<tr><th id="72">72</th><td><u>  ((uschar)(c) &gt; 32 &amp;&amp; (uschar)(c) != 127)</u></td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><u>#define <dfn class="macro" id="_M/mac_isprint" data-ref="_M/mac_isprint">mac_isprint</dfn>(c) \</u></td></tr>
+<tr><th id="75">75</th><td><u>  (((uschar)(c) &gt;= 32 &amp;&amp; (uschar)(c) &lt;= 126) || c == '\t' || \</u></td></tr>
+<tr><th id="76">76</th><td><u>  ((uschar)(c) &gt; 127 &amp;&amp; print_topbitchars))</u></td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><i>/* Convenience for testing strings */</i></td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td><u>#define <dfn class="macro" id="_M/streqic" data-ref="_M/streqic">streqic</dfn>(Foo, Bar) (strcmpic(Foo, Bar) == 0)</u></td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td></td></tr>
+<tr><th id="84">84</th><td><i>/* When built with TLS support, the act of flushing SMTP output becomes</i></td></tr>
+<tr><th id="85">85</th><td><i>a no-op once an SSL session is in progress. */</i></td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td><u>#<span data-ppcond="87">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#143" data-ref="_M/SUPPORT_TLS">SUPPORT_TLS</a></u></td></tr>
+<tr><th id="88">88</th><td><u>#define <dfn class="macro" id="_M/mac_smtp_fflush" data-ref="_M/mac_smtp_fflush">mac_smtp_fflush</dfn>() if (tls_in.active &lt; 0) fflush(smtp_out);</u></td></tr>
+<tr><th id="89">89</th><td><u>#<span data-ppcond="87">else</span></u></td></tr>
+<tr><th id="90">90</th><td><u>#define mac_smtp_fflush() fflush(smtp_out);</u></td></tr>
+<tr><th id="91">91</th><td><u>#<span data-ppcond="87">endif</span></u></td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td></td></tr>
+<tr><th id="94">94</th><td><i>/* Define which ends of pipes are for reading and writing, as some systems</i></td></tr>
+<tr><th id="95">95</th><td><i>don't make the file descriptors two-way. */</i></td></tr>
+<tr><th id="96">96</th><td></td></tr>
+<tr><th id="97">97</th><td><u>#define <dfn class="macro" id="_M/pipe_read" data-ref="_M/pipe_read">pipe_read</dfn>  0</u></td></tr>
+<tr><th id="98">98</th><td><u>#define <dfn class="macro" id="_M/pipe_write" data-ref="_M/pipe_write">pipe_write</dfn> 1</u></td></tr>
+<tr><th id="99">99</th><td></td></tr>
+<tr><th id="100">100</th><td><i>/* The RFC 1413 ident port */</i></td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td><u>#define <dfn class="macro" id="_M/IDENT_PORT" data-ref="_M/IDENT_PORT">IDENT_PORT</dfn> 113</u></td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td><i>/* A macro to simplify testing bits in lookup types */</i></td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td><u>#define <dfn class="macro" id="_M/mac_islookup" data-ref="_M/mac_islookup">mac_islookup</dfn>(a,b) ((lookup_list[a]-&gt;type &amp; (b)) != 0)</u></td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td><i>/* Debugging control */</i></td></tr>
+<tr><th id="109">109</th><td></td></tr>
+<tr><th id="110">110</th><td><u>#define <dfn class="macro" id="_M/DEBUG" data-ref="_M/DEBUG">DEBUG</dfn>(x)      if (debug_selector &amp; (x))</u></td></tr>
+<tr><th id="111">111</th><td><u>#define <dfn class="macro" id="_M/HDEBUG" data-ref="_M/HDEBUG">HDEBUG</dfn>(x)     if (host_checking || (debug_selector &amp; (x)))</u></td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td><u>#define <dfn class="macro" id="_M/PTR_CHK" data-ref="_M/PTR_CHK">PTR_CHK</dfn>(ptr) \</u></td></tr>
+<tr><th id="114">114</th><td><u>do { \</u></td></tr>
+<tr><th id="115">115</th><td><u>if ((void *)ptr &gt; (void *)store_get(0)) \</u></td></tr>
+<tr><th id="116">116</th><td><u>  debug_printf("BUG: ptr '%s' beyond arena at %s:%d\n", \</u></td></tr>
+<tr><th id="117">117</th><td><u>       	mac_expanded_string(ptr), __FUNCTION__, __LINE__); \</u></td></tr>
+<tr><th id="118">118</th><td><u>} while(0)</u></td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td><i>/* The default From: text for DSNs */</i></td></tr>
+<tr><th id="121">121</th><td></td></tr>
+<tr><th id="122">122</th><td><u>#define <dfn class="macro" id="_M/DEFAULT_DSN_FROM" data-ref="_M/DEFAULT_DSN_FROM">DEFAULT_DSN_FROM</dfn> "Mail Delivery System &lt;Mailer-Daemon@$qualify_domain&gt;"</u></td></tr>
+<tr><th id="123">123</th><td></td></tr>
+<tr><th id="124">124</th><td><i>/* The size of the vector for saving/restoring address expansion pointers while</i></td></tr>
+<tr><th id="125">125</th><td><i>verifying. This has to be explicit because it is referenced in more than one</i></td></tr>
+<tr><th id="126">126</th><td><i>source module. */</i></td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td><u>#define <dfn class="macro" id="_M/ADDRESS_EXPANSIONS_COUNT" data-ref="_M/ADDRESS_EXPANSIONS_COUNT">ADDRESS_EXPANSIONS_COUNT</dfn> 18</u></td></tr>
+<tr><th id="129">129</th><td></td></tr>
+<tr><th id="130">130</th><td><i>/* The maximum permitted number of command-line (-D) macro definitions. We</i></td></tr>
+<tr><th id="131">131</th><td><i>need a limit only to make it easier to generate argument vectors for re-exec</i></td></tr>
+<tr><th id="132">132</th><td><i>of Exim. */</i></td></tr>
+<tr><th id="133">133</th><td></td></tr>
+<tr><th id="134">134</th><td><u>#define <dfn class="macro" id="_M/MAX_CLMACROS" data-ref="_M/MAX_CLMACROS">MAX_CLMACROS</dfn> 10</u></td></tr>
+<tr><th id="135">135</th><td></td></tr>
+<tr><th id="136">136</th><td><i>/* The number of integer variables available in filter files. If this is</i></td></tr>
+<tr><th id="137">137</th><td><i>changed, then the tables in expand.c for accessing them must be changed too. */</i></td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td><u>#define <dfn class="macro" id="_M/FILTER_VARIABLE_COUNT" data-ref="_M/FILTER_VARIABLE_COUNT">FILTER_VARIABLE_COUNT</dfn> 10</u></td></tr>
+<tr><th id="140">140</th><td></td></tr>
+<tr><th id="141">141</th><td><i>/* The size of the vector holding delay warning times */</i></td></tr>
+<tr><th id="142">142</th><td></td></tr>
+<tr><th id="143">143</th><td><u>#define <dfn class="macro" id="_M/DELAY_WARNING_SIZE" data-ref="_M/DELAY_WARNING_SIZE">DELAY_WARNING_SIZE</dfn> 12</u></td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td><i>/* The size of the buffer holding the processing information string. */</i></td></tr>
+<tr><th id="146">146</th><td></td></tr>
+<tr><th id="147">147</th><td><u>#define <dfn class="macro" id="_M/PROCESS_INFO_SIZE" data-ref="_M/PROCESS_INFO_SIZE">PROCESS_INFO_SIZE</dfn> 256</u></td></tr>
+<tr><th id="148">148</th><td></td></tr>
+<tr><th id="149">149</th><td><i>/* The size of buffer to get for constructing log entries. Make it big</i></td></tr>
+<tr><th id="150">150</th><td><i>enough to hold all the headers from a normal kind of message. */</i></td></tr>
+<tr><th id="151">151</th><td></td></tr>
+<tr><th id="152">152</th><td><u>#define <dfn class="macro" id="_M/LOG_BUFFER_SIZE" data-ref="_M/LOG_BUFFER_SIZE">LOG_BUFFER_SIZE</dfn> 8192</u></td></tr>
+<tr><th id="153">153</th><td></td></tr>
+<tr><th id="154">154</th><td><i>/* The size of the circular buffer that remembers recent SMTP commands */</i></td></tr>
+<tr><th id="155">155</th><td></td></tr>
+<tr><th id="156">156</th><td><u>#define <dfn class="macro" id="_M/SMTP_HBUFF_SIZE" data-ref="_M/SMTP_HBUFF_SIZE">SMTP_HBUFF_SIZE</dfn> 20</u></td></tr>
+<tr><th id="157">157</th><td></td></tr>
+<tr><th id="158">158</th><td><i>/* The initial size of a big buffer for use in various places. It gets put</i></td></tr>
+<tr><th id="159">159</th><td><i>into big_buffer_size and in some circumstances increased. It should be at least</i></td></tr>
+<tr><th id="160">160</th><td><i>as long as the maximum path length. */</i></td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td><u>#<span data-ppcond="162">if</span> defined <a class="macro" href="../../include/linux/limits.h.html#12" data-ref="_M/PATH_MAX">PATH_MAX</a> &amp;&amp; <a class="macro" href="../../include/linux/limits.h.html#12" title="4096" data-ref="_M/PATH_MAX">PATH_MAX</a> &gt; 16384</u></td></tr>
+<tr><th id="163">163</th><td><u># define BIG_BUFFER_SIZE PATH_MAX</u></td></tr>
+<tr><th id="164">164</th><td><u>#<span data-ppcond="162">elif</span> defined <a class="macro" href="../../include/x86_64-linux-gnu/sys/param.h.html#48" data-ref="_M/MAXPATHLEN">MAXPATHLEN</a> &amp;&amp; <a class="macro" href="../../include/x86_64-linux-gnu/sys/param.h.html#48" title="4096" data-ref="_M/MAXPATHLEN">MAXPATHLEN</a> &gt; 16384</u></td></tr>
+<tr><th id="165">165</th><td><u># define BIG_BUFFER_SIZE MAXPATHLEN</u></td></tr>
+<tr><th id="166">166</th><td><u>#<span data-ppcond="162">else</span></u></td></tr>
+<tr><th id="167">167</th><td><u># define <dfn class="macro" id="_M/BIG_BUFFER_SIZE" data-ref="_M/BIG_BUFFER_SIZE">BIG_BUFFER_SIZE</dfn> 16384</u></td></tr>
+<tr><th id="168">168</th><td><u>#<span data-ppcond="162">endif</span></u></td></tr>
+<tr><th id="169">169</th><td></td></tr>
+<tr><th id="170">170</th><td><i>/* header size of pipe content</i></td></tr>
+<tr><th id="171">171</th><td><i>   currently: char id, char subid, char[5] length */</i></td></tr>
+<tr><th id="172">172</th><td><u>#define <dfn class="macro" id="_M/PIPE_HEADER_SIZE" data-ref="_M/PIPE_HEADER_SIZE">PIPE_HEADER_SIZE</dfn> 7</u></td></tr>
+<tr><th id="173">173</th><td></td></tr>
+<tr><th id="174">174</th><td><i>/* This limits the length of data returned by local_scan(). Because it is</i></td></tr>
+<tr><th id="175">175</th><td><i>written on the spool, it gets read into big_buffer. */</i></td></tr>
+<tr><th id="176">176</th><td></td></tr>
+<tr><th id="177">177</th><td><u>#define <dfn class="macro" id="_M/LOCAL_SCAN_MAX_RETURN" data-ref="_M/LOCAL_SCAN_MAX_RETURN">LOCAL_SCAN_MAX_RETURN</dfn> (BIG_BUFFER_SIZE - 24)</u></td></tr>
+<tr><th id="178">178</th><td></td></tr>
+<tr><th id="179">179</th><td><i>/* A limit to the length of an address. RFC 2821 limits the local part to 64</i></td></tr>
+<tr><th id="180">180</th><td><i>and the domain to 255, so this should be adequate, taking into account quotings</i></td></tr>
+<tr><th id="181">181</th><td><i>etc. */</i></td></tr>
+<tr><th id="182">182</th><td></td></tr>
+<tr><th id="183">183</th><td><u>#define <dfn class="macro" id="_M/ADDRESS_MAXLENGTH" data-ref="_M/ADDRESS_MAXLENGTH">ADDRESS_MAXLENGTH</dfn> 512</u></td></tr>
+<tr><th id="184">184</th><td></td></tr>
+<tr><th id="185">185</th><td><i>/* The length of the base names of spool files, which consist of an internal</i></td></tr>
+<tr><th id="186">186</th><td><i>message id with a trailing "-H" or "-D" added. */</i></td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td><u>#define <dfn class="macro" id="_M/SPOOL_NAME_LENGTH" data-ref="_M/SPOOL_NAME_LENGTH">SPOOL_NAME_LENGTH</dfn> (MESSAGE_ID_LENGTH+2)</u></td></tr>
+<tr><th id="189">189</th><td></td></tr>
+<tr><th id="190">190</th><td><i>/* The maximum number of message ids to store in a waiting database</i></td></tr>
+<tr><th id="191">191</th><td><i>record. */</i></td></tr>
+<tr><th id="192">192</th><td></td></tr>
+<tr><th id="193">193</th><td><u>#define <dfn class="macro" id="_M/WAIT_NAME_MAX" data-ref="_M/WAIT_NAME_MAX">WAIT_NAME_MAX</dfn> 50</u></td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td><i>/* Wait this long before determining that a Proxy Protocol configured</i></td></tr>
+<tr><th id="196">196</th><td><i>host isn't speaking the protocol, and so is disallowed. Can be moved to</i></td></tr>
+<tr><th id="197">197</th><td><i>runtime configuration if per site settings become needed. */</i></td></tr>
+<tr><th id="198">198</th><td><u>#<span data-ppcond="198">ifdef</span> <span class="macro" data-ref="_M/SUPPORT_PROXY">SUPPORT_PROXY</span></u></td></tr>
+<tr><th id="199">199</th><td><u>#define PROXY_NEGOTIATION_TIMEOUT_SEC 3</u></td></tr>
+<tr><th id="200">200</th><td><u>#define PROXY_NEGOTIATION_TIMEOUT_USEC 0</u></td></tr>
+<tr><th id="201">201</th><td><u>#<span data-ppcond="198">endif</span></u></td></tr>
+<tr><th id="202">202</th><td></td></tr>
+<tr><th id="203">203</th><td><i>/* Fixed option values for all PCRE functions */</i></td></tr>
+<tr><th id="204">204</th><td></td></tr>
+<tr><th id="205">205</th><td><u>#define <dfn class="macro" id="_M/PCRE_COPT" data-ref="_M/PCRE_COPT">PCRE_COPT</dfn> 0   /* compile */</u></td></tr>
+<tr><th id="206">206</th><td><u>#define <dfn class="macro" id="_M/PCRE_EOPT" data-ref="_M/PCRE_EOPT">PCRE_EOPT</dfn> 0   /* exec */</u></td></tr>
+<tr><th id="207">207</th><td></td></tr>
+<tr><th id="208">208</th><td><i>/* Macros for trivial functions */</i></td></tr>
+<tr><th id="209">209</th><td></td></tr>
+<tr><th id="210">210</th><td><u>#define <dfn class="macro" id="_M/mac_ismsgid" data-ref="_M/mac_ismsgid">mac_ismsgid</dfn>(s) \</u></td></tr>
+<tr><th id="211">211</th><td><u>  (pcre_exec(regex_ismsgid,NULL,CS s,Ustrlen(s),0,PCRE_EOPT,NULL,0) &gt;= 0)</u></td></tr>
+<tr><th id="212">212</th><td></td></tr>
+<tr><th id="213">213</th><td></td></tr>
+<tr><th id="214">214</th><td><i>/* Options for dns_next_rr */</i></td></tr>
+<tr><th id="215">215</th><td></td></tr>
+<tr><th id="216">216</th><td><b>enum</b> { <dfn class="enum" id="RESET_NEXT" title='RESET_NEXT' data-ref="RESET_NEXT">RESET_NEXT</dfn>, <dfn class="enum" id="RESET_ANSWERS" title='RESET_ANSWERS' data-ref="RESET_ANSWERS">RESET_ANSWERS</dfn>, <dfn class="enum" id="RESET_AUTHORITY" title='RESET_AUTHORITY' data-ref="RESET_AUTHORITY">RESET_AUTHORITY</dfn>, <dfn class="enum" id="RESET_ADDITIONAL" title='RESET_ADDITIONAL' data-ref="RESET_ADDITIONAL">RESET_ADDITIONAL</dfn> };</td></tr>
+<tr><th id="217">217</th><td></td></tr>
+<tr><th id="218">218</th><td><i>/* Argument values for the time-of-day function */</i></td></tr>
+<tr><th id="219">219</th><td></td></tr>
+<tr><th id="220">220</th><td><b>enum</b> { <dfn class="enum" id="tod_log" title='tod_log' data-ref="tod_log">tod_log</dfn>, <dfn class="enum" id="tod_log_bare" title='tod_log_bare' data-ref="tod_log_bare">tod_log_bare</dfn>, <dfn class="enum" id="tod_log_zone" title='tod_log_zone' data-ref="tod_log_zone">tod_log_zone</dfn>, <dfn class="enum" id="tod_log_datestamp_daily" title='tod_log_datestamp_daily' data-ref="tod_log_datestamp_daily">tod_log_datestamp_daily</dfn>,</td></tr>
+<tr><th id="221">221</th><td>       <dfn class="enum" id="tod_log_datestamp_monthly" title='tod_log_datestamp_monthly' data-ref="tod_log_datestamp_monthly">tod_log_datestamp_monthly</dfn>, <dfn class="enum" id="tod_zone" title='tod_zone' data-ref="tod_zone">tod_zone</dfn>, <dfn class="enum" id="tod_full" title='tod_full' data-ref="tod_full">tod_full</dfn>, <dfn class="enum" id="tod_bsdin" title='tod_bsdin' data-ref="tod_bsdin">tod_bsdin</dfn>,</td></tr>
+<tr><th id="222">222</th><td>       <dfn class="enum" id="tod_mbx" title='tod_mbx' data-ref="tod_mbx">tod_mbx</dfn>, <dfn class="enum" id="tod_epoch" title='tod_epoch' data-ref="tod_epoch">tod_epoch</dfn>, <dfn class="enum" id="tod_epoch_l" title='tod_epoch_l' data-ref="tod_epoch_l">tod_epoch_l</dfn>, <dfn class="enum" id="tod_zulu" title='tod_zulu' data-ref="tod_zulu">tod_zulu</dfn> };</td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td><i>/* For identifying types of driver */</i></td></tr>
+<tr><th id="225">225</th><td></td></tr>
+<tr><th id="226">226</th><td><b>enum</b> {</td></tr>
+<tr><th id="227">227</th><td>  <dfn class="enum" id="EXIM_DTYPE_NONE" title='EXIM_DTYPE_NONE' data-ref="EXIM_DTYPE_NONE">EXIM_DTYPE_NONE</dfn>,</td></tr>
+<tr><th id="228">228</th><td>  <dfn class="enum" id="EXIM_DTYPE_ROUTER" title='EXIM_DTYPE_ROUTER' data-ref="EXIM_DTYPE_ROUTER">EXIM_DTYPE_ROUTER</dfn>,</td></tr>
+<tr><th id="229">229</th><td>  <dfn class="enum" id="EXIM_DTYPE_TRANSPORT" title='EXIM_DTYPE_TRANSPORT' data-ref="EXIM_DTYPE_TRANSPORT">EXIM_DTYPE_TRANSPORT</dfn></td></tr>
+<tr><th id="230">230</th><td>};</td></tr>
+<tr><th id="231">231</th><td></td></tr>
+<tr><th id="232">232</th><td><i>/* Error numbers for generating error messages when reading a message on the</i></td></tr>
+<tr><th id="233">233</th><td><i>standard input. */</i></td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td><b>enum</b> {</td></tr>
+<tr><th id="236">236</th><td>  <dfn class="enum" id="ERRMESS_BADARGADDRESS" title='ERRMESS_BADARGADDRESS' data-ref="ERRMESS_BADARGADDRESS">ERRMESS_BADARGADDRESS</dfn>,    <i>/* Bad address via argument list */</i></td></tr>
+<tr><th id="237">237</th><td>  <dfn class="enum" id="ERRMESS_BADADDRESS" title='ERRMESS_BADADDRESS' data-ref="ERRMESS_BADADDRESS">ERRMESS_BADADDRESS</dfn>,       <i>/* Bad address read via -t */</i></td></tr>
+<tr><th id="238">238</th><td>  <dfn class="enum" id="ERRMESS_NOADDRESS" title='ERRMESS_NOADDRESS' data-ref="ERRMESS_NOADDRESS">ERRMESS_NOADDRESS</dfn>,        <i>/* Message has no addresses */</i></td></tr>
+<tr><th id="239">239</th><td>  <dfn class="enum" id="ERRMESS_IGADDRESS" title='ERRMESS_IGADDRESS' data-ref="ERRMESS_IGADDRESS">ERRMESS_IGADDRESS</dfn>,        <i>/* All -t addresses ignored */</i></td></tr>
+<tr><th id="240">240</th><td>  <dfn class="enum" id="ERRMESS_BADNOADDRESS" title='ERRMESS_BADNOADDRESS' data-ref="ERRMESS_BADNOADDRESS">ERRMESS_BADNOADDRESS</dfn>,     <i>/* Bad address via -t, leaving none */</i></td></tr>
+<tr><th id="241">241</th><td>  <dfn class="enum" id="ERRMESS_IOERR" title='ERRMESS_IOERR' data-ref="ERRMESS_IOERR">ERRMESS_IOERR</dfn>,            <i>/* I/O error while reading a message */</i></td></tr>
+<tr><th id="242">242</th><td>  <dfn class="enum" id="ERRMESS_VLONGHEADER" title='ERRMESS_VLONGHEADER' data-ref="ERRMESS_VLONGHEADER">ERRMESS_VLONGHEADER</dfn>,      <i>/* Excessively long message header */</i></td></tr>
+<tr><th id="243">243</th><td>  <dfn class="enum" id="ERRMESS_VLONGHDRLINE" title='ERRMESS_VLONGHDRLINE' data-ref="ERRMESS_VLONGHDRLINE">ERRMESS_VLONGHDRLINE</dfn>,     <i>/* Excessively long single line in header */</i></td></tr>
+<tr><th id="244">244</th><td>  <dfn class="enum" id="ERRMESS_TOOBIG" title='ERRMESS_TOOBIG' data-ref="ERRMESS_TOOBIG">ERRMESS_TOOBIG</dfn>,           <i>/* Message too big */</i></td></tr>
+<tr><th id="245">245</th><td>  <dfn class="enum" id="ERRMESS_TOOMANYRECIP" title='ERRMESS_TOOMANYRECIP' data-ref="ERRMESS_TOOMANYRECIP">ERRMESS_TOOMANYRECIP</dfn>,     <i>/* Too many recipients */</i></td></tr>
+<tr><th id="246">246</th><td>  <dfn class="enum" id="ERRMESS_LOCAL_SCAN" title='ERRMESS_LOCAL_SCAN' data-ref="ERRMESS_LOCAL_SCAN">ERRMESS_LOCAL_SCAN</dfn>,       <i>/* Rejected by local scan */</i></td></tr>
+<tr><th id="247">247</th><td>  <dfn class="enum" id="ERRMESS_LOCAL_ACL" title='ERRMESS_LOCAL_ACL' data-ref="ERRMESS_LOCAL_ACL">ERRMESS_LOCAL_ACL</dfn>         <i>/* Rejected by non-SMTP ACL */</i></td></tr>
+<tr><th id="248">248</th><td><u>#<span data-ppcond="248">ifdef</span> <span class="macro" data-ref="_M/EXPERIMENTAL_DMARC">EXPERIMENTAL_DMARC</span></u></td></tr>
+<tr><th id="249">249</th><td> ,ERRMESS_DMARC_FORENSIC    <i>/* DMARC Forensic Report */</i></td></tr>
+<tr><th id="250">250</th><td><u>#<span data-ppcond="248">endif</span></u></td></tr>
+<tr><th id="251">251</th><td>};</td></tr>
+<tr><th id="252">252</th><td></td></tr>
+<tr><th id="253">253</th><td><i>/* Error handling styles - set by option, and apply only when receiving</i></td></tr>
+<tr><th id="254">254</th><td><i>a local message not via SMTP. */</i></td></tr>
+<tr><th id="255">255</th><td></td></tr>
+<tr><th id="256">256</th><td><b>enum</b> {</td></tr>
+<tr><th id="257">257</th><td>  <dfn class="enum" id="ERRORS_SENDER" title='ERRORS_SENDER' data-ref="ERRORS_SENDER">ERRORS_SENDER</dfn>,            <i>/* Return to sender (default) */</i></td></tr>
+<tr><th id="258">258</th><td>  <dfn class="enum" id="ERRORS_STDERR" title='ERRORS_STDERR' data-ref="ERRORS_STDERR">ERRORS_STDERR</dfn>             <i>/* Write on stderr */</i></td></tr>
+<tr><th id="259">259</th><td>};</td></tr>
+<tr><th id="260">260</th><td></td></tr>
+<tr><th id="261">261</th><td><i>/* Exec control values when Exim execs itself via child_exec_exim. */</i></td></tr>
+<tr><th id="262">262</th><td></td></tr>
+<tr><th id="263">263</th><td><b>enum</b> {</td></tr>
+<tr><th id="264">264</th><td>  <dfn class="enum" id="CEE_RETURN_ARGV" title='CEE_RETURN_ARGV' data-ref="CEE_RETURN_ARGV">CEE_RETURN_ARGV</dfn>,          <i>/* Don't exec, just build and return argv */</i></td></tr>
+<tr><th id="265">265</th><td>  <dfn class="enum" id="CEE_EXEC_EXIT" title='CEE_EXEC_EXIT' data-ref="CEE_EXEC_EXIT">CEE_EXEC_EXIT</dfn>,            <i>/* Just exit if exec fails */</i></td></tr>
+<tr><th id="266">266</th><td>  <dfn class="enum" id="CEE_EXEC_PANIC" title='CEE_EXEC_PANIC' data-ref="CEE_EXEC_PANIC">CEE_EXEC_PANIC</dfn>            <i>/* Panic-die if exec fails */</i></td></tr>
+<tr><th id="267">267</th><td>};</td></tr>
+<tr><th id="268">268</th><td></td></tr>
+<tr><th id="269">269</th><td><i>/* Bit values for filter_test */</i></td></tr>
+<tr><th id="270">270</th><td></td></tr>
+<tr><th id="271">271</th><td><u>#define <dfn class="macro" id="_M/FTEST_NONE" data-ref="_M/FTEST_NONE">FTEST_NONE</dfn>     0    /* Not filter testing */</u></td></tr>
+<tr><th id="272">272</th><td><u>#define <dfn class="macro" id="_M/FTEST_USER" data-ref="_M/FTEST_USER">FTEST_USER</dfn>     1    /* Testing user filter */</u></td></tr>
+<tr><th id="273">273</th><td><u>#define <dfn class="macro" id="_M/FTEST_SYSTEM" data-ref="_M/FTEST_SYSTEM">FTEST_SYSTEM</dfn>   2    /* Testing system filter */</u></td></tr>
+<tr><th id="274">274</th><td></td></tr>
+<tr><th id="275">275</th><td><i>/* Returns from the routing, transport and authentication functions (not all</i></td></tr>
+<tr><th id="276">276</th><td><i>apply to all of them). Some other functions also use these convenient values,</i></td></tr>
+<tr><th id="277">277</th><td><i>and some additional values are used only by non-driver functions.</i></td></tr>
+<tr><th id="278">278</th><td><i></i></td></tr>
+<tr><th id="279">279</th><td><i>OK, FAIL, DEFER, ERROR, and FAIL_FORCED are also declared in local_scan.h for</i></td></tr>
+<tr><th id="280">280</th><td><i>use in the local_scan() function and in ${dlfunc loaded functions. Do not</i></td></tr>
+<tr><th id="281">281</th><td><i>change them unilaterally. */</i></td></tr>
+<tr><th id="282">282</th><td></td></tr>
+<tr><th id="283">283</th><td><u>#define  <dfn class="macro" id="_M/OK" data-ref="_M/OK">OK</dfn>            0    /* Successful match */</u></td></tr>
+<tr><th id="284">284</th><td><u>#define  <dfn class="macro" id="_M/DEFER" data-ref="_M/DEFER">DEFER</dfn>         1    /* Defer - some problem */</u></td></tr>
+<tr><th id="285">285</th><td><u>#define  <dfn class="macro" id="_M/FAIL" data-ref="_M/FAIL">FAIL</dfn>          2    /* Matching failed */</u></td></tr>
+<tr><th id="286">286</th><td><u>#define  <dfn class="macro" id="_M/ERROR" data-ref="_M/ERROR">ERROR</dfn>         3    /* Internal or config error */</u></td></tr>
+<tr><th id="287">287</th><td><u>#define  <dfn class="macro" id="_M/FAIL_FORCED" data-ref="_M/FAIL_FORCED">FAIL_FORCED</dfn>   4    /* "Forced" failure */</u></td></tr>
+<tr><th id="288">288</th><td><i>/***********/</i></td></tr>
+<tr><th id="289">289</th><td><u>#define <dfn class="macro" id="_M/DECLINE" data-ref="_M/DECLINE">DECLINE</dfn>        5    /* Declined to handle the address, pass to next</u></td></tr>
+<tr><th id="290">290</th><td><u>                                 router unless no_more is set */</u></td></tr>
+<tr><th id="291">291</th><td><u>#define <dfn class="macro" id="_M/PASS" data-ref="_M/PASS">PASS</dfn>           6    /* Pass to next driver, or to pass_router,</u></td></tr>
+<tr><th id="292">292</th><td><u>                                 even if no_more is set */</u></td></tr>
+<tr><th id="293">293</th><td><u>#define <dfn class="macro" id="_M/DISCARD" data-ref="_M/DISCARD">DISCARD</dfn>        7    /* Address routed to :blackhole: or "seen finish" */</u></td></tr>
+<tr><th id="294">294</th><td><u>#define <dfn class="macro" id="_M/SKIP" data-ref="_M/SKIP">SKIP</dfn>           8    /* Skip this router (used in route_address only) */</u></td></tr>
+<tr><th id="295">295</th><td><u>#define <dfn class="macro" id="_M/REROUTED" data-ref="_M/REROUTED">REROUTED</dfn>       9    /* Address was changed and child created*/</u></td></tr>
+<tr><th id="296">296</th><td><u>#define <dfn class="macro" id="_M/PANIC" data-ref="_M/PANIC">PANIC</dfn>         10    /* Hard failed with internal error */</u></td></tr>
+<tr><th id="297">297</th><td><u>#define <dfn class="macro" id="_M/BAD64" data-ref="_M/BAD64">BAD64</dfn>         11    /* Bad base64 data (auth) */</u></td></tr>
+<tr><th id="298">298</th><td><u>#define <dfn class="macro" id="_M/UNEXPECTED" data-ref="_M/UNEXPECTED">UNEXPECTED</dfn>    12    /* Unexpected initial auth data */</u></td></tr>
+<tr><th id="299">299</th><td><u>#define <dfn class="macro" id="_M/CANCELLED" data-ref="_M/CANCELLED">CANCELLED</dfn>     13    /* Authentication cancelled */</u></td></tr>
+<tr><th id="300">300</th><td><u>#define <dfn class="macro" id="_M/FAIL_SEND" data-ref="_M/FAIL_SEND">FAIL_SEND</dfn>     14    /* send() failed in authenticator */</u></td></tr>
+<tr><th id="301">301</th><td><u>#define <dfn class="macro" id="_M/FAIL_DROP" data-ref="_M/FAIL_DROP">FAIL_DROP</dfn>     15    /* Fail and drop connection (used in ACL) */</u></td></tr>
+<tr><th id="302">302</th><td></td></tr>
+<tr><th id="303">303</th><td><i>/* Returns from the deliver_message() function */</i></td></tr>
+<tr><th id="304">304</th><td></td></tr>
+<tr><th id="305">305</th><td><u>#define <dfn class="macro" id="_M/DELIVER_ATTEMPTED_NORMAL" data-ref="_M/DELIVER_ATTEMPTED_NORMAL">DELIVER_ATTEMPTED_NORMAL</dfn>   0  /* Tried a normal delivery */</u></td></tr>
+<tr><th id="306">306</th><td><u>#define <dfn class="macro" id="_M/DELIVER_MUA_SUCCEEDED" data-ref="_M/DELIVER_MUA_SUCCEEDED">DELIVER_MUA_SUCCEEDED</dfn>      1  /* Success when mua_wrapper is set */</u></td></tr>
+<tr><th id="307">307</th><td><u>#define <dfn class="macro" id="_M/DELIVER_MUA_FAILED" data-ref="_M/DELIVER_MUA_FAILED">DELIVER_MUA_FAILED</dfn>         2  /* Failure when mua_wrapper is set */</u></td></tr>
+<tr><th id="308">308</th><td><u>#define <dfn class="macro" id="_M/DELIVER_NOT_ATTEMPTED" data-ref="_M/DELIVER_NOT_ATTEMPTED">DELIVER_NOT_ATTEMPTED</dfn>      3  /* Not tried (no msg or is locked */</u></td></tr>
+<tr><th id="309">309</th><td></td></tr>
+<tr><th id="310">310</th><td><i>/* Returns from DNS lookup functions. */</i></td></tr>
+<tr><th id="311">311</th><td></td></tr>
+<tr><th id="312">312</th><td><b>enum</b> { <dfn class="enum" id="DNS_SUCCEED" title='DNS_SUCCEED' data-ref="DNS_SUCCEED">DNS_SUCCEED</dfn>, <dfn class="enum" id="DNS_NOMATCH" title='DNS_NOMATCH' data-ref="DNS_NOMATCH">DNS_NOMATCH</dfn>, <dfn class="enum" id="DNS_NODATA" title='DNS_NODATA' data-ref="DNS_NODATA">DNS_NODATA</dfn>, <dfn class="enum" id="DNS_AGAIN" title='DNS_AGAIN' data-ref="DNS_AGAIN">DNS_AGAIN</dfn>, <dfn class="enum" id="DNS_FAIL" title='DNS_FAIL' data-ref="DNS_FAIL">DNS_FAIL</dfn> };</td></tr>
+<tr><th id="313">313</th><td></td></tr>
+<tr><th id="314">314</th><td><i>/* Ending states when reading a message. The order is important. The test</i></td></tr>
+<tr><th id="315">315</th><td><i>for having to swallow the rest of an SMTP message is whether the value is</i></td></tr>
+<tr><th id="316">316</th><td><i>&gt;= END_NOTENDED. */</i></td></tr>
+<tr><th id="317">317</th><td></td></tr>
+<tr><th id="318">318</th><td><u>#define <dfn class="macro" id="_M/END_NOTSTARTED" data-ref="_M/END_NOTSTARTED">END_NOTSTARTED</dfn> 0    /* Message not started */</u></td></tr>
+<tr><th id="319">319</th><td><u>#define <dfn class="macro" id="_M/END_DOT" data-ref="_M/END_DOT">END_DOT</dfn>        1    /* Message ended with '.' */</u></td></tr>
+<tr><th id="320">320</th><td><u>#define <dfn class="macro" id="_M/END_EOF" data-ref="_M/END_EOF">END_EOF</dfn>        2    /* Message ended with EOF (error for SMTP) */</u></td></tr>
+<tr><th id="321">321</th><td><u>#define <dfn class="macro" id="_M/END_NOTENDED" data-ref="_M/END_NOTENDED">END_NOTENDED</dfn>   3    /* Message reading not yet ended */</u></td></tr>
+<tr><th id="322">322</th><td><u>#define <dfn class="macro" id="_M/END_SIZE" data-ref="_M/END_SIZE">END_SIZE</dfn>       4    /* Reading ended because message too big */</u></td></tr>
+<tr><th id="323">323</th><td><u>#define <dfn class="macro" id="_M/END_WERROR" data-ref="_M/END_WERROR">END_WERROR</dfn>     5    /* Write error while reading the message */</u></td></tr>
+<tr><th id="324">324</th><td><u>#define <dfn class="macro" id="_M/END_PROTOCOL" data-ref="_M/END_PROTOCOL">END_PROTOCOL</dfn>   6    /* Protocol error in CHUNKING sequence */</u></td></tr>
+<tr><th id="325">325</th><td></td></tr>
+<tr><th id="326">326</th><td><i>/* result codes for bdat_getc() (which can also return EOF) */</i></td></tr>
+<tr><th id="327">327</th><td></td></tr>
+<tr><th id="328">328</th><td><u>#define <dfn class="macro" id="_M/EOD" data-ref="_M/EOD">EOD</dfn> (-2)</u></td></tr>
+<tr><th id="329">329</th><td><u>#define <dfn class="macro" id="_M/ERR" data-ref="_M/ERR">ERR</dfn> (-3)</u></td></tr>
+<tr><th id="330">330</th><td></td></tr>
+<tr><th id="331">331</th><td></td></tr>
+<tr><th id="332">332</th><td><i>/* Bit masks for debug and log selectors */</i></td></tr>
+<tr><th id="333">333</th><td></td></tr>
+<tr><th id="334">334</th><td><i>/* Assume words are 32 bits wide. Tiny waste of space on 64 bit</i></td></tr>
+<tr><th id="335">335</th><td><i>platforms, but this ensures bit vectors always work the same way. */</i></td></tr>
+<tr><th id="336">336</th><td><u>#define <dfn class="macro" id="_M/BITWORDSIZE" data-ref="_M/BITWORDSIZE">BITWORDSIZE</dfn> 32</u></td></tr>
+<tr><th id="337">337</th><td></td></tr>
+<tr><th id="338">338</th><td><i>/* This macro is for single-word bit vectors: the debug selector,</i></td></tr>
+<tr><th id="339">339</th><td><i>and the first word of the log selector. */</i></td></tr>
+<tr><th id="340">340</th><td><u>#define <dfn class="macro" id="_M/BIT" data-ref="_M/BIT">BIT</dfn>(n) (1 &lt;&lt; (n))</u></td></tr>
+<tr><th id="341">341</th><td></td></tr>
+<tr><th id="342">342</th><td><i>/* And these are for multi-word vectors. */</i></td></tr>
+<tr><th id="343">343</th><td><u>#define <dfn class="macro" id="_M/BITWORD" data-ref="_M/BITWORD">BITWORD</dfn>(n) (     (n) / BITWORDSIZE)</u></td></tr>
+<tr><th id="344">344</th><td><u>#define <dfn class="macro" id="_M/BITMASK" data-ref="_M/BITMASK">BITMASK</dfn>(n) (1 &lt;&lt; (n) % BITWORDSIZE)</u></td></tr>
+<tr><th id="345">345</th><td></td></tr>
+<tr><th id="346">346</th><td><u>#define <dfn class="macro" id="_M/BIT_CLEAR" data-ref="_M/BIT_CLEAR">BIT_CLEAR</dfn>(s,z,n) ((s)[BITWORD(n)] &amp;= ~BITMASK(n))</u></td></tr>
+<tr><th id="347">347</th><td><u>#define <dfn class="macro" id="_M/BIT_SET" data-ref="_M/BIT_SET">BIT_SET</dfn>(s,z,n)   ((s)[BITWORD(n)] |=  BITMASK(n))</u></td></tr>
+<tr><th id="348">348</th><td><u>#define <dfn class="macro" id="_M/BIT_TEST" data-ref="_M/BIT_TEST">BIT_TEST</dfn>(s,z,n) (((s)[BITWORD(n)] &amp;   BITMASK(n)) != 0)</u></td></tr>
+<tr><th id="349">349</th><td></td></tr>
+<tr><th id="350">350</th><td><i>/* Used in globals.c for initializing bit_table structures. T will be either</i></td></tr>
+<tr><th id="351">351</th><td><i>D or L corresponding to the debug and log selector bits declared below. */</i></td></tr>
+<tr><th id="352">352</th><td></td></tr>
+<tr><th id="353">353</th><td><u>#define <dfn class="macro" id="_M/BIT_TABLE" data-ref="_M/BIT_TABLE">BIT_TABLE</dfn>(T,name) { US #name, T##i_##name }</u></td></tr>
+<tr><th id="354">354</th><td></td></tr>
+<tr><th id="355">355</th><td><i>/* IOTA allows us to keep an implicit sequential count, like a simple enum,</i></td></tr>
+<tr><th id="356">356</th><td><i>but we can have sequentially numbered identifiers which are not declared</i></td></tr>
+<tr><th id="357">357</th><td><i>sequentially. We use this for more compact declarations of bit indexes and</i></td></tr>
+<tr><th id="358">358</th><td><i>masks, alternating between sequential bit index and corresponding mask. */</i></td></tr>
+<tr><th id="359">359</th><td></td></tr>
+<tr><th id="360">360</th><td><u>#define <dfn class="macro" id="_M/IOTA" data-ref="_M/IOTA">IOTA</dfn>(iota)      (__LINE__ - iota)</u></td></tr>
+<tr><th id="361">361</th><td><u>#define <dfn class="macro" id="_M/IOTA_INIT" data-ref="_M/IOTA_INIT">IOTA_INIT</dfn>(zero) (__LINE__ - zero + 1)</u></td></tr>
+<tr><th id="362">362</th><td></td></tr>
+<tr><th id="363">363</th><td><i>/* Options bits for debugging. DEBUG_BIT() declares both a bit index and the</i></td></tr>
+<tr><th id="364">364</th><td><i>corresponding mask. Di_all is a special value recognized by decode_bits().</i></td></tr>
+<tr><th id="365">365</th><td><i></i></td></tr>
+<tr><th id="366">366</th><td><i>Exim's code assumes in a number of places that the debug_selector is one</i></td></tr>
+<tr><th id="367">367</th><td><i>word, and this is exposed in the local_scan ABI. The D_v and D_local_scan bit</i></td></tr>
+<tr><th id="368">368</th><td><i>masks are part of the local_scan API so are #defined in local_scan.h */</i></td></tr>
+<tr><th id="369">369</th><td></td></tr>
+<tr><th id="370">370</th><td><u>#define <dfn class="macro" id="_M/DEBUG_BIT" data-ref="_M/DEBUG_BIT">DEBUG_BIT</dfn>(name) Di_##name = IOTA(<a class="enum" href="#Di_iota" title='Di_iota' data-ref="Di_iota">Di_iota</a>), D_##name = BIT(Di_##name)</u></td></tr>
+<tr><th id="371">371</th><td></td></tr>
+<tr><th id="372">372</th><td><b>enum</b> {</td></tr>
+<tr><th id="373">373</th><td>  <dfn class="enum" id="Di_all" title='Di_all' data-ref="Di_all">Di_all</dfn>        = -<var>1</var>,</td></tr>
+<tr><th id="374">374</th><td>  <dfn class="enum" id="Di_v" title='Di_v' data-ref="Di_v">Di_v</dfn>          = <var>0</var>,</td></tr>
+<tr><th id="375">375</th><td>  <dfn class="enum" id="Di_local_scan" title='Di_local_scan' data-ref="Di_local_scan">Di_local_scan</dfn> = <var>1</var>,</td></tr>
+<tr><th id="376">376</th><td></td></tr>
+<tr><th id="377">377</th><td>  <dfn class="enum" id="Di_iota" title='Di_iota' data-ref="Di_iota">Di_iota</dfn> = <a class="macro" href="#361" title="(377 - 2 + 1)" data-ref="_M/IOTA_INIT">IOTA_INIT</a>(<var>2</var>),</td></tr>
+<tr><th id="378">378</th><td>  <a class="macro" href="#370" title="Di_acl = (378 - Di_iota), D_acl = (1 &lt;&lt; (Di_acl))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(acl),</td></tr>
+<tr><th id="379">379</th><td>  <a class="macro" href="#370" title="Di_auth = (379 - Di_iota), D_auth = (1 &lt;&lt; (Di_auth))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(auth),</td></tr>
+<tr><th id="380">380</th><td>  <a class="macro" href="#370" title="Di_deliver = (380 - Di_iota), D_deliver = (1 &lt;&lt; (Di_deliver))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(deliver),</td></tr>
+<tr><th id="381">381</th><td>  <a class="macro" href="#370" title="Di_dns = (381 - Di_iota), D_dns = (1 &lt;&lt; (Di_dns))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(dns),</td></tr>
+<tr><th id="382">382</th><td>  <a class="macro" href="#370" title="Di_dnsbl = (382 - Di_iota), D_dnsbl = (1 &lt;&lt; (Di_dnsbl))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(dnsbl),</td></tr>
+<tr><th id="383">383</th><td>  <a class="macro" href="#370" title="Di_exec = (383 - Di_iota), D_exec = (1 &lt;&lt; (Di_exec))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(exec),</td></tr>
+<tr><th id="384">384</th><td>  <a class="macro" href="#370" title="Di_expand = (384 - Di_iota), D_expand = (1 &lt;&lt; (Di_expand))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(expand),</td></tr>
+<tr><th id="385">385</th><td>  <a class="macro" href="#370" title="Di_filter = (385 - Di_iota), D_filter = (1 &lt;&lt; (Di_filter))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(filter),</td></tr>
+<tr><th id="386">386</th><td>  <a class="macro" href="#370" title="Di_hints_lookup = (386 - Di_iota), D_hints_lookup = (1 &lt;&lt; (Di_hints_lookup))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(hints_lookup),</td></tr>
+<tr><th id="387">387</th><td>  <a class="macro" href="#370" title="Di_host_lookup = (387 - Di_iota), D_host_lookup = (1 &lt;&lt; (Di_host_lookup))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(host_lookup),</td></tr>
+<tr><th id="388">388</th><td>  <a class="macro" href="#370" title="Di_ident = (388 - Di_iota), D_ident = (1 &lt;&lt; (Di_ident))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(ident),</td></tr>
+<tr><th id="389">389</th><td>  <a class="macro" href="#370" title="Di_interface = (389 - Di_iota), D_interface = (1 &lt;&lt; (Di_interface))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(interface),</td></tr>
+<tr><th id="390">390</th><td>  <a class="macro" href="#370" title="Di_lists = (390 - Di_iota), D_lists = (1 &lt;&lt; (Di_lists))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(lists),</td></tr>
+<tr><th id="391">391</th><td>  <a class="macro" href="#370" title="Di_load = (391 - Di_iota), D_load = (1 &lt;&lt; (Di_load))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(load),</td></tr>
+<tr><th id="392">392</th><td>  <a class="macro" href="#370" title="Di_lookup = (392 - Di_iota), D_lookup = (1 &lt;&lt; (Di_lookup))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(lookup),</td></tr>
+<tr><th id="393">393</th><td>  <a class="macro" href="#370" title="Di_memory = (393 - Di_iota), D_memory = (1 &lt;&lt; (Di_memory))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(memory),</td></tr>
+<tr><th id="394">394</th><td>  <a class="macro" href="#370" title="Di_pid = (394 - Di_iota), D_pid = (1 &lt;&lt; (Di_pid))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(pid),</td></tr>
+<tr><th id="395">395</th><td>  <a class="macro" href="#370" title="Di_process_info = (395 - Di_iota), D_process_info = (1 &lt;&lt; (Di_process_info))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(process_info),</td></tr>
+<tr><th id="396">396</th><td>  <a class="macro" href="#370" title="Di_queue_run = (396 - Di_iota), D_queue_run = (1 &lt;&lt; (Di_queue_run))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(queue_run),</td></tr>
+<tr><th id="397">397</th><td>  <a class="macro" href="#370" title="Di_receive = (397 - Di_iota), D_receive = (1 &lt;&lt; (Di_receive))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(receive),</td></tr>
+<tr><th id="398">398</th><td>  <a class="macro" href="#370" title="Di_resolver = (398 - Di_iota), D_resolver = (1 &lt;&lt; (Di_resolver))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(resolver),</td></tr>
+<tr><th id="399">399</th><td>  <a class="macro" href="#370" title="Di_retry = (399 - Di_iota), D_retry = (1 &lt;&lt; (Di_retry))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(retry),</td></tr>
+<tr><th id="400">400</th><td>  <a class="macro" href="#370" title="Di_rewrite = (400 - Di_iota), D_rewrite = (1 &lt;&lt; (Di_rewrite))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(rewrite),</td></tr>
+<tr><th id="401">401</th><td>  <a class="macro" href="#370" title="Di_route = (401 - Di_iota), D_route = (1 &lt;&lt; (Di_route))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(route),</td></tr>
+<tr><th id="402">402</th><td>  <a class="macro" href="#370" title="Di_timestamp = (402 - Di_iota), D_timestamp = (1 &lt;&lt; (Di_timestamp))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(timestamp),</td></tr>
+<tr><th id="403">403</th><td>  <a class="macro" href="#370" title="Di_tls = (403 - Di_iota), D_tls = (1 &lt;&lt; (Di_tls))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(tls),</td></tr>
+<tr><th id="404">404</th><td>  <a class="macro" href="#370" title="Di_transport = (404 - Di_iota), D_transport = (1 &lt;&lt; (Di_transport))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(transport),</td></tr>
+<tr><th id="405">405</th><td>  <a class="macro" href="#370" title="Di_uid = (405 - Di_iota), D_uid = (1 &lt;&lt; (Di_uid))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(uid),</td></tr>
+<tr><th id="406">406</th><td>  <a class="macro" href="#370" title="Di_verify = (406 - Di_iota), D_verify = (1 &lt;&lt; (Di_verify))" data-ref="_M/DEBUG_BIT">DEBUG_BIT</a>(verify),</td></tr>
+<tr><th id="407">407</th><td>};</td></tr>
+<tr><th id="408">408</th><td></td></tr>
+<tr><th id="409">409</th><td><i>/* Multi-bit debug masks */</i></td></tr>
+<tr><th id="410">410</th><td></td></tr>
+<tr><th id="411">411</th><td><u>#define <dfn class="macro" id="_M/D_all" data-ref="_M/D_all">D_all</dfn>                        0xffffffff</u></td></tr>
+<tr><th id="412">412</th><td></td></tr>
+<tr><th id="413">413</th><td><u>#define <dfn class="macro" id="_M/D_any" data-ref="_M/D_any">D_any</dfn>                        (D_all &amp; \</u></td></tr>
+<tr><th id="414">414</th><td><u>                                       ~(D_v           | \</u></td></tr>
+<tr><th id="415">415</th><td><u>                                         D_pid         | \</u></td></tr>
+<tr><th id="416">416</th><td><u>                                         D_timestamp)  )</u></td></tr>
+<tr><th id="417">417</th><td></td></tr>
+<tr><th id="418">418</th><td><u>#define <dfn class="macro" id="_M/D_default" data-ref="_M/D_default">D_default</dfn>                    (0xffffffff &amp; \</u></td></tr>
+<tr><th id="419">419</th><td><u>                                       ~(D_expand      | \</u></td></tr>
+<tr><th id="420">420</th><td><u>                                         D_filter      | \</u></td></tr>
+<tr><th id="421">421</th><td><u>                                         D_interface   | \</u></td></tr>
+<tr><th id="422">422</th><td><u>                                         D_load        | \</u></td></tr>
+<tr><th id="423">423</th><td><u>                                         D_local_scan  | \</u></td></tr>
+<tr><th id="424">424</th><td><u>                                         D_memory      | \</u></td></tr>
+<tr><th id="425">425</th><td><u>                                         D_pid         | \</u></td></tr>
+<tr><th id="426">426</th><td><u>                                         D_timestamp   | \</u></td></tr>
+<tr><th id="427">427</th><td><u>                                         D_resolver))</u></td></tr>
+<tr><th id="428">428</th><td></td></tr>
+<tr><th id="429">429</th><td><i>/* Options bits for logging. Those that have values &lt; BITWORDSIZE can be used</i></td></tr>
+<tr><th id="430">430</th><td><i>in calls to log_write(). The others are put into later words in log_selector</i></td></tr>
+<tr><th id="431">431</th><td><i>and are only ever tested independently, so they do not need bit mask</i></td></tr>
+<tr><th id="432">432</th><td><i>declarations. The Li_all value is recognized specially by decode_bits(). */</i></td></tr>
+<tr><th id="433">433</th><td></td></tr>
+<tr><th id="434">434</th><td><u>#define <dfn class="macro" id="_M/LOG_BIT" data-ref="_M/LOG_BIT">LOG_BIT</dfn>(name) Li_##name = IOTA(<a class="enum" href="#Li_iota" title='Li_iota' data-ref="Li_iota">Li_iota</a>), L_##name = BIT(Li_##name)</u></td></tr>
+<tr><th id="435">435</th><td></td></tr>
+<tr><th id="436">436</th><td><b>enum</b> {</td></tr>
+<tr><th id="437">437</th><td>  <dfn class="enum" id="Li_all" title='Li_all' data-ref="Li_all">Li_all</dfn> = -<var>1</var>,</td></tr>
+<tr><th id="438">438</th><td></td></tr>
+<tr><th id="439">439</th><td>  <dfn class="enum" id="Li_iota" title='Li_iota' data-ref="Li_iota">Li_iota</dfn> = <a class="macro" href="#361" title="(439 - 0 + 1)" data-ref="_M/IOTA_INIT">IOTA_INIT</a>(<var>0</var>),</td></tr>
+<tr><th id="440">440</th><td>  <a class="macro" href="#434" title="Li_address_rewrite = (440 - Li_iota), L_address_rewrite = (1 &lt;&lt; (Li_address_rewrite))" data-ref="_M/LOG_BIT">LOG_BIT</a>(address_rewrite),</td></tr>
+<tr><th id="441">441</th><td>  <a class="macro" href="#434" title="Li_all_parents = (441 - Li_iota), L_all_parents = (1 &lt;&lt; (Li_all_parents))" data-ref="_M/LOG_BIT">LOG_BIT</a>(all_parents),</td></tr>
+<tr><th id="442">442</th><td>  <a class="macro" href="#434" title="Li_connection_reject = (442 - Li_iota), L_connection_reject = (1 &lt;&lt; (Li_connection_reject))" data-ref="_M/LOG_BIT">LOG_BIT</a>(connection_reject),</td></tr>
+<tr><th id="443">443</th><td>  <a class="macro" href="#434" title="Li_delay_delivery = (443 - Li_iota), L_delay_delivery = (1 &lt;&lt; (Li_delay_delivery))" data-ref="_M/LOG_BIT">LOG_BIT</a>(delay_delivery),</td></tr>
+<tr><th id="444">444</th><td>  <a class="macro" href="#434" title="Li_dnslist_defer = (444 - Li_iota), L_dnslist_defer = (1 &lt;&lt; (Li_dnslist_defer))" data-ref="_M/LOG_BIT">LOG_BIT</a>(dnslist_defer),</td></tr>
+<tr><th id="445">445</th><td>  <a class="macro" href="#434" title="Li_etrn = (445 - Li_iota), L_etrn = (1 &lt;&lt; (Li_etrn))" data-ref="_M/LOG_BIT">LOG_BIT</a>(etrn),</td></tr>
+<tr><th id="446">446</th><td>  <a class="macro" href="#434" title="Li_host_lookup_failed = (446 - Li_iota), L_host_lookup_failed = (1 &lt;&lt; (Li_host_lookup_failed))" data-ref="_M/LOG_BIT">LOG_BIT</a>(host_lookup_failed),</td></tr>
+<tr><th id="447">447</th><td>  <a class="macro" href="#434" title="Li_lost_incoming_connection = (447 - Li_iota), L_lost_incoming_connection = (1 &lt;&lt; (Li_lost_incoming_connection))" data-ref="_M/LOG_BIT">LOG_BIT</a>(lost_incoming_connection),</td></tr>
+<tr><th id="448">448</th><td>  <a class="macro" href="#434" title="Li_queue_run = (448 - Li_iota), L_queue_run = (1 &lt;&lt; (Li_queue_run))" data-ref="_M/LOG_BIT">LOG_BIT</a>(queue_run),</td></tr>
+<tr><th id="449">449</th><td>  <a class="macro" href="#434" title="Li_retry_defer = (449 - Li_iota), L_retry_defer = (1 &lt;&lt; (Li_retry_defer))" data-ref="_M/LOG_BIT">LOG_BIT</a>(retry_defer),</td></tr>
+<tr><th id="450">450</th><td>  <a class="macro" href="#434" title="Li_size_reject = (450 - Li_iota), L_size_reject = (1 &lt;&lt; (Li_size_reject))" data-ref="_M/LOG_BIT">LOG_BIT</a>(size_reject),</td></tr>
+<tr><th id="451">451</th><td>  <a class="macro" href="#434" title="Li_skip_delivery = (451 - Li_iota), L_skip_delivery = (1 &lt;&lt; (Li_skip_delivery))" data-ref="_M/LOG_BIT">LOG_BIT</a>(skip_delivery),</td></tr>
+<tr><th id="452">452</th><td>  <a class="macro" href="#434" title="Li_smtp_connection = (452 - Li_iota), L_smtp_connection = (1 &lt;&lt; (Li_smtp_connection))" data-ref="_M/LOG_BIT">LOG_BIT</a>(smtp_connection),</td></tr>
+<tr><th id="453">453</th><td>  <a class="macro" href="#434" title="Li_smtp_incomplete_transaction = (453 - Li_iota), L_smtp_incomplete_transaction = (1 &lt;&lt; (Li_smtp_incomplete_transaction))" data-ref="_M/LOG_BIT">LOG_BIT</a>(smtp_incomplete_transaction),</td></tr>
+<tr><th id="454">454</th><td>  <a class="macro" href="#434" title="Li_smtp_protocol_error = (454 - Li_iota), L_smtp_protocol_error = (1 &lt;&lt; (Li_smtp_protocol_error))" data-ref="_M/LOG_BIT">LOG_BIT</a>(smtp_protocol_error),</td></tr>
+<tr><th id="455">455</th><td>  <a class="macro" href="#434" title="Li_smtp_syntax_error = (455 - Li_iota), L_smtp_syntax_error = (1 &lt;&lt; (Li_smtp_syntax_error))" data-ref="_M/LOG_BIT">LOG_BIT</a>(smtp_syntax_error),</td></tr>
+<tr><th id="456">456</th><td></td></tr>
+<tr><th id="457">457</th><td>  <dfn class="enum" id="Li_8bitmime" title='Li_8bitmime' data-ref="Li_8bitmime">Li_8bitmime</dfn> = <a class="macro" href="#336" title="32" data-ref="_M/BITWORDSIZE">BITWORDSIZE</a>,</td></tr>
+<tr><th id="458">458</th><td>  <dfn class="enum" id="Li_acl_warn_skipped" title='Li_acl_warn_skipped' data-ref="Li_acl_warn_skipped">Li_acl_warn_skipped</dfn>,</td></tr>
+<tr><th id="459">459</th><td>  <dfn class="enum" id="Li_arguments" title='Li_arguments' data-ref="Li_arguments">Li_arguments</dfn>,</td></tr>
+<tr><th id="460">460</th><td>  <dfn class="enum" id="Li_deliver_time" title='Li_deliver_time' data-ref="Li_deliver_time">Li_deliver_time</dfn>,</td></tr>
+<tr><th id="461">461</th><td>  <dfn class="enum" id="Li_delivery_size" title='Li_delivery_size' data-ref="Li_delivery_size">Li_delivery_size</dfn>,</td></tr>
+<tr><th id="462">462</th><td>  <dfn class="enum" id="Li_dkim" title='Li_dkim' data-ref="Li_dkim">Li_dkim</dfn>,</td></tr>
+<tr><th id="463">463</th><td>  <dfn class="enum" id="Li_dkim_verbose" title='Li_dkim_verbose' data-ref="Li_dkim_verbose">Li_dkim_verbose</dfn>,</td></tr>
+<tr><th id="464">464</th><td>  <dfn class="enum" id="Li_dnssec" title='Li_dnssec' data-ref="Li_dnssec">Li_dnssec</dfn>,</td></tr>
+<tr><th id="465">465</th><td>  <dfn class="enum" id="Li_ident_timeout" title='Li_ident_timeout' data-ref="Li_ident_timeout">Li_ident_timeout</dfn>,</td></tr>
+<tr><th id="466">466</th><td>  <dfn class="enum" id="Li_incoming_interface" title='Li_incoming_interface' data-ref="Li_incoming_interface">Li_incoming_interface</dfn>,</td></tr>
+<tr><th id="467">467</th><td>  <dfn class="enum" id="Li_incoming_port" title='Li_incoming_port' data-ref="Li_incoming_port">Li_incoming_port</dfn>,</td></tr>
+<tr><th id="468">468</th><td>  <dfn class="enum" id="Li_millisec" title='Li_millisec' data-ref="Li_millisec">Li_millisec</dfn>,</td></tr>
+<tr><th id="469">469</th><td>  <dfn class="enum" id="Li_outgoing_interface" title='Li_outgoing_interface' data-ref="Li_outgoing_interface">Li_outgoing_interface</dfn>,</td></tr>
+<tr><th id="470">470</th><td>  <dfn class="enum" id="Li_outgoing_port" title='Li_outgoing_port' data-ref="Li_outgoing_port">Li_outgoing_port</dfn>,</td></tr>
+<tr><th id="471">471</th><td>  <dfn class="enum" id="Li_pid" title='Li_pid' data-ref="Li_pid">Li_pid</dfn>,</td></tr>
+<tr><th id="472">472</th><td>  <dfn class="enum" id="Li_proxy" title='Li_proxy' data-ref="Li_proxy">Li_proxy</dfn>,</td></tr>
+<tr><th id="473">473</th><td>  <dfn class="enum" id="Li_queue_time" title='Li_queue_time' data-ref="Li_queue_time">Li_queue_time</dfn>,</td></tr>
+<tr><th id="474">474</th><td>  <dfn class="enum" id="Li_queue_time_overall" title='Li_queue_time_overall' data-ref="Li_queue_time_overall">Li_queue_time_overall</dfn>,</td></tr>
+<tr><th id="475">475</th><td>  <dfn class="enum" id="Li_receive_time" title='Li_receive_time' data-ref="Li_receive_time">Li_receive_time</dfn>,</td></tr>
+<tr><th id="476">476</th><td>  <dfn class="enum" id="Li_received_sender" title='Li_received_sender' data-ref="Li_received_sender">Li_received_sender</dfn>,</td></tr>
+<tr><th id="477">477</th><td>  <dfn class="enum" id="Li_received_recipients" title='Li_received_recipients' data-ref="Li_received_recipients">Li_received_recipients</dfn>,</td></tr>
+<tr><th id="478">478</th><td>  <dfn class="enum" id="Li_rejected_header" title='Li_rejected_header' data-ref="Li_rejected_header">Li_rejected_header</dfn>,</td></tr>
+<tr><th id="479">479</th><td>  <dfn class="enum" id="Li_return_path_on_delivery" title='Li_return_path_on_delivery' data-ref="Li_return_path_on_delivery">Li_return_path_on_delivery</dfn>,</td></tr>
+<tr><th id="480">480</th><td>  <dfn class="enum" id="Li_sender_on_delivery" title='Li_sender_on_delivery' data-ref="Li_sender_on_delivery">Li_sender_on_delivery</dfn>,</td></tr>
+<tr><th id="481">481</th><td>  <dfn class="enum" id="Li_sender_verify_fail" title='Li_sender_verify_fail' data-ref="Li_sender_verify_fail">Li_sender_verify_fail</dfn>,</td></tr>
+<tr><th id="482">482</th><td>  <dfn class="enum" id="Li_smtp_confirmation" title='Li_smtp_confirmation' data-ref="Li_smtp_confirmation">Li_smtp_confirmation</dfn>,</td></tr>
+<tr><th id="483">483</th><td>  <dfn class="enum" id="Li_smtp_mailauth" title='Li_smtp_mailauth' data-ref="Li_smtp_mailauth">Li_smtp_mailauth</dfn>,</td></tr>
+<tr><th id="484">484</th><td>  <dfn class="enum" id="Li_smtp_no_mail" title='Li_smtp_no_mail' data-ref="Li_smtp_no_mail">Li_smtp_no_mail</dfn>,</td></tr>
+<tr><th id="485">485</th><td>  <dfn class="enum" id="Li_subject" title='Li_subject' data-ref="Li_subject">Li_subject</dfn>,</td></tr>
+<tr><th id="486">486</th><td>  <dfn class="enum" id="Li_tls_certificate_verified" title='Li_tls_certificate_verified' data-ref="Li_tls_certificate_verified">Li_tls_certificate_verified</dfn>,</td></tr>
+<tr><th id="487">487</th><td>  <dfn class="enum" id="Li_tls_cipher" title='Li_tls_cipher' data-ref="Li_tls_cipher">Li_tls_cipher</dfn>,</td></tr>
+<tr><th id="488">488</th><td>  <dfn class="enum" id="Li_tls_peerdn" title='Li_tls_peerdn' data-ref="Li_tls_peerdn">Li_tls_peerdn</dfn>,</td></tr>
+<tr><th id="489">489</th><td>  <dfn class="enum" id="Li_tls_sni" title='Li_tls_sni' data-ref="Li_tls_sni">Li_tls_sni</dfn>,</td></tr>
+<tr><th id="490">490</th><td>  <dfn class="enum" id="Li_unknown_in_list" title='Li_unknown_in_list' data-ref="Li_unknown_in_list">Li_unknown_in_list</dfn>,</td></tr>
+<tr><th id="491">491</th><td></td></tr>
+<tr><th id="492">492</th><td>  <dfn class="enum" id="log_selector_size" title='log_selector_size' data-ref="log_selector_size">log_selector_size</dfn> = <a class="macro" href="#343" title="( (Li_unknown_in_list) / 32)" data-ref="_M/BITWORD">BITWORD</a>(<a class="enum" href="#Li_unknown_in_list" title='Li_unknown_in_list' data-ref="Li_unknown_in_list">Li_unknown_in_list</a>) + <var>1</var></td></tr>
+<tr><th id="493">493</th><td>};</td></tr>
+<tr><th id="494">494</th><td></td></tr>
+<tr><th id="495">495</th><td><u>#define <dfn class="macro" id="_M/LOGGING" data-ref="_M/LOGGING">LOGGING</dfn>(opt) BIT_TEST(log_selector, log_selector_size, Li_##opt)</u></td></tr>
+<tr><th id="496">496</th><td></td></tr>
+<tr><th id="497">497</th><td><i>/* Private error numbers for delivery failures, set negative so as not</i></td></tr>
+<tr><th id="498">498</th><td><i>to conflict with system errno values.  Take care to maintain the string</i></td></tr>
+<tr><th id="499">499</th><td><i>table exim_errstrings[] in log.c */</i></td></tr>
+<tr><th id="500">500</th><td></td></tr>
+<tr><th id="501">501</th><td><u>#define <dfn class="macro" id="_M/ERRNO_UNKNOWNERROR" data-ref="_M/ERRNO_UNKNOWNERROR">ERRNO_UNKNOWNERROR</dfn>    (-1)</u></td></tr>
+<tr><th id="502">502</th><td><u>#define <dfn class="macro" id="_M/ERRNO_USERSLASH" data-ref="_M/ERRNO_USERSLASH">ERRNO_USERSLASH</dfn>       (-2)</u></td></tr>
+<tr><th id="503">503</th><td><u>#define <dfn class="macro" id="_M/ERRNO_EXISTRACE" data-ref="_M/ERRNO_EXISTRACE">ERRNO_EXISTRACE</dfn>       (-3)</u></td></tr>
+<tr><th id="504">504</th><td><u>#define <dfn class="macro" id="_M/ERRNO_NOTREGULAR" data-ref="_M/ERRNO_NOTREGULAR">ERRNO_NOTREGULAR</dfn>      (-4)</u></td></tr>
+<tr><th id="505">505</th><td><u>#define <dfn class="macro" id="_M/ERRNO_NOTDIRECTORY" data-ref="_M/ERRNO_NOTDIRECTORY">ERRNO_NOTDIRECTORY</dfn>    (-5)</u></td></tr>
+<tr><th id="506">506</th><td><u>#define <dfn class="macro" id="_M/ERRNO_BADUGID" data-ref="_M/ERRNO_BADUGID">ERRNO_BADUGID</dfn>         (-6)</u></td></tr>
+<tr><th id="507">507</th><td><u>#define <dfn class="macro" id="_M/ERRNO_BADMODE" data-ref="_M/ERRNO_BADMODE">ERRNO_BADMODE</dfn>         (-7)</u></td></tr>
+<tr><th id="508">508</th><td><u>#define <dfn class="macro" id="_M/ERRNO_INODECHANGED" data-ref="_M/ERRNO_INODECHANGED">ERRNO_INODECHANGED</dfn>    (-8)</u></td></tr>
+<tr><th id="509">509</th><td><u>#define <dfn class="macro" id="_M/ERRNO_LOCKFAILED" data-ref="_M/ERRNO_LOCKFAILED">ERRNO_LOCKFAILED</dfn>      (-9)</u></td></tr>
+<tr><th id="510">510</th><td><u>#define <dfn class="macro" id="_M/ERRNO_BADADDRESS2" data-ref="_M/ERRNO_BADADDRESS2">ERRNO_BADADDRESS2</dfn>    (-10)</u></td></tr>
+<tr><th id="511">511</th><td><u>#define <dfn class="macro" id="_M/ERRNO_FORBIDPIPE" data-ref="_M/ERRNO_FORBIDPIPE">ERRNO_FORBIDPIPE</dfn>     (-11)</u></td></tr>
+<tr><th id="512">512</th><td><u>#define <dfn class="macro" id="_M/ERRNO_FORBIDFILE" data-ref="_M/ERRNO_FORBIDFILE">ERRNO_FORBIDFILE</dfn>     (-12)</u></td></tr>
+<tr><th id="513">513</th><td><u>#define <dfn class="macro" id="_M/ERRNO_FORBIDREPLY" data-ref="_M/ERRNO_FORBIDREPLY">ERRNO_FORBIDREPLY</dfn>    (-13)</u></td></tr>
+<tr><th id="514">514</th><td><u>#define <dfn class="macro" id="_M/ERRNO_MISSINGPIPE" data-ref="_M/ERRNO_MISSINGPIPE">ERRNO_MISSINGPIPE</dfn>    (-14)</u></td></tr>
+<tr><th id="515">515</th><td><u>#define <dfn class="macro" id="_M/ERRNO_MISSINGFILE" data-ref="_M/ERRNO_MISSINGFILE">ERRNO_MISSINGFILE</dfn>    (-15)</u></td></tr>
+<tr><th id="516">516</th><td><u>#define <dfn class="macro" id="_M/ERRNO_MISSINGREPLY" data-ref="_M/ERRNO_MISSINGREPLY">ERRNO_MISSINGREPLY</dfn>   (-16)</u></td></tr>
+<tr><th id="517">517</th><td><u>#define <dfn class="macro" id="_M/ERRNO_BADREDIRECT" data-ref="_M/ERRNO_BADREDIRECT">ERRNO_BADREDIRECT</dfn>    (-17)</u></td></tr>
+<tr><th id="518">518</th><td><u>#define <dfn class="macro" id="_M/ERRNO_SMTPCLOSED" data-ref="_M/ERRNO_SMTPCLOSED">ERRNO_SMTPCLOSED</dfn>     (-18)</u></td></tr>
+<tr><th id="519">519</th><td><u>#define <dfn class="macro" id="_M/ERRNO_SMTPFORMAT" data-ref="_M/ERRNO_SMTPFORMAT">ERRNO_SMTPFORMAT</dfn>     (-19)</u></td></tr>
+<tr><th id="520">520</th><td><u>#define <dfn class="macro" id="_M/ERRNO_SPOOLFORMAT" data-ref="_M/ERRNO_SPOOLFORMAT">ERRNO_SPOOLFORMAT</dfn>    (-20)</u></td></tr>
+<tr><th id="521">521</th><td><u>#define <dfn class="macro" id="_M/ERRNO_NOTABSOLUTE" data-ref="_M/ERRNO_NOTABSOLUTE">ERRNO_NOTABSOLUTE</dfn>    (-21)</u></td></tr>
+<tr><th id="522">522</th><td><u>#define <dfn class="macro" id="_M/ERRNO_EXIMQUOTA" data-ref="_M/ERRNO_EXIMQUOTA">ERRNO_EXIMQUOTA</dfn>      (-22)   /* Exim-imposed quota */</u></td></tr>
+<tr><th id="523">523</th><td><u>#define <dfn class="macro" id="_M/ERRNO_HELD" data-ref="_M/ERRNO_HELD">ERRNO_HELD</dfn>           (-23)</u></td></tr>
+<tr><th id="524">524</th><td><u>#define <dfn class="macro" id="_M/ERRNO_FILTER_FAIL" data-ref="_M/ERRNO_FILTER_FAIL">ERRNO_FILTER_FAIL</dfn>    (-24)   /* Delivery filter process failure */</u></td></tr>
+<tr><th id="525">525</th><td><u>#define <dfn class="macro" id="_M/ERRNO_CHHEADER_FAIL" data-ref="_M/ERRNO_CHHEADER_FAIL">ERRNO_CHHEADER_FAIL</dfn>  (-25)   /* Delivery add/remove header failure */</u></td></tr>
+<tr><th id="526">526</th><td><u>#define <dfn class="macro" id="_M/ERRNO_WRITEINCOMPLETE" data-ref="_M/ERRNO_WRITEINCOMPLETE">ERRNO_WRITEINCOMPLETE</dfn> (-26)  /* Delivery write incomplete error */</u></td></tr>
+<tr><th id="527">527</th><td><u>#define <dfn class="macro" id="_M/ERRNO_EXPANDFAIL" data-ref="_M/ERRNO_EXPANDFAIL">ERRNO_EXPANDFAIL</dfn>     (-27)   /* Some expansion failed */</u></td></tr>
+<tr><th id="528">528</th><td><u>#define <dfn class="macro" id="_M/ERRNO_GIDFAIL" data-ref="_M/ERRNO_GIDFAIL">ERRNO_GIDFAIL</dfn>        (-28)   /* Failed to get gid */</u></td></tr>
+<tr><th id="529">529</th><td><u>#define <dfn class="macro" id="_M/ERRNO_UIDFAIL" data-ref="_M/ERRNO_UIDFAIL">ERRNO_UIDFAIL</dfn>        (-29)   /* Failed to get uid */</u></td></tr>
+<tr><th id="530">530</th><td><u>#define <dfn class="macro" id="_M/ERRNO_BADTRANSPORT" data-ref="_M/ERRNO_BADTRANSPORT">ERRNO_BADTRANSPORT</dfn>   (-30)   /* Unset or non-existent transport */</u></td></tr>
+<tr><th id="531">531</th><td><u>#define <dfn class="macro" id="_M/ERRNO_MBXLENGTH" data-ref="_M/ERRNO_MBXLENGTH">ERRNO_MBXLENGTH</dfn>      (-31)   /* MBX length mismatch */</u></td></tr>
+<tr><th id="532">532</th><td><u>#define <dfn class="macro" id="_M/ERRNO_UNKNOWNHOST" data-ref="_M/ERRNO_UNKNOWNHOST">ERRNO_UNKNOWNHOST</dfn>    (-32)   /* Lookup failed routing or in smtp tpt */</u></td></tr>
+<tr><th id="533">533</th><td><u>#define <dfn class="macro" id="_M/ERRNO_FORMATUNKNOWN" data-ref="_M/ERRNO_FORMATUNKNOWN">ERRNO_FORMATUNKNOWN</dfn>  (-33)   /* Can't match format in appendfile */</u></td></tr>
+<tr><th id="534">534</th><td><u>#define <dfn class="macro" id="_M/ERRNO_BADCREATE" data-ref="_M/ERRNO_BADCREATE">ERRNO_BADCREATE</dfn>      (-34)   /* Creation outside home in appendfile */</u></td></tr>
+<tr><th id="535">535</th><td><u>#define <dfn class="macro" id="_M/ERRNO_LISTDEFER" data-ref="_M/ERRNO_LISTDEFER">ERRNO_LISTDEFER</dfn>      (-35)   /* Can't check a list; lookup defer */</u></td></tr>
+<tr><th id="536">536</th><td><u>#define <dfn class="macro" id="_M/ERRNO_DNSDEFER" data-ref="_M/ERRNO_DNSDEFER">ERRNO_DNSDEFER</dfn>       (-36)   /* DNS lookup defer */</u></td></tr>
+<tr><th id="537">537</th><td><u>#define <dfn class="macro" id="_M/ERRNO_TLSFAILURE" data-ref="_M/ERRNO_TLSFAILURE">ERRNO_TLSFAILURE</dfn>     (-37)   /* Failed to start TLS session */</u></td></tr>
+<tr><th id="538">538</th><td><u>#define <dfn class="macro" id="_M/ERRNO_TLSREQUIRED" data-ref="_M/ERRNO_TLSREQUIRED">ERRNO_TLSREQUIRED</dfn>    (-38)   /* Mandatory TLS session not started */</u></td></tr>
+<tr><th id="539">539</th><td><u>#define <dfn class="macro" id="_M/ERRNO_CHOWNFAIL" data-ref="_M/ERRNO_CHOWNFAIL">ERRNO_CHOWNFAIL</dfn>      (-39)   /* Failed to chown a file */</u></td></tr>
+<tr><th id="540">540</th><td><u>#define <dfn class="macro" id="_M/ERRNO_PIPEFAIL" data-ref="_M/ERRNO_PIPEFAIL">ERRNO_PIPEFAIL</dfn>       (-40)   /* Failed to create a pipe */</u></td></tr>
+<tr><th id="541">541</th><td><u>#define <dfn class="macro" id="_M/ERRNO_CALLOUTDEFER" data-ref="_M/ERRNO_CALLOUTDEFER">ERRNO_CALLOUTDEFER</dfn>   (-41)   /* When verifying */</u></td></tr>
+<tr><th id="542">542</th><td><u>#define <dfn class="macro" id="_M/ERRNO_AUTHFAIL" data-ref="_M/ERRNO_AUTHFAIL">ERRNO_AUTHFAIL</dfn>       (-42)   /* When required by client */</u></td></tr>
+<tr><th id="543">543</th><td><u>#define <dfn class="macro" id="_M/ERRNO_CONNECTTIMEOUT" data-ref="_M/ERRNO_CONNECTTIMEOUT">ERRNO_CONNECTTIMEOUT</dfn> (-43)   /* Used internally in smtp transport */</u></td></tr>
+<tr><th id="544">544</th><td><u>#define <dfn class="macro" id="_M/ERRNO_RCPT4XX" data-ref="_M/ERRNO_RCPT4XX">ERRNO_RCPT4XX</dfn>        (-44)   /* RCPT gave 4xx error */</u></td></tr>
+<tr><th id="545">545</th><td><u>#define <dfn class="macro" id="_M/ERRNO_MAIL4XX" data-ref="_M/ERRNO_MAIL4XX">ERRNO_MAIL4XX</dfn>        (-45)   /* MAIL gave 4xx error */</u></td></tr>
+<tr><th id="546">546</th><td><u>#define <dfn class="macro" id="_M/ERRNO_DATA4XX" data-ref="_M/ERRNO_DATA4XX">ERRNO_DATA4XX</dfn>        (-46)   /* DATA gave 4xx error */</u></td></tr>
+<tr><th id="547">547</th><td><u>#define <dfn class="macro" id="_M/ERRNO_PROXYFAIL" data-ref="_M/ERRNO_PROXYFAIL">ERRNO_PROXYFAIL</dfn>      (-47)   /* Negotiation failed for proxy configured host */</u></td></tr>
+<tr><th id="548">548</th><td><u>#define <dfn class="macro" id="_M/ERRNO_AUTHPROB" data-ref="_M/ERRNO_AUTHPROB">ERRNO_AUTHPROB</dfn>       (-48)   /* Authenticator "other" failure */</u></td></tr>
+<tr><th id="549">549</th><td></td></tr>
+<tr><th id="550">550</th><td><u>#<span data-ppcond="550">ifdef</span> <span class="macro" data-ref="_M/SUPPORT_I18N">SUPPORT_I18N</span></u></td></tr>
+<tr><th id="551">551</th><td><u># define ERRNO_UTF8_FWD      (-49)   /* target not supporting SMTPUTF8 */</u></td></tr>
+<tr><th id="552">552</th><td><u>#<span data-ppcond="550">endif</span></u></td></tr>
+<tr><th id="553">553</th><td></td></tr>
+<tr><th id="554">554</th><td><i>/* These must be last, so all retry deferments can easily be identified */</i></td></tr>
+<tr><th id="555">555</th><td></td></tr>
+<tr><th id="556">556</th><td><u>#define <dfn class="macro" id="_M/ERRNO_RETRY_BASE" data-ref="_M/ERRNO_RETRY_BASE">ERRNO_RETRY_BASE</dfn>     (-51)   /* Base to test against */</u></td></tr>
+<tr><th id="557">557</th><td><u>#define <dfn class="macro" id="_M/ERRNO_RRETRY" data-ref="_M/ERRNO_RRETRY">ERRNO_RRETRY</dfn>         (-51)   /* Not time for routing */</u></td></tr>
+<tr><th id="558">558</th><td><u>#define <dfn class="macro" id="_M/ERRNO_LRETRY" data-ref="_M/ERRNO_LRETRY">ERRNO_LRETRY</dfn>         (-52)   /* Not time for local delivery */</u></td></tr>
+<tr><th id="559">559</th><td><u>#define <dfn class="macro" id="_M/ERRNO_HRETRY" data-ref="_M/ERRNO_HRETRY">ERRNO_HRETRY</dfn>         (-53)   /* Not time for any remote host */</u></td></tr>
+<tr><th id="560">560</th><td><u>#define <dfn class="macro" id="_M/ERRNO_LOCAL_ONLY" data-ref="_M/ERRNO_LOCAL_ONLY">ERRNO_LOCAL_ONLY</dfn>     (-54)   /* Local-only delivery */</u></td></tr>
+<tr><th id="561">561</th><td><u>#define <dfn class="macro" id="_M/ERRNO_QUEUE_DOMAIN" data-ref="_M/ERRNO_QUEUE_DOMAIN">ERRNO_QUEUE_DOMAIN</dfn>   (-55)   /* Domain in queue_domains */</u></td></tr>
+<tr><th id="562">562</th><td><u>#define <dfn class="macro" id="_M/ERRNO_TRETRY" data-ref="_M/ERRNO_TRETRY">ERRNO_TRETRY</dfn>         (-56)   /* Transport concurrency limit */</u></td></tr>
+<tr><th id="563">563</th><td></td></tr>
+<tr><th id="564">564</th><td></td></tr>
+<tr><th id="565">565</th><td></td></tr>
+<tr><th id="566">566</th><td><i>/* Special actions to take after failure or deferment. */</i></td></tr>
+<tr><th id="567">567</th><td></td></tr>
+<tr><th id="568">568</th><td><b>enum</b> {</td></tr>
+<tr><th id="569">569</th><td>  <dfn class="enum" id="SPECIAL_NONE" title='SPECIAL_NONE' data-ref="SPECIAL_NONE">SPECIAL_NONE</dfn>,             <i>/* No special action */</i></td></tr>
+<tr><th id="570">570</th><td>  <dfn class="enum" id="SPECIAL_FREEZE" title='SPECIAL_FREEZE' data-ref="SPECIAL_FREEZE">SPECIAL_FREEZE</dfn>,           <i>/* Freeze message */</i></td></tr>
+<tr><th id="571">571</th><td>  <dfn class="enum" id="SPECIAL_FAIL" title='SPECIAL_FAIL' data-ref="SPECIAL_FAIL">SPECIAL_FAIL</dfn>,             <i>/* Fail the delivery */</i></td></tr>
+<tr><th id="572">572</th><td>  <dfn class="enum" id="SPECIAL_WARN" title='SPECIAL_WARN' data-ref="SPECIAL_WARN">SPECIAL_WARN</dfn>              <i>/* Send a warning message */</i></td></tr>
+<tr><th id="573">573</th><td>};</td></tr>
+<tr><th id="574">574</th><td></td></tr>
+<tr><th id="575">575</th><td><i>/* Flags that get ORed into the more_errno field of an address to give more</i></td></tr>
+<tr><th id="576">576</th><td><i>information about errors for retry purposes. They are greater than 256, because</i></td></tr>
+<tr><th id="577">577</th><td><i>the bottom byte contains 'A' or 'M' for remote addresses, to indicate whether</i></td></tr>
+<tr><th id="578">578</th><td><i>the name was looked up only via an address record or whether MX records were</i></td></tr>
+<tr><th id="579">579</th><td><i>used, respectively. */</i></td></tr>
+<tr><th id="580">580</th><td></td></tr>
+<tr><th id="581">581</th><td><u>#define <dfn class="macro" id="_M/RTEF_CTOUT" data-ref="_M/RTEF_CTOUT">RTEF_CTOUT</dfn>     0x0100      /* Connection timed out */</u></td></tr>
+<tr><th id="582">582</th><td></td></tr>
+<tr><th id="583">583</th><td><i>/* Permission and other options for parse_extract_addresses(),</i></td></tr>
+<tr><th id="584">584</th><td><i>filter_interpret(), and rda_interpret(), i.e. what special things are allowed</i></td></tr>
+<tr><th id="585">585</th><td><i>in redirection operations. Not all apply to all cases. Some of the bits allow</i></td></tr>
+<tr><th id="586">586</th><td><i>and some forbid, reflecting the "allow" and "forbid" options in the redirect</i></td></tr>
+<tr><th id="587">587</th><td><i>router, which were chosen to represent the standard situation for users'</i></td></tr>
+<tr><th id="588">588</th><td><i>.forward files. */</i></td></tr>
+<tr><th id="589">589</th><td></td></tr>
+<tr><th id="590">590</th><td><u>#define <dfn class="macro" id="_M/RDO_BLACKHOLE" data-ref="_M/RDO_BLACKHOLE">RDO_BLACKHOLE</dfn>    0x00000001  /* Forbid :blackhole: */</u></td></tr>
+<tr><th id="591">591</th><td><u>#define <dfn class="macro" id="_M/RDO_DEFER" data-ref="_M/RDO_DEFER">RDO_DEFER</dfn>        0x00000002  /* Allow :defer: or "defer" */</u></td></tr>
+<tr><th id="592">592</th><td><u>#define <dfn class="macro" id="_M/RDO_EACCES" data-ref="_M/RDO_EACCES">RDO_EACCES</dfn>       0x00000004  /* Ignore EACCES */</u></td></tr>
+<tr><th id="593">593</th><td><u>#define <dfn class="macro" id="_M/RDO_ENOTDIR" data-ref="_M/RDO_ENOTDIR">RDO_ENOTDIR</dfn>      0x00000008  /* Ignore ENOTDIR */</u></td></tr>
+<tr><th id="594">594</th><td><u>#define <dfn class="macro" id="_M/RDO_EXISTS" data-ref="_M/RDO_EXISTS">RDO_EXISTS</dfn>       0x00000010  /* Forbid "exists" in expansion in filter */</u></td></tr>
+<tr><th id="595">595</th><td><u>#define <dfn class="macro" id="_M/RDO_FAIL" data-ref="_M/RDO_FAIL">RDO_FAIL</dfn>         0x00000020  /* Allow :fail: or "fail" */</u></td></tr>
+<tr><th id="596">596</th><td><u>#define <dfn class="macro" id="_M/RDO_FILTER" data-ref="_M/RDO_FILTER">RDO_FILTER</dfn>       0x00000040  /* Allow a filter script */</u></td></tr>
+<tr><th id="597">597</th><td><u>#define <dfn class="macro" id="_M/RDO_FREEZE" data-ref="_M/RDO_FREEZE">RDO_FREEZE</dfn>       0x00000080  /* Allow "freeze" */</u></td></tr>
+<tr><th id="598">598</th><td><u>#define <dfn class="macro" id="_M/RDO_INCLUDE" data-ref="_M/RDO_INCLUDE">RDO_INCLUDE</dfn>      0x00000100  /* Forbid :include: */</u></td></tr>
+<tr><th id="599">599</th><td><u>#define <dfn class="macro" id="_M/RDO_LOG" data-ref="_M/RDO_LOG">RDO_LOG</dfn>          0x00000200  /* Forbid "log" */</u></td></tr>
+<tr><th id="600">600</th><td><u>#define <dfn class="macro" id="_M/RDO_LOOKUP" data-ref="_M/RDO_LOOKUP">RDO_LOOKUP</dfn>       0x00000400  /* Forbid "lookup" in expansion in filter */</u></td></tr>
+<tr><th id="601">601</th><td><u>#define <dfn class="macro" id="_M/RDO_PERL" data-ref="_M/RDO_PERL">RDO_PERL</dfn>         0x00000800  /* Forbid "perl" in expansion in filter */</u></td></tr>
+<tr><th id="602">602</th><td><u>#define <dfn class="macro" id="_M/RDO_READFILE" data-ref="_M/RDO_READFILE">RDO_READFILE</dfn>     0x00001000  /* Forbid "readfile" in exp in filter */</u></td></tr>
+<tr><th id="603">603</th><td><u>#define <dfn class="macro" id="_M/RDO_READSOCK" data-ref="_M/RDO_READSOCK">RDO_READSOCK</dfn>     0x00002000  /* Forbid "readsocket" in exp in filter */</u></td></tr>
+<tr><th id="604">604</th><td><u>#define <dfn class="macro" id="_M/RDO_RUN" data-ref="_M/RDO_RUN">RDO_RUN</dfn>          0x00004000  /* Forbid "run" in expansion in filter */</u></td></tr>
+<tr><th id="605">605</th><td><u>#define <dfn class="macro" id="_M/RDO_DLFUNC" data-ref="_M/RDO_DLFUNC">RDO_DLFUNC</dfn>       0x00008000  /* Forbid "dlfunc" in expansion in filter */</u></td></tr>
+<tr><th id="606">606</th><td><u>#define <dfn class="macro" id="_M/RDO_REALLOG" data-ref="_M/RDO_REALLOG">RDO_REALLOG</dfn>      0x00010000  /* Really do log (not testing/verifying) */</u></td></tr>
+<tr><th id="607">607</th><td><u>#define <dfn class="macro" id="_M/RDO_REWRITE" data-ref="_M/RDO_REWRITE">RDO_REWRITE</dfn>      0x00020000  /* Rewrite generated addresses */</u></td></tr>
+<tr><th id="608">608</th><td><u>#define <dfn class="macro" id="_M/RDO_EXIM_FILTER" data-ref="_M/RDO_EXIM_FILTER">RDO_EXIM_FILTER</dfn>  0x00040000  /* Forbid Exim filters */</u></td></tr>
+<tr><th id="609">609</th><td><u>#define <dfn class="macro" id="_M/RDO_SIEVE_FILTER" data-ref="_M/RDO_SIEVE_FILTER">RDO_SIEVE_FILTER</dfn> 0x00080000  /* Forbid Sieve filters */</u></td></tr>
+<tr><th id="610">610</th><td><u>#define <dfn class="macro" id="_M/RDO_PREPEND_HOME" data-ref="_M/RDO_PREPEND_HOME">RDO_PREPEND_HOME</dfn> 0x00100000  /* Prepend $home to relative paths in Exim filter save commands */</u></td></tr>
+<tr><th id="611">611</th><td></td></tr>
+<tr><th id="612">612</th><td><i>/* This is the set that apply to expansions in filters */</i></td></tr>
+<tr><th id="613">613</th><td></td></tr>
+<tr><th id="614">614</th><td><u>#define <dfn class="macro" id="_M/RDO_FILTER_EXPANSIONS" data-ref="_M/RDO_FILTER_EXPANSIONS">RDO_FILTER_EXPANSIONS</dfn> \</u></td></tr>
+<tr><th id="615">615</th><td><u>  (RDO_EXISTS|RDO_LOOKUP|RDO_PERL|RDO_READFILE|RDO_READSOCK|RDO_RUN|RDO_DLFUNC)</u></td></tr>
+<tr><th id="616">616</th><td></td></tr>
+<tr><th id="617">617</th><td><i>/* As well as the RDO bits themselves, we need the bit numbers in order to</i></td></tr>
+<tr><th id="618">618</th><td><i>access (most of) the individual bits as separate options. This could be</i></td></tr>
+<tr><th id="619">619</th><td><i>automated, but I haven't bothered. Keep this list in step with the above! */</i></td></tr>
+<tr><th id="620">620</th><td></td></tr>
+<tr><th id="621">621</th><td><b>enum</b> { <dfn class="enum" id="RDON_BLACKHOLE" title='RDON_BLACKHOLE' data-ref="RDON_BLACKHOLE">RDON_BLACKHOLE</dfn>, <dfn class="enum" id="RDON_DEFER" title='RDON_DEFER' data-ref="RDON_DEFER">RDON_DEFER</dfn>, <dfn class="enum" id="RDON_EACCES" title='RDON_EACCES' data-ref="RDON_EACCES">RDON_EACCES</dfn>, <dfn class="enum" id="RDON_ENOTDIR" title='RDON_ENOTDIR' data-ref="RDON_ENOTDIR">RDON_ENOTDIR</dfn>, <dfn class="enum" id="RDON_EXISTS" title='RDON_EXISTS' data-ref="RDON_EXISTS">RDON_EXISTS</dfn>,</td></tr>
+<tr><th id="622">622</th><td>  <dfn class="enum" id="RDON_FAIL" title='RDON_FAIL' data-ref="RDON_FAIL">RDON_FAIL</dfn>, <dfn class="enum" id="RDON_FILTER" title='RDON_FILTER' data-ref="RDON_FILTER">RDON_FILTER</dfn>, <dfn class="enum" id="RDON_FREEZE" title='RDON_FREEZE' data-ref="RDON_FREEZE">RDON_FREEZE</dfn>, <dfn class="enum" id="RDON_INCLUDE" title='RDON_INCLUDE' data-ref="RDON_INCLUDE">RDON_INCLUDE</dfn>, <dfn class="enum" id="RDON_LOG" title='RDON_LOG' data-ref="RDON_LOG">RDON_LOG</dfn>, <dfn class="enum" id="RDON_LOOKUP" title='RDON_LOOKUP' data-ref="RDON_LOOKUP">RDON_LOOKUP</dfn>,</td></tr>
+<tr><th id="623">623</th><td>  <dfn class="enum" id="RDON_PERL" title='RDON_PERL' data-ref="RDON_PERL">RDON_PERL</dfn>, <dfn class="enum" id="RDON_READFILE" title='RDON_READFILE' data-ref="RDON_READFILE">RDON_READFILE</dfn>, <dfn class="enum" id="RDON_READSOCK" title='RDON_READSOCK' data-ref="RDON_READSOCK">RDON_READSOCK</dfn>, <dfn class="enum" id="RDON_RUN" title='RDON_RUN' data-ref="RDON_RUN">RDON_RUN</dfn>, <dfn class="enum" id="RDON_DLFUNC" title='RDON_DLFUNC' data-ref="RDON_DLFUNC">RDON_DLFUNC</dfn>, <dfn class="enum" id="RDON_REALLOG" title='RDON_REALLOG' data-ref="RDON_REALLOG">RDON_REALLOG</dfn>,</td></tr>
+<tr><th id="624">624</th><td>  <dfn class="enum" id="RDON_REWRITE" title='RDON_REWRITE' data-ref="RDON_REWRITE">RDON_REWRITE</dfn>, <dfn class="enum" id="RDON_EXIM_FILTER" title='RDON_EXIM_FILTER' data-ref="RDON_EXIM_FILTER">RDON_EXIM_FILTER</dfn>, <dfn class="enum" id="RDON_SIEVE_FILTER" title='RDON_SIEVE_FILTER' data-ref="RDON_SIEVE_FILTER">RDON_SIEVE_FILTER</dfn>, <dfn class="enum" id="RDON_PREPEND_HOME" title='RDON_PREPEND_HOME' data-ref="RDON_PREPEND_HOME">RDON_PREPEND_HOME</dfn> };</td></tr>
+<tr><th id="625">625</th><td></td></tr>
+<tr><th id="626">626</th><td><i>/* Results of filter or forward file processing. Some are only from a filter;</i></td></tr>
+<tr><th id="627">627</th><td><i>some are only from a forward file. */</i></td></tr>
+<tr><th id="628">628</th><td></td></tr>
+<tr><th id="629">629</th><td><b>enum</b> {</td></tr>
+<tr><th id="630">630</th><td>  <dfn class="enum" id="FF_DELIVERED" title='FF_DELIVERED' data-ref="FF_DELIVERED">FF_DELIVERED</dfn>,         <i>/* Success, took significant action */</i></td></tr>
+<tr><th id="631">631</th><td>  <dfn class="enum" id="FF_NOTDELIVERED" title='FF_NOTDELIVERED' data-ref="FF_NOTDELIVERED">FF_NOTDELIVERED</dfn>,      <i>/* Success, didn't take significant action */</i></td></tr>
+<tr><th id="632">632</th><td>  <dfn class="enum" id="FF_BLACKHOLE" title='FF_BLACKHOLE' data-ref="FF_BLACKHOLE">FF_BLACKHOLE</dfn>,         <i>/* Blackholing requested */</i></td></tr>
+<tr><th id="633">633</th><td>  <dfn class="enum" id="FF_DEFER" title='FF_DEFER' data-ref="FF_DEFER">FF_DEFER</dfn>,             <i>/* Defer requested */</i></td></tr>
+<tr><th id="634">634</th><td>  <dfn class="enum" id="FF_FAIL" title='FF_FAIL' data-ref="FF_FAIL">FF_FAIL</dfn>,              <i>/* Fail requested */</i></td></tr>
+<tr><th id="635">635</th><td>  <dfn class="enum" id="FF_INCLUDEFAIL" title='FF_INCLUDEFAIL' data-ref="FF_INCLUDEFAIL">FF_INCLUDEFAIL</dfn>,       <i>/* :include: failed */</i></td></tr>
+<tr><th id="636">636</th><td>  <dfn class="enum" id="FF_NONEXIST" title='FF_NONEXIST' data-ref="FF_NONEXIST">FF_NONEXIST</dfn>,          <i>/* Forward file does not exist */</i></td></tr>
+<tr><th id="637">637</th><td>  <dfn class="enum" id="FF_FREEZE" title='FF_FREEZE' data-ref="FF_FREEZE">FF_FREEZE</dfn>,            <i>/* Freeze requested */</i></td></tr>
+<tr><th id="638">638</th><td>  <dfn class="enum" id="FF_ERROR" title='FF_ERROR' data-ref="FF_ERROR">FF_ERROR</dfn>              <i>/* We have a problem */</i></td></tr>
+<tr><th id="639">639</th><td>};</td></tr>
+<tr><th id="640">640</th><td></td></tr>
+<tr><th id="641">641</th><td><i>/* Values for identifying particular headers; printing characters are used, so</i></td></tr>
+<tr><th id="642">642</th><td><i>they can be read in the spool file for those headers that are permanently</i></td></tr>
+<tr><th id="643">643</th><td><i>marked. The lower case values don't get onto the spool; they are used only as</i></td></tr>
+<tr><th id="644">644</th><td><i>return values from header_checkname(). */</i></td></tr>
+<tr><th id="645">645</th><td></td></tr>
+<tr><th id="646">646</th><td><u>#define <dfn class="macro" id="_M/htype_other" data-ref="_M/htype_other">htype_other</dfn>         ' '   /* Unspecified header */</u></td></tr>
+<tr><th id="647">647</th><td><u>#define <dfn class="macro" id="_M/htype_from" data-ref="_M/htype_from">htype_from</dfn>          'F'</u></td></tr>
+<tr><th id="648">648</th><td><u>#define <dfn class="macro" id="_M/htype_to" data-ref="_M/htype_to">htype_to</dfn>            'T'</u></td></tr>
+<tr><th id="649">649</th><td><u>#define <dfn class="macro" id="_M/htype_cc" data-ref="_M/htype_cc">htype_cc</dfn>            'C'</u></td></tr>
+<tr><th id="650">650</th><td><u>#define <dfn class="macro" id="_M/htype_bcc" data-ref="_M/htype_bcc">htype_bcc</dfn>           'B'</u></td></tr>
+<tr><th id="651">651</th><td><u>#define <dfn class="macro" id="_M/htype_id" data-ref="_M/htype_id">htype_id</dfn>            'I'   /* for message-id */</u></td></tr>
+<tr><th id="652">652</th><td><u>#define <dfn class="macro" id="_M/htype_reply_to" data-ref="_M/htype_reply_to">htype_reply_to</dfn>      'R'</u></td></tr>
+<tr><th id="653">653</th><td><u>#define <dfn class="macro" id="_M/htype_received" data-ref="_M/htype_received">htype_received</dfn>      'P'   /* P for Postmark */</u></td></tr>
+<tr><th id="654">654</th><td><u>#define <dfn class="macro" id="_M/htype_sender" data-ref="_M/htype_sender">htype_sender</dfn>        'S'</u></td></tr>
+<tr><th id="655">655</th><td><u>#define <dfn class="macro" id="_M/htype_old" data-ref="_M/htype_old">htype_old</dfn>           '*'   /* Replaced header */</u></td></tr>
+<tr><th id="656">656</th><td></td></tr>
+<tr><th id="657">657</th><td><u>#define <dfn class="macro" id="_M/htype_date" data-ref="_M/htype_date">htype_date</dfn>          'd'</u></td></tr>
+<tr><th id="658">658</th><td><u>#define <dfn class="macro" id="_M/htype_return_path" data-ref="_M/htype_return_path">htype_return_path</dfn>   'p'</u></td></tr>
+<tr><th id="659">659</th><td><u>#define <dfn class="macro" id="_M/htype_delivery_date" data-ref="_M/htype_delivery_date">htype_delivery_date</dfn> 'x'</u></td></tr>
+<tr><th id="660">660</th><td><u>#define <dfn class="macro" id="_M/htype_envelope_to" data-ref="_M/htype_envelope_to">htype_envelope_to</dfn>   'e'</u></td></tr>
+<tr><th id="661">661</th><td><u>#define <dfn class="macro" id="_M/htype_subject" data-ref="_M/htype_subject">htype_subject</dfn>       's'</u></td></tr>
+<tr><th id="662">662</th><td></td></tr>
+<tr><th id="663">663</th><td><i>/* These values are used only when adding new headers from an ACL; they too</i></td></tr>
+<tr><th id="664">664</th><td><i>never get onto the spool. The type of the added header is set by reference</i></td></tr>
+<tr><th id="665">665</th><td><i>to the header name, by calling header_checkname(). */</i></td></tr>
+<tr><th id="666">666</th><td></td></tr>
+<tr><th id="667">667</th><td><u>#define <dfn class="macro" id="_M/htype_add_top" data-ref="_M/htype_add_top">htype_add_top</dfn>       'a'</u></td></tr>
+<tr><th id="668">668</th><td><u>#define <dfn class="macro" id="_M/htype_add_rec" data-ref="_M/htype_add_rec">htype_add_rec</dfn>       'r'</u></td></tr>
+<tr><th id="669">669</th><td><u>#define <dfn class="macro" id="_M/htype_add_bot" data-ref="_M/htype_add_bot">htype_add_bot</dfn>       'z'</u></td></tr>
+<tr><th id="670">670</th><td><u>#define <dfn class="macro" id="_M/htype_add_rfc" data-ref="_M/htype_add_rfc">htype_add_rfc</dfn>       'f'</u></td></tr>
+<tr><th id="671">671</th><td></td></tr>
+<tr><th id="672">672</th><td><i>/* Types of item in options lists. These are the bottom 8 bits of the "type"</i></td></tr>
+<tr><th id="673">673</th><td><i>field, which is an int. The opt_void value is used for entries in tables that</i></td></tr>
+<tr><th id="674">674</th><td><i>point to special types of value that are accessed only indirectly (e.g. the</i></td></tr>
+<tr><th id="675">675</th><td><i>rewrite data that is built out of a string option.) We need to have some values</i></td></tr>
+<tr><th id="676">676</th><td><i>visible in local_scan, so the following are declared there:</i></td></tr>
+<tr><th id="677">677</th><td><i></i></td></tr>
+<tr><th id="678">678</th><td><i>  opt_stringptr, opt_int, opt_octint, opt_mkint, opt_Kint, opt_fixed, opt_time,</i></td></tr>
+<tr><th id="679">679</th><td><i>  opt_bool</i></td></tr>
+<tr><th id="680">680</th><td><i></i></td></tr>
+<tr><th id="681">681</th><td><i>To make sure we don't conflict, the local_scan.h values start from zero, and</i></td></tr>
+<tr><th id="682">682</th><td><i>those defined here start from 32. The boolean ones must all be together so they</i></td></tr>
+<tr><th id="683">683</th><td><i>can be easily tested as a group. That is the only use of opt_bool_last. */</i></td></tr>
+<tr><th id="684">684</th><td></td></tr>
+<tr><th id="685">685</th><td><b>enum</b> { <dfn class="enum" id="opt_bit" title='opt_bit' data-ref="opt_bit">opt_bit</dfn> = <var>32</var>, <dfn class="enum" id="opt_bool_verify" title='opt_bool_verify' data-ref="opt_bool_verify">opt_bool_verify</dfn>, <dfn class="enum" id="opt_bool_set" title='opt_bool_set' data-ref="opt_bool_set">opt_bool_set</dfn>, <dfn class="enum" id="opt_expand_bool" title='opt_expand_bool' data-ref="opt_expand_bool">opt_expand_bool</dfn>,</td></tr>
+<tr><th id="686">686</th><td>  <dfn class="enum" id="opt_bool_last" title='opt_bool_last' data-ref="opt_bool_last">opt_bool_last</dfn>,</td></tr>
+<tr><th id="687">687</th><td>  <dfn class="enum" id="opt_rewrite" title='opt_rewrite' data-ref="opt_rewrite">opt_rewrite</dfn>, <dfn class="enum" id="opt_timelist" title='opt_timelist' data-ref="opt_timelist">opt_timelist</dfn>, <dfn class="enum" id="opt_uid" title='opt_uid' data-ref="opt_uid">opt_uid</dfn>, <dfn class="enum" id="opt_gid" title='opt_gid' data-ref="opt_gid">opt_gid</dfn>, <dfn class="enum" id="opt_uidlist" title='opt_uidlist' data-ref="opt_uidlist">opt_uidlist</dfn>, <dfn class="enum" id="opt_gidlist" title='opt_gidlist' data-ref="opt_gidlist">opt_gidlist</dfn>,</td></tr>
+<tr><th id="688">688</th><td>  <dfn class="enum" id="opt_expand_uid" title='opt_expand_uid' data-ref="opt_expand_uid">opt_expand_uid</dfn>, <dfn class="enum" id="opt_expand_gid" title='opt_expand_gid' data-ref="opt_expand_gid">opt_expand_gid</dfn>, <dfn class="enum" id="opt_func" title='opt_func' data-ref="opt_func">opt_func</dfn>, <dfn class="enum" id="opt_void" title='opt_void' data-ref="opt_void">opt_void</dfn> };</td></tr>
+<tr><th id="689">689</th><td></td></tr>
+<tr><th id="690">690</th><td><i>/* There's a high-ish bit which is used to flag duplicate options, kept</i></td></tr>
+<tr><th id="691">691</th><td><i>for compatibility, which shouldn't be output. Also used for hidden options</i></td></tr>
+<tr><th id="692">692</th><td><i>that are automatically maintained from others. Another high bit is used to</i></td></tr>
+<tr><th id="693">693</th><td><i>flag driver options that although private (so as to be settable only on some</i></td></tr>
+<tr><th id="694">694</th><td><i>drivers), are stored in the instance block so as to be accessible from outside.</i></td></tr>
+<tr><th id="695">695</th><td><i>A third high bit is set when an option is read, so as to be able to give an</i></td></tr>
+<tr><th id="696">696</th><td><i>error if any option is set twice. Finally, there's a bit which is set when an</i></td></tr>
+<tr><th id="697">697</th><td><i>option is set with the "hide" prefix, to prevent -bP from showing it to</i></td></tr>
+<tr><th id="698">698</th><td><i>non-admin callers. The next byte up in the int is used to keep the bit number</i></td></tr>
+<tr><th id="699">699</th><td><i>for booleans that are kept in one bit. */</i></td></tr>
+<tr><th id="700">700</th><td></td></tr>
+<tr><th id="701">701</th><td><u>#define <dfn class="macro" id="_M/opt_hidden" data-ref="_M/opt_hidden">opt_hidden</dfn>  0x100      /* Private to Exim */</u></td></tr>
+<tr><th id="702">702</th><td><u>#define <dfn class="macro" id="_M/opt_public" data-ref="_M/opt_public">opt_public</dfn>  0x200      /* Stored in the main instance block */</u></td></tr>
+<tr><th id="703">703</th><td><u>#define <dfn class="macro" id="_M/opt_set" data-ref="_M/opt_set">opt_set</dfn>     0x400      /* Option is set */</u></td></tr>
+<tr><th id="704">704</th><td><u>#define <dfn class="macro" id="_M/opt_secure" data-ref="_M/opt_secure">opt_secure</dfn>  0x800      /* "hide" prefix used */</u></td></tr>
+<tr><th id="705">705</th><td><u>#define <dfn class="macro" id="_M/opt_rep_con" data-ref="_M/opt_rep_con">opt_rep_con</dfn> 0x1000     /* Can be appended to by a repeated line (condition) */</u></td></tr>
+<tr><th id="706">706</th><td><u>#define <dfn class="macro" id="_M/opt_rep_str" data-ref="_M/opt_rep_str">opt_rep_str</dfn> 0x2000     /* Can be appended to by a repeated line (string) */</u></td></tr>
+<tr><th id="707">707</th><td><u>#define <dfn class="macro" id="_M/opt_mask" data-ref="_M/opt_mask">opt_mask</dfn>    0x00ff</u></td></tr>
+<tr><th id="708">708</th><td></td></tr>
+<tr><th id="709">709</th><td><i>/* Verify types when directing and routing */</i></td></tr>
+<tr><th id="710">710</th><td></td></tr>
+<tr><th id="711">711</th><td><b>enum</b> { <dfn class="enum" id="v_none" title='v_none' data-ref="v_none">v_none</dfn>, <dfn class="enum" id="v_sender" title='v_sender' data-ref="v_sender">v_sender</dfn>, <dfn class="enum" id="v_recipient" title='v_recipient' data-ref="v_recipient">v_recipient</dfn>, <dfn class="enum" id="v_expn" title='v_expn' data-ref="v_expn">v_expn</dfn> };</td></tr>
+<tr><th id="712">712</th><td></td></tr>
+<tr><th id="713">713</th><td><i>/* Option flags for verify_address() */</i></td></tr>
+<tr><th id="714">714</th><td></td></tr>
+<tr><th id="715">715</th><td><u>#define <dfn class="macro" id="_M/vopt_fake_sender" data-ref="_M/vopt_fake_sender">vopt_fake_sender</dfn>          0x0001   /* for verify=sender=&lt;address&gt; */</u></td></tr>
+<tr><th id="716">716</th><td><u>#define <dfn class="macro" id="_M/vopt_is_recipient" data-ref="_M/vopt_is_recipient">vopt_is_recipient</dfn>         0x0002</u></td></tr>
+<tr><th id="717">717</th><td><u>#define <dfn class="macro" id="_M/vopt_qualify" data-ref="_M/vopt_qualify">vopt_qualify</dfn>              0x0004</u></td></tr>
+<tr><th id="718">718</th><td><u>#define <dfn class="macro" id="_M/vopt_expn" data-ref="_M/vopt_expn">vopt_expn</dfn>                 0x0008</u></td></tr>
+<tr><th id="719">719</th><td><u>#define <dfn class="macro" id="_M/vopt_callout_fullpm" data-ref="_M/vopt_callout_fullpm">vopt_callout_fullpm</dfn>       0x0010   /* full postmaster during callout */</u></td></tr>
+<tr><th id="720">720</th><td><u>#define <dfn class="macro" id="_M/vopt_callout_random" data-ref="_M/vopt_callout_random">vopt_callout_random</dfn>       0x0020   /* during callout */</u></td></tr>
+<tr><th id="721">721</th><td><u>#define <dfn class="macro" id="_M/vopt_callout_no_cache" data-ref="_M/vopt_callout_no_cache">vopt_callout_no_cache</dfn>     0x0040   /* disable callout cache */</u></td></tr>
+<tr><th id="722">722</th><td><u>#define <dfn class="macro" id="_M/vopt_callout_recipsender" data-ref="_M/vopt_callout_recipsender">vopt_callout_recipsender</dfn>  0x0080   /* use real sender to verify recip */</u></td></tr>
+<tr><th id="723">723</th><td><u>#define <dfn class="macro" id="_M/vopt_callout_recippmaster" data-ref="_M/vopt_callout_recippmaster">vopt_callout_recippmaster</dfn> 0x0100   /* use postmaster to verify recip */</u></td></tr>
+<tr><th id="724">724</th><td><u>#define <dfn class="macro" id="_M/vopt_callout_hold" data-ref="_M/vopt_callout_hold">vopt_callout_hold</dfn>	  0x0200   /* lazy close connection */</u></td></tr>
+<tr><th id="725">725</th><td><u>#define <dfn class="macro" id="_M/vopt_success_on_redirect" data-ref="_M/vopt_success_on_redirect">vopt_success_on_redirect</dfn>  0x0400</u></td></tr>
+<tr><th id="726">726</th><td></td></tr>
+<tr><th id="727">727</th><td><i>/* Values for fields in callout cache records */</i></td></tr>
+<tr><th id="728">728</th><td></td></tr>
+<tr><th id="729">729</th><td><u>#define <dfn class="macro" id="_M/ccache_unknown" data-ref="_M/ccache_unknown">ccache_unknown</dfn>         0       /* test hasn't been done */</u></td></tr>
+<tr><th id="730">730</th><td><u>#define <dfn class="macro" id="_M/ccache_accept" data-ref="_M/ccache_accept">ccache_accept</dfn>          1</u></td></tr>
+<tr><th id="731">731</th><td><u>#define <dfn class="macro" id="_M/ccache_reject" data-ref="_M/ccache_reject">ccache_reject</dfn>          2       /* All rejections except */</u></td></tr>
+<tr><th id="732">732</th><td><u>#define <dfn class="macro" id="_M/ccache_reject_mfnull" data-ref="_M/ccache_reject_mfnull">ccache_reject_mfnull</dfn>   3       /* MAIL FROM:&lt;&gt; was rejected */</u></td></tr>
+<tr><th id="733">733</th><td></td></tr>
+<tr><th id="734">734</th><td><i>/* Options for lookup functions */</i></td></tr>
+<tr><th id="735">735</th><td></td></tr>
+<tr><th id="736">736</th><td><u>#define <dfn class="macro" id="_M/lookup_querystyle" data-ref="_M/lookup_querystyle">lookup_querystyle</dfn>      1    /* query-style lookup */</u></td></tr>
+<tr><th id="737">737</th><td><u>#define <dfn class="macro" id="_M/lookup_absfile" data-ref="_M/lookup_absfile">lookup_absfile</dfn>         2    /* requires absolute file name */</u></td></tr>
+<tr><th id="738">738</th><td><u>#define <dfn class="macro" id="_M/lookup_absfilequery" data-ref="_M/lookup_absfilequery">lookup_absfilequery</dfn>    4    /* query-style starts with file name */</u></td></tr>
+<tr><th id="739">739</th><td></td></tr>
+<tr><th id="740">740</th><td><i>/* Status values for host_item blocks. Require hstatus_unusable and</i></td></tr>
+<tr><th id="741">741</th><td><i>hstatus_unusable_expired to be last. */</i></td></tr>
+<tr><th id="742">742</th><td></td></tr>
+<tr><th id="743">743</th><td><b>enum</b> { <dfn class="enum" id="hstatus_unknown" title='hstatus_unknown' data-ref="hstatus_unknown">hstatus_unknown</dfn>, <dfn class="enum" id="hstatus_usable" title='hstatus_usable' data-ref="hstatus_usable">hstatus_usable</dfn>, <dfn class="enum" id="hstatus_unusable" title='hstatus_unusable' data-ref="hstatus_unusable">hstatus_unusable</dfn>,</td></tr>
+<tr><th id="744">744</th><td>       <dfn class="enum" id="hstatus_unusable_expired" title='hstatus_unusable_expired' data-ref="hstatus_unusable_expired">hstatus_unusable_expired</dfn> };</td></tr>
+<tr><th id="745">745</th><td></td></tr>
+<tr><th id="746">746</th><td><i>/* Reasons why a host is unusable (for clearer log messages) */</i></td></tr>
+<tr><th id="747">747</th><td></td></tr>
+<tr><th id="748">748</th><td><b>enum</b> { <dfn class="enum" id="hwhy_unknown" title='hwhy_unknown' data-ref="hwhy_unknown">hwhy_unknown</dfn>, <dfn class="enum" id="hwhy_retry" title='hwhy_retry' data-ref="hwhy_retry">hwhy_retry</dfn>, <dfn class="enum" id="hwhy_insecure" title='hwhy_insecure' data-ref="hwhy_insecure">hwhy_insecure</dfn>, <dfn class="enum" id="hwhy_failed" title='hwhy_failed' data-ref="hwhy_failed">hwhy_failed</dfn>, <dfn class="enum" id="hwhy_deferred" title='hwhy_deferred' data-ref="hwhy_deferred">hwhy_deferred</dfn>,</td></tr>
+<tr><th id="749">749</th><td>       <dfn class="enum" id="hwhy_ignored" title='hwhy_ignored' data-ref="hwhy_ignored">hwhy_ignored</dfn> };</td></tr>
+<tr><th id="750">750</th><td></td></tr>
+<tr><th id="751">751</th><td><i>/* Domain lookup types for routers */</i></td></tr>
+<tr><th id="752">752</th><td></td></tr>
+<tr><th id="753">753</th><td><u>#define <dfn class="macro" id="_M/LK_DEFAULT" data-ref="_M/LK_DEFAULT">LK_DEFAULT</dfn>	BIT(0)</u></td></tr>
+<tr><th id="754">754</th><td><u>#define <dfn class="macro" id="_M/LK_BYNAME" data-ref="_M/LK_BYNAME">LK_BYNAME</dfn>	BIT(1)</u></td></tr>
+<tr><th id="755">755</th><td><u>#define <dfn class="macro" id="_M/LK_BYDNS" data-ref="_M/LK_BYDNS">LK_BYDNS</dfn>	BIT(2)	/* those 3 should be mutually exclusive */</u></td></tr>
+<tr><th id="756">756</th><td></td></tr>
+<tr><th id="757">757</th><td><u>#define <dfn class="macro" id="_M/LK_IPV4_ONLY" data-ref="_M/LK_IPV4_ONLY">LK_IPV4_ONLY</dfn>	BIT(3)</u></td></tr>
+<tr><th id="758">758</th><td><u>#define <dfn class="macro" id="_M/LK_IPV4_PREFER" data-ref="_M/LK_IPV4_PREFER">LK_IPV4_PREFER</dfn>	BIT(4)</u></td></tr>
+<tr><th id="759">759</th><td></td></tr>
+<tr><th id="760">760</th><td><i>/* Values for the self_code fields */</i></td></tr>
+<tr><th id="761">761</th><td></td></tr>
+<tr><th id="762">762</th><td><b>enum</b> { <dfn class="enum" id="self_freeze" title='self_freeze' data-ref="self_freeze">self_freeze</dfn>, <dfn class="enum" id="self_defer" title='self_defer' data-ref="self_defer">self_defer</dfn>, <dfn class="enum" id="self_send" title='self_send' data-ref="self_send">self_send</dfn>, <dfn class="enum" id="self_reroute" title='self_reroute' data-ref="self_reroute">self_reroute</dfn>, <dfn class="enum" id="self_pass" title='self_pass' data-ref="self_pass">self_pass</dfn>, <dfn class="enum" id="self_fail" title='self_fail' data-ref="self_fail">self_fail</dfn> };</td></tr>
+<tr><th id="763">763</th><td></td></tr>
+<tr><th id="764">764</th><td><i>/* Flags for rewrite rules */</i></td></tr>
+<tr><th id="765">765</th><td></td></tr>
+<tr><th id="766">766</th><td><u>#define <dfn class="macro" id="_M/rewrite_sender" data-ref="_M/rewrite_sender">rewrite_sender</dfn>       0x0001</u></td></tr>
+<tr><th id="767">767</th><td><u>#define <dfn class="macro" id="_M/rewrite_from" data-ref="_M/rewrite_from">rewrite_from</dfn>         0x0002</u></td></tr>
+<tr><th id="768">768</th><td><u>#define <dfn class="macro" id="_M/rewrite_to" data-ref="_M/rewrite_to">rewrite_to</dfn>           0x0004</u></td></tr>
+<tr><th id="769">769</th><td><u>#define <dfn class="macro" id="_M/rewrite_cc" data-ref="_M/rewrite_cc">rewrite_cc</dfn>           0x0008</u></td></tr>
+<tr><th id="770">770</th><td><u>#define <dfn class="macro" id="_M/rewrite_bcc" data-ref="_M/rewrite_bcc">rewrite_bcc</dfn>          0x0010</u></td></tr>
+<tr><th id="771">771</th><td><u>#define <dfn class="macro" id="_M/rewrite_replyto" data-ref="_M/rewrite_replyto">rewrite_replyto</dfn>      0x0020</u></td></tr>
+<tr><th id="772">772</th><td><u>#define <dfn class="macro" id="_M/rewrite_all_headers" data-ref="_M/rewrite_all_headers">rewrite_all_headers</dfn>  0x003F  /* all header flags */</u></td></tr>
+<tr><th id="773">773</th><td></td></tr>
+<tr><th id="774">774</th><td><u>#define <dfn class="macro" id="_M/rewrite_envfrom" data-ref="_M/rewrite_envfrom">rewrite_envfrom</dfn>      0x0040</u></td></tr>
+<tr><th id="775">775</th><td><u>#define <dfn class="macro" id="_M/rewrite_envto" data-ref="_M/rewrite_envto">rewrite_envto</dfn>        0x0080</u></td></tr>
+<tr><th id="776">776</th><td><u>#define <dfn class="macro" id="_M/rewrite_all_envelope" data-ref="_M/rewrite_all_envelope">rewrite_all_envelope</dfn> 0x00C0  /* all envelope flags */</u></td></tr>
+<tr><th id="777">777</th><td></td></tr>
+<tr><th id="778">778</th><td><u>#define <dfn class="macro" id="_M/rewrite_all" data-ref="_M/rewrite_all">rewrite_all</dfn>      (rewrite_all_headers | rewrite_all_envelope)</u></td></tr>
+<tr><th id="779">779</th><td></td></tr>
+<tr><th id="780">780</th><td><u>#define <dfn class="macro" id="_M/rewrite_smtp" data-ref="_M/rewrite_smtp">rewrite_smtp</dfn>         0x0100  /* rewrite at SMTP time */</u></td></tr>
+<tr><th id="781">781</th><td><u>#define <dfn class="macro" id="_M/rewrite_smtp_sender" data-ref="_M/rewrite_smtp_sender">rewrite_smtp_sender</dfn>  0x0200  /* SMTP sender rewrite (allows &lt;&gt;) */</u></td></tr>
+<tr><th id="782">782</th><td><u>#define <dfn class="macro" id="_M/rewrite_qualify" data-ref="_M/rewrite_qualify">rewrite_qualify</dfn>      0x0400  /* qualify if necessary */</u></td></tr>
+<tr><th id="783">783</th><td><u>#define <dfn class="macro" id="_M/rewrite_repeat" data-ref="_M/rewrite_repeat">rewrite_repeat</dfn>       0x0800  /* repeat rewrite rule */</u></td></tr>
+<tr><th id="784">784</th><td></td></tr>
+<tr><th id="785">785</th><td><u>#define <dfn class="macro" id="_M/rewrite_whole" data-ref="_M/rewrite_whole">rewrite_whole</dfn>        0x1000  /* option bit for headers */</u></td></tr>
+<tr><th id="786">786</th><td><u>#define <dfn class="macro" id="_M/rewrite_quit" data-ref="_M/rewrite_quit">rewrite_quit</dfn>         0x2000  /* "no more" option */</u></td></tr>
+<tr><th id="787">787</th><td></td></tr>
+<tr><th id="788">788</th><td><i>/* Flags for log_write(); LOG_MAIN, LOG_PANIC, and LOG_REJECT are also in</i></td></tr>
+<tr><th id="789">789</th><td><i>local_scan.h */</i></td></tr>
+<tr><th id="790">790</th><td></td></tr>
+<tr><th id="791">791</th><td><u>#define <dfn class="macro" id="_M/LOG_MAIN" data-ref="_M/LOG_MAIN">LOG_MAIN</dfn>           1      /* Write to the main log */</u></td></tr>
+<tr><th id="792">792</th><td><u>#define <dfn class="macro" id="_M/LOG_PANIC" data-ref="_M/LOG_PANIC">LOG_PANIC</dfn>          2      /* Write to the panic log */</u></td></tr>
+<tr><th id="793">793</th><td><u>#define <dfn class="macro" id="_M/LOG_PANIC_DIE" data-ref="_M/LOG_PANIC_DIE">LOG_PANIC_DIE</dfn>      6      /* Write to the panic log and then die */</u></td></tr>
+<tr><th id="794">794</th><td><u>#define <dfn class="macro" id="_M/LOG_REJECT" data-ref="_M/LOG_REJECT">LOG_REJECT</dfn>        16      /* Write to the reject log, with headers */</u></td></tr>
+<tr><th id="795">795</th><td><u>#define <dfn class="macro" id="_M/LOG_SENDER" data-ref="_M/LOG_SENDER">LOG_SENDER</dfn>        32      /* Add raw sender to the message */</u></td></tr>
+<tr><th id="796">796</th><td><u>#define <dfn class="macro" id="_M/LOG_RECIPIENTS" data-ref="_M/LOG_RECIPIENTS">LOG_RECIPIENTS</dfn>    64      /* Add raw recipients to the message */</u></td></tr>
+<tr><th id="797">797</th><td><u>#define <dfn class="macro" id="_M/LOG_CONFIG" data-ref="_M/LOG_CONFIG">LOG_CONFIG</dfn>       128      /* Add "Exim configuration error" */</u></td></tr>
+<tr><th id="798">798</th><td><u>#define <dfn class="macro" id="_M/LOG_CONFIG_FOR" data-ref="_M/LOG_CONFIG_FOR">LOG_CONFIG_FOR</dfn>  (256+128) /* Add " for" instead of ":\n" */</u></td></tr>
+<tr><th id="799">799</th><td><u>#define <dfn class="macro" id="_M/LOG_CONFIG_IN" data-ref="_M/LOG_CONFIG_IN">LOG_CONFIG_IN</dfn>   (512+128) /* Add " in line x[ of file y]" */</u></td></tr>
+<tr><th id="800">800</th><td></td></tr>
+<tr><th id="801">801</th><td><i>/* and for debug_bits() logging action control: */</i></td></tr>
+<tr><th id="802">802</th><td><u>#define <dfn class="macro" id="_M/DEBUG_FROM_CONFIG" data-ref="_M/DEBUG_FROM_CONFIG">DEBUG_FROM_CONFIG</dfn>       0x0001</u></td></tr>
+<tr><th id="803">803</th><td></td></tr>
+<tr><th id="804">804</th><td><i>/* SMTP command identifiers for the smtp_connection_had field that records the</i></td></tr>
+<tr><th id="805">805</th><td><i>most recent SMTP commands. Must be kept in step with the list of names in</i></td></tr>
+<tr><th id="806">806</th><td><i>smtp_in.c that is used for creating the smtp_no_mail logging action. SCH_NONE</i></td></tr>
+<tr><th id="807">807</th><td><i>is "empty". */</i></td></tr>
+<tr><th id="808">808</th><td></td></tr>
+<tr><th id="809">809</th><td><b>enum</b> { <dfn class="enum" id="SCH_NONE" title='SCH_NONE' data-ref="SCH_NONE">SCH_NONE</dfn>, <dfn class="enum" id="SCH_AUTH" title='SCH_AUTH' data-ref="SCH_AUTH">SCH_AUTH</dfn>, <dfn class="enum" id="SCH_DATA" title='SCH_DATA' data-ref="SCH_DATA">SCH_DATA</dfn>, <dfn class="enum" id="SCH_BDAT" title='SCH_BDAT' data-ref="SCH_BDAT">SCH_BDAT</dfn>,</td></tr>
+<tr><th id="810">810</th><td>       <dfn class="enum" id="SCH_EHLO" title='SCH_EHLO' data-ref="SCH_EHLO">SCH_EHLO</dfn>, <dfn class="enum" id="SCH_ETRN" title='SCH_ETRN' data-ref="SCH_ETRN">SCH_ETRN</dfn>, <dfn class="enum" id="SCH_EXPN" title='SCH_EXPN' data-ref="SCH_EXPN">SCH_EXPN</dfn>, <dfn class="enum" id="SCH_HELO" title='SCH_HELO' data-ref="SCH_HELO">SCH_HELO</dfn>,</td></tr>
+<tr><th id="811">811</th><td>       <dfn class="enum" id="SCH_HELP" title='SCH_HELP' data-ref="SCH_HELP">SCH_HELP</dfn>, <dfn class="enum" id="SCH_MAIL" title='SCH_MAIL' data-ref="SCH_MAIL">SCH_MAIL</dfn>, <dfn class="enum" id="SCH_NOOP" title='SCH_NOOP' data-ref="SCH_NOOP">SCH_NOOP</dfn>, <dfn class="enum" id="SCH_QUIT" title='SCH_QUIT' data-ref="SCH_QUIT">SCH_QUIT</dfn>, <dfn class="enum" id="SCH_RCPT" title='SCH_RCPT' data-ref="SCH_RCPT">SCH_RCPT</dfn>, <dfn class="enum" id="SCH_RSET" title='SCH_RSET' data-ref="SCH_RSET">SCH_RSET</dfn>, <dfn class="enum" id="SCH_STARTTLS" title='SCH_STARTTLS' data-ref="SCH_STARTTLS">SCH_STARTTLS</dfn>,</td></tr>
+<tr><th id="812">812</th><td>       <dfn class="enum" id="SCH_VRFY" title='SCH_VRFY' data-ref="SCH_VRFY">SCH_VRFY</dfn> };</td></tr>
+<tr><th id="813">813</th><td></td></tr>
+<tr><th id="814">814</th><td><i>/* Returns from host_find_by{name,dns}() */</i></td></tr>
+<tr><th id="815">815</th><td></td></tr>
+<tr><th id="816">816</th><td><b>enum</b> {</td></tr>
+<tr><th id="817">817</th><td>  <dfn class="enum" id="HOST_FIND_FAILED" title='HOST_FIND_FAILED' data-ref="HOST_FIND_FAILED">HOST_FIND_FAILED</dfn>,     <i>/* failed to find the host */</i></td></tr>
+<tr><th id="818">818</th><td>  <dfn class="enum" id="HOST_FIND_AGAIN" title='HOST_FIND_AGAIN' data-ref="HOST_FIND_AGAIN">HOST_FIND_AGAIN</dfn>,      <i>/* could not resolve at this time */</i></td></tr>
+<tr><th id="819">819</th><td>  <dfn class="enum" id="HOST_FIND_SECURITY" title='HOST_FIND_SECURITY' data-ref="HOST_FIND_SECURITY">HOST_FIND_SECURITY</dfn>,   <i>/* dnssec required but not acheived */</i></td></tr>
+<tr><th id="820">820</th><td>  <dfn class="enum" id="HOST_FOUND" title='HOST_FOUND' data-ref="HOST_FOUND">HOST_FOUND</dfn>,           <i>/* found host */</i></td></tr>
+<tr><th id="821">821</th><td>  <dfn class="enum" id="HOST_FOUND_LOCAL" title='HOST_FOUND_LOCAL' data-ref="HOST_FOUND_LOCAL">HOST_FOUND_LOCAL</dfn>,     <i>/* found, but MX points to local host */</i></td></tr>
+<tr><th id="822">822</th><td>  <dfn class="enum" id="HOST_IGNORED" title='HOST_IGNORED' data-ref="HOST_IGNORED">HOST_IGNORED</dfn>          <i>/* found but ignored - used internally only */</i></td></tr>
+<tr><th id="823">823</th><td>};</td></tr>
+<tr><th id="824">824</th><td></td></tr>
+<tr><th id="825">825</th><td><i>/* Flags for host_find_bydns() */</i></td></tr>
+<tr><th id="826">826</th><td></td></tr>
+<tr><th id="827">827</th><td><u>#define <dfn class="macro" id="_M/HOST_FIND_BY_SRV" data-ref="_M/HOST_FIND_BY_SRV">HOST_FIND_BY_SRV</dfn>          BIT(0)</u></td></tr>
+<tr><th id="828">828</th><td><u>#define <dfn class="macro" id="_M/HOST_FIND_BY_MX" data-ref="_M/HOST_FIND_BY_MX">HOST_FIND_BY_MX</dfn>           BIT(1)</u></td></tr>
+<tr><th id="829">829</th><td><u>#define <dfn class="macro" id="_M/HOST_FIND_BY_A" data-ref="_M/HOST_FIND_BY_A">HOST_FIND_BY_A</dfn>            BIT(2)</u></td></tr>
+<tr><th id="830">830</th><td><u>#define <dfn class="macro" id="_M/HOST_FIND_BY_AAAA" data-ref="_M/HOST_FIND_BY_AAAA">HOST_FIND_BY_AAAA</dfn>         BIT(3)</u></td></tr>
+<tr><th id="831">831</th><td><u>#define <dfn class="macro" id="_M/HOST_FIND_QUALIFY_SINGLE" data-ref="_M/HOST_FIND_QUALIFY_SINGLE">HOST_FIND_QUALIFY_SINGLE</dfn>  BIT(4)</u></td></tr>
+<tr><th id="832">832</th><td><u>#define <dfn class="macro" id="_M/HOST_FIND_SEARCH_PARENTS" data-ref="_M/HOST_FIND_SEARCH_PARENTS">HOST_FIND_SEARCH_PARENTS</dfn>  BIT(5)</u></td></tr>
+<tr><th id="833">833</th><td><u>#define <dfn class="macro" id="_M/HOST_FIND_IPV4_FIRST" data-ref="_M/HOST_FIND_IPV4_FIRST">HOST_FIND_IPV4_FIRST</dfn>	  BIT(6)</u></td></tr>
+<tr><th id="834">834</th><td><u>#define <dfn class="macro" id="_M/HOST_FIND_IPV4_ONLY" data-ref="_M/HOST_FIND_IPV4_ONLY">HOST_FIND_IPV4_ONLY</dfn>	  BIT(7)</u></td></tr>
+<tr><th id="835">835</th><td></td></tr>
+<tr><th id="836">836</th><td><i>/* Actions applied to specific messages. */</i></td></tr>
+<tr><th id="837">837</th><td></td></tr>
+<tr><th id="838">838</th><td><b>enum</b> { <dfn class="enum" id="MSG_DELIVER" title='MSG_DELIVER' data-ref="MSG_DELIVER">MSG_DELIVER</dfn>, <dfn class="enum" id="MSG_FREEZE" title='MSG_FREEZE' data-ref="MSG_FREEZE">MSG_FREEZE</dfn>, <dfn class="enum" id="MSG_REMOVE" title='MSG_REMOVE' data-ref="MSG_REMOVE">MSG_REMOVE</dfn>, <dfn class="enum" id="MSG_THAW" title='MSG_THAW' data-ref="MSG_THAW">MSG_THAW</dfn>, <dfn class="enum" id="MSG_ADD_RECIPIENT" title='MSG_ADD_RECIPIENT' data-ref="MSG_ADD_RECIPIENT">MSG_ADD_RECIPIENT</dfn>,</td></tr>
+<tr><th id="839">839</th><td>       <dfn class="enum" id="MSG_MARK_ALL_DELIVERED" title='MSG_MARK_ALL_DELIVERED' data-ref="MSG_MARK_ALL_DELIVERED">MSG_MARK_ALL_DELIVERED</dfn>, <dfn class="enum" id="MSG_MARK_DELIVERED" title='MSG_MARK_DELIVERED' data-ref="MSG_MARK_DELIVERED">MSG_MARK_DELIVERED</dfn>, <dfn class="enum" id="MSG_EDIT_SENDER" title='MSG_EDIT_SENDER' data-ref="MSG_EDIT_SENDER">MSG_EDIT_SENDER</dfn>,</td></tr>
+<tr><th id="840">840</th><td>       <dfn class="enum" id="MSG_SHOW_COPY" title='MSG_SHOW_COPY' data-ref="MSG_SHOW_COPY">MSG_SHOW_COPY</dfn>, <dfn class="enum" id="MSG_LOAD" title='MSG_LOAD' data-ref="MSG_LOAD">MSG_LOAD</dfn>,</td></tr>
+<tr><th id="841">841</th><td>       <i>/* These ones must be last: a test for &gt;= MSG_SHOW_BODY is used</i></td></tr>
+<tr><th id="842">842</th><td><i>       to test for actions that list individual spool files. */</i></td></tr>
+<tr><th id="843">843</th><td>       <dfn class="enum" id="MSG_SHOW_BODY" title='MSG_SHOW_BODY' data-ref="MSG_SHOW_BODY">MSG_SHOW_BODY</dfn>, <dfn class="enum" id="MSG_SHOW_HEADER" title='MSG_SHOW_HEADER' data-ref="MSG_SHOW_HEADER">MSG_SHOW_HEADER</dfn>, <dfn class="enum" id="MSG_SHOW_LOG" title='MSG_SHOW_LOG' data-ref="MSG_SHOW_LOG">MSG_SHOW_LOG</dfn> };</td></tr>
+<tr><th id="844">844</th><td></td></tr>
+<tr><th id="845">845</th><td><i>/* Returns from the spool_read_header() function */</i></td></tr>
+<tr><th id="846">846</th><td></td></tr>
+<tr><th id="847">847</th><td><b>enum</b> {</td></tr>
+<tr><th id="848">848</th><td>  <dfn class="enum" id="spool_read_OK" title='spool_read_OK' data-ref="spool_read_OK">spool_read_OK</dfn>,        <i>/* success */</i></td></tr>
+<tr><th id="849">849</th><td>  <dfn class="enum" id="spool_read_notopen" title='spool_read_notopen' data-ref="spool_read_notopen">spool_read_notopen</dfn>,   <i>/* open failed */</i></td></tr>
+<tr><th id="850">850</th><td>  <dfn class="enum" id="spool_read_enverror" title='spool_read_enverror' data-ref="spool_read_enverror">spool_read_enverror</dfn>,  <i>/* error in the envelope */</i></td></tr>
+<tr><th id="851">851</th><td>  <dfn class="enum" id="spool_read_hdrerror" title='spool_read_hdrerror' data-ref="spool_read_hdrerror">spool_read_hdrerror</dfn>   <i>/* error in the headers */</i></td></tr>
+<tr><th id="852">852</th><td>};</td></tr>
+<tr><th id="853">853</th><td></td></tr>
+<tr><th id="854">854</th><td><i>/* Options for transport_write_message */</i></td></tr>
+<tr><th id="855">855</th><td></td></tr>
+<tr><th id="856">856</th><td><u>#define <dfn class="macro" id="_M/topt_add_return_path" data-ref="_M/topt_add_return_path">topt_add_return_path</dfn>    0x001</u></td></tr>
+<tr><th id="857">857</th><td><u>#define <dfn class="macro" id="_M/topt_add_delivery_date" data-ref="_M/topt_add_delivery_date">topt_add_delivery_date</dfn>  0x002</u></td></tr>
+<tr><th id="858">858</th><td><u>#define <dfn class="macro" id="_M/topt_add_envelope_to" data-ref="_M/topt_add_envelope_to">topt_add_envelope_to</dfn>    0x004</u></td></tr>
+<tr><th id="859">859</th><td><u>#define <dfn class="macro" id="_M/topt_use_crlf" data-ref="_M/topt_use_crlf">topt_use_crlf</dfn>           0x008  /* Terminate lines with CRLF */</u></td></tr>
+<tr><th id="860">860</th><td><u>#define <dfn class="macro" id="_M/topt_end_dot" data-ref="_M/topt_end_dot">topt_end_dot</dfn>            0x010  /* Send terminating dot line */</u></td></tr>
+<tr><th id="861">861</th><td><u>#define <dfn class="macro" id="_M/topt_no_headers" data-ref="_M/topt_no_headers">topt_no_headers</dfn>         0x020  /* Omit headers */</u></td></tr>
+<tr><th id="862">862</th><td><u>#define <dfn class="macro" id="_M/topt_no_body" data-ref="_M/topt_no_body">topt_no_body</dfn>            0x040  /* Omit body */</u></td></tr>
+<tr><th id="863">863</th><td><u>#define <dfn class="macro" id="_M/topt_escape_headers" data-ref="_M/topt_escape_headers">topt_escape_headers</dfn>     0x080  /* Apply escape check to headers */</u></td></tr>
+<tr><th id="864">864</th><td><u>#define <dfn class="macro" id="_M/topt_use_bdat" data-ref="_M/topt_use_bdat">topt_use_bdat</dfn>		0x100  /* prepend chunks with RFC3030 BDAT header */</u></td></tr>
+<tr><th id="865">865</th><td><u>#define <dfn class="macro" id="_M/topt_output_string" data-ref="_M/topt_output_string">topt_output_string</dfn>	0x200  /* create string rather than write to fd */</u></td></tr>
+<tr><th id="866">866</th><td><u>#define <dfn class="macro" id="_M/topt_continuation" data-ref="_M/topt_continuation">topt_continuation</dfn>	0x400  /* do not reset buffer */</u></td></tr>
+<tr><th id="867">867</th><td></td></tr>
+<tr><th id="868">868</th><td><i>/* Options for smtp_write_command */</i></td></tr>
+<tr><th id="869">869</th><td></td></tr>
+<tr><th id="870">870</th><td><b>enum</b> {	</td></tr>
+<tr><th id="871">871</th><td>  <dfn class="enum" id="SCMD_FLUSH" title='SCMD_FLUSH' data-ref="SCMD_FLUSH">SCMD_FLUSH</dfn> = <var>0</var>,	<i>/* write to kernel */</i></td></tr>
+<tr><th id="872">872</th><td>  <dfn class="enum" id="SCMD_MORE" title='SCMD_MORE' data-ref="SCMD_MORE">SCMD_MORE</dfn>,		<i>/* write to kernel, but likely more soon */</i></td></tr>
+<tr><th id="873">873</th><td>  <dfn class="enum" id="SCMD_BUFFER" title='SCMD_BUFFER' data-ref="SCMD_BUFFER">SCMD_BUFFER</dfn>		<i>/* stash in application cmd output buffer */</i></td></tr>
+<tr><th id="874">874</th><td>};</td></tr>
+<tr><th id="875">875</th><td></td></tr>
+<tr><th id="876">876</th><td><i>/* Flags for recipient_block, used in DSN support */</i></td></tr>
+<tr><th id="877">877</th><td></td></tr>
+<tr><th id="878">878</th><td><u>#define <dfn class="macro" id="_M/rf_dsnlasthop" data-ref="_M/rf_dsnlasthop">rf_dsnlasthop</dfn>           0x01  /* Do not propagate DSN any further */</u></td></tr>
+<tr><th id="879">879</th><td><u>#define <dfn class="macro" id="_M/rf_notify_never" data-ref="_M/rf_notify_never">rf_notify_never</dfn>         0x02  /* NOTIFY= settings */</u></td></tr>
+<tr><th id="880">880</th><td><u>#define <dfn class="macro" id="_M/rf_notify_success" data-ref="_M/rf_notify_success">rf_notify_success</dfn>       0x04</u></td></tr>
+<tr><th id="881">881</th><td><u>#define <dfn class="macro" id="_M/rf_notify_failure" data-ref="_M/rf_notify_failure">rf_notify_failure</dfn>       0x08</u></td></tr>
+<tr><th id="882">882</th><td><u>#define <dfn class="macro" id="_M/rf_notify_delay" data-ref="_M/rf_notify_delay">rf_notify_delay</dfn>         0x10</u></td></tr>
+<tr><th id="883">883</th><td></td></tr>
+<tr><th id="884">884</th><td><u>#define <dfn class="macro" id="_M/rf_dsnflags" data-ref="_M/rf_dsnflags">rf_dsnflags</dfn>  (rf_notify_never | rf_notify_success | \</u></td></tr>
+<tr><th id="885">885</th><td><u>                      rf_notify_failure | rf_notify_delay)</u></td></tr>
+<tr><th id="886">886</th><td></td></tr>
+<tr><th id="887">887</th><td><i>/* DSN RET types */</i></td></tr>
+<tr><th id="888">888</th><td></td></tr>
+<tr><th id="889">889</th><td><u>#define <dfn class="macro" id="_M/dsn_ret_full" data-ref="_M/dsn_ret_full">dsn_ret_full</dfn>            1</u></td></tr>
+<tr><th id="890">890</th><td><u>#define <dfn class="macro" id="_M/dsn_ret_hdrs" data-ref="_M/dsn_ret_hdrs">dsn_ret_hdrs</dfn>            2</u></td></tr>
+<tr><th id="891">891</th><td></td></tr>
+<tr><th id="892">892</th><td><u>#define <dfn class="macro" id="_M/dsn_support_unknown" data-ref="_M/dsn_support_unknown">dsn_support_unknown</dfn>     0</u></td></tr>
+<tr><th id="893">893</th><td><u>#define <dfn class="macro" id="_M/dsn_support_yes" data-ref="_M/dsn_support_yes">dsn_support_yes</dfn>         1</u></td></tr>
+<tr><th id="894">894</th><td><u>#define <dfn class="macro" id="_M/dsn_support_no" data-ref="_M/dsn_support_no">dsn_support_no</dfn>          2</u></td></tr>
+<tr><th id="895">895</th><td></td></tr>
+<tr><th id="896">896</th><td></td></tr>
+<tr><th id="897">897</th><td><i>/* Codes for the host_find_failed and host_all_ignored options. */</i></td></tr>
+<tr><th id="898">898</th><td></td></tr>
+<tr><th id="899">899</th><td><u>#define <dfn class="macro" id="_M/hff_freeze" data-ref="_M/hff_freeze">hff_freeze</dfn>   0</u></td></tr>
+<tr><th id="900">900</th><td><u>#define <dfn class="macro" id="_M/hff_defer" data-ref="_M/hff_defer">hff_defer</dfn>    1</u></td></tr>
+<tr><th id="901">901</th><td><u>#define <dfn class="macro" id="_M/hff_pass" data-ref="_M/hff_pass">hff_pass</dfn>     2</u></td></tr>
+<tr><th id="902">902</th><td><u>#define <dfn class="macro" id="_M/hff_decline" data-ref="_M/hff_decline">hff_decline</dfn>  3</u></td></tr>
+<tr><th id="903">903</th><td><u>#define <dfn class="macro" id="_M/hff_fail" data-ref="_M/hff_fail">hff_fail</dfn>     4</u></td></tr>
+<tr><th id="904">904</th><td><u>#define <dfn class="macro" id="_M/hff_ignore" data-ref="_M/hff_ignore">hff_ignore</dfn>   5</u></td></tr>
+<tr><th id="905">905</th><td></td></tr>
+<tr><th id="906">906</th><td><i>/* Router information flags */</i></td></tr>
+<tr><th id="907">907</th><td></td></tr>
+<tr><th id="908">908</th><td><u>#define <dfn class="macro" id="_M/ri_yestransport" data-ref="_M/ri_yestransport">ri_yestransport</dfn>    0x0001    /* Must have a transport */</u></td></tr>
+<tr><th id="909">909</th><td><u>#define <dfn class="macro" id="_M/ri_notransport" data-ref="_M/ri_notransport">ri_notransport</dfn>     0x0002    /* Must not have a transport */</u></td></tr>
+<tr><th id="910">910</th><td></td></tr>
+<tr><th id="911">911</th><td><i>/* Codes for match types in match_check_list; to any of them, MCL_NOEXPAND may</i></td></tr>
+<tr><th id="912">912</th><td><i>be added */</i></td></tr>
+<tr><th id="913">913</th><td></td></tr>
+<tr><th id="914">914</th><td><u>#define <dfn class="macro" id="_M/MCL_NOEXPAND" data-ref="_M/MCL_NOEXPAND">MCL_NOEXPAND</dfn>  16</u></td></tr>
+<tr><th id="915">915</th><td></td></tr>
+<tr><th id="916">916</th><td><b>enum</b> { <dfn class="enum" id="MCL_STRING" title='MCL_STRING' data-ref="MCL_STRING">MCL_STRING</dfn>, <dfn class="enum" id="MCL_DOMAIN" title='MCL_DOMAIN' data-ref="MCL_DOMAIN">MCL_DOMAIN</dfn>, <dfn class="enum" id="MCL_HOST" title='MCL_HOST' data-ref="MCL_HOST">MCL_HOST</dfn>, <dfn class="enum" id="MCL_ADDRESS" title='MCL_ADDRESS' data-ref="MCL_ADDRESS">MCL_ADDRESS</dfn>, <dfn class="enum" id="MCL_LOCALPART" title='MCL_LOCALPART' data-ref="MCL_LOCALPART">MCL_LOCALPART</dfn> };</td></tr>
+<tr><th id="917">917</th><td></td></tr>
+<tr><th id="918">918</th><td><i>/* Codes for the places from which ACLs can be called. These are cunningly</i></td></tr>
+<tr><th id="919">919</th><td><i>ordered to make it easy to implement tests for certain ACLs when processing</i></td></tr>
+<tr><th id="920">920</th><td><i>"control" modifiers, by means of a maximum "where" value. Do not modify this</i></td></tr>
+<tr><th id="921">921</th><td><i>order without checking carefully!</i></td></tr>
+<tr><th id="922">922</th><td><i></i></td></tr>
+<tr><th id="923">923</th><td><i>**** IMPORTANT***</i></td></tr>
+<tr><th id="924">924</th><td><i>****   Furthermore, remember to keep these in step with the tables</i></td></tr>
+<tr><th id="925">925</th><td><i>****   of names and response codes in globals.c.</i></td></tr>
+<tr><th id="926">926</th><td><i>**** IMPORTANT ****</i></td></tr>
+<tr><th id="927">927</th><td><i>*/</i></td></tr>
+<tr><th id="928">928</th><td></td></tr>
+<tr><th id="929">929</th><td><b>enum</b> { <dfn class="enum" id="ACL_WHERE_RCPT" title='ACL_WHERE_RCPT' data-ref="ACL_WHERE_RCPT">ACL_WHERE_RCPT</dfn>,       <i>/* Some controls are for RCPT only */</i></td></tr>
+<tr><th id="930">930</th><td>       <dfn class="enum" id="ACL_WHERE_MAIL" title='ACL_WHERE_MAIL' data-ref="ACL_WHERE_MAIL">ACL_WHERE_MAIL</dfn>,       <i>/* )                                           */</i></td></tr>
+<tr><th id="931">931</th><td>       <dfn class="enum" id="ACL_WHERE_PREDATA" title='ACL_WHERE_PREDATA' data-ref="ACL_WHERE_PREDATA">ACL_WHERE_PREDATA</dfn>,    <i>/* ) There are several tests for "in message", */</i></td></tr>
+<tr><th id="932">932</th><td>       <dfn class="enum" id="ACL_WHERE_MIME" title='ACL_WHERE_MIME' data-ref="ACL_WHERE_MIME">ACL_WHERE_MIME</dfn>,       <i>/* ) implemented by &lt;= WHERE_NOTSMTP           */</i></td></tr>
+<tr><th id="933">933</th><td>       <dfn class="enum" id="ACL_WHERE_DKIM" title='ACL_WHERE_DKIM' data-ref="ACL_WHERE_DKIM">ACL_WHERE_DKIM</dfn>,       <i>/* )                                           */</i></td></tr>
+<tr><th id="934">934</th><td>       <dfn class="enum" id="ACL_WHERE_DATA" title='ACL_WHERE_DATA' data-ref="ACL_WHERE_DATA">ACL_WHERE_DATA</dfn>,       <i>/* )                                           */</i></td></tr>
+<tr><th id="935">935</th><td><u>#<span data-ppcond="935">ifndef</span> <span class="macro" data-ref="_M/DISABLE_PRDR">DISABLE_PRDR</span></u></td></tr>
+<tr><th id="936">936</th><td>       <dfn class="enum" id="ACL_WHERE_PRDR" title='ACL_WHERE_PRDR' data-ref="ACL_WHERE_PRDR">ACL_WHERE_PRDR</dfn>,       <i>/* )                                           */</i></td></tr>
+<tr><th id="937">937</th><td><u>#<span data-ppcond="935">endif</span></u></td></tr>
+<tr><th id="938">938</th><td>       <dfn class="enum" id="ACL_WHERE_NOTSMTP" title='ACL_WHERE_NOTSMTP' data-ref="ACL_WHERE_NOTSMTP">ACL_WHERE_NOTSMTP</dfn>,    <i>/* )                                           */</i></td></tr>
+<tr><th id="939">939</th><td></td></tr>
+<tr><th id="940">940</th><td>       <dfn class="enum" id="ACL_WHERE_AUTH" title='ACL_WHERE_AUTH' data-ref="ACL_WHERE_AUTH">ACL_WHERE_AUTH</dfn>,       <i>/* These remaining ones are not currently    */</i></td></tr>
+<tr><th id="941">941</th><td>       <dfn class="enum" id="ACL_WHERE_CONNECT" title='ACL_WHERE_CONNECT' data-ref="ACL_WHERE_CONNECT">ACL_WHERE_CONNECT</dfn>,    <i>/* required to be in a special order so they */</i></td></tr>
+<tr><th id="942">942</th><td>       <dfn class="enum" id="ACL_WHERE_ETRN" title='ACL_WHERE_ETRN' data-ref="ACL_WHERE_ETRN">ACL_WHERE_ETRN</dfn>,       <i>/* are just alphabetical.                    */</i></td></tr>
+<tr><th id="943">943</th><td>       <dfn class="enum" id="ACL_WHERE_EXPN" title='ACL_WHERE_EXPN' data-ref="ACL_WHERE_EXPN">ACL_WHERE_EXPN</dfn>,</td></tr>
+<tr><th id="944">944</th><td>       <dfn class="enum" id="ACL_WHERE_HELO" title='ACL_WHERE_HELO' data-ref="ACL_WHERE_HELO">ACL_WHERE_HELO</dfn>,</td></tr>
+<tr><th id="945">945</th><td>       <dfn class="enum" id="ACL_WHERE_MAILAUTH" title='ACL_WHERE_MAILAUTH' data-ref="ACL_WHERE_MAILAUTH">ACL_WHERE_MAILAUTH</dfn>,</td></tr>
+<tr><th id="946">946</th><td>       <dfn class="enum" id="ACL_WHERE_NOTSMTP_START" title='ACL_WHERE_NOTSMTP_START' data-ref="ACL_WHERE_NOTSMTP_START">ACL_WHERE_NOTSMTP_START</dfn>,</td></tr>
+<tr><th id="947">947</th><td>       <dfn class="enum" id="ACL_WHERE_NOTQUIT" title='ACL_WHERE_NOTQUIT' data-ref="ACL_WHERE_NOTQUIT">ACL_WHERE_NOTQUIT</dfn>,</td></tr>
+<tr><th id="948">948</th><td>       <dfn class="enum" id="ACL_WHERE_QUIT" title='ACL_WHERE_QUIT' data-ref="ACL_WHERE_QUIT">ACL_WHERE_QUIT</dfn>,</td></tr>
+<tr><th id="949">949</th><td>       <dfn class="enum" id="ACL_WHERE_STARTTLS" title='ACL_WHERE_STARTTLS' data-ref="ACL_WHERE_STARTTLS">ACL_WHERE_STARTTLS</dfn>,</td></tr>
+<tr><th id="950">950</th><td>       <dfn class="enum" id="ACL_WHERE_VRFY" title='ACL_WHERE_VRFY' data-ref="ACL_WHERE_VRFY">ACL_WHERE_VRFY</dfn>,</td></tr>
+<tr><th id="951">951</th><td></td></tr>
+<tr><th id="952">952</th><td>       <dfn class="enum" id="ACL_WHERE_DELIVERY" title='ACL_WHERE_DELIVERY' data-ref="ACL_WHERE_DELIVERY">ACL_WHERE_DELIVERY</dfn>,</td></tr>
+<tr><th id="953">953</th><td>       <dfn class="enum" id="ACL_WHERE_UNKNOWN" title='ACL_WHERE_UNKNOWN' data-ref="ACL_WHERE_UNKNOWN">ACL_WHERE_UNKNOWN</dfn>     <i>/* Currently used by a ${acl:name} expansion */</i></td></tr>
+<tr><th id="954">954</th><td>     };</td></tr>
+<tr><th id="955">955</th><td></td></tr>
+<tr><th id="956">956</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_RCPT" data-ref="_M/ACL_BIT_RCPT">ACL_BIT_RCPT</dfn>		BIT(ACL_WHERE_RCPT)</u></td></tr>
+<tr><th id="957">957</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_MAIL" data-ref="_M/ACL_BIT_MAIL">ACL_BIT_MAIL</dfn>		BIT(ACL_WHERE_MAIL)</u></td></tr>
+<tr><th id="958">958</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_PREDATA" data-ref="_M/ACL_BIT_PREDATA">ACL_BIT_PREDATA</dfn>		BIT(ACL_WHERE_PREDATA)</u></td></tr>
+<tr><th id="959">959</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_MIME" data-ref="_M/ACL_BIT_MIME">ACL_BIT_MIME</dfn>		BIT(ACL_WHERE_MIME)</u></td></tr>
+<tr><th id="960">960</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_DKIM" data-ref="_M/ACL_BIT_DKIM">ACL_BIT_DKIM</dfn>		BIT(ACL_WHERE_DKIM)</u></td></tr>
+<tr><th id="961">961</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_DATA" data-ref="_M/ACL_BIT_DATA">ACL_BIT_DATA</dfn>		BIT(ACL_WHERE_DATA)</u></td></tr>
+<tr><th id="962">962</th><td><u>#<span data-ppcond="962">ifndef</span> <span class="macro" data-ref="_M/DISABLE_PRDR">DISABLE_PRDR</span></u></td></tr>
+<tr><th id="963">963</th><td><u># define <dfn class="macro" id="_M/ACL_BIT_PRDR" data-ref="_M/ACL_BIT_PRDR">ACL_BIT_PRDR</dfn>		BIT(ACL_WHERE_PRDR)</u></td></tr>
+<tr><th id="964">964</th><td><u>#<span data-ppcond="962">endif</span></u></td></tr>
+<tr><th id="965">965</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_NOTSMTP" data-ref="_M/ACL_BIT_NOTSMTP">ACL_BIT_NOTSMTP</dfn>		BIT(ACL_WHERE_NOTSMTP)</u></td></tr>
+<tr><th id="966">966</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_AUTH" data-ref="_M/ACL_BIT_AUTH">ACL_BIT_AUTH</dfn>		BIT(ACL_WHERE_AUTH)</u></td></tr>
+<tr><th id="967">967</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_CONNECT" data-ref="_M/ACL_BIT_CONNECT">ACL_BIT_CONNECT</dfn>		BIT(ACL_WHERE_CONNECT)</u></td></tr>
+<tr><th id="968">968</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_ETRN" data-ref="_M/ACL_BIT_ETRN">ACL_BIT_ETRN</dfn>		BIT(ACL_WHERE_ETRN)</u></td></tr>
+<tr><th id="969">969</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_EXPN" data-ref="_M/ACL_BIT_EXPN">ACL_BIT_EXPN</dfn>		BIT(ACL_WHERE_EXPN)</u></td></tr>
+<tr><th id="970">970</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_HELO" data-ref="_M/ACL_BIT_HELO">ACL_BIT_HELO</dfn>		BIT(ACL_WHERE_HELO)</u></td></tr>
+<tr><th id="971">971</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_MAILAUTH" data-ref="_M/ACL_BIT_MAILAUTH">ACL_BIT_MAILAUTH</dfn>	BIT(ACL_WHERE_MAILAUTH)</u></td></tr>
+<tr><th id="972">972</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_NOTSMTP_START" data-ref="_M/ACL_BIT_NOTSMTP_START">ACL_BIT_NOTSMTP_START</dfn>	BIT(ACL_WHERE_NOTSMTP_START)</u></td></tr>
+<tr><th id="973">973</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_NOTQUIT" data-ref="_M/ACL_BIT_NOTQUIT">ACL_BIT_NOTQUIT</dfn>		BIT(ACL_WHERE_NOTQUIT)</u></td></tr>
+<tr><th id="974">974</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_QUIT" data-ref="_M/ACL_BIT_QUIT">ACL_BIT_QUIT</dfn>		BIT(ACL_WHERE_QUIT)</u></td></tr>
+<tr><th id="975">975</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_STARTTLS" data-ref="_M/ACL_BIT_STARTTLS">ACL_BIT_STARTTLS</dfn>	BIT(ACL_WHERE_STARTTLS)</u></td></tr>
+<tr><th id="976">976</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_VRFY" data-ref="_M/ACL_BIT_VRFY">ACL_BIT_VRFY</dfn>		BIT(ACL_WHERE_VRFY)</u></td></tr>
+<tr><th id="977">977</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_DELIVERY" data-ref="_M/ACL_BIT_DELIVERY">ACL_BIT_DELIVERY</dfn>	BIT(ACL_WHERE_DELIVERY)</u></td></tr>
+<tr><th id="978">978</th><td><u>#define <dfn class="macro" id="_M/ACL_BIT_UNKNOWN" data-ref="_M/ACL_BIT_UNKNOWN">ACL_BIT_UNKNOWN</dfn>		BIT(ACL_WHERE_UNKNOWN)</u></td></tr>
+<tr><th id="979">979</th><td></td></tr>
+<tr><th id="980">980</th><td></td></tr>
+<tr><th id="981">981</th><td><i>/* Situations for spool_write_header() */</i></td></tr>
+<tr><th id="982">982</th><td></td></tr>
+<tr><th id="983">983</th><td><b>enum</b> { <dfn class="enum" id="SW_RECEIVING" title='SW_RECEIVING' data-ref="SW_RECEIVING">SW_RECEIVING</dfn>, <dfn class="enum" id="SW_DELIVERING" title='SW_DELIVERING' data-ref="SW_DELIVERING">SW_DELIVERING</dfn>, <dfn class="enum" id="SW_MODIFYING" title='SW_MODIFYING' data-ref="SW_MODIFYING">SW_MODIFYING</dfn> };</td></tr>
+<tr><th id="984">984</th><td></td></tr>
+<tr><th id="985">985</th><td><i>/* MX fields for hosts not obtained from MX records are always negative.</i></td></tr>
+<tr><th id="986">986</th><td><i>MX_NONE is the default case; lesser values are used when the hosts are</i></td></tr>
+<tr><th id="987">987</th><td><i>randomized in batches. */</i></td></tr>
+<tr><th id="988">988</th><td></td></tr>
+<tr><th id="989">989</th><td><u>#define <dfn class="macro" id="_M/MX_NONE" data-ref="_M/MX_NONE">MX_NONE</dfn>           (-1)</u></td></tr>
+<tr><th id="990">990</th><td></td></tr>
+<tr><th id="991">991</th><td><i>/* host_item.port defaults to PORT_NONE; the only current case where this</i></td></tr>
+<tr><th id="992">992</th><td><i>is changed before running the transport is when an dnslookup router sets an</i></td></tr>
+<tr><th id="993">993</th><td><i>explicit port number. */</i></td></tr>
+<tr><th id="994">994</th><td></td></tr>
+<tr><th id="995">995</th><td><u>#define <dfn class="macro" id="_M/PORT_NONE" data-ref="_M/PORT_NONE">PORT_NONE</dfn>     (-1)</u></td></tr>
+<tr><th id="996">996</th><td></td></tr>
+<tr><th id="997">997</th><td><i>/* Flags for single-key search defaults */</i></td></tr>
+<tr><th id="998">998</th><td></td></tr>
+<tr><th id="999">999</th><td><u>#define <dfn class="macro" id="_M/SEARCH_STAR" data-ref="_M/SEARCH_STAR">SEARCH_STAR</dfn>       0x01</u></td></tr>
+<tr><th id="1000">1000</th><td><u>#define <dfn class="macro" id="_M/SEARCH_STARAT" data-ref="_M/SEARCH_STARAT">SEARCH_STARAT</dfn>     0x02</u></td></tr>
+<tr><th id="1001">1001</th><td></td></tr>
+<tr><th id="1002">1002</th><td><i>/* Filter types */</i></td></tr>
+<tr><th id="1003">1003</th><td></td></tr>
+<tr><th id="1004">1004</th><td><b>enum</b> { <dfn class="enum" id="FILTER_UNSET" title='FILTER_UNSET' data-ref="FILTER_UNSET">FILTER_UNSET</dfn>, <dfn class="enum" id="FILTER_FORWARD" title='FILTER_FORWARD' data-ref="FILTER_FORWARD">FILTER_FORWARD</dfn>, <dfn class="enum" id="FILTER_EXIM" title='FILTER_EXIM' data-ref="FILTER_EXIM">FILTER_EXIM</dfn>, <dfn class="enum" id="FILTER_SIEVE" title='FILTER_SIEVE' data-ref="FILTER_SIEVE">FILTER_SIEVE</dfn> };</td></tr>
+<tr><th id="1005">1005</th><td></td></tr>
+<tr><th id="1006">1006</th><td><i>/* Codes for ESMTP facilities offered by peer */</i></td></tr>
+<tr><th id="1007">1007</th><td></td></tr>
+<tr><th id="1008">1008</th><td><u>#define <dfn class="macro" id="_M/OPTION_TLS" data-ref="_M/OPTION_TLS">OPTION_TLS</dfn>	BIT(0)</u></td></tr>
+<tr><th id="1009">1009</th><td><u>#define <dfn class="macro" id="_M/OPTION_IGNQ" data-ref="_M/OPTION_IGNQ">OPTION_IGNQ</dfn>	BIT(1)</u></td></tr>
+<tr><th id="1010">1010</th><td><u>#define <dfn class="macro" id="_M/OPTION_PRDR" data-ref="_M/OPTION_PRDR">OPTION_PRDR</dfn>	BIT(2)</u></td></tr>
+<tr><th id="1011">1011</th><td><u>#define <dfn class="macro" id="_M/OPTION_UTF8" data-ref="_M/OPTION_UTF8">OPTION_UTF8</dfn>	BIT(3)</u></td></tr>
+<tr><th id="1012">1012</th><td><u>#define <dfn class="macro" id="_M/OPTION_DSN" data-ref="_M/OPTION_DSN">OPTION_DSN</dfn>	BIT(4)</u></td></tr>
+<tr><th id="1013">1013</th><td><u>#define <dfn class="macro" id="_M/OPTION_PIPE" data-ref="_M/OPTION_PIPE">OPTION_PIPE</dfn>	BIT(5)</u></td></tr>
+<tr><th id="1014">1014</th><td><u>#define <dfn class="macro" id="_M/OPTION_SIZE" data-ref="_M/OPTION_SIZE">OPTION_SIZE</dfn>	BIT(6)</u></td></tr>
+<tr><th id="1015">1015</th><td><u>#define <dfn class="macro" id="_M/OPTION_CHUNKING" data-ref="_M/OPTION_CHUNKING">OPTION_CHUNKING</dfn>	BIT(7)</u></td></tr>
+<tr><th id="1016">1016</th><td></td></tr>
+<tr><th id="1017">1017</th><td><i>/* Argument for *_getc */</i></td></tr>
+<tr><th id="1018">1018</th><td></td></tr>
+<tr><th id="1019">1019</th><td><u>#define <dfn class="macro" id="_M/GETC_BUFFER_UNLIMITED" data-ref="_M/GETC_BUFFER_UNLIMITED">GETC_BUFFER_UNLIMITED</dfn>	UINT_MAX</u></td></tr>
+<tr><th id="1020">1020</th><td></td></tr>
+<tr><th id="1021">1021</th><td><i>/* UTF-8 chars for line-drawing */</i></td></tr>
+<tr><th id="1022">1022</th><td></td></tr>
+<tr><th id="1023">1023</th><td><u>#define <dfn class="macro" id="_M/UTF8_DOWN_RIGHT" data-ref="_M/UTF8_DOWN_RIGHT">UTF8_DOWN_RIGHT</dfn>		"\xE2\x94\x8c"</u></td></tr>
+<tr><th id="1024">1024</th><td><u>#define <dfn class="macro" id="_M/UTF8_HORIZ" data-ref="_M/UTF8_HORIZ">UTF8_HORIZ</dfn>		"\xE2\x94\x80"</u></td></tr>
+<tr><th id="1025">1025</th><td><u>#define <dfn class="macro" id="_M/UTF8_VERT_RIGHT" data-ref="_M/UTF8_VERT_RIGHT">UTF8_VERT_RIGHT</dfn>		"\xE2\x94\x9C"</u></td></tr>
+<tr><th id="1026">1026</th><td><u>#define <dfn class="macro" id="_M/UTF8_UP_RIGHT" data-ref="_M/UTF8_UP_RIGHT">UTF8_UP_RIGHT</dfn>		"\xE2\x94\x94"</u></td></tr>
+<tr><th id="1027">1027</th><td><u>#define <dfn class="macro" id="_M/UTF8_VERT_2DASH" data-ref="_M/UTF8_VERT_2DASH">UTF8_VERT_2DASH</dfn>		"\xE2\x95\x8E"</u></td></tr>
+<tr><th id="1028">1028</th><td></td></tr>
+<tr><th id="1029">1029</th><td></td></tr>
+<tr><th id="1030">1030</th><td></td></tr>
+<tr><th id="1031">1031</th><td><i>/* End of macros.h */</i></td></tr>
+<tr><th id="1032">1032</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='lookups/lf_sqlperform.c.html'>exim/src/lookups/lf_sqlperform.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

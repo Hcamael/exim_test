@@ -1,0 +1,3 @@
+<dec f='exim/src/macros.h' l='152'/>
+<doc f='exim/src/macros.h' l='149'>/* The size of buffer to get for constructing log entries. Make it big
+enough to hold all the headers from a normal kind of message. */</doc>

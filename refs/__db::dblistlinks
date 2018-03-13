@@ -1,0 +1,10 @@
+<dec f='include/db.h' l='1499' type='struct (anonymous struct at /usr/include/db.h:1496:2)'/>
+<offset>2816</offset>
+<doc f='include/db.h' l='1488'>/*
+	 * Linked list of DBP&apos;s, linked from the ENV, used to keep track
+	 * of all open db handles for cursor adjustment.
+	 *
+	 * !!!
+	 * Explicit representations of structures from queue.h.
+	 * TAILQ_ENTRY(__db) dblistlinks;
+	 */</doc>

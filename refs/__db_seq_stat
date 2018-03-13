@@ -1,0 +1,12 @@
+<def f='include/db.h' l='1273' ll='1283'/>
+<size>64</size>
+<doc f='include/db.h' l='1273'>/* SHARED */</doc>
+<mbr r='__db_seq_stat::st_wait' o='0' t='uintmax_t'/>
+<mbr r='__db_seq_stat::st_nowait' o='64' t='uintmax_t'/>
+<mbr r='__db_seq_stat::st_current' o='128' t='db_seq_t'/>
+<mbr r='__db_seq_stat::st_value' o='192' t='db_seq_t'/>
+<mbr r='__db_seq_stat::st_last_value' o='256' t='db_seq_t'/>
+<mbr r='__db_seq_stat::st_min' o='320' t='db_seq_t'/>
+<mbr r='__db_seq_stat::st_max' o='384' t='db_seq_t'/>
+<mbr r='__db_seq_stat::st_cache_size' o='448' t='int32_t'/>
+<mbr r='__db_seq_stat::st_flags' o='480' t='u_int32_t'/>

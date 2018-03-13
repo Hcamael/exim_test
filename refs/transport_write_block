@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='507' type='BOOL transport_write_block(transport_ctx * , uschar * , int , BOOL )'/>

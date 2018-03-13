@@ -1,0 +1,9 @@
+<dec f='exim/src/local_scan.h' l='53'/>
+<dec f='exim/src/macros.h' l='284'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='60' u='c'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='82' u='c'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='91' u='c'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='98' u='c'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='126' u='c'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='131' u='c'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='135' u='c'/>

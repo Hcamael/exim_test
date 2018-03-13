@@ -1,0 +1,14 @@
+<dec f='exim/src/lookups/lf_functions.h' l='12' type='gstring * lf_quote(uschar * , uschar * , int , gstring * )'/>
+<def f='exim/src/lookups/lf_quote.c' l='30' ll='62' type='gstring * lf_quote(uschar * name, uschar * value, int vlength, gstring * result)'/>
+<doc f='exim/src/lookups/lf_quote.c' l='17'>/* This function is called by some lookups that create name=value result
+strings, to handle the quoting of the data. It adds &quot;name=&quot; to the result,
+followed by appropriately quoted data, followed by a single space.
+
+Arguments:
+  name           the field name
+  value          the data value
+  vlength        the data length
+  result         the result expanding-string
+
+Returns:         the result pointer (possibly updated)
+*/</doc>

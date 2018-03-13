@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='171' type='uschar *'/>
+<doc f='exim/src/globals.h' l='171'>/* Headers deleted by an ACL */</doc>

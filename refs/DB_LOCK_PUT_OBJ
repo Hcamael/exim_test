@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='332' type='6'/>
+<doc f='include/db.h' l='332'>/* Release locker&apos;s locks on obj. */</doc>

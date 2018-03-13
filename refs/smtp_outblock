@@ -1,0 +1,11 @@
+<def f='exim/src/structs.h' l='823' ll='830'/>
+<size>32</size>
+<doc f='exim/src/structs.h' l='819'>/* Structure used to hold buffered outgoing packets of SMTP commands for a
+specific socket. The packets which may contain multiple lines when pipelining
+is in use. */</doc>
+<mbr r='smtp_outblock::sock' o='0' t='int'/>
+<mbr r='smtp_outblock::cmd_count' o='32' t='int'/>
+<mbr r='smtp_outblock::buffersize' o='64' t='int'/>
+<mbr r='smtp_outblock::authenticating' o='96' t='BOOL'/>
+<mbr r='smtp_outblock::ptr' o='128' t='uschar *'/>
+<mbr r='smtp_outblock::buffer' o='192' t='uschar *'/>

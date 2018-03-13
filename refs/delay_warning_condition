@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='342' type='uschar *'/>
+<doc f='exim/src/globals.h' l='342'>/* Condition string for warnings */</doc>

@@ -1,0 +1,3 @@
+<dec f='exim/src/macros.h' l='12'/>
+<doc f='exim/src/macros.h' l='9'>/* These two macros make it possible to obtain the result of macro-expanding
+a string as a text string. This is sometimes useful for debugging output. */</doc>

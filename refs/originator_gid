@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='639' type='gid_t'/>
+<doc f='exim/src/globals.h' l='639'>/* Gid of whoever wrote spool file */</doc>

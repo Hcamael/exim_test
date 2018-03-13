@@ -1,0 +1,4 @@
+<dec f='exim/src/macros.h' l='501'/>
+<doc f='exim/src/macros.h' l='497'>/* Private error numbers for delivery failures, set negative so as not
+to conflict with system errno values.  Take care to maintain the string
+table exim_errstrings[] in log.c */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='1600' type='void *'/>
+<offset>4096</offset>
+<doc f='include/db.h' l='1599'>/* Subsystem-private structure. */</doc>
+<doc f='include/db.h' l='1600'>/* Btree/Recno access method. */</doc>

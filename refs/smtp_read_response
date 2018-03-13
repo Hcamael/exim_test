@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='423' type='BOOL smtp_read_response(smtp_inblock * , uschar * , int , int , int )'/>

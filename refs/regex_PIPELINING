@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='739' type='const pcre *'/>
+<doc f='exim/src/globals.h' l='739'>/* For recognizing PIPELINING */</doc>

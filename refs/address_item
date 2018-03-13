@@ -1,0 +1,61 @@
+<def f='exim/src/structs.h' l='513' ll='637'/>
+<size>432</size>
+<doc f='exim/src/structs.h' l='509'>/* The main address structure. Note that fields that are to be copied to
+generated addresses should be put in the address_item_propagated structure (see
+above) rather than directly into the address_item structure. */</doc>
+<mbr r='address_item::next' o='0' t='struct address_item *'/>
+<mbr r='address_item::parent' o='64' t='struct address_item *'/>
+<mbr r='address_item::first' o='128' t='struct address_item *'/>
+<mbr r='address_item::dupof' o='192' t='struct address_item *'/>
+<mbr r='address_item::start_router' o='256' t='router_instance *'/>
+<mbr r='address_item::router' o='320' t='router_instance *'/>
+<mbr r='address_item::transport' o='384' t='transport_instance *'/>
+<mbr r='address_item::host_list' o='448' t='host_item *'/>
+<mbr r='address_item::host_used' o='512' t='host_item *'/>
+<mbr r='address_item::fallback_hosts' o='576' t='host_item *'/>
+<mbr r='address_item::reply' o='640' t='reply_item *'/>
+<mbr r='address_item::retries' o='704' t='retry_item *'/>
+<mbr r='address_item::address' o='768' t='uschar *'/>
+<mbr r='address_item::unique' o='832' t='uschar *'/>
+<mbr r='address_item::cc_local_part' o='896' t='uschar *'/>
+<mbr r='address_item::lc_local_part' o='960' t='uschar *'/>
+<mbr r='address_item::local_part' o='1024' t='uschar *'/>
+<mbr r='address_item::prefix' o='1088' t='uschar *'/>
+<mbr r='address_item::suffix' o='1152' t='uschar *'/>
+<mbr r='address_item::domain' o='1216' t='const uschar *'/>
+<mbr r='address_item::address_retry_key' o='1280' t='uschar *'/>
+<mbr r='address_item::domain_retry_key' o='1344' t='uschar *'/>
+<mbr r='address_item::current_dir' o='1408' t='uschar *'/>
+<mbr r='address_item::home_dir' o='1472' t='uschar *'/>
+<mbr r='address_item::message' o='1536' t='uschar *'/>
+<mbr r='address_item::user_message' o='1600' t='uschar *'/>
+<mbr r='address_item::onetime_parent' o='1664' t='uschar *'/>
+<mbr r='address_item::pipe_expandn' o='1728' t='uschar **'/>
+<mbr r='address_item::return_filename' o='1792' t='uschar *'/>
+<mbr r='address_item::self_hostname' o='1856' t='uschar *'/>
+<mbr r='address_item::shadow_message' o='1920' t='uschar *'/>
+<mbr r='address_item::cipher' o='1984' t='uschar *'/>
+<mbr r='address_item::ourcert' o='2048' t='void *'/>
+<mbr r='address_item::peercert' o='2112' t='void *'/>
+<mbr r='address_item::peerdn' o='2176' t='uschar *'/>
+<mbr r='address_item::ocsp' o='2240' t='int'/>
+<mbr r='address_item::authenticator' o='2304' t='uschar *'/>
+<mbr r='address_item::auth_id' o='2368' t='uschar *'/>
+<mbr r='address_item::auth_sndr' o='2432' t='uschar *'/>
+<mbr r='address_item::dsn_orcpt' o='2496' t='uschar *'/>
+<mbr r='address_item::dsn_flags' o='2560' t='int'/>
+<mbr r='address_item::dsn_aware' o='2592' t='int'/>
+<mbr r='address_item::uid' o='2624' t='uid_t'/>
+<mbr r='address_item::gid' o='2656' t='gid_t'/>
+<mbr r='address_item::flags' o='2688' t='struct (anonymous struct at /home/ubuntu/exim/src/build-Linux-x86_64/./structs.h:578:3)'/>
+<mbr r='address_item::domain_cache' o='2720' t='unsigned int [1]'/>
+<mbr r='address_item::localpart_cache' o='2752' t='unsigned int [1]'/>
+<mbr r='address_item::mode' o='2784' t='int'/>
+<mbr r='address_item::more_errno' o='2816' t='int'/>
+<mbr r='address_item::delivery_usec' o='2848' t='unsigned int'/>
+<mbr r='address_item::basic_errno' o='2880' t='short'/>
+<mbr r='address_item::child_count' o='2896' t='unsigned short'/>
+<mbr r='address_item::return_file' o='2912' t='short'/>
+<mbr r='address_item::special_action' o='2928' t='short'/>
+<mbr r='address_item::transport_return' o='2944' t='short'/>
+<mbr r='address_item::prop' o='3008' t='address_item_propagated'/>

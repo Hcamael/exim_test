@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='868' type='int'/>
+<offset>128</offset>
+<doc f='exim/src/structs.h' l='868'>/* the number of the list for caching */</doc>

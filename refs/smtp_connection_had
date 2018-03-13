@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='826' type='uschar []'/>
+<doc f='exim/src/globals.h' l='826'>/* Recent SMTP commands */</doc>

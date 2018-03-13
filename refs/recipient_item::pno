@@ -1,0 +1,3 @@
+<dec f='exim/src/local_scan.h' l='129' type='int'/>
+<offset>64</offset>
+<doc f='exim/src/local_scan.h' l='129'>/* parent number for &quot;one_time&quot; alias, or -1 */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2324' type='void *'/>
+<offset>1728</offset>
+<doc f='include/db.h' l='2323'>/* Private handle references */</doc>
+<doc f='include/db.h' l='2324'>/* Application-private handle */</doc>

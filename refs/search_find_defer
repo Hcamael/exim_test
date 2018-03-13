@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='775' type='BOOL'/>
+<doc f='exim/src/globals.h' l='775'>/* Set TRUE if lookup deferred */</doc>

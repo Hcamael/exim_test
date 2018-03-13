@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='114' type='uschar *'/>
+<doc f='exim/src/globals.h' l='114'>/* string of base64 channel binding */</doc>

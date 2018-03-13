@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2716' type='int (*)(DB_SITE *, const char **, u_int *)'/>
+<offset>256</offset>
+<doc f='include/db.h' l='2715'>/* DB_SITE PUBLIC HANDLE LIST BEGIN */</doc>

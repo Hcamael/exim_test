@@ -1,0 +1,3 @@
+<dec f='exim/src/lookupapi.h' l='41' type='uschar *(*)(uschar *, uschar *)'/>
+<offset>448</offset>
+<doc f='exim/src/lookupapi.h' l='41'>/* quoting function */</doc>

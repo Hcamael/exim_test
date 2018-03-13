@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='518' type='u_int32_t'/>
+<offset>640</offset>
+<doc f='include/db.h' l='518'>/* Persist version. */</doc>

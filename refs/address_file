@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='207' type='uschar *'/>
+<doc f='exim/src/globals.h' l='207'>/* Name of file when delivering to one */</doc>

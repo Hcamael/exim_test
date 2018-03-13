@@ -1,0 +1,3 @@
+<dec f='exim/src/globals.h' l='159' type='BOOL'/>
+<doc f='exim/src/globals.h' l='157'>/* General global variables */</doc>
+<doc f='exim/src/globals.h' l='159'>/* Allow *BITMIME incoming */</doc>

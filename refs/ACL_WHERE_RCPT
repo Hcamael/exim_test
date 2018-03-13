@@ -1,0 +1,12 @@
+<dec f='exim/src/macros.h' l='929' type='0'/>
+<doc f='exim/src/macros.h' l='918'>/* Codes for the places from which ACLs can be called. These are cunningly
+ordered to make it easy to implement tests for certain ACLs when processing
+&quot;control&quot; modifiers, by means of a maximum &quot;where&quot; value. Do not modify this
+order without checking carefully!
+
+**** IMPORTANT***
+****   Furthermore, remember to keep these in step with the tables
+****   of names and response codes in globals.c.
+**** IMPORTANT ****
+*/</doc>
+<doc f='exim/src/macros.h' l='929'>/* Some controls are for RCPT only */</doc>

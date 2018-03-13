@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='668' type='DBT *'/>
+<offset>704</offset>
+<doc f='include/db.h' l='668'>/* Byte-string passed to pgin/pgout. */</doc>

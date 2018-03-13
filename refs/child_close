@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='167' type='int child_close(pid_t , int )'/>
+<doc f='exim/src/local_scan.h' l='165'>/* Functions that are documented as visible in local_scan(). */</doc>

@@ -1,0 +1,2 @@
+<dec f='include/openssl/ct.h' l='429' type='void CTLOG_get0_log_id(const CTLOG * log, const uint8_t ** log_id, size_t * log_id_len)'/>
+<doc f='include/openssl/ct.h' l='428'>/* Gets the ID of the CT log */</doc>

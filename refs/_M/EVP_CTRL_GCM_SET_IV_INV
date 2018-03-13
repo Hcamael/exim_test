@@ -1,0 +1,2 @@
+<dec f='include/openssl/evp.h' l='307'/>
+<doc f='include/openssl/evp.h' l='306'>/* Set the GCM invocation field, decrypt only */</doc>

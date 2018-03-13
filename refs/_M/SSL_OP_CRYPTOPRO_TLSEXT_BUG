@@ -1,0 +1,6 @@
+<dec f='include/openssl/ssl.h' l='329'/>
+<doc f='include/openssl/ssl.h' l='324'>/*
+ * Make server add server-hello extension from early version of cryptopro
+ * draft, when GOST ciphersuite is negotiated. Required for interoperability
+ * with CryptoPro CSP 3.x
+ */</doc>

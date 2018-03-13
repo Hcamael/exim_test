@@ -1,0 +1,7 @@
+<dec f='include/db.h' l='877' type='struct (anonymous struct at /usr/include/db.h:874:2)'/>
+<offset>1088</offset>
+<doc f='include/db.h' l='869'>/*
+	 * !!!
+	 * Explicit representations of structures from queue.h.
+	 * STAILQ_HEAD(__logrec, __txn_logrec) logs;
+	 */</doc>

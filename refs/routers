@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='766' type='router_instance *'/>
+<doc f='exim/src/globals.h' l='766'>/* Chain of instantiated routers */</doc>

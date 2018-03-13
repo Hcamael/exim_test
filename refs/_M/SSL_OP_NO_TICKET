@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl.h' l='287'/>
+<doc f='include/openssl/ssl.h' l='286'>/* Don&apos;t use RFC4507 ticket extension */</doc>

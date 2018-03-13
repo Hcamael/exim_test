@@ -1,0 +1,4 @@
+<dec f='include/resolv.h' l='185'/>
+<doc f='include/resolv.h' l='182'>/*
+ * Resolver flags (used to be discrete per-module statics ints).
+ */</doc>

@@ -1,0 +1,626 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>exim.h source code [exim/src/exim.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="sockaddr_46 "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/exim.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='exim.h.html'>exim.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><i>/* Source files for exim all #include this header, which drags in everything</i></td></tr>
+<tr><th id="10">10</th><td><i>that is needed. They don't all need everything, of course, but it's far too</i></td></tr>
+<tr><th id="11">11</th><td><i>messy to have each one importing its own list, and anyway, most of them need</i></td></tr>
+<tr><th id="12">12</th><td><i>most of these includes. */</i></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><u>#<span data-ppcond="14">ifndef</span> <span class="macro" data-ref="_M/EXIM_H">EXIM_H</span></u></td></tr>
+<tr><th id="15">15</th><td><u>#define <dfn class="macro" id="_M/EXIM_H" data-ref="_M/EXIM_H">EXIM_H</dfn></u></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><i>/* Assume most systems have statfs() unless os.h undefines this macro */</i></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><u>#define <dfn class="macro" id="_M/HAVE_STATFS" data-ref="_M/HAVE_STATFS">HAVE_STATFS</dfn></u></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><i>/* Similarly, assume most systems have srandom() unless os.h undefines it.</i></td></tr>
+<tr><th id="22">22</th><td><i>This call dates back at least as far as SUSv2. */</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><u>#define <dfn class="macro" id="_M/HAVE_SRANDOM" data-ref="_M/HAVE_SRANDOM">HAVE_SRANDOM</dfn></u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><i>/* This is primarily for the Gnu C library; we define it before os.h so that</i></td></tr>
+<tr><th id="27">27</th><td><i>os.h has a chance to hurriedly undef it, Just In Case.  We need C99 for some</i></td></tr>
+<tr><th id="28">28</th><td><i>64-bit math support, and defining _ISOC99_SOURCE breaks &lt;resolv.h&gt; and friends.</i></td></tr>
+<tr><th id="29">29</th><td><i>*/</i></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#define <dfn class="macro" id="_M/_GNU_SOURCE" data-ref="_M/_GNU_SOURCE">_GNU_SOURCE</dfn> 1</u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><i>/* First of all include the os-specific header, which might set things that</i></td></tr>
+<tr><th id="34">34</th><td><i>are needed by any of the other headers, including system headers. */</i></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><u>#include <a href="../build-Linux-x86_64/os.h.html">"os.h"</a></u></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><i>/* If it didn't define os_find_running_interfaces, use the common function. */</i></td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><u>#<span data-ppcond="40">ifndef</span> <a class="macro" href="../build-Linux-x86_64/os.h.html#53" data-ref="_M/os_find_running_interfaces">os_find_running_interfaces</a></u></td></tr>
+<tr><th id="41">41</th><td><u># define os_find_running_interfaces os_common_find_running_interfaces</u></td></tr>
+<tr><th id="42">42</th><td><u>#<span data-ppcond="40">endif</span></u></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><i>/* If it didn't define the base for "base 62" numbers, we really do use 62.</i></td></tr>
+<tr><th id="45">45</th><td><i>This is the case for all real Unix and Unix-like OS. It's only Cygwin and</i></td></tr>
+<tr><th id="46">46</th><td><i>Darwin, with their case-insensitive file systems, that can't use base 62 for</i></td></tr>
+<tr><th id="47">47</th><td><i>making unique names. */</i></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><u>#<span data-ppcond="49">ifndef</span> <span class="macro" data-ref="_M/BASE_62">BASE_62</span></u></td></tr>
+<tr><th id="50">50</th><td><u># define <dfn class="macro" id="_M/BASE_62" data-ref="_M/BASE_62">BASE_62</dfn> 62</u></td></tr>
+<tr><th id="51">51</th><td><u>#<span data-ppcond="49">endif</span></u></td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td><i>/* The maximum value of localhost_number depends on the base being used */</i></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><u>#<span data-ppcond="55">if</span> <a class="macro" href="#50" title="62" data-ref="_M/BASE_62">BASE_62</a> == 62</u></td></tr>
+<tr><th id="56">56</th><td><u># define <dfn class="macro" id="_M/LOCALHOST_MAX" data-ref="_M/LOCALHOST_MAX">LOCALHOST_MAX</dfn>  16</u></td></tr>
+<tr><th id="57">57</th><td><u>#<span data-ppcond="55">else</span></u></td></tr>
+<tr><th id="58">58</th><td><u># define LOCALHOST_MAX  10</u></td></tr>
+<tr><th id="59">59</th><td><u>#<span data-ppcond="55">endif</span></u></td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><i>/* If not overridden by os.h, dynamic libraries have filenames ending .so */</i></td></tr>
+<tr><th id="62">62</th><td><u>#<span data-ppcond="62">ifndef</span> <span class="macro" data-ref="_M/DYNLIB_FN_EXT">DYNLIB_FN_EXT</span></u></td></tr>
+<tr><th id="63">63</th><td><u># define <dfn class="macro" id="_M/DYNLIB_FN_EXT" data-ref="_M/DYNLIB_FN_EXT">DYNLIB_FN_EXT</dfn> "so"</u></td></tr>
+<tr><th id="64">64</th><td><u>#<span data-ppcond="62">endif</span></u></td></tr>
+<tr><th id="65">65</th><td></td></tr>
+<tr><th id="66">66</th><td><i>/* ANSI C standard includes */</i></td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td><u>#include <a href="../../include/ctype.h.html">&lt;ctype.h&gt;</a></u></td></tr>
+<tr><th id="69">69</th><td><u>#include <a href="../../include/locale.h.html">&lt;locale.h&gt;</a></u></td></tr>
+<tr><th id="70">70</th><td><u>#include <a href="../../include/math.h.html">&lt;math.h&gt;</a></u></td></tr>
+<tr><th id="71">71</th><td><u>#include <a href="../../include/signal.h.html">&lt;signal.h&gt;</a></u></td></tr>
+<tr><th id="72">72</th><td><u>#include &lt;stdarg.h&gt;</u></td></tr>
+<tr><th id="73">73</th><td><u>#include &lt;stddef.h&gt;</u></td></tr>
+<tr><th id="74">74</th><td><u>#include <a href="../../include/stdio.h.html">&lt;stdio.h&gt;</a></u></td></tr>
+<tr><th id="75">75</th><td><u>#include <a href="../../include/stdlib.h.html">&lt;stdlib.h&gt;</a></u></td></tr>
+<tr><th id="76">76</th><td><u>#include <a href="../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="77">77</th><td><u>#include <a href="../../include/time.h.html">&lt;time.h&gt;</a></u></td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><i>/* Unix includes */</i></td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td><u>#include <a href="../../include/errno.h.html">&lt;errno.h&gt;</a></u></td></tr>
+<tr><th id="82">82</th><td><u>#<span data-ppcond="82">if</span> defined(<span class="macro" data-ref="_M/__svr4__">__svr4__</span>) &amp;&amp; defined(<span class="macro" data-ref="_M/__sparc">__sparc</span>) &amp;&amp; ! defined(<span class="macro" data-ref="_M/__EXTENSIONS__">__EXTENSIONS__</span>)</u></td></tr>
+<tr><th id="83">83</th><td><u># define __EXTENSIONS__  /* so that SunOS 5 gets NGROUPS_MAX */</u></td></tr>
+<tr><th id="84">84</th><td><u># include &lt;limits.h&gt;</u></td></tr>
+<tr><th id="85">85</th><td><u># undef  __EXTENSIONS__</u></td></tr>
+<tr><th id="86">86</th><td><u>#<span data-ppcond="82">else</span></u></td></tr>
+<tr><th id="87">87</th><td><u># include &lt;limits.h&gt;</u></td></tr>
+<tr><th id="88">88</th><td><u>#<span data-ppcond="82">endif</span></u></td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><i>/* C99 integer types, figure out how to undo this if needed for older systems */</i></td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td><u>#include &lt;inttypes.h&gt;</u></td></tr>
+<tr><th id="93">93</th><td></td></tr>
+<tr><th id="94">94</th><td><i>/* Just in case some aged system doesn't define them... */</i></td></tr>
+<tr><th id="95">95</th><td></td></tr>
+<tr><th id="96">96</th><td><u>#<span data-ppcond="96">ifndef</span> <span class="macro" data-ref="_M/INT_MAX">INT_MAX</span></u></td></tr>
+<tr><th id="97">97</th><td><u># define INT_MAX 2147483647</u></td></tr>
+<tr><th id="98">98</th><td><u>#<span data-ppcond="96">endif</span></u></td></tr>
+<tr><th id="99">99</th><td></td></tr>
+<tr><th id="100">100</th><td><u>#<span data-ppcond="100">ifndef</span> <span class="macro" data-ref="_M/INT_MIN">INT_MIN</span></u></td></tr>
+<tr><th id="101">101</th><td><u># define INT_MIN (-INT_MAX - 1)</u></td></tr>
+<tr><th id="102">102</th><td><u>#<span data-ppcond="100">endif</span></u></td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td><u>#<span data-ppcond="104">ifndef</span> <span class="macro" data-ref="_M/SHRT_MAX">SHRT_MAX</span></u></td></tr>
+<tr><th id="105">105</th><td><u># define SHRT_MAX 32767</u></td></tr>
+<tr><th id="106">106</th><td><u>#<span data-ppcond="104">endif</span></u></td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td><u>#<span data-ppcond="108">ifndef</span> <span class="macro" data-ref="_M/UCHAR_MAX">UCHAR_MAX</span></u></td></tr>
+<tr><th id="109">109</th><td><u># define UCHAR_MAX 255</u></td></tr>
+<tr><th id="110">110</th><td><u>#<span data-ppcond="108">endif</span></u></td></tr>
+<tr><th id="111">111</th><td></td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td><i>/* To match int_eximarith_t.  Define in OS/os.h-&lt;your-system&gt; to override. */</i></td></tr>
+<tr><th id="114">114</th><td><u>#<span data-ppcond="114">ifndef</span> <span class="macro" data-ref="_M/EXIM_ARITH_MAX">EXIM_ARITH_MAX</span></u></td></tr>
+<tr><th id="115">115</th><td><u># define <dfn class="macro" id="_M/EXIM_ARITH_MAX" data-ref="_M/EXIM_ARITH_MAX">EXIM_ARITH_MAX</dfn> ((int_eximarith_t)9223372036854775807LL)</u></td></tr>
+<tr><th id="116">116</th><td><u>#<span data-ppcond="114">endif</span></u></td></tr>
+<tr><th id="117">117</th><td><u>#<span data-ppcond="117">ifndef</span> <span class="macro" data-ref="_M/EXIM_ARITH_MIN">EXIM_ARITH_MIN</span></u></td></tr>
+<tr><th id="118">118</th><td><u># define <dfn class="macro" id="_M/EXIM_ARITH_MIN" data-ref="_M/EXIM_ARITH_MIN">EXIM_ARITH_MIN</dfn> (-EXIM_ARITH_MAX - 1)</u></td></tr>
+<tr><th id="119">119</th><td><u>#<span data-ppcond="117">endif</span></u></td></tr>
+<tr><th id="120">120</th><td></td></tr>
+<tr><th id="121">121</th><td><i>/* Some systems have PATH_MAX and some have MAX_PATH_LEN. */</i></td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td><u>#<span data-ppcond="123">ifndef</span> <a class="macro" href="../../include/linux/limits.h.html#12" data-ref="_M/PATH_MAX">PATH_MAX</a></u></td></tr>
+<tr><th id="124">124</th><td><u># ifdef MAX_PATH_LEN</u></td></tr>
+<tr><th id="125">125</th><td><u>#  define PATH_MAX MAX_PATH_LEN</u></td></tr>
+<tr><th id="126">126</th><td><u># else</u></td></tr>
+<tr><th id="127">127</th><td><u>#  define PATH_MAX 1024</u></td></tr>
+<tr><th id="128">128</th><td><u># endif</u></td></tr>
+<tr><th id="129">129</th><td><u>#<span data-ppcond="123">endif</span></u></td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td><u>#include <a href="../../include/x86_64-linux-gnu/sys/types.h.html">&lt;sys/types.h&gt;</a></u></td></tr>
+<tr><th id="132">132</th><td><u>#include <a href="../../include/x86_64-linux-gnu/sys/file.h.html">&lt;sys/file.h&gt;</a></u></td></tr>
+<tr><th id="133">133</th><td><u>#include <a href="../../include/dirent.h.html">&lt;dirent.h&gt;</a></u></td></tr>
+<tr><th id="134">134</th><td><u>#include <a href="../../include/netdb.h.html">&lt;netdb.h&gt;</a></u></td></tr>
+<tr><th id="135">135</th><td><u>#<span data-ppcond="135">ifndef</span> <span class="macro" data-ref="_M/NO_POLL_H">NO_POLL_H</span></u></td></tr>
+<tr><th id="136">136</th><td><u># include <a href="../../include/poll.h.html">&lt;poll.h&gt;</a></u></td></tr>
+<tr><th id="137">137</th><td><u>#<span data-ppcond="135">endif</span></u></td></tr>
+<tr><th id="138">138</th><td><u>#include <a href="../../include/pwd.h.html">&lt;pwd.h&gt;</a></u></td></tr>
+<tr><th id="139">139</th><td><u>#include <a href="../../include/grp.h.html">&lt;grp.h&gt;</a></u></td></tr>
+<tr><th id="140">140</th><td><u>#include <a href="../../include/syslog.h.html">&lt;syslog.h&gt;</a></u></td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td><i>/* Not all systems have flock() available. Those that do must define LOCK_SH</i></td></tr>
+<tr><th id="143">143</th><td><i>in sys/file.h. */</i></td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td><u>#<span data-ppcond="145">ifndef</span> <a class="macro" href="../../include/x86_64-linux-gnu/sys/file.h.html#40" data-ref="_M/LOCK_SH">LOCK_SH</a></u></td></tr>
+<tr><th id="146">146</th><td><u># define NO_FLOCK</u></td></tr>
+<tr><th id="147">147</th><td><u>#<span data-ppcond="145">endif</span></u></td></tr>
+<tr><th id="148">148</th><td></td></tr>
+<tr><th id="149">149</th><td><u>#<span data-ppcond="149">ifndef</span> <span class="macro" data-ref="_M/NO_SYSEXITS">NO_SYSEXITS</span>        /* some OS don't have this */</u></td></tr>
+<tr><th id="150">150</th><td><u># include <a href="../../include/sysexits.h.html">&lt;sysexits.h&gt;</a></u></td></tr>
+<tr><th id="151">151</th><td><u>#<span data-ppcond="149">endif</span></u></td></tr>
+<tr><th id="152">152</th><td></td></tr>
+<tr><th id="153">153</th><td><i>/* A few OS don't have socklen_t; their os.h files define EXIM_SOCKLEN_T to</i></td></tr>
+<tr><th id="154">154</th><td><i>be size_t or whatever. We used to use SOCKLEN_T, but then it was discovered</i></td></tr>
+<tr><th id="155">155</th><td><i>that this is used by the AIX include files. */</i></td></tr>
+<tr><th id="156">156</th><td></td></tr>
+<tr><th id="157">157</th><td><u>#<span data-ppcond="157">ifndef</span> <span class="macro" data-ref="_M/EXIM_SOCKLEN_T">EXIM_SOCKLEN_T</span></u></td></tr>
+<tr><th id="158">158</th><td><u># define <dfn class="macro" id="_M/EXIM_SOCKLEN_T" data-ref="_M/EXIM_SOCKLEN_T">EXIM_SOCKLEN_T</dfn> socklen_t</u></td></tr>
+<tr><th id="159">159</th><td><u>#<span data-ppcond="157">endif</span></u></td></tr>
+<tr><th id="160">160</th><td></td></tr>
+<tr><th id="161">161</th><td><i>/* Ensure that the sysexits we reference are defined */</i></td></tr>
+<tr><th id="162">162</th><td></td></tr>
+<tr><th id="163">163</th><td><u>#<span data-ppcond="163">ifndef</span> <a class="macro" href="../../include/sysexits.h.html#101" data-ref="_M/EX_UNAVAILABLE">EX_UNAVAILABLE</a></u></td></tr>
+<tr><th id="164">164</th><td><u># define EX_UNAVAILABLE 69        /* service unavailable; used for execv fail */</u></td></tr>
+<tr><th id="165">165</th><td><u>#<span data-ppcond="163">endif</span></u></td></tr>
+<tr><th id="166">166</th><td><u>#<span data-ppcond="166">ifndef</span> <a class="macro" href="../../include/sysexits.h.html#105" data-ref="_M/EX_CANTCREAT">EX_CANTCREAT</a></u></td></tr>
+<tr><th id="167">167</th><td><u># define EX_CANTCREAT   73        /* can't create file: treat as temporary */</u></td></tr>
+<tr><th id="168">168</th><td><u>#<span data-ppcond="166">endif</span></u></td></tr>
+<tr><th id="169">169</th><td><u>#<span data-ppcond="169">ifndef</span> <a class="macro" href="../../include/sysexits.h.html#107" data-ref="_M/EX_TEMPFAIL">EX_TEMPFAIL</a></u></td></tr>
+<tr><th id="170">170</th><td><u># define EX_TEMPFAIL    75        /* temp failure; user is invited to retry */</u></td></tr>
+<tr><th id="171">171</th><td><u>#<span data-ppcond="169">endif</span></u></td></tr>
+<tr><th id="172">172</th><td><u>#<span data-ppcond="172">ifndef</span> <a class="macro" href="../../include/sysexits.h.html#110" data-ref="_M/EX_CONFIG">EX_CONFIG</a></u></td></tr>
+<tr><th id="173">173</th><td><u># define EX_CONFIG      78        /* configuration error */</u></td></tr>
+<tr><th id="174">174</th><td><u>#<span data-ppcond="172">endif</span></u></td></tr>
+<tr><th id="175">175</th><td></td></tr>
+<tr><th id="176">176</th><td><i>/* This one is not in any sysexits file that I've come across */</i></td></tr>
+<tr><th id="177">177</th><td></td></tr>
+<tr><th id="178">178</th><td><u>#define <dfn class="macro" id="_M/EX_EXECFAILED" data-ref="_M/EX_EXECFAILED">EX_EXECFAILED</dfn> 127        /* execve() failed */</u></td></tr>
+<tr><th id="179">179</th><td></td></tr>
+<tr><th id="180">180</th><td></td></tr>
+<tr><th id="181">181</th><td><u>#include <a href="../../include/x86_64-linux-gnu/sys/time.h.html">&lt;sys/time.h&gt;</a></u></td></tr>
+<tr><th id="182">182</th><td><u>#include <a href="../../include/x86_64-linux-gnu/sys/param.h.html">&lt;sys/param.h&gt;</a></u></td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td><u>#<span data-ppcond="184">ifndef</span> <span class="macro" data-ref="_M/NO_SYS_RESOURCE_H">NO_SYS_RESOURCE_H</span>  /* QNX doesn't have this */</u></td></tr>
+<tr><th id="185">185</th><td><u># include <a href="../../include/x86_64-linux-gnu/sys/resource.h.html">&lt;sys/resource.h&gt;</a></u></td></tr>
+<tr><th id="186">186</th><td><u>#<span data-ppcond="184">endif</span></u></td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td><u>#include <a href="../../include/x86_64-linux-gnu/sys/socket.h.html">&lt;sys/socket.h&gt;</a></u></td></tr>
+<tr><th id="189">189</th><td></td></tr>
+<tr><th id="190">190</th><td><i>/* If we are on an IPv6 system, the macro AF_INET6 will have been defined in</i></td></tr>
+<tr><th id="191">191</th><td><i>the sys/socket.h header. It is helpful to have this defined on an IPv4 system</i></td></tr>
+<tr><th id="192">192</th><td><i>so that it can appear in the code, even if it is never actually used when</i></td></tr>
+<tr><th id="193">193</th><td><i>the code is run. It saves some #ifdef occurrences. */</i></td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td><u>#<span data-ppcond="195">ifndef</span> <a class="macro" href="../../include/x86_64-linux-gnu/bits/socket.h.html#100" data-ref="_M/AF_INET6">AF_INET6</a></u></td></tr>
+<tr><th id="196">196</th><td><u># define AF_INET6 24</u></td></tr>
+<tr><th id="197">197</th><td><u>#<span data-ppcond="195">endif</span></u></td></tr>
+<tr><th id="198">198</th><td></td></tr>
+<tr><th id="199">199</th><td><u>#include <a href="../../include/x86_64-linux-gnu/sys/ioctl.h.html">&lt;sys/ioctl.h&gt;</a></u></td></tr>
+<tr><th id="200">200</th><td></td></tr>
+<tr><th id="201">201</th><td><i>/* The new standard is statvfs; some OS have statfs. For statvfs the block</i></td></tr>
+<tr><th id="202">202</th><td><i>counts must be multiplied by the "fragment size" f_frsize to get the actual</i></td></tr>
+<tr><th id="203">203</th><td><i>size. In other cases the value seems to be f_bsize (which is sometimes the only</i></td></tr>
+<tr><th id="204">204</th><td><i>block size), so we use a macro to get that instead.</i></td></tr>
+<tr><th id="205">205</th><td><i></i></td></tr>
+<tr><th id="206">206</th><td><i>Also arrange to be able to cut it out altogether for way-out OS that don't have</i></td></tr>
+<tr><th id="207">207</th><td><i>anything. I've indented a bit here to try to make the mess a bit more</i></td></tr>
+<tr><th id="208">208</th><td><i>intelligible. Note that simply defining one name to be another when</i></td></tr>
+<tr><th id="209">209</th><td><i>HAVE_SYS_STATVFS_H is not set will not work if the system has a statvfs macro</i></td></tr>
+<tr><th id="210">210</th><td><i>or a macro with entries f_frsize and f_bsize. */</i></td></tr>
+<tr><th id="211">211</th><td></td></tr>
+<tr><th id="212">212</th><td><u>#<span data-ppcond="212">ifdef</span> <a class="macro" href="#19" data-ref="_M/HAVE_STATFS">HAVE_STATFS</a></u></td></tr>
+<tr><th id="213">213</th><td>  <u>#<span data-ppcond="213">ifdef</span> <a class="macro" href="../build-Linux-x86_64/os.h.html#18" data-ref="_M/HAVE_SYS_STATVFS_H">HAVE_SYS_STATVFS_H</a></u></td></tr>
+<tr><th id="214">214</th><td>    <u>#include <a href="../../include/x86_64-linux-gnu/sys/statvfs.h.html">&lt;sys/statvfs.h&gt;</a></u></td></tr>
+<tr><th id="215">215</th><td>    <u>#define <dfn class="macro" id="_M/STATVFS" data-ref="_M/STATVFS">STATVFS</dfn> statvfs</u></td></tr>
+<tr><th id="216">216</th><td>    <u>#define <dfn class="macro" id="_M/F_FRSIZE" data-ref="_M/F_FRSIZE">F_FRSIZE</dfn> f_frsize</u></td></tr>
+<tr><th id="217">217</th><td>  <u>#<span data-ppcond="213">else</span></u></td></tr>
+<tr><th id="218">218</th><td>    <u>#define STATVFS statfs</u></td></tr>
+<tr><th id="219">219</th><td>    <u>#define F_FRSIZE f_bsize</u></td></tr>
+<tr><th id="220">220</th><td>    <u>#ifdef HAVE_SYS_VFS_H</u></td></tr>
+<tr><th id="221">221</th><td>      <u>#include &lt;sys/vfs.h&gt;</u></td></tr>
+<tr><th id="222">222</th><td>      <u>#ifdef HAVE_SYS_STATFS_H</u></td></tr>
+<tr><th id="223">223</th><td>      <u>#include &lt;sys/statfs.h&gt;</u></td></tr>
+<tr><th id="224">224</th><td>      <u>#endif</u></td></tr>
+<tr><th id="225">225</th><td>    <u>#endif</u></td></tr>
+<tr><th id="226">226</th><td>    <u>#ifdef HAVE_SYS_MOUNT_H</u></td></tr>
+<tr><th id="227">227</th><td>    <u>#include &lt;sys/mount.h&gt;</u></td></tr>
+<tr><th id="228">228</th><td>    <u>#endif</u></td></tr>
+<tr><th id="229">229</th><td>  <u>#<span data-ppcond="213">endif</span></u></td></tr>
+<tr><th id="230">230</th><td></td></tr>
+<tr><th id="231">231</th><td>  <i>/* Macros for the fields for the available space for non-superusers; define</i></td></tr>
+<tr><th id="232">232</th><td><i>  these only if the OS header has not. Not all OS have f_favail; those that</i></td></tr>
+<tr><th id="233">233</th><td><i>  are known to have it define F_FAVAIL as f_favail. The default is to use</i></td></tr>
+<tr><th id="234">234</th><td><i>  f_free. */</i></td></tr>
+<tr><th id="235">235</th><td></td></tr>
+<tr><th id="236">236</th><td>  <u>#<span data-ppcond="236">ifndef</span> <span class="macro" data-ref="_M/F_BAVAIL">F_BAVAIL</span></u></td></tr>
+<tr><th id="237">237</th><td>  <u># define <dfn class="macro" id="_M/F_BAVAIL" data-ref="_M/F_BAVAIL">F_BAVAIL</dfn> f_bavail</u></td></tr>
+<tr><th id="238">238</th><td>  <u>#<span data-ppcond="236">endif</span></u></td></tr>
+<tr><th id="239">239</th><td></td></tr>
+<tr><th id="240">240</th><td>  <u>#<span data-ppcond="240">ifndef</span> <span class="macro" data-ref="_M/F_FAVAIL">F_FAVAIL</span></u></td></tr>
+<tr><th id="241">241</th><td>  <u># define <dfn class="macro" id="_M/F_FAVAIL" data-ref="_M/F_FAVAIL">F_FAVAIL</dfn> f_ffree</u></td></tr>
+<tr><th id="242">242</th><td>  <u>#<span data-ppcond="240">endif</span></u></td></tr>
+<tr><th id="243">243</th><td></td></tr>
+<tr><th id="244">244</th><td>  <i>/* All the systems I've been able to look at seem to have F_FILES */</i></td></tr>
+<tr><th id="245">245</th><td></td></tr>
+<tr><th id="246">246</th><td>  <u>#<span data-ppcond="246">ifndef</span> <span class="macro" data-ref="_M/F_FILES">F_FILES</span></u></td></tr>
+<tr><th id="247">247</th><td>  <u># define <dfn class="macro" id="_M/F_FILES" data-ref="_M/F_FILES">F_FILES</dfn>  f_files</u></td></tr>
+<tr><th id="248">248</th><td>  <u>#<span data-ppcond="246">endif</span></u></td></tr>
+<tr><th id="249">249</th><td></td></tr>
+<tr><th id="250">250</th><td><u>#<span data-ppcond="212">endif</span></u></td></tr>
+<tr><th id="251">251</th><td></td></tr>
+<tr><th id="252">252</th><td></td></tr>
+<tr><th id="253">253</th><td><u>#<span data-ppcond="253">ifndef</span>  <a class="macro" href="../../include/x86_64-linux-gnu/bits/ioctls.h.html#33" data-ref="_M/SIOCGIFCONF">SIOCGIFCONF</a>   /* HACK for SunOS 5 */</u></td></tr>
+<tr><th id="254">254</th><td><u># include &lt;sys/sockio.h&gt;</u></td></tr>
+<tr><th id="255">255</th><td><u>#<span data-ppcond="253">endif</span></u></td></tr>
+<tr><th id="256">256</th><td></td></tr>
+<tr><th id="257">257</th><td><u>#include <a href="../../include/x86_64-linux-gnu/sys/stat.h.html">&lt;sys/stat.h&gt;</a></u></td></tr>
+<tr><th id="258">258</th><td><u>#include <a href="../../include/x86_64-linux-gnu/sys/wait.h.html">&lt;sys/wait.h&gt;</a></u></td></tr>
+<tr><th id="259">259</th><td><u>#include <a href="../../include/x86_64-linux-gnu/sys/utsname.h.html">&lt;sys/utsname.h&gt;</a></u></td></tr>
+<tr><th id="260">260</th><td><u>#include <a href="../../include/fcntl.h.html">&lt;fcntl.h&gt;</a></u></td></tr>
+<tr><th id="261">261</th><td></td></tr>
+<tr><th id="262">262</th><td><i>/* There's a shambles in IRIX6 - it defines EX_OK in unistd.h which conflicts</i></td></tr>
+<tr><th id="263">263</th><td><i>with the definition in sysexits.h. Exim does not actually use this macro, so we</i></td></tr>
+<tr><th id="264">264</th><td><i>just undefine it. It would be nice to be able to re-instate the definition from</i></td></tr>
+<tr><th id="265">265</th><td><i>sysexits.h if there is no definition in unistd.h, but I do not think there is a</i></td></tr>
+<tr><th id="266">266</th><td><i>way to do this in C because macro definitions are not scanned for other macros</i></td></tr>
+<tr><th id="267">267</th><td><i>at definition time. [The code here used to assume they were, until I was</i></td></tr>
+<tr><th id="268">268</th><td><i>disabused of the notion. Luckily, since EX_OK is not used, it didn't matter.] */</i></td></tr>
+<tr><th id="269">269</th><td></td></tr>
+<tr><th id="270">270</th><td><u>#<span data-ppcond="270">ifdef</span> <a class="macro" href="../../include/sysexits.h.html#92" data-ref="_M/EX_OK">EX_OK</a></u></td></tr>
+<tr><th id="271">271</th><td><u># undef <a class="macro" href="../../include/sysexits.h.html#92" data-ref="_M/EX_OK">EX_OK</a></u></td></tr>
+<tr><th id="272">272</th><td><u>#<span data-ppcond="270">endif</span></u></td></tr>
+<tr><th id="273">273</th><td></td></tr>
+<tr><th id="274">274</th><td><u>#include <a href="../../include/unistd.h.html">&lt;unistd.h&gt;</a></u></td></tr>
+<tr><th id="275">275</th><td></td></tr>
+<tr><th id="276">276</th><td><u>#include <a href="../../include/utime.h.html">&lt;utime.h&gt;</a></u></td></tr>
+<tr><th id="277">277</th><td><u>#<span data-ppcond="277">ifndef</span> <span class="macro" data-ref="_M/NO_NET_IF_H">NO_NET_IF_H</span></u></td></tr>
+<tr><th id="278">278</th><td><u># include <a href="../../include/net/if.h.html">&lt;net/if.h&gt;</a></u></td></tr>
+<tr><th id="279">279</th><td><u>#<span data-ppcond="277">endif</span></u></td></tr>
+<tr><th id="280">280</th><td><u>#include <a href="../../include/x86_64-linux-gnu/sys/un.h.html">&lt;sys/un.h&gt;</a></u></td></tr>
+<tr><th id="281">281</th><td><u>#include <a href="../../include/netinet/in.h.html">&lt;netinet/in.h&gt;</a></u></td></tr>
+<tr><th id="282">282</th><td><u>#include <a href="../../include/netinet/tcp.h.html">&lt;netinet/tcp.h&gt;</a></u></td></tr>
+<tr><th id="283">283</th><td><u>#include <a href="../../include/arpa/inet.h.html">&lt;arpa/inet.h&gt;</a></u></td></tr>
+<tr><th id="284">284</th><td><u>#include <a href="../../include/arpa/nameser.h.html">&lt;arpa/nameser.h&gt;</a></u></td></tr>
+<tr><th id="285">285</th><td></td></tr>
+<tr><th id="286">286</th><td></td></tr>
+<tr><th id="287">287</th><td><i>/* If arpa/nameser.h defines a maximum name server packet size, use it,</i></td></tr>
+<tr><th id="288">288</th><td><i>provided it is greater than 2048. Otherwise go for a default. PACKETSZ was used</i></td></tr>
+<tr><th id="289">289</th><td><i>for this, but it seems that NS_PACKETSZ is coming into use. */</i></td></tr>
+<tr><th id="290">290</th><td></td></tr>
+<tr><th id="291">291</th><td><u>#<span data-ppcond="291">if</span> defined(<a class="macro" href="../../include/arpa/nameser.h.html#79" data-ref="_M/NS_PACKETSZ">NS_PACKETSZ</a>) &amp;&amp; <a class="macro" href="../../include/arpa/nameser.h.html#79" title="512" data-ref="_M/NS_PACKETSZ">NS_PACKETSZ</a> &gt;= 2048</u></td></tr>
+<tr><th id="292">292</th><td>  <u>#define MAXPACKET NS_PACKETSZ</u></td></tr>
+<tr><th id="293">293</th><td><u>#<span data-ppcond="291">elif</span> defined(<a class="macro" href="../../include/arpa/nameser_compat.h.html#85" data-ref="_M/PACKETSZ">PACKETSZ</a>) &amp;&amp; <a class="macro" href="../../include/arpa/nameser_compat.h.html#85" title="512" data-ref="_M/PACKETSZ">PACKETSZ</a> &gt;= 2048</u></td></tr>
+<tr><th id="294">294</th><td>  <u>#define MAXPACKET PACKETSZ</u></td></tr>
+<tr><th id="295">295</th><td><u>#<span data-ppcond="291">else</span></u></td></tr>
+<tr><th id="296">296</th><td>  <u>#define <dfn class="macro" id="_M/MAXPACKET" data-ref="_M/MAXPACKET">MAXPACKET</dfn> 2048</u></td></tr>
+<tr><th id="297">297</th><td><u>#<span data-ppcond="291">endif</span></u></td></tr>
+<tr><th id="298">298</th><td></td></tr>
+<tr><th id="299">299</th><td><i>/* While IPv6 is still young the definitions of T_AAAA and T_A6 may not be</i></td></tr>
+<tr><th id="300">300</th><td><i>included in arpa/nameser.h. Fudge them here. */</i></td></tr>
+<tr><th id="301">301</th><td></td></tr>
+<tr><th id="302">302</th><td><u>#<span data-ppcond="302">ifndef</span> <a class="macro" href="../../include/arpa/nameser_compat.h.html#157" data-ref="_M/T_AAAA">T_AAAA</a></u></td></tr>
+<tr><th id="303">303</th><td><u>#define T_AAAA 28</u></td></tr>
+<tr><th id="304">304</th><td><u>#<span data-ppcond="302">endif</span></u></td></tr>
+<tr><th id="305">305</th><td></td></tr>
+<tr><th id="306">306</th><td><u>#<span data-ppcond="306">ifndef</span> <a class="macro" href="../../include/arpa/nameser_compat.h.html#165" data-ref="_M/T_A6">T_A6</a></u></td></tr>
+<tr><th id="307">307</th><td><u>#define T_A6 38</u></td></tr>
+<tr><th id="308">308</th><td><u>#<span data-ppcond="306">endif</span></u></td></tr>
+<tr><th id="309">309</th><td></td></tr>
+<tr><th id="310">310</th><td><i>/* Ancient systems (e.g. SunOS4) don't appear to have T_TXT defined in their</i></td></tr>
+<tr><th id="311">311</th><td><i>header files. I don't suppose they have T_SRV either. */</i></td></tr>
+<tr><th id="312">312</th><td></td></tr>
+<tr><th id="313">313</th><td><u>#<span data-ppcond="313">ifndef</span> <a class="macro" href="../../include/arpa/nameser_compat.h.html#145" data-ref="_M/T_TXT">T_TXT</a></u></td></tr>
+<tr><th id="314">314</th><td><u># define T_TXT 16</u></td></tr>
+<tr><th id="315">315</th><td><u>#<span data-ppcond="313">endif</span></u></td></tr>
+<tr><th id="316">316</th><td></td></tr>
+<tr><th id="317">317</th><td><u>#<span data-ppcond="317">ifndef</span> <a class="macro" href="../../include/arpa/nameser_compat.h.html#162" data-ref="_M/T_SRV">T_SRV</a></u></td></tr>
+<tr><th id="318">318</th><td><u># define T_SRV 33</u></td></tr>
+<tr><th id="319">319</th><td><u>#<span data-ppcond="317">endif</span></u></td></tr>
+<tr><th id="320">320</th><td></td></tr>
+<tr><th id="321">321</th><td><i>/* Many systems do not have T_SPF. */</i></td></tr>
+<tr><th id="322">322</th><td></td></tr>
+<tr><th id="323">323</th><td><u>#<span data-ppcond="323">ifndef</span> <span class="macro" data-ref="_M/T_SPF">T_SPF</span></u></td></tr>
+<tr><th id="324">324</th><td><u># define <dfn class="macro" id="_M/T_SPF" data-ref="_M/T_SPF">T_SPF</dfn> 99</u></td></tr>
+<tr><th id="325">325</th><td><u>#<span data-ppcond="323">endif</span></u></td></tr>
+<tr><th id="326">326</th><td></td></tr>
+<tr><th id="327">327</th><td><i>/* New TLSA record for DANE */</i></td></tr>
+<tr><th id="328">328</th><td><u>#<span data-ppcond="328">ifndef</span> <span class="macro" data-ref="_M/T_TLSA">T_TLSA</span></u></td></tr>
+<tr><th id="329">329</th><td><u># define <dfn class="macro" id="_M/T_TLSA" data-ref="_M/T_TLSA">T_TLSA</dfn> 52</u></td></tr>
+<tr><th id="330">330</th><td><u>#<span data-ppcond="328">endif</span></u></td></tr>
+<tr><th id="331">331</th><td><u>#define <dfn class="macro" id="_M/MAX_TLSA_EXPANDED_SIZE" data-ref="_M/MAX_TLSA_EXPANDED_SIZE">MAX_TLSA_EXPANDED_SIZE</dfn> 8192</u></td></tr>
+<tr><th id="332">332</th><td></td></tr>
+<tr><th id="333">333</th><td><i>/* It seems that some versions of arpa/nameser.h don't define *any* of the</i></td></tr>
+<tr><th id="334">334</th><td><i>T_xxx macros, which seem to be non-standard nowadays. Just to be on the safe</i></td></tr>
+<tr><th id="335">335</th><td><i>side, put in definitions for all the ones that Exim uses. */</i></td></tr>
+<tr><th id="336">336</th><td></td></tr>
+<tr><th id="337">337</th><td><u>#<span data-ppcond="337">ifndef</span> <a class="macro" href="../../include/arpa/nameser_compat.h.html#130" data-ref="_M/T_A">T_A</a></u></td></tr>
+<tr><th id="338">338</th><td><u># define T_A 1</u></td></tr>
+<tr><th id="339">339</th><td><u>#<span data-ppcond="337">endif</span></u></td></tr>
+<tr><th id="340">340</th><td></td></tr>
+<tr><th id="341">341</th><td><u>#<span data-ppcond="341">ifndef</span> <a class="macro" href="../../include/arpa/nameser_compat.h.html#134" data-ref="_M/T_CNAME">T_CNAME</a></u></td></tr>
+<tr><th id="342">342</th><td><u># define T_CNAME 5</u></td></tr>
+<tr><th id="343">343</th><td><u>#<span data-ppcond="341">endif</span></u></td></tr>
+<tr><th id="344">344</th><td></td></tr>
+<tr><th id="345">345</th><td><u>#<span data-ppcond="345">ifndef</span> <a class="macro" href="../../include/arpa/nameser_compat.h.html#135" data-ref="_M/T_SOA">T_SOA</a></u></td></tr>
+<tr><th id="346">346</th><td><u># define T_SOA 6</u></td></tr>
+<tr><th id="347">347</th><td><u>#<span data-ppcond="345">endif</span></u></td></tr>
+<tr><th id="348">348</th><td></td></tr>
+<tr><th id="349">349</th><td><u>#<span data-ppcond="349">ifndef</span> <a class="macro" href="../../include/arpa/nameser_compat.h.html#144" data-ref="_M/T_MX">T_MX</a></u></td></tr>
+<tr><th id="350">350</th><td><u># define T_MX 15</u></td></tr>
+<tr><th id="351">351</th><td><u>#<span data-ppcond="349">endif</span></u></td></tr>
+<tr><th id="352">352</th><td></td></tr>
+<tr><th id="353">353</th><td><u>#<span data-ppcond="353">ifndef</span> <a class="macro" href="../../include/arpa/nameser_compat.h.html#131" data-ref="_M/T_NS">T_NS</a></u></td></tr>
+<tr><th id="354">354</th><td><u># define T_NS 2</u></td></tr>
+<tr><th id="355">355</th><td><u>#<span data-ppcond="353">endif</span></u></td></tr>
+<tr><th id="356">356</th><td></td></tr>
+<tr><th id="357">357</th><td><u>#<span data-ppcond="357">ifndef</span> <a class="macro" href="../../include/arpa/nameser_compat.h.html#141" data-ref="_M/T_PTR">T_PTR</a></u></td></tr>
+<tr><th id="358">358</th><td><u># define T_PTR 12</u></td></tr>
+<tr><th id="359">359</th><td><u>#<span data-ppcond="357">endif</span></u></td></tr>
+<tr><th id="360">360</th><td></td></tr>
+<tr><th id="361">361</th><td></td></tr>
+<tr><th id="362">362</th><td><i>/* We define a few private types for special DNS lookups:</i></td></tr>
+<tr><th id="363">363</th><td><i></i></td></tr>
+<tr><th id="364">364</th><td><i> . T_ZNS gets the nameservers of the enclosing zone of a domain</i></td></tr>
+<tr><th id="365">365</th><td><i></i></td></tr>
+<tr><th id="366">366</th><td><i> . T_MXH gets the MX hostnames only (without their priorities)</i></td></tr>
+<tr><th id="367">367</th><td><i></i></td></tr>
+<tr><th id="368">368</th><td><i> . T_CSA gets the domain's Client SMTP Authorization SRV record</i></td></tr>
+<tr><th id="369">369</th><td><i></i></td></tr>
+<tr><th id="370">370</th><td><i> . T_ADDRESSES looks up both AAAA (or A6) and A records</i></td></tr>
+<tr><th id="371">371</th><td><i></i></td></tr>
+<tr><th id="372">372</th><td><i>If any of these names appear in the RRtype list at:</i></td></tr>
+<tr><th id="373">373</th><td><i>  &lt;<a href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml">http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml</a>&gt;</i></td></tr>
+<tr><th id="374">374</th><td><i>then we should rename Exim's private type away from the conflict.</i></td></tr>
+<tr><th id="375">375</th><td><i>*/</i></td></tr>
+<tr><th id="376">376</th><td></td></tr>
+<tr><th id="377">377</th><td><u>#define <dfn class="macro" id="_M/T_ZNS" data-ref="_M/T_ZNS">T_ZNS</dfn> (-1)</u></td></tr>
+<tr><th id="378">378</th><td><u>#define <dfn class="macro" id="_M/T_MXH" data-ref="_M/T_MXH">T_MXH</dfn> (-2)</u></td></tr>
+<tr><th id="379">379</th><td><u>#define <dfn class="macro" id="_M/T_CSA" data-ref="_M/T_CSA">T_CSA</dfn> (-3)</u></td></tr>
+<tr><th id="380">380</th><td><u>#define <dfn class="macro" id="_M/T_ADDRESSES" data-ref="_M/T_ADDRESSES">T_ADDRESSES</dfn> (-4)</u></td></tr>
+<tr><th id="381">381</th><td></td></tr>
+<tr><th id="382">382</th><td><i>/* The resolv.h header defines __P(x) on some Solaris 2.5.1 systems (without</i></td></tr>
+<tr><th id="383">383</th><td><i>checking that it is already defined, in fact). This conflicts with other</i></td></tr>
+<tr><th id="384">384</th><td><i>headers that behave likewise (see below), leading to compiler warnings. Arrange</i></td></tr>
+<tr><th id="385">385</th><td><i>to undefine it if resolv.h defines it. */</i></td></tr>
+<tr><th id="386">386</th><td></td></tr>
+<tr><th id="387">387</th><td><u>#<span data-ppcond="387">if</span> defined(<a class="macro" href="../../include/x86_64-linux-gnu/sys/cdefs.h.html#82" data-ref="_M/__P">__P</a>)</u></td></tr>
+<tr><th id="388">388</th><td><u># define <dfn class="macro" id="_M/__P_WAS_DEFINED_BEFORE_RESOLV" data-ref="_M/__P_WAS_DEFINED_BEFORE_RESOLV">__P_WAS_DEFINED_BEFORE_RESOLV</dfn></u></td></tr>
+<tr><th id="389">389</th><td><u>#<span data-ppcond="387">endif</span></u></td></tr>
+<tr><th id="390">390</th><td></td></tr>
+<tr><th id="391">391</th><td><u>#include <a href="../../include/resolv.h.html">&lt;resolv.h&gt;</a></u></td></tr>
+<tr><th id="392">392</th><td></td></tr>
+<tr><th id="393">393</th><td><u>#<span data-ppcond="393">if</span> defined(<a class="macro" href="../../include/x86_64-linux-gnu/sys/cdefs.h.html#82" data-ref="_M/__P">__P</a>) &amp;&amp; ! defined (<a class="macro" href="#388" data-ref="_M/__P_WAS_DEFINED_BEFORE_RESOLV">__P_WAS_DEFINED_BEFORE_RESOLV</a>)</u></td></tr>
+<tr><th id="394">394</th><td><u># undef __P</u></td></tr>
+<tr><th id="395">395</th><td><u>#<span data-ppcond="393">endif</span></u></td></tr>
+<tr><th id="396">396</th><td></td></tr>
+<tr><th id="397">397</th><td><i>/* If not defined by os.h, we do nothing special to push DNS resolver state</i></td></tr>
+<tr><th id="398">398</th><td><i>back to be available by the classic resolver routines.  Also, provide</i></td></tr>
+<tr><th id="399">399</th><td><i>prototype for our get routine, unless defined away. */</i></td></tr>
+<tr><th id="400">400</th><td></td></tr>
+<tr><th id="401">401</th><td><u>#<span data-ppcond="401">ifndef</span> <span class="macro" data-ref="_M/os_put_dns_resolver_res">os_put_dns_resolver_res</span></u></td></tr>
+<tr><th id="402">402</th><td><u># define <dfn class="macro" id="_M/os_put_dns_resolver_res" data-ref="_M/os_put_dns_resolver_res">os_put_dns_resolver_res</dfn>(R) do {/**/} while(0)</u></td></tr>
+<tr><th id="403">403</th><td><u>#<span data-ppcond="401">endif</span></u></td></tr>
+<tr><th id="404">404</th><td><u>#<span data-ppcond="404">ifndef</span> <span class="macro" data-ref="_M/os_get_dns_resolver_res">os_get_dns_resolver_res</span></u></td></tr>
+<tr><th id="405">405</th><td><a class="typedef" href="../../include/resolv.h.html#res_state" title='res_state' data-type='struct __res_state *' data-ref="res_state">res_state</a> <dfn class="decl fn" id="os_get_dns_resolver_res" title='os_get_dns_resolver_res' data-ref="os_get_dns_resolver_res">os_get_dns_resolver_res</dfn>(<em>void</em>);</td></tr>
+<tr><th id="406">406</th><td><u>#<span data-ppcond="404">endif</span></u></td></tr>
+<tr><th id="407">407</th><td></td></tr>
+<tr><th id="408">408</th><td><i>/* These three are to support the IP option logging code. Linux is</i></td></tr>
+<tr><th id="409">409</th><td><i>different to everyone else and there are also other systems which don't</i></td></tr>
+<tr><th id="410">410</th><td><i>have netinet/ip_var.h, so there's a general macro to control its inclusion. */</i></td></tr>
+<tr><th id="411">411</th><td></td></tr>
+<tr><th id="412">412</th><td><u>#include <a href="../../include/netinet/in_systm.h.html">&lt;netinet/in_systm.h&gt;</a></u></td></tr>
+<tr><th id="413">413</th><td><u>#include <a href="../../include/netinet/ip.h.html">&lt;netinet/ip.h&gt;</a></u></td></tr>
+<tr><th id="414">414</th><td></td></tr>
+<tr><th id="415">415</th><td><u>#<span data-ppcond="415">ifndef</span> <a class="macro" href="../build-Linux-x86_64/os.h.html#19" data-ref="_M/NO_IP_VAR_H">NO_IP_VAR_H</a></u></td></tr>
+<tr><th id="416">416</th><td><u># include &lt;netinet/ip_var.h&gt;</u></td></tr>
+<tr><th id="417">417</th><td><u>#<span data-ppcond="415">endif</span></u></td></tr>
+<tr><th id="418">418</th><td></td></tr>
+<tr><th id="419">419</th><td><i>/* Linux (and some others) uses a different type for the 2nd argument of</i></td></tr>
+<tr><th id="420">420</th><td><i>iconv(). It's os.h file defines ICONV_ARG2_TYPE. For the rest, define a default</i></td></tr>
+<tr><th id="421">421</th><td><i>here. */</i></td></tr>
+<tr><th id="422">422</th><td></td></tr>
+<tr><th id="423">423</th><td><u>#<span data-ppcond="423">ifndef</span> <span class="macro" data-ref="_M/ICONV_ARG2_TYPE">ICONV_ARG2_TYPE</span></u></td></tr>
+<tr><th id="424">424</th><td><u># define <dfn class="macro" id="_M/ICONV_ARG2_TYPE" data-ref="_M/ICONV_ARG2_TYPE">ICONV_ARG2_TYPE</dfn> char **</u></td></tr>
+<tr><th id="425">425</th><td><u>#<span data-ppcond="423">endif</span></u></td></tr>
+<tr><th id="426">426</th><td></td></tr>
+<tr><th id="427">427</th><td><i>/* One OS uses a different type for the 5th argument of getsockopt */</i></td></tr>
+<tr><th id="428">428</th><td></td></tr>
+<tr><th id="429">429</th><td><u>#<span data-ppcond="429">ifndef</span> <span class="macro" data-ref="_M/GETSOCKOPT_ARG5_TYPE">GETSOCKOPT_ARG5_TYPE</span></u></td></tr>
+<tr><th id="430">430</th><td><u># define <dfn class="macro" id="_M/GETSOCKOPT_ARG5_TYPE" data-ref="_M/GETSOCKOPT_ARG5_TYPE">GETSOCKOPT_ARG5_TYPE</dfn> socklen_t *</u></td></tr>
+<tr><th id="431">431</th><td><u>#<span data-ppcond="429">endif</span></u></td></tr>
+<tr><th id="432">432</th><td></td></tr>
+<tr><th id="433">433</th><td><i>/* One operating system uses a different type for the 2nd argument of select().</i></td></tr>
+<tr><th id="434">434</th><td><i>Its os.h file defines SELECT_ARG2_TYPE. For the rest, define a default here. */</i></td></tr>
+<tr><th id="435">435</th><td></td></tr>
+<tr><th id="436">436</th><td><u>#<span data-ppcond="436">ifndef</span> <span class="macro" data-ref="_M/SELECT_ARG2_TYPE">SELECT_ARG2_TYPE</span></u></td></tr>
+<tr><th id="437">437</th><td><u># define <dfn class="macro" id="_M/SELECT_ARG2_TYPE" data-ref="_M/SELECT_ARG2_TYPE">SELECT_ARG2_TYPE</dfn> fd_set</u></td></tr>
+<tr><th id="438">438</th><td><u>#<span data-ppcond="436">endif</span></u></td></tr>
+<tr><th id="439">439</th><td></td></tr>
+<tr><th id="440">440</th><td><i>/* One operating system uses a different type for the 4th argument of</i></td></tr>
+<tr><th id="441">441</th><td><i>dn_expand(). Its os.h file defines DN_EXPAND_ARG4_TYPE. For the rest, define a</i></td></tr>
+<tr><th id="442">442</th><td><i>default here. */</i></td></tr>
+<tr><th id="443">443</th><td></td></tr>
+<tr><th id="444">444</th><td><u>#<span data-ppcond="444">ifndef</span> <span class="macro" data-ref="_M/DN_EXPAND_ARG4_TYPE">DN_EXPAND_ARG4_TYPE</span></u></td></tr>
+<tr><th id="445">445</th><td><u># define <dfn class="macro" id="_M/DN_EXPAND_ARG4_TYPE" data-ref="_M/DN_EXPAND_ARG4_TYPE">DN_EXPAND_ARG4_TYPE</dfn> char *</u></td></tr>
+<tr><th id="446">446</th><td><u>#<span data-ppcond="444">endif</span></u></td></tr>
+<tr><th id="447">447</th><td></td></tr>
+<tr><th id="448">448</th><td><i>/* One operating system defines a different type for the yield of inet_addr().</i></td></tr>
+<tr><th id="449">449</th><td><i>In Exim code, its value is always assigned to the s_addr members of address</i></td></tr>
+<tr><th id="450">450</th><td><i>structures. Casting the yield to the type of s_addr should fix the problem,</i></td></tr>
+<tr><th id="451">451</th><td><i>since the size of the data is correct. Just in case this ever has to be</i></td></tr>
+<tr><th id="452">452</th><td><i>changed, use a macro for the type, and define it here so that it is possible to</i></td></tr>
+<tr><th id="453">453</th><td><i>use different values for specific OS if ever necessary. */</i></td></tr>
+<tr><th id="454">454</th><td></td></tr>
+<tr><th id="455">455</th><td><u>#<span data-ppcond="455">ifndef</span> <span class="macro" data-ref="_M/S_ADDR_TYPE">S_ADDR_TYPE</span></u></td></tr>
+<tr><th id="456">456</th><td><u># define <dfn class="macro" id="_M/S_ADDR_TYPE" data-ref="_M/S_ADDR_TYPE">S_ADDR_TYPE</dfn> u_long</u></td></tr>
+<tr><th id="457">457</th><td><u>#<span data-ppcond="455">endif</span></u></td></tr>
+<tr><th id="458">458</th><td></td></tr>
+<tr><th id="459">459</th><td><i>/* (At least) one operating system (Solaris) defines a different type for the</i></td></tr>
+<tr><th id="460">460</th><td><i>second argument of pam_converse() - the difference is the absence of "const".</i></td></tr>
+<tr><th id="461">461</th><td><i>Its os.h file defines PAM_CONVERSE_ARG2_TYPE. For the rest, define a default</i></td></tr>
+<tr><th id="462">462</th><td><i>here. */</i></td></tr>
+<tr><th id="463">463</th><td></td></tr>
+<tr><th id="464">464</th><td><u>#<span data-ppcond="464">ifndef</span> <span class="macro" data-ref="_M/PAM_CONVERSE_ARG2_TYPE">PAM_CONVERSE_ARG2_TYPE</span></u></td></tr>
+<tr><th id="465">465</th><td><u># define <dfn class="macro" id="_M/PAM_CONVERSE_ARG2_TYPE" data-ref="_M/PAM_CONVERSE_ARG2_TYPE">PAM_CONVERSE_ARG2_TYPE</dfn> const struct pam_message</u></td></tr>
+<tr><th id="466">466</th><td><u>#<span data-ppcond="464">endif</span></u></td></tr>
+<tr><th id="467">467</th><td></td></tr>
+<tr><th id="468">468</th><td><i>/* One operating system (SunOS4) defines getc, ungetc, feof, and ferror as</i></td></tr>
+<tr><th id="469">469</th><td><i>macros and not as functions. Exim needs them to be assignable functions. This</i></td></tr>
+<tr><th id="470">470</th><td><i>flag gets set to cause this to be sorted out here. */</i></td></tr>
+<tr><th id="471">471</th><td></td></tr>
+<tr><th id="472">472</th><td><u>#<span data-ppcond="472">ifdef</span> <span class="macro" data-ref="_M/FUDGE_GETC_AND_FRIENDS">FUDGE_GETC_AND_FRIENDS</span></u></td></tr>
+<tr><th id="473">473</th><td><u># undef getc</u></td></tr>
+<tr><th id="474">474</th><td><b>extern</b> <em>int</em> getc(FILE *);</td></tr>
+<tr><th id="475">475</th><td><u># undef ungetc</u></td></tr>
+<tr><th id="476">476</th><td><b>extern</b> <em>int</em> ungetc(<em>int</em>, FILE *);</td></tr>
+<tr><th id="477">477</th><td><u># undef feof</u></td></tr>
+<tr><th id="478">478</th><td><b>extern</b> <em>int</em> feof(FILE *);</td></tr>
+<tr><th id="479">479</th><td><u># undef ferror</u></td></tr>
+<tr><th id="480">480</th><td><b>extern</b> <em>int</em> ferror(FILE *);</td></tr>
+<tr><th id="481">481</th><td><u>#<span data-ppcond="472">endif</span></u></td></tr>
+<tr><th id="482">482</th><td></td></tr>
+<tr><th id="483">483</th><td><i>/* The header from the PCRE regex package */</i></td></tr>
+<tr><th id="484">484</th><td></td></tr>
+<tr><th id="485">485</th><td><u>#include <a href="../../include/pcre.h.html">&lt;pcre.h&gt;</a></u></td></tr>
+<tr><th id="486">486</th><td></td></tr>
+<tr><th id="487">487</th><td><i>/* Exim includes are in several files. Note that local_scan.h #includes</i></td></tr>
+<tr><th id="488">488</th><td><i>config.h, mytypes.h, and store.h, so we don't need to mention them explicitly.</i></td></tr>
+<tr><th id="489">489</th><td><i>*/</i></td></tr>
+<tr><th id="490">490</th><td></td></tr>
+<tr><th id="491">491</th><td><u>#include <a href="local_scan.h.html">"local_scan.h"</a></u></td></tr>
+<tr><th id="492">492</th><td><u>#include <a href="macros.h.html">"macros.h"</a></u></td></tr>
+<tr><th id="493">493</th><td><u>#include <a href="dbstuff.h.html">"dbstuff.h"</a></u></td></tr>
+<tr><th id="494">494</th><td><u>#include <a href="structs.h.html">"structs.h"</a></u></td></tr>
+<tr><th id="495">495</th><td><u>#include <a href="blob.h.html">"blob.h"</a></u></td></tr>
+<tr><th id="496">496</th><td><u>#include <a href="globals.h.html">"globals.h"</a></u></td></tr>
+<tr><th id="497">497</th><td><u>#include <a href="hash.h.html">"hash.h"</a></u></td></tr>
+<tr><th id="498">498</th><td><u>#include <a href="functions.h.html">"functions.h"</a></u></td></tr>
+<tr><th id="499">499</th><td><u>#include <a href="dbfunctions.h.html">"dbfunctions.h"</a></u></td></tr>
+<tr><th id="500">500</th><td><u>#include <a href="osfunctions.h.html">"osfunctions.h"</a></u></td></tr>
+<tr><th id="501">501</th><td></td></tr>
+<tr><th id="502">502</th><td><u>#<span data-ppcond="502">ifdef</span> <span class="macro" data-ref="_M/EXPERIMENTAL_BRIGHTMAIL">EXPERIMENTAL_BRIGHTMAIL</span></u></td></tr>
+<tr><th id="503">503</th><td><u># include "bmi_spam.h"</u></td></tr>
+<tr><th id="504">504</th><td><u>#<span data-ppcond="502">endif</span></u></td></tr>
+<tr><th id="505">505</th><td><u>#<span data-ppcond="505">ifdef</span> <span class="macro" data-ref="_M/SUPPORT_SPF">SUPPORT_SPF</span></u></td></tr>
+<tr><th id="506">506</th><td><u># include "spf.h"</u></td></tr>
+<tr><th id="507">507</th><td><u>#<span data-ppcond="505">endif</span></u></td></tr>
+<tr><th id="508">508</th><td><u>#<span data-ppcond="508">ifdef</span> <span class="macro" data-ref="_M/EXPERIMENTAL_SRS">EXPERIMENTAL_SRS</span></u></td></tr>
+<tr><th id="509">509</th><td><u># include "srs.h"</u></td></tr>
+<tr><th id="510">510</th><td><u>#<span data-ppcond="508">endif</span></u></td></tr>
+<tr><th id="511">511</th><td><u>#<span data-ppcond="511">ifndef</span> <span class="macro" data-ref="_M/DISABLE_DKIM">DISABLE_DKIM</span></u></td></tr>
+<tr><th id="512">512</th><td><u># include <a href="dkim.h.html">"dkim.h"</a></u></td></tr>
+<tr><th id="513">513</th><td><u>#<span data-ppcond="511">endif</span></u></td></tr>
+<tr><th id="514">514</th><td><u>#<span data-ppcond="514">ifdef</span> <span class="macro" data-ref="_M/EXPERIMENTAL_DMARC">EXPERIMENTAL_DMARC</span></u></td></tr>
+<tr><th id="515">515</th><td><u># include "dmarc.h"</u></td></tr>
+<tr><th id="516">516</th><td><u># include &lt;opendmarc/dmarc.h&gt;</u></td></tr>
+<tr><th id="517">517</th><td><u>#<span data-ppcond="514">endif</span></u></td></tr>
+<tr><th id="518">518</th><td></td></tr>
+<tr><th id="519">519</th><td><i>/* The following stuff must follow the inclusion of config.h because it</i></td></tr>
+<tr><th id="520">520</th><td><i>requires various things that are set therein. */</i></td></tr>
+<tr><th id="521">521</th><td></td></tr>
+<tr><th id="522">522</th><td><u>#<span data-ppcond="522">if</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#29" title="1" data-ref="_M/HAVE_ICONV">HAVE_ICONV</a>             /* Not all OS have this */</u></td></tr>
+<tr><th id="523">523</th><td><u># include <a href="../../include/iconv.h.html">&lt;iconv.h&gt;</a></u></td></tr>
+<tr><th id="524">524</th><td><u>#<span data-ppcond="522">endif</span></u></td></tr>
+<tr><th id="525">525</th><td></td></tr>
+<tr><th id="526">526</th><td><u>#<span data-ppcond="526">if</span> defined(<span class="macro" data-ref="_M/USE_READLINE">USE_READLINE</span>) || defined(<span class="macro" data-ref="_M/EXPAND_DLFUNC">EXPAND_DLFUNC</span>) || defined (<span class="macro" data-ref="_M/LOOKUP_MODULE_DIR">LOOKUP_MODULE_DIR</span>)</u></td></tr>
+<tr><th id="527">527</th><td><u># include &lt;dlfcn.h&gt;</u></td></tr>
+<tr><th id="528">528</th><td><u>#<span data-ppcond="526">endif</span></u></td></tr>
+<tr><th id="529">529</th><td></td></tr>
+<tr><th id="530">530</th><td><u>#<span data-ppcond="530">ifdef</span> <span class="macro" data-ref="_M/ENABLE_DISABLE_FSYNC">ENABLE_DISABLE_FSYNC</span></u></td></tr>
+<tr><th id="531">531</th><td><u># define EXIMfsync(f) (disable_fsync? 0 : fsync(f))</u></td></tr>
+<tr><th id="532">532</th><td><u>#<span data-ppcond="530">else</span></u></td></tr>
+<tr><th id="533">533</th><td><u># define <dfn class="macro" id="_M/EXIMfsync" data-ref="_M/EXIMfsync">EXIMfsync</dfn>(f) fsync(f)</u></td></tr>
+<tr><th id="534">534</th><td><u>#<span data-ppcond="530">endif</span></u></td></tr>
+<tr><th id="535">535</th><td></td></tr>
+<tr><th id="536">536</th><td><i>/* Backward compatibility; LOOKUP_LSEARCH now includes all three */</i></td></tr>
+<tr><th id="537">537</th><td></td></tr>
+<tr><th id="538">538</th><td><u>#<span data-ppcond="538">if</span> (!defined <a class="macro" href="../build-Linux-x86_64/config.h.html#96" data-ref="_M/LOOKUP_LSEARCH">LOOKUP_LSEARCH</a>) &amp;&amp; (defined <span class="macro" data-ref="_M/LOOKUP_WILDLSEARCH">LOOKUP_WILDLSEARCH</span> || defined <span class="macro" data-ref="_M/LOOKUP_NWILDLSEARCH">LOOKUP_NWILDLSEARCH</span>)</u></td></tr>
+<tr><th id="539">539</th><td><u># define LOOKUP_LSEARCH yes</u></td></tr>
+<tr><th id="540">540</th><td><u>#<span data-ppcond="538">endif</span></u></td></tr>
+<tr><th id="541">541</th><td></td></tr>
+<tr><th id="542">542</th><td><i>/* Define a union to hold either an IPv4 or an IPv6 sockaddr structure; this</i></td></tr>
+<tr><th id="543">543</th><td><i>simplifies some of the coding.  We include the sockaddr to reduce type-punning</i></td></tr>
+<tr><th id="544">544</th><td><i>issues in C99. */</i></td></tr>
+<tr><th id="545">545</th><td></td></tr>
+<tr><th id="546">546</th><td><b>union</b> <dfn class="type def" id="sockaddr_46" title='sockaddr_46' data-ref="sockaddr_46">sockaddr_46</dfn> {</td></tr>
+<tr><th id="547">547</th><td>  <b>struct</b> <a class="type" href="../../include/netinet/in.h.html#sockaddr_in" title='sockaddr_in' data-ref="sockaddr_in">sockaddr_in</a> <dfn class="decl field" id="sockaddr_46::v4" title='sockaddr_46::v4' data-ref="sockaddr_46::v4">v4</dfn>;</td></tr>
+<tr><th id="548">548</th><td>  <u>#<span data-ppcond="548">if</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#28" title="0" data-ref="_M/HAVE_IPV6">HAVE_IPV6</a></u></td></tr>
+<tr><th id="549">549</th><td>  <b>struct</b> sockaddr_in6 v6;</td></tr>
+<tr><th id="550">550</th><td>  <u>#<span data-ppcond="548">endif</span></u></td></tr>
+<tr><th id="551">551</th><td>  <b>struct</b> <a class="type" href="../../include/x86_64-linux-gnu/bits/socket.h.html#sockaddr" title='sockaddr' data-ref="sockaddr">sockaddr</a> <dfn class="decl field" id="sockaddr_46::v0" title='sockaddr_46::v0' data-ref="sockaddr_46::v0">v0</dfn>;</td></tr>
+<tr><th id="552">552</th><td>};</td></tr>
+<tr><th id="553">553</th><td></td></tr>
+<tr><th id="554">554</th><td><i>/* If SUPPORT_TLS is not defined, ensure that USE_GNUTLS is also not defined</i></td></tr>
+<tr><th id="555">555</th><td><i>so that if USE_GNUTLS *is* set, we can assume SUPPORT_TLS is also set.</i></td></tr>
+<tr><th id="556">556</th><td><i>Likewise, OSCP, AUTH_TLS and CERTNAMES cannot be supported. */</i></td></tr>
+<tr><th id="557">557</th><td></td></tr>
+<tr><th id="558">558</th><td><u>#<span data-ppcond="558">ifndef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#143" data-ref="_M/SUPPORT_TLS">SUPPORT_TLS</a></u></td></tr>
+<tr><th id="559">559</th><td><u># undef USE_GNUTLS</u></td></tr>
+<tr><th id="560">560</th><td><u># ifndef DISABLE_OCSP</u></td></tr>
+<tr><th id="561">561</th><td><u>#  define DISABLE_OCSP</u></td></tr>
+<tr><th id="562">562</th><td><u># endif</u></td></tr>
+<tr><th id="563">563</th><td><u># undef EXPERIMENTAL_CERTNAMES</u></td></tr>
+<tr><th id="564">564</th><td><u># undef AUTH_TLS</u></td></tr>
+<tr><th id="565">565</th><td><u>#<span data-ppcond="558">endif</span></u></td></tr>
+<tr><th id="566">566</th><td></td></tr>
+<tr><th id="567">567</th><td><i>/* If SPOOL_DIRECTORY, LOG_FILE_PATH or PID_FILE_PATH have not been defined,</i></td></tr>
+<tr><th id="568">568</th><td><i>set them to the null string. */</i></td></tr>
+<tr><th id="569">569</th><td></td></tr>
+<tr><th id="570">570</th><td><u>#<span data-ppcond="570">ifndef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#128" data-ref="_M/SPOOL_DIRECTORY">SPOOL_DIRECTORY</a></u></td></tr>
+<tr><th id="571">571</th><td>  <u>#define SPOOL_DIRECTORY ""</u></td></tr>
+<tr><th id="572">572</th><td><u>#<span data-ppcond="570">endif</span></u></td></tr>
+<tr><th id="573">573</th><td><u>#<span data-ppcond="573">ifndef</span> <span class="macro" data-ref="_M/LOG_FILE_PATH">LOG_FILE_PATH</span></u></td></tr>
+<tr><th id="574">574</th><td>  <u>#define <dfn class="macro" id="_M/LOG_FILE_PATH" data-ref="_M/LOG_FILE_PATH">LOG_FILE_PATH</dfn> ""</u></td></tr>
+<tr><th id="575">575</th><td><u>#<span data-ppcond="573">endif</span></u></td></tr>
+<tr><th id="576">576</th><td><u>#<span data-ppcond="576">ifndef</span> <span class="macro" data-ref="_M/PID_FILE_PATH">PID_FILE_PATH</span></u></td></tr>
+<tr><th id="577">577</th><td>  <u>#define <dfn class="macro" id="_M/PID_FILE_PATH" data-ref="_M/PID_FILE_PATH">PID_FILE_PATH</dfn> ""</u></td></tr>
+<tr><th id="578">578</th><td><u>#<span data-ppcond="576">endif</span></u></td></tr>
+<tr><th id="579">579</th><td></td></tr>
+<tr><th id="580">580</th><td><i>/* The EDQUOT error code isn't universally available, though it is widespread.</i></td></tr>
+<tr><th id="581">581</th><td><i>There is a particular shambles in SunOS5, where it did not exist originally,</i></td></tr>
+<tr><th id="582">582</th><td><i>but got installed with a particular patch for Solaris 2.4. There is a</i></td></tr>
+<tr><th id="583">583</th><td><i>configuration variable for specifying what the system's "over quota" error is,</i></td></tr>
+<tr><th id="584">584</th><td><i>which will end up in config.h if supplied in OS/Makefile-xxx. If it is not set,</i></td></tr>
+<tr><th id="585">585</th><td><i>default to EDQUOT if it exists, otherwise ENOSPC. */</i></td></tr>
+<tr><th id="586">586</th><td></td></tr>
+<tr><th id="587">587</th><td><u>#<span data-ppcond="587">ifndef</span> <span class="macro" data-ref="_M/ERRNO_QUOTA">ERRNO_QUOTA</span></u></td></tr>
+<tr><th id="588">588</th><td><u># <span data-ppcond="588">ifdef</span>  <a class="macro" href="../../include/asm-generic/errno.h.html#104" data-ref="_M/EDQUOT">EDQUOT</a></u></td></tr>
+<tr><th id="589">589</th><td><u>#  define <dfn class="macro" id="_M/ERRNO_QUOTA" data-ref="_M/ERRNO_QUOTA">ERRNO_QUOTA</dfn> EDQUOT</u></td></tr>
+<tr><th id="590">590</th><td><u># <span data-ppcond="588">else</span></u></td></tr>
+<tr><th id="591">591</th><td><u>#  define ERRNO_QUOTA ENOSPC</u></td></tr>
+<tr><th id="592">592</th><td><u># <span data-ppcond="588">endif</span></u></td></tr>
+<tr><th id="593">593</th><td><u>#<span data-ppcond="587">endif</span></u></td></tr>
+<tr><th id="594">594</th><td></td></tr>
+<tr><th id="595">595</th><td><i>/* DANE w/o DNSSEC is useless */</i></td></tr>
+<tr><th id="596">596</th><td><u>#<span data-ppcond="596">if</span> defined(<span class="macro" data-ref="_M/EXPERIMENTAL_DANE">EXPERIMENTAL_DANE</span>) &amp;&amp; defined(<span class="macro" data-ref="_M/DISABLE_DNSSEC">DISABLE_DNSSEC</span>)</u></td></tr>
+<tr><th id="597">597</th><td><u># undef DISABLE_DNSSEC</u></td></tr>
+<tr><th id="598">598</th><td><u>#<span data-ppcond="596">endif</span></u></td></tr>
+<tr><th id="599">599</th><td></td></tr>
+<tr><th id="600">600</th><td><i>/* Some platforms (FreeBSD, OpenBSD, Solaris) do not seem to define this */</i></td></tr>
+<tr><th id="601">601</th><td></td></tr>
+<tr><th id="602">602</th><td><u>#<span data-ppcond="602">ifndef</span> <a class="macro" href="../../include/x86_64-linux-gnu/bits/poll.h.html#41" data-ref="_M/POLLRDHUP">POLLRDHUP</a></u></td></tr>
+<tr><th id="603">603</th><td><u># define POLLRDHUP (POLLIN | POLLHUP)</u></td></tr>
+<tr><th id="604">604</th><td><u>#<span data-ppcond="602">endif</span></u></td></tr>
+<tr><th id="605">605</th><td></td></tr>
+<tr><th id="606">606</th><td><u>#<span data-ppcond="14">endif</span></u></td></tr>
+<tr><th id="607">607</th><td><i>/* End of exim.h */</i></td></tr>
+<tr><th id="608">608</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='lookups/lf_sqlperform.c.html'>exim/src/lookups/lf_sqlperform.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

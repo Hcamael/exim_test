@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='368' type='uschar *'/>
+<doc f='exim/src/globals.h' l='368'>/* The stripped suffix, if any */</doc>

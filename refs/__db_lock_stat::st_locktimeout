@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='389' type='db_timeout_t'/>
+<offset>1408</offset>
+<doc f='include/db.h' l='389'>/* Lock timeout. */</doc>

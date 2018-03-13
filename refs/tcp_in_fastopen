@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='928' type='BOOL'/>
+<doc f='exim/src/globals.h' l='928'>/* conn usefully used fastopen */</doc>

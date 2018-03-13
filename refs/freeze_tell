@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='480' type='uschar *'/>
+<doc f='exim/src/globals.h' l='480'>/* Message on (some) freezings */</doc>

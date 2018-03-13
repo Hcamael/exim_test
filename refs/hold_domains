@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='502' type='uschar *'/>
+<doc f='exim/src/globals.h' l='502'>/* Hold up deliveries to these */</doc>

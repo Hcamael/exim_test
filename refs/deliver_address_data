@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='345' type='uschar *'/>
+<doc f='exim/src/globals.h' l='345'>/* Arbitrary data for an address */</doc>

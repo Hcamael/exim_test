@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='693' type='int'/>
+<doc f='exim/src/globals.h' l='693'>/* Max load before auto-queue */</doc>

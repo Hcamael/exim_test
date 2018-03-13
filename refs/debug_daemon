@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='334' type='BOOL'/>
+<doc f='exim/src/globals.h' l='334'>/* Debug the daemon process only */</doc>

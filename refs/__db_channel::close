@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2700' type='int (*)(DB_CHANNEL *, u_int32_t)'/>
+<offset>128</offset>
+<doc f='include/db.h' l='2699'>/* DB_CHANNEL PUBLIC HANDLE LIST BEGIN */</doc>

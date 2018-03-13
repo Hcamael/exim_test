@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='162' type='tree_node *'/>
+<doc f='exim/src/globals.h' l='162'>/* Tree of named ACLs */</doc>

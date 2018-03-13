@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='370' type='BOOL'/>
+<doc f='exim/src/globals.h' l='370'>/* TRUE if manually thawed */</doc>

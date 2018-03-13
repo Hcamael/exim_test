@@ -1,0 +1,1 @@
+<dec f='include/arpa/nameser.h' l='489' type='int ns_parse_ttl(const char * , u_long * )'/>

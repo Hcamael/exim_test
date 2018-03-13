@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1147' type='uintmax_t'/>
+<offset>1280</offset>
+<doc f='include/db.h' l='1147'>/* Lease messages sent live. */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='840' type='uschar *'/>
+<doc f='exim/src/globals.h' l='840'>/* Rate limit these hosts */</doc>

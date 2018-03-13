@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='927' type='blob'/>
+<doc f='exim/src/globals.h' l='927'>/* for zero-data TFO connect requests */</doc>

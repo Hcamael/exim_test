@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='336' type='10'/>
+<doc f='include/db.h' l='336'>/* Upgrade writes for dirty reads. */</doc>

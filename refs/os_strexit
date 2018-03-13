@@ -1,0 +1,2 @@
+<dec f='exim/src/osfunctions.h' l='30' type='const char * os_strexit(int )'/>
+<doc f='exim/src/osfunctions.h' l='30'>/* char to match os_strsignal */</doc>

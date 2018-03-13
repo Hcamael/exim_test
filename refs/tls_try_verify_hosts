@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='125' type='uschar *'/>
+<doc f='exim/src/globals.h' l='125'>/* Optional client verification */</doc>

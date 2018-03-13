@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>dbfunctions.h source code [exim/src/dbfunctions.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/dbfunctions.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='dbfunctions.h.html'>dbfunctions.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2015 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><i>/* Functions for reading/writing exim database files */</i></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><em>void</em>     <dfn class="decl fn" id="dbfn_close" title='dbfn_close' data-ref="dbfn_close">dbfn_close</dfn>(<a class="typedef" href="dbstuff.h.html#open_db" title='open_db' data-type='struct open_db' data-ref="open_db">open_db</a> *);</td></tr>
+<tr><th id="12">12</th><td><em>int</em>      <dfn class="decl fn" id="dbfn_delete" title='dbfn_delete' data-ref="dbfn_delete">dbfn_delete</dfn>(<a class="typedef" href="dbstuff.h.html#open_db" title='open_db' data-type='struct open_db' data-ref="open_db">open_db</a> *, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="13">13</th><td><a class="typedef" href="dbstuff.h.html#open_db" title='open_db' data-type='struct open_db' data-ref="open_db">open_db</a> *<dfn class="decl fn" id="dbfn_open" title='dbfn_open' data-ref="dbfn_open">dbfn_open</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em>, <a class="typedef" href="dbstuff.h.html#open_db" title='open_db' data-type='struct open_db' data-ref="open_db">open_db</a> *, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>);</td></tr>
+<tr><th id="14">14</th><td><em>void</em>    *<dfn class="decl fn" id="dbfn_read_with_length" title='dbfn_read_with_length' data-ref="dbfn_read_with_length">dbfn_read_with_length</dfn>(<a class="typedef" href="dbstuff.h.html#open_db" title='open_db' data-type='struct open_db' data-ref="open_db">open_db</a> *, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em> *);</td></tr>
+<tr><th id="15">15</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a>  *<dfn class="decl fn" id="dbfn_scan" title='dbfn_scan' data-ref="dbfn_scan">dbfn_scan</dfn>(<a class="typedef" href="dbstuff.h.html#open_db" title='open_db' data-type='struct open_db' data-ref="open_db">open_db</a> *, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>, <a class="macro" href="dbstuff.h.html#123" title="DBC" data-ref="_M/EXIM_CURSOR">EXIM_CURSOR</a> **);</td></tr>
+<tr><th id="16">16</th><td><em>int</em>      <dfn class="decl fn" id="dbfn_write" title='dbfn_write' data-ref="dbfn_write">dbfn_write</dfn>(<a class="typedef" href="dbstuff.h.html#open_db" title='open_db' data-type='struct open_db' data-ref="open_db">open_db</a> *, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>void</em> *, <em>int</em>);</td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><i>/* Macro for the common call to read without wanting to know the length. */</i></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><u>#define  <dfn class="macro" id="_M/dbfn_read" data-ref="_M/dbfn_read">dbfn_read</dfn>(a, b) dbfn_read_with_length(a, b, NULL)</u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><i>/* Berkeley DB uses a callback function to pass back error details. Its API</i></td></tr>
+<tr><th id="23">23</th><td><i>changed at release 4.3. */</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><u>#<span data-ppcond="25">if</span> defined(<a class="macro" href="../build-Linux-x86_64/config.h.html#156" data-ref="_M/USE_DB">USE_DB</a>) &amp;&amp; defined(<a class="macro" href="../../include/db.h.html#50" data-ref="_M/DB_VERSION_STRING">DB_VERSION_STRING</a>)</u></td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="26">if</span> <a class="macro" href="../../include/db.h.html#47" title="5" data-ref="_M/DB_VERSION_MAJOR">DB_VERSION_MAJOR</a> &gt; 4 || (<a class="macro" href="../../include/db.h.html#47" title="5" data-ref="_M/DB_VERSION_MAJOR">DB_VERSION_MAJOR</a> == 4 &amp;&amp; <a class="macro" href="../../include/db.h.html#48" title="3" data-ref="_M/DB_VERSION_MINOR">DB_VERSION_MINOR</a> &gt;= 3)</u></td></tr>
+<tr><th id="27">27</th><td><em>void</em>     <dfn class="decl fn" id="dbfn_bdb_error_callback" title='dbfn_bdb_error_callback' data-ref="dbfn_bdb_error_callback">dbfn_bdb_error_callback</dfn>(<em>const</em> <a class="typedef" href="../../include/db.h.html#DB_ENV" title='DB_ENV' data-type='struct __db_env' data-ref="DB_ENV">DB_ENV</a> *, <em>const</em> <em>char</em> *, <em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="28">28</th><td><u>#<span data-ppcond="26">else</span></u></td></tr>
+<tr><th id="29">29</th><td><em>void</em>     dbfn_bdb_error_callback(<em>const</em> <em>char</em> *, <em>char</em> *);</td></tr>
+<tr><th id="30">30</th><td><u>#<span data-ppcond="26">endif</span></u></td></tr>
+<tr><th id="31">31</th><td><u>#<span data-ppcond="25">endif</span></u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><i>/* End of dbfunctions.h */</i></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='lookups/lf_sqlperform.c.html'>exim/src/lookups/lf_sqlperform.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

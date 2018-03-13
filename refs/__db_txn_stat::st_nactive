@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1020' type='u_int32_t'/>
+<offset>512</offset>
+<doc f='include/db.h' l='1020'>/* number of active transactions */</doc>

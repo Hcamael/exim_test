@@ -1,0 +1,5 @@
+<dec f='exim/src/local_scan.h' l='64'/>
+<doc f='exim/src/local_scan.h' l='62'>/* Available logging destinations */</doc>
+<dec f='exim/src/macros.h' l='791'/>
+<doc f='exim/src/macros.h' l='788'>/* Flags for log_write(); LOG_MAIN, LOG_PANIC, and LOG_REJECT are also in
+local_scan.h */</doc>

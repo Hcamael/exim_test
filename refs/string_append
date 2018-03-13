@@ -1,0 +1,2 @@
+<dec f='exim/src/functions.h' l='449' type='gstring * string_append(gstring * , int )'/>
+<use f='exim/src/lookups/lf_quote.c' l='33' u='c' c='lf_quote'/>

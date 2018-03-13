@@ -1,0 +1,7 @@
+<dec f='include/db.h' l='2391' type='DB_FH *'/>
+<offset>3520</offset>
+<doc f='include/db.h' l='2387'>/*
+	 * The following fields are not strictly user-owned, but they outlive
+	 * the ENV structure, and so are stored here.
+	 */</doc>
+<doc f='include/db.h' l='2391'>/* DB_REGISTER file handle */</doc>

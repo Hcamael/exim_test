@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='467' type='uschar *'/>
+<doc f='exim/src/globals.h' l='467'>/* Local, non-listen interfaces */</doc>

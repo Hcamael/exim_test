@@ -1,0 +1,2 @@
+<dec f='include/openssl/x509.h' l='137'/>
+<doc f='include/openssl/x509.h' l='136'>/* Accept &quot;anyEKU&quot; as a wildcard trust OID */</doc>

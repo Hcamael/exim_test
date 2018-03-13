@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='2704' type='int (*)(DB_CHANNEL *, db_timeout_t)'/>
+<offset>320</offset>

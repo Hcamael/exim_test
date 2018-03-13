@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='189' type='BOOL'/>
+<offset>2240</offset>
+<doc f='exim/src/structs.h' l='189'>/* TRUE if output should always be returned */</doc>

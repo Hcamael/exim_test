@@ -1,0 +1,4 @@
+<def f='include/db.h' l='971' ll='974'/>
+<size>136</size>
+<mbr r='__db_preplist::txn' o='0' t='DB_TXN *'/>
+<mbr r='__db_preplist::gid' o='64' t='u_int8_t [128]'/>

@@ -1,0 +1,2 @@
+<dec f='exim/src/dbstuff.h' l='193'/>
+<doc f='exim/src/dbstuff.h' l='192'>/* EXIM_DBSCAN - returns TRUE if data is returned, FALSE at end */</doc>

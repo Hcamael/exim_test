@@ -1,0 +1,2 @@
+<dec f='exim/src/dbstuff.h' l='207'/>
+<doc f='exim/src/dbstuff.h' l='205'>/* Datum access types - these are intended to be assignable. */</doc>

@@ -1,0 +1,13 @@
+<def f='exim/src/structs.h' l='110' ll='116'/>
+<size>40</size>
+<doc f='exim/src/structs.h' l='103'>/* Routers, transports, and authenticators have similar data blocks. Each
+driver that is compiled into the code is represented by a xxx_info block; the
+active drivers are represented by a chain of xxx_instance blocks. To make it
+possible to use the same code for reading the configuration files for all
+three, the layout of the start of the blocks is kept the same, and represented
+by the generic structures driver_info and driver_instance. */</doc>
+<mbr r='driver_instance::next' o='0' t='struct driver_instance *'/>
+<mbr r='driver_instance::name' o='64' t='uschar *'/>
+<mbr r='driver_instance::info' o='128' t='struct driver_info *'/>
+<mbr r='driver_instance::options_block' o='192' t='void *'/>
+<mbr r='driver_instance::driver_name' o='256' t='uschar *'/>

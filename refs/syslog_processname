@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='911' type='uschar *'/>
+<doc f='exim/src/globals.h' l='911'>/* &apos;ident&apos; param to openlog() */</doc>

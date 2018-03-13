@@ -1,0 +1,5 @@
+<dec f='include/openssl/crypto.h' l='206'/>
+<doc f='include/openssl/crypto.h' l='202'>/*
+ * This function cleans up all &quot;ex_data&quot; state. It mustn&apos;t be called under
+ * potential race-conditions.
+ */</doc>

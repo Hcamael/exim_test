@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='1166' type='uintmax_t'/>
+<offset>2304</offset>
+<doc f='include/db.h' l='1166'>/* # of times we detected and returned
+					   an OUTDATED condition.+ */</doc>

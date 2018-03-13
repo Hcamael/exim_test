@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='117' type='void cancel_cutthrough_connection(BOOL , const uschar * )'/>

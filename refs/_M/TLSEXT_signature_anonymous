@@ -1,0 +1,2 @@
+<dec f='include/openssl/tls1.h' l='186'/>
+<doc f='include/openssl/tls1.h' l='185'>/* Signature and hash algorithms from RFC5246 */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='913' type='uschar *'/>
+<doc f='exim/src/globals.h' l='913'>/* Name of system filter file */</doc>

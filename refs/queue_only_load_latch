@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='694' type='BOOL'/>
+<doc f='exim/src/globals.h' l='694'>/* Latch queue_only_load TRUE */</doc>

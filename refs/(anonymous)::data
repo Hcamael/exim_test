@@ -1,0 +1,4 @@
+<dec f='exim/src/structs.h' l='760' type='const uschar *'/>
+<dec f='exim/src/blob.h' l='11' type='uschar *'/>
+<offset>0</offset>
+<doc f='exim/src/structs.h' l='760'>/* pointer to data */</doc>

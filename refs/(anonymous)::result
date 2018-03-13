@@ -1,0 +1,9 @@
+<dec f='exim/src/dbstuff.h' l='715' type='int'/>
+<dec f='exim/src/dbstuff.h' l='723' type='int'/>
+<dec f='exim/src/dbstuff.h' l='733' type='int'/>
+<offset>64</offset>
+<doc f='exim/src/dbstuff.h' l='714'>/*************/</doc>
+<doc f='exim/src/dbstuff.h' l='722'>/*************/</doc>
+<doc f='exim/src/dbstuff.h' l='723'>/* accept or reject */</doc>
+<doc f='exim/src/dbstuff.h' l='732'>/*************/</doc>
+<doc f='exim/src/dbstuff.h' l='733'>/* Domain reject or accept */</doc>

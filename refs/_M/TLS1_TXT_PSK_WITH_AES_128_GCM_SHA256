@@ -1,0 +1,4 @@
+<dec f='include/openssl/tls1.h' l='676'/>
+<dec f='include/openssl/tls1.h' l='836'/>
+<doc f='include/openssl/tls1.h' l='675'>/* PSK ciphersuites from RFC 5487 */</doc>
+<doc f='include/openssl/tls1.h' l='835'>/* TLS v1.2 PSK GCM ciphersuites from RFC5487 */</doc>

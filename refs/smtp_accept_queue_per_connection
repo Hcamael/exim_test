@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='816' type='int'/>
+<doc f='exim/src/globals.h' l='816'>/* Queue after so many msgs */</doc>

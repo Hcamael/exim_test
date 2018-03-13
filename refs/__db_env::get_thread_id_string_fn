@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='2490' type='int (*)(DB_ENV *, char *(**)(DB_ENV *, pid_t, db_threadid_t, char *))'/>
+<offset>7360</offset>

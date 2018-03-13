@@ -1,0 +1,4 @@
+<dec f='exim/src/dbstuff.h' l='143'/>
+<doc f='exim/src/dbstuff.h' l='139'>/* EXIM_DBOPEN - sets *dbpp to point to an EXIM_DB, NULL if failed. The
+API changed for DB 4.1. - and we also starting using the &quot;env&quot; with a
+specified working dir, to avoid the DBCONFIG file trap. */</doc>

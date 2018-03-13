@@ -1,0 +1,1 @@
+<dec f='include/openssl/dsa.h' l='180' type='int DSA_test_flags(const DSA * d, int flags)'/>

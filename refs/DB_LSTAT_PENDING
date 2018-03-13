@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='347' type='5'/>
+<doc f='include/db.h' l='347'>/* Lock was waiting and has been
+					 * promoted; waiting for the owner
+					 * to run and upgrade it to held. */</doc>

@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='373' type='uschar * rfc2047_decode2(uschar * , BOOL , uschar * , int , int * , int * , uschar ** )'/>

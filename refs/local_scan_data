@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='540' type='uschar *'/>
+<doc f='exim/src/globals.h' l='540'>/* Text returned by local_scan() */</doc>

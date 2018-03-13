@@ -1,0 +1,1 @@
+<dec f='include/arpa/nameser.h' l='484' type='int ns_sprintrrf(const u_char * , size_t , const char * , ns_class , ns_type , u_long , const u_char * , size_t , const char * , const char * , char * , size_t )'/>

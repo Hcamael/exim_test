@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='962' type='gid_t *'/>
+<doc f='exim/src/globals.h' l='962'>/* List of trusted groups */</doc>

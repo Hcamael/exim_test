@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='296' type='uschar *'/>
+<doc f='exim/src/globals.h' l='296'>/* Host for continued delivery */</doc>

@@ -1,0 +1,4 @@
+<dec f='exim/src/store.h' l='21' type='void *[3]'/>
+<doc f='exim/src/store.h' l='17'>/* This variable (the one for the current pool) is set by store_get() to its
+yield, and by store_reset() to NULL. This allows string_cat() to optimize its
+store handling. */</doc>

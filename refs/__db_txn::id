@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='923' type='u_int32_t (*)(DB_TXN *)'/>
+<offset>2176</offset>

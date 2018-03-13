@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='274' type='uschar *'/>
+<doc f='exim/src/globals.h' l='274'>/* RFC 3030 CHUNKING */</doc>

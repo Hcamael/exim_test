@@ -1,0 +1,2 @@
+<dec f='include/openssl/tls1.h' l='210'/>
+<doc f='include/openssl/tls1.h' l='208'>/* Total number of different digest algorithms */</doc>

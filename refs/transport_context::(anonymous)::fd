@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='236' type='int'/>
+<offset>0</offset>
+<doc f='exim/src/structs.h' l='236'>/* file descriptor to write message to */</doc>

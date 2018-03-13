@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='829' type='double'/>
+<doc f='exim/src/globals.h' l='829'>/* Current RCPT delay */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='503' type='BOOL'/>
+<doc f='exim/src/globals.h' l='503'>/* DNS syntax check failure */</doc>

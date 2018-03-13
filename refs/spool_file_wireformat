@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='879' type='BOOL'/>
+<doc f='exim/src/globals.h' l='879'>/* current -D file has CRLF rather than NL */</doc>

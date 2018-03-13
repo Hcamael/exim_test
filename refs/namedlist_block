@@ -1,0 +1,6 @@
+<def f='exim/src/structs.h' l='865' ll='869'/>
+<size>24</size>
+<doc f='exim/src/structs.h' l='863'>/* Structure for holding data for an entry in a named list */</doc>
+<mbr r='namedlist_block::string' o='0' t='const uschar *'/>
+<mbr r='namedlist_block::cache_data' o='64' t='namedlist_cacheblock *'/>
+<mbr r='namedlist_block::number' o='128' t='int'/>

@@ -1,0 +1,7 @@
+<def f='exim/src/structs.h' l='847' ll='852'/>
+<size>32</size>
+<doc f='exim/src/structs.h' l='845'>/* Structure for passing arguments to check_host() */</doc>
+<mbr r='check_host_block::host_name' o='0' t='const uschar *'/>
+<mbr r='check_host_block::host_address' o='64' t='const uschar *'/>
+<mbr r='check_host_block::host_ipv4' o='128' t='const uschar *'/>
+<mbr r='check_host_block::negative' o='192' t='BOOL'/>

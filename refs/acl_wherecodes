@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='201' type='uschar *[]'/>
+<doc f='exim/src/globals.h' l='201'>/* Response codes for ACL fails */</doc>

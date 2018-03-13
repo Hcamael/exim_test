@@ -1,0 +1,1 @@
+<dec f='include/openssl/ssl.h' l='1513' type='void SSL_set_hostflags(SSL * s, unsigned int flags)'/>

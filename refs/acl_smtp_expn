@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='183' type='uschar *'/>
+<doc f='exim/src/globals.h' l='183'>/* ACL run for EXPN */</doc>

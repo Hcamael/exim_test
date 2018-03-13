@@ -1,0 +1,2 @@
+<dec f='exim/build-Linux-x86_64/config.h' l='201'/>
+<doc f='exim/build-Linux-x86_64/config.h' l='200'>/* Force SUPPORT_CRYPTEQ for AUTH */</doc>

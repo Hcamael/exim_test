@@ -1,0 +1,1 @@
+<dec f='exim/src/osfunctions.h' l='27' type='void os_non_restarting_signal(int , void (*)(int) )'/>

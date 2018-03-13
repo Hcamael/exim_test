@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='745' type='u_int32_t'/>
+<offset>1024</offset>
+<doc f='include/db.h' l='745'>/* Assumed page size. */</doc>

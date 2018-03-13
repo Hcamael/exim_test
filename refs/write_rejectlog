@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='975' type='BOOL'/>
+<doc f='exim/src/globals.h' l='975'>/* Control of reject logging */</doc>

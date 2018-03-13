@@ -1,0 +1,1 @@
+<dec f='exim/src/dkim.h' l='9' type='gstring * dkim_exim_sign(int , off_t , uschar * , struct ob_dkim * , const uschar ** )'/>

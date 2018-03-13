@@ -1,0 +1,4 @@
+<dec f='include/resolv.h' l='230'/>
+<doc f='include/resolv.h' l='227'>/*
+ * Resolver &quot;pfcode&quot; values.  Used by dig.
+ */</doc>

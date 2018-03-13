@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='381' type='BOOL route_find_expanded_group(uschar * , uschar * , uschar * , gid_t * , uschar ** )'/>

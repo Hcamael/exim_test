@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='770' type='ip_address_item *'/>
+<doc f='exim/src/globals.h' l='770'>/* Host&apos;s running interfaces */</doc>

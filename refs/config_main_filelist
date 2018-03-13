@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='291' type='uschar *'/>
+<doc f='exim/src/globals.h' l='291'>/* List of possible config files */</doc>

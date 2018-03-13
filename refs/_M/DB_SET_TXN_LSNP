@@ -1,0 +1,8 @@
+<dec f='include/db.h' l='578'/>
+<doc f='include/db.h' l='571'>/*
+ * We need to record the first log record of a transaction.  For user
+ * defined logging this macro returns the place to put that information,
+ * if it is need in rlsnp, otherwise it leaves it unchanged.  We also
+ * need to track the last record of the transaction, this returns the
+ * place to put that info.
+ */</doc>

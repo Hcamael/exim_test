@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='478' type='int'/>
+<doc f='exim/src/globals.h' l='478'>/* Retry count for getpwnam() */</doc>

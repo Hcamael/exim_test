@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='145' type='uschar *'/>
+<doc f='exim/src/local_scan.h' l='145'>/* Error info for failing expansion */</doc>

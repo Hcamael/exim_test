@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='191' type='uschar *'/>
+<doc f='exim/src/globals.h' l='191'>/* ACL run for DATA command */</doc>

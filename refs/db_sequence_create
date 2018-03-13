@@ -1,0 +1,1 @@
+<dec f='include/db.h' l='3080' type='int db_sequence_create(DB_SEQUENCE ** , DB * , u_int32_t )'/>

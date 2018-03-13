@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='448' type='uschar *'/>
+<doc f='exim/src/globals.h' l='448'>/* expansion for delivery events */</doc>

@@ -1,0 +1,1 @@
+<dec f='include/db.h' l='3076' type='int log_compare(const DB_LSN * , const DB_LSN * )'/>

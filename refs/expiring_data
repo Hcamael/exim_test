@@ -1,0 +1,8 @@
+<def f='exim/src/structs.h' l='734' ll='737'/>
+<size>16</size>
+<doc f='exim/src/structs.h' l='729'>/* Structure for holding time-limited data such as DNS returns.
+We use this rather than extending tree_node to avoid wasting
+space for most tree use (variables...) at the cost of complexity
+for the lookups cache */</doc>
+<mbr r='expiring_data::expiry' o='0' t='time_t'/>
+<mbr r='expiring_data::ptr' o='64' t='void *'/>

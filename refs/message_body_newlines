@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='578' type='BOOL'/>
+<doc f='exim/src/globals.h' l='578'>/* FALSE =&gt; remove newlines */</doc>

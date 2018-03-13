@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='680' type='BOOL'/>
+<doc f='exim/src/globals.h' l='680'>/* Run queue in 2-stage manner */</doc>

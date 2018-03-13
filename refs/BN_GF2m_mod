@@ -1,0 +1,4 @@
+<dec f='include/openssl/bn.h' l='392' type='int BN_GF2m_mod(BIGNUM * r, const BIGNUM * a, const BIGNUM * p)'/>
+<doc f='include/openssl/bn.h' l='389'>/*
+ * r=a mod p
+ */</doc>

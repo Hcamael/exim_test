@@ -1,0 +1,3 @@
+<dec f='include/openssl/lhash.h' l='72' type='int OPENSSL_LH_error(OPENSSL_LHASH * lh)'/>
+<use f='include/openssl/lhash.h' l='148' u='c' c='lh_OPENSSL_STRING_error'/>
+<use f='include/openssl/lhash.h' l='148' u='c' c='lh_OPENSSL_CSTRING_error'/>

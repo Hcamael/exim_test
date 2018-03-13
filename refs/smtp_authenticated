@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='819' type='BOOL'/>
+<doc f='exim/src/globals.h' l='819'>/* Sending client has authenticated */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/store.h' l='25' type='int'/>
+<doc f='exim/src/store.h' l='23'>/* This variable contains the current store pool number. */</doc>

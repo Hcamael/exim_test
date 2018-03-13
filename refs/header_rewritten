@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='493' type='BOOL'/>
+<doc f='exim/src/globals.h' l='493'>/* TRUE if header changed by router */</doc>

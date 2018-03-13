@@ -1,0 +1,4 @@
+<dec f='exim/src/local_scan.h' l='86'/>
+<doc f='exim/src/local_scan.h' l='82'>/* The length of message identification strings. This is the id used internally
+by exim. The external version for use in Received: strings has a leading &apos;E&apos;
+added to ensure it starts with a letter. */</doc>

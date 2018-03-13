@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='595' type='BOOL'/>
+<offset>16</offset>
+<doc f='exim/src/structs.h' l='595'>/* sender verify failure notified */</doc>

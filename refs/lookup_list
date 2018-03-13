@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='562' type='lookup_info **'/>
+<doc f='exim/src/globals.h' l='562'>/* Array of pointers to available lookups */</doc>

@@ -1,0 +1,15 @@
+<dec f='exim/src/exim.h' l='377'/>
+<doc f='exim/src/exim.h' l='362'>/* We define a few private types for special DNS lookups:
+
+ . T_ZNS gets the nameservers of the enclosing zone of a domain
+
+ . T_MXH gets the MX hostnames only (without their priorities)
+
+ . T_CSA gets the domain&apos;s Client SMTP Authorization SRV record
+
+ . T_ADDRESSES looks up both AAAA (or A6) and A records
+
+If any of these names appear in the RRtype list at:
+  &lt;http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml&gt;
+then we should rename Exim&apos;s private type away from the conflict.
+*/</doc>

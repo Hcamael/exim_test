@@ -1,0 +1,13 @@
+<def f='include/db.h' l='2708' ll='2723'/>
+<size>80</size>
+<mbr r='__db_site::env' o='0' t='ENV *'/>
+<mbr r='__db_site::eid' o='64' t='int'/>
+<mbr r='__db_site::host' o='128' t='const char *'/>
+<mbr r='__db_site::port' o='192' t='u_int'/>
+<mbr r='__db_site::flags' o='224' t='u_int32_t'/>
+<mbr r='__db_site::get_address' o='256' t='int (*)(DB_SITE *, const char **, u_int *)'/>
+<mbr r='__db_site::get_config' o='320' t='int (*)(DB_SITE *, u_int32_t, u_int32_t *)'/>
+<mbr r='__db_site::get_eid' o='384' t='int (*)(DB_SITE *, int *)'/>
+<mbr r='__db_site::set_config' o='448' t='int (*)(DB_SITE *, u_int32_t, u_int32_t)'/>
+<mbr r='__db_site::remove' o='512' t='int (*)(DB_SITE *)'/>
+<mbr r='__db_site::close' o='576' t='int (*)(DB_SITE *)'/>

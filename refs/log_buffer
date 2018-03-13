@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='549' type='uschar *'/>
+<doc f='exim/src/globals.h' l='549'>/* For constructing log entries */</doc>

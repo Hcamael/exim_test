@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='968' type='uschar *'/>
+<doc f='exim/src/globals.h' l='968'>/* Let untrusted users set these senders */</doc>

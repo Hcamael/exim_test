@@ -1,0 +1,9 @@
+<def f='exim/src/structs.h' l='426' ll='431'/>
+<size>64</size>
+<doc f='exim/src/structs.h' l='422'>/* Structure for holding a single IP address and port; used for the chain of
+addresses and ports for the local host. Make the char string large enough to
+hold an IPv6 address. */</doc>
+<mbr r='ip_address_item::next' o='0' t='struct ip_address_item *'/>
+<mbr r='ip_address_item::port' o='64' t='int'/>
+<mbr r='ip_address_item::v6_include_v4' o='96' t='BOOL'/>
+<mbr r='ip_address_item::address' o='128' t='uschar [46]'/>

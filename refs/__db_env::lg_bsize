@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2354' type='u_int32_t'/>
+<offset>2560</offset>
+<doc f='include/db.h' l='2353'>/* Logging configuration */</doc>
+<doc f='include/db.h' l='2354'>/* Buffer size */</doc>

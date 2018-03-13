@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1449' type='u_int8_t [20]'/>
+<offset>864</offset>
+<doc f='include/db.h' l='1449'>/* File&apos;s unique ID for locking. */</doc>

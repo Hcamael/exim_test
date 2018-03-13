@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='750' type='int'/>
+<doc f='exim/src/globals.h' l='750'>/* Number of remote addresses */</doc>

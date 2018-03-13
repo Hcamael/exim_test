@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='346' type='int'/>
+<doc f='exim/src/globals.h' l='346'>/* FD for data part of message */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='648' type='uschar *'/>
+<doc f='exim/src/globals.h' l='648'>/* Local domains for which &apos;% operates */</doc>

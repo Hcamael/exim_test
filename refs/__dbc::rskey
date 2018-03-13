@@ -1,0 +1,14 @@
+<dec f='include/db.h' l='2055' type='DBT *'/>
+<offset>640</offset>
+<doc f='include/db.h' l='2044'>/*
+	 * The DBT *&apos;s below are used by the cursor routines to return
+	 * data to the user when DBT flags indicate that DB should manage
+	 * the returned memory.  They point at a DBT containing the buffer
+	 * and length that will be used, and &quot;belonging&quot; to the handle that
+	 * should &quot;own&quot; this memory.  This may be a &quot;my_*&quot; field of this
+	 * cursor--the default--or it may be the corresponding field of
+	 * another cursor, a DB handle, a join cursor, etc.  In general, it
+	 * will be whatever handle the user originally used for the current
+	 * DB interface call.
+	 */</doc>
+<doc f='include/db.h' l='2055'>/* Returned secondary key. */</doc>

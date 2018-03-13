@@ -1,0 +1,37 @@
+<def f='include/db.h' l='814' ll='961'/>
+<size>336</size>
+<mbr r='__db_txn::mgrp' o='0' t='DB_TXNMGR *'/>
+<mbr r='__db_txn::parent' o='64' t='DB_TXN *'/>
+<mbr r='__db_txn::thread_info' o='128' t='DB_THREAD_INFO *'/>
+<mbr r='__db_txn::txnid' o='192' t='u_int32_t'/>
+<mbr r='__db_txn::name' o='256' t='char *'/>
+<mbr r='__db_txn::locker' o='320' t='DB_LOCKER *'/>
+<mbr r='__db_txn::td' o='384' t='void *'/>
+<mbr r='__db_txn::lock_timeout' o='448' t='db_timeout_t'/>
+<mbr r='__db_txn::txn_list' o='512' t='void *'/>
+<mbr r='__db_txn::links' o='576' t='struct (anonymous struct at /usr/include/db.h:832:2)'/>
+<mbr r='__db_txn::xa_links' o='704' t='struct (anonymous struct at /usr/include/db.h:844:2)'/>
+<mbr r='__db_txn::kids' o='832' t='struct __kids'/>
+<mbr r='__db_txn::events' o='960' t='struct (anonymous struct at /usr/include/db.h:864:2)'/>
+<mbr r='__db_txn::logs' o='1088' t='struct (anonymous struct at /usr/include/db.h:874:2)'/>
+<mbr r='__db_txn::klinks' o='1216' t='struct (anonymous struct at /usr/include/db.h:884:2)'/>
+<mbr r='__db_txn::my_cursors' o='1344' t='struct __my_cursors'/>
+<mbr r='__db_txn::femfs' o='1472' t='struct __femfs'/>
+<mbr r='__db_txn::token_buffer' o='1600' t='DB_TXN_TOKEN *'/>
+<mbr r='__db_txn::api_internal' o='1664' t='void *'/>
+<mbr r='__db_txn::xml_internal' o='1728' t='void *'/>
+<mbr r='__db_txn::cursors' o='1792' t='u_int32_t'/>
+<mbr r='__db_txn::abort' o='1856' t='int (*)(DB_TXN *)'/>
+<mbr r='__db_txn::commit' o='1920' t='int (*)(DB_TXN *, u_int32_t)'/>
+<mbr r='__db_txn::discard' o='1984' t='int (*)(DB_TXN *, u_int32_t)'/>
+<mbr r='__db_txn::get_name' o='2048' t='int (*)(DB_TXN *, const char **)'/>
+<mbr r='__db_txn::get_priority' o='2112' t='int (*)(DB_TXN *, u_int32_t *)'/>
+<mbr r='__db_txn::id' o='2176' t='u_int32_t (*)(DB_TXN *)'/>
+<mbr r='__db_txn::prepare' o='2240' t='int (*)(DB_TXN *, u_int8_t *)'/>
+<mbr r='__db_txn::set_commit_token' o='2304' t='int (*)(DB_TXN *, DB_TXN_TOKEN *)'/>
+<mbr r='__db_txn::set_name' o='2368' t='int (*)(DB_TXN *, const char *)'/>
+<mbr r='__db_txn::set_priority' o='2432' t='int (*)(DB_TXN *, u_int32_t)'/>
+<mbr r='__db_txn::set_timeout' o='2496' t='int (*)(DB_TXN *, db_timeout_t, u_int32_t)'/>
+<mbr r='__db_txn::set_txn_lsnp' o='2560' t='void (*)(DB_TXN *, DB_LSN **, DB_LSN **)'/>
+<mbr r='__db_txn::xa_thr_status' o='2624' t='u_int32_t'/>
+<mbr r='__db_txn::flags' o='2656' t='u_int32_t'/>

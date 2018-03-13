@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='809' type='BOOL'/>
+<doc f='exim/src/globals.h' l='809'>/* Set keepalive on incoming */</doc>

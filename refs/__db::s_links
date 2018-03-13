@@ -1,0 +1,14 @@
+<dec f='include/db.h' l='1551' type='struct (anonymous struct at /usr/include/db.h:1548:2)'/>
+<offset>3392</offset>
+<doc f='include/db.h' l='1536'>/*
+	 * List entries for secondaries, and reference count of how many
+	 * threads are updating this secondary (see Dbc.put).
+	 *
+	 * !!!
+	 * Note that these are synchronized by the primary&apos;s mutex, but
+	 * filled in in the secondaries.
+	 *
+	 * !!!
+	 * Explicit representations of structures from queue.h.
+	 * LIST_ENTRY(__db) s_links;
+	 */</doc>

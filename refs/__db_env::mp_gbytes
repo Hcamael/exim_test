@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2362' type='u_int32_t'/>
+<offset>2752</offset>
+<doc f='include/db.h' l='2361'>/* Memory pool configuration */</doc>
+<doc f='include/db.h' l='2362'>/* Cache size: GB */</doc>

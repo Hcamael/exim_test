@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2665' type='int (*)(DBT *, int, const char *, void *, int (*)(void *, const void *), int, int)'/>
+<offset>16640</offset>
+<doc f='include/db.h' l='2664'>/* DB_ENV PRIVATE HANDLE LIST BEGIN */</doc>

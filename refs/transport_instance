@@ -1,0 +1,58 @@
+<def f='exim/src/structs.h' l='135' ll='198'/>
+<size>312</size>
+<doc f='exim/src/structs.h' l='129'>/* Structure for holding information about the configured transports. Some
+of the generally accessible options are set from the configuration file; others
+are set by transport initialization, since they can only be set for certain
+transports. They need to be generally accessible, however, as they are used by
+the main transport code. */</doc>
+<mbr r='transport_instance::next' o='0' t='struct transport_instance *'/>
+<mbr r='transport_instance::name' o='64' t='uschar *'/>
+<mbr r='transport_instance::info' o='128' t='struct transport_info *'/>
+<mbr r='transport_instance::options_block' o='192' t='void *'/>
+<mbr r='transport_instance::driver_name' o='256' t='uschar *'/>
+<mbr r='transport_instance::setup' o='320' t='int (*)(struct transport_instance *, struct address_item *, struct transport_feedback *, uid_t, gid_t, uschar **)'/>
+<mbr r='transport_instance::batch_max' o='384' t='int'/>
+<mbr r='transport_instance::batch_id' o='448' t='uschar *'/>
+<mbr r='transport_instance::home_dir' o='512' t='uschar *'/>
+<mbr r='transport_instance::current_dir' o='576' t='uschar *'/>
+<mbr r='transport_instance::expand_multi_domain' o='640' t='uschar *'/>
+<mbr r='transport_instance::multi_domain' o='704' t='BOOL'/>
+<mbr r='transport_instance::overrides_hosts' o='736' t='BOOL'/>
+<mbr r='transport_instance::max_addresses' o='768' t='int'/>
+<mbr r='transport_instance::connection_max_messages' o='800' t='int'/>
+<mbr r='transport_instance::deliver_as_creator' o='832' t='BOOL'/>
+<mbr r='transport_instance::disable_logging' o='864' t='BOOL'/>
+<mbr r='transport_instance::initgroups' o='896' t='BOOL'/>
+<mbr r='transport_instance::uid_set' o='928' t='BOOL'/>
+<mbr r='transport_instance::gid_set' o='960' t='BOOL'/>
+<mbr r='transport_instance::uid' o='992' t='uid_t'/>
+<mbr r='transport_instance::gid' o='1024' t='gid_t'/>
+<mbr r='transport_instance::expand_uid' o='1088' t='uschar *'/>
+<mbr r='transport_instance::expand_gid' o='1152' t='uschar *'/>
+<mbr r='transport_instance::warn_message' o='1216' t='uschar *'/>
+<mbr r='transport_instance::shadow' o='1280' t='uschar *'/>
+<mbr r='transport_instance::shadow_condition' o='1344' t='uschar *'/>
+<mbr r='transport_instance::filter_command' o='1408' t='uschar *'/>
+<mbr r='transport_instance::add_headers' o='1472' t='uschar *'/>
+<mbr r='transport_instance::remove_headers' o='1536' t='uschar *'/>
+<mbr r='transport_instance::return_path' o='1600' t='uschar *'/>
+<mbr r='transport_instance::debug_string' o='1664' t='uschar *'/>
+<mbr r='transport_instance::max_parallel' o='1728' t='uschar *'/>
+<mbr r='transport_instance::message_size_limit' o='1792' t='uschar *'/>
+<mbr r='transport_instance::headers_rewrite' o='1856' t='uschar *'/>
+<mbr r='transport_instance::rewrite_rules' o='1920' t='rewrite_rule *'/>
+<mbr r='transport_instance::rewrite_existflags' o='1984' t='int'/>
+<mbr r='transport_instance::filter_timeout' o='2016' t='int'/>
+<mbr r='transport_instance::body_only' o='2048' t='BOOL'/>
+<mbr r='transport_instance::delivery_date_add' o='2080' t='BOOL'/>
+<mbr r='transport_instance::envelope_to_add' o='2112' t='BOOL'/>
+<mbr r='transport_instance::headers_only' o='2144' t='BOOL'/>
+<mbr r='transport_instance::rcpt_include_affixes' o='2176' t='BOOL'/>
+<mbr r='transport_instance::return_path_add' o='2208' t='BOOL'/>
+<mbr r='transport_instance::return_output' o='2240' t='BOOL'/>
+<mbr r='transport_instance::return_fail_output' o='2272' t='BOOL'/>
+<mbr r='transport_instance::log_output' o='2304' t='BOOL'/>
+<mbr r='transport_instance::log_fail_output' o='2336' t='BOOL'/>
+<mbr r='transport_instance::log_defer_output' o='2368' t='BOOL'/>
+<mbr r='transport_instance::retry_use_local_part' o='2400' t='BOOL'/>
+<mbr r='transport_instance::event_action' o='2432' t='uschar *'/>

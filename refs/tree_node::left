@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='686' type='struct tree_node *'/>
+<offset>0</offset>
+<doc f='exim/src/structs.h' l='686'>/* pointer to left child */</doc>

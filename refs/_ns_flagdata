@@ -1,0 +1,5 @@
+<def f='include/arpa/nameser.h' l='124'/>
+<dec f='include/arpa/nameser.h' l='125' type='const struct _ns_flagdata []'/>
+<size>8</size>
+<mbr r='_ns_flagdata::mask' o='0' t='int'/>
+<mbr r='_ns_flagdata::shift' o='32' t='int'/>

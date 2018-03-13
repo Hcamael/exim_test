@@ -1,0 +1,284 @@
+<def f='include/db.h' l='2276' ll='2668'/>
+<size>2088</size>
+<mbr r='__db_env::env' o='0' t='ENV *'/>
+<mbr r='__db_env::mtx_db_env' o='64' t='db_mutex_t'/>
+<mbr r='__db_env::db_errcall' o='128' t='void (*)(const DB_ENV *, const char *, const char *)'/>
+<mbr r='__db_env::db_errfile' o='192' t='FILE *'/>
+<mbr r='__db_env::db_errpfx' o='256' t='const char *'/>
+<mbr r='__db_env::db_msgcall' o='320' t='void (*)(const DB_ENV *, const char *)'/>
+<mbr r='__db_env::db_msgfile' o='384' t='FILE *'/>
+<mbr r='__db_env::app_dispatch' o='448' t='int (*)(DB_ENV *, DBT *, DB_LSN *, db_recops)'/>
+<mbr r='__db_env::db_event_func' o='512' t='void (*)(DB_ENV *, u_int32_t, void *)'/>
+<mbr r='__db_env::db_feedback' o='576' t='void (*)(DB_ENV *, int, int)'/>
+<mbr r='__db_env::db_free' o='640' t='void (*)(void *)'/>
+<mbr r='__db_env::db_paniccall' o='704' t='void (*)(DB_ENV *, int)'/>
+<mbr r='__db_env::db_malloc' o='768' t='void *(*)(size_t)'/>
+<mbr r='__db_env::db_realloc' o='832' t='void *(*)(void *, size_t)'/>
+<mbr r='__db_env::is_alive' o='896' t='int (*)(DB_ENV *, pid_t, db_threadid_t, u_int32_t)'/>
+<mbr r='__db_env::thread_id' o='960' t='void (*)(DB_ENV *, pid_t *, db_threadid_t *)'/>
+<mbr r='__db_env::thread_id_string' o='1024' t='char *(*)(DB_ENV *, pid_t, db_threadid_t, char *)'/>
+<mbr r='__db_env::db_log_dir' o='1088' t='char *'/>
+<mbr r='__db_env::db_md_dir' o='1152' t='char *'/>
+<mbr r='__db_env::db_tmp_dir' o='1216' t='char *'/>
+<mbr r='__db_env::db_create_dir' o='1280' t='char *'/>
+<mbr r='__db_env::db_data_dir' o='1344' t='char **'/>
+<mbr r='__db_env::data_cnt' o='1408' t='int'/>
+<mbr r='__db_env::data_next' o='1440' t='int'/>
+<mbr r='__db_env::intermediate_dir_mode' o='1472' t='char *'/>
+<mbr r='__db_env::shm_key' o='1536' t='long'/>
+<mbr r='__db_env::passwd' o='1600' t='char *'/>
+<mbr r='__db_env::passwd_len' o='1664' t='size_t'/>
+<mbr r='__db_env::app_private' o='1728' t='void *'/>
+<mbr r='__db_env::api1_internal' o='1792' t='void *'/>
+<mbr r='__db_env::api2_internal' o='1856' t='void *'/>
+<mbr r='__db_env::verbose' o='1920' t='u_int32_t'/>
+<mbr r='__db_env::mutex_align' o='1952' t='u_int32_t'/>
+<mbr r='__db_env::mutex_cnt' o='1984' t='u_int32_t'/>
+<mbr r='__db_env::mutex_inc' o='2016' t='u_int32_t'/>
+<mbr r='__db_env::mutex_max' o='2048' t='u_int32_t'/>
+<mbr r='__db_env::mutex_tas_spins' o='2080' t='u_int32_t'/>
+<mbr r='__db_env::lk_conflicts' o='2112' t='u_int8_t *'/>
+<mbr r='__db_env::lk_modes' o='2176' t='int'/>
+<mbr r='__db_env::lk_detect' o='2208' t='u_int32_t'/>
+<mbr r='__db_env::lk_max' o='2240' t='u_int32_t'/>
+<mbr r='__db_env::lk_max_lockers' o='2272' t='u_int32_t'/>
+<mbr r='__db_env::lk_max_objects' o='2304' t='u_int32_t'/>
+<mbr r='__db_env::lk_init' o='2336' t='u_int32_t'/>
+<mbr r='__db_env::lk_init_lockers' o='2368' t='u_int32_t'/>
+<mbr r='__db_env::lk_init_objects' o='2400' t='u_int32_t'/>
+<mbr r='__db_env::lk_partitions' o='2432' t='u_int32_t'/>
+<mbr r='__db_env::lk_timeout' o='2464' t='db_timeout_t'/>
+<mbr r='__db_env::locker_t_size' o='2496' t='u_int32_t'/>
+<mbr r='__db_env::object_t_size' o='2528' t='u_int32_t'/>
+<mbr r='__db_env::lg_bsize' o='2560' t='u_int32_t'/>
+<mbr r='__db_env::lg_fileid_init' o='2592' t='u_int32_t'/>
+<mbr r='__db_env::lg_filemode' o='2624' t='int'/>
+<mbr r='__db_env::lg_regionmax' o='2656' t='u_int32_t'/>
+<mbr r='__db_env::lg_size' o='2688' t='u_int32_t'/>
+<mbr r='__db_env::lg_flags' o='2720' t='u_int32_t'/>
+<mbr r='__db_env::mp_gbytes' o='2752' t='u_int32_t'/>
+<mbr r='__db_env::mp_bytes' o='2784' t='u_int32_t'/>
+<mbr r='__db_env::mp_max_gbytes' o='2816' t='u_int32_t'/>
+<mbr r='__db_env::mp_max_bytes' o='2848' t='u_int32_t'/>
+<mbr r='__db_env::mp_mmapsize' o='2880' t='size_t'/>
+<mbr r='__db_env::mp_maxopenfd' o='2944' t='int'/>
+<mbr r='__db_env::mp_maxwrite' o='2976' t='int'/>
+<mbr r='__db_env::mp_ncache' o='3008' t='u_int'/>
+<mbr r='__db_env::mp_pagesize' o='3040' t='u_int32_t'/>
+<mbr r='__db_env::mp_tablesize' o='3072' t='u_int32_t'/>
+<mbr r='__db_env::mp_mtxcount' o='3104' t='u_int32_t'/>
+<mbr r='__db_env::mp_maxwrite_sleep' o='3136' t='db_timeout_t'/>
+<mbr r='__db_env::tx_init' o='3168' t='u_int32_t'/>
+<mbr r='__db_env::tx_max' o='3200' t='u_int32_t'/>
+<mbr r='__db_env::tx_timestamp' o='3264' t='time_t'/>
+<mbr r='__db_env::tx_timeout' o='3328' t='db_timeout_t'/>
+<mbr r='__db_env::thr_init' o='3360' t='u_int32_t'/>
+<mbr r='__db_env::thr_max' o='3392' t='u_int32_t'/>
+<mbr r='__db_env::memory_max' o='3456' t='roff_t'/>
+<mbr r='__db_env::registry' o='3520' t='DB_FH *'/>
+<mbr r='__db_env::registry_off' o='3584' t='u_int32_t'/>
+<mbr r='__db_env::envreg_timeout' o='3616' t='db_timeout_t'/>
+<mbr r='__db_env::flags' o='3648' t='u_int32_t'/>
+<mbr r='__db_env::add_data_dir' o='3712' t='int (*)(DB_ENV *, const char *)'/>
+<mbr r='__db_env::backup' o='3776' t='int (*)(DB_ENV *, const char *, u_int32_t)'/>
+<mbr r='__db_env::cdsgroup_begin' o='3840' t='int (*)(DB_ENV *, DB_TXN **)'/>
+<mbr r='__db_env::close' o='3904' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::dbbackup' o='3968' t='int (*)(DB_ENV *, const char *, const char *, u_int32_t)'/>
+<mbr r='__db_env::dbremove' o='4032' t='int (*)(DB_ENV *, DB_TXN *, const char *, const char *, u_int32_t)'/>
+<mbr r='__db_env::dbrename' o='4096' t='int (*)(DB_ENV *, DB_TXN *, const char *, const char *, const char *, u_int32_t)'/>
+<mbr r='__db_env::err' o='4160' t='void (*)(const DB_ENV *, int, const char *, ...)'/>
+<mbr r='__db_env::errx' o='4224' t='void (*)(const DB_ENV *, const char *, ...)'/>
+<mbr r='__db_env::failchk' o='4288' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::fileid_reset' o='4352' t='int (*)(DB_ENV *, const char *, u_int32_t)'/>
+<mbr r='__db_env::get_alloc' o='4416' t='int (*)(DB_ENV *, void *(**)(size_t), void *(**)(void *, size_t), void (**)(void *))'/>
+<mbr r='__db_env::get_app_dispatch' o='4480' t='int (*)(DB_ENV *, int (**)(DB_ENV *, DBT *, DB_LSN *, db_recops))'/>
+<mbr r='__db_env::get_cache_max' o='4544' t='int (*)(DB_ENV *, u_int32_t *, u_int32_t *)'/>
+<mbr r='__db_env::get_cachesize' o='4608' t='int (*)(DB_ENV *, u_int32_t *, u_int32_t *, int *)'/>
+<mbr r='__db_env::get_create_dir' o='4672' t='int (*)(DB_ENV *, const char **)'/>
+<mbr r='__db_env::get_data_dirs' o='4736' t='int (*)(DB_ENV *, const char ***)'/>
+<mbr r='__db_env::get_data_len' o='4800' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_backup_callbacks' o='4864' t='int (*)(DB_ENV *, int (**)(DB_ENV *, const char *, const char *, void **), int (**)(DB_ENV *, u_int32_t, u_int32_t, u_int32_t, u_int8_t *, void *), int (**)(DB_ENV *, const char *, void *))'/>
+<mbr r='__db_env::get_backup_config' o='4928' t='int (*)(DB_ENV *, DB_BACKUP_CONFIG, u_int32_t *)'/>
+<mbr r='__db_env::get_encrypt_flags' o='4992' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_errcall' o='5056' t='void (*)(DB_ENV *, void (**)(const DB_ENV *, const char *, const char *))'/>
+<mbr r='__db_env::get_errfile' o='5120' t='void (*)(DB_ENV *, FILE **)'/>
+<mbr r='__db_env::get_errpfx' o='5184' t='void (*)(DB_ENV *, const char **)'/>
+<mbr r='__db_env::get_flags' o='5248' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_feedback' o='5312' t='int (*)(DB_ENV *, void (**)(DB_ENV *, int, int))'/>
+<mbr r='__db_env::get_home' o='5376' t='int (*)(DB_ENV *, const char **)'/>
+<mbr r='__db_env::get_intermediate_dir_mode' o='5440' t='int (*)(DB_ENV *, const char **)'/>
+<mbr r='__db_env::get_isalive' o='5504' t='int (*)(DB_ENV *, int (**)(DB_ENV *, pid_t, db_threadid_t, u_int32_t))'/>
+<mbr r='__db_env::get_lg_bsize' o='5568' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_lg_dir' o='5632' t='int (*)(DB_ENV *, const char **)'/>
+<mbr r='__db_env::get_lg_filemode' o='5696' t='int (*)(DB_ENV *, int *)'/>
+<mbr r='__db_env::get_lg_max' o='5760' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_lg_regionmax' o='5824' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_lk_conflicts' o='5888' t='int (*)(DB_ENV *, const u_int8_t **, int *)'/>
+<mbr r='__db_env::get_lk_detect' o='5952' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_lk_max_lockers' o='6016' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_lk_max_locks' o='6080' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_lk_max_objects' o='6144' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_lk_partitions' o='6208' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_lk_priority' o='6272' t='int (*)(DB_ENV *, u_int32_t, u_int32_t *)'/>
+<mbr r='__db_env::get_lk_tablesize' o='6336' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_memory_init' o='6400' t='int (*)(DB_ENV *, DB_MEM_CONFIG, u_int32_t *)'/>
+<mbr r='__db_env::get_memory_max' o='6464' t='int (*)(DB_ENV *, u_int32_t *, u_int32_t *)'/>
+<mbr r='__db_env::get_metadata_dir' o='6528' t='int (*)(DB_ENV *, const char **)'/>
+<mbr r='__db_env::get_mp_max_openfd' o='6592' t='int (*)(DB_ENV *, int *)'/>
+<mbr r='__db_env::get_mp_max_write' o='6656' t='int (*)(DB_ENV *, int *, db_timeout_t *)'/>
+<mbr r='__db_env::get_mp_mmapsize' o='6720' t='int (*)(DB_ENV *, size_t *)'/>
+<mbr r='__db_env::get_mp_mtxcount' o='6784' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_mp_pagesize' o='6848' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_mp_tablesize' o='6912' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_msgcall' o='6976' t='void (*)(DB_ENV *, void (**)(const DB_ENV *, const char *))'/>
+<mbr r='__db_env::get_msgfile' o='7040' t='void (*)(DB_ENV *, FILE **)'/>
+<mbr r='__db_env::get_open_flags' o='7104' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_shm_key' o='7168' t='int (*)(DB_ENV *, long *)'/>
+<mbr r='__db_env::get_thread_count' o='7232' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_thread_id_fn' o='7296' t='int (*)(DB_ENV *, void (**)(DB_ENV *, pid_t *, db_threadid_t *))'/>
+<mbr r='__db_env::get_thread_id_string_fn' o='7360' t='int (*)(DB_ENV *, char *(**)(DB_ENV *, pid_t, db_threadid_t, char *))'/>
+<mbr r='__db_env::get_timeout' o='7424' t='int (*)(DB_ENV *, db_timeout_t *, u_int32_t)'/>
+<mbr r='__db_env::get_tmp_dir' o='7488' t='int (*)(DB_ENV *, const char **)'/>
+<mbr r='__db_env::get_tx_max' o='7552' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::get_tx_timestamp' o='7616' t='int (*)(DB_ENV *, time_t *)'/>
+<mbr r='__db_env::get_verbose' o='7680' t='int (*)(DB_ENV *, u_int32_t, int *)'/>
+<mbr r='__db_env::is_bigendian' o='7744' t='int (*)(void)'/>
+<mbr r='__db_env::lock_detect' o='7808' t='int (*)(DB_ENV *, u_int32_t, u_int32_t, int *)'/>
+<mbr r='__db_env::lock_get' o='7872' t='int (*)(DB_ENV *, u_int32_t, u_int32_t, DBT *, db_lockmode_t, DB_LOCK *)'/>
+<mbr r='__db_env::lock_id' o='7936' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::lock_id_free' o='8000' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::lock_put' o='8064' t='int (*)(DB_ENV *, DB_LOCK *)'/>
+<mbr r='__db_env::lock_stat' o='8128' t='int (*)(DB_ENV *, DB_LOCK_STAT **, u_int32_t)'/>
+<mbr r='__db_env::lock_stat_print' o='8192' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::lock_vec' o='8256' t='int (*)(DB_ENV *, u_int32_t, u_int32_t, DB_LOCKREQ *, int, DB_LOCKREQ **)'/>
+<mbr r='__db_env::log_archive' o='8320' t='int (*)(DB_ENV *, char ***, u_int32_t)'/>
+<mbr r='__db_env::log_cursor' o='8384' t='int (*)(DB_ENV *, DB_LOGC **, u_int32_t)'/>
+<mbr r='__db_env::log_file' o='8448' t='int (*)(DB_ENV *, const DB_LSN *, char *, size_t)'/>
+<mbr r='__db_env::log_flush' o='8512' t='int (*)(DB_ENV *, const DB_LSN *)'/>
+<mbr r='__db_env::log_get_config' o='8576' t='int (*)(DB_ENV *, u_int32_t, int *)'/>
+<mbr r='__db_env::log_printf' o='8640' t='int (*)(DB_ENV *, DB_TXN *, const char *, ...)'/>
+<mbr r='__db_env::log_put' o='8704' t='int (*)(DB_ENV *, DB_LSN *, const DBT *, u_int32_t)'/>
+<mbr r='__db_env::log_put_record' o='8768' t='int (*)(DB_ENV *, DB *, DB_TXN *, DB_LSN *, u_int32_t, u_int32_t, u_int32_t, u_int32_t, DB_LOG_RECSPEC *, ...)'/>
+<mbr r='__db_env::log_read_record' o='8832' t='int (*)(DB_ENV *, DB **, void *, void *, DB_LOG_RECSPEC *, u_int32_t, void **)'/>
+<mbr r='__db_env::log_set_config' o='8896' t='int (*)(DB_ENV *, u_int32_t, int)'/>
+<mbr r='__db_env::log_stat' o='8960' t='int (*)(DB_ENV *, DB_LOG_STAT **, u_int32_t)'/>
+<mbr r='__db_env::log_stat_print' o='9024' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::log_verify' o='9088' t='int (*)(DB_ENV *, const DB_LOG_VERIFY_CONFIG *)'/>
+<mbr r='__db_env::lsn_reset' o='9152' t='int (*)(DB_ENV *, const char *, u_int32_t)'/>
+<mbr r='__db_env::memp_fcreate' o='9216' t='int (*)(DB_ENV *, DB_MPOOLFILE **, u_int32_t)'/>
+<mbr r='__db_env::memp_register' o='9280' t='int (*)(DB_ENV *, int, int (*)(DB_ENV *, db_pgno_t, void *, DBT *), int (*)(DB_ENV *, db_pgno_t, void *, DBT *))'/>
+<mbr r='__db_env::memp_stat' o='9344' t='int (*)(DB_ENV *, DB_MPOOL_STAT **, DB_MPOOL_FSTAT ***, u_int32_t)'/>
+<mbr r='__db_env::memp_stat_print' o='9408' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::memp_sync' o='9472' t='int (*)(DB_ENV *, DB_LSN *)'/>
+<mbr r='__db_env::memp_trickle' o='9536' t='int (*)(DB_ENV *, int, int *)'/>
+<mbr r='__db_env::mutex_alloc' o='9600' t='int (*)(DB_ENV *, u_int32_t, db_mutex_t *)'/>
+<mbr r='__db_env::mutex_free' o='9664' t='int (*)(DB_ENV *, db_mutex_t)'/>
+<mbr r='__db_env::mutex_get_align' o='9728' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::mutex_get_increment' o='9792' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::mutex_get_init' o='9856' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::mutex_get_max' o='9920' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::mutex_get_tas_spins' o='9984' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::mutex_lock' o='10048' t='int (*)(DB_ENV *, db_mutex_t)'/>
+<mbr r='__db_env::mutex_set_align' o='10112' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::mutex_set_increment' o='10176' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::mutex_set_init' o='10240' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::mutex_set_max' o='10304' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::mutex_set_tas_spins' o='10368' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::mutex_stat' o='10432' t='int (*)(DB_ENV *, DB_MUTEX_STAT **, u_int32_t)'/>
+<mbr r='__db_env::mutex_stat_print' o='10496' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::mutex_unlock' o='10560' t='int (*)(DB_ENV *, db_mutex_t)'/>
+<mbr r='__db_env::open' o='10624' t='int (*)(DB_ENV *, const char *, u_int32_t, int)'/>
+<mbr r='__db_env::remove' o='10688' t='int (*)(DB_ENV *, const char *, u_int32_t)'/>
+<mbr r='__db_env::rep_elect' o='10752' t='int (*)(DB_ENV *, u_int32_t, u_int32_t, u_int32_t)'/>
+<mbr r='__db_env::rep_flush' o='10816' t='int (*)(DB_ENV *)'/>
+<mbr r='__db_env::rep_get_clockskew' o='10880' t='int (*)(DB_ENV *, u_int32_t *, u_int32_t *)'/>
+<mbr r='__db_env::rep_get_config' o='10944' t='int (*)(DB_ENV *, u_int32_t, int *)'/>
+<mbr r='__db_env::rep_get_limit' o='11008' t='int (*)(DB_ENV *, u_int32_t *, u_int32_t *)'/>
+<mbr r='__db_env::rep_get_nsites' o='11072' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::rep_get_priority' o='11136' t='int (*)(DB_ENV *, u_int32_t *)'/>
+<mbr r='__db_env::rep_get_request' o='11200' t='int (*)(DB_ENV *, u_int32_t *, u_int32_t *)'/>
+<mbr r='__db_env::rep_get_timeout' o='11264' t='int (*)(DB_ENV *, int, u_int32_t *)'/>
+<mbr r='__db_env::rep_process_message' o='11328' t='int (*)(DB_ENV *, DBT *, DBT *, int, DB_LSN *)'/>
+<mbr r='__db_env::rep_set_clockskew' o='11392' t='int (*)(DB_ENV *, u_int32_t, u_int32_t)'/>
+<mbr r='__db_env::rep_set_config' o='11456' t='int (*)(DB_ENV *, u_int32_t, int)'/>
+<mbr r='__db_env::rep_set_limit' o='11520' t='int (*)(DB_ENV *, u_int32_t, u_int32_t)'/>
+<mbr r='__db_env::rep_set_nsites' o='11584' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::rep_set_priority' o='11648' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::rep_set_request' o='11712' t='int (*)(DB_ENV *, u_int32_t, u_int32_t)'/>
+<mbr r='__db_env::rep_set_timeout' o='11776' t='int (*)(DB_ENV *, int, db_timeout_t)'/>
+<mbr r='__db_env::rep_set_transport' o='11840' t='int (*)(DB_ENV *, int, int (*)(DB_ENV *, const DBT *, const DBT *, const DB_LSN *, int, u_int32_t))'/>
+<mbr r='__db_env::rep_start' o='11904' t='int (*)(DB_ENV *, DBT *, u_int32_t)'/>
+<mbr r='__db_env::rep_stat' o='11968' t='int (*)(DB_ENV *, DB_REP_STAT **, u_int32_t)'/>
+<mbr r='__db_env::rep_stat_print' o='12032' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::rep_sync' o='12096' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::repmgr_channel' o='12160' t='int (*)(DB_ENV *, int, DB_CHANNEL **, u_int32_t)'/>
+<mbr r='__db_env::repmgr_get_ack_policy' o='12224' t='int (*)(DB_ENV *, int *)'/>
+<mbr r='__db_env::repmgr_local_site' o='12288' t='int (*)(DB_ENV *, DB_SITE **)'/>
+<mbr r='__db_env::repmgr_msg_dispatch' o='12352' t='int (*)(DB_ENV *, void (*)(DB_ENV *, DB_CHANNEL *, DBT *, u_int32_t, u_int32_t), u_int32_t)'/>
+<mbr r='__db_env::repmgr_set_ack_policy' o='12416' t='int (*)(DB_ENV *, int)'/>
+<mbr r='__db_env::repmgr_site' o='12480' t='int (*)(DB_ENV *, const char *, u_int, DB_SITE **, u_int32_t)'/>
+<mbr r='__db_env::repmgr_site_by_eid' o='12544' t='int (*)(DB_ENV *, int, DB_SITE **)'/>
+<mbr r='__db_env::repmgr_site_list' o='12608' t='int (*)(DB_ENV *, u_int *, DB_REPMGR_SITE **)'/>
+<mbr r='__db_env::repmgr_start' o='12672' t='int (*)(DB_ENV *, int, u_int32_t)'/>
+<mbr r='__db_env::repmgr_stat' o='12736' t='int (*)(DB_ENV *, DB_REPMGR_STAT **, u_int32_t)'/>
+<mbr r='__db_env::repmgr_stat_print' o='12800' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_alloc' o='12864' t='int (*)(DB_ENV *, void *(*)(size_t), void *(*)(void *, size_t), void (*)(void *))'/>
+<mbr r='__db_env::set_app_dispatch' o='12928' t='int (*)(DB_ENV *, int (*)(DB_ENV *, DBT *, DB_LSN *, db_recops))'/>
+<mbr r='__db_env::set_cache_max' o='12992' t='int (*)(DB_ENV *, u_int32_t, u_int32_t)'/>
+<mbr r='__db_env::set_cachesize' o='13056' t='int (*)(DB_ENV *, u_int32_t, u_int32_t, int)'/>
+<mbr r='__db_env::set_create_dir' o='13120' t='int (*)(DB_ENV *, const char *)'/>
+<mbr r='__db_env::set_data_dir' o='13184' t='int (*)(DB_ENV *, const char *)'/>
+<mbr r='__db_env::set_data_len' o='13248' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_backup_callbacks' o='13312' t='int (*)(DB_ENV *, int (*)(DB_ENV *, const char *, const char *, void **), int (*)(DB_ENV *, u_int32_t, u_int32_t, u_int32_t, u_int8_t *, void *), int (*)(DB_ENV *, const char *, void *))'/>
+<mbr r='__db_env::set_backup_config' o='13376' t='int (*)(DB_ENV *, DB_BACKUP_CONFIG, u_int32_t)'/>
+<mbr r='__db_env::set_encrypt' o='13440' t='int (*)(DB_ENV *, const char *, u_int32_t)'/>
+<mbr r='__db_env::set_errcall' o='13504' t='void (*)(DB_ENV *, void (*)(const DB_ENV *, const char *, const char *))'/>
+<mbr r='__db_env::set_errfile' o='13568' t='void (*)(DB_ENV *, FILE *)'/>
+<mbr r='__db_env::set_errpfx' o='13632' t='void (*)(DB_ENV *, const char *)'/>
+<mbr r='__db_env::set_event_notify' o='13696' t='int (*)(DB_ENV *, void (*)(DB_ENV *, u_int32_t, void *))'/>
+<mbr r='__db_env::set_feedback' o='13760' t='int (*)(DB_ENV *, void (*)(DB_ENV *, int, int))'/>
+<mbr r='__db_env::set_flags' o='13824' t='int (*)(DB_ENV *, u_int32_t, int)'/>
+<mbr r='__db_env::set_intermediate_dir_mode' o='13888' t='int (*)(DB_ENV *, const char *)'/>
+<mbr r='__db_env::set_isalive' o='13952' t='int (*)(DB_ENV *, int (*)(DB_ENV *, pid_t, db_threadid_t, u_int32_t))'/>
+<mbr r='__db_env::set_lg_bsize' o='14016' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_lg_dir' o='14080' t='int (*)(DB_ENV *, const char *)'/>
+<mbr r='__db_env::set_lg_filemode' o='14144' t='int (*)(DB_ENV *, int)'/>
+<mbr r='__db_env::set_lg_max' o='14208' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_lg_regionmax' o='14272' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_lk_conflicts' o='14336' t='int (*)(DB_ENV *, u_int8_t *, int)'/>
+<mbr r='__db_env::set_lk_detect' o='14400' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_lk_max_lockers' o='14464' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_lk_max_locks' o='14528' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_lk_max_objects' o='14592' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_lk_partitions' o='14656' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_lk_priority' o='14720' t='int (*)(DB_ENV *, u_int32_t, u_int32_t)'/>
+<mbr r='__db_env::set_lk_tablesize' o='14784' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_memory_init' o='14848' t='int (*)(DB_ENV *, DB_MEM_CONFIG, u_int32_t)'/>
+<mbr r='__db_env::set_memory_max' o='14912' t='int (*)(DB_ENV *, u_int32_t, u_int32_t)'/>
+<mbr r='__db_env::set_metadata_dir' o='14976' t='int (*)(DB_ENV *, const char *)'/>
+<mbr r='__db_env::set_mp_max_openfd' o='15040' t='int (*)(DB_ENV *, int)'/>
+<mbr r='__db_env::set_mp_max_write' o='15104' t='int (*)(DB_ENV *, int, db_timeout_t)'/>
+<mbr r='__db_env::set_mp_mmapsize' o='15168' t='int (*)(DB_ENV *, size_t)'/>
+<mbr r='__db_env::set_mp_mtxcount' o='15232' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_mp_pagesize' o='15296' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_mp_tablesize' o='15360' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_msgcall' o='15424' t='void (*)(DB_ENV *, void (*)(const DB_ENV *, const char *))'/>
+<mbr r='__db_env::set_msgfile' o='15488' t='void (*)(DB_ENV *, FILE *)'/>
+<mbr r='__db_env::set_paniccall' o='15552' t='int (*)(DB_ENV *, void (*)(DB_ENV *, int))'/>
+<mbr r='__db_env::set_shm_key' o='15616' t='int (*)(DB_ENV *, long)'/>
+<mbr r='__db_env::set_thread_count' o='15680' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_thread_id' o='15744' t='int (*)(DB_ENV *, void (*)(DB_ENV *, pid_t *, db_threadid_t *))'/>
+<mbr r='__db_env::set_thread_id_string' o='15808' t='int (*)(DB_ENV *, char *(*)(DB_ENV *, pid_t, db_threadid_t, char *))'/>
+<mbr r='__db_env::set_timeout' o='15872' t='int (*)(DB_ENV *, db_timeout_t, u_int32_t)'/>
+<mbr r='__db_env::set_tmp_dir' o='15936' t='int (*)(DB_ENV *, const char *)'/>
+<mbr r='__db_env::set_tx_max' o='16000' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::set_tx_timestamp' o='16064' t='int (*)(DB_ENV *, time_t *)'/>
+<mbr r='__db_env::set_verbose' o='16128' t='int (*)(DB_ENV *, u_int32_t, int)'/>
+<mbr r='__db_env::txn_applied' o='16192' t='int (*)(DB_ENV *, DB_TXN_TOKEN *, db_timeout_t, u_int32_t)'/>
+<mbr r='__db_env::stat_print' o='16256' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::txn_begin' o='16320' t='int (*)(DB_ENV *, DB_TXN *, DB_TXN **, u_int32_t)'/>
+<mbr r='__db_env::txn_checkpoint' o='16384' t='int (*)(DB_ENV *, u_int32_t, u_int32_t, u_int32_t)'/>
+<mbr r='__db_env::txn_recover' o='16448' t='int (*)(DB_ENV *, DB_PREPLIST *, long, long *, u_int32_t)'/>
+<mbr r='__db_env::txn_stat' o='16512' t='int (*)(DB_ENV *, DB_TXN_STAT **, u_int32_t)'/>
+<mbr r='__db_env::txn_stat_print' o='16576' t='int (*)(DB_ENV *, u_int32_t)'/>
+<mbr r='__db_env::prdbt' o='16640' t='int (*)(DBT *, int, const char *, void *, int (*)(void *, const void *), int, int)'/>

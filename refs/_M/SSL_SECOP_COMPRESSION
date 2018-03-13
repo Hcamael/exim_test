@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl.h' l='2007'/>
+<doc f='include/openssl/ssl.h' l='2006'>/* Use to see if compression is allowed */</doc>

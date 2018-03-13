@@ -1,0 +1,7 @@
+<dec f='exim/src/macros.h' l='590'/>
+<doc f='exim/src/macros.h' l='583'>/* Permission and other options for parse_extract_addresses(),
+filter_interpret(), and rda_interpret(), i.e. what special things are allowed
+in redirection operations. Not all apply to all cases. Some of the bits allow
+and some forbid, reflecting the &quot;allow&quot; and &quot;forbid&quot; options in the redirect
+router, which were chosen to represent the standard situation for users&apos;
+.forward files. */</doc>

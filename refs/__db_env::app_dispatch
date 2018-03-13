@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2295' type='int (*)(DB_ENV *, DBT *, DB_LSN *, db_recops)'/>
+<offset>448</offset>
+<doc f='include/db.h' l='2294'>/* Other application callback functions */</doc>

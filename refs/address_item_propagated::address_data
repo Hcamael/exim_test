@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='490' type='uschar *'/>
+<offset>0</offset>
+<doc f='exim/src/structs.h' l='490'>/* arbitrary data to keep with the address */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='524' type='uschar *'/>
+<doc f='exim/src/globals.h' l='524'>/* The directory we where in at startup */</doc>

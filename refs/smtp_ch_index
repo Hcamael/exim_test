@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='822' type='int'/>
+<doc f='exim/src/globals.h' l='822'>/* Index in smtp_connection_had */</doc>

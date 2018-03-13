@@ -1,0 +1,3 @@
+<dec f='exim/src/globals.h' l='139' type='int (*)(unsigned int)'/>
+<doc f='exim/src/globals.h' l='136'>/* Input-reading functions for messages, so we can use special ones for
+incoming TCP/IP. */</doc>

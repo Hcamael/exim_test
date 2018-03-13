@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='725' type='struct timeval'/>
+<doc f='exim/src/globals.h' l='725'>/* Time the message was received */</doc>

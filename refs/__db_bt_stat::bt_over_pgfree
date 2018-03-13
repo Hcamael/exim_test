@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2166' type='uintmax_t'/>
+<offset>768</offset>
+<doc f='include/db.h' l='2166'>/* Bytes free in overflow pages. */</doc>

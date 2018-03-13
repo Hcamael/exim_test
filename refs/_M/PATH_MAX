@@ -1,0 +1,5 @@
+<dec f='include/linux/limits.h' l='12'/>
+<use f='exim/src/exim.h' l='123' u='a'/>
+<use f='include/x86_64-linux-gnu/sys/param.h' l='47' u='a'/>
+<use f='exim/src/macros.h' l='162' u='a'/>
+<use f='exim/src/macros.h' l='162' u='c'/>

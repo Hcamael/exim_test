@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='856' type='unsigned int'/>
+<doc f='exim/src/globals.h' l='856'>/* Global flags for passed connections */</doc>

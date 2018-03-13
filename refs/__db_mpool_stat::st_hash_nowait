@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='749' type='uintmax_t'/>
+<offset>1216</offset>
+<doc f='include/db.h' l='749'>/* Hash lock granted with nowait. */</doc>

@@ -1,0 +1,1 @@
+<dec f='include/db.h' l='3049' type='int db_create(DB ** , DB_ENV * , u_int32_t )'/>

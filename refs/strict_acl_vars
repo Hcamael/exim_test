@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='896' type='BOOL'/>
+<doc f='exim/src/globals.h' l='896'>/* ACL variables have to be set before being used */</doc>

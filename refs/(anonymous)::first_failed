@@ -1,0 +1,4 @@
+<dec f='exim/src/dbstuff.h' l='683' type='time_t'/>
+<offset>64</offset>
+<doc f='exim/src/dbstuff.h' l='682'>/*************/</doc>
+<doc f='exim/src/dbstuff.h' l='683'>/* Time of first failure */</doc>

@@ -1,0 +1,1 @@
+<dec f='include/openssl/ec.h' l='1237' type='void EC_KEY_METHOD_get_keygen(EC_KEY_METHOD * meth, int (**)(EC_KEY *) pkeygen)'/>

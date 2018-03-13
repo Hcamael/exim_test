@@ -1,0 +1,5 @@
+<def f='exim/src/structs.h' l='37' ll='40'/>
+<size>16</size>
+<doc f='exim/src/structs.h' l='35'>/* Structure for bit tables for debugging and logging */</doc>
+<mbr r='bit_table::name' o='0' t='uschar *'/>
+<mbr r='bit_table::bit' o='64' t='int'/>

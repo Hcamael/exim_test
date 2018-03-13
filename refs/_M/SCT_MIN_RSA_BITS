@@ -1,0 +1,2 @@
+<dec f='include/openssl/ct.h' l='25'/>
+<doc f='include/openssl/ct.h' l='24'>/* Minimum RSA key size, from RFC6962 */</doc>

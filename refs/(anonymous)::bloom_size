@@ -1,0 +1,3 @@
+<dec f='exim/src/dbstuff.h' l='785' type='unsigned int'/>
+<offset>256</offset>
+<doc f='exim/src/dbstuff.h' l='785'>/* Number of bytes in the Bloom filter */</doc>

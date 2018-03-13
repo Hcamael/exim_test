@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='528' type='retry_item *'/>
+<offset>704</offset>
+<doc f='exim/src/structs.h' l='528'>/* chain of retry information */</doc>

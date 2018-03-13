@@ -1,0 +1,3 @@
+<dec f='include/arpa/nameser_compat.h' l='82' type='unsigned int'/>
+<offset>80</offset>
+<doc f='include/arpa/nameser_compat.h' l='82'>/*%&lt; number of resource entries */</doc>

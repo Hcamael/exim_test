@@ -1,0 +1,12 @@
+<def f='exim/src/structs.h' l='63' ll='74'/>
+<size>56</size>
+<mbr r='host_item::next' o='0' t='struct host_item *'/>
+<mbr r='host_item::name' o='64' t='const uschar *'/>
+<mbr r='host_item::address' o='128' t='const uschar *'/>
+<mbr r='host_item::port' o='192' t='int'/>
+<mbr r='host_item::mx' o='224' t='int'/>
+<mbr r='host_item::sort_key' o='256' t='int'/>
+<mbr r='host_item::status' o='288' t='int'/>
+<mbr r='host_item::why' o='320' t='int'/>
+<mbr r='host_item::last_try' o='352' t='int'/>
+<mbr r='host_item::dnssec' o='384' t='dnssec_status_t'/>

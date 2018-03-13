@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='329' type='int rda_interpret(redirect_block * , int , uschar * , uschar * , uschar * , uschar * , uschar * , ugid_block * , address_item ** , uschar ** , error_block ** , int * , uschar * )'/>

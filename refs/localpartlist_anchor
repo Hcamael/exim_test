@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='547' type='tree_node *'/>
+<doc f='exim/src/globals.h' l='547'>/* Tree of defined localpart lists */</doc>

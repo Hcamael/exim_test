@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1280' type='db_seq_t'/>
+<offset>384</offset>
+<doc f='include/db.h' l='1280'>/* Maximum value. */</doc>

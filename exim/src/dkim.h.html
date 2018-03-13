@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>dkim.h source code [exim/src/dkim.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/dkim.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='dkim.h.html'>dkim.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge, 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><em>void</em>    <dfn class="decl fn" id="dkim_exim_init" title='dkim_exim_init' data-ref="dkim_exim_init">dkim_exim_init</dfn>(<em>void</em>);</td></tr>
+<tr><th id="9">9</th><td><a class="typedef" href="structs.h.html#gstring" title='gstring' data-type='struct gstring' data-ref="gstring">gstring</a> * <dfn class="decl fn" id="dkim_exim_sign" title='dkim_exim_sign' data-ref="dkim_exim_sign">dkim_exim_sign</dfn>(<em>int</em>, <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#off_t" title='off_t' data-type='__off64_t' data-ref="off_t">off_t</a>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <b>struct</b> <a class="type" href="structs.h.html#ob_dkim" title='ob_dkim' data-ref="ob_dkim">ob_dkim</a> *, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **);</td></tr>
+<tr><th id="10">10</th><td><em>void</em>    <dfn class="decl fn" id="dkim_exim_verify_init" title='dkim_exim_verify_init' data-ref="dkim_exim_verify_init">dkim_exim_verify_init</dfn>(<a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>);</td></tr>
+<tr><th id="11">11</th><td><em>void</em>    <dfn class="decl fn" id="dkim_exim_verify_feed" title='dkim_exim_verify_feed' data-ref="dkim_exim_verify_feed">dkim_exim_verify_feed</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em>);</td></tr>
+<tr><th id="12">12</th><td><em>void</em>    <dfn class="decl fn" id="dkim_exim_verify_finish" title='dkim_exim_verify_finish' data-ref="dkim_exim_verify_finish">dkim_exim_verify_finish</dfn>(<em>void</em>);</td></tr>
+<tr><th id="13">13</th><td><em>void</em>    <dfn class="decl fn" id="dkim_exim_verify_log_all" title='dkim_exim_verify_log_all' data-ref="dkim_exim_verify_log_all">dkim_exim_verify_log_all</dfn>(<em>void</em>);</td></tr>
+<tr><th id="14">14</th><td><em>int</em>     <dfn class="decl fn" id="dkim_exim_acl_run" title='dkim_exim_acl_run' data-ref="dkim_exim_acl_run">dkim_exim_acl_run</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="structs.h.html#gstring" title='gstring' data-type='struct gstring' data-ref="gstring">gstring</a> **, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **);</td></tr>
+<tr><th id="15">15</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl fn" id="dkim_exim_expand_query" title='dkim_exim_expand_query' data-ref="dkim_exim_expand_query">dkim_exim_expand_query</dfn>(<em>int</em>);</td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#define <dfn class="macro" id="_M/DKIM_ALGO" data-ref="_M/DKIM_ALGO">DKIM_ALGO</dfn>               1</u></td></tr>
+<tr><th id="18">18</th><td><u>#define <dfn class="macro" id="_M/DKIM_BODYLENGTH" data-ref="_M/DKIM_BODYLENGTH">DKIM_BODYLENGTH</dfn>         2</u></td></tr>
+<tr><th id="19">19</th><td><u>#define <dfn class="macro" id="_M/DKIM_CANON_BODY" data-ref="_M/DKIM_CANON_BODY">DKIM_CANON_BODY</dfn>         3</u></td></tr>
+<tr><th id="20">20</th><td><u>#define <dfn class="macro" id="_M/DKIM_CANON_HEADERS" data-ref="_M/DKIM_CANON_HEADERS">DKIM_CANON_HEADERS</dfn>      4</u></td></tr>
+<tr><th id="21">21</th><td><u>#define <dfn class="macro" id="_M/DKIM_COPIEDHEADERS" data-ref="_M/DKIM_COPIEDHEADERS">DKIM_COPIEDHEADERS</dfn>      5</u></td></tr>
+<tr><th id="22">22</th><td><u>#define <dfn class="macro" id="_M/DKIM_CREATED" data-ref="_M/DKIM_CREATED">DKIM_CREATED</dfn>            6</u></td></tr>
+<tr><th id="23">23</th><td><u>#define <dfn class="macro" id="_M/DKIM_EXPIRES" data-ref="_M/DKIM_EXPIRES">DKIM_EXPIRES</dfn>            7</u></td></tr>
+<tr><th id="24">24</th><td><u>#define <dfn class="macro" id="_M/DKIM_HEADERNAMES" data-ref="_M/DKIM_HEADERNAMES">DKIM_HEADERNAMES</dfn>        8</u></td></tr>
+<tr><th id="25">25</th><td><u>#define <dfn class="macro" id="_M/DKIM_IDENTITY" data-ref="_M/DKIM_IDENTITY">DKIM_IDENTITY</dfn>           9</u></td></tr>
+<tr><th id="26">26</th><td><u>#define <dfn class="macro" id="_M/DKIM_KEY_GRANULARITY" data-ref="_M/DKIM_KEY_GRANULARITY">DKIM_KEY_GRANULARITY</dfn>   10</u></td></tr>
+<tr><th id="27">27</th><td><u>#define <dfn class="macro" id="_M/DKIM_KEY_SRVTYPE" data-ref="_M/DKIM_KEY_SRVTYPE">DKIM_KEY_SRVTYPE</dfn>       11</u></td></tr>
+<tr><th id="28">28</th><td><u>#define <dfn class="macro" id="_M/DKIM_KEY_NOTES" data-ref="_M/DKIM_KEY_NOTES">DKIM_KEY_NOTES</dfn>         12</u></td></tr>
+<tr><th id="29">29</th><td><u>#define <dfn class="macro" id="_M/DKIM_KEY_TESTING" data-ref="_M/DKIM_KEY_TESTING">DKIM_KEY_TESTING</dfn>       13</u></td></tr>
+<tr><th id="30">30</th><td><u>#define <dfn class="macro" id="_M/DKIM_NOSUBDOMAINS" data-ref="_M/DKIM_NOSUBDOMAINS">DKIM_NOSUBDOMAINS</dfn>      14</u></td></tr>
+<tr><th id="31">31</th><td><u>#define <dfn class="macro" id="_M/DKIM_VERIFY_STATUS" data-ref="_M/DKIM_VERIFY_STATUS">DKIM_VERIFY_STATUS</dfn>     15</u></td></tr>
+<tr><th id="32">32</th><td><u>#define <dfn class="macro" id="_M/DKIM_VERIFY_REASON" data-ref="_M/DKIM_VERIFY_REASON">DKIM_VERIFY_REASON</dfn>     16</u></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='lookups/lf_sqlperform.c.html'>exim/src/lookups/lf_sqlperform.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

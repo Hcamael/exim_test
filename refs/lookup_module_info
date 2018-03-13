@@ -1,0 +1,6 @@
+<def f='exim/src/lookupapi.h' l='54' ll='58'/>
+<size>24</size>
+<doc f='exim/src/lookupapi.h' l='52'>/* Version 3 change: non/cache becomes TTL in seconds */</doc>
+<mbr r='lookup_module_info::magic' o='0' t='uint'/>
+<mbr r='lookup_module_info::lookups' o='64' t='lookup_info **'/>
+<mbr r='lookup_module_info::lookupcount' o='128' t='uint'/>

@@ -1,0 +1,2 @@
+<dec f='include/openssl/tls1.h' l='102'/>
+<doc f='include/openssl/tls1.h' l='101'>/* codes 110-114 are from RFC3546 */</doc>

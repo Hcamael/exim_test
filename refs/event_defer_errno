@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='450' type='int'/>
+<doc f='exim/src/globals.h' l='450'>/* error number set when a remote delivery is deferred with a host error */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='469' type='int'/>
+<doc f='exim/src/globals.h' l='469'>/* Fake FAIL or DEFER response to data */</doc>

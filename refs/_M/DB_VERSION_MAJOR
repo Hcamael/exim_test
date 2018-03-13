@@ -1,0 +1,7 @@
+<dec f='include/db.h' l='47'/>
+<use f='exim/src/dbstuff.h' l='109' u='c'/>
+<use f='exim/src/dbstuff.h' l='115' u='c'/>
+<use f='exim/src/dbstuff.h' l='120' u='c'/>
+<use f='exim/src/dbstuff.h' l='120' u='c'/>
+<use f='exim/src/dbfunctions.h' l='26' u='c'/>
+<use f='exim/src/dbfunctions.h' l='26' u='c'/>

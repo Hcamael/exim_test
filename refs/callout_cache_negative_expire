@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='266' type='int'/>
+<doc f='exim/src/globals.h' l='266'>/* Time for negative callout cache records to expire */</doc>

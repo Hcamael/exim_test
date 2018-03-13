@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='226' type='auth_instance *'/>
+<doc f='exim/src/globals.h' l='226'>/* Chain of instantiated auths */</doc>

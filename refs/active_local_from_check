@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='203' type='BOOL'/>
+<doc f='exim/src/globals.h' l='203'>/* For adding Sender: (switchable) */</doc>

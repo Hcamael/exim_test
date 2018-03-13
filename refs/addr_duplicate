@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='205' type='address_item *'/>
+<doc f='exim/src/globals.h' l='205'>/* Duplicate address list */</doc>

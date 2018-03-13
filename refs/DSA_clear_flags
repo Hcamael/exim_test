@@ -1,0 +1,1 @@
+<dec f='include/openssl/dsa.h' l='179' type='void DSA_clear_flags(DSA * d, int flags)'/>

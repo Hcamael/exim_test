@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='669' type='int32_t'/>
+<offset>768</offset>
+<doc f='include/db.h' l='669'>/* Cache priority. */</doc>

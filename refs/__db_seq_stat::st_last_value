@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1278' type='db_seq_t'/>
+<offset>256</offset>
+<doc f='include/db.h' l='1278'>/* Last cached value. */</doc>

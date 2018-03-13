@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl.h' l='1975'/>
+<doc f='include/openssl/ssl.h' l='1974'>/* Indicated operation refers to peer key or certificate */</doc>

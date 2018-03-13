@@ -1,0 +1,23 @@
+<def f='include/db.h' l='508' ll='537'/>
+<size>152</size>
+<doc f='include/db.h' l='504'>/*
+ * DB_LOGC --
+ *	Log cursor.
+ */</doc>
+<mbr r='__db_log_cursor::env' o='0' t='ENV *'/>
+<mbr r='__db_log_cursor::fhp' o='64' t='DB_FH *'/>
+<mbr r='__db_log_cursor::lsn' o='128' t='DB_LSN'/>
+<mbr r='__db_log_cursor::len' o='192' t='u_int32_t'/>
+<mbr r='__db_log_cursor::prev' o='224' t='u_int32_t'/>
+<mbr r='__db_log_cursor::dbt' o='256' t='DBT'/>
+<mbr r='__db_log_cursor::p_lsn' o='576' t='DB_LSN'/>
+<mbr r='__db_log_cursor::p_version' o='640' t='u_int32_t'/>
+<mbr r='__db_log_cursor::bp' o='704' t='u_int8_t *'/>
+<mbr r='__db_log_cursor::bp_size' o='768' t='u_int32_t'/>
+<mbr r='__db_log_cursor::bp_rlen' o='800' t='u_int32_t'/>
+<mbr r='__db_log_cursor::bp_lsn' o='832' t='DB_LSN'/>
+<mbr r='__db_log_cursor::bp_maxrec' o='896' t='u_int32_t'/>
+<mbr r='__db_log_cursor::close' o='960' t='int (*)(DB_LOGC *, u_int32_t)'/>
+<mbr r='__db_log_cursor::get' o='1024' t='int (*)(DB_LOGC *, DB_LSN *, DBT *, u_int32_t)'/>
+<mbr r='__db_log_cursor::version' o='1088' t='int (*)(DB_LOGC *, u_int32_t *, u_int32_t)'/>
+<mbr r='__db_log_cursor::flags' o='1152' t='u_int32_t'/>

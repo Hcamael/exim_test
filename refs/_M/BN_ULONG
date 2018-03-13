@@ -1,0 +1,15 @@
+<dec f='include/openssl/bn.h' l='43'/>
+<use f='include/openssl/bn.h' l='144' u='c'/>
+<use f='include/openssl/bn.h' l='147' u='c'/>
+<use f='include/openssl/bn.h' l='173' u='c'/>
+<use f='include/openssl/bn.h' l='225' u='c'/>
+<use f='include/openssl/bn.h' l='225' u='c'/>
+<use f='include/openssl/bn.h' l='226' u='c'/>
+<use f='include/openssl/bn.h' l='226' u='c'/>
+<use f='include/openssl/bn.h' l='227' u='c'/>
+<use f='include/openssl/bn.h' l='228' u='c'/>
+<use f='include/openssl/bn.h' l='229' u='c'/>
+<use f='include/openssl/bn.h' l='230' u='c'/>
+<use f='include/openssl/bn.h' l='231' u='c'/>
+<use f='include/openssl/bn.h' l='247' u='c'/>
+<use f='include/openssl/bn.h' l='282' u='c'/>

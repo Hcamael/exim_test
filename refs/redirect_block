@@ -1,0 +1,11 @@
+<def f='exim/src/structs.h' l='834' ll='843'/>
+<size>48</size>
+<doc f='exim/src/structs.h' l='832'>/* Structure to hold information about the source of redirection information */</doc>
+<mbr r='redirect_block::string' o='0' t='uschar *'/>
+<mbr r='redirect_block::owners' o='64' t='uid_t *'/>
+<mbr r='redirect_block::owngroups' o='128' t='gid_t *'/>
+<mbr r='redirect_block::pw' o='192' t='struct passwd *'/>
+<mbr r='redirect_block::modemask' o='256' t='int'/>
+<mbr r='redirect_block::isfile' o='288' t='BOOL'/>
+<mbr r='redirect_block::check_owner' o='320' t='BOOL'/>
+<mbr r='redirect_block::check_group' o='352' t='BOOL'/>

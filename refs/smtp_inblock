@@ -1,0 +1,10 @@
+<def f='exim/src/structs.h' l='811' ll='817'/>
+<size>32</size>
+<doc f='exim/src/structs.h' l='807'>/* Structure used to hold incoming packets of SMTP responses for a specific
+socket. The packets which may contain multiple lines (and in some cases,
+multiple responses). */</doc>
+<mbr r='smtp_inblock::sock' o='0' t='int'/>
+<mbr r='smtp_inblock::buffersize' o='32' t='int'/>
+<mbr r='smtp_inblock::ptr' o='64' t='uschar *'/>
+<mbr r='smtp_inblock::ptrend' o='128' t='uschar *'/>
+<mbr r='smtp_inblock::buffer' o='192' t='uschar *'/>

@@ -1,0 +1,4 @@
+<dec f='include/openssl/asn1.h' l='389'/>
+<doc f='include/openssl/asn1.h' l='385'>/*
+ * If this is set we convert all character strings to UTF8 first
+ */</doc>

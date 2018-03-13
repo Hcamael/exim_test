@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>osfunctions.h source code [exim/src/osfunctions.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/osfunctions.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='osfunctions.h.html'>osfunctions.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2016 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Prototypes for os-specific functions. For utilities, we don't need the one</i></td></tr>
+<tr><th id="9">9</th><td><i>that uses a type that isn't defined for them. */</i></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><u>#<span data-ppcond="11">ifndef</span> <span class="macro" data-ref="_M/COMPILE_UTILITY">COMPILE_UTILITY</span></u></td></tr>
+<tr><th id="12">12</th><td><b>extern</b> <a class="typedef" href="structs.h.html#ip_address_item" title='ip_address_item' data-type='struct ip_address_item' data-ref="ip_address_item">ip_address_item</a> *<dfn class="decl fn" id="os_common_find_running_interfaces" title='os_common_find_running_interfaces' data-ref="os_common_find_running_interfaces">os_common_find_running_interfaces</dfn>(<em>void</em>);</td></tr>
+<tr><th id="13">13</th><td><u>#<span data-ppcond="11">endif</span></u></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><i>/* If these exist as a macro, then they're overridden away from us and we</i></td></tr>
+<tr><th id="16">16</th><td><i>rely upon the system headers to provide prototype declarations for us.</i></td></tr>
+<tr><th id="17">17</th><td><i>Notably, strsignal() is not in the Single Unix Specification (v3) and</i></td></tr>
+<tr><th id="18">18</th><td><i>predicting constness is awkward. */</i></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><u>#<span data-ppcond="20">ifndef</span> <span class="macro" data-ref="_M/os_getloadavg">os_getloadavg</span></u></td></tr>
+<tr><th id="21">21</th><td><b>extern</b> <em>int</em>           <dfn class="decl fn" id="os_getloadavg" title='os_getloadavg' data-ref="os_getloadavg">os_getloadavg</dfn>(<em>void</em>);</td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="20">endif</span></u></td></tr>
+<tr><th id="23">23</th><td><u>#<span data-ppcond="23">ifndef</span> <span class="macro" data-ref="_M/os_restarting_signal">os_restarting_signal</span></u></td></tr>
+<tr><th id="24">24</th><td><b>extern</b> <em>void</em>          <dfn class="decl fn" id="os_restarting_signal" title='os_restarting_signal' data-ref="os_restarting_signal">os_restarting_signal</dfn>(<em>int</em>, <em>void</em> (*)(<em>int</em>));</td></tr>
+<tr><th id="25">25</th><td><u>#<span data-ppcond="23">endif</span></u></td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="26">ifndef</span> <span class="macro" data-ref="_M/os_non_restarting_signal">os_non_restarting_signal</span></u></td></tr>
+<tr><th id="27">27</th><td><b>extern</b> <em>void</em>          <dfn class="decl fn" id="os_non_restarting_signal" title='os_non_restarting_signal' data-ref="os_non_restarting_signal">os_non_restarting_signal</dfn>(<em>int</em>, <em>void</em> (*)(<em>int</em>));</td></tr>
+<tr><th id="28">28</th><td><u>#<span data-ppcond="26">endif</span></u></td></tr>
+<tr><th id="29">29</th><td><u>#<span data-ppcond="29">ifndef</span> <span class="macro" data-ref="_M/os_strexit">os_strexit</span></u></td></tr>
+<tr><th id="30">30</th><td><b>extern</b> <em>const</em> <em>char</em>   *<dfn class="decl fn" id="os_strexit" title='os_strexit' data-ref="os_strexit">os_strexit</dfn>(<em>int</em>);     <i>/* char to match os_strsignal */</i></td></tr>
+<tr><th id="31">31</th><td><u>#<span data-ppcond="29">endif</span></u></td></tr>
+<tr><th id="32">32</th><td><u>#<span data-ppcond="32">ifndef</span> <a class="macro" href="../build-Linux-x86_64/os.h.html#34" data-ref="_M/os_strsignal">os_strsignal</a></u></td></tr>
+<tr><th id="33">33</th><td><b>extern</b> <em>const</em> <em>char</em>   *os_strsignal(<em>int</em>);   <i>/* char to match strsignal in some OS */</i></td></tr>
+<tr><th id="34">34</th><td><u>#<span data-ppcond="32">endif</span></u></td></tr>
+<tr><th id="35">35</th><td><u>#<span data-ppcond="35">ifndef</span> <span class="macro" data-ref="_M/os_unsetenv">os_unsetenv</span></u></td></tr>
+<tr><th id="36">36</th><td><b>extern</b> <em>int</em>           <dfn class="decl fn" id="os_unsetenv" title='os_unsetenv' data-ref="os_unsetenv">os_unsetenv</dfn>(<em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="37">37</th><td><u>#<span data-ppcond="35">endif</span></u></td></tr>
+<tr><th id="38">38</th><td><u>#<span data-ppcond="38">ifndef</span> <span class="macro" data-ref="_M/os_getcwd">os_getcwd</span></u></td></tr>
+<tr><th id="39">39</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a>       *<dfn class="decl fn" id="os_getcwd" title='os_getcwd' data-ref="os_getcwd">os_getcwd</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>);</td></tr>
+<tr><th id="40">40</th><td><u>#<span data-ppcond="38">endif</span></u></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><i>/* End of osfunctions.h */</i></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='lookups/lf_sqlperform.c.html'>exim/src/lookups/lf_sqlperform.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

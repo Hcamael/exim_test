@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='564' type='uschar *'/>
+<doc f='exim/src/globals.h' l='564'>/* AD status of dns lookup */</doc>

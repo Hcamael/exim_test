@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>local_scan.h source code [exim/src/local_scan.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="header_line,recipient_item "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/local_scan.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='local_scan.h.html'>local_scan.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* This file is the header that is the only Exim header to be included in the</i></td></tr>
+<tr><th id="9">9</th><td><i>source for the local_scan.c() function. It contains definitions that are made</i></td></tr>
+<tr><th id="10">10</th><td><i>available for use in that function, and which are documented.</i></td></tr>
+<tr><th id="11">11</th><td><i></i></td></tr>
+<tr><th id="12">12</th><td><i>This API is also used for functions called by the ${dlfunc expansion item. */</i></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><i>/* Some basic types that make some things easier, the Exim configuration</i></td></tr>
+<tr><th id="16">16</th><td><i>settings, and the store functions. */</i></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#include &lt;stdarg.h&gt;</u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="../../include/x86_64-linux-gnu/sys/types.h.html">&lt;sys/types.h&gt;</a></u></td></tr>
+<tr><th id="20">20</th><td><u>#include <a href="../build-Linux-x86_64/config.h.html">"config.h"</a></u></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="mytypes.h.html">"mytypes.h"</a></u></td></tr>
+<tr><th id="22">22</th><td><u>#include <a href="store.h.html">"store.h"</a></u></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><i>/* The function and its return codes. */</i></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><b>extern</b> <em>int</em> <a class="decl fn" href="local_scan.c.html#local_scan" title='local_scan' data-ref="local_scan" id="local_scan">local_scan</a>(<em>int</em>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **);</td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><b>enum</b> {</td></tr>
+<tr><th id="30">30</th><td>  <dfn class="enum" id="LOCAL_SCAN_ACCEPT" title='LOCAL_SCAN_ACCEPT' data-ref="LOCAL_SCAN_ACCEPT">LOCAL_SCAN_ACCEPT</dfn>,              <i>/* Accept */</i></td></tr>
+<tr><th id="31">31</th><td>  <dfn class="enum" id="LOCAL_SCAN_ACCEPT_FREEZE" title='LOCAL_SCAN_ACCEPT_FREEZE' data-ref="LOCAL_SCAN_ACCEPT_FREEZE">LOCAL_SCAN_ACCEPT_FREEZE</dfn>,       <i>/* Accept, but freeze */</i></td></tr>
+<tr><th id="32">32</th><td>  <dfn class="enum" id="LOCAL_SCAN_ACCEPT_QUEUE" title='LOCAL_SCAN_ACCEPT_QUEUE' data-ref="LOCAL_SCAN_ACCEPT_QUEUE">LOCAL_SCAN_ACCEPT_QUEUE</dfn>,        <i>/* Accept, but no immediate delivery */</i></td></tr>
+<tr><th id="33">33</th><td>  <dfn class="enum" id="LOCAL_SCAN_REJECT" title='LOCAL_SCAN_REJECT' data-ref="LOCAL_SCAN_REJECT">LOCAL_SCAN_REJECT</dfn>,              <i>/* Permanent rejection */</i></td></tr>
+<tr><th id="34">34</th><td>  <dfn class="enum" id="LOCAL_SCAN_REJECT_NOLOGHDR" title='LOCAL_SCAN_REJECT_NOLOGHDR' data-ref="LOCAL_SCAN_REJECT_NOLOGHDR">LOCAL_SCAN_REJECT_NOLOGHDR</dfn>,     <i>/* Permanent rejection, no log header */</i></td></tr>
+<tr><th id="35">35</th><td>  <dfn class="enum" id="LOCAL_SCAN_TEMPREJECT" title='LOCAL_SCAN_TEMPREJECT' data-ref="LOCAL_SCAN_TEMPREJECT">LOCAL_SCAN_TEMPREJECT</dfn>,          <i>/* Temporary rejection */</i></td></tr>
+<tr><th id="36">36</th><td>  <dfn class="enum" id="LOCAL_SCAN_TEMPREJECT_NOLOGHDR" title='LOCAL_SCAN_TEMPREJECT_NOLOGHDR' data-ref="LOCAL_SCAN_TEMPREJECT_NOLOGHDR">LOCAL_SCAN_TEMPREJECT_NOLOGHDR</dfn>  <i>/* Temporary rejection, no log header */</i></td></tr>
+<tr><th id="37">37</th><td>};</td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><i>/* Functions called by ${dlfunc{file}{func}{arg}...} return one of the five</i></td></tr>
+<tr><th id="41">41</th><td><i>status codes defined immediately below. The function's first argument is either</i></td></tr>
+<tr><th id="42">42</th><td><i>the result of expansion, or the error message in case of failure. The second</i></td></tr>
+<tr><th id="43">43</th><td><i>and third arguments are standard argument count and vector, comprising the</i></td></tr>
+<tr><th id="44">44</th><td><i>{arg} values specified in the expansion item. */</i></td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><b>typedef</b> <em>int</em> <dfn class="typedef" id="exim_dlfunc_t" title='exim_dlfunc_t' data-type='int (uschar **, int, uschar **)' data-ref="exim_dlfunc_t">exim_dlfunc_t</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col0 decl" id="20yield" title='yield' data-type='uschar **' data-ref="20yield">yield</dfn>, <em>int</em> <dfn class="local col1 decl" id="21argc" title='argc' data-type='int' data-ref="21argc">argc</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="22argv" title='argv' data-type='uschar **' data-ref="22argv">argv</dfn>[]);</td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><i>/* Return codes from the support functions lss_match_xxx(). These are also the</i></td></tr>
+<tr><th id="50">50</th><td><i>codes that dynamically-loaded ${dlfunc functions must return. */</i></td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><u>#define  <dfn class="macro" id="_M/OK" data-ref="_M/OK">OK</dfn>            0          /* Successful match */</u></td></tr>
+<tr><th id="53">53</th><td><u>#define  <dfn class="macro" id="_M/DEFER" data-ref="_M/DEFER">DEFER</dfn>         1          /* Defer - some problem */</u></td></tr>
+<tr><th id="54">54</th><td><u>#define  <dfn class="macro" id="_M/FAIL" data-ref="_M/FAIL">FAIL</dfn>          2          /* Matching failed */</u></td></tr>
+<tr><th id="55">55</th><td><u>#define  <dfn class="macro" id="_M/ERROR" data-ref="_M/ERROR">ERROR</dfn>         3          /* Internal or config error */</u></td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><i>/* Extra return code for ${dlfunc functions */</i></td></tr>
+<tr><th id="58">58</th><td></td></tr>
+<tr><th id="59">59</th><td><u>#define  <dfn class="macro" id="_M/FAIL_FORCED" data-ref="_M/FAIL_FORCED">FAIL_FORCED</dfn>   4          /* "Forced" failure */</u></td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><i>/* Available logging destinations */</i></td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><u>#define <dfn class="macro" id="_M/LOG_MAIN" data-ref="_M/LOG_MAIN">LOG_MAIN</dfn>        1    /* Write to the main log */</u></td></tr>
+<tr><th id="65">65</th><td><u>#define <dfn class="macro" id="_M/LOG_PANIC" data-ref="_M/LOG_PANIC">LOG_PANIC</dfn>       2    /* Write to the panic log */</u></td></tr>
+<tr><th id="66">66</th><td><u>#define <dfn class="macro" id="_M/LOG_REJECT" data-ref="_M/LOG_REJECT">LOG_REJECT</dfn>     16    /* Write to the reject log, with headers */</u></td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td><i>/* Accessible debugging bits */</i></td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td><u>#define <dfn class="macro" id="_M/D_v" data-ref="_M/D_v">D_v</dfn>                          0x00000001</u></td></tr>
+<tr><th id="72">72</th><td><u>#define <dfn class="macro" id="_M/D_local_scan" data-ref="_M/D_local_scan">D_local_scan</dfn>                 0x00000002</u></td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td><i>/* Option types that can be used for local_scan_options. The boolean ones</i></td></tr>
+<tr><th id="76">76</th><td><i>MUST be last so that they are contiguous with the internal boolean specials. */</i></td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><b>enum</b> { <dfn class="enum" id="opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</dfn>, <dfn class="enum" id="opt_int" title='opt_int' data-ref="opt_int">opt_int</dfn>, <dfn class="enum" id="opt_octint" title='opt_octint' data-ref="opt_octint">opt_octint</dfn>, <dfn class="enum" id="opt_mkint" title='opt_mkint' data-ref="opt_mkint">opt_mkint</dfn>, <dfn class="enum" id="opt_Kint" title='opt_Kint' data-ref="opt_Kint">opt_Kint</dfn>, <dfn class="enum" id="opt_fixed" title='opt_fixed' data-ref="opt_fixed">opt_fixed</dfn>,</td></tr>
+<tr><th id="79">79</th><td>  <dfn class="enum" id="opt_time" title='opt_time' data-ref="opt_time">opt_time</dfn>, <dfn class="enum" id="opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</dfn> };</td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><i>/* The length of message identification strings. This is the id used internally</i></td></tr>
+<tr><th id="83">83</th><td><i>by exim. The external version for use in Received: strings has a leading 'E'</i></td></tr>
+<tr><th id="84">84</th><td><i>added to ensure it starts with a letter. */</i></td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><u>#define <dfn class="macro" id="_M/MESSAGE_ID_LENGTH" data-ref="_M/MESSAGE_ID_LENGTH">MESSAGE_ID_LENGTH</dfn> 16</u></td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td><i>/* The offset to the start of the data in the data file - this allows for</i></td></tr>
+<tr><th id="89">89</th><td><i>the name of the data file to be present in the first line. */</i></td></tr>
+<tr><th id="90">90</th><td></td></tr>
+<tr><th id="91">91</th><td><u>#define <dfn class="macro" id="_M/SPOOL_DATA_START_OFFSET" data-ref="_M/SPOOL_DATA_START_OFFSET">SPOOL_DATA_START_OFFSET</dfn> (MESSAGE_ID_LENGTH+3)</u></td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td><i>/* Some people (Marc Merlin et al) are maintaining a patch that allows for</i></td></tr>
+<tr><th id="94">94</th><td><i>dynamic local_scan() libraries. This code is not yet in Exim proper, but it</i></td></tr>
+<tr><th id="95">95</th><td><i>helps the maintainers if we keep their ABI version numbers here. This may</i></td></tr>
+<tr><th id="96">96</th><td><i>mutate into more general support later. The major number is increased when the</i></td></tr>
+<tr><th id="97">97</th><td><i>ABI is changed in a non backward compatible way. The minor number is increased</i></td></tr>
+<tr><th id="98">98</th><td><i>each time a new feature is added (in a way that doesn't break backward</i></td></tr>
+<tr><th id="99">99</th><td><i>compatibility). */</i></td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td><u>#define <dfn class="macro" id="_M/LOCAL_SCAN_ABI_VERSION_MAJOR" data-ref="_M/LOCAL_SCAN_ABI_VERSION_MAJOR">LOCAL_SCAN_ABI_VERSION_MAJOR</dfn> 2</u></td></tr>
+<tr><th id="102">102</th><td><u>#define <dfn class="macro" id="_M/LOCAL_SCAN_ABI_VERSION_MINOR" data-ref="_M/LOCAL_SCAN_ABI_VERSION_MINOR">LOCAL_SCAN_ABI_VERSION_MINOR</dfn> 0</u></td></tr>
+<tr><th id="103">103</th><td><u>#define <dfn class="macro" id="_M/LOCAL_SCAN_ABI_VERSION" data-ref="_M/LOCAL_SCAN_ABI_VERSION">LOCAL_SCAN_ABI_VERSION</dfn> \</u></td></tr>
+<tr><th id="104">104</th><td><u>  LOCAL_SCAN_ABI_VERSION_MAJOR.LOCAL_SCAN_ABI_VERSION_MINOR</u></td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td><i>/* Structure definitions that are documented as visible in the function. */</i></td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="header_line" title='header_line' data-ref="header_line"><a class="type" href="#header_line" title='header_line' data-ref="header_line">header_line</a></dfn> {</td></tr>
+<tr><th id="109">109</th><td>  <b>struct</b> <a class="type" href="#header_line" title='header_line' data-ref="header_line">header_line</a> *<dfn class="decl field" id="header_line::next" title='header_line::next' data-ref="header_line::next">next</dfn>;</td></tr>
+<tr><th id="110">110</th><td>  <em>int</em>    <dfn class="decl field" id="header_line::type" title='header_line::type' data-ref="header_line::type">type</dfn>;</td></tr>
+<tr><th id="111">111</th><td>  <em>int</em>    <dfn class="decl field" id="header_line::slen" title='header_line::slen' data-ref="header_line::slen">slen</dfn>;</td></tr>
+<tr><th id="112">112</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="header_line::text" title='header_line::text' data-ref="header_line::text">text</dfn>;</td></tr>
+<tr><th id="113">113</th><td>} <dfn class="typedef" id="header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</dfn>;</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><i>/* Entries in lists options are in this form. */</i></td></tr>
+<tr><th id="116">116</th><td></td></tr>
+<tr><th id="117">117</th><td><b>typedef</b> <b>struct</b> {</td></tr>
+<tr><th id="118">118</th><td>  <em>const</em> <em>char</em>   *<dfn class="decl field" id="(anonymous)::name" title='(anonymous struct)::name' data-ref="(anonymous)::name">name</dfn>; <i>/* should have been uschar but too late now */</i></td></tr>
+<tr><th id="119">119</th><td>  <em>int</em>           <dfn class="decl field" id="(anonymous)::type" title='(anonymous struct)::type' data-ref="(anonymous)::type">type</dfn>;</td></tr>
+<tr><th id="120">120</th><td>  <em>void</em>         *<dfn class="decl field" id="(anonymous)::value" title='(anonymous struct)::value' data-ref="(anonymous)::value">value</dfn>;</td></tr>
+<tr><th id="121">121</th><td>} <dfn class="typedef" id="optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</dfn>;</td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td><i>/*Structure for holding information about an envelope address. The errors_to</i></td></tr>
+<tr><th id="124">124</th><td><i>field is always NULL except for one_time aliases that had errors_to on the</i></td></tr>
+<tr><th id="125">125</th><td><i>routers that generated them. */</i></td></tr>
+<tr><th id="126">126</th><td></td></tr>
+<tr><th id="127">127</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="recipient_item" title='recipient_item' data-ref="recipient_item"><a class="type" href="#recipient_item" title='recipient_item' data-ref="recipient_item">recipient_item</a></dfn> {</td></tr>
+<tr><th id="128">128</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="recipient_item::address" title='recipient_item::address' data-ref="recipient_item::address">address</dfn>;              <i>/* the recipient address */</i></td></tr>
+<tr><th id="129">129</th><td>  <em>int</em>     <dfn class="decl field" id="recipient_item::pno" title='recipient_item::pno' data-ref="recipient_item::pno">pno</dfn>;                  <i>/* parent number for "one_time" alias, or -1 */</i></td></tr>
+<tr><th id="130">130</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="recipient_item::errors_to" title='recipient_item::errors_to' data-ref="recipient_item::errors_to">errors_to</dfn>;            <i>/* the errors_to address or NULL */</i></td></tr>
+<tr><th id="131">131</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="recipient_item::orcpt" title='recipient_item::orcpt' data-ref="recipient_item::orcpt">orcpt</dfn>;                <i>/* DSN orcpt */</i></td></tr>
+<tr><th id="132">132</th><td>  <em>int</em>     <dfn class="decl field" id="recipient_item::dsn_flags" title='recipient_item::dsn_flags' data-ref="recipient_item::dsn_flags">dsn_flags</dfn>;            <i>/* DSN flags */</i></td></tr>
+<tr><th id="133">133</th><td><u>#<span data-ppcond="133">ifdef</span> <span class="macro" data-ref="_M/EXPERIMENTAL_BRIGHTMAIL">EXPERIMENTAL_BRIGHTMAIL</span></u></td></tr>
+<tr><th id="134">134</th><td>  uschar *bmi_optin;</td></tr>
+<tr><th id="135">135</th><td><u>#<span data-ppcond="133">endif</span></u></td></tr>
+<tr><th id="136">136</th><td>} <dfn class="typedef" id="recipient_item" title='recipient_item' data-type='struct recipient_item' data-ref="recipient_item">recipient_item</dfn>;</td></tr>
+<tr><th id="137">137</th><td></td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td><i>/* Global variables that are documented as visible in the function. */</i></td></tr>
+<tr><th id="140">140</th><td></td></tr>
+<tr><th id="141">141</th><td><b>extern</b> <em>unsigned</em> <em>int</em> <dfn class="decl" id="debug_selector" title='debug_selector' data-ref="debug_selector">debug_selector</dfn>;    <i>/* Debugging bits */</i></td></tr>
+<tr><th id="142">142</th><td></td></tr>
+<tr><th id="143">143</th><td><b>extern</b> <em>int</em>     <dfn class="decl" id="body_linecount" title='body_linecount' data-ref="body_linecount">body_linecount</dfn>;         <i>/* Line count in body */</i></td></tr>
+<tr><th id="144">144</th><td><b>extern</b> <em>int</em>     <dfn class="decl" id="body_zerocount" title='body_zerocount' data-ref="body_zerocount">body_zerocount</dfn>;         <i>/* Binary zero count in body */</i></td></tr>
+<tr><th id="145">145</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl" id="expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</dfn>;  <i>/* Error info for failing expansion */</i></td></tr>
+<tr><th id="146">146</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl" id="headers_charset" title='headers_charset' data-ref="headers_charset">headers_charset</dfn>;        <i>/* Charset for RFC 2047 decoding */</i></td></tr>
+<tr><th id="147">147</th><td><b>extern</b> <a class="typedef" href="#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *<dfn class="decl" id="header_last" title='header_last' data-ref="header_last">header_last</dfn>;       <i>/* Final header */</i></td></tr>
+<tr><th id="148">148</th><td><b>extern</b> <a class="typedef" href="#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *<dfn class="decl" id="header_list" title='header_list' data-ref="header_list">header_list</dfn>;       <i>/* First header */</i></td></tr>
+<tr><th id="149">149</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>    <dfn class="decl" id="host_checking" title='host_checking' data-ref="host_checking">host_checking</dfn>;          <i>/* Set when checking a host */</i></td></tr>
+<tr><th id="150">150</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl" id="interface_address" title='interface_address' data-ref="interface_address">interface_address</dfn>;      <i>/* Interface for incoming call */</i></td></tr>
+<tr><th id="151">151</th><td><b>extern</b> <em>int</em>     <dfn class="decl" id="interface_port" title='interface_port' data-ref="interface_port">interface_port</dfn>;         <i>/* Port number for incoming call */</i></td></tr>
+<tr><th id="152">152</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl" id="message_id" title='message_id' data-ref="message_id">message_id</dfn>;             <i>/* Internal id of message being handled */</i></td></tr>
+<tr><th id="153">153</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl" id="received_protocol" title='received_protocol' data-ref="received_protocol">received_protocol</dfn>;      <i>/* Name of incoming protocol */</i></td></tr>
+<tr><th id="154">154</th><td><b>extern</b> <em>int</em>     <dfn class="decl" id="recipients_count" title='recipients_count' data-ref="recipients_count">recipients_count</dfn>;       <i>/* Number of recipients */</i></td></tr>
+<tr><th id="155">155</th><td><b>extern</b> <a class="typedef" href="#recipient_item" title='recipient_item' data-type='struct recipient_item' data-ref="recipient_item">recipient_item</a> *<dfn class="decl" id="recipients_list" title='recipients_list' data-ref="recipients_list">recipients_list</dfn>;<i>/* List of recipient addresses */</i></td></tr>
+<tr><th id="156">156</th><td><b>extern</b> <em>unsigned</em> <em>char</em> *<dfn class="decl" id="sender_address" title='sender_address' data-ref="sender_address">sender_address</dfn>;  <i>/* Sender address */</i></td></tr>
+<tr><th id="157">157</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl" id="sender_host_address" title='sender_host_address' data-ref="sender_host_address">sender_host_address</dfn>;    <i>/* IP address of sender, as chars */</i></td></tr>
+<tr><th id="158">158</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl" id="sender_host_authenticated" title='sender_host_authenticated' data-ref="sender_host_authenticated">sender_host_authenticated</dfn>; <i>/* Name of authentication mechanism */</i></td></tr>
+<tr><th id="159">159</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl" id="sender_host_name" title='sender_host_name' data-ref="sender_host_name">sender_host_name</dfn>;       <i>/* Host name from lookup */</i></td></tr>
+<tr><th id="160">160</th><td><b>extern</b> <em>int</em>     <dfn class="decl" id="sender_host_port" title='sender_host_port' data-ref="sender_host_port">sender_host_port</dfn>;       <i>/* Port number of sender */</i></td></tr>
+<tr><th id="161">161</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>    <dfn class="decl" id="smtp_batched_input" title='smtp_batched_input' data-ref="smtp_batched_input">smtp_batched_input</dfn>;     <i>/* TRUE if SMTP batch (no interaction) */</i></td></tr>
+<tr><th id="162">162</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>    <dfn class="decl" id="smtp_input" title='smtp_input' data-ref="smtp_input">smtp_input</dfn>;             <i>/* TRUE if input is via SMTP */</i></td></tr>
+<tr><th id="163">163</th><td></td></tr>
+<tr><th id="164">164</th><td></td></tr>
+<tr><th id="165">165</th><td><i>/* Functions that are documented as visible in local_scan(). */</i></td></tr>
+<tr><th id="166">166</th><td></td></tr>
+<tr><th id="167">167</th><td><b>extern</b> <em>int</em>     <dfn class="decl fn" id="child_close" title='child_close' data-ref="child_close">child_close</dfn>(<a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a>, <em>int</em>);</td></tr>
+<tr><th id="168">168</th><td><b>extern</b> <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a>   <dfn class="decl fn" id="child_open" title='child_open' data-ref="child_open">child_open</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **, <em>int</em>, <em>int</em> *, <em>int</em> *, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>);</td></tr>
+<tr><th id="169">169</th><td><b>extern</b> <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a>   <dfn class="decl fn" id="child_open_exim" title='child_open_exim' data-ref="child_open_exim">child_open_exim</dfn>(<em>int</em> *);</td></tr>
+<tr><th id="170">170</th><td><b>extern</b> <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a>   <dfn class="decl fn" id="child_open_exim2" title='child_open_exim2' data-ref="child_open_exim2">child_open_exim2</dfn>(<em>int</em> *, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="171">171</th><td><b>extern</b> <em>void</em>    <dfn class="decl fn" id="debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</dfn>(<em>const</em> <em>char</em> *, ...) <a class="macro" href="mytypes.h.html#33" title="__attribute__((format(printf,1,2)))" data-ref="_M/PRINTF_FUNCTION">PRINTF_FUNCTION</a>(<var>1</var>,<var>2</var>);</td></tr>
+<tr><th id="172">172</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl fn" id="expand_string" title='expand_string' data-ref="expand_string">expand_string</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="173">173</th><td><b>extern</b> <em>void</em>    <dfn class="decl fn" id="header_add" title='header_add' data-ref="header_add">header_add</dfn>(<em>int</em>, <em>const</em> <em>char</em> *, ...);</td></tr>
+<tr><th id="174">174</th><td><b>extern</b> <em>void</em>    <dfn class="decl fn" id="header_add_at_position" title='header_add_at_position' data-ref="header_add_at_position">header_add_at_position</dfn>(<a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>, <em>int</em>, <em>const</em> <em>char</em> *, ...);</td></tr>
+<tr><th id="175">175</th><td><b>extern</b> <em>void</em>    <dfn class="decl fn" id="header_remove" title='header_remove' data-ref="header_remove">header_remove</dfn>(<em>int</em>, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="176">176</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>    <dfn class="decl fn" id="header_testname" title='header_testname' data-ref="header_testname">header_testname</dfn>(<a class="typedef" href="#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>);</td></tr>
+<tr><th id="177">177</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>    <dfn class="decl fn" id="header_testname_incomplete" title='header_testname_incomplete' data-ref="header_testname_incomplete">header_testname_incomplete</dfn>(<a class="typedef" href="#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>);</td></tr>
+<tr><th id="178">178</th><td><b>extern</b> <em>void</em>    <dfn class="decl fn" id="log_write" title='log_write' data-ref="log_write">log_write</dfn>(<em>unsigned</em> <em>int</em>, <em>int</em>, <em>const</em> <em>char</em> *<dfn class="local col3 decl" id="23format" title='format' data-type='const char *' data-ref="23format">format</dfn>, ...) <a class="macro" href="mytypes.h.html#33" title="__attribute__((format(printf,3,4)))" data-ref="_M/PRINTF_FUNCTION">PRINTF_FUNCTION</a>(<var>3</var>,<var>4</var>);</td></tr>
+<tr><th id="179">179</th><td><b>extern</b> <em>int</em>     <dfn class="decl fn" id="lss_b64decode" title='lss_b64decode' data-ref="lss_b64decode">lss_b64decode</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **);</td></tr>
+<tr><th id="180">180</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl fn" id="lss_b64encode" title='lss_b64encode' data-ref="lss_b64encode">lss_b64encode</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em>);</td></tr>
+<tr><th id="181">181</th><td><b>extern</b> <em>int</em>     <dfn class="decl fn" id="lss_match_domain" title='lss_match_domain' data-ref="lss_match_domain">lss_match_domain</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="182">182</th><td><b>extern</b> <em>int</em>     <dfn class="decl fn" id="lss_match_local_part" title='lss_match_local_part' data-ref="lss_match_local_part">lss_match_local_part</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>);</td></tr>
+<tr><th id="183">183</th><td><b>extern</b> <em>int</em>     <dfn class="decl fn" id="lss_match_address" title='lss_match_address' data-ref="lss_match_address">lss_match_address</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>);</td></tr>
+<tr><th id="184">184</th><td><b>extern</b> <em>int</em>     <dfn class="decl fn" id="lss_match_host" title='lss_match_host' data-ref="lss_match_host">lss_match_host</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="185">185</th><td><b>extern</b> <em>void</em>    <dfn class="decl fn" id="receive_add_recipient" title='receive_add_recipient' data-ref="receive_add_recipient">receive_add_recipient</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em>);</td></tr>
+<tr><th id="186">186</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>    <dfn class="decl fn" id="receive_remove_recipient" title='receive_remove_recipient' data-ref="receive_remove_recipient">receive_remove_recipient</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="187">187</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl fn" id="rfc2047_decode" title='rfc2047_decode' data-ref="rfc2047_decode">rfc2047_decode</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em>, <em>int</em> *, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **);</td></tr>
+<tr><th id="188">188</th><td><b>extern</b> <em>int</em>     <dfn class="decl fn" id="smtp_fflush" title='smtp_fflush' data-ref="smtp_fflush">smtp_fflush</dfn>(<em>void</em>);</td></tr>
+<tr><th id="189">189</th><td><b>extern</b> <em>void</em>    <dfn class="decl fn" id="smtp_printf" title='smtp_printf' data-ref="smtp_printf">smtp_printf</dfn>(<em>const</em> <em>char</em> *, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>, ...) <a class="macro" href="mytypes.h.html#33" title="__attribute__((format(printf,1,3)))" data-ref="_M/PRINTF_FUNCTION">PRINTF_FUNCTION</a>(<var>1</var>,<var>3</var>);</td></tr>
+<tr><th id="190">190</th><td><b>extern</b> <em>void</em>    <dfn class="decl fn" id="smtp_vprintf" title='smtp_vprintf' data-ref="smtp_vprintf">smtp_vprintf</dfn>(<em>const</em> <em>char</em> *, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>, <span class='typedef' title='va_list' data-type='__builtin_va_list' data-ref="va_list">va_list</span>);</td></tr>
+<tr><th id="191">191</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl fn" id="string_copy" title='string_copy' data-ref="string_copy">string_copy</dfn>(<em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="192">192</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl fn" id="string_copyn" title='string_copyn' data-ref="string_copyn">string_copyn</dfn>(<em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em>);</td></tr>
+<tr><th id="193">193</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl fn" id="string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</dfn>(<em>const</em> <em>char</em> *, ...) <a class="macro" href="mytypes.h.html#45" title="" data-ref="_M/ALMOST_PRINTF">ALMOST_PRINTF</a>(<var>1</var>,<var>2</var>);</td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td><i>/* End of local_scan.h */</i></td></tr>
+<tr><th id="196">196</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='local_scan.c.html'>exim/src/local_scan.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

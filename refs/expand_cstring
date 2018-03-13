@@ -1,0 +1,2 @@
+<dec f='exim/src/functions.h' l='194' type='const uschar * expand_cstring(const uschar * )'/>
+<doc f='exim/src/functions.h' l='194'>/* ... so use this one */</doc>

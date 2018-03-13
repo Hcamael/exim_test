@@ -1,0 +1,2 @@
+<dec f='include/openssl/bn.h' l='78'/>
+<doc f='include/openssl/bn.h' l='77'>/* deprecated name for the flag */</doc>

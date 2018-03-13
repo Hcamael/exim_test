@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>store.h source code [exim/src/store.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/store.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='store.h.html'>store.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2009 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Header for Exim's memory allocation functions */</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><u>#<span data-ppcond="10">ifndef</span> <span class="macro" data-ref="_M/STORE_H">STORE_H</span></u></td></tr>
+<tr><th id="11">11</th><td><u>#define <dfn class="macro" id="_M/STORE_H" data-ref="_M/STORE_H">STORE_H</dfn></u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><i>/* Define symbols for identifying the store pools. */</i></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><b>enum</b> { <dfn class="enum" id="POOL_MAIN" title='POOL_MAIN' data-ref="POOL_MAIN">POOL_MAIN</dfn>, <dfn class="enum" id="POOL_PERM" title='POOL_PERM' data-ref="POOL_PERM">POOL_PERM</dfn>, <dfn class="enum" id="POOL_SEARCH" title='POOL_SEARCH' data-ref="POOL_SEARCH">POOL_SEARCH</dfn> };</td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><i>/* This variable (the one for the current pool) is set by store_get() to its</i></td></tr>
+<tr><th id="18">18</th><td><i>yield, and by store_reset() to NULL. This allows string_cat() to optimize its</i></td></tr>
+<tr><th id="19">19</th><td><i>store handling. */</i></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><b>extern</b> <em>void</em> *<dfn class="decl" id="store_last_get" title='store_last_get' data-ref="store_last_get">store_last_get</dfn>[<var>3</var>];</td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><i>/* This variable contains the current store pool number. */</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="store_pool" title='store_pool' data-ref="store_pool">store_pool</dfn>;</td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><i>/* Macros for calling the memory allocation routines with</i></td></tr>
+<tr><th id="28">28</th><td><i>tracing information for debugging. */</i></td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><u>#define <dfn class="macro" id="_M/store_extend" data-ref="_M/store_extend">store_extend</dfn>(addr,old,new) \</u></td></tr>
+<tr><th id="31">31</th><td><u>  store_extend_3(addr, old, new, __FILE__, __LINE__)</u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><u>#define <dfn class="macro" id="_M/store_free" data-ref="_M/store_free">store_free</dfn>(addr)     store_free_3(addr, __FILE__, __LINE__)</u></td></tr>
+<tr><th id="34">34</th><td><u>#define <dfn class="macro" id="_M/store_get" data-ref="_M/store_get">store_get</dfn>(size)      store_get_3(size, __FILE__, __LINE__)</u></td></tr>
+<tr><th id="35">35</th><td><u>#define <dfn class="macro" id="_M/store_get_perm" data-ref="_M/store_get_perm">store_get_perm</dfn>(size) store_get_perm_3(size, __FILE__, __LINE__)</u></td></tr>
+<tr><th id="36">36</th><td><u>#define <dfn class="macro" id="_M/store_malloc" data-ref="_M/store_malloc">store_malloc</dfn>(size)   store_malloc_3(size, __FILE__, __LINE__)</u></td></tr>
+<tr><th id="37">37</th><td><u>#define <dfn class="macro" id="_M/store_newblock" data-ref="_M/store_newblock">store_newblock</dfn>(addr,newsize,datalen) \</u></td></tr>
+<tr><th id="38">38</th><td><u>			     store_newblock_3(addr, newsize, datalen, __FILE__, __LINE__)</u></td></tr>
+<tr><th id="39">39</th><td><u>#define <dfn class="macro" id="_M/store_reset" data-ref="_M/store_reset">store_reset</dfn>(addr)    store_reset_3(addr, __FILE__, __LINE__)</u></td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><i>/* The real functions */</i></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><i>/* The value of the 2nd arg is __FILE__ in every call, so give its correct type */</i></td></tr>
+<tr><th id="45">45</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>    <dfn class="decl fn" id="store_extend_3" title='store_extend_3' data-ref="store_extend_3">store_extend_3</dfn>(<em>void</em> *, <em>int</em>, <em>int</em>, <em>const</em> <em>char</em> *, <em>int</em>);</td></tr>
+<tr><th id="46">46</th><td><b>extern</b> <em>void</em>    <dfn class="decl fn" id="store_free_3" title='store_free_3' data-ref="store_free_3">store_free_3</dfn>(<em>void</em> *, <em>const</em> <em>char</em> *, <em>int</em>);</td></tr>
+<tr><th id="47">47</th><td><b>extern</b> <em>void</em>   *<dfn class="decl fn" id="store_get_3" title='store_get_3' data-ref="store_get_3">store_get_3</dfn>(<em>int</em>, <em>const</em> <em>char</em> *, <em>int</em>);</td></tr>
+<tr><th id="48">48</th><td><b>extern</b> <em>void</em>   *<dfn class="decl fn" id="store_get_perm_3" title='store_get_perm_3' data-ref="store_get_perm_3">store_get_perm_3</dfn>(<em>int</em>, <em>const</em> <em>char</em> *, <em>int</em>);</td></tr>
+<tr><th id="49">49</th><td><b>extern</b> <em>void</em>   *<dfn class="decl fn" id="store_malloc_3" title='store_malloc_3' data-ref="store_malloc_3">store_malloc_3</dfn>(<em>int</em>, <em>const</em> <em>char</em> *, <em>int</em>);</td></tr>
+<tr><th id="50">50</th><td><b>extern</b> <em>void</em>   *<dfn class="decl fn" id="store_newblock_3" title='store_newblock_3' data-ref="store_newblock_3">store_newblock_3</dfn>(<em>void</em> *, <em>int</em>, <em>int</em>, <em>const</em> <em>char</em> *, <em>int</em>);</td></tr>
+<tr><th id="51">51</th><td><b>extern</b> <em>void</em>    <dfn class="decl fn" id="store_reset_3" title='store_reset_3' data-ref="store_reset_3">store_reset_3</dfn>(<em>void</em> *, <em>const</em> <em>char</em> *, <em>int</em>);</td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td><u>#<span data-ppcond="10">endif</span>  /* STORE_H */</u></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><i>/* End of store.h */</i></td></tr>
+<tr><th id="56">56</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='local_scan.c.html'>exim/src/local_scan.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

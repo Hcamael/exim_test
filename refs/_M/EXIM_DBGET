@@ -1,0 +1,2 @@
+<dec f='exim/src/dbstuff.h' l='168'/>
+<doc f='exim/src/dbstuff.h' l='167'>/* EXIM_DBGET - returns TRUE if successful, FALSE otherwise */</doc>

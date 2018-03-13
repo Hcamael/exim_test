@@ -1,0 +1,4 @@
+<dec f='exim/src/functions.h' l='470' type='uschar * string_nextinlist(const uschar ** , int * , uschar * , int )'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='56' u='c' c='lf_sqlperform'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='104' u='c' c='lf_sqlperform'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='115' u='c' c='lf_sqlperform'/>

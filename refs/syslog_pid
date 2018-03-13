@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='910' type='BOOL'/>
+<doc f='exim/src/globals.h' l='910'>/* TRUE if PID on syslogs */</doc>

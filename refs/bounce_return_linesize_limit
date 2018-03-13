@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='257' type='int'/>
+<doc f='exim/src/globals.h' l='257'>/* Max line length in return */</doc>

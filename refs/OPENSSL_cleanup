@@ -1,0 +1,2 @@
+<dec f='include/openssl/crypto.h' l='382' type='void OPENSSL_cleanup()'/>
+<doc f='include/openssl/crypto.h' l='381'>/* Library initialisation functions */</doc>

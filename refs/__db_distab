@@ -1,0 +1,11 @@
+<def f='include/db.h' l='2675' ll='2680'/>
+<size>32</size>
+<doc f='include/db.h' l='2670'>/*
+ * Dispatch structure for recovery, log verification and print routines. Since
+ * internal and external routines take different arguments (ENV versus DB_ENV),
+ * we need something more elaborate than a single pointer and size.
+ */</doc>
+<mbr r='__db_distab::int_dispatch' o='0' t='int (**)(ENV *, DBT *, DB_LSN *, db_recops, void *)'/>
+<mbr r='__db_distab::int_size' o='64' t='size_t'/>
+<mbr r='__db_distab::ext_dispatch' o='128' t='int (**)(DB_ENV *, DBT *, DB_LSN *, db_recops)'/>
+<mbr r='__db_distab::ext_size' o='192' t='size_t'/>

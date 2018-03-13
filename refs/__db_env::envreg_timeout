@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2397' type='db_timeout_t'/>
+<offset>3616</offset>
+<doc f='include/db.h' l='2397'>/* DB_REGISTER wait timeout */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='372' type='int'/>
+<doc f='exim/src/globals.h' l='372'>/* Different value for queue running */</doc>

@@ -1,0 +1,11 @@
+<def f='exim/src/structs.h' l='744' ll='750'/>
+<size>40</size>
+<doc f='exim/src/structs.h' l='739'>/* Structure for holding the handle and the cached last lookup for searches.
+This block is pointed to by the tree entry for the file. The file can get
+closed if too many are opened at once. There is a LRU chain for deciding which
+to close. */</doc>
+<mbr r='search_cache::handle' o='0' t='void *'/>
+<mbr r='search_cache::search_type' o='64' t='int'/>
+<mbr r='search_cache::up' o='128' t='tree_node *'/>
+<mbr r='search_cache::down' o='192' t='tree_node *'/>
+<mbr r='search_cache::item_cache' o='256' t='tree_node *'/>

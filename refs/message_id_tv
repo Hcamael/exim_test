@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='587' type='struct timeval'/>
+<doc f='exim/src/globals.h' l='587'>/* Time used to create last message_id */</doc>

@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1274' type='uintmax_t'/>
+<offset>0</offset>
+<doc f='include/db.h' l='1274'>/* Sequence lock granted w/o wait. */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='654' type='BOOL'/>
+<doc f='exim/src/globals.h' l='654'>/* Connecting mail server wants PRDR */</doc>

@@ -1,0 +1,8 @@
+<def f='exim/src/structs.h' l='685' ll='695'/>
+<size>32</size>
+<doc f='exim/src/structs.h' l='683'>/* Structure for each node in a tree, of which there are various kinds */</doc>
+<mbr r='tree_node::left' o='0' t='struct tree_node *'/>
+<mbr r='tree_node::right' o='64' t='struct tree_node *'/>
+<mbr r='tree_node::data' o='128' t='union (anonymous union at /home/ubuntu/exim/src/build-Linux-x86_64/./structs.h:688:3)'/>
+<mbr r='tree_node::balance' o='192' t='uschar'/>
+<mbr r='tree_node::name' o='200' t='uschar [1]'/>

@@ -1,0 +1,7 @@
+<def f='exim/src/structs.h' l='857' ll='861'/>
+<size>24</size>
+<doc f='exim/src/structs.h' l='854'>/* Structure for remembering lookup data when caching the result of
+a lookup in a named list. */</doc>
+<mbr r='namedlist_cacheblock::next' o='0' t='struct namedlist_cacheblock *'/>
+<mbr r='namedlist_cacheblock::key' o='64' t='uschar *'/>
+<mbr r='namedlist_cacheblock::data' o='128' t='uschar *'/>

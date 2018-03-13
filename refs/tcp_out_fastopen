@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='931' type='int'/>
+<doc f='exim/src/globals.h' l='931'>/* 0: no  1: conn used  2: useful */</doc>

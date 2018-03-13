@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='506' type='uschar *'/>
+<doc f='exim/src/globals.h' l='506'>/* For which IP addresses are always looked up */</doc>

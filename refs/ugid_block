@@ -1,0 +1,8 @@
+<def f='exim/src/structs.h' l='44' ll='50'/>
+<size>20</size>
+<doc f='exim/src/structs.h' l='42'>/* Block for holding a uid and gid, possibly unset, and an initgroups flag. */</doc>
+<mbr r='ugid_block::uid' o='0' t='uid_t'/>
+<mbr r='ugid_block::gid' o='32' t='gid_t'/>
+<mbr r='ugid_block::uid_set' o='64' t='BOOL'/>
+<mbr r='ugid_block::gid_set' o='96' t='BOOL'/>
+<mbr r='ugid_block::initgroups' o='128' t='BOOL'/>

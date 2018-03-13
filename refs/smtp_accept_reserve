@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='817' type='int'/>
+<doc f='exim/src/globals.h' l='817'>/* Reserve these SMTP connections */</doc>

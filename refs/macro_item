@@ -1,0 +1,8 @@
+<def f='exim/src/structs.h' l='711' ll='717'/>
+<size>48</size>
+<doc f='exim/src/structs.h' l='709'>/* Structure for remembering macros for the configuration file */</doc>
+<mbr r='macro_item::command_line' o='0' t='BOOL'/>
+<mbr r='macro_item::namelen' o='32' t='unsigned int'/>
+<mbr r='macro_item::replen' o='64' t='unsigned int'/>
+<mbr r='macro_item::m_number' o='96' t='unsigned int'/>
+<mbr r='macro_item::tnode' o='128' t='tree_node'/>

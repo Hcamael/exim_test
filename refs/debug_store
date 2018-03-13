@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='340' type='BOOL'/>
+<doc f='exim/src/globals.h' l='340'>/* Do extra checks on store_reset */</doc>

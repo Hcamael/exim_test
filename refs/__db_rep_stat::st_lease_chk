@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1144' type='uintmax_t'/>
+<offset>1088</offset>
+<doc f='include/db.h' l='1144'>/* Lease validity checks. */</doc>

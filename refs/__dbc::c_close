@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2087' type='int (*)(DBC *)'/>
+<offset>3456</offset>
+<doc f='include/db.h' l='2086'>/* The following are the method names deprecated in the 4.6 release. */</doc>

@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='514' type='struct address_item *'/>
+<offset>0</offset>
+<doc f='exim/src/structs.h' l='514'>/* for chaining addresses */</doc>

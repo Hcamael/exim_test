@@ -1,0 +1,7 @@
+<dec f='exim/build-Linux-x86_64/os.h' l='51'/>
+<doc f='exim/build-Linux-x86_64/os.h' l='44'>/* Some versions of Linux need explicit sync-ing of directories as well as
+files. This setting requests that. If the directory is on NFS, it may not
+be possible to sync it - in that case, Exim now should ignore the error. But
+if you have problems in that area, try undefining this. But be aware that you
+may be in a situation where files are not being properly &quot;committed to stable
+storage&quot; as quickly as Exim thinks they are. */</doc>

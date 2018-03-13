@@ -1,0 +1,10 @@
+<def f='include/db.h' l='1225' ll='1231'/>
+<size>32</size>
+<doc f='include/db.h' l='1222'>/*
+ * The storage record for a sequence.
+ */</doc>
+<mbr r='__db_seq_record::seq_version' o='0' t='u_int32_t'/>
+<mbr r='__db_seq_record::flags' o='32' t='u_int32_t'/>
+<mbr r='__db_seq_record::seq_value' o='64' t='db_seq_t'/>
+<mbr r='__db_seq_record::seq_max' o='128' t='db_seq_t'/>
+<mbr r='__db_seq_record::seq_min' o='192' t='db_seq_t'/>

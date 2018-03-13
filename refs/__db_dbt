@@ -1,0 +1,10 @@
+<def f='include/db.h' l='219' ll='242'/>
+<size>40</size>
+<doc f='include/db.h' l='218'>/* Key/data structure -- a Data-Base Thang. */</doc>
+<mbr r='__db_dbt::data' o='0' t='void *'/>
+<mbr r='__db_dbt::size' o='64' t='u_int32_t'/>
+<mbr r='__db_dbt::ulen' o='96' t='u_int32_t'/>
+<mbr r='__db_dbt::dlen' o='128' t='u_int32_t'/>
+<mbr r='__db_dbt::doff' o='160' t='u_int32_t'/>
+<mbr r='__db_dbt::app_data' o='192' t='void *'/>
+<mbr r='__db_dbt::flags' o='256' t='u_int32_t'/>

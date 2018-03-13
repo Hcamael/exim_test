@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='592' type='BOOL'/>
+<offset>13</offset>
+<doc f='exim/src/structs.h' l='592'>/* true if retry timed out */</doc>

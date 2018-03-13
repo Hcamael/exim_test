@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='561' type='u_int32_t'/>
+<offset>832</offset>
+<doc f='include/db.h' l='561'>/* Current log file number. */</doc>

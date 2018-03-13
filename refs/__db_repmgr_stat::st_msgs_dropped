@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='1205' type='uintmax_t'/>
+<offset>128</offset>
+<doc f='include/db.h' l='1205'>/* # msgs discarded due to excessive
+					   queue length. */</doc>

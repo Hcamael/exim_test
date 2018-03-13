@@ -1,0 +1,30 @@
+<def f='include/db.h' l='1236' ll='1271'/>
+<size>288</size>
+<doc f='include/db.h' l='1233'>/*
+ * Handle for a sequence object.
+ */</doc>
+<mbr r='__db_sequence::seq_dbp' o='0' t='DB *'/>
+<mbr r='__db_sequence::mtx_seq' o='64' t='db_mutex_t'/>
+<mbr r='__db_sequence::seq_rp' o='128' t='DB_SEQ_RECORD *'/>
+<mbr r='__db_sequence::seq_record' o='192' t='DB_SEQ_RECORD'/>
+<mbr r='__db_sequence::seq_cache_size' o='448' t='int32_t'/>
+<mbr r='__db_sequence::seq_last_value' o='512' t='db_seq_t'/>
+<mbr r='__db_sequence::seq_prev_value' o='576' t='db_seq_t'/>
+<mbr r='__db_sequence::seq_key' o='640' t='DBT'/>
+<mbr r='__db_sequence::seq_data' o='960' t='DBT'/>
+<mbr r='__db_sequence::api_internal' o='1280' t='void *'/>
+<mbr r='__db_sequence::close' o='1344' t='int (*)(DB_SEQUENCE *, u_int32_t)'/>
+<mbr r='__db_sequence::get' o='1408' t='int (*)(DB_SEQUENCE *, DB_TXN *, int32_t, db_seq_t *, u_int32_t)'/>
+<mbr r='__db_sequence::get_cachesize' o='1472' t='int (*)(DB_SEQUENCE *, int32_t *)'/>
+<mbr r='__db_sequence::get_db' o='1536' t='int (*)(DB_SEQUENCE *, DB **)'/>
+<mbr r='__db_sequence::get_flags' o='1600' t='int (*)(DB_SEQUENCE *, u_int32_t *)'/>
+<mbr r='__db_sequence::get_key' o='1664' t='int (*)(DB_SEQUENCE *, DBT *)'/>
+<mbr r='__db_sequence::get_range' o='1728' t='int (*)(DB_SEQUENCE *, db_seq_t *, db_seq_t *)'/>
+<mbr r='__db_sequence::initial_value' o='1792' t='int (*)(DB_SEQUENCE *, db_seq_t)'/>
+<mbr r='__db_sequence::open' o='1856' t='int (*)(DB_SEQUENCE *, DB_TXN *, DBT *, u_int32_t)'/>
+<mbr r='__db_sequence::remove' o='1920' t='int (*)(DB_SEQUENCE *, DB_TXN *, u_int32_t)'/>
+<mbr r='__db_sequence::set_cachesize' o='1984' t='int (*)(DB_SEQUENCE *, int32_t)'/>
+<mbr r='__db_sequence::set_flags' o='2048' t='int (*)(DB_SEQUENCE *, u_int32_t)'/>
+<mbr r='__db_sequence::set_range' o='2112' t='int (*)(DB_SEQUENCE *, db_seq_t, db_seq_t)'/>
+<mbr r='__db_sequence::stat' o='2176' t='int (*)(DB_SEQUENCE *, DB_SEQUENCE_STAT **, u_int32_t)'/>
+<mbr r='__db_sequence::stat_print' o='2240' t='int (*)(DB_SEQUENCE *, u_int32_t)'/>

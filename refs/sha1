@@ -1,0 +1,5 @@
+<def f='exim/src/structs.h' l='801' ll='804'/>
+<size>24</size>
+<doc f='exim/src/structs.h' l='799'>/* Structure used for holding intermediate data during SHA-1 computations. */</doc>
+<mbr r='sha1::H' o='0' t='unsigned int [5]'/>
+<mbr r='sha1::length' o='160' t='unsigned int'/>

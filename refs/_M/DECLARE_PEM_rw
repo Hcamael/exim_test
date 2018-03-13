@@ -1,0 +1,14 @@
+<dec f='include/openssl/pem.h' l='272'/>
+<use f='include/openssl/pem.h' l='331' u='c'/>
+<use f='include/openssl/pem.h' l='332' u='c'/>
+<use f='include/openssl/pem.h' l='333' u='c'/>
+<use f='include/openssl/pem.h' l='335' u='c'/>
+<use f='include/openssl/pem.h' l='336' u='c'/>
+<use f='include/openssl/pem.h' l='337' u='c'/>
+<use f='include/openssl/pem.h' l='338' u='c'/>
+<use f='include/openssl/pem.h' l='339' u='c'/>
+<use f='include/openssl/pem.h' l='343' u='c'/>
+<use f='include/openssl/pem.h' l='347' u='c'/>
+<use f='include/openssl/pem.h' l='353' u='c'/>
+<use f='include/openssl/pem.h' l='360' u='c'/>
+<use f='include/openssl/ssl.h' l='987' u='c'/>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='237' type='BOOL'/>
+<doc f='exim/src/globals.h' l='237'>/* Set FALSE to keep in foreground */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='494' type='uschar *'/>
+<doc f='exim/src/globals.h' l='494'>/* Allowed to use junk arg */</doc>

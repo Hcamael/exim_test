@@ -1,0 +1,1 @@
+<dec f='include/db.h' l='3066' type='int db_env_set_func_read(ssize_t (*)(int, void *, size_t) )'/>

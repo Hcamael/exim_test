@@ -1,0 +1,1 @@
+<dec f='include/openssl/bn.h' l='105' type='BN_GENCB * BN_GENCB_new()'/>

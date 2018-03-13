@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2377' type='u_int32_t'/>
+<offset>3168</offset>
+<doc f='include/db.h' l='2376'>/* Transaction configuration */</doc>
+<doc f='include/db.h' l='2377'>/* Initial number of transactions */</doc>

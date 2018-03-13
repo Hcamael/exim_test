@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>hash.h source code [exim/src/hash.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="hashmethod "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/hash.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='hash.h.html'>hash.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i> *  Exim - an Internet mail transport agent</i></td></tr>
+<tr><th id="3">3</th><td><i> *</i></td></tr>
+<tr><th id="4">4</th><td><i> *  Copyright (C) 2017  Exim maintainers</i></td></tr>
+<tr><th id="5">5</th><td><i> *</i></td></tr>
+<tr><th id="6">6</th><td><i> *  Hash interface functions</i></td></tr>
+<tr><th id="7">7</th><td><i> */</i></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><u>#include <a href="exim.h.html">"exim.h"</a></u></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><u>#<span data-ppcond="11">if</span> !defined(<span class="macro" data-ref="_M/HASH_H">HASH_H</span>)	/* entire file */</u></td></tr>
+<tr><th id="12">12</th><td><u>#define <dfn class="macro" id="_M/HASH_H" data-ref="_M/HASH_H">HASH_H</dfn></u></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><u>#include <a href="sha_ver.h.html">"sha_ver.h"</a></u></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><u>#<span data-ppcond="16">ifdef</span> <a class="macro" href="sha_ver.h.html#36" data-ref="_M/SHA_OPENSSL">SHA_OPENSSL</a></u></td></tr>
+<tr><th id="17">17</th><td><u># include <a href="../../include/openssl/sha.h.html">&lt;openssl/sha.h&gt;</a></u></td></tr>
+<tr><th id="18">18</th><td><u>#<span data-ppcond="16">elif</span> defined SHA_GNUTLS</u></td></tr>
+<tr><th id="19">19</th><td><u># include &lt;gnutls/crypto.h&gt;</u></td></tr>
+<tr><th id="20">20</th><td><u>#elif defined(SHA_GCRYPT)</u></td></tr>
+<tr><th id="21">21</th><td><u># include &lt;gcrypt.h&gt;</u></td></tr>
+<tr><th id="22">22</th><td><u>#elif defined(SHA_POLARSSL)</u></td></tr>
+<tr><th id="23">23</th><td><u># include "pdkim/pdkim.h"		/*XXX ugly */</u></td></tr>
+<tr><th id="24">24</th><td><u># include "pdkim/polarssl/sha1.h"</u></td></tr>
+<tr><th id="25">25</th><td><u># include "pdkim/polarssl/sha2.h"</u></td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="16">endif</span></u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><i>/* Hash context for the exim_sha_* routines */</i></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><b>typedef</b> <b>enum</b> <dfn class="type def" id="hashmethod" title='hashmethod' data-ref="hashmethod"><a class="type" href="#hashmethod" title='hashmethod' data-ref="hashmethod">hashmethod</a></dfn> {</td></tr>
+<tr><th id="32">32</th><td>  <dfn class="enum" id="hashmethod::HASH_BADTYPE" title='hashmethod::HASH_BADTYPE' data-ref="hashmethod::HASH_BADTYPE">HASH_BADTYPE</dfn>,</td></tr>
+<tr><th id="33">33</th><td>  <dfn class="enum" id="hashmethod::HASH_SHA1" title='hashmethod::HASH_SHA1' data-ref="hashmethod::HASH_SHA1">HASH_SHA1</dfn>,</td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td>  <dfn class="enum" id="hashmethod::HASH_SHA2_256" title='hashmethod::HASH_SHA2_256' data-ref="hashmethod::HASH_SHA2_256">HASH_SHA2_256</dfn>,</td></tr>
+<tr><th id="36">36</th><td>  <dfn class="enum" id="hashmethod::HASH_SHA2_384" title='hashmethod::HASH_SHA2_384' data-ref="hashmethod::HASH_SHA2_384">HASH_SHA2_384</dfn>,</td></tr>
+<tr><th id="37">37</th><td>  <dfn class="enum" id="hashmethod::HASH_SHA2_512" title='hashmethod::HASH_SHA2_512' data-ref="hashmethod::HASH_SHA2_512">HASH_SHA2_512</dfn>,</td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td>  <dfn class="enum" id="hashmethod::HASH_SHA3_224" title='hashmethod::HASH_SHA3_224' data-ref="hashmethod::HASH_SHA3_224">HASH_SHA3_224</dfn>,</td></tr>
+<tr><th id="40">40</th><td>  <dfn class="enum" id="hashmethod::HASH_SHA3_256" title='hashmethod::HASH_SHA3_256' data-ref="hashmethod::HASH_SHA3_256">HASH_SHA3_256</dfn>,</td></tr>
+<tr><th id="41">41</th><td>  <dfn class="enum" id="hashmethod::HASH_SHA3_384" title='hashmethod::HASH_SHA3_384' data-ref="hashmethod::HASH_SHA3_384">HASH_SHA3_384</dfn>,</td></tr>
+<tr><th id="42">42</th><td>  <dfn class="enum" id="hashmethod::HASH_SHA3_512" title='hashmethod::HASH_SHA3_512' data-ref="hashmethod::HASH_SHA3_512">HASH_SHA3_512</dfn>,</td></tr>
+<tr><th id="43">43</th><td>} <dfn class="typedef" id="hashmethod" title='hashmethod' data-type='enum hashmethod' data-ref="hashmethod">hashmethod</dfn>;</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><b>typedef</b> <b>struct</b> {</td></tr>
+<tr><th id="46">46</th><td>  <a class="typedef" href="#hashmethod" title='hashmethod' data-type='enum hashmethod' data-ref="hashmethod">hashmethod</a>	<dfn class="decl field" id="(anonymous)::method" title='(anonymous struct)::method' data-ref="(anonymous)::method">method</dfn>;</td></tr>
+<tr><th id="47">47</th><td>  <em>int</em>		<dfn class="decl field" id="(anonymous)::hashlen" title='(anonymous struct)::hashlen' data-ref="(anonymous)::hashlen">hashlen</dfn>;</td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><u>#<span data-ppcond="49">ifdef</span> <a class="macro" href="sha_ver.h.html#36" data-ref="_M/SHA_OPENSSL">SHA_OPENSSL</a></u></td></tr>
+<tr><th id="50">50</th><td>  <b>union</b> {</td></tr>
+<tr><th id="51">51</th><td>    <a class="typedef" href="../../include/openssl/sha.h.html#SHA_CTX" title='SHA_CTX' data-type='struct SHAstate_st' data-ref="SHA_CTX">SHA_CTX</a>      <dfn class="decl field" id="(anonymousstruct)::(anonymous)::sha1" title='(anonymous struct)::(anonymous union)::sha1' data-ref="(anonymousstruct)::(anonymous)::sha1">sha1</dfn>;       <i>/* SHA1 block                                */</i></td></tr>
+<tr><th id="52">52</th><td>    <a class="typedef" href="../../include/openssl/sha.h.html#SHA256_CTX" title='SHA256_CTX' data-type='struct SHA256state_st' data-ref="SHA256_CTX">SHA256_CTX</a>   <dfn class="decl field" id="(anonymousstruct)::(anonymous)::sha2_256" title='(anonymous struct)::(anonymous union)::sha2_256' data-ref="(anonymousstruct)::(anonymous)::sha2_256">sha2_256</dfn>;   <i>/* SHA256 or 224 block                       */</i></td></tr>
+<tr><th id="53">53</th><td>    <a class="typedef" href="../../include/openssl/sha.h.html#SHA512_CTX" title='SHA512_CTX' data-type='struct SHA512state_st' data-ref="SHA512_CTX">SHA512_CTX</a>   <dfn class="decl field" id="(anonymousstruct)::(anonymous)::sha2_512" title='(anonymous struct)::(anonymous union)::sha2_512' data-ref="(anonymousstruct)::(anonymous)::sha2_512">sha2_512</dfn>;   <i>/* SHA512 or 384 block                       */</i></td></tr>
+<tr><th id="54">54</th><td><u>#<span data-ppcond="54">ifdef</span> <span class="macro" data-ref="_M/EXIM_HAVE_SHA3">EXIM_HAVE_SHA3</span></u></td></tr>
+<tr><th id="55">55</th><td>    EVP_MD_CTX * mctx;	     <i>/* SHA3 block				  */</i></td></tr>
+<tr><th id="56">56</th><td><u>#<span data-ppcond="54">endif</span></u></td></tr>
+<tr><th id="57">57</th><td>  } <dfn class="decl field" id="(anonymous)::u" title='(anonymous struct)::u' data-ref="(anonymous)::u">u</dfn>;</td></tr>
+<tr><th id="58">58</th><td></td></tr>
+<tr><th id="59">59</th><td><u>#<span data-ppcond="49">elif</span> defined(SHA_GNUTLS)</u></td></tr>
+<tr><th id="60">60</th><td>  gnutls_hash_hd_t sha;      <i>/* Either SHA1 or SHA256 block               */</i></td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><u>#elif defined(SHA_GCRYPT)</u></td></tr>
+<tr><th id="63">63</th><td>  gcry_md_hd_t sha;          <i>/* Either SHA1 or SHA256 block               */</i></td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><u>#elif defined(SHA_POLARSSL)</u></td></tr>
+<tr><th id="66">66</th><td>  <b>union</b> {</td></tr>
+<tr><th id="67">67</th><td>    sha1_context sha1;       <i>/* SHA1 block                                */</i></td></tr>
+<tr><th id="68">68</th><td>    sha2_context sha2;       <i>/* SHA256 block                              */</i></td></tr>
+<tr><th id="69">69</th><td>  } u;</td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td><u>#elif defined(SHA_NATIVE)</u></td></tr>
+<tr><th id="72">72</th><td>  sha1 sha1;</td></tr>
+<tr><th id="73">73</th><td><u>#<span data-ppcond="49">endif</span></u></td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td>} <dfn class="typedef" id="hctx" title='hctx' data-type='struct hctx' data-ref="hctx">hctx</dfn>;</td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td><b>extern</b> <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>     <dfn class="decl fn" id="exim_sha_init" title='exim_sha_init' data-ref="exim_sha_init">exim_sha_init</dfn>(<a class="typedef" href="#hctx" title='hctx' data-type='struct hctx' data-ref="hctx">hctx</a> *, <a class="typedef" href="#hashmethod" title='hashmethod' data-type='enum hashmethod' data-ref="hashmethod">hashmethod</a>);</td></tr>
+<tr><th id="78">78</th><td><b>extern</b> <em>void</em>     <dfn class="decl fn" id="exim_sha_update" title='exim_sha_update' data-ref="exim_sha_update">exim_sha_update</dfn>(<a class="typedef" href="#hctx" title='hctx' data-type='struct hctx' data-ref="hctx">hctx</a> *, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col8 decl" id="9488a" title='a' data-type='const uschar *' data-ref="9488a">a</dfn>, <em>int</em>);</td></tr>
+<tr><th id="79">79</th><td><b>extern</b> <em>void</em>     <dfn class="decl fn" id="exim_sha_finish" title='exim_sha_finish' data-ref="exim_sha_finish">exim_sha_finish</dfn>(<a class="typedef" href="#hctx" title='hctx' data-type='struct hctx' data-ref="hctx">hctx</a> *, <a class="typedef" href="blob.h.html#blob" title='blob' data-type='struct blob' data-ref="blob">blob</a> *);</td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td><u>#<span data-ppcond="11">endif</span></u></td></tr>
+<tr><th id="82">82</th><td><i>/* End of File */</i></td></tr>
+<tr><th id="83">83</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='lookups/lf_sqlperform.c.html'>exim/src/lookups/lf_sqlperform.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

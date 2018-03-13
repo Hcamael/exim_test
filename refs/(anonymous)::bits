@@ -1,0 +1,3 @@
+<dec f='exim/src/globals.h' l='84' type='int'/>
+<offset>32</offset>
+<doc f='exim/src/globals.h' l='84'>/* bits used in TLS session */</doc>

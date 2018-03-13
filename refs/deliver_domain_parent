@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='350' type='const uschar *'/>
+<doc f='exim/src/globals.h' l='350'>/* The parent domain for delivery */</doc>

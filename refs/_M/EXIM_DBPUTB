@@ -1,0 +1,2 @@
+<dec f='exim/src/dbstuff.h' l='176'/>
+<doc f='exim/src/dbstuff.h' l='175'>/* EXIM_DBPUTB - non-overwriting for use by dbmbuild */</doc>

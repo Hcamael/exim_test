@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='849' type='double'/>
+<doc f='exim/src/globals.h' l='849'>/* Factor for MAIL rate limit */</doc>

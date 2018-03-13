@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='344' type='uschar * readconf_retry_error(const uschar * , const uschar * , int * , int * )'/>

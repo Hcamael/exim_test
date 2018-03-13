@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='579' type='BOOL'/>
+<offset>0</offset>
+<doc f='exim/src/structs.h' l='579'>/* allow file in generated address */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2171' type='u_int32_t'/>
+<offset>0</offset>
+<doc f='include/db.h' l='2170'>/* Input Parameters. */</doc>
+<doc f='include/db.h' l='2171'>/* Desired fillfactor: 1-100 */</doc>

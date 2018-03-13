@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='583' type='uschar []'/>
+<doc f='exim/src/globals.h' l='583'>/* -E&lt;message-id&gt; for use as option */</doc>

@@ -1,0 +1,1 @@
+<dec f='include/openssl/bio.h' l='747' type='int (*)(BIO *) BIO_meth_get_create(BIO_METHOD * bion)'/>

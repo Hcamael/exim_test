@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2182' type='db_pgno_t'/>
+<offset>288</offset>
+<doc f='include/db.h' l='2181'>/* Internal. */</doc>
+<doc f='include/db.h' l='2182'>/* Exchange pages above here. */</doc>

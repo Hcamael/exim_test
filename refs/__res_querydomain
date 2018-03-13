@@ -1,0 +1,1 @@
+<dec f='include/resolv.h' l='263' type='int __res_querydomain(const char * , const char * , int , int , u_char * , int )'/>

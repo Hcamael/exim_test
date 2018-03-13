@@ -1,0 +1,2 @@
+<dec f='exim/src/macros.h' l='392' macro='1' type='65536'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='48' u='r' c='lf_sqlperform'/>

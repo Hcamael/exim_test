@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='462' type='db_lockop_t'/>
+<offset>0</offset>
+<doc f='include/db.h' l='462'>/* Operation. */</doc>

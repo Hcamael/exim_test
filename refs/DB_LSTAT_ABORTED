@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='343' type='1'/>
+<doc f='include/db.h' l='343'>/* Lock belongs to an aborted txn. */</doc>

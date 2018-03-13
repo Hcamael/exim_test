@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl.h' l='2013'/>
+<doc f='include/openssl/ssl.h' l='2012'>/* CA digest algorithm in certificate */</doc>

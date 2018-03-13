@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='908' type='BOOL'/>
+<doc f='exim/src/globals.h' l='908'>/* FALSE =&gt; no duplicate logging */</doc>

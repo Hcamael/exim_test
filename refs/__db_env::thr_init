@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2383' type='u_int32_t'/>
+<offset>3360</offset>
+<doc f='include/db.h' l='2382'>/* Thread tracking configuration */</doc>
+<doc f='include/db.h' l='2383'>/* Thread count */</doc>

@@ -1,0 +1,2 @@
+<dec f='include/openssl/x509_vfy.h' l='234'/>
+<doc f='include/openssl/x509_vfy.h' l='233'>/* Do not check certificate/CRL validity against current time */</doc>

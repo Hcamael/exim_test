@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='398' type='uintmax_t'/>
+<offset>1984</offset>
+<doc f='include/db.h' l='398'>/* Object lock granted without wait. */</doc>

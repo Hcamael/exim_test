@@ -1,0 +1,8 @@
+<dec f='exim/src/local_scan.h' l='101'/>
+<doc f='exim/src/local_scan.h' l='93'>/* Some people (Marc Merlin et al) are maintaining a patch that allows for
+dynamic local_scan() libraries. This code is not yet in Exim proper, but it
+helps the maintainers if we keep their ABI version numbers here. This may
+mutate into more general support later. The major number is increased when the
+ABI is changed in a non backward compatible way. The minor number is increased
+each time a new feature is added (in a way that doesn&apos;t break backward
+compatibility). */</doc>

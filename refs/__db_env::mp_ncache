@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2369' type='u_int'/>
+<offset>3008</offset>
+<doc f='include/db.h' l='2369'>/* Initial number of cache regions */</doc>

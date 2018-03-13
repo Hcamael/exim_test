@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='410' type='int (*)(struct auth_instance *, struct smtp_inblock *, struct smtp_outblock *, int, uschar *, int)'/>
+<offset>448</offset>
+<doc f='exim/src/structs.h' l='410'>/* client function */</doc>

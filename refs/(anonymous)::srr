@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='776' type='dns_record'/>
+<offset>128</offset>
+<doc f='exim/src/structs.h' l='776'>/* data from current record in scan */</doc>

@@ -1,0 +1,10 @@
+<def f='include/db.h' l='437' ll='445'/>
+<size>28</size>
+<doc f='include/db.h' l='433'>/*
+ * DB_LOCK_ILOCK --
+ *	Internal DB access method lock.
+ */</doc>
+<doc f='include/db.h' l='437'>/* SHARED */</doc>
+<mbr r='__db_ilock::pgno' o='0' t='db_pgno_t'/>
+<mbr r='__db_ilock::fileid' o='32' t='u_int8_t [20]'/>
+<mbr r='__db_ilock::type' o='192' t='u_int32_t'/>

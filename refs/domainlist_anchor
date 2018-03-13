@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='429' type='tree_node *'/>
+<doc f='exim/src/globals.h' l='429'>/* Tree of defined domain lists */</doc>

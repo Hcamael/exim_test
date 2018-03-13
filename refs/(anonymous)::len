@@ -1,0 +1,4 @@
+<dec f='exim/src/structs.h' l='643' type='int'/>
+<dec f='exim/src/blob.h' l='12' type='size_t'/>
+<dec f='include/openssl/evp.h' l='350' type='size_t'/>
+<offset>128</offset>

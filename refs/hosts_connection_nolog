@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='516' type='uschar *'/>
+<doc f='exim/src/globals.h' l='516'>/* Limits the logging option */</doc>

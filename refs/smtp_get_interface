@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='413' type='BOOL smtp_get_interface(uschar * , int , address_item * , uschar ** , uschar * )'/>

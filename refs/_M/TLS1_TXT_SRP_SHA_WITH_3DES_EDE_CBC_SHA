@@ -1,0 +1,2 @@
+<dec f='include/openssl/tls1.h' l='699'/>
+<doc f='include/openssl/tls1.h' l='698'>/* SRP ciphersuite from RFC 5054 */</doc>

@@ -1,0 +1,16 @@
+<def f='include/db.h' l='775' ll='787'/>
+<size>64</size>
+<doc f='include/db.h' l='770'>/*
+ * Mpool file statistics structure.
+ * The first fields in this structure must mirror the __db_mpool_fstat_int
+ * structure, since content is mem copied between the two.
+ */</doc>
+<mbr r='__db_mpool_fstat::st_pagesize' o='0' t='u_int32_t'/>
+<mbr r='__db_mpool_fstat::st_map' o='32' t='u_int32_t'/>
+<mbr r='__db_mpool_fstat::st_cache_hit' o='64' t='uintmax_t'/>
+<mbr r='__db_mpool_fstat::st_cache_miss' o='128' t='uintmax_t'/>
+<mbr r='__db_mpool_fstat::st_page_create' o='192' t='uintmax_t'/>
+<mbr r='__db_mpool_fstat::st_page_in' o='256' t='uintmax_t'/>
+<mbr r='__db_mpool_fstat::st_page_out' o='320' t='uintmax_t'/>
+<mbr r='__db_mpool_fstat::st_backup_spins' o='384' t='uintmax_t'/>
+<mbr r='__db_mpool_fstat::file_name' o='448' t='char *'/>

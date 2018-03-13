@@ -1,0 +1,7 @@
+<dec f='exim/src/local_scan.h' l='118' type='const char *'/>
+<offset>0</offset>
+<doc f='exim/src/local_scan.h' l='118'>/* should have been uschar but too late now */</doc>
+<dec f='exim/src/structs.h' l='642' type='uschar *'/>
+<dec f='exim/src/structs.h' l='756' type='uschar [1024]'/>
+<offset>0</offset>
+<doc f='exim/src/structs.h' l='756'>/* domain name */</doc>

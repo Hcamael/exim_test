@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='632' type='int'/>
+<doc f='exim/src/globals.h' l='632'>/* global so that readconf can */</doc>

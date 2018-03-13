@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='682' type='BOOL'/>
+<doc f='exim/src/globals.h' l='682'>/* TRUE if -bp requires admin */</doc>

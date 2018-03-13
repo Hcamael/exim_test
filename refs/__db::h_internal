@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1601' type='void *'/>
+<offset>4160</offset>
+<doc f='include/db.h' l='1601'>/* Hash access method. */</doc>

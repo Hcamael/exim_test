@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='376' type='uschar *'/>
+<doc f='exim/src/globals.h' l='376'>/* For selecting by sender */</doc>

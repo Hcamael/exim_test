@@ -1,0 +1,2 @@
+<dec f='include/fcntl.h' l='159' type='int open(const char * __file, int __oflag)'/>
+<dec f='include/fcntl.h' l='166' type='int open64(const char * __file, int __oflag)'/>

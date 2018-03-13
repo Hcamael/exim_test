@@ -1,0 +1,5 @@
+<dec f='include/db.h' l='1070'/>
+<doc f='include/db.h' l='1066'>/*
+ * Event notification types.  (Tcl testing interface currently assumes there are
+ * no more than 32 of these.)
+ */</doc>

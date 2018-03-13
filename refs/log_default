@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='550' type='int []'/>
+<doc f='exim/src/globals.h' l='550'>/* Initialization list for log_selector */</doc>

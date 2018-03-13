@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='176' type='uschar *'/>
+<doc f='exim/src/globals.h' l='176'>/* ACL run after DATA received if in PRDR mode*/</doc>

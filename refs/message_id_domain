@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='585' type='uschar *'/>
+<doc f='exim/src/globals.h' l='585'>/* Expanded to form domain-part of message_id */</doc>

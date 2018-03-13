@@ -1,0 +1,1 @@
+<dec f='include/openssl/bn.h' l='116' type='void * BN_GENCB_get_arg(BN_GENCB * cb)'/>

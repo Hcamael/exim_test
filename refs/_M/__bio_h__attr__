@@ -1,0 +1,6 @@
+<dec f='include/openssl/bio.h' l='715'/>
+<use f='include/openssl/bio.h' l='720' u='c'/>
+<use f='include/openssl/bio.h' l='722' u='c'/>
+<use f='include/openssl/bio.h' l='724' u='c'/>
+<use f='include/openssl/bio.h' l='726' u='c'/>
+<use f='include/openssl/bio.h' l='727' u='w'/>

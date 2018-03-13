@@ -1,0 +1,168 @@
+<def f='include/db.h' l='1419' ll='1816'/>
+<size>1456</size>
+<doc f='include/db.h' l='1418'>/* Database handle. */</doc>
+<mbr r='__db::pgsize' o='0' t='u_int32_t'/>
+<mbr r='__db::priority' o='32' t='DB_CACHE_PRIORITY'/>
+<mbr r='__db::db_append_recno' o='64' t='int (*)(DB *, DBT *, db_recno_t)'/>
+<mbr r='__db::db_feedback' o='128' t='void (*)(DB *, int, int)'/>
+<mbr r='__db::dup_compare' o='192' t='int (*)(DB *, const DBT *, const DBT *)'/>
+<mbr r='__db::app_private' o='256' t='void *'/>
+<mbr r='__db::dbenv' o='320' t='DB_ENV *'/>
+<mbr r='__db::env' o='384' t='ENV *'/>
+<mbr r='__db::type' o='448' t='DBTYPE'/>
+<mbr r='__db::mpf' o='512' t='DB_MPOOLFILE *'/>
+<mbr r='__db::mutex' o='576' t='db_mutex_t'/>
+<mbr r='__db::fname' o='640' t='char *'/>
+<mbr r='__db::dname' o='704' t='char *'/>
+<mbr r='__db::dirname' o='768' t='const char *'/>
+<mbr r='__db::open_flags' o='832' t='u_int32_t'/>
+<mbr r='__db::fileid' o='864' t='u_int8_t [20]'/>
+<mbr r='__db::adj_fileid' o='1024' t='u_int32_t'/>
+<mbr r='__db::log_filename' o='1088' t='FNAME *'/>
+<mbr r='__db::meta_pgno' o='1152' t='db_pgno_t'/>
+<mbr r='__db::locker' o='1216' t='DB_LOCKER *'/>
+<mbr r='__db::cur_locker' o='1280' t='DB_LOCKER *'/>
+<mbr r='__db::cur_txn' o='1344' t='DB_TXN *'/>
+<mbr r='__db::associate_locker' o='1408' t='DB_LOCKER *'/>
+<mbr r='__db::handle_lock' o='1472' t='DB_LOCK'/>
+<mbr r='__db::timestamp' o='1664' t='time_t'/>
+<mbr r='__db::fid_gen' o='1728' t='u_int32_t'/>
+<mbr r='__db::my_rskey' o='1792' t='DBT'/>
+<mbr r='__db::my_rkey' o='2112' t='DBT'/>
+<mbr r='__db::my_rdata' o='2432' t='DBT'/>
+<mbr r='__db::saved_open_fhp' o='2752' t='DB_FH *'/>
+<mbr r='__db::dblistlinks' o='2816' t='struct (anonymous struct at /usr/include/db.h:1496:2)'/>
+<mbr r='__db::free_queue' o='2944' t='struct __cq_fq'/>
+<mbr r='__db::active_queue' o='3072' t='struct __cq_aq'/>
+<mbr r='__db::join_queue' o='3200' t='struct __cq_jq'/>
+<mbr r='__db::s_secondaries' o='3328' t='struct (anonymous struct at /usr/include/db.h:1532:2)'/>
+<mbr r='__db::s_links' o='3392' t='struct (anonymous struct at /usr/include/db.h:1548:2)'/>
+<mbr r='__db::s_refcnt' o='3520' t='u_int32_t'/>
+<mbr r='__db::s_callback' o='3584' t='int (*)(DB *, const DBT *, const DBT *, DBT *)'/>
+<mbr r='__db::s_primary' o='3648' t='DB *'/>
+<mbr r='__db::s_assoc_flags' o='3712' t='u_int32_t'/>
+<mbr r='__db::f_primaries' o='3776' t='struct (anonymous struct at /usr/include/db.h:1575:2)'/>
+<mbr r='__db::felink' o='3840' t='struct (anonymous struct at /usr/include/db.h:1588:2)'/>
+<mbr r='__db::s_foreign' o='3968' t='DB *'/>
+<mbr r='__db::api_internal' o='4032' t='void *'/>
+<mbr r='__db::bt_internal' o='4096' t='void *'/>
+<mbr r='__db::h_internal' o='4160' t='void *'/>
+<mbr r='__db::heap_internal' o='4224' t='void *'/>
+<mbr r='__db::p_internal' o='4288' t='void *'/>
+<mbr r='__db::q_internal' o='4352' t='void *'/>
+<mbr r='__db::associate' o='4416' t='int (*)(DB *, DB_TXN *, DB *, int (*)(DB *, const DBT *, const DBT *, DBT *), u_int32_t)'/>
+<mbr r='__db::associate_foreign' o='4480' t='int (*)(DB *, DB *, int (*)(DB *, const DBT *, DBT *, const DBT *, int *), u_int32_t)'/>
+<mbr r='__db::close' o='4544' t='int (*)(DB *, u_int32_t)'/>
+<mbr r='__db::compact' o='4608' t='int (*)(DB *, DB_TXN *, DBT *, DBT *, DB_COMPACT *, u_int32_t, DBT *)'/>
+<mbr r='__db::cursor' o='4672' t='int (*)(DB *, DB_TXN *, DBC **, u_int32_t)'/>
+<mbr r='__db::del' o='4736' t='int (*)(DB *, DB_TXN *, DBT *, u_int32_t)'/>
+<mbr r='__db::err' o='4800' t='void (*)(DB *, int, const char *, ...)'/>
+<mbr r='__db::errx' o='4864' t='void (*)(DB *, const char *, ...)'/>
+<mbr r='__db::exists' o='4928' t='int (*)(DB *, DB_TXN *, DBT *, u_int32_t)'/>
+<mbr r='__db::fd' o='4992' t='int (*)(DB *, int *)'/>
+<mbr r='__db::get' o='5056' t='int (*)(DB *, DB_TXN *, DBT *, DBT *, u_int32_t)'/>
+<mbr r='__db::get_alloc' o='5120' t='int (*)(DB *, void *(**)(size_t), void *(**)(void *, size_t), void (**)(void *))'/>
+<mbr r='__db::get_append_recno' o='5184' t='int (*)(DB *, int (**)(DB *, DBT *, db_recno_t))'/>
+<mbr r='__db::get_assoc_flags' o='5248' t='int (*)(DB *, u_int32_t *)'/>
+<mbr r='__db::get_bt_compare' o='5312' t='int (*)(DB *, int (**)(DB *, const DBT *, const DBT *))'/>
+<mbr r='__db::get_bt_compress' o='5376' t='int (*)(DB *, int (**)(DB *, const DBT *, const DBT *, const DBT *, const DBT *, DBT *), int (**)(DB *, const DBT *, const DBT *, DBT *, DBT *, DBT *))'/>
+<mbr r='__db::get_bt_minkey' o='5440' t='int (*)(DB *, u_int32_t *)'/>
+<mbr r='__db::get_bt_prefix' o='5504' t='int (*)(DB *, size_t (**)(DB *, const DBT *, const DBT *))'/>
+<mbr r='__db::get_byteswapped' o='5568' t='int (*)(DB *, int *)'/>
+<mbr r='__db::get_cachesize' o='5632' t='int (*)(DB *, u_int32_t *, u_int32_t *, int *)'/>
+<mbr r='__db::get_create_dir' o='5696' t='int (*)(DB *, const char **)'/>
+<mbr r='__db::get_dbname' o='5760' t='int (*)(DB *, const char **, const char **)'/>
+<mbr r='__db::get_dup_compare' o='5824' t='int (*)(DB *, int (**)(DB *, const DBT *, const DBT *))'/>
+<mbr r='__db::get_encrypt_flags' o='5888' t='int (*)(DB *, u_int32_t *)'/>
+<mbr r='__db::get_env' o='5952' t='DB_ENV *(*)(DB *)'/>
+<mbr r='__db::get_errcall' o='6016' t='void (*)(DB *, void (**)(const DB_ENV *, const char *, const char *))'/>
+<mbr r='__db::get_errfile' o='6080' t='void (*)(DB *, FILE **)'/>
+<mbr r='__db::get_errpfx' o='6144' t='void (*)(DB *, const char **)'/>
+<mbr r='__db::get_feedback' o='6208' t='int (*)(DB *, void (**)(DB *, int, int))'/>
+<mbr r='__db::get_flags' o='6272' t='int (*)(DB *, u_int32_t *)'/>
+<mbr r='__db::get_h_compare' o='6336' t='int (*)(DB *, int (**)(DB *, const DBT *, const DBT *))'/>
+<mbr r='__db::get_h_ffactor' o='6400' t='int (*)(DB *, u_int32_t *)'/>
+<mbr r='__db::get_h_hash' o='6464' t='int (*)(DB *, u_int32_t (**)(DB *, const void *, u_int32_t))'/>
+<mbr r='__db::get_h_nelem' o='6528' t='int (*)(DB *, u_int32_t *)'/>
+<mbr r='__db::get_heapsize' o='6592' t='int (*)(DB *, u_int32_t *, u_int32_t *)'/>
+<mbr r='__db::get_heap_regionsize' o='6656' t='int (*)(DB *, u_int32_t *)'/>
+<mbr r='__db::get_lk_exclusive' o='6720' t='int (*)(DB *, int *, int *)'/>
+<mbr r='__db::get_lorder' o='6784' t='int (*)(DB *, int *)'/>
+<mbr r='__db::get_mpf' o='6848' t='DB_MPOOLFILE *(*)(DB *)'/>
+<mbr r='__db::get_msgcall' o='6912' t='void (*)(DB *, void (**)(const DB_ENV *, const char *))'/>
+<mbr r='__db::get_msgfile' o='6976' t='void (*)(DB *, FILE **)'/>
+<mbr r='__db::get_multiple' o='7040' t='int (*)(DB *)'/>
+<mbr r='__db::get_open_flags' o='7104' t='int (*)(DB *, u_int32_t *)'/>
+<mbr r='__db::get_pagesize' o='7168' t='int (*)(DB *, u_int32_t *)'/>
+<mbr r='__db::get_partition_callback' o='7232' t='int (*)(DB *, u_int32_t *, u_int32_t (**)(DB *, DBT *))'/>
+<mbr r='__db::get_partition_dirs' o='7296' t='int (*)(DB *, const char ***)'/>
+<mbr r='__db::get_partition_keys' o='7360' t='int (*)(DB *, u_int32_t *, DBT **)'/>
+<mbr r='__db::get_priority' o='7424' t='int (*)(DB *, DB_CACHE_PRIORITY *)'/>
+<mbr r='__db::get_q_extentsize' o='7488' t='int (*)(DB *, u_int32_t *)'/>
+<mbr r='__db::get_re_delim' o='7552' t='int (*)(DB *, int *)'/>
+<mbr r='__db::get_re_len' o='7616' t='int (*)(DB *, u_int32_t *)'/>
+<mbr r='__db::get_re_pad' o='7680' t='int (*)(DB *, int *)'/>
+<mbr r='__db::get_re_source' o='7744' t='int (*)(DB *, const char **)'/>
+<mbr r='__db::get_transactional' o='7808' t='int (*)(DB *)'/>
+<mbr r='__db::get_type' o='7872' t='int (*)(DB *, DBTYPE *)'/>
+<mbr r='__db::join' o='7936' t='int (*)(DB *, DBC **, DBC **, u_int32_t)'/>
+<mbr r='__db::key_range' o='8000' t='int (*)(DB *, DB_TXN *, DBT *, DB_KEY_RANGE *, u_int32_t)'/>
+<mbr r='__db::open' o='8064' t='int (*)(DB *, DB_TXN *, const char *, const char *, DBTYPE, u_int32_t, int)'/>
+<mbr r='__db::pget' o='8128' t='int (*)(DB *, DB_TXN *, DBT *, DBT *, DBT *, u_int32_t)'/>
+<mbr r='__db::put' o='8192' t='int (*)(DB *, DB_TXN *, DBT *, DBT *, u_int32_t)'/>
+<mbr r='__db::remove' o='8256' t='int (*)(DB *, const char *, const char *, u_int32_t)'/>
+<mbr r='__db::rename' o='8320' t='int (*)(DB *, const char *, const char *, const char *, u_int32_t)'/>
+<mbr r='__db::set_alloc' o='8384' t='int (*)(DB *, void *(*)(size_t), void *(*)(void *, size_t), void (*)(void *))'/>
+<mbr r='__db::set_append_recno' o='8448' t='int (*)(DB *, int (*)(DB *, DBT *, db_recno_t))'/>
+<mbr r='__db::set_bt_compare' o='8512' t='int (*)(DB *, int (*)(DB *, const DBT *, const DBT *))'/>
+<mbr r='__db::set_bt_compress' o='8576' t='int (*)(DB *, int (*)(DB *, const DBT *, const DBT *, const DBT *, const DBT *, DBT *), int (*)(DB *, const DBT *, const DBT *, DBT *, DBT *, DBT *))'/>
+<mbr r='__db::set_bt_minkey' o='8640' t='int (*)(DB *, u_int32_t)'/>
+<mbr r='__db::set_bt_prefix' o='8704' t='int (*)(DB *, size_t (*)(DB *, const DBT *, const DBT *))'/>
+<mbr r='__db::set_cachesize' o='8768' t='int (*)(DB *, u_int32_t, u_int32_t, int)'/>
+<mbr r='__db::set_create_dir' o='8832' t='int (*)(DB *, const char *)'/>
+<mbr r='__db::set_dup_compare' o='8896' t='int (*)(DB *, int (*)(DB *, const DBT *, const DBT *))'/>
+<mbr r='__db::set_encrypt' o='8960' t='int (*)(DB *, const char *, u_int32_t)'/>
+<mbr r='__db::set_errcall' o='9024' t='void (*)(DB *, void (*)(const DB_ENV *, const char *, const char *))'/>
+<mbr r='__db::set_errfile' o='9088' t='void (*)(DB *, FILE *)'/>
+<mbr r='__db::set_errpfx' o='9152' t='void (*)(DB *, const char *)'/>
+<mbr r='__db::set_feedback' o='9216' t='int (*)(DB *, void (*)(DB *, int, int))'/>
+<mbr r='__db::set_flags' o='9280' t='int (*)(DB *, u_int32_t)'/>
+<mbr r='__db::set_h_compare' o='9344' t='int (*)(DB *, int (*)(DB *, const DBT *, const DBT *))'/>
+<mbr r='__db::set_h_ffactor' o='9408' t='int (*)(DB *, u_int32_t)'/>
+<mbr r='__db::set_h_hash' o='9472' t='int (*)(DB *, u_int32_t (*)(DB *, const void *, u_int32_t))'/>
+<mbr r='__db::set_h_nelem' o='9536' t='int (*)(DB *, u_int32_t)'/>
+<mbr r='__db::set_heapsize' o='9600' t='int (*)(DB *, u_int32_t, u_int32_t, u_int32_t)'/>
+<mbr r='__db::set_heap_regionsize' o='9664' t='int (*)(DB *, u_int32_t)'/>
+<mbr r='__db::set_lk_exclusive' o='9728' t='int (*)(DB *, int)'/>
+<mbr r='__db::set_lorder' o='9792' t='int (*)(DB *, int)'/>
+<mbr r='__db::set_msgcall' o='9856' t='void (*)(DB *, void (*)(const DB_ENV *, const char *))'/>
+<mbr r='__db::set_msgfile' o='9920' t='void (*)(DB *, FILE *)'/>
+<mbr r='__db::set_pagesize' o='9984' t='int (*)(DB *, u_int32_t)'/>
+<mbr r='__db::set_paniccall' o='10048' t='int (*)(DB *, void (*)(DB_ENV *, int))'/>
+<mbr r='__db::set_partition' o='10112' t='int (*)(DB *, u_int32_t, DBT *, u_int32_t (*)(DB *, DBT *))'/>
+<mbr r='__db::set_partition_dirs' o='10176' t='int (*)(DB *, const char **)'/>
+<mbr r='__db::set_priority' o='10240' t='int (*)(DB *, DB_CACHE_PRIORITY)'/>
+<mbr r='__db::set_q_extentsize' o='10304' t='int (*)(DB *, u_int32_t)'/>
+<mbr r='__db::set_re_delim' o='10368' t='int (*)(DB *, int)'/>
+<mbr r='__db::set_re_len' o='10432' t='int (*)(DB *, u_int32_t)'/>
+<mbr r='__db::set_re_pad' o='10496' t='int (*)(DB *, int)'/>
+<mbr r='__db::set_re_source' o='10560' t='int (*)(DB *, const char *)'/>
+<mbr r='__db::sort_multiple' o='10624' t='int (*)(DB *, DBT *, DBT *, u_int32_t)'/>
+<mbr r='__db::stat' o='10688' t='int (*)(DB *, DB_TXN *, void *, u_int32_t)'/>
+<mbr r='__db::stat_print' o='10752' t='int (*)(DB *, u_int32_t)'/>
+<mbr r='__db::sync' o='10816' t='int (*)(DB *, u_int32_t)'/>
+<mbr r='__db::truncate' o='10880' t='int (*)(DB *, DB_TXN *, u_int32_t *, u_int32_t)'/>
+<mbr r='__db::upgrade' o='10944' t='int (*)(DB *, const char *, u_int32_t)'/>
+<mbr r='__db::verify' o='11008' t='int (*)(DB *, const char *, const char *, FILE *, u_int32_t)'/>
+<mbr r='__db::dump' o='11072' t='int (*)(DB *, const char *, int (*)(void *, const void *), void *, int, int)'/>
+<mbr r='__db::db_am_remove' o='11136' t='int (*)(DB *, DB_THREAD_INFO *, DB_TXN *, const char *, const char *, u_int32_t)'/>
+<mbr r='__db::db_am_rename' o='11200' t='int (*)(DB *, DB_THREAD_INFO *, DB_TXN *, const char *, const char *, const char *)'/>
+<mbr r='__db::stored_get' o='11264' t='int (*)(DB *, DB_TXN *, DBT *, DBT *, u_int32_t)'/>
+<mbr r='__db::stored_close' o='11328' t='int (*)(DB *, u_int32_t)'/>
+<mbr r='__db::alt_close' o='11392' t='int (*)(DB *, u_int32_t)'/>
+<mbr r='__db::am_ok' o='11456' t='u_int32_t'/>
+<mbr r='__db::preserve_fid' o='11488' t='int'/>
+<mbr r='__db::orig_flags' o='11520' t='u_int32_t'/>
+<mbr r='__db::flags' o='11552' t='u_int32_t'/>
+<mbr r='__db::orig_flags2' o='11584' t='u_int32_t'/>
+<mbr r='__db::flags2' o='11616' t='u_int32_t'/>

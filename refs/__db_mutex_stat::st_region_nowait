@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='271' type='uintmax_t'/>
+<offset>320</offset>
+<doc f='include/db.h' l='271'>/* Region lock granted without wait. */</doc>

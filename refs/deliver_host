@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='357' type='const uschar *'/>
+<doc f='exim/src/globals.h' l='357'>/* (First) host for routed local deliveries */</doc>

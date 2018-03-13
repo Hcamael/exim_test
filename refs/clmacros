@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='283' type='uschar *[]'/>
+<doc f='exim/src/globals.h' l='283'>/* Copy of them, for re-exec */</doc>

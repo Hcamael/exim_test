@@ -1,0 +1,4 @@
+<dec f='include/arpa/nameser_compat.h' l='72' type='unsigned int'/>
+<offset>24</offset>
+<doc f='include/arpa/nameser_compat.h' l='71'>/* fields in fourth byte */</doc>
+<doc f='include/arpa/nameser_compat.h' l='72'>/*%&lt; response code */</doc>

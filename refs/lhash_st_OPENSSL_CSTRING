@@ -1,0 +1,3 @@
+<def f='include/openssl/lhash.h' l='207' macro='1'/>
+<size>8</size>
+<mbr r='lhash_st_OPENSSL_CSTRING::dummy' o='0' t='union lh_OPENSSL_CSTRING_dummy'/>

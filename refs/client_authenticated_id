@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='280' type='uschar *'/>
+<doc f='exim/src/globals.h' l='280'>/* &quot;login&quot; name used for SMTP AUTH */</doc>

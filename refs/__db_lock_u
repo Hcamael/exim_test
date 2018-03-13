@@ -1,0 +1,12 @@
+<def f='include/db.h' l='452' ll='458'/>
+<size>24</size>
+<doc f='include/db.h' l='447'>/*
+ * DB_LOCK --
+ *	The structure is allocated by the caller and filled in during a
+ *	lock_get request (or a lock_vec/DB_LOCK_GET).
+ */</doc>
+<doc f='include/db.h' l='452'>/* SHARED */</doc>
+<mbr r='__db_lock_u::off' o='0' t='roff_t'/>
+<mbr r='__db_lock_u::ndx' o='64' t='u_int32_t'/>
+<mbr r='__db_lock_u::gen' o='96' t='u_int32_t'/>
+<mbr r='__db_lock_u::mode' o='128' t='db_lockmode_t'/>

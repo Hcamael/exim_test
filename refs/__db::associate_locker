@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1460' type='DB_LOCKER *'/>
+<offset>1408</offset>
+<doc f='include/db.h' l='1460'>/* Locker for DB-&gt;associate call. */</doc>

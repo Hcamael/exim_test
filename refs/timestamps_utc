@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='939' type='BOOL'/>
+<doc f='exim/src/globals.h' l='939'>/* Use UTC for all times */</doc>

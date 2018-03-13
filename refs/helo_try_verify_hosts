@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='497' type='uschar *'/>
+<doc f='exim/src/globals.h' l='497'>/* Soft check HELO argument for these */</doc>

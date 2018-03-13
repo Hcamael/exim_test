@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='835' type='int'/>
+<doc f='exim/src/globals.h' l='835'>/* Count of MAIL commands */</doc>

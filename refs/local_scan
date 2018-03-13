@@ -1,0 +1,27 @@
+<dec f='exim/src/local_scan.h' l='27' type='int local_scan(int , uschar ** )'/>
+<def f='exim/src/local_scan.c' l='56' ll='62' type='int local_scan(int fd, uschar ** return_text)'/>
+<doc f='exim/src/local_scan.c' l='31'>/* This is a &quot;do-nothing&quot; version of a local_scan() function. The arguments
+are:
+
+  fd             The file descriptor of the open -D file, which contains the
+                   body of the message. The file is open for reading and
+                   writing, but modifying it is dangerous and not recommended.
+
+  return_text    A pointer to an unsigned char* variable which you can set in
+                   order to return a text string. It is initialized to NULL.
+
+The return values of this function are:
+
+  LOCAL_SCAN_ACCEPT
+                 The message is to be accepted. The return_text argument is
+                   saved in $local_scan_data.
+
+  LOCAL_SCAN_REJECT
+                 The message is to be rejected. The returned text is used
+                   in the rejection message.
+
+  LOCAL_SCAN_TEMPREJECT
+                 This specifies a temporary rejection. The returned text
+                   is used in the rejection message.
+*/</doc>
+<doc f='exim/src/local_scan.h' l='25'>/* The function and its return codes. */</doc>

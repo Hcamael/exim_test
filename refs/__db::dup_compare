@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='1429' type='int (*)(DB *, const DBT *, const DBT *)'/>
+<offset>192</offset>

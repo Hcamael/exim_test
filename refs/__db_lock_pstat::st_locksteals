@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='429' type='uintmax_t'/>
+<offset>128</offset>
+<doc f='include/db.h' l='429'>/* Number of lock steals so far. */</doc>

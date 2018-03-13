@@ -1,0 +1,1 @@
+<dec f='include/db.h' l='3065' type='int db_env_set_func_open(int (*)(const char *, int, ...) )'/>

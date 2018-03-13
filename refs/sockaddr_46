@@ -1,0 +1,7 @@
+<def f='exim/src/exim.h' l='546' ll='552'/>
+<size>16</size>
+<doc f='exim/src/exim.h' l='542'>/* Define a union to hold either an IPv4 or an IPv6 sockaddr structure; this
+simplifies some of the coding.  We include the sockaddr to reduce type-punning
+issues in C99. */</doc>
+<mbr r='sockaddr_46::v4' o='0' t='struct sockaddr_in'/>
+<mbr r='sockaddr_46::v0' o='0' t='struct sockaddr'/>

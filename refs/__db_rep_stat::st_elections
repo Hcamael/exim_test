@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='1175' type='uintmax_t'/>
+<offset>2688</offset>
+<doc f='include/db.h' l='1174'>/* Elections generally. */</doc>
+<doc f='include/db.h' l='1175'>/* # of elections held.+ */</doc>

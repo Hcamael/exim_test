@@ -1,0 +1,6 @@
+<dec f='include/openssl/ssl.h' l='413'/>
+<doc f='include/openssl/ssl.h' l='408'>/*
+ * Send the current time in the Random fields of the ClientHello and
+ * ServerHello records for compatibility with hypothetical implementations
+ * that require it.
+ */</doc>

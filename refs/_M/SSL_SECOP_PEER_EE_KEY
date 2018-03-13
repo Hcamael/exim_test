@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl.h' l='2015'/>
+<doc f='include/openssl/ssl.h' l='2014'>/* Peer EE key in certificate */</doc>

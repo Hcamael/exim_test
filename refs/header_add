@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='173' type='void header_add(int , const char * )'/>
+<dec f='exim/src/functions.h' l='209' type='void header_add(int , const char * )'/>

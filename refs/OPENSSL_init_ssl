@@ -1,0 +1,1 @@
+<dec f='include/openssl/ssl.h' l='2055' type='int OPENSSL_init_ssl(uint64_t opts, const OPENSSL_INIT_SETTINGS * settings)'/>

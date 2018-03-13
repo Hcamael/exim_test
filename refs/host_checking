@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='149' type='BOOL'/>
+<doc f='exim/src/local_scan.h' l='149'>/* Set when checking a host */</doc>

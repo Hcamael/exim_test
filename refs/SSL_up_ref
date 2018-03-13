@@ -1,0 +1,1 @@
+<dec f='include/openssl/ssl.h' l='1500' type='int SSL_up_ref(SSL * s)'/>

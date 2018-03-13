@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1251' type='int (*)(DB_SEQUENCE *, u_int32_t)'/>
+<offset>1344</offset>
+<doc f='include/db.h' l='1250'>/* DB_SEQUENCE PUBLIC HANDLE LIST BEGIN */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='184' type='uschar *'/>
+<doc f='exim/src/globals.h' l='184'>/* ACL run for HELO/EHLO */</doc>

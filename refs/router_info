@@ -1,0 +1,13 @@
+<def f='exim/src/structs.h' l='343' ll='364'/>
+<size>72</size>
+<doc f='exim/src/structs.h' l='340'>/* Structure for holding information about a type of router. The first six
+fields must match driver_info above. */</doc>
+<mbr r='router_info::driver_name' o='0' t='uschar *'/>
+<mbr r='router_info::options' o='64' t='optionlist *'/>
+<mbr r='router_info::options_count' o='128' t='int *'/>
+<mbr r='router_info::options_block' o='192' t='void *'/>
+<mbr r='router_info::options_len' o='256' t='int'/>
+<mbr r='router_info::init' o='320' t='void (*)(struct router_instance *)'/>
+<mbr r='router_info::code' o='384' t='int (*)(router_instance *, struct address_item *, struct passwd *, int, struct address_item **, struct address_item **, struct address_item **, struct address_item **)'/>
+<mbr r='router_info::tidyup' o='448' t='void (*)(struct router_instance *)'/>
+<mbr r='router_info::ri_flags' o='512' t='int'/>

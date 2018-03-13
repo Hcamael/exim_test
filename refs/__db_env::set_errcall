@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='2605' type='void (*)(DB_ENV *, void (*)(const DB_ENV *, const char *, const char *))'/>
+<offset>13504</offset>

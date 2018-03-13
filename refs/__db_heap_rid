@@ -1,0 +1,4 @@
+<def f='include/db.h' l='2002' ll='2005'/>
+<size>8</size>
+<mbr r='__db_heap_rid::pgno' o='0' t='db_pgno_t'/>
+<mbr r='__db_heap_rid::indx' o='32' t='db_indx_t'/>

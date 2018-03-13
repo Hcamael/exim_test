@@ -1,0 +1,4 @@
+<dec f='include/openssl/ec.h' l='107' type='const EC_METHOD * EC_GF2m_simple_method()'/>
+<doc f='include/openssl/ec.h' l='104'>/** Returns the basic GF2m ec method
+ *  \return  EC_METHOD object
+ */</doc>

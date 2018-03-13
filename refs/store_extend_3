@@ -1,0 +1,2 @@
+<dec f='exim/src/store.h' l='45' type='BOOL store_extend_3(void * , int , int , const char * , int )'/>
+<doc f='exim/src/store.h' l='44'>/* The value of the 2nd arg is __FILE__ in every call, so give its correct type */</doc>

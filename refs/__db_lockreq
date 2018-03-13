@@ -1,0 +1,8 @@
+<def f='include/db.h' l='461' ll='467'/>
+<size>48</size>
+<doc f='include/db.h' l='460'>/* Lock request structure. */</doc>
+<mbr r='__db_lockreq::op' o='0' t='db_lockop_t'/>
+<mbr r='__db_lockreq::mode' o='32' t='db_lockmode_t'/>
+<mbr r='__db_lockreq::timeout' o='64' t='db_timeout_t'/>
+<mbr r='__db_lockreq::obj' o='128' t='DBT *'/>
+<mbr r='__db_lockreq::lock' o='192' t='DB_LOCK'/>

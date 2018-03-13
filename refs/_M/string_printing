@@ -1,0 +1,3 @@
+<dec f='exim/src/macros.h' l='45'/>
+<doc f='exim/src/macros.h' l='42'>/* For almost all calls to convert things to printing characters, we want to
+allow tabs. A macro just makes life a bit easier. */</doc>

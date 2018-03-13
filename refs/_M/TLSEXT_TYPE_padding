@@ -1,0 +1,5 @@
+<dec f='include/openssl/tls1.h' l='154'/>
+<doc f='include/openssl/tls1.h' l='150'>/*
+ * ExtensionType value for TLS padding extension.
+ * http://tools.ietf.org/html/draft-agl-tls-padding
+ */</doc>

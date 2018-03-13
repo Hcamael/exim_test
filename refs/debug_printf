@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='171' type='void debug_printf(const char * )'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='48' u='c' c='lf_sqlperform'/>

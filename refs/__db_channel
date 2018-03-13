@@ -1,0 +1,9 @@
+<def f='include/db.h' l='2694' ll='2706'/>
+<size>48</size>
+<mbr r='__db_channel::channel' o='0' t='CHANNEL *'/>
+<mbr r='__db_channel::eid' o='64' t='int'/>
+<mbr r='__db_channel::timeout' o='96' t='db_timeout_t'/>
+<mbr r='__db_channel::close' o='128' t='int (*)(DB_CHANNEL *, u_int32_t)'/>
+<mbr r='__db_channel::send_msg' o='192' t='int (*)(DB_CHANNEL *, DBT *, u_int32_t, u_int32_t)'/>
+<mbr r='__db_channel::send_request' o='256' t='int (*)(DB_CHANNEL *, DBT *, u_int32_t, DBT *, db_timeout_t, u_int32_t)'/>
+<mbr r='__db_channel::set_timeout' o='320' t='int (*)(DB_CHANNEL *, db_timeout_t)'/>

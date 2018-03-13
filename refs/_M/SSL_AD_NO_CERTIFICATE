@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl.h' l='1003'/>
+<doc f='include/openssl/ssl.h' l='1002'>/* Not for TLS */</doc>

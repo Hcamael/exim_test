@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='784' type='uintmax_t'/>
+<offset>384</offset>
+<doc f='include/db.h' l='784'>/* Number of spins during a copy. */</doc>

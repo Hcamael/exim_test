@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='907' type='BOOL'/>
+<doc f='exim/src/globals.h' l='907'>/* TRUE if -odi is set */</doc>

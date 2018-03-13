@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='823' type='void *'/>
+<offset>384</offset>
+<doc f='include/db.h' l='823'>/* Detail structure within region. */</doc>

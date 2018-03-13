@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='501' type='BOOL transport_pass_socket(const uschar * , const uschar * , const uschar * , uschar * , int )'/>

@@ -1,0 +1,43 @@
+<def f='include/db.h' l='628' ll='718'/>
+<size>312</size>
+<doc f='include/db.h' l='627'>/* Per-process DB_MPOOLFILE information. */</doc>
+<mbr r='__db_mpoolfile::fhp' o='0' t='DB_FH *'/>
+<mbr r='__db_mpoolfile::ref' o='64' t='u_int32_t'/>
+<mbr r='__db_mpoolfile::pinref' o='96' t='u_int32_t'/>
+<mbr r='__db_mpoolfile::q' o='128' t='struct (anonymous struct at /usr/include/db.h:644:2)'/>
+<mbr r='__db_mpoolfile::env' o='256' t='ENV *'/>
+<mbr r='__db_mpoolfile::mfp' o='320' t='MPOOLFILE *'/>
+<mbr r='__db_mpoolfile::clear_len' o='384' t='u_int32_t'/>
+<mbr r='__db_mpoolfile::fileid' o='416' t='u_int8_t [20]'/>
+<mbr r='__db_mpoolfile::ftype' o='576' t='int'/>
+<mbr r='__db_mpoolfile::lsn_offset' o='608' t='int32_t'/>
+<mbr r='__db_mpoolfile::gbytes' o='640' t='u_int32_t'/>
+<mbr r='__db_mpoolfile::bytes' o='672' t='u_int32_t'/>
+<mbr r='__db_mpoolfile::pgcookie' o='704' t='DBT *'/>
+<mbr r='__db_mpoolfile::priority' o='768' t='int32_t'/>
+<mbr r='__db_mpoolfile::addr' o='832' t='void *'/>
+<mbr r='__db_mpoolfile::len' o='896' t='size_t'/>
+<mbr r='__db_mpoolfile::config_flags' o='960' t='u_int32_t'/>
+<mbr r='__db_mpoolfile::close' o='1024' t='int (*)(DB_MPOOLFILE *, u_int32_t)'/>
+<mbr r='__db_mpoolfile::get' o='1088' t='int (*)(DB_MPOOLFILE *, db_pgno_t *, DB_TXN *, u_int32_t, void *)'/>
+<mbr r='__db_mpoolfile::get_clear_len' o='1152' t='int (*)(DB_MPOOLFILE *, u_int32_t *)'/>
+<mbr r='__db_mpoolfile::get_fileid' o='1216' t='int (*)(DB_MPOOLFILE *, u_int8_t *)'/>
+<mbr r='__db_mpoolfile::get_flags' o='1280' t='int (*)(DB_MPOOLFILE *, u_int32_t *)'/>
+<mbr r='__db_mpoolfile::get_ftype' o='1344' t='int (*)(DB_MPOOLFILE *, int *)'/>
+<mbr r='__db_mpoolfile::get_last_pgno' o='1408' t='int (*)(DB_MPOOLFILE *, db_pgno_t *)'/>
+<mbr r='__db_mpoolfile::get_lsn_offset' o='1472' t='int (*)(DB_MPOOLFILE *, int32_t *)'/>
+<mbr r='__db_mpoolfile::get_maxsize' o='1536' t='int (*)(DB_MPOOLFILE *, u_int32_t *, u_int32_t *)'/>
+<mbr r='__db_mpoolfile::get_pgcookie' o='1600' t='int (*)(DB_MPOOLFILE *, DBT *)'/>
+<mbr r='__db_mpoolfile::get_priority' o='1664' t='int (*)(DB_MPOOLFILE *, DB_CACHE_PRIORITY *)'/>
+<mbr r='__db_mpoolfile::open' o='1728' t='int (*)(DB_MPOOLFILE *, const char *, u_int32_t, int, size_t)'/>
+<mbr r='__db_mpoolfile::put' o='1792' t='int (*)(DB_MPOOLFILE *, void *, DB_CACHE_PRIORITY, u_int32_t)'/>
+<mbr r='__db_mpoolfile::set_clear_len' o='1856' t='int (*)(DB_MPOOLFILE *, u_int32_t)'/>
+<mbr r='__db_mpoolfile::set_fileid' o='1920' t='int (*)(DB_MPOOLFILE *, u_int8_t *)'/>
+<mbr r='__db_mpoolfile::set_flags' o='1984' t='int (*)(DB_MPOOLFILE *, u_int32_t, int)'/>
+<mbr r='__db_mpoolfile::set_ftype' o='2048' t='int (*)(DB_MPOOLFILE *, int)'/>
+<mbr r='__db_mpoolfile::set_lsn_offset' o='2112' t='int (*)(DB_MPOOLFILE *, int32_t)'/>
+<mbr r='__db_mpoolfile::set_maxsize' o='2176' t='int (*)(DB_MPOOLFILE *, u_int32_t, u_int32_t)'/>
+<mbr r='__db_mpoolfile::set_pgcookie' o='2240' t='int (*)(DB_MPOOLFILE *, DBT *)'/>
+<mbr r='__db_mpoolfile::set_priority' o='2304' t='int (*)(DB_MPOOLFILE *, DB_CACHE_PRIORITY)'/>
+<mbr r='__db_mpoolfile::sync' o='2368' t='int (*)(DB_MPOOLFILE *)'/>
+<mbr r='__db_mpoolfile::flags' o='2432' t='u_int32_t'/>

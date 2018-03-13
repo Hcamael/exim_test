@@ -1,0 +1,4 @@
+<dec f='exim/src/structs.h' l='213' type='BOOL (*)(transport_instance *, struct address_item *)'/>
+<offset>384</offset>
+<doc f='exim/src/structs.h' l='212'>/****/</doc>
+<doc f='exim/src/structs.h' l='213'>/* Main entry point */</doc>

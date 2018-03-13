@@ -1,0 +1,4 @@
+<def f='include/openssl/crypto.h' l='235' ll='237'/>
+<size>4</size>
+<doc f='include/openssl/crypto.h' l='234'>/* This structure is no longer used */</doc>
+<mbr r='crypto_threadid_st::dummy' o='0' t='int'/>

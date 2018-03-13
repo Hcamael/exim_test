@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='1129' type='u_int32_t'/>
+<offset>416</offset>
+<doc f='include/db.h' l='1129'>/* # of times a duplicate master
+					   condition was detected.+ */</doc>

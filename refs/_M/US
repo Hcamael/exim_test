@@ -1,0 +1,9 @@
+<dec f='exim/src/mytypes.h' l='68'/>
+<use f='exim/src/lookups/lf_quote.c' l='33' u='c'/>
+<use f='exim/src/lookups/lf_quote.c' l='39' u='c'/>
+<use f='exim/src/lookups/lf_quote.c' l='49' u='c'/>
+<use f='exim/src/lookups/lf_quote.c' l='53' u='c'/>
+<use f='exim/src/lookups/lf_quote.c' l='54' u='c'/>
+<use f='exim/src/lookups/lf_quote.c' l='56' u='c'/>
+<use f='exim/src/lookups/lf_quote.c' l='59' u='c'/>
+<use f='exim/src/lookups/lf_quote.c' l='61' u='c'/>

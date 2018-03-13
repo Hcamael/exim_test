@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2331' type='u_int32_t'/>
+<offset>1952</offset>
+<doc f='include/db.h' l='2330'>/* Mutex configuration */</doc>
+<doc f='include/db.h' l='2331'>/* Mutex alignment */</doc>

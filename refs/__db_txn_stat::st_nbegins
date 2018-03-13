@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1018' type='uintmax_t'/>
+<offset>384</offset>
+<doc f='include/db.h' l='1018'>/* number of begun transactions */</doc>

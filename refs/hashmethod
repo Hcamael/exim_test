@@ -1,0 +1,2 @@
+<def f='exim/src/hash.h' l='31' ll='43'/>
+<doc f='exim/src/hash.h' l='29'>/* Hash context for the exim_sha_* routines */</doc>

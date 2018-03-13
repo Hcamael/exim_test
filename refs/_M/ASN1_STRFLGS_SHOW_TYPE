@@ -1,0 +1,2 @@
+<dec f='include/openssl/asn1.h' l='400'/>
+<doc f='include/openssl/asn1.h' l='399'>/* If this is set we include the string type in the output */</doc>

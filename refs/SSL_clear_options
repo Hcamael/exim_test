@@ -1,0 +1,1 @@
+<dec f='include/openssl/ssl.h' l='502' type='unsigned long SSL_clear_options(SSL * s, unsigned long op)'/>

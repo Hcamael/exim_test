@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='377' type='uschar *'/>
+<offset>64</offset>
+<doc f='exim/src/structs.h' l='377'>/* Exim instance name */</doc>

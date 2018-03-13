@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='686' type='BOOL'/>
+<doc f='exim/src/globals.h' l='686'>/* TRUE for queue running process and */</doc>

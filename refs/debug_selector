@@ -1,0 +1,4 @@
+<dec f='exim/src/local_scan.h' l='141' type='unsigned int'/>
+<doc f='exim/src/local_scan.h' l='139'>/* Global variables that are documented as visible in the function. */</doc>
+<doc f='exim/src/local_scan.h' l='141'>/* Debugging bits */</doc>
+<use f='exim/src/lookups/lf_sqlperform.c' l='48' macro='1' u='r'/>

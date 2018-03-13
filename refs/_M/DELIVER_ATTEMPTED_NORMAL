@@ -1,0 +1,2 @@
+<dec f='exim/src/macros.h' l='305'/>
+<doc f='exim/src/macros.h' l='303'>/* Returns from the deliver_message() function */</doc>

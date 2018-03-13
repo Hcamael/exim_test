@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='735' type='time_t'/>
+<offset>0</offset>
+<doc f='exim/src/structs.h' l='735'>/* if nonzero, data invalid after this time */</doc>

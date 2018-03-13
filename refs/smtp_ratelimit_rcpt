@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='842' type='uschar *'/>
+<doc f='exim/src/globals.h' l='842'>/* Parameters for RCPT limiting */</doc>

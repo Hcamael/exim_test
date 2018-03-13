@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='416' type='uschar *'/>
+<doc f='exim/src/globals.h' l='416'>/* For these domains, don&apos;t look for AAAA (or A6) */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='150' type='uschar *'/>
+<doc f='exim/src/local_scan.h' l='150'>/* Interface for incoming call */</doc>

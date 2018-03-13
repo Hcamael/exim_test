@@ -1,0 +1,11 @@
+<def f='include/db.h' l='1202' ll='1211'/>
+<size>56</size>
+<doc f='include/db.h' l='1201'>/* Replication Manager statistics. */</doc>
+<doc f='include/db.h' l='1202'>/* SHARED */</doc>
+<mbr r='__db_repmgr_stat::st_perm_failed' o='0' t='uintmax_t'/>
+<mbr r='__db_repmgr_stat::st_msgs_queued' o='64' t='uintmax_t'/>
+<mbr r='__db_repmgr_stat::st_msgs_dropped' o='128' t='uintmax_t'/>
+<mbr r='__db_repmgr_stat::st_connection_drop' o='192' t='uintmax_t'/>
+<mbr r='__db_repmgr_stat::st_connect_fail' o='256' t='uintmax_t'/>
+<mbr r='__db_repmgr_stat::st_elect_threads' o='320' t='uintmax_t'/>
+<mbr r='__db_repmgr_stat::st_max_elect_threads' o='384' t='uintmax_t'/>

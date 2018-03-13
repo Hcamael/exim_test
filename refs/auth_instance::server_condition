@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='388' type='uschar *'/>
+<offset>768</offset>
+<doc f='exim/src/structs.h' l='388'>/* Authorization condition */</doc>

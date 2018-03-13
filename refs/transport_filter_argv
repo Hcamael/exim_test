@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='944' type='const uschar **'/>
+<doc f='exim/src/globals.h' l='944'>/* For on-the-fly filtering */</doc>

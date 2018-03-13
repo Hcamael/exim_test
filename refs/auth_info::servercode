@@ -1,0 +1,4 @@
+<dec f='exim/src/structs.h' l='407' type='int (*)(auth_instance *, uschar *)'/>
+<offset>384</offset>
+<doc f='exim/src/structs.h' l='406'>/****/</doc>
+<doc f='exim/src/structs.h' l='407'>/* server function */</doc>

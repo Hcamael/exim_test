@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1244' type='DBT'/>
+<offset>640</offset>
+<doc f='include/db.h' l='1244'>/* DBT pointing to sequence key. */</doc>

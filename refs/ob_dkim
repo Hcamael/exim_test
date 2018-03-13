@@ -1,0 +1,12 @@
+<def f='exim/src/structs.h' l='893' ll='903'/>
+<size>72</size>
+<doc f='exim/src/structs.h' l='892'>/* DKIM information for transport */</doc>
+<mbr r='ob_dkim::dkim_domain' o='0' t='uschar *'/>
+<mbr r='ob_dkim::dkim_identity' o='64' t='uschar *'/>
+<mbr r='ob_dkim::dkim_private_key' o='128' t='uschar *'/>
+<mbr r='ob_dkim::dkim_selector' o='192' t='uschar *'/>
+<mbr r='ob_dkim::dkim_canon' o='256' t='uschar *'/>
+<mbr r='ob_dkim::dkim_sign_headers' o='320' t='uschar *'/>
+<mbr r='ob_dkim::dkim_strict' o='384' t='uschar *'/>
+<mbr r='ob_dkim::dkim_hash' o='448' t='uschar *'/>
+<mbr r='ob_dkim::dot_stuffed' o='512' t='BOOL'/>

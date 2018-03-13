@@ -1,0 +1,11 @@
+<dec f='include/db.h' l='1534' type='struct (anonymous struct at /usr/include/db.h:1532:2)'/>
+<offset>3328</offset>
+<doc f='include/db.h' l='1523'>/*
+	 * Secondary index support.
+	 *
+	 * Linked list of secondary indices -- set in the primary.
+	 *
+	 * !!!
+	 * Explicit representations of structures from queue.h.
+	 * LIST_HEAD(s_secondaries, __db);
+	 */</doc>

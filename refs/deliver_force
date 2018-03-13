@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='353' type='BOOL'/>
+<doc f='exim/src/globals.h' l='353'>/* TRUE if delivery was forced */</doc>

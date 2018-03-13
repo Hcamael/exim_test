@@ -1,0 +1,15 @@
+<def f='include/db.h' l='977' ll='1006'/>
+<size>240</size>
+<doc f='include/db.h' l='976'>/* Transaction statistics structure. */</doc>
+<mbr r='__db_txn_active::txnid' o='0' t='u_int32_t'/>
+<mbr r='__db_txn_active::parentid' o='32' t='u_int32_t'/>
+<mbr r='__db_txn_active::pid' o='64' t='pid_t'/>
+<mbr r='__db_txn_active::tid' o='128' t='db_threadid_t'/>
+<mbr r='__db_txn_active::lsn' o='192' t='DB_LSN'/>
+<mbr r='__db_txn_active::read_lsn' o='256' t='DB_LSN'/>
+<mbr r='__db_txn_active::mvcc_ref' o='320' t='u_int32_t'/>
+<mbr r='__db_txn_active::priority' o='352' t='u_int32_t'/>
+<mbr r='__db_txn_active::status' o='384' t='u_int32_t'/>
+<mbr r='__db_txn_active::xa_status' o='416' t='u_int32_t'/>
+<mbr r='__db_txn_active::gid' o='448' t='u_int8_t [128]'/>
+<mbr r='__db_txn_active::name' o='1472' t='char [51]'/>

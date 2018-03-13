@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='723' type='uschar *'/>
+<doc f='exim/src/globals.h' l='723'>/* Definition of Received: header */</doc>

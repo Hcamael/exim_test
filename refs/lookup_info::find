@@ -1,0 +1,3 @@
+<dec f='exim/src/lookupapi.h' l='30' type='int (*)(void *, uschar *, const uschar *, int, uschar **, uschar **, uint *)'/>
+<offset>256</offset>
+<doc f='exim/src/lookupapi.h' l='30'>/* find function */</doc>

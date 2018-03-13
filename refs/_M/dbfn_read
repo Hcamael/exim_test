@@ -1,0 +1,2 @@
+<dec f='exim/src/dbfunctions.h' l='20'/>
+<doc f='exim/src/dbfunctions.h' l='18'>/* Macro for the common call to read without wanting to know the length. */</doc>

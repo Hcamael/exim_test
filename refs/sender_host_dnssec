@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='788' type='BOOL'/>
+<doc f='exim/src/globals.h' l='788'>/* true if sender_host_name verified in DNSSEC */</doc>

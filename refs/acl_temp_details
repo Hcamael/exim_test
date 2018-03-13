@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='196' type='BOOL'/>
+<doc f='exim/src/globals.h' l='196'>/* TRUE to give details for 4xx error */</doc>

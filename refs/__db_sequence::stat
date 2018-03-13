@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='1267' type='int (*)(DB_SEQUENCE *, DB_SEQUENCE_STAT **, u_int32_t)'/>
+<offset>2176</offset>

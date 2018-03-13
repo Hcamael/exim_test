@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='843' type='uschar *'/>
+<doc f='exim/src/globals.h' l='843'>/* Message for SMTP input error */</doc>

@@ -1,0 +1,4 @@
+<dec f='include/openssl/rsa.h' l='73'/>
+<doc f='include/openssl/rsa.h' l='70'>/*
+ * Does nothing. Previously this switched off constant time behaviour.
+ */</doc>

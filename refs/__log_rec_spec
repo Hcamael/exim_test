@@ -1,0 +1,6 @@
+<def f='include/db.h' l='601' ll='606'/>
+<size>24</size>
+<mbr r='__log_rec_spec::type' o='0' t='log_rec_type_t'/>
+<mbr r='__log_rec_spec::offset' o='32' t='u_int32_t'/>
+<mbr r='__log_rec_spec::name' o='64' t='const char *'/>
+<mbr r='__log_rec_spec::fmt' o='128' t='const char [4]'/>

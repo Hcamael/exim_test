@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='315' type='4'/>
+<doc f='include/db.h' l='315'>/* Intent exclusive/write. */</doc>

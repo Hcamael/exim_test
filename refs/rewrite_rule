@@ -1,0 +1,8 @@
+<def f='exim/src/structs.h' l='79' ll='84'/>
+<size>32</size>
+<doc f='exim/src/structs.h' l='76'>/* Chain of rewrite rules, read from the rewrite config, or parsed from the
+rewrite_headers field of a transport. */</doc>
+<mbr r='rewrite_rule::next' o='0' t='struct rewrite_rule *'/>
+<mbr r='rewrite_rule::flags' o='64' t='int'/>
+<mbr r='rewrite_rule::key' o='128' t='uschar *'/>
+<mbr r='rewrite_rule::replacement' o='192' t='uschar *'/>

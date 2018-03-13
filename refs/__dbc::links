@@ -1,0 +1,9 @@
+<dec f='include/db.h' l='2030' type='struct (anonymous struct at /usr/include/db.h:2027:2)'/>
+<offset>384</offset>
+<doc f='include/db.h' l='2020'>/*
+	 * Active/free cursor queues.
+	 *
+	 * !!!
+	 * Explicit representations of structures from queue.h.
+	 * TAILQ_ENTRY(__dbc) links;
+	 */</doc>

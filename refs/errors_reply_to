@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='444' type='uschar *'/>
+<doc f='exim/src/globals.h' l='444'>/* Reply-to for error messages */</doc>

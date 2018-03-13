@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='943' type='int'/>
+<doc f='exim/src/globals.h' l='943'>/* Accurate count of number of newline chars transported */</doc>

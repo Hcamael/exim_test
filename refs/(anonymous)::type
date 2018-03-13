@@ -1,0 +1,5 @@
+<dec f='exim/src/local_scan.h' l='119' type='int'/>
+<offset>64</offset>
+<dec f='exim/src/structs.h' l='757' type='int'/>
+<offset>8192</offset>
+<doc f='exim/src/structs.h' l='757'>/* record type */</doc>

@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='589' type='BOOL'/>
+<offset>10</offset>
+<doc f='exim/src/structs.h' l='589'>/* local transport retry exists */</doc>

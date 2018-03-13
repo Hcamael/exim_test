@@ -1,0 +1,10 @@
+<def f='exim/src/structs.h' l='786' ll='789'/>
+<size>16</size>
+<doc f='exim/src/structs.h' l='779'>/* Structure for holding a chain of IP addresses that are extracted from
+an A, AAAA, or A6 record. For the first two, there is only ever one address,
+but the chaining feature of A6 allows for several addresses to be realized from
+a single initial A6 record. The structure defines the address field of length
+1. In use, a suitable sized block is obtained to hold the complete textual
+address. */</doc>
+<mbr r='dns_address::next' o='0' t='struct dns_address *'/>
+<mbr r='dns_address::address' o='64' t='uschar [1]'/>

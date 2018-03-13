@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='459' type='BOOL'/>
+<doc f='exim/src/globals.h' l='459'>/* TRUE if exim_uid set */</doc>

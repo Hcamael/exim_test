@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='146' type='uschar *'/>
+<doc f='exim/src/local_scan.h' l='146'>/* Charset for RFC 2047 decoding */</doc>

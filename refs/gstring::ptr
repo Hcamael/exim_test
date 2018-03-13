@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='31' type='int'/>
+<offset>32</offset>
+<doc f='exim/src/structs.h' l='31'>/* Offset at which to append further chars */</doc>

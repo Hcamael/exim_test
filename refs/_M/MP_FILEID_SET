@@ -1,0 +1,9 @@
+<dec f='include/db.h' l='710'/>
+<doc f='include/db.h' l='702'>/*
+	 * MP_FILEID_SET, MP_OPEN_CALLED and MP_READONLY do not need to be
+	 * thread protected because they are initialized before the file is
+	 * linked onto the per-process lists, and never modified.
+	 *
+	 * MP_FLUSH is thread protected because it is potentially read/set by
+	 * multiple threads of control.
+	 */</doc>

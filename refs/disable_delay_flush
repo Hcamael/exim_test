@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='379' type='BOOL'/>
+<doc f='exim/src/globals.h' l='379'>/* Don&apos;t flush before &quot;delay&quot; in ACL */</doc>

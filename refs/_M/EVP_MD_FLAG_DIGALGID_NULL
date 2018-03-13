@@ -1,0 +1,2 @@
+<dec f='include/openssl/evp.h' l='111'/>
+<doc f='include/openssl/evp.h' l='109'>/* NULL or absent parameter accepted. Use NULL */</doc>

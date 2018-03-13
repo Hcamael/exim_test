@@ -1,0 +1,19 @@
+<def f='include/db.h' l='1008' ll='1029'/>
+<size>112</size>
+<mbr r='__db_txn_stat::st_nrestores' o='0' t='u_int32_t'/>
+<mbr r='__db_txn_stat::st_last_ckp' o='32' t='DB_LSN'/>
+<mbr r='__db_txn_stat::st_time_ckp' o='128' t='time_t'/>
+<mbr r='__db_txn_stat::st_last_txnid' o='192' t='u_int32_t'/>
+<mbr r='__db_txn_stat::st_inittxns' o='224' t='u_int32_t'/>
+<mbr r='__db_txn_stat::st_maxtxns' o='256' t='u_int32_t'/>
+<mbr r='__db_txn_stat::st_naborts' o='320' t='uintmax_t'/>
+<mbr r='__db_txn_stat::st_nbegins' o='384' t='uintmax_t'/>
+<mbr r='__db_txn_stat::st_ncommits' o='448' t='uintmax_t'/>
+<mbr r='__db_txn_stat::st_nactive' o='512' t='u_int32_t'/>
+<mbr r='__db_txn_stat::st_nsnapshot' o='544' t='u_int32_t'/>
+<mbr r='__db_txn_stat::st_maxnactive' o='576' t='u_int32_t'/>
+<mbr r='__db_txn_stat::st_maxnsnapshot' o='608' t='u_int32_t'/>
+<mbr r='__db_txn_stat::st_region_wait' o='640' t='uintmax_t'/>
+<mbr r='__db_txn_stat::st_region_nowait' o='704' t='uintmax_t'/>
+<mbr r='__db_txn_stat::st_regsize' o='768' t='roff_t'/>
+<mbr r='__db_txn_stat::st_txnarray' o='832' t='DB_TXN_ACTIVE *'/>

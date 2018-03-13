@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='272' type='int'/>
+<doc f='exim/src/globals.h' l='272'>/* Minimum for message acceptance */</doc>

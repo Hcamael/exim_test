@@ -1,0 +1,13 @@
+<dec f='exim/src/local_scan.h' l='193' type='uschar * string_sprintf(const char * )'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='63' u='c' c='lf_sqlperform'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='81' u='c' c='lf_sqlperform'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='89' u='c' c='lf_sqlperform'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='96' u='c' c='lf_sqlperform'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='101' u='c' c='lf_sqlperform'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='124' u='c' c='lf_sqlperform'/>
+<use f='exim/src/lookups/lf_check_file.c' l='51' u='c' c='lf_check_file'/>
+<use f='exim/src/lookups/lf_check_file.c' l='60' u='c' c='lf_check_file'/>
+<use f='exim/src/lookups/lf_check_file.c' l='66' u='c' c='lf_check_file'/>
+<use f='exim/src/lookups/lf_check_file.c' l='75' u='c' c='lf_check_file'/>
+<use f='exim/src/lookups/lf_check_file.c' l='89' u='c' c='lf_check_file'/>
+<use f='exim/src/lookups/lf_check_file.c' l='103' u='c' c='lf_check_file'/>

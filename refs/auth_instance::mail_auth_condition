@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='386' type='uschar *'/>
+<offset>640</offset>
+<doc f='exim/src/structs.h' l='386'>/* Condition for AUTH on MAIL command */</doc>

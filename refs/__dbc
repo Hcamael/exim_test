@@ -1,0 +1,51 @@
+<def f='include/db.h' l='2011' ll='2135'/>
+<size>552</size>
+<doc f='include/db.h' l='2008'>/*******************************************************
+ * Access method cursors.
+ *******************************************************/</doc>
+<mbr r='__dbc::dbp' o='0' t='DB *'/>
+<mbr r='__dbc::dbenv' o='64' t='DB_ENV *'/>
+<mbr r='__dbc::env' o='128' t='ENV *'/>
+<mbr r='__dbc::thread_info' o='192' t='DB_THREAD_INFO *'/>
+<mbr r='__dbc::txn' o='256' t='DB_TXN *'/>
+<mbr r='__dbc::priority' o='320' t='DB_CACHE_PRIORITY'/>
+<mbr r='__dbc::links' o='384' t='struct (anonymous struct at /usr/include/db.h:2027:2)'/>
+<mbr r='__dbc::txn_cursors' o='512' t='struct (anonymous struct at /usr/include/db.h:2039:2)'/>
+<mbr r='__dbc::rskey' o='640' t='DBT *'/>
+<mbr r='__dbc::rkey' o='704' t='DBT *'/>
+<mbr r='__dbc::rdata' o='768' t='DBT *'/>
+<mbr r='__dbc::my_rskey' o='832' t='DBT'/>
+<mbr r='__dbc::my_rkey' o='1152' t='DBT'/>
+<mbr r='__dbc::my_rdata' o='1472' t='DBT'/>
+<mbr r='__dbc::lref' o='1792' t='DB_LOCKER *'/>
+<mbr r='__dbc::locker' o='1856' t='DB_LOCKER *'/>
+<mbr r='__dbc::lock_dbt' o='1920' t='DBT'/>
+<mbr r='__dbc::lock' o='2240' t='DB_LOCK_ILOCK'/>
+<mbr r='__dbc::mylock' o='2496' t='DB_LOCK'/>
+<mbr r='__dbc::dbtype' o='2688' t='DBTYPE'/>
+<mbr r='__dbc::internal' o='2752' t='DBC_INTERNAL *'/>
+<mbr r='__dbc::close' o='2816' t='int (*)(DBC *)'/>
+<mbr r='__dbc::cmp' o='2880' t='int (*)(DBC *, DBC *, int *, u_int32_t)'/>
+<mbr r='__dbc::count' o='2944' t='int (*)(DBC *, db_recno_t *, u_int32_t)'/>
+<mbr r='__dbc::del' o='3008' t='int (*)(DBC *, u_int32_t)'/>
+<mbr r='__dbc::dup' o='3072' t='int (*)(DBC *, DBC **, u_int32_t)'/>
+<mbr r='__dbc::get' o='3136' t='int (*)(DBC *, DBT *, DBT *, u_int32_t)'/>
+<mbr r='__dbc::get_priority' o='3200' t='int (*)(DBC *, DB_CACHE_PRIORITY *)'/>
+<mbr r='__dbc::pget' o='3264' t='int (*)(DBC *, DBT *, DBT *, DBT *, u_int32_t)'/>
+<mbr r='__dbc::put' o='3328' t='int (*)(DBC *, DBT *, DBT *, u_int32_t)'/>
+<mbr r='__dbc::set_priority' o='3392' t='int (*)(DBC *, DB_CACHE_PRIORITY)'/>
+<mbr r='__dbc::c_close' o='3456' t='int (*)(DBC *)'/>
+<mbr r='__dbc::c_count' o='3520' t='int (*)(DBC *, db_recno_t *, u_int32_t)'/>
+<mbr r='__dbc::c_del' o='3584' t='int (*)(DBC *, u_int32_t)'/>
+<mbr r='__dbc::c_dup' o='3648' t='int (*)(DBC *, DBC **, u_int32_t)'/>
+<mbr r='__dbc::c_get' o='3712' t='int (*)(DBC *, DBT *, DBT *, u_int32_t)'/>
+<mbr r='__dbc::c_pget' o='3776' t='int (*)(DBC *, DBT *, DBT *, DBT *, u_int32_t)'/>
+<mbr r='__dbc::c_put' o='3840' t='int (*)(DBC *, DBT *, DBT *, u_int32_t)'/>
+<mbr r='__dbc::am_bulk' o='3904' t='int (*)(DBC *, DBT *, u_int32_t)'/>
+<mbr r='__dbc::am_close' o='3968' t='int (*)(DBC *, db_pgno_t, int *)'/>
+<mbr r='__dbc::am_del' o='4032' t='int (*)(DBC *, u_int32_t)'/>
+<mbr r='__dbc::am_destroy' o='4096' t='int (*)(DBC *)'/>
+<mbr r='__dbc::am_get' o='4160' t='int (*)(DBC *, DBT *, DBT *, u_int32_t, db_pgno_t *)'/>
+<mbr r='__dbc::am_put' o='4224' t='int (*)(DBC *, DBT *, DBT *, u_int32_t, db_pgno_t *)'/>
+<mbr r='__dbc::am_writelock' o='4288' t='int (*)(DBC *)'/>
+<mbr r='__dbc::flags' o='4352' t='u_int32_t'/>

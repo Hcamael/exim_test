@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='905' type='BOOL'/>
+<doc f='exim/src/globals.h' l='905'>/* Can be forced from ACL */</doc>

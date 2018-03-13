@@ -1,0 +1,19 @@
+<dec f='exim/src/lookups/lf_functions.h' l='13' type='int lf_sqlperform(const uschar * , const uschar * , const uschar * , const uschar * , uschar ** , uschar ** , uint * , int (*)(const uschar *, uschar *, uschar **, uschar **, BOOL *, uint *) )'/>
+<def f='exim/src/lookups/lf_sqlperform.c' l='36' ll='136' type='int lf_sqlperform(const uschar * name, const uschar * optionname, const uschar * optserverlist, const uschar * query, uschar ** result, uschar ** errmsg, uint * do_cache, int (*)(const uschar *, uschar *, uschar **, uschar **, BOOL *, uint *) fn)'/>
+<doc f='exim/src/lookups/lf_sqlperform.c' l='18'>/* All the SQL lookups are of the same form, with a list of servers to try
+until one can be accessed. It is now also possible to provide the server data
+as part of the query. This function manages server selection and looping; each
+lookup has its own function for actually performing the lookup.
+
+Arguments:
+  name           the lookup name, e.g. &quot;MySQL&quot;
+  optionname     the name of the servers option, e.g. &quot;mysql_servers&quot;
+  optserverlist  the value of the servers option
+  query          the query
+  result         where to pass back the result
+  errmsg         where to pass back an error message
+  do_cache       to be set zero if data is changed
+  func           the lookup function to call
+
+Returns:         the return from the lookup function, or DEFER
+*/</doc>

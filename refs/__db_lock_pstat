@@ -1,0 +1,9 @@
+<def f='include/db.h' l='424' ll='431'/>
+<size>32</size>
+<doc f='include/db.h' l='424'>/* SHARED */</doc>
+<mbr r='__db_lock_pstat::st_nlocks' o='0' t='u_int32_t'/>
+<mbr r='__db_lock_pstat::st_maxnlocks' o='32' t='u_int32_t'/>
+<mbr r='__db_lock_pstat::st_nobjects' o='64' t='u_int32_t'/>
+<mbr r='__db_lock_pstat::st_maxnobjects' o='96' t='u_int32_t'/>
+<mbr r='__db_lock_pstat::st_locksteals' o='128' t='uintmax_t'/>
+<mbr r='__db_lock_pstat::st_objectsteals' o='192' t='uintmax_t'/>

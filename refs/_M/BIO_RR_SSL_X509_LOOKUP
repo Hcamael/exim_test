@@ -1,0 +1,4 @@
+<dec f='include/openssl/bio.h' l='213'/>
+<doc f='include/openssl/bio.h' l='210'>/*
+ * Returned from the SSL bio when the certificate retrieval code had an error
+ */</doc>

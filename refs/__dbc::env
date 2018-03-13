@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2014' type='ENV *'/>
+<offset>128</offset>
+<doc f='include/db.h' l='2014'>/* Backing environment */</doc>

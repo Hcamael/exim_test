@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2004' type='db_indx_t'/>
+<offset>32</offset>
+<doc f='include/db.h' l='2004'>/* Index in the offset table. */</doc>

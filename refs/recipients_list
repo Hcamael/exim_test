@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='155' type='recipient_item *'/>
+<doc f='exim/src/local_scan.h' l='155'>/* List of recipient addresses */</doc>

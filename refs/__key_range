@@ -1,0 +1,6 @@
+<def f='include/db.h' l='2138' ll='2142'/>
+<size>24</size>
+<doc f='include/db.h' l='2137'>/* Key range statistics structure */</doc>
+<mbr r='__key_range::less' o='0' t='double'/>
+<mbr r='__key_range::equal' o='64' t='double'/>
+<mbr r='__key_range::greater' o='128' t='double'/>

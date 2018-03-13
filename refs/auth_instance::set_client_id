@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='385' type='uschar *'/>
+<offset>576</offset>
+<doc f='exim/src/structs.h' l='385'>/* String to set when client as client_authenticated id */</doc>

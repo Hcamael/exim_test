@@ -1,0 +1,5 @@
+<def f='include/db.h' l='1214' ll='1217'/>
+<size>8</size>
+<doc f='include/db.h' l='1213'>/* Replication Manager connection error. */</doc>
+<mbr r='__db_repmgr_conn_err::eid' o='0' t='int'/>
+<mbr r='__db_repmgr_conn_err::error' o='32' t='int'/>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='756' type='int'/>
+<doc f='exim/src/globals.h' l='756'>/* The maximum timeout */</doc>

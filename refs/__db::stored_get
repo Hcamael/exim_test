@@ -1,0 +1,6 @@
+<dec f='include/db.h' l='1756' type='int (*)(DB *, DB_TXN *, DBT *, DBT *, u_int32_t)'/>
+<offset>11264</offset>
+<doc f='include/db.h' l='1752'>/*
+	 * Never called; these are a place to save function pointers
+	 * so that we can undo an associate.
+	 */</doc>

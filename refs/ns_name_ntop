@@ -1,0 +1,1 @@
+<dec f='include/arpa/nameser.h' l='492' type='int ns_name_ntop(const u_char * , char * , size_t )'/>

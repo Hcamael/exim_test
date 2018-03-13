@@ -1,0 +1,2 @@
+<dec f='include/openssl/dh.h' l='68'/>
+<doc f='include/openssl/dh.h' l='67'>/* #define DH_GENERATOR_3       3 */</doc>

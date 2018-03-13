@@ -1,0 +1,2 @@
+<dec f='include/openssl/evp.h' l='245'/>
+<doc f='include/openssl/evp.h' l='244'>/* cipher handles random key generation */</doc>

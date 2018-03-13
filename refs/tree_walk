@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='520' type='void tree_walk(tree_node * , void (*)(uschar *, uschar *, void *) , void * )'/>

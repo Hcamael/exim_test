@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='1158' type='uintmax_t'/>
+<offset>1920</offset>
+<doc f='include/db.h' l='1158'>/* Messages ignored because this site
+					   was a client in recovery.+ */</doc>

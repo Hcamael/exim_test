@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='424' type='int'/>
+<doc f='exim/src/globals.h' l='424'>/* Coerce EDNS0 support on/off in resolver. */</doc>

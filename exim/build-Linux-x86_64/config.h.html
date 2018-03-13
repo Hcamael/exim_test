@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>config.h source code [exim/build-Linux-x86_64/config.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/build-Linux-x86_64/config.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>build-Linux-x86_64</a>/<a href='config.h.html'>config.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*           Configuration header for Exim        *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* This file was automatically generated from Makefile and config.h.defaults,</i></td></tr>
+<tr><th id="6">6</th><td><i>using values specified in the configuration file Local/Makefile.</i></td></tr>
+<tr><th id="7">7</th><td><i>Do not edit it. Instead, edit Local/Makefile and rerun make. */</i></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><u>#<span data-ppcond="9">ifndef</span> <span class="macro" data-ref="_M/OFF_T_FMT">OFF_T_FMT</span></u></td></tr>
+<tr><th id="10">10</th><td><u># define <dfn class="macro" id="_M/OFF_T_FMT" data-ref="_M/OFF_T_FMT">OFF_T_FMT</dfn>  "%ld"</u></td></tr>
+<tr><th id="11">11</th><td><u># define <dfn class="macro" id="_M/LONGLONG_T" data-ref="_M/LONGLONG_T">LONGLONG_T</dfn> long int</u></td></tr>
+<tr><th id="12">12</th><td><u>#<span data-ppcond="9">endif</span></u></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><u>#<span data-ppcond="14">ifndef</span> <span class="macro" data-ref="_M/TIME_T_FMT">TIME_T_FMT</span></u></td></tr>
+<tr><th id="15">15</th><td><u># define <dfn class="macro" id="_M/TIME_T_FMT" data-ref="_M/TIME_T_FMT">TIME_T_FMT</dfn>  "%ld"</u></td></tr>
+<tr><th id="16">16</th><td><u>#<span data-ppcond="14">endif</span></u></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u>#<span data-ppcond="18">ifndef</span> <span class="macro" data-ref="_M/INO_T_FMT">INO_T_FMT</span></u></td></tr>
+<tr><th id="19">19</th><td><u># define <dfn class="macro" id="_M/INO_T_FMT" data-ref="_M/INO_T_FMT">INO_T_FMT</dfn>  "%lu"</u></td></tr>
+<tr><th id="20">20</th><td><u>#<span data-ppcond="18">endif</span></u></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="22">ifndef</span> <span class="macro" data-ref="_M/PID_T_FMT">PID_T_FMT</span></u></td></tr>
+<tr><th id="23">23</th><td><u># define <dfn class="macro" id="_M/PID_T_FMT" data-ref="_M/PID_T_FMT">PID_T_FMT</dfn>  "%lu"</u></td></tr>
+<tr><th id="24">24</th><td><u>#<span data-ppcond="22">endif</span></u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><u>#define <dfn class="macro" id="_M/SIZE_T_FMT" data-ref="_M/SIZE_T_FMT">SIZE_T_FMT</dfn>  "%zu"</u></td></tr>
+<tr><th id="27">27</th><td><u>#define <dfn class="macro" id="_M/SSIZE_T_FMT" data-ref="_M/SSIZE_T_FMT">SSIZE_T_FMT</dfn>  "%zd"</u></td></tr>
+<tr><th id="28">28</th><td><u>#define <dfn class="macro" id="_M/HAVE_IPV6" data-ref="_M/HAVE_IPV6">HAVE_IPV6</dfn>             FALSE</u></td></tr>
+<tr><th id="29">29</th><td><u>#define <dfn class="macro" id="_M/HAVE_ICONV" data-ref="_M/HAVE_ICONV">HAVE_ICONV</dfn>            TRUE</u></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><i>/* ALT_CONFIG_PREFIX not set */</i></td></tr>
+<tr><th id="32">32</th><td><i>/* TRUSTED_CONFIG_LIST not set */</i></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><u>#define <dfn class="macro" id="_M/APPENDFILE_MODE" data-ref="_M/APPENDFILE_MODE">APPENDFILE_MODE</dfn>            0600</u></td></tr>
+<tr><th id="35">35</th><td><u>#define <dfn class="macro" id="_M/APPENDFILE_DIRECTORY_MODE" data-ref="_M/APPENDFILE_DIRECTORY_MODE">APPENDFILE_DIRECTORY_MODE</dfn>  0700</u></td></tr>
+<tr><th id="36">36</th><td><u>#define <dfn class="macro" id="_M/APPENDFILE_LOCKFILE_MODE" data-ref="_M/APPENDFILE_LOCKFILE_MODE">APPENDFILE_LOCKFILE_MODE</dfn>   0600</u></td></tr>
+<tr><th id="37">37</th><td><u>#define <dfn class="macro" id="_M/AUTH_CRAM_MD5" data-ref="_M/AUTH_CRAM_MD5">AUTH_CRAM_MD5</dfn>         yes</u></td></tr>
+<tr><th id="38">38</th><td><i>/* AUTH_CYRUS_SASL not set */</i></td></tr>
+<tr><th id="39">39</th><td><i>/* AUTH_DOVECOT not set */</i></td></tr>
+<tr><th id="40">40</th><td><i>/* AUTH_GSASL not set */</i></td></tr>
+<tr><th id="41">41</th><td><i>/* AUTH_HEIMDAL_GSSAPI not set */</i></td></tr>
+<tr><th id="42">42</th><td><u>#define <dfn class="macro" id="_M/AUTH_PLAINTEXT" data-ref="_M/AUTH_PLAINTEXT">AUTH_PLAINTEXT</dfn>        yes</u></td></tr>
+<tr><th id="43">43</th><td><i>/* AUTH_SPA not set */</i></td></tr>
+<tr><th id="44">44</th><td><u>#define <dfn class="macro" id="_M/AUTH_TLS" data-ref="_M/AUTH_TLS">AUTH_TLS</dfn>              yes</u></td></tr>
+<tr><th id="45">45</th><td><u>#define <dfn class="macro" id="_M/AUTH_VARS" data-ref="_M/AUTH_VARS">AUTH_VARS</dfn>                     3</u></td></tr>
+<tr><th id="46">46</th><td><u>#define <dfn class="macro" id="_M/BIN_DIRECTORY" data-ref="_M/BIN_DIRECTORY">BIN_DIRECTORY</dfn>         "/usr/exim/bin"</u></td></tr>
+<tr><th id="47">47</th><td><u>#define <dfn class="macro" id="_M/CONFIGURE_FILE" data-ref="_M/CONFIGURE_FILE">CONFIGURE_FILE</dfn>        "/usr/exim/configure"</u></td></tr>
+<tr><th id="48">48</th><td><i>/* CONFIGURE_FILE_USE_EUID not set */</i></td></tr>
+<tr><th id="49">49</th><td><i>/* CONFIGURE_FILE_USE_NODE not set */</i></td></tr>
+<tr><th id="50">50</th><td><i>/* CONFIGURE_GROUP not set */</i></td></tr>
+<tr><th id="51">51</th><td><i>/* CONFIGURE_OWNER not set */</i></td></tr>
+<tr><th id="52">52</th><td><i>/* CYRUS_PWCHECK_SOCKET not set */</i></td></tr>
+<tr><th id="53">53</th><td><i>/* CYRUS_SASLAUTHD_SOCKET not set */</i></td></tr>
+<tr><th id="54">54</th><td><u>#define <dfn class="macro" id="_M/DEFAULT_CRYPT" data-ref="_M/DEFAULT_CRYPT">DEFAULT_CRYPT</dfn>              crypt</u></td></tr>
+<tr><th id="55">55</th><td><u>#define <dfn class="macro" id="_M/DELIVER_IN_BUFFER_SIZE" data-ref="_M/DELIVER_IN_BUFFER_SIZE">DELIVER_IN_BUFFER_SIZE</dfn>     8192</u></td></tr>
+<tr><th id="56">56</th><td><u>#define <dfn class="macro" id="_M/DELIVER_OUT_BUFFER_SIZE" data-ref="_M/DELIVER_OUT_BUFFER_SIZE">DELIVER_OUT_BUFFER_SIZE</dfn>    8192</u></td></tr>
+<tr><th id="57">57</th><td><i>/* DISABLE_DNSSEC not set */</i></td></tr>
+<tr><th id="58">58</th><td><i>/* DISABLE_DKIM not set */</i></td></tr>
+<tr><th id="59">59</th><td><i>/* DISABLE_EVENT not set */</i></td></tr>
+<tr><th id="60">60</th><td><i>/* DISABLE_PRDR not set */</i></td></tr>
+<tr><th id="61">61</th><td><i>/* DISABLE_OCSP not set */</i></td></tr>
+<tr><th id="62">62</th><td><i>/* DISABLE_D_OPTION not set */</i></td></tr>
+<tr><th id="63">63</th><td><i>/* ENABLE_DISABLE_FSYNC not set */</i></td></tr>
+<tr><th id="64">64</th><td><u>#define <dfn class="macro" id="_M/EXIMDB_DIRECTORY_MODE" data-ref="_M/EXIMDB_DIRECTORY_MODE">EXIMDB_DIRECTORY_MODE</dfn>      0750</u></td></tr>
+<tr><th id="65">65</th><td><u>#define <dfn class="macro" id="_M/EXIMDB_LOCK_TIMEOUT" data-ref="_M/EXIMDB_LOCK_TIMEOUT">EXIMDB_LOCK_TIMEOUT</dfn>          60</u></td></tr>
+<tr><th id="66">66</th><td><u>#define <dfn class="macro" id="_M/EXIMDB_LOCKFILE_MODE" data-ref="_M/EXIMDB_LOCKFILE_MODE">EXIMDB_LOCKFILE_MODE</dfn>       0640</u></td></tr>
+<tr><th id="67">67</th><td><u>#define <dfn class="macro" id="_M/EXIMDB_MODE" data-ref="_M/EXIMDB_MODE">EXIMDB_MODE</dfn>                0640</u></td></tr>
+<tr><th id="68">68</th><td><u>#define <dfn class="macro" id="_M/EXIM_CLIENT_DH_MIN_MIN_BITS" data-ref="_M/EXIM_CLIENT_DH_MIN_MIN_BITS">EXIM_CLIENT_DH_MIN_MIN_BITS</dfn>         512</u></td></tr>
+<tr><th id="69">69</th><td><u>#define <dfn class="macro" id="_M/EXIM_CLIENT_DH_DEFAULT_MIN_BITS" data-ref="_M/EXIM_CLIENT_DH_DEFAULT_MIN_BITS">EXIM_CLIENT_DH_DEFAULT_MIN_BITS</dfn>    1024</u></td></tr>
+<tr><th id="70">70</th><td><i>/* EXIM_GNUTLS_LIBRARY_LOG_LEVEL not set */</i></td></tr>
+<tr><th id="71">71</th><td><i>/* EXIM_SERVER_DH_BITS_PRE2_12 not set */</i></td></tr>
+<tr><th id="72">72</th><td><i>/* EXIM_PERL not set */</i></td></tr>
+<tr><th id="73">73</th><td><u>#define <dfn class="macro" id="_M/EXIM_UID" data-ref="_M/EXIM_UID">EXIM_UID</dfn>              1000</u></td></tr>
+<tr><th id="74">74</th><td><u>#define <dfn class="macro" id="_M/EXIM_GID" data-ref="_M/EXIM_GID">EXIM_GID</dfn>              1000</u></td></tr>
+<tr><th id="75">75</th><td><i>/* EXPAND_DLFUNC not set */</i></td></tr>
+<tr><th id="76">76</th><td><i>/* EXPAND_LISTMATCH_RHS not set */</i></td></tr>
+<tr><th id="77">77</th><td><u>#define <dfn class="macro" id="_M/FIXED_NEVER_USERS" data-ref="_M/FIXED_NEVER_USERS">FIXED_NEVER_USERS</dfn>     1, 0</u></td></tr>
+<tr><th id="78">78</th><td><i>/* HAVE_CRYPT16 not set */</i></td></tr>
+<tr><th id="79">79</th><td><i>/* HAVE_SA_LEN not set */</i></td></tr>
+<tr><th id="80">80</th><td><u>#define <dfn class="macro" id="_M/HEADERS_CHARSET" data-ref="_M/HEADERS_CHARSET">HEADERS_CHARSET</dfn>       "ISO-8859-1"</u></td></tr>
+<tr><th id="81">81</th><td><u>#define <dfn class="macro" id="_M/HEADER_ADD_BUFFER_SIZE" data-ref="_M/HEADER_ADD_BUFFER_SIZE">HEADER_ADD_BUFFER_SIZE</dfn>    (8192 * 4)</u></td></tr>
+<tr><th id="82">82</th><td><u>#define <dfn class="macro" id="_M/HEADER_MAXSIZE" data-ref="_M/HEADER_MAXSIZE">HEADER_MAXSIZE</dfn>            (1024*1024)</u></td></tr>
+<tr><th id="83">83</th><td><u>#define <dfn class="macro" id="_M/INPUT_DIRECTORY_MODE" data-ref="_M/INPUT_DIRECTORY_MODE">INPUT_DIRECTORY_MODE</dfn>       0750</u></td></tr>
+<tr><th id="84">84</th><td><i>/* IPV6_USE_INET_PTON not set */</i></td></tr>
+<tr><th id="85">85</th><td><i>/* LDAP_LIB_TYPE not set */</i></td></tr>
+<tr><th id="86">86</th><td><i>/* LOCAL_SCAN_HAS_OPTIONS not set */</i></td></tr>
+<tr><th id="87">87</th><td><u>#define <dfn class="macro" id="_M/LOG_DIRECTORY_MODE" data-ref="_M/LOG_DIRECTORY_MODE">LOG_DIRECTORY_MODE</dfn>         0750</u></td></tr>
+<tr><th id="88">88</th><td><i>/* LOG_FILE_PATH not set */</i></td></tr>
+<tr><th id="89">89</th><td><u>#define <dfn class="macro" id="_M/LOG_MODE" data-ref="_M/LOG_MODE">LOG_MODE</dfn>                   0640</u></td></tr>
+<tr><th id="90">90</th><td><i>/* LOOKUP_CDB not set */</i></td></tr>
+<tr><th id="91">91</th><td><u>#define <dfn class="macro" id="_M/LOOKUP_DBM" data-ref="_M/LOOKUP_DBM">LOOKUP_DBM</dfn>            yes</u></td></tr>
+<tr><th id="92">92</th><td><u>#define <dfn class="macro" id="_M/LOOKUP_DNSDB" data-ref="_M/LOOKUP_DNSDB">LOOKUP_DNSDB</dfn>          yes</u></td></tr>
+<tr><th id="93">93</th><td><i>/* LOOKUP_DSEARCH not set */</i></td></tr>
+<tr><th id="94">94</th><td><i>/* LOOKUP_IBASE not set */</i></td></tr>
+<tr><th id="95">95</th><td><i>/* LOOKUP_LDAP not set */</i></td></tr>
+<tr><th id="96">96</th><td><u>#define <dfn class="macro" id="_M/LOOKUP_LSEARCH" data-ref="_M/LOOKUP_LSEARCH">LOOKUP_LSEARCH</dfn>        yes</u></td></tr>
+<tr><th id="97">97</th><td><i>/* LOOKUP_MYSQL not set */</i></td></tr>
+<tr><th id="98">98</th><td><i>/* LOOKUP_NIS not set */</i></td></tr>
+<tr><th id="99">99</th><td><i>/* LOOKUP_NISPLUS not set */</i></td></tr>
+<tr><th id="100">100</th><td><i>/* LOOKUP_ORACLE not set */</i></td></tr>
+<tr><th id="101">101</th><td><i>/* LOOKUP_PASSWD not set */</i></td></tr>
+<tr><th id="102">102</th><td><i>/* LOOKUP_PGSQL not set */</i></td></tr>
+<tr><th id="103">103</th><td><i>/* LOOKUP_REDIS not set */</i></td></tr>
+<tr><th id="104">104</th><td><i>/* LOOKUP_SQLITE not set */</i></td></tr>
+<tr><th id="105">105</th><td><i>/* LOOKUP_TESTDB not set */</i></td></tr>
+<tr><th id="106">106</th><td><i>/* LOOKUP_WHOSON not set */</i></td></tr>
+<tr><th id="107">107</th><td><i>/* LOOKUP_WILDLSEARCH not set */</i></td></tr>
+<tr><th id="108">108</th><td><i>/* LOOKUP_NWILDLSEARCH not set */</i></td></tr>
+<tr><th id="109">109</th><td><i>/* LOOKUP_MODULE_DIR not set */</i></td></tr>
+<tr><th id="110">110</th><td><u>#define <dfn class="macro" id="_M/MAX_FILTER_SIZE" data-ref="_M/MAX_FILTER_SIZE">MAX_FILTER_SIZE</dfn>           (1024*1024)</u></td></tr>
+<tr><th id="111">111</th><td><u>#define <dfn class="macro" id="_M/MAX_LOCALHOST_NUMBER" data-ref="_M/MAX_LOCALHOST_NUMBER">MAX_LOCALHOST_NUMBER</dfn>        256</u></td></tr>
+<tr><th id="112">112</th><td><u>#define <dfn class="macro" id="_M/MAX_INCLUDE_SIZE" data-ref="_M/MAX_INCLUDE_SIZE">MAX_INCLUDE_SIZE</dfn>          (1024*1024)</u></td></tr>
+<tr><th id="113">113</th><td><u>#define <dfn class="macro" id="_M/MAX_INTERFACES" data-ref="_M/MAX_INTERFACES">MAX_INTERFACES</dfn>              250</u></td></tr>
+<tr><th id="114">114</th><td><u>#define <dfn class="macro" id="_M/MAX_NAMED_LIST" data-ref="_M/MAX_NAMED_LIST">MAX_NAMED_LIST</dfn>               16</u></td></tr>
+<tr><th id="115">115</th><td><u>#define <dfn class="macro" id="_M/MSGLOG_DIRECTORY_MODE" data-ref="_M/MSGLOG_DIRECTORY_MODE">MSGLOG_DIRECTORY_MODE</dfn>      0750</u></td></tr>
+<tr><th id="116">116</th><td><i>/* NVALGRIND not set */</i></td></tr>
+<tr><th id="117">117</th><td><i>/* PID_FILE_PATH not set */</i></td></tr>
+<tr><th id="118">118</th><td><i>/* RADIUS_CONFIG_FILE not set */</i></td></tr>
+<tr><th id="119">119</th><td><i>/* RADIUS_LIB_TYPE not set */</i></td></tr>
+<tr><th id="120">120</th><td><u>#define <dfn class="macro" id="_M/REGEX_VARS" data-ref="_M/REGEX_VARS">REGEX_VARS</dfn>                 9</u></td></tr>
+<tr><th id="121">121</th><td><u>#define <dfn class="macro" id="_M/ROUTER_ACCEPT" data-ref="_M/ROUTER_ACCEPT">ROUTER_ACCEPT</dfn>         yes</u></td></tr>
+<tr><th id="122">122</th><td><u>#define <dfn class="macro" id="_M/ROUTER_DNSLOOKUP" data-ref="_M/ROUTER_DNSLOOKUP">ROUTER_DNSLOOKUP</dfn>      yes</u></td></tr>
+<tr><th id="123">123</th><td><u>#define <dfn class="macro" id="_M/ROUTER_IPLITERAL" data-ref="_M/ROUTER_IPLITERAL">ROUTER_IPLITERAL</dfn>      yes</u></td></tr>
+<tr><th id="124">124</th><td><i>/* ROUTER_IPLOOKUP not set */</i></td></tr>
+<tr><th id="125">125</th><td><u>#define <dfn class="macro" id="_M/ROUTER_MANUALROUTE" data-ref="_M/ROUTER_MANUALROUTE">ROUTER_MANUALROUTE</dfn>    yes</u></td></tr>
+<tr><th id="126">126</th><td><u>#define <dfn class="macro" id="_M/ROUTER_QUERYPROGRAM" data-ref="_M/ROUTER_QUERYPROGRAM">ROUTER_QUERYPROGRAM</dfn>   yes</u></td></tr>
+<tr><th id="127">127</th><td><u>#define <dfn class="macro" id="_M/ROUTER_REDIRECT" data-ref="_M/ROUTER_REDIRECT">ROUTER_REDIRECT</dfn>       yes</u></td></tr>
+<tr><th id="128">128</th><td><u>#define <dfn class="macro" id="_M/SPOOL_DIRECTORY" data-ref="_M/SPOOL_DIRECTORY">SPOOL_DIRECTORY</dfn>       "/var/spool/exim"</u></td></tr>
+<tr><th id="129">129</th><td><u>#define <dfn class="macro" id="_M/SPOOL_DIRECTORY_MODE" data-ref="_M/SPOOL_DIRECTORY_MODE">SPOOL_DIRECTORY_MODE</dfn>       0750</u></td></tr>
+<tr><th id="130">130</th><td><u>#define <dfn class="macro" id="_M/SPOOL_MODE" data-ref="_M/SPOOL_MODE">SPOOL_MODE</dfn>                 0640</u></td></tr>
+<tr><th id="131">131</th><td><u>#define <dfn class="macro" id="_M/STRING_SPRINTF_BUFFER_SIZE" data-ref="_M/STRING_SPRINTF_BUFFER_SIZE">STRING_SPRINTF_BUFFER_SIZE</dfn> (8192 * 4)</u></td></tr>
+<tr><th id="132">132</th><td><i>/* SUPPORT_CRYPTEQ not set */</i></td></tr>
+<tr><th id="133">133</th><td><i>/* SUPPORT_I18N not set */</i></td></tr>
+<tr><th id="134">134</th><td><i>/* SUPPORT_I18N_2008 not set */</i></td></tr>
+<tr><th id="135">135</th><td><i>/* SUPPORT_MAILDIR not set */</i></td></tr>
+<tr><th id="136">136</th><td><i>/* SUPPORT_MAILSTORE not set */</i></td></tr>
+<tr><th id="137">137</th><td><i>/* SUPPORT_MBX not set */</i></td></tr>
+<tr><th id="138">138</th><td><i>/* SUPPORT_MOVE_FROZEN_MESSAGES not set */</i></td></tr>
+<tr><th id="139">139</th><td><i>/* SUPPORT_PAM not set */</i></td></tr>
+<tr><th id="140">140</th><td><i>/* SUPPORT_PROXY not set */</i></td></tr>
+<tr><th id="141">141</th><td><i>/* SUPPORT_SOCKS not set */</i></td></tr>
+<tr><th id="142">142</th><td><i>/* SUPPORT_SPF not set */</i></td></tr>
+<tr><th id="143">143</th><td><u>#define <dfn class="macro" id="_M/SUPPORT_TLS" data-ref="_M/SUPPORT_TLS">SUPPORT_TLS</dfn>           yes</u></td></tr>
+<tr><th id="144">144</th><td><i>/* SUPPORT_TRANSLATE_IP_ADDRESS not set */</i></td></tr>
+<tr><th id="145">145</th><td><u>#define <dfn class="macro" id="_M/SYSLOG_LOG_PID" data-ref="_M/SYSLOG_LOG_PID">SYSLOG_LOG_PID</dfn>        yes</u></td></tr>
+<tr><th id="146">146</th><td><i>/* SYSLOG_LONG_LINES not set */</i></td></tr>
+<tr><th id="147">147</th><td><u>#define <dfn class="macro" id="_M/TCP_WRAPPERS_DAEMON_NAME" data-ref="_M/TCP_WRAPPERS_DAEMON_NAME">TCP_WRAPPERS_DAEMON_NAME</dfn> "exim"</u></td></tr>
+<tr><th id="148">148</th><td><u>#define <dfn class="macro" id="_M/TIMEZONE_DEFAULT" data-ref="_M/TIMEZONE_DEFAULT">TIMEZONE_DEFAULT</dfn>      NULL</u></td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td><u>#define <dfn class="macro" id="_M/EXIM_TMPDIR" data-ref="_M/EXIM_TMPDIR">EXIM_TMPDIR</dfn>           "/tmp"</u></td></tr>
+<tr><th id="151">151</th><td><u>#define <dfn class="macro" id="_M/TRANSPORT_APPENDFILE" data-ref="_M/TRANSPORT_APPENDFILE">TRANSPORT_APPENDFILE</dfn>  yes</u></td></tr>
+<tr><th id="152">152</th><td><u>#define <dfn class="macro" id="_M/TRANSPORT_AUTOREPLY" data-ref="_M/TRANSPORT_AUTOREPLY">TRANSPORT_AUTOREPLY</dfn>   yes</u></td></tr>
+<tr><th id="153">153</th><td><i>/* TRANSPORT_LMTP not set */</i></td></tr>
+<tr><th id="154">154</th><td><u>#define <dfn class="macro" id="_M/TRANSPORT_PIPE" data-ref="_M/TRANSPORT_PIPE">TRANSPORT_PIPE</dfn>        yes</u></td></tr>
+<tr><th id="155">155</th><td><u>#define <dfn class="macro" id="_M/TRANSPORT_SMTP" data-ref="_M/TRANSPORT_SMTP">TRANSPORT_SMTP</dfn>        yes</u></td></tr>
+<tr><th id="156">156</th><td><u>#define <dfn class="macro" id="_M/USE_DB" data-ref="_M/USE_DB">USE_DB</dfn>                yes</u></td></tr>
+<tr><th id="157">157</th><td><i>/* USE_GDBM not set */</i></td></tr>
+<tr><th id="158">158</th><td><i>/* USE_GNUTLS not set */</i></td></tr>
+<tr><th id="159">159</th><td></td></tr>
+<tr><th id="160">160</th><td><i>/* AVOID_GNUTLS_PKCS11 not set */</i></td></tr>
+<tr><th id="161">161</th><td><i>/* USE_READLINE not set */</i></td></tr>
+<tr><th id="162">162</th><td><i>/* USE_TCP_WRAPPERS not set */</i></td></tr>
+<tr><th id="163">163</th><td><i>/* USE_TDB not set */</i></td></tr>
+<tr><th id="164">164</th><td><i>/* WHITELIST_D_MACROS not set */</i></td></tr>
+<tr><th id="165">165</th><td><i>/* WITH_CONTENT_SCAN not set */</i></td></tr>
+<tr><th id="166">166</th><td></td></tr>
+<tr><th id="167">167</th><td><i>/* DISABLE_MAL_FFROTD not set */</i></td></tr>
+<tr><th id="168">168</th><td><i>/* DISABLE_MAL_FFROT6D not set */</i></td></tr>
+<tr><th id="169">169</th><td><i>/* DISABLE_MAL_DRWEB not set */</i></td></tr>
+<tr><th id="170">170</th><td><i>/* DISABLE_MAL_AVE not set */</i></td></tr>
+<tr><th id="171">171</th><td><i>/* DISABLE_MAL_FSECURE not set */</i></td></tr>
+<tr><th id="172">172</th><td><i>/* DISABLE_MAL_KAV not set */</i></td></tr>
+<tr><th id="173">173</th><td><i>/* DISABLE_MAL_SOPHIE not set */</i></td></tr>
+<tr><th id="174">174</th><td><i>/* DISABLE_MAL_CLAM not set */</i></td></tr>
+<tr><th id="175">175</th><td><i>/* DISABLE_MAL_MKS not set */</i></td></tr>
+<tr><th id="176">176</th><td><i>/* DISABLE_MAL_AVAST not set */</i></td></tr>
+<tr><th id="177">177</th><td><i>/* DISABLE_MAL_SOCK not set */</i></td></tr>
+<tr><th id="178">178</th><td><i>/* DISABLE_MAL_CMDLINE not set */</i></td></tr>
+<tr><th id="179">179</th><td><i>/* EXPERIMENTAL_BRIGHTMAIL not set */</i></td></tr>
+<tr><th id="180">180</th><td><i>/* EXPERIMENTAL_DANE not set */</i></td></tr>
+<tr><th id="181">181</th><td><i>/* EXPERIMENTAL_DCC not set */</i></td></tr>
+<tr><th id="182">182</th><td><i>/* EXPERIMENTAL_DSN_INFO not set */</i></td></tr>
+<tr><th id="183">183</th><td><i>/* EXPERIMENTAL_DMARC not set */</i></td></tr>
+<tr><th id="184">184</th><td></td></tr>
+<tr><th id="185">185</th><td>    <u>#define <dfn class="macro" id="_M/DMARC_TLD_FILE" data-ref="_M/DMARC_TLD_FILE">DMARC_TLD_FILE</dfn> "/etc/exim/opendmarc.tlds"</u></td></tr>
+<tr><th id="186">186</th><td><i>/* EXPERIMENTAL_LMDB not set */</i></td></tr>
+<tr><th id="187">187</th><td><i>/* EXPERIMENTAL_QUEUEFILE not set */</i></td></tr>
+<tr><th id="188">188</th><td><i>/* EXPERIMENTAL_SRS not set */</i></td></tr>
+<tr><th id="189">189</th><td><i>/* WANT_DEEPER_PRINTF_CHECKS not set */</i></td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td><u>#define <dfn class="macro" id="_M/DNS_MAXNAME" data-ref="_M/DNS_MAXNAME">DNS_MAXNAME</dfn>                1024</u></td></tr>
+<tr><th id="192">192</th><td><u>#define <dfn class="macro" id="_M/EXPAND_MAXN" data-ref="_M/EXPAND_MAXN">EXPAND_MAXN</dfn>                  20</u></td></tr>
+<tr><th id="193">193</th><td><u>#define <dfn class="macro" id="_M/ROOT_UID" data-ref="_M/ROOT_UID">ROOT_UID</dfn>                      0</u></td></tr>
+<tr><th id="194">194</th><td><u>#define <dfn class="macro" id="_M/ROOT_GID" data-ref="_M/ROOT_GID">ROOT_GID</dfn>                      0</u></td></tr>
+<tr><th id="195">195</th><td><u>#define <dfn class="macro" id="_M/int_eximarith_t" data-ref="_M/int_eximarith_t">int_eximarith_t</dfn> int64_t</u></td></tr>
+<tr><th id="196">196</th><td></td></tr>
+<tr><th id="197">197</th><td><u>#define <dfn class="macro" id="_M/PR_EXIM_ARITH" data-ref="_M/PR_EXIM_ARITH">PR_EXIM_ARITH</dfn> "%" PRId64		/* C99 standard, printf %lld */</u></td></tr>
+<tr><th id="198">198</th><td><u>#define <dfn class="macro" id="_M/SC_EXIM_ARITH" data-ref="_M/SC_EXIM_ARITH">SC_EXIM_ARITH</dfn> "%" SCNi64		/* scanf incl. 0x prefix */</u></td></tr>
+<tr><th id="199">199</th><td><u>#define <dfn class="macro" id="_M/SC_EXIM_DEC" data-ref="_M/SC_EXIM_DEC">SC_EXIM_DEC</dfn>   "%" SCNd64		/* scanf decimal */</u></td></tr>
+<tr><th id="200">200</th><td><i>/* Force SUPPORT_CRYPTEQ for AUTH */</i></td></tr>
+<tr><th id="201">201</th><td><u>#define <dfn class="macro" id="_M/SUPPORT_CRYPTEQ" data-ref="_M/SUPPORT_CRYPTEQ">SUPPORT_CRYPTEQ</dfn></u></td></tr>
+<tr><th id="202">202</th><td></td></tr>
+<tr><th id="203">203</th><td><i>/* End of config.h */</i></td></tr>
+<tr><th id="204">204</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../src/local_scan.c.html'>exim/src/local_scan.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

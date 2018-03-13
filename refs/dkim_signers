@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='391' type='uschar *'/>
+<doc f='exim/src/globals.h' l='391'>/* Expansion variable, holds colon-separated list of domains and identities that have signed a message */</doc>

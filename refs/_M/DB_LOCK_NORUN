@@ -1,0 +1,5 @@
+<dec f='include/db.h' l='291'/>
+<doc f='include/db.h' l='287'>/*
+ * Deadlock detector modes; used in the DB_ENV structure to configure the
+ * locking subsystem.
+ */</doc>

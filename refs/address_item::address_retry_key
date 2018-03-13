@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='539' type='uschar *'/>
+<offset>1280</offset>
+<doc f='exim/src/structs.h' l='539'>/* retry key including full address */</doc>

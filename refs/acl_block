@@ -1,0 +1,5 @@
+<def f='exim/src/structs.h' l='883' ll='887'/>
+<size>24</size>
+<mbr r='acl_block::next' o='0' t='struct acl_block *'/>
+<mbr r='acl_block::condition' o='64' t='acl_condition_block *'/>
+<mbr r='acl_block::verb' o='128' t='int'/>

@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='837' type='gid_t *'/>
+<offset>128</offset>
+<doc f='exim/src/structs.h' l='837'>/* allowed file groups */</doc>

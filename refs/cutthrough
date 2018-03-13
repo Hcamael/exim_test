@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='319' type='cut_t'/>
+<doc f='exim/src/globals.h' l='319'>/* Deliver-concurrently */</doc>

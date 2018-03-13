@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='630' type='short'/>
+<offset>2928</offset>
+<doc f='exim/src/structs.h' l='630'>/* ( used when when deferred or failed */</doc>

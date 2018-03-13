@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl3.h' l='166'/>
+<doc f='include/openssl/ssl3.h' l='165'>/* Maximum compression overhead: defined by SSL/TLS standards */</doc>

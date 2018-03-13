@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='531' type='int'/>
+<doc f='exim/src/globals.h' l='531'>/* Time to keep malformed messages */</doc>

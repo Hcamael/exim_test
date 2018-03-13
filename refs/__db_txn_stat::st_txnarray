@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1027' type='DB_TXN_ACTIVE *'/>
+<offset>832</offset>
+<doc f='include/db.h' l='1027'>/* array of active transactions */</doc>

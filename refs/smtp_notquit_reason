@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='838' type='uschar *'/>
+<doc f='exim/src/globals.h' l='838'>/* Global for disconnect reason */</doc>

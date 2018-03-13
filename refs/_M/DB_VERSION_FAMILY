@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='45'/>
+<doc f='include/db.h' l='42'>/*
+ * Berkeley DB version information.
+ */</doc>

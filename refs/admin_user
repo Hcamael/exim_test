@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='213' type='BOOL'/>
+<doc f='exim/src/globals.h' l='213'>/* True if caller can do admin */</doc>

@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='627' type='short'/>
+<offset>2880</offset>
+<doc f='exim/src/structs.h' l='627'>/* status after failure */</doc>

@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='161' type='BOOL dkim_transport_write_message(transport_ctx * , struct ob_dkim * , const uschar ** errstr)'/>

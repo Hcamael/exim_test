@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='187' type='void exim_setugid(uid_t , gid_t , BOOL , uschar * )'/>

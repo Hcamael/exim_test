@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='689' type='int'/>
+<doc f='exim/src/globals.h' l='689'>/* Pipe for synchronizing */</doc>

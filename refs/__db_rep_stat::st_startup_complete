@@ -1,0 +1,12 @@
+<dec f='include/db.h' l='1119' type='u_int32_t'/>
+<offset>0</offset>
+<doc f='include/db.h' l='1110'>/* !!!
+	 * Many replication statistics fields cannot be protected by a mutex
+	 * without an unacceptable performance penalty, since most message
+	 * processing is done without the need to hold a region-wide lock.
+	 * Fields whose comments end with a &apos;+&apos; may be updated without holding
+	 * the replication or log mutexes (as appropriate), and thus may be
+	 * off somewhat (or, on unreasonable architectures under unlucky
+	 * circumstances, garbaged).
+	 */</doc>
+<doc f='include/db.h' l='1119'>/* Site completed client sync-up. */</doc>

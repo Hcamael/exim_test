@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>lookupapi.h source code [exim/src/lookupapi.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="lookup_info,lookup_module_info "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/lookupapi.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='lookupapi.h.html'>lookupapi.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2015 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><i>/* The "type" field in each item is a set of bit flags:</i></td></tr>
+<tr><th id="10">10</th><td><i></i></td></tr>
+<tr><th id="11">11</th><td><i>  lookup_querystyle     =&gt; this is a query-style lookup,</i></td></tr>
+<tr><th id="12">12</th><td><i>                             else single-key (+ file) style</i></td></tr>
+<tr><th id="13">13</th><td><i>  lookup_absfile        =&gt; an absolute file name is required,</i></td></tr>
+<tr><th id="14">14</th><td><i>                             (for single-key style only)</i></td></tr>
+<tr><th id="15">15</th><td><i>*/</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="lookup_info" title='lookup_info' data-ref="lookup_info"><a class="type" href="#lookup_info" title='lookup_info' data-ref="lookup_info">lookup_info</a></dfn> {</td></tr>
+<tr><th id="18">18</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="lookup_info::name" title='lookup_info::name' data-ref="lookup_info::name">name</dfn>;                   <i>/* e.g. "lsearch" */</i></td></tr>
+<tr><th id="19">19</th><td>  <em>int</em> <dfn class="decl field" id="lookup_info::type" title='lookup_info::type' data-ref="lookup_info::type">type</dfn>;                       <i>/* query/singlekey/abs-file */</i></td></tr>
+<tr><th id="20">20</th><td>  <em>void</em> *(*<dfn class="decl field" id="lookup_info::open" title='lookup_info::open' data-ref="lookup_info::open">open</dfn>)(                  <i>/* open function */</i></td></tr>
+<tr><th id="21">21</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *,                     <i>/* file name for those that have one */</i></td></tr>
+<tr><th id="22">22</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **);                   <i>/* for error message */</i></td></tr>
+<tr><th id="23">23</th><td>  <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> (*<dfn class="decl field" id="lookup_info::check" title='lookup_info::check' data-ref="lookup_info::check">check</dfn>)(                  <i>/* file checking function */</i></td></tr>
+<tr><th id="24">24</th><td>    <em>void</em> *,                       <i>/* handle */</i></td></tr>
+<tr><th id="25">25</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *,                     <i>/* file name */</i></td></tr>
+<tr><th id="26">26</th><td>    <em>int</em>,                          <i>/* modemask for file checking */</i></td></tr>
+<tr><th id="27">27</th><td>    <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uid_t" title='uid_t' data-type='__uid_t' data-ref="uid_t">uid_t</a> *,                      <i>/* owners for file checking */</i></td></tr>
+<tr><th id="28">28</th><td>    <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#gid_t" title='gid_t' data-type='__gid_t' data-ref="gid_t">gid_t</a> *,                      <i>/* owngroups for file checking */</i></td></tr>
+<tr><th id="29">29</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **);                   <i>/* for error messages */</i></td></tr>
+<tr><th id="30">30</th><td>  <em>int</em> (*<dfn class="decl field" id="lookup_info::find" title='lookup_info::find' data-ref="lookup_info::find">find</dfn>)(                    <i>/* find function */</i></td></tr>
+<tr><th id="31">31</th><td>    <em>void</em> *,                       <i>/* handle */</i></td></tr>
+<tr><th id="32">32</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *,                     <i>/* file name or NULL */</i></td></tr>
+<tr><th id="33">33</th><td>    <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *,               <i>/* key or query */</i></td></tr>
+<tr><th id="34">34</th><td>    <em>int</em>,                          <i>/* length of key or query */</i></td></tr>
+<tr><th id="35">35</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **,                    <i>/* for returning answer */</i></td></tr>
+<tr><th id="36">36</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **,                    <i>/* for error message */</i></td></tr>
+<tr><th id="37">37</th><td>    <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> *);                      <i>/* cache TTL, seconds */</i></td></tr>
+<tr><th id="38">38</th><td>  <em>void</em> (*<dfn class="decl field" id="lookup_info::close" title='lookup_info::close' data-ref="lookup_info::close">close</dfn>)(                  <i>/* close function */</i></td></tr>
+<tr><th id="39">39</th><td>    <em>void</em> *);                      <i>/* handle */</i></td></tr>
+<tr><th id="40">40</th><td>  <em>void</em> (*<dfn class="decl field" id="lookup_info::tidy" title='lookup_info::tidy' data-ref="lookup_info::tidy">tidy</dfn>)(<em>void</em>);             <i>/* tidy function */</i></td></tr>
+<tr><th id="41">41</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *(*<dfn class="decl field" id="lookup_info::quote" title='lookup_info::quote' data-ref="lookup_info::quote">quote</dfn>)(               <i>/* quoting function */</i></td></tr>
+<tr><th id="42">42</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *,                     <i>/* string to quote */</i></td></tr>
+<tr><th id="43">43</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);                    <i>/* additional data from quote name */</i></td></tr>
+<tr><th id="44">44</th><td>  <em>void</em> (*<dfn class="decl field" id="lookup_info::version_report" title='lookup_info::version_report' data-ref="lookup_info::version_report">version_report</dfn>)(         <i>/* diagnostic function */</i></td></tr>
+<tr><th id="45">45</th><td>    <a class="typedef" href="../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *);                      <i>/* fh to write to */</i></td></tr>
+<tr><th id="46">46</th><td>} <dfn class="typedef" id="lookup_info" title='lookup_info' data-type='struct lookup_info' data-ref="lookup_info">lookup_info</dfn>;</td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><i>/* This magic number is used by the following lookup_module_info structure</i></td></tr>
+<tr><th id="49">49</th><td><i>   for checking API compatibility. It used to be equivalent to the string"LMM3" */</i></td></tr>
+<tr><th id="50">50</th><td><u>#define <dfn class="macro" id="_M/LOOKUP_MODULE_INFO_MAGIC" data-ref="_M/LOOKUP_MODULE_INFO_MAGIC">LOOKUP_MODULE_INFO_MAGIC</dfn> 0x4c4d4933</u></td></tr>
+<tr><th id="51">51</th><td><i>/* Version 2 adds: version_report */</i></td></tr>
+<tr><th id="52">52</th><td><i>/* Version 3 change: non/cache becomes TTL in seconds */</i></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="lookup_module_info" title='lookup_module_info' data-ref="lookup_module_info"><a class="type" href="#lookup_module_info" title='lookup_module_info' data-ref="lookup_module_info">lookup_module_info</a></dfn> {</td></tr>
+<tr><th id="55">55</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> <dfn class="decl field" id="lookup_module_info::magic" title='lookup_module_info::magic' data-ref="lookup_module_info::magic">magic</dfn>;</td></tr>
+<tr><th id="56">56</th><td>  <a class="typedef" href="#lookup_info" title='lookup_info' data-type='struct lookup_info' data-ref="lookup_info">lookup_info</a> **<dfn class="decl field" id="lookup_module_info::lookups" title='lookup_module_info::lookups' data-ref="lookup_module_info::lookups">lookups</dfn>;</td></tr>
+<tr><th id="57">57</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> <dfn class="decl field" id="lookup_module_info::lookupcount" title='lookup_module_info::lookupcount' data-ref="lookup_module_info::lookupcount">lookupcount</dfn>;</td></tr>
+<tr><th id="58">58</th><td>} <dfn class="typedef" id="lookup_module_info" title='lookup_module_info' data-type='struct lookup_module_info' data-ref="lookup_module_info">lookup_module_info</dfn>;</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td><i>/* End of lookupapi.h */</i></td></tr>
+<tr><th id="61">61</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='lookups/lf_sqlperform.c.html'>exim/src/lookups/lf_sqlperform.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='426' type='uschar *'/>
+<doc f='exim/src/globals.h' l='426'>/* DNS (black) list matched key */</doc>

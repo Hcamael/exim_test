@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='658' type='BOOL'/>
+<doc f='exim/src/globals.h' l='658'>/* Topbit chars are printing chars */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='241' type='int'/>
+<doc f='exim/src/globals.h' l='241'>/* Current size (can expand) */</doc>

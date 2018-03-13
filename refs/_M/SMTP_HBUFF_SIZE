@@ -1,0 +1,2 @@
+<dec f='exim/src/macros.h' l='156'/>
+<doc f='exim/src/macros.h' l='154'>/* The size of the circular buffer that remembers recent SMTP commands */</doc>

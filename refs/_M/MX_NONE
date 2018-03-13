@@ -1,0 +1,4 @@
+<dec f='exim/src/macros.h' l='989'/>
+<doc f='exim/src/macros.h' l='985'>/* MX fields for hosts not obtained from MX records are always negative.
+MX_NONE is the default case; lesser values are used when the hosts are
+randomized in batches. */</doc>

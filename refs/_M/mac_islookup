@@ -1,0 +1,2 @@
+<dec f='exim/src/macros.h' l='106'/>
+<doc f='exim/src/macros.h' l='104'>/* A macro to simplify testing bits in lookup types */</doc>

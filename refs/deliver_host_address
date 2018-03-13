@@ -1,0 +1,3 @@
+<dec f='exim/src/globals.h' l='359' type='const uschar *'/>
+<doc f='exim/src/globals.h' l='358'>/* Remote host for filter */</doc>
+<doc f='exim/src/globals.h' l='359'>/* Address for remote delivery filter */</doc>

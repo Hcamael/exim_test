@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='208' type='void *'/>
+<offset>192</offset>
+<doc f='exim/src/structs.h' l='208'>/* Points to default private block */</doc>

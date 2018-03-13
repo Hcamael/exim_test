@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='1179' type='db_ssize_t'/>
+<offset>2816</offset>
+<doc f='include/db.h' l='1178'>/* Statistics about an in-progress election. */</doc>
+<doc f='include/db.h' l='1179'>/* Current front-runner. */</doc>

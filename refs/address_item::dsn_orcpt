@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='570' type='uschar *'/>
+<offset>2496</offset>
+<doc f='exim/src/structs.h' l='570'>/* DSN orcpt value */</doc>

@@ -1,0 +1,16 @@
+<def f='include/db.h' l='408' ll='422'/>
+<size>88</size>
+<doc f='include/db.h' l='408'>/* SHARED */</doc>
+<mbr r='__db_lock_hstat::st_nrequests' o='0' t='uintmax_t'/>
+<mbr r='__db_lock_hstat::st_nreleases' o='64' t='uintmax_t'/>
+<mbr r='__db_lock_hstat::st_nupgrade' o='128' t='uintmax_t'/>
+<mbr r='__db_lock_hstat::st_ndowngrade' o='192' t='uintmax_t'/>
+<mbr r='__db_lock_hstat::st_nlocks' o='256' t='u_int32_t'/>
+<mbr r='__db_lock_hstat::st_maxnlocks' o='288' t='u_int32_t'/>
+<mbr r='__db_lock_hstat::st_nobjects' o='320' t='u_int32_t'/>
+<mbr r='__db_lock_hstat::st_maxnobjects' o='352' t='u_int32_t'/>
+<mbr r='__db_lock_hstat::st_lock_wait' o='384' t='uintmax_t'/>
+<mbr r='__db_lock_hstat::st_lock_nowait' o='448' t='uintmax_t'/>
+<mbr r='__db_lock_hstat::st_nlocktimeouts' o='512' t='uintmax_t'/>
+<mbr r='__db_lock_hstat::st_ntxntimeouts' o='576' t='uintmax_t'/>
+<mbr r='__db_lock_hstat::st_hash_len' o='640' t='u_int32_t'/>

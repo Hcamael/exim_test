@@ -1,0 +1,4 @@
+<dec f='exim/src/macros.h' l='995'/>
+<doc f='exim/src/macros.h' l='991'>/* host_item.port defaults to PORT_NONE; the only current case where this
+is changed before running the transport is when an dnslookup router sets an
+explicit port number. */</doc>

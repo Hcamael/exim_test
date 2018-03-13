@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='511' type='int'/>
+<doc f='exim/src/globals.h' l='511'>/* For sharing spools */</doc>

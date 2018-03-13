@@ -1,0 +1,7 @@
+<def f='exim/src/structs.h' l='719' ll='725'/>
+<size>112</size>
+<mbr r='macro_item_64::command_line' o='0' t='BOOL'/>
+<mbr r='macro_item_64::namelen' o='32' t='unsigned int'/>
+<mbr r='macro_item_64::replen' o='64' t='unsigned int'/>
+<mbr r='macro_item_64::m_number' o='96' t='unsigned int'/>
+<mbr r='macro_item_64::tnode' o='128' t='tree_node_64'/>

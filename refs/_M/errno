@@ -1,0 +1,10 @@
+<dec f='include/x86_64-linux-gnu/bits/errno.h' l='54'/>
+<use f='include/errno.h' l='45' u='a'/>
+<doc f='include/x86_64-linux-gnu/bits/errno.h' l='53'>/* When using threads, errno is a per-thread value.  */</doc>
+<use f='exim/src/lookups/lf_check_file.c' l='50' u='c'/>
+<use f='exim/src/lookups/lf_check_file.c' l='52' u='c'/>
+<use f='exim/src/lookups/lf_check_file.c' l='62' u='c'/>
+<use f='exim/src/lookups/lf_check_file.c' l='68' u='c'/>
+<use f='exim/src/lookups/lf_check_file.c' l='78' u='c'/>
+<use f='exim/src/lookups/lf_check_file.c' l='91' u='c'/>
+<use f='exim/src/lookups/lf_check_file.c' l='105' u='c'/>

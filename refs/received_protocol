@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='153' type='uschar *'/>
+<doc f='exim/src/local_scan.h' l='153'>/* Name of incoming protocol */</doc>

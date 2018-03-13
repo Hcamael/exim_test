@@ -1,0 +1,15 @@
+<def f='exim/src/structs.h' l='90' ll='101'/>
+<size>64</size>
+<doc f='exim/src/structs.h' l='86'>/* This structure is used to pass back configuration data from the smtp
+transport to the outside world. It is used during callback processing. If ever
+another remote transport were implemented, it could use the same structure. */</doc>
+<mbr r='transport_feedback::interface' o='0' t='uschar *'/>
+<mbr r='transport_feedback::port' o='64' t='uschar *'/>
+<mbr r='transport_feedback::protocol' o='128' t='uschar *'/>
+<mbr r='transport_feedback::hosts' o='192' t='uschar *'/>
+<mbr r='transport_feedback::helo_data' o='256' t='uschar *'/>
+<mbr r='transport_feedback::hosts_override' o='320' t='BOOL'/>
+<mbr r='transport_feedback::hosts_randomize' o='352' t='BOOL'/>
+<mbr r='transport_feedback::gethostbyname' o='384' t='BOOL'/>
+<mbr r='transport_feedback::qualify_single' o='416' t='BOOL'/>
+<mbr r='transport_feedback::search_parents' o='448' t='BOOL'/>

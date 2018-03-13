@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='285' type='int'/>
+<doc f='exim/src/globals.h' l='285'>/* Max down one SMTP connection */</doc>

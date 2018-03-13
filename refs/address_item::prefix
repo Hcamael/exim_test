@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='535' type='uschar *'/>
+<offset>1088</offset>
+<doc f='exim/src/structs.h' l='535'>/* stripped prefix of local part */</doc>

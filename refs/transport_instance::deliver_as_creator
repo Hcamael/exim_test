@@ -1,0 +1,4 @@
+<dec f='exim/src/structs.h' l='160' type='BOOL'/>
+<offset>832</offset>
+<doc f='exim/src/structs.h' l='159'>/**************************************/</doc>
+<doc f='exim/src/structs.h' l='160'>/* Used only by pipe at present */</doc>

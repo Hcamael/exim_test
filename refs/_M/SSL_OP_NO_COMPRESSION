@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl.h' l='297'/>
+<doc f='include/openssl/ssl.h' l='296'>/* Don&apos;t use compression even if supported */</doc>

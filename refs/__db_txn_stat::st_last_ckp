@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1012' type='DB_LSN'/>
+<offset>32</offset>
+<doc f='include/db.h' l='1012'>/* lsn of the last checkpoint */</doc>

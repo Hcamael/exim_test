@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='853' type='double'/>
+<doc f='exim/src/globals.h' l='853'>/* Factor for RCPT rate limit */</doc>

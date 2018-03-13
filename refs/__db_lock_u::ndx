@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='454' type='u_int32_t'/>
+<offset>64</offset>
+<doc f='include/db.h' l='454'>/* Index of the object referenced by
+					 * this lock; used for locking. */</doc>

@@ -1,0 +1,1 @@
+<dec f='include/db.h' l='3062' type='int db_env_set_func_region_map(int (*)(DB_ENV *, char *, size_t, int *, void **) , int (*)(DB_ENV *, void *) )'/>

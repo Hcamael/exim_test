@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='432' type='BOOL'/>
+<doc f='exim/src/globals.h' l='432'>/* TRUE if &quot;.&quot; ends non-SMTP input */</doc>

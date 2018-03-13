@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='129' type='uschar *'/>
+<doc f='exim/src/globals.h' l='129'>/* host for which TLS is advertised */</doc>

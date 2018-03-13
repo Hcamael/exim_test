@@ -1,0 +1,7 @@
+<dec f='exim/src/dbstuff.h' l='746' type='int'/>
+<dec f='exim/src/dbstuff.h' l='766' type='int'/>
+<offset>64</offset>
+<doc f='exim/src/dbstuff.h' l='745'>/*************/</doc>
+<doc f='exim/src/dbstuff.h' l='746'>/* Count of message ids */</doc>
+<doc f='exim/src/dbstuff.h' l='765'>/*************/</doc>
+<doc f='exim/src/dbstuff.h' l='766'>/* Reserved for possible connection count */</doc>

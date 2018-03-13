@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='172' type='int dns_special_lookup(dns_answer * , const uschar * , int , const uschar ** )'/>

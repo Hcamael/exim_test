@@ -1,0 +1,7 @@
+<def f='exim/src/local_scan.h' l='108' ll='113'/>
+<size>24</size>
+<doc f='exim/src/local_scan.h' l='106'>/* Structure definitions that are documented as visible in the function. */</doc>
+<mbr r='header_line::next' o='0' t='struct header_line *'/>
+<mbr r='header_line::type' o='64' t='int'/>
+<mbr r='header_line::slen' o='96' t='int'/>
+<mbr r='header_line::text' o='128' t='uschar *'/>

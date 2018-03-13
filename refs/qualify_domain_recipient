@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='678' type='const uschar *'/>
+<doc f='exim/src/globals.h' l='678'>/* Domain to qualify recipients with */</doc>

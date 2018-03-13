@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl.h' l='476'/>
+<doc f='include/openssl/ssl.h' l='475'>/* Cert type matches client types (always set for server cert) */</doc>

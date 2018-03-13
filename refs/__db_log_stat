@@ -1,0 +1,30 @@
+<def f='include/db.h' l='540' ll='569'/>
+<size>136</size>
+<doc f='include/db.h' l='539'>/* Log statistics structure. */</doc>
+<doc f='include/db.h' l='540'>/* SHARED */</doc>
+<mbr r='__db_log_stat::st_magic' o='0' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_version' o='32' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_mode' o='64' t='int32_t'/>
+<mbr r='__db_log_stat::st_lg_bsize' o='96' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_lg_size' o='128' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_wc_bytes' o='160' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_wc_mbytes' o='192' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_fileid_init' o='224' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_nfileid' o='256' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_maxnfileid' o='288' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_record' o='320' t='uintmax_t'/>
+<mbr r='__db_log_stat::st_w_bytes' o='384' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_w_mbytes' o='416' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_wcount' o='448' t='uintmax_t'/>
+<mbr r='__db_log_stat::st_wcount_fill' o='512' t='uintmax_t'/>
+<mbr r='__db_log_stat::st_rcount' o='576' t='uintmax_t'/>
+<mbr r='__db_log_stat::st_scount' o='640' t='uintmax_t'/>
+<mbr r='__db_log_stat::st_region_wait' o='704' t='uintmax_t'/>
+<mbr r='__db_log_stat::st_region_nowait' o='768' t='uintmax_t'/>
+<mbr r='__db_log_stat::st_cur_file' o='832' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_cur_offset' o='864' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_disk_file' o='896' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_disk_offset' o='928' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_maxcommitperflush' o='960' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_mincommitperflush' o='992' t='u_int32_t'/>
+<mbr r='__db_log_stat::st_regsize' o='1024' t='roff_t'/>

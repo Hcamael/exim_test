@@ -1,0 +1,2 @@
+<dec f='include/openssl/evp.h' l='305'/>
+<doc f='include/openssl/evp.h' l='304'>/* Used by composite AEAD ciphers, no-op in GCM, CCM... */</doc>

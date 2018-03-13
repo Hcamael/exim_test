@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='141' type='int (*)(struct transport_instance *, struct address_item *, struct transport_feedback *, uid_t, gid_t, uschar **)'/>
+<offset>320</offset>
+<doc f='exim/src/structs.h' l='141'>/* Setup entry point */</doc>

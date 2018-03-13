@@ -1,0 +1,5 @@
+<def f='include/openssl/x509.h' l='285' ll='288'/>
+<size>16</size>
+<doc f='include/openssl/x509.h' l='283'>/* Password based encryption structure */</doc>
+<mbr r='PBEPARAM_st::salt' o='0' t='ASN1_OCTET_STRING *'/>
+<mbr r='PBEPARAM_st::iter' o='64' t='ASN1_INTEGER *'/>

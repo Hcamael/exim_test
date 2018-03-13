@@ -1,0 +1,3 @@
+<dec f='exim/src/lookupapi.h' l='18' type='uschar *'/>
+<offset>0</offset>
+<doc f='exim/src/lookupapi.h' l='18'>/* e.g. &quot;lsearch&quot; */</doc>

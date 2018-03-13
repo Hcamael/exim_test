@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1013' type='time_t'/>
+<offset>128</offset>
+<doc f='include/db.h' l='1013'>/* time of last checkpoint */</doc>

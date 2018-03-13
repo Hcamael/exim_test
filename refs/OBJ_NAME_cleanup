@@ -1,0 +1,2 @@
+<dec f='include/openssl/objects.h' l='951' type='void OBJ_NAME_cleanup(int type)'/>
+<doc f='include/openssl/objects.h' l='951'>/* -1 for everything */</doc>

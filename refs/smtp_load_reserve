@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='834' type='int'/>
+<doc f='exim/src/globals.h' l='834'>/* Only from reserved if load &gt; this */</doc>

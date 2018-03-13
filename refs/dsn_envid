@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='131' type='uschar *'/>
+<doc f='exim/src/globals.h' l='131'>/* DSN envid string */</doc>

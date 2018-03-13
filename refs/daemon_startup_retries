@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='323' type='int'/>
+<doc f='exim/src/globals.h' l='323'>/* Number of times to retry */</doc>

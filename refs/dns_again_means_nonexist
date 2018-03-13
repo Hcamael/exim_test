@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='413' type='uschar *'/>
+<doc f='exim/src/globals.h' l='413'>/* Domains that are badly set up */</doc>

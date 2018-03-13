@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='225' type='auth_info []'/>
+<doc f='exim/src/globals.h' l='225'>/* Vector of available auth mechanisms */</doc>

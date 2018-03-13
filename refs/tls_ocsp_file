@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='120' type='uschar *'/>
+<doc f='exim/src/globals.h' l='120'>/* OCSP stapling proof file */</doc>

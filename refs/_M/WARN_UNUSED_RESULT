@@ -1,0 +1,6 @@
+<dec f='exim/src/mytypes.h' l='35'/>
+<use f='exim/src/functions.h' l='449' u='c'/>
+<use f='exim/src/functions.h' l='450' u='c'/>
+<use f='exim/src/functions.h' l='451' u='c'/>
+<use f='exim/src/functions.h' l='453' u='c'/>
+<use f='exim/src/functions.h' l='454' u='c'/>

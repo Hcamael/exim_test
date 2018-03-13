@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='165' type='int'/>
+<doc f='exim/src/globals.h' l='165'>/* Nesting depth and debug indent */</doc>

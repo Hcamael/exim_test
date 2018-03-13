@@ -1,0 +1,2 @@
+<dec f='exim/src/macros.h' l='143'/>
+<doc f='exim/src/macros.h' l='141'>/* The size of the vector holding delay warning times */</doc>

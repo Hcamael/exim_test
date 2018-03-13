@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='371' type='uschar *'/>
+<doc f='exim/src/globals.h' l='371'>/* Buffer for copying file */</doc>

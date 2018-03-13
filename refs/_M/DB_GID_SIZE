@@ -1,0 +1,8 @@
+<dec f='include/db.h' l='970'/>
+<use f='include/db.h' l='973' u='c'/>
+<use f='include/db.h' l='1004' u='c'/>
+<doc f='include/db.h' l='965'>/*
+ * Structure used for two phase commit interface.
+ * We set the size of our global transaction id (gid) to be 128 in order
+ * to match that defined by the XA X/Open standard.
+ */</doc>

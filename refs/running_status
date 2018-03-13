@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='771' type='uschar *'/>
+<doc f='exim/src/globals.h' l='771'>/* Flag string for testing */</doc>

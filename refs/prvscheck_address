@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='674' type='uschar *'/>
+<doc f='exim/src/globals.h' l='674'>/* Set during prvscheck expansion item */</doc>

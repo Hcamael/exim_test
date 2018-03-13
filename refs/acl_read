@@ -1,0 +1,2 @@
+<dec f='exim/src/functions.h' l='85' type='acl_block * acl_read(uschar *(*)(void) , uschar ** )'/>
+<doc f='exim/src/functions.h' l='83'>/* Everything else... */</doc>

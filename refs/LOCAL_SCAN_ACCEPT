@@ -1,0 +1,3 @@
+<dec f='exim/src/local_scan.h' l='30' type='0'/>
+<use f='exim/src/local_scan.c' l='61' u='r' c='local_scan'/>
+<doc f='exim/src/local_scan.h' l='30'>/* Accept */</doc>

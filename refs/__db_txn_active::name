@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1005' type='char [51]'/>
+<offset>1472</offset>
+<doc f='include/db.h' l='1005'>/* 50 bytes of name, nul termination */</doc>

@@ -1,0 +1,12 @@
+<dec f='exim/src/dbstuff.h' l='673' type='time_t'/>
+<dec f='exim/src/dbstuff.h' l='681' type='time_t'/>
+<dec f='exim/src/dbstuff.h' l='713' type='time_t'/>
+<dec f='exim/src/dbstuff.h' l='721' type='time_t'/>
+<dec f='exim/src/dbstuff.h' l='731' type='time_t'/>
+<dec f='exim/src/dbstuff.h' l='744' type='time_t'/>
+<dec f='exim/src/dbstuff.h' l='764' type='time_t'/>
+<dec f='exim/src/dbstuff.h' l='774' type='time_t'/>
+<offset>0</offset>
+<doc f='exim/src/dbstuff.h' l='673'>/* Timestamp of writing */</doc>
+<doc f='exim/src/dbstuff.h' l='721'>/* Timestamp of last address check */</doc>
+<doc f='exim/src/dbstuff.h' l='731'>/* Time stamp of last connection */</doc>

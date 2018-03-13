@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='454' type='gid_t'/>
+<doc f='exim/src/globals.h' l='454'>/* To be used with exim_uid */</doc>

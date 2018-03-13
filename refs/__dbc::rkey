@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2056' type='DBT *'/>
+<offset>704</offset>
+<doc f='include/db.h' l='2056'>/* Returned [primary] key. */</doc>

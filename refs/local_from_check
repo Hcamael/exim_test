@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='536' type='BOOL'/>
+<doc f='exim/src/globals.h' l='536'>/* For adding Sender: (global value) */</doc>

@@ -1,0 +1,6 @@
+<dec f='exim/src/macros.h' l='581'/>
+<doc f='exim/src/macros.h' l='575'>/* Flags that get ORed into the more_errno field of an address to give more
+information about errors for retry purposes. They are greater than 256, because
+the bottom byte contains &apos;A&apos; or &apos;M&apos; for remote addresses, to indicate whether
+the name was looked up only via an address record or whether MX records were
+used, respectively. */</doc>

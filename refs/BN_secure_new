@@ -1,0 +1,1 @@
+<dec f='include/openssl/bn.h' l='176' type='BIGNUM * BN_secure_new()'/>

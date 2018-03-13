@@ -1,0 +1,2 @@
+<dec f='exim/src/mytypes.h' l='104'/>
+<use f='exim/src/lookups/lf_sqlperform.c' l='111' u='c'/>

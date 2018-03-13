@@ -1,0 +1,4 @@
+<dec f='include/arpa/nameser_compat.h' l='79' type='unsigned int'/>
+<offset>32</offset>
+<doc f='include/arpa/nameser_compat.h' l='78'>/* remaining bytes */</doc>
+<doc f='include/arpa/nameser_compat.h' l='79'>/*%&lt; number of question entries */</doc>

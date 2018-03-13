@@ -1,0 +1,5 @@
+<dec f='exim/src/dbstuff.h' l='716' type='int'/>
+<dec f='exim/src/dbstuff.h' l='734' type='int'/>
+<offset>96</offset>
+<doc f='exim/src/dbstuff.h' l='716'>/* Postmaster is accepted */</doc>
+<doc f='exim/src/dbstuff.h' l='734'>/* Postmaster result */</doc>

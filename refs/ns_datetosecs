@@ -1,0 +1,1 @@
+<dec f='include/arpa/nameser.h' l='490' type='u_int32_t ns_datetosecs(const char * , int * )'/>

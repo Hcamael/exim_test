@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1135' type='uintmax_t'/>
+<offset>704</offset>
+<doc f='include/db.h' l='1135'>/* Bulk records stored. */</doc>

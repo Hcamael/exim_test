@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='185' type='uschar *'/>
+<doc f='exim/src/globals.h' l='185'>/* ACL run for MAIL */</doc>

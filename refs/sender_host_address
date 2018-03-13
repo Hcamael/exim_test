@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='157' type='uschar *'/>
+<doc f='exim/src/local_scan.h' l='157'>/* IP address of sender, as chars */</doc>

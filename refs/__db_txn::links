@@ -1,0 +1,7 @@
+<dec f='include/db.h' l='835' type='struct (anonymous struct at /usr/include/db.h:832:2)'/>
+<offset>576</offset>
+<doc f='include/db.h' l='827'>/*
+	 * !!!
+	 * Explicit representations of structures from queue.h.
+	 * TAILQ_ENTRY(__db_txn) links;
+	 */</doc>

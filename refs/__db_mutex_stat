@@ -1,0 +1,15 @@
+<def f='include/db.h' l='257' ll='275'/>
+<size>64</size>
+<doc f='include/db.h' l='257'>/* SHARED */</doc>
+<mbr r='__db_mutex_stat::st_mutex_align' o='0' t='u_int32_t'/>
+<mbr r='__db_mutex_stat::st_mutex_tas_spins' o='32' t='u_int32_t'/>
+<mbr r='__db_mutex_stat::st_mutex_init' o='64' t='u_int32_t'/>
+<mbr r='__db_mutex_stat::st_mutex_cnt' o='96' t='u_int32_t'/>
+<mbr r='__db_mutex_stat::st_mutex_max' o='128' t='u_int32_t'/>
+<mbr r='__db_mutex_stat::st_mutex_free' o='160' t='u_int32_t'/>
+<mbr r='__db_mutex_stat::st_mutex_inuse' o='192' t='u_int32_t'/>
+<mbr r='__db_mutex_stat::st_mutex_inuse_max' o='224' t='u_int32_t'/>
+<mbr r='__db_mutex_stat::st_region_wait' o='256' t='uintmax_t'/>
+<mbr r='__db_mutex_stat::st_region_nowait' o='320' t='uintmax_t'/>
+<mbr r='__db_mutex_stat::st_regsize' o='384' t='roff_t'/>
+<mbr r='__db_mutex_stat::st_regmax' o='448' t='roff_t'/>

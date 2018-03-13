@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='271' type='BOOL'/>
+<doc f='exim/src/globals.h' l='271'>/* Check RFC 2047 encoded string length */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/local_scan.h' l='158' type='uschar *'/>
+<doc f='exim/src/local_scan.h' l='158'>/* Name of authentication mechanism */</doc>

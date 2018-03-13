@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='753' type='retry_config *'/>
+<doc f='exim/src/globals.h' l='753'>/* Chain of retry config information */</doc>

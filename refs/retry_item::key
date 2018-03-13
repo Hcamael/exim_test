@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='447' type='uschar *'/>
+<offset>64</offset>
+<doc f='exim/src/structs.h' l='447'>/* string identifying host/address/message */</doc>

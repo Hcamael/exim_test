@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='465' type='BOOL'/>
+<doc f='exim/src/globals.h' l='465'>/* TRUE if failure was &quot;expected&quot; */</doc>

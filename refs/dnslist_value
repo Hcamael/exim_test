@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='428' type='uschar *'/>
+<doc f='exim/src/globals.h' l='428'>/* DNS (black) list IP address */</doc>

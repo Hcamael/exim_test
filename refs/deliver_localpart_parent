@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='366' type='uschar *'/>
+<doc f='exim/src/globals.h' l='366'>/* The parent local part for delivery */</doc>

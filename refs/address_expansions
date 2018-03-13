@@ -1,0 +1,4 @@
+<dec f='exim/src/globals.h' l='155' type='const uschar **[18]'/>
+<doc f='exim/src/globals.h' l='151'>/* For clearing, saving, restoring address expansion variables. We have to have
+the size of this vector set explicitly, because it is referenced from more than
+one module. */</doc>

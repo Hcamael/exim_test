@@ -1,0 +1,4 @@
+<dec f='exim/src/macros.h' l='134'/>
+<doc f='exim/src/macros.h' l='130'>/* The maximum permitted number of command-line (-D) macro definitions. We
+need a limit only to make it easier to generate argument vectors for re-exec
+of Exim. */</doc>

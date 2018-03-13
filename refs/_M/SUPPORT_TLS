@@ -1,0 +1,9 @@
+<dec f='exim/build-Linux-x86_64/config.h' l='143'/>
+<doc f='exim/build-Linux-x86_64/config.h' l='142'>/* SUPPORT_SPF not set */</doc>
+<use f='exim/src/macros.h' l='87' u='a'/>
+<use f='exim/src/structs.h' l='553' u='a'/>
+<use f='exim/src/globals.h' l='108' u='a'/>
+<use f='exim/src/sha_ver.h' l='19' u='a'/>
+<use f='exim/src/functions.h' l='23' u='a'/>
+<use f='exim/src/functions.h' l='318' u='a'/>
+<use f='exim/src/exim.h' l='558' u='a'/>

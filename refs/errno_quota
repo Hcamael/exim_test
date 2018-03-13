@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='441' type='int'/>
+<doc f='exim/src/globals.h' l='441'>/* Quota errno in this OS */</doc>

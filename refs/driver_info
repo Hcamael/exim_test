@@ -1,0 +1,8 @@
+<def f='exim/src/structs.h' l='118' ll='126'/>
+<size>48</size>
+<mbr r='driver_info::driver_name' o='0' t='uschar *'/>
+<mbr r='driver_info::options' o='64' t='optionlist *'/>
+<mbr r='driver_info::options_count' o='128' t='int *'/>
+<mbr r='driver_info::options_block' o='192' t='void *'/>
+<mbr r='driver_info::options_len' o='256' t='int'/>
+<mbr r='driver_info::init' o='320' t='void (*)(struct driver_instance *)'/>

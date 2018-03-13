@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1594' type='DB *'/>
+<offset>3968</offset>
+<doc f='include/db.h' l='1593'>/* Reference to foreign -- set in the secondary. */</doc>

@@ -1,0 +1,3 @@
+<dec f='include/resolv.h' l='118' type='unsigned int'/>
+<offset>3140</offset>
+<doc f='include/resolv.h' l='118'>/* number of elements in sort_list[] */</doc>

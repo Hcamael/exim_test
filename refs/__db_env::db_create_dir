@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2311' type='char *'/>
+<offset>1280</offset>
+<doc f='include/db.h' l='2311'>/* Create directory for data files */</doc>

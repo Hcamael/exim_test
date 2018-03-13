@@ -1,0 +1,3 @@
+<dec f='exim/src/hash.h' l='51' type='SHA_CTX'/>
+<offset>0</offset>
+<doc f='exim/src/hash.h' l='51'>/* SHA1 block                                */</doc>

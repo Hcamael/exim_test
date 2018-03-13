@@ -1,0 +1,5 @@
+<dec f='include/db.h' l='214'/>
+<doc f='include/db.h' l='210'>/*
+ * The Berkeley DB API flags are automatically-generated -- the following flag
+ * names are no longer used, but remain for compatibility reasons.
+ */</doc>

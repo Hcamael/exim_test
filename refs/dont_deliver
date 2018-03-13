@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='431' type='BOOL'/>
+<doc f='exim/src/globals.h' l='431'>/* TRUE for -N option */</doc>

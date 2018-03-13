@@ -1,0 +1,4 @@
+<def f='include/db.h' l='1514' ll='1517'/>
+<size>16</size>
+<mbr r='__cq_aq::tqh_first' o='0' t='struct __dbc *'/>
+<mbr r='__cq_aq::tqh_last' o='64' t='struct __dbc **'/>

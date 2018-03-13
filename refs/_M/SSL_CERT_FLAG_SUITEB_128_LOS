@@ -1,0 +1,2 @@
+<dec f='include/openssl/ssl.h' l='441'/>
+<doc f='include/openssl/ssl.h' l='440'>/* Suite B 128 bit mode allowing 192 bit algorithms */</doc>

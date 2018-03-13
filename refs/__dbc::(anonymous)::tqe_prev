@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2029' type='DBC **'/>
+<dec f='include/db.h' l='2041' type='DBC **'/>
+<offset>64</offset>
+<doc f='include/db.h' l='2041'>/* address of previous next element */</doc>

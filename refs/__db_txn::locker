@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='821' type='DB_LOCKER *'/>
+<offset>320</offset>
+<doc f='include/db.h' l='821'>/* Locker for this txn. */</doc>

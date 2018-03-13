@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='803' type='uschar *'/>
+<doc f='exim/src/globals.h' l='803'>/* Address of outgoing (SMTP) interface */</doc>

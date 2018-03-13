@@ -1,0 +1,2 @@
+<dec f='include/openssl/tls1.h' l='787'/>
+<doc f='include/openssl/tls1.h' l='785'>/* CCM ciphersuites from RFC6655 */</doc>

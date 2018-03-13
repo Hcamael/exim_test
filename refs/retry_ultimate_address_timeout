@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='362' type='BOOL retry_ultimate_address_timeout(uschar * , const uschar * , dbdata_retry * , time_t )'/>

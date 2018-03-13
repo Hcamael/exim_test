@@ -1,0 +1,2 @@
+<dec f='exim/src/dbstuff.h' l='172'/>
+<doc f='exim/src/dbstuff.h' l='171'>/* EXIM_DBPUT - returns nothing useful, assumes replace mode */</doc>

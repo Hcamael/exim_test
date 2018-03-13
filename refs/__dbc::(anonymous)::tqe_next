@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='2028' type='DBC *'/>
+<dec f='include/db.h' l='2040' type='DBC *'/>
+<offset>0</offset>
+<doc f='include/db.h' l='2040'>/* next element */</doc>

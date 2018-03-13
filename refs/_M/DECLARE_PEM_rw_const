@@ -1,0 +1,5 @@
+<dec f='include/openssl/pem.h' l='275'/>
+<use f='include/openssl/pem.h' l='342' u='c'/>
+<use f='include/openssl/pem.h' l='348' u='c'/>
+<use f='include/openssl/pem.h' l='351' u='c'/>
+<use f='include/openssl/pem.h' l='356' u='c'/>

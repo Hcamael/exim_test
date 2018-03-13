@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='394' type='uschar *'/>
+<doc f='exim/src/globals.h' l='394'>/* First successful domain verified, or null */</doc>

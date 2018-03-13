@@ -1,0 +1,7 @@
+<dec f='include/arpa/nameser.h' l='79'/>
+<use f='include/arpa/nameser.h' l='236' u='c'/>
+<use f='exim/src/exim.h' l='291' u='a'/>
+<use f='exim/src/exim.h' l='291' u='c'/>
+<doc f='include/arpa/nameser.h' l='76'>/*
+ * Define constants based on RFC 883, RFC 1034, RFC 1035
+ */</doc>

@@ -1,0 +1,6 @@
+<dec f='include/db.h' l='1469' type='DBT'/>
+<offset>1792</offset>
+<doc f='include/db.h' l='1466'>/*
+	 * Returned data memory for DB-&gt;get() and friends.
+	 */</doc>
+<doc f='include/db.h' l='1469'>/* Secondary key. */</doc>

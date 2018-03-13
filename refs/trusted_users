@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='963' type='uid_t *'/>
+<doc f='exim/src/globals.h' l='963'>/* List of trusted users */</doc>

@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='867' type='namedlist_cacheblock *'/>
+<offset>64</offset>
+<doc f='exim/src/structs.h' l='867'>/* cached domain_data or localpart_data */</doc>

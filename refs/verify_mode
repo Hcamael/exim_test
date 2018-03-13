@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='977' type='uschar *'/>
+<doc f='exim/src/globals.h' l='977'>/* Running a router in verify mode */</doc>

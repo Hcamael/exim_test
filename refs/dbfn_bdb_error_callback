@@ -1,0 +1,1 @@
+<dec f='exim/src/dbfunctions.h' l='27' type='void dbfn_bdb_error_callback(const DB_ENV * , const char * , const char * )'/>

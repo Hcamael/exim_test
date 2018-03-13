@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='2057' type='DBT *'/>
+<offset>768</offset>
+<doc f='include/db.h' l='2057'>/* Returned data. */</doc>

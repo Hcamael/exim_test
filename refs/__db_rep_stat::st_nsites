@@ -1,0 +1,4 @@
+<dec f='include/db.h' l='1163' type='u_int32_t'/>
+<offset>2176</offset>
+<doc f='include/db.h' l='1163'>/* Current number of sites we will
+					   assume during elections. */</doc>

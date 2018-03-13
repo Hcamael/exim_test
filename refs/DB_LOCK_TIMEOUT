@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='334' type='8'/>
+<doc f='include/db.h' l='334'>/* Force a txn to timeout. */</doc>

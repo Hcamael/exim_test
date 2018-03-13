@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='724' type='int'/>
+<doc f='exim/src/globals.h' l='724'>/* Max count of Received: headers */</doc>

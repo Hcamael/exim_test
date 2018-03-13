@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='1688' type='int (*)(DB *, void *(*)(size_t), void *(*)(void *, size_t), void (*)(void *))'/>
+<offset>8384</offset>

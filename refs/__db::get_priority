@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='1670' type='int (*)(DB *, DB_CACHE_PRIORITY *)'/>
+<offset>7424</offset>

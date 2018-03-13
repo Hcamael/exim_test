@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='820' type='uschar *'/>
+<doc f='exim/src/globals.h' l='820'>/* Banner string (to be expanded) */</doc>

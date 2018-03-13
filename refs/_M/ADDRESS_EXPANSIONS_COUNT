@@ -1,0 +1,5 @@
+<dec f='exim/src/macros.h' l='128'/>
+<use f='exim/src/globals.h' l='155' u='c'/>
+<doc f='exim/src/macros.h' l='124'>/* The size of the vector for saving/restoring address expansion pointers while
+verifying. This has to be explicit because it is referenced in more than one
+source module. */</doc>

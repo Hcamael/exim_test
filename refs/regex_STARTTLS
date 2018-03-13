@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='112' type='const pcre *'/>
+<doc f='exim/src/globals.h' l='112'>/* For recognizing STARTTLS settings */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='558' type='FILE *'/>
+<doc f='exim/src/globals.h' l='558'>/* Copy of stderr for log use, or NULL */</doc>

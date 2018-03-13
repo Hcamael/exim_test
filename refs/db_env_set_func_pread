@@ -1,0 +1,1 @@
+<dec f='include/db.h' l='3063' type='int db_env_set_func_pread(ssize_t (*)(int, void *, size_t, off_t) )'/>

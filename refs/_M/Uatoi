@@ -1,0 +1,5 @@
+<dec f='exim/src/mytypes.h' l='78'/>
+<doc f='exim/src/mytypes.h' l='73'>/* The C library string functions expect &quot;char *&quot; arguments. Use macros to
+avoid having to write a cast each time. We do this for string and file
+functions that are called quite often; for other calls to external libraries
+(which are on the whole special-purpose) we just use individual casts. */</doc>

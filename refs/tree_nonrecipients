@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='956' type='tree_node *'/>
+<doc f='exim/src/globals.h' l='956'>/* Tree of nonrecipient addresses */</doc>

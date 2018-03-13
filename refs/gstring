@@ -1,0 +1,6 @@
+<def f='exim/src/structs.h' l='29' ll='33'/>
+<size>16</size>
+<doc f='exim/src/structs.h' l='28'>/* Growable-string */</doc>
+<mbr r='gstring::size' o='0' t='int'/>
+<mbr r='gstring::ptr' o='32' t='int'/>
+<mbr r='gstring::s' o='64' t='uschar *'/>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='901' type='BOOL'/>
+<doc f='exim/src/globals.h' l='901'>/* Remove dots at ends of domains */</doc>

@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='805' type='SIGNAL_BOOL'/>
+<doc f='exim/src/globals.h' l='805'>/* Flag for sigalrm_handler */</doc>

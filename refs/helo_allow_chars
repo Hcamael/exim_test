@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='495' type='uschar *'/>
+<doc f='exim/src/globals.h' l='495'>/* Rogue chars to allow in HELO/EHLO */</doc>

@@ -1,0 +1,3 @@
+<dec f='exim/src/structs.h' l='724' type='tree_node_64'/>
+<offset>128</offset>
+<doc f='exim/src/structs.h' l='724'>/* contains name; ptr indicates val */</doc>

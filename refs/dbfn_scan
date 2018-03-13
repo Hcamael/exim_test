@@ -1,0 +1,1 @@
+<dec f='exim/src/dbfunctions.h' l='15' type='uschar * dbfn_scan(open_db * , BOOL , DBC ** )'/>

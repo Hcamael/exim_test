@@ -1,0 +1,67 @@
+<def f='exim/src/structs.h' l='259' ll='337'/>
+<size>416</size>
+<doc f='exim/src/structs.h' l='257'>/* Structure for holding information about the configured routers. */</doc>
+<mbr r='router_instance::next' o='0' t='struct router_instance *'/>
+<mbr r='router_instance::name' o='64' t='uschar *'/>
+<mbr r='router_instance::info' o='128' t='struct router_info *'/>
+<mbr r='router_instance::options_block' o='192' t='void *'/>
+<mbr r='router_instance::driver_name' o='256' t='uschar *'/>
+<mbr r='router_instance::address_data' o='320' t='uschar *'/>
+<mbr r='router_instance::cannot_route_message' o='384' t='uschar *'/>
+<mbr r='router_instance::condition' o='448' t='uschar *'/>
+<mbr r='router_instance::current_directory' o='512' t='uschar *'/>
+<mbr r='router_instance::debug_string' o='576' t='uschar *'/>
+<mbr r='router_instance::domains' o='640' t='uschar *'/>
+<mbr r='router_instance::errors_to' o='704' t='uschar *'/>
+<mbr r='router_instance::expand_gid' o='768' t='uschar *'/>
+<mbr r='router_instance::expand_uid' o='832' t='uschar *'/>
+<mbr r='router_instance::expand_more' o='896' t='uschar *'/>
+<mbr r='router_instance::expand_unseen' o='960' t='uschar *'/>
+<mbr r='router_instance::extra_headers' o='1024' t='uschar *'/>
+<mbr r='router_instance::fallback_hosts' o='1088' t='uschar *'/>
+<mbr r='router_instance::home_directory' o='1152' t='uschar *'/>
+<mbr r='router_instance::ignore_target_hosts' o='1216' t='uschar *'/>
+<mbr r='router_instance::local_parts' o='1280' t='uschar *'/>
+<mbr r='router_instance::pass_router_name' o='1344' t='uschar *'/>
+<mbr r='router_instance::prefix' o='1408' t='uschar *'/>
+<mbr r='router_instance::redirect_router_name' o='1472' t='uschar *'/>
+<mbr r='router_instance::remove_headers' o='1536' t='uschar *'/>
+<mbr r='router_instance::require_files' o='1600' t='uschar *'/>
+<mbr r='router_instance::router_home_directory' o='1664' t='uschar *'/>
+<mbr r='router_instance::self' o='1728' t='uschar *'/>
+<mbr r='router_instance::senders' o='1792' t='uschar *'/>
+<mbr r='router_instance::suffix' o='1856' t='uschar *'/>
+<mbr r='router_instance::translate_ip_address' o='1920' t='uschar *'/>
+<mbr r='router_instance::transport_name' o='1984' t='uschar *'/>
+<mbr r='router_instance::address_test' o='2048' t='BOOL'/>
+<mbr r='router_instance::expn' o='2080' t='BOOL'/>
+<mbr r='router_instance::caseful_local_part' o='2112' t='BOOL'/>
+<mbr r='router_instance::check_local_user' o='2144' t='BOOL'/>
+<mbr r='router_instance::disable_logging' o='2176' t='BOOL'/>
+<mbr r='router_instance::fail_verify_recipient' o='2208' t='BOOL'/>
+<mbr r='router_instance::fail_verify_sender' o='2240' t='BOOL'/>
+<mbr r='router_instance::gid_set' o='2272' t='BOOL'/>
+<mbr r='router_instance::initgroups' o='2304' t='BOOL'/>
+<mbr r='router_instance::log_as_local' o='2336' t='BOOL'/>
+<mbr r='router_instance::more' o='2368' t='BOOL'/>
+<mbr r='router_instance::pass_on_timeout' o='2400' t='BOOL'/>
+<mbr r='router_instance::prefix_optional' o='2432' t='BOOL'/>
+<mbr r='router_instance::repeat_use' o='2464' t='BOOL'/>
+<mbr r='router_instance::retry_use_local_part' o='2496' t='BOOL'/>
+<mbr r='router_instance::same_domain_copy_routing' o='2528' t='BOOL'/>
+<mbr r='router_instance::self_rewrite' o='2560' t='BOOL'/>
+<mbr r='router_instance::suffix_optional' o='2592' t='BOOL'/>
+<mbr r='router_instance::verify_only' o='2624' t='BOOL'/>
+<mbr r='router_instance::verify_recipient' o='2656' t='BOOL'/>
+<mbr r='router_instance::verify_sender' o='2688' t='BOOL'/>
+<mbr r='router_instance::uid_set' o='2720' t='BOOL'/>
+<mbr r='router_instance::unseen' o='2752' t='BOOL'/>
+<mbr r='router_instance::dsn_lasthop' o='2784' t='BOOL'/>
+<mbr r='router_instance::self_code' o='2816' t='int'/>
+<mbr r='router_instance::uid' o='2848' t='uid_t'/>
+<mbr r='router_instance::gid' o='2880' t='gid_t'/>
+<mbr r='router_instance::fallback_hostlist' o='2944' t='host_item *'/>
+<mbr r='router_instance::transport' o='3008' t='transport_instance *'/>
+<mbr r='router_instance::pass_router' o='3072' t='struct router_instance *'/>
+<mbr r='router_instance::redirect_router' o='3136' t='struct router_instance *'/>
+<mbr r='router_instance::dnssec' o='3200' t='dnssec_domains'/>

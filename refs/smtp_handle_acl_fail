@@ -1,0 +1,1 @@
+<dec f='exim/src/functions.h' l='419' type='int smtp_handle_acl_fail(int , int , uschar * , uschar * )'/>

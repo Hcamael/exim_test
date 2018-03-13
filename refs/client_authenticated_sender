@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='281' type='uschar *'/>
+<doc f='exim/src/globals.h' l='281'>/* AUTH option to SMTP MAIL FROM (not yet used) */</doc>

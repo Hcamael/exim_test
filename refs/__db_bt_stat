@@ -1,0 +1,25 @@
+<def f='include/db.h' l='2145' ll='2167'/>
+<size>104</size>
+<doc f='include/db.h' l='2144'>/* Btree/Recno statistics structure. */</doc>
+<doc f='include/db.h' l='2145'>/* SHARED */</doc>
+<mbr r='__db_bt_stat::bt_magic' o='0' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_version' o='32' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_metaflags' o='64' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_nkeys' o='96' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_ndata' o='128' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_pagecnt' o='160' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_pagesize' o='192' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_minkey' o='224' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_re_len' o='256' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_re_pad' o='288' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_levels' o='320' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_int_pg' o='352' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_leaf_pg' o='384' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_dup_pg' o='416' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_over_pg' o='448' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_empty_pg' o='480' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_free' o='512' t='u_int32_t'/>
+<mbr r='__db_bt_stat::bt_int_pgfree' o='576' t='uintmax_t'/>
+<mbr r='__db_bt_stat::bt_leaf_pgfree' o='640' t='uintmax_t'/>
+<mbr r='__db_bt_stat::bt_dup_pgfree' o='704' t='uintmax_t'/>
+<mbr r='__db_bt_stat::bt_over_pgfree' o='768' t='uintmax_t'/>

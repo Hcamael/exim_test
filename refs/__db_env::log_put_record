@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='2515' type='int (*)(DB_ENV *, DB *, DB_TXN *, DB_LSN *, u_int32_t, u_int32_t, u_int32_t, u_int32_t, DB_LOG_RECSPEC *, ...)'/>
+<offset>8768</offset>

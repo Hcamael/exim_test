@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='199' type='uschar *'/>
+<doc f='exim/src/globals.h' l='199'>/* User message for verify failure */</doc>

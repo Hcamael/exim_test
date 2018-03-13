@@ -1,0 +1,2 @@
+<dec f='include/db.h' l='687' type='int (*)(DB_MPOOLFILE *, DBT *)'/>
+<offset>1600</offset>

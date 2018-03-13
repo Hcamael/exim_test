@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='133' type='const pcre *'/>
+<doc f='exim/src/globals.h' l='133'>/* For recognizing DSN settings */</doc>

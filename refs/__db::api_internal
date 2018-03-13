@@ -1,0 +1,3 @@
+<dec f='include/db.h' l='1597' type='void *'/>
+<offset>4032</offset>
+<doc f='include/db.h' l='1596'>/* API-private structure: used by DB 1.85, C++, Java, Perl and Tcl */</doc>

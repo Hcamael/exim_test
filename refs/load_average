@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='534' type='int'/>
+<doc f='exim/src/globals.h' l='534'>/* Most recently read load average */</doc>

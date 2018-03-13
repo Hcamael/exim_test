@@ -1,0 +1,2 @@
+<dec f='exim/src/globals.h' l='628' type='const int'/>
+<doc f='exim/src/globals.h' l='628'>/* For setsockopt */</doc>

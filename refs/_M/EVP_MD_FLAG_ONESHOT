@@ -1,0 +1,2 @@
+<dec f='include/openssl/evp.h' l='103'/>
+<doc f='include/openssl/evp.h' l='102'>/* digest can only handle a single block */</doc>

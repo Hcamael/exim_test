@@ -1,0 +1,11 @@
+<def f='exim/src/structs.h' l='234' ll='248'/>
+<size>64</size>
+<doc f='exim/src/structs.h' l='232'>/* Structure for information about a delivery-in-progress */</doc>
+<mbr r='transport_context::u' o='0' t='union (anonymous union at /home/ubuntu/exim/src/build-Linux-x86_64/./structs.h:235:3)'/>
+<mbr r='transport_context::tblock' o='64' t='transport_instance *'/>
+<mbr r='transport_context::addr' o='128' t='struct address_item *'/>
+<mbr r='transport_context::check_string' o='192' t='uschar *'/>
+<mbr r='transport_context::escape_string' o='256' t='uschar *'/>
+<mbr r='transport_context::options' o='320' t='int'/>
+<mbr r='transport_context::chunk_cb' o='384' t='tpt_chunk_cmd_cb'/>
+<mbr r='transport_context::smtp_context' o='448' t='void *'/>

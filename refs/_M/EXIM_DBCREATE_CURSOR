@@ -1,0 +1,2 @@
+<dec f='exim/src/dbstuff.h' l='189'/>
+<doc f='exim/src/dbstuff.h' l='187'>/* EXIM_DBCREATE_CURSOR - initialize for scanning operation */</doc>

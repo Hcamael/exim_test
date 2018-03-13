@@ -1,0 +1,11 @@
+<dec f='exim/src/mytypes.h' l='33'/>
+<use f='exim/src/local_scan.h' l='171' u='c'/>
+<use f='exim/src/local_scan.h' l='178' u='c'/>
+<use f='exim/src/local_scan.h' l='189' u='c'/>
+<use f='exim/src/functions.h' l='141' u='c'/>
+<use f='exim/src/functions.h' l='151' u='c'/>
+<use f='exim/src/functions.h' l='298' u='c'/>
+<use f='exim/src/functions.h' l='300' u='c'/>
+<use f='exim/src/functions.h' l='396' u='c'/>
+<use f='exim/src/functions.h' l='432' u='c'/>
+<use f='exim/src/functions.h' l='471' u='c'/>

@@ -1,0 +1,2 @@
+<dec f='exim/src/macros.h' l='827'/>
+<doc f='exim/src/macros.h' l='825'>/* Flags for host_find_bydns() */</doc>
