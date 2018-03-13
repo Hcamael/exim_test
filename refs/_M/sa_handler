@@ -1,1 +1,5 @@
 <dec f='include/x86_64-linux-gnu/bits/sigaction.h' l='36'/>
+<use f='exim/src/deliver.c' l='5543' u='c'/>
+<use f='exim/src/exim.c' l='1704' u='c'/>
+<use f='exim/src/exim.c' l='5344' u='c'/>
+<use f='exim/src/daemon.c' l='427' u='c'/>

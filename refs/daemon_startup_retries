@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='323' type='int'/>
 <doc f='exim/src/globals.h' l='323'>/* Number of times to retry */</doc>
+<def f='exim/src/globals.c' l='558' type='int'/>
+<use f='exim/src/daemon.c' l='1447' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1454' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1454' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1455' u='w' c='daemon_go'/>
+<use f='exim/src/readconf.c' l='99' u='a'/>
+<use f='exim/src/readconf.c' l='99' u='a'/>
+<use f='exim/src/readconf.c' l='99' u='a'/>
+<use f='exim/src/readconf.c' l='99' u='a'/>

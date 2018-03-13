@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='944' type='const uschar **'/>
 <doc f='exim/src/globals.h' l='944'>/* For on-the-fly filtering */</doc>
+<use f='exim/src/deliver.c' l='2383' u='a' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2388' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='4589' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='7349' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7808' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8281' u='w' c='deliver_message'/>
+<use f='exim/src/dkim_transport.c' l='361' u='r' c='dkim_transport_write_message'/>
+<use f='exim/src/dkim_transport.c' l='362' u='r' c='dkim_transport_write_message'/>
+<use f='exim/src/dkim_transport.c' l='363' u='r' c='dkim_transport_write_message'/>
+<def f='exim/src/globals.c' l='1505' type='const uschar **'/>

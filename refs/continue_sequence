@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='299' type='int'/>
 <doc f='exim/src/globals.h' l='299'>/* Sequence num for continued delivery */</doc>
+<use f='exim/src/deliver.c' l='1207' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='3816' u='w' c='remote_post_process'/>
+<use f='exim/src/deliver.c' l='4349' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4488' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='8534' u='w' c='delivery_re_exec'/>
+<def f='exim/src/globals.c' l='543' type='int'/>
+<use f='exim/src/exim.c' l='2674' u='w' c='main'/>

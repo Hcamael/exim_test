@@ -1,1 +1,6 @@
 <dec f='exim/src/exim.h' l='533'/>
+<use f='exim/src/deliver.c' l='1524' u='c'/>
+<use f='exim/src/deliver.c' l='2567' u='c'/>
+<use f='exim/src/receive.c' l='3174' u='c'/>
+<use f='exim/src/spool_out.c' l='337' u='c'/>
+<use f='exim/src/spool_out.c' l='377' u='c'/>

@@ -1,0 +1,3 @@
+<dec f='exim/src/auths/spa.h' l='36' type='int auth_spa_client(auth_instance * , smtp_inblock * , smtp_outblock * , int , uschar * , int )'/>
+<def f='exim/src/auths/spa.c' l='268' ll='374' type='int auth_spa_client(auth_instance * ablock, smtp_inblock * inblock, smtp_outblock * outblock, int timeout, uschar * buffer, int buffsize)'/>
+<doc f='exim/src/auths/spa.c' l='266'>/* For interface, see auths/README */</doc>

@@ -1,1 +1,2 @@
 <dec f='include/asm-generic/socket.h' l='10'/>
+<use f='exim/src/daemon.c' l='1406' u='c'/>

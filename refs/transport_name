@@ -1,2 +1,15 @@
 <dec f='exim/src/globals.h' l='941' type='uschar *'/>
 <doc f='exim/src/globals.h' l='941'>/* Name of transport last started */</doc>
+<use f='exim/src/deliver.c' l='854' u='r' c='event_raise'/>
+<use f='exim/src/deliver.c' l='884' u='w' c='msg_event_raise'/>
+<use f='exim/src/deliver.c' l='900' u='w' c='msg_event_raise'/>
+<use f='exim/src/deliver.c' l='2376' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='4667' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='387' u='w' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='661' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='708' u='w' c='do_callout'/>
+<def f='exim/src/globals.c' l='1503' type='uschar *'/>
+<use f='exim/src/expand.c' l='768' u='a'/>
+<use f='exim/src/expand.c' l='768' u='a'/>
+<use f='exim/src/expand.c' l='768' u='a'/>
+<use f='exim/src/expand.c' l='768' u='a'/>

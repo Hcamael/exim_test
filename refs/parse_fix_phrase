@@ -1,1 +1,54 @@
 <dec f='exim/src/functions.h' l='313' type='const uschar * parse_fix_phrase(const uschar * , int , uschar * , int )'/>
+<def f='exim/src/parse.c' l='987' ll='1176' type='const uschar * parse_fix_phrase(const uschar * phrase, int len, uschar * buffer, int buffer_size)'/>
+<doc f='exim/src/parse.c' l='938'>/* This function is called to repair any syntactic defects in the &quot;phrase&quot; part
+of an RFC822 address. In particular, it is applied to the user&apos;s name as read
+from the passwd file when accepting a local message, and to the data from the
+-F option.
+
+If the string contains existing quoted strings or comments containing
+freestanding quotes, then we just quote those bits that need quoting -
+otherwise it would get awfully messy and probably not look good. If not, we
+quote the whole thing if necessary. Thus
+
+   John Q. Smith            =&gt;  &quot;John Q. Smith&quot;
+   John &quot;Jack&quot; Smith        =&gt;  John &quot;Jack&quot; Smith
+   John &quot;Jack&quot; Q. Smith     =&gt;  John &quot;Jack&quot; &quot;Q.&quot; Smith
+   John (Jack) Q. Smith     =&gt;  &quot;John (Jack) Q. Smith&quot;
+   John (&quot;Jack&quot;) Q. Smith   =&gt;  John (&quot;Jack&quot;) &quot;Q.&quot; Smith
+but
+   John (\&quot;Jack\&quot;) Q. Smith =&gt;  &quot;John (\&quot;Jack\&quot;) Q. Smith&quot;
+
+Sheesh! This is tedious code. It is a great pity that the syntax of RFC822 is
+the way it is...
+
+August 2000: Additional code added:
+
+  Previously, non-printing characters were turned into question marks, which do
+  not need to be quoted.
+
+  Now, a different tactic is used if there are any non-printing ASCII
+  characters. The encoding method from RFC 2047 is used, assuming iso-8859-1 as
+  the character set.
+
+  We *could* use this for all cases, getting rid of the messy original code,
+  but leave it for now. It would complicate simple cases like &quot;John Q. Smith&quot;.
+
+The result is passed back in the buffer; it is usually going to be added to
+some other string. In order to be sure there is going to be no overflow,
+restrict the length of the input to 1/4 of the buffer size - this allows for
+every single character to be quoted or encoded without overflowing, and that
+wouldn&apos;t happen because of amalgamation. If the phrase is too long, return a
+fixed string.
+
+Arguments:
+  phrase       an RFC822 phrase
+  len          the length of the phrase
+  buffer       a buffer to put the result in
+  buffer_size  the size of the buffer
+
+Returns:       the fixed RFC822 phrase
+*/</doc>
+<use f='exim/src/exim.c' l='4780' u='c' c='main'/>
+<use f='exim/src/acl.c' l='3200' u='c' c='acl_check_condition'/>
+<use f='exim/src/rewrite.c' l='302' u='c' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='304' u='c' c='rewrite_one'/>

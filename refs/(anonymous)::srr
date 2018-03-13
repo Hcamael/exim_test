@@ -1,3 +1,14 @@
 <dec f='exim/src/structs.h' l='776' type='dns_record'/>
 <offset>128</offset>
 <doc f='exim/src/structs.h' l='776'>/* data from current record in scan */</doc>
+<use f='exim/src/dns.c' l='359' u='m' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='390' u='m' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='395' u='m' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='398' u='m' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='420' u='m' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='429' u='m' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='432' u='m' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='433' u='m' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='434' u='m' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='439' u='m' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='444' u='a' c='dns_next_rr'/>

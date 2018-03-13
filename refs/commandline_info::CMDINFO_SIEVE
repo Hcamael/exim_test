@@ -1,0 +1,3 @@
+<dec f='exim/src/exim.c' l='71' type='2'/>
+<use f='exim/src/exim.c' l='1072' c='show_exim_information'/>
+<use f='exim/src/exim.c' l='2077' u='r' c='main'/>

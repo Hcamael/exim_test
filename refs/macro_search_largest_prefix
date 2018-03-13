@@ -1,1 +1,4 @@
 <dec f='exim/src/functions.h' l='260' type='macro_item * macro_search_largest_prefix(const uschar * )'/>
+<def f='exim/src/macro.c' l='93' ll='119' type='macro_item * macro_search_largest_prefix(const uschar * s)'/>
+<doc f='exim/src/macro.c' l='90'>/* Search for the macro with the largest possible leading substring
+matching the given name. */</doc>

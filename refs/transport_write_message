@@ -1,1 +1,9 @@
 <dec f='exim/src/functions.h' l='513' type='BOOL transport_write_message(transport_ctx * , int )'/>
+<use f='exim/src/deliver.c' l='7356' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7819' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8285' u='c' c='deliver_message'/>
+<use f='exim/src/dkim_transport.c' l='143' u='c' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='184' u='c' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='243' u='c' c='dkt_via_kfile'/>
+<use f='exim/src/dkim_transport.c' l='355' u='c' c='dkim_transport_write_message'/>
+<use f='exim/src/queue.c' l='1146' u='c' c='queue_action'/>

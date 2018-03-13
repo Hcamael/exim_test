@@ -1,2 +1,33 @@
 <dec f='exim/src/globals.h' l='776' type='uschar *'/>
 <doc f='exim/src/globals.h' l='776'>/* Self host after routing-&gt;directors */</doc>
+<use f='exim/src/deliver.c' l='206' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='297' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='301' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='302' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/globals.c' l='220' u='a'/>
+<use f='exim/src/globals.c' l='220' u='a'/>
+<def f='exim/src/globals.c' l='1265' type='uschar *'/>
+<use f='exim/src/expand.c' l='658' u='a'/>
+<use f='exim/src/expand.c' l='658' u='a'/>
+<use f='exim/src/expand.c' l='658' u='a'/>
+<use f='exim/src/expand.c' l='658' u='a'/>

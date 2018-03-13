@@ -1,0 +1,4 @@
+<def f='include/openssl/x509v3.h' l='748' ll='750'/>
+<size>16</size>
+<mbr r='ASIdentifiers_st::asnum' o='0' t='ASIdentifierChoice *'/>
+<mbr r='ASIdentifiers_st::rdi' o='64' t='ASIdentifierChoice *'/>

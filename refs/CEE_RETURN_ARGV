@@ -1,2 +1,4 @@
 <dec f='exim/src/macros.h' l='264' type='0'/>
 <doc f='exim/src/macros.h' l='264'>/* Don&apos;t exec, just build and return argv */</doc>
+<use f='exim/src/smtp_in.c' l='5555' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/child.c' l='139' u='r' c='child_exec_exim'/>

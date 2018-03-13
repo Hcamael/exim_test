@@ -1,0 +1,4 @@
+<dec f='exim/src/expand.c' l='366' type='24'/>
+<use f='exim/src/expand.c' l='2258' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2287' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2291' u='r' c='eval_condition'/>

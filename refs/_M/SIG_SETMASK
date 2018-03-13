@@ -1,1 +1,2 @@
 <dec f='include/x86_64-linux-gnu/bits/sigaction.h' l='78'/>
+<use f='exim/src/exim.c' l='304' u='c'/>

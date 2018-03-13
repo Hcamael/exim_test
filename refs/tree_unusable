@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='958' type='tree_node *'/>
 <doc f='exim/src/globals.h' l='958'>/* Tree of unusable addresses */</doc>
+<def f='exim/src/globals.c' l='1513' type='tree_node *'/>
+<use f='exim/src/expand.c' l='7872' u='r' c='assert_no_variables'/>
+<use f='exim/src/retry.c' l='162' u='r' c='retry_check_address'/>

@@ -1,1 +1,8 @@
 <dec f='exim/src/macros.h' l='916' type='4'/>
+<use f='exim/src/acl.c' l='3506' u='r' c='acl_check_condition'/>
+<use f='exim/src/match.c' l='375' c='get_check_key'/>
+<use f='exim/src/match.c' l='541' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='617' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='812' u='r' c='match_check_list'/>
+<use f='exim/src/expand.c' l='2654' u='r' c='eval_condition'/>
+<use f='exim/src/lss.c' l='53' u='r' c='lss_match_local_part'/>

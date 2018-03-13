@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='446' macro='1' type='64'/>
+<use f='exim/src/host.c' l='1801' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='2174' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2640' u='r' c='host_find_bydns'/>

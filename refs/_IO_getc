@@ -1,2 +1,5 @@
 <dec f='include/libio.h' l='429' type='int _IO_getc(_IO_FILE * __fp)'/>
 <use f='include/x86_64-linux-gnu/bits/stdio.h' l='46' u='c' c='getchar'/>
+<use f='exim/src/filtertest.c' l='52' macro='1' u='c'/>
+<use f='exim/src/filtertest.c' l='65' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='43' macro='1' u='c'/>

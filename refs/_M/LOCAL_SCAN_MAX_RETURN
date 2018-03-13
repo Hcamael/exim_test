@@ -1,3 +1,5 @@
 <dec f='exim/src/macros.h' l='177'/>
 <doc f='exim/src/macros.h' l='174'>/* This limits the length of data returned by local_scan(). Because it is
 written on the spool, it gets read into big_buffer. */</doc>
+<use f='exim/src/receive.c' l='3679' u='c'/>
+<use f='exim/src/receive.c' l='3679' u='c'/>

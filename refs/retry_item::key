@@ -1,3 +1,36 @@
 <dec f='exim/src/structs.h' l='447' type='uschar *'/>
 <offset>64</offset>
 <doc f='exim/src/structs.h' l='447'>/* string identifying host/address/message */</doc>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3444' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3461' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4873' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/retry.c' l='300' u='w' c='retry_add_item'/>
+<use f='exim/src/retry.c' l='311' u='r' c='retry_add_item'/>
+<use f='exim/src/retry.c' l='611' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='613' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='629' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='634' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='643' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='647' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='665' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='834' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='847' u='r' c='retry_update'/>

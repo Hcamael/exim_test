@@ -1,0 +1,5 @@
+<dec f='exim/src/filter.c' l='104' type='0'/>
+<use f='exim/src/filter.c' l='2196' u='m' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2221' u='m' c='interpret_commands'/>
+<doc f='exim/src/filter.c' l='101'>/* This defines the offsets for the arguments; first the string ones, and
+then the non-string ones. The order must be as above. */</doc>

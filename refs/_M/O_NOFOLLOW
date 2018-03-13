@@ -1,1 +1,9 @@
 <dec f='include/x86_64-linux-gnu/bits/fcntl-linux.h' l='143'/>
+<use f='exim/src/deliver.c' l='340' u='a'/>
+<use f='exim/src/deliver.c' l='341' u='c'/>
+<use f='exim/src/deliver.c' l='5659' u='a'/>
+<use f='exim/src/deliver.c' l='5660' u='c'/>
+<use f='exim/src/parse.c' l='1466' u='c'/>
+<use f='exim/src/transports/queuefile.c' l='188' u='a'/>
+<use f='exim/src/transports/queuefile.c' l='204' u='c'/>
+<use f='exim/src/transports/queuefile.c' l='206' u='c'/>

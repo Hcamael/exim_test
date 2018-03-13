@@ -1,0 +1,6 @@
+<dec f='exim/src/pdkim/pdkim.h' l='256' type='uschar *'/>
+<use f='exim/src/pdkim/pdkim.c' l='1483' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1814' u='w' c='pdkim_init_sign'/>
+<offset>1344</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='255'>/* Signing specific ------------------------------------------------- */</doc>
+<doc f='exim/src/pdkim/pdkim.h' l='256'>/* Private key                                 */</doc>

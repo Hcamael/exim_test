@@ -1,2 +1,66 @@
 <dec f='exim/src/globals.h' l='590' type='int'/>
 <doc f='exim/src/globals.h' l='590'>/* Size of message */</doc>
+<use f='exim/src/deliver.c' l='1999' u='r' c='check_message_size'/>
+<use f='exim/src/deliver.c' l='5561' u='w' c='deliver_message'/>
+<def f='exim/src/globals.c' l='978' type='int'/>
+<use f='exim/src/moan.c' l='242' u='r' c='moan_send_message'/>
+<use f='exim/src/filtertest.c' l='46' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='59' u='w' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='89' u='w' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='96' u='w' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='104' u='r' c='read_message_body'/>
+<use f='exim/src/smtp_in.c' l='1963' u='w' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='4457' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4678' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4686' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4687' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4702' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4703' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/queue.c' l='865' u='w' c='queue_list'/>
+<use f='exim/src/queue.c' l='888' u='r' c='queue_list'/>
+<use f='exim/src/spool_in.c' l='115' u='w' c='spool_open_datafile'/>
+<use f='exim/src/spool_in.c' l='869' u='w' c='spool_read_header'/>
+<use f='exim/src/acl.c' l='2301' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2301' u='r' c='acl_ratelimit'/>
+<use f='exim/src/transports/tf_maildir.c' l='499' u='r' c='maildir_ensure_sizefile'/>
+<use f='exim/src/expand.c' l='581' u='a'/>
+<use f='exim/src/expand.c' l='581' u='a'/>
+<use f='exim/src/expand.c' l='581' u='a'/>
+<use f='exim/src/expand.c' l='581' u='a'/>
+<use f='exim/src/expand.c' l='1837' u='r' c='find_variable'/>
+<use f='exim/src/expand.c' l='1837' u='r' c='find_variable'/>
+<use f='exim/src/receive.c' l='405' u='r' c='local_scan_timeout_handler'/>
+<use f='exim/src/receive.c' l='427' u='r' c='local_scan_crash_handler'/>
+<use f='exim/src/receive.c' l='637' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='651' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='659' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='706' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='716' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='724' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='734' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='745' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='830' u='w' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='858' u='w' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='874' u='w' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='879' u='r' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='990' u='w' c='read_message_bdat_smtp'/>
+<use f='exim/src/receive.c' l='1001' u='w' c='read_message_bdat_smtp'/>
+<use f='exim/src/receive.c' l='1006' u='r' c='read_message_bdat_smtp'/>
+<use f='exim/src/receive.c' l='1034' u='r' c='read_message_bdat_smtp_wire'/>
+<use f='exim/src/receive.c' l='1034' u='r' c='read_message_bdat_smtp_wire'/>
+<use f='exim/src/receive.c' l='1037' u='w' c='read_message_bdat_smtp_wire'/>
+<use f='exim/src/receive.c' l='1047' u='w' c='read_message_bdat_smtp_wire'/>
+<use f='exim/src/receive.c' l='1057' u='r' c='read_message_bdat_smtp_wire'/>
+<use f='exim/src/receive.c' l='1714' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1884' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1905' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1912' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1919' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1970' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1992' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2012' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2131' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3129' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4262' u='r' c='receive_msg'/>
+<use f='exim/src/sieve.c' l='2375' u='r' c='parse_test'/>
+<use f='exim/src/sieve.c' l='2375' u='r' c='parse_test'/>

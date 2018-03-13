@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='221' type='4'/>
+<use f='exim/src/tod.c' l='121' c='tod_stamp'/>
+<use f='exim/src/string.c' l='1434' u='r' c='string_vformat'/>
+<use f='exim/src/string.c' l='1437' u='r' c='string_vformat'/>

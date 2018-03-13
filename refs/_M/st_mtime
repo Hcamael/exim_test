@@ -1,1 +1,6 @@
 <dec f='include/x86_64-linux-gnu/bits/stat.h' l='95'/>
+<use f='exim/src/transports/tf_maildir.c' l='310' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='310' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='515' u='c'/>
+<use f='exim/src/expand.c' l='7383' u='c'/>
+<use f='exim/src/sieve.c' l='3490' u='c'/>

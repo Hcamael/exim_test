@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='581' type='int'/>
 <doc f='exim/src/globals.h' l='581'>/* State of message reading and how ended */</doc>
+<def f='exim/src/globals.c' l='968' type='int'/>
+<use f='exim/src/exim.c' l='4986' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5567' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='2253' u='w' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='3790' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5187' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/receive.c' l='1081' u='r' c='receive_swallow_smtp'/>
+<use f='exim/src/receive.c' l='1082' u='w' c='receive_swallow_smtp'/>
+<use f='exim/src/receive.c' l='1871' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2980' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3082' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3086' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3093' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3098' u='r' c='receive_msg'/>

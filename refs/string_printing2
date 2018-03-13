@@ -1,1 +1,66 @@
 <dec f='exim/src/functions.h' l='472' type='const uschar * string_printing2(const uschar * , BOOL )'/>
+<use f='exim/src/deliver.c' l='828' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='1502' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='1552' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='5286' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='5295' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='5890' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='7517' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='7518' macro='1' u='c'/>
+<use f='exim/src/verify.c' l='445' macro='1' u='c'/>
+<use f='exim/src/verify.c' l='1005' macro='1' u='c'/>
+<use f='exim/src/verify.c' l='2268' macro='1' u='c'/>
+<use f='exim/src/verify.c' l='2780' macro='1' u='c'/>
+<def f='exim/src/string.c' l='290' ll='338' type='const uschar * string_printing2(const uschar * s, BOOL allow_tab)'/>
+<doc f='exim/src/string.c' l='278'>/* This function is called for critical strings. It checks for any
+non-printing characters, and if any are found, it makes a new copy
+of the string with suitable escape sequences. It is most often called by the
+macro string_printing(), which sets allow_tab TRUE.
+
+Arguments:
+  s             the input string
+  allow_tab     TRUE to allow tab as a printing character
+
+Returns:        string with non-printers encoded as printing sequences
+*/</doc>
+<use f='exim/src/filter.c' l='1940' macro='1' u='c'/>
+<use f='exim/src/filter.c' l='2000' macro='1' u='c'/>
+<use f='exim/src/filter.c' l='2054' macro='1' u='c'/>
+<use f='exim/src/filter.c' l='2147' macro='1' u='c'/>
+<use f='exim/src/filter.c' l='2160' macro='1' u='c'/>
+<use f='exim/src/filter.c' l='2178' macro='1' u='c'/>
+<use f='exim/src/filter.c' l='2210' macro='1' u='c'/>
+<use f='exim/src/filter.c' l='2244' macro='1' u='c'/>
+<use f='exim/src/filter.c' l='2344' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='4098' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='5500' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='5507' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='570' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='1729' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='1731' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='2920' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='2970' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='2977' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='3610' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='4012' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='4018' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='4152' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='5685' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='5714' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='5722' macro='1' u='c'/>
+<use f='exim/src/acl.c' l='1131' macro='1' u='c'/>
+<use f='exim/src/acl.c' l='3561' macro='1' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='542' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='4362' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='7134' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='1493' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='2524' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='3769' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='3919' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='3921' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='3986' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='4009' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='4328' macro='1' u='c'/>
+<use f='exim/src/retry.c' l='657' macro='1' u='c'/>
+<use f='exim/src/spool_out.c' l='245' macro='1' u='c'/>
+<use f='exim/src/spool_out.c' l='246' macro='1' u='c'/>

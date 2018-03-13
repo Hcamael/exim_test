@@ -1,0 +1,4 @@
+<dec f='include/openssl/rand.h' l='56' type='int RAND_status()'/>
+<use f='exim/src/tls-openssl.c' l='1559' u='c' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='1569' u='c' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='2878' u='c' c='vaguely_random_number'/>

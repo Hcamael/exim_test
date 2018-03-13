@@ -1,2 +1,18 @@
 <dec f='exim/src/globals.h' l='498' type='BOOL'/>
 <doc f='exim/src/globals.h' l='498'>/* True if HELO verified */</doc>
+<def f='exim/src/globals.c' l='795' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='3453' u='w' c='smtp_verify_helo'/>
+<use f='exim/src/smtp_in.c' l='3460' u='w' c='smtp_verify_helo'/>
+<use f='exim/src/smtp_in.c' l='3473' u='r' c='smtp_verify_helo'/>
+<use f='exim/src/smtp_in.c' l='3488' u='w' c='smtp_verify_helo'/>
+<use f='exim/src/smtp_in.c' l='3497' u='w' c='smtp_verify_helo'/>
+<use f='exim/src/smtp_in.c' l='3503' u='r' c='smtp_verify_helo'/>
+<use f='exim/src/smtp_in.c' l='3509' u='r' c='smtp_verify_helo'/>
+<use f='exim/src/smtp_in.c' l='3531' u='w' c='smtp_verify_helo'/>
+<use f='exim/src/smtp_in.c' l='3544' u='r' c='smtp_verify_helo'/>
+<use f='exim/src/smtp_in.c' l='4034' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4063' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4067' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4076' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/acl.c' l='1684' u='r' c='acl_verify'/>
+<use f='exim/src/acl.c' l='1685' u='r' c='acl_verify'/>

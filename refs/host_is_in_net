@@ -1,1 +1,20 @@
 <dec f='exim/src/functions.h' l='224' type='BOOL host_is_in_net(const uschar * , const uschar * , int )'/>
+<use f='exim/src/verify.c' l='2872' u='c' c='check_host'/>
+<use f='exim/src/verify.c' l='3024' u='c' c='check_host'/>
+<use f='exim/src/lookups/lsearch.c' l='223' u='c' c='internal_lsearch_find'/>
+<def f='exim/src/host.c' l='1278' ll='1332' type='BOOL host_is_in_net(const uschar * host, const uschar * net, int maskoffset)'/>
+<use f='exim/src/host.c' l='1859' u='c' c='host_name_lookup'/>
+<doc f='exim/src/host.c' l='1263'>/* This function checks whether a given IP address matches a pattern that
+represents either a single host, or a network (using CIDR notation). The caller
+of this function must check the syntax of the arguments before calling it.
+
+Arguments:
+  host        string representation of the ip-address to check
+  net         string representation of the network, with optional CIDR mask
+  maskoffset  offset to the / that introduces the mask in the key
+              zero if there is no mask
+
+Returns:
+  TRUE   the host is inside the network
+  FALSE  the host is NOT inside the network
+*/</doc>

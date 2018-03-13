@@ -1,0 +1,4 @@
+<dec f='exim/src/memcheck.h' l='80' type='1296236544'/>
+<use f='exim/src/store.c' l='180' macro='1' u='r'/>
+<use f='exim/src/store.c' l='367' macro='1' u='r'/>
+<use f='exim/src/store.c' l='386' macro='1' u='r'/>

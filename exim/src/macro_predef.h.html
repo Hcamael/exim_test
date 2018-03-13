@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>macro_predef.h source code [exim/src/macro_predef.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/macro_predef.h'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='macro_predef.h.html'>macro_predef.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) Jeremy Harris 2017 - 2018 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Global functions */</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="spf" title='spf' data-ref="spf">spf</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em>, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, ...);</td></tr>
+<tr><th id="11">11</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="builtin_macro_create" title='builtin_macro_create' data-ref="builtin_macro_create">builtin_macro_create</dfn>(<em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="12">12</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="builtin_macro_create_var" title='builtin_macro_create_var' data-ref="builtin_macro_create_var">builtin_macro_create_var</dfn>(<em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="13">13</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="options_from_list" title='options_from_list' data-ref="options_from_list">options_from_list</dfn>(<a class="typedef" href="local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a> *, <em>unsigned</em>, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="features_malware" title='features_malware' data-ref="features_malware">features_malware</dfn>(<em>void</em>);</td></tr>
+<tr><th id="16">16</th><td><b>extern</b> <em>void</em> <a class="decl fn" href="pdkim/signing.c.html#features_crypto" title='features_crypto' data-ref="features_crypto" id="features_crypto">features_crypto</a>(<em>void</em>);</td></tr>
+<tr><th id="17">17</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="options_main" title='options_main' data-ref="options_main">options_main</dfn>(<em>void</em>);</td></tr>
+<tr><th id="18">18</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="options_routers" title='options_routers' data-ref="options_routers">options_routers</dfn>(<em>void</em>);</td></tr>
+<tr><th id="19">19</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="options_transports" title='options_transports' data-ref="options_transports">options_transports</dfn>(<em>void</em>);</td></tr>
+<tr><th id="20">20</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="options_auths" title='options_auths' data-ref="options_auths">options_auths</dfn>(<em>void</em>);</td></tr>
+<tr><th id="21">21</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="params_dkim" title='params_dkim' data-ref="params_dkim">params_dkim</dfn>(<em>void</em>);</td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='pdkim/signing.c.html'>exim/src/pdkim/signing.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

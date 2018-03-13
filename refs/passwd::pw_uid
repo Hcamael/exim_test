@@ -1,3 +1,6 @@
 <dec f='include/pwd.h' l='53' type='__uid_t'/>
 <offset>128</offset>
 <doc f='include/pwd.h' l='53'>/* User ID.  */</doc>
+<use f='exim/src/rda.c' l='250' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/routers/rf_queue_add.c' l='55' u='r' c='rf_queue_add'/>
+<use f='exim/src/routers/redirect.c' l='591' u='r' c='redirect_router_entry'/>

@@ -1,2 +1,7 @@
 <dec f='exim/src/globals.h' l='704' type='tree_node *'/>
 <doc f='exim/src/globals.h' l='704'>/* Results of command ratelimit checks */</doc>
+<def f='exim/src/globals.c' l='1081' type='tree_node *'/>
+<use f='exim/src/acl.c' l='2374' u='a' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2388' u='a' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='4306' u='w' c='acl_eval'/>
+<use f='exim/src/acl.c' l='4358' u='w' c='acl_check'/>

@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='190' type='uschar *'/>
 <doc f='exim/src/globals.h' l='190'>/* ACL run for disconnects */</doc>
+<def f='exim/src/globals.c' l='258' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='3381' u='r' c='smtp_notquit_exit'/>
+<use f='exim/src/smtp_in.c' l='3384' u='r' c='smtp_notquit_exit'/>
+<use f='exim/src/readconf.c' l='56' u='a'/>
+<use f='exim/src/readconf.c' l='56' u='a'/>
+<use f='exim/src/readconf.c' l='56' u='a'/>
+<use f='exim/src/readconf.c' l='56' u='a'/>

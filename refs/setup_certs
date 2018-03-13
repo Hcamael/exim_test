@@ -1,0 +1,20 @@
+<dec f='exim/src/tls-openssl.c' l='187' type='int setup_certs(SSL_CTX * sctx, uschar * certs, uschar * crl, host_item * host, BOOL optional, int (*)(int, X509_STORE_CTX *) cert_vfy_cb, uschar ** errstr)'/>
+<use f='exim/src/tls-openssl.c' l='1251' u='c' c='tls_servername_cb'/>
+<def f='exim/src/tls-openssl.c' l='1781' ll='1926' type='int setup_certs(SSL_CTX * sctx, uschar * certs, uschar * crl, host_item * host, BOOL optional, int (*)(int, X509_STORE_CTX *) cert_vfy_cb, uschar ** errstr)'/>
+<use f='exim/src/tls-openssl.c' l='2006' u='c' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2013' u='c' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2138' u='c' c='tls_client_basic_ctx_init'/>
+<doc f='exim/src/tls-openssl.c' l='1766'>/* Called by both client and server startup
+
+Arguments:
+  sctx          SSL_CTX* to initialise
+  certs         certs file or NULL
+  crl           CRL file or NULL
+  host          NULL in a server; the remote host in a client
+  optional      TRUE if called from a server for a host in tls_try_verify_hosts;
+                otherwise passed as FALSE
+  cert_vfy_cb	Callback function for certificate verification
+  errstr	error string pointer
+
+Returns:        OK/DEFER/FAIL
+*/</doc>

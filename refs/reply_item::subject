@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='469' type='uschar *'/>
 <offset>320</offset>
 <doc f='exim/src/structs.h' l='469'>/* ) */</doc>
+<use f='exim/src/rda.c' l='759' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='935' u='a' c='rda_interpret'/>
+<use f='exim/src/sieve.c' l='3372' u='w' c='parse_commands'/>

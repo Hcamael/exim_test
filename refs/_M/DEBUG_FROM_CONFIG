@@ -1,2 +1,4 @@
 <dec f='exim/src/macros.h' l='802'/>
 <doc f='exim/src/macros.h' l='801'>/* and for debug_bits() logging action control: */</doc>
+<use f='exim/src/log.c' l='1366' u='c'/>
+<use f='exim/src/log.c' l='1417' u='c'/>

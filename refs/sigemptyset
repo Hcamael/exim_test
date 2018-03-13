@@ -1,2 +1,7 @@
 <dec f='include/signal.h' l='213' type='int sigemptyset(sigset_t * __set)'/>
 <doc f='include/signal.h' l='212'>/* Clear all signals from SET.  */</doc>
+<use f='exim/src/deliver.c' l='5544' u='c' c='deliver_message'/>
+<use f='exim/src/exim.c' l='295' u='c' c='milliwait'/>
+<use f='exim/src/exim.c' l='1705' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5345' u='c' c='main'/>
+<use f='exim/src/daemon.c' l='428' u='c' c='handle_smtp_call'/>

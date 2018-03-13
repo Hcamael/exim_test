@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='519' type='router_instance *'/>
 <offset>256</offset>
 <doc f='exim/src/structs.h' l='519'>/* generated address starts here */</doc>
+<use f='exim/src/globals.c' l='335' u='w'/>
+<use f='exim/src/routers/queryprogram.c' l='134' u='w' c='add_generated'/>
+<use f='exim/src/routers/redirect.c' l='351' u='w' c='add_generated'/>

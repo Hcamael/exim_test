@@ -1,2 +1,3 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='80'/>
 <doc f='exim/build-Linux-x86_64/config.h' l='79'>/* HAVE_SA_LEN not set */</doc>
+<use f='exim/src/globals.c' l='764' u='c'/>

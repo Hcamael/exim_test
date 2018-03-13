@@ -1,3 +1,8 @@
 <dec f='include/pwd.h' l='51' type='char *'/>
 <offset>0</offset>
 <doc f='include/pwd.h' l='51'>/* Username.  */</doc>
+<use f='exim/src/deliver.c' l='5814' u='r' c='deliver_message'/>
+<use f='exim/src/exim.c' l='606' u='r' c='exim_setugid'/>
+<use f='exim/src/exim.c' l='4690' u='r' c='main'/>
+<use f='exim/src/queue.c' l='1132' u='r' c='queue_action'/>
+<use f='exim/src/daemon.c' l='1574' u='r' c='daemon_go'/>

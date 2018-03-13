@@ -3,3 +3,8 @@
    If the calling process is the super-user, set the real
    and effective group IDs, and the saved set-group-ID to GID;
    if not, the effective group ID is set to GID.  */</doc>
+<use f='exim/src/exim.c' l='614' u='c' c='exim_setugid'/>
+<use f='exim/src/exim.c' l='1840' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4346' u='c' c='main'/>
+<use f='exim/src/log.c' l='319' u='c' c='log_create_as_exim'/>
+<use f='exim/src/child.c' l='349' u='c' c='child_open_uid'/>

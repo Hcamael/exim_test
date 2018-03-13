@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='388' type='uschar *'/>
 <offset>768</offset>
 <doc f='exim/src/structs.h' l='388'>/* Authorization condition */</doc>
+<use f='exim/src/globals.c' l='443' u='w'/>
+<use f='exim/src/auths/check_serv_cond.c' l='36' u='r' c='auth_check_serv_cond'/>
+<use f='exim/src/auths/plaintext.c' l='64' u='r' c='auth_plaintext_init'/>

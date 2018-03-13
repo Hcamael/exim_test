@@ -1,1 +1,31 @@
 <dec f='exim/src/functions.h' l='159' type='BOOL directory_make(const uschar * , const uschar * , int , BOOL )'/>
+<use f='exim/src/deliver.c' l='368' u='c' c='open_msglog_file'/>
+<use f='exim/src/deliver.c' l='7907' u='c' c='deliver_message'/>
+<def f='exim/src/directory.c' l='37' ll='90' type='BOOL directory_make(const uschar * parent, const uschar * name, int mode, BOOL panic)'/>
+<doc f='exim/src/directory.c' l='16'>/* All the directories that Exim ever creates for itself are within the spool
+directory as defined by spool_directory. We are prepared to create as many as
+necessary from that directory downwards, inclusive. However, directory creation
+can also be required in appendfile and sieve filters. The making function
+therefore has a parent argument, below which the new directories are to go. It
+can be NULL if the name is absolute.
+
+If a non-root uid has been specified for exim, and we are currently running as
+root, ensure the directory is owned by the non-root id if the parent is the
+spool directory.
+
+Arguments:
+  parent    parent directory name; if NULL the name must be absolute
+  name      directory name within the parent that we want
+  mode      mode for the new directory
+  panic     if TRUE, panic on failure
+
+Returns:    panic on failure if panic is set; otherwise return FALSE;
+            TRUE on success.
+*/</doc>
+<use f='exim/src/exim.c' l='4125' u='c' c='main'/>
+<use f='exim/src/log.c' l='273' u='c' c='log_create'/>
+<use f='exim/src/transports/tf_maildir.c' l='96' u='c' c='maildir_ensure_directories'/>
+<use f='exim/src/receive.c' l='3028' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4032' u='c' c='receive_msg'/>
+<use f='exim/src/dbfn.c' l='115' u='c' c='dbfn_open'/>
+<use f='exim/src/sieve.c' l='3302' u='c' c='parse_commands'/>

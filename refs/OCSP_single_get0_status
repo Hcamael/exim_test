@@ -1,0 +1,3 @@
+<dec f='include/openssl/ocsp.h' l='223' type='int OCSP_single_get0_status(OCSP_SINGLERESP * single, int * reason, ASN1_GENERALIZEDTIME ** revtime, ASN1_GENERALIZEDTIME ** thisupd, ASN1_GENERALIZEDTIME ** nextupd)'/>
+<use f='exim/src/tls-openssl.c' l='937' u='c' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='1426' u='c' c='tls_client_stapling_cb'/>

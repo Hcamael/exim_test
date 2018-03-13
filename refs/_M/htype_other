@@ -3,3 +3,12 @@
 they can be read in the spool file for those headers that are permanently
 marked. The lower case values don&apos;t get onto the spool; they are used only as
 return values from header_checkname(). */</doc>
+<use f='exim/src/header.c' l='318' u='c'/>
+<use f='exim/src/header.c' l='325' u='c'/>
+<use f='exim/src/filter.c' l='2007' u='c'/>
+<use f='exim/src/filter.c' l='2010' u='c'/>
+<use f='exim/src/routers/rf_get_munge_headers.c' l='79' u='c'/>
+<use f='exim/src/receive.c' l='1276' u='c'/>
+<use f='exim/src/receive.c' l='1923' u='c'/>
+<use f='exim/src/receive.c' l='2138' u='c'/>
+<use f='exim/src/receive.c' l='2957' u='c'/>

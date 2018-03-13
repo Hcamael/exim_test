@@ -1,1 +1,10 @@
 <dec f='exim/src/functions.h' l='473' type='uschar * string_split_message(uschar * )'/>
+<def f='exim/src/string.c' l='535' ll='581' type='uschar * string_split_message(uschar * msg)'/>
+<doc f='exim/src/string.c' l='528'>/* If the given string is longer than 75 characters, it is copied, and within
+the copy, certain space characters are converted into newlines.
+
+Argument:  pointer to the string
+Returns:   pointer to the possibly altered string
+*/</doc>
+<use f='exim/src/acl.c' l='4501' u='c' c='acl_check'/>
+<use f='exim/src/acl.c' l='4503' u='c' c='acl_check'/>

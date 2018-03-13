@@ -1,2 +1,24 @@
 <dec f='exim/src/globals.h' l='764' type='uid_t'/>
 <doc f='exim/src/globals.h' l='764'>/* The uid for root */</doc>
+<def f='exim/src/globals.c' l='1163' type='uid_t'/>
+<use f='exim/src/directory.c' l='41' u='r' c='directory_make'/>
+<use f='exim/src/exim.c' l='224' u='r' c='usr1_handler'/>
+<use f='exim/src/exim.c' l='596' u='r' c='exim_setugid'/>
+<use f='exim/src/exim.c' l='1838' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1859' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1859' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2290' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3699' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3816' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3835' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4199' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4272' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5728' u='r' c='main'/>
+<use f='exim/src/rda.c' l='635' u='r' c='rda_interpret'/>
+<use f='exim/src/routers/queryprogram.c' l='284' u='r' c='queryprogram_router_entry'/>
+<use f='exim/src/log.c' l='486' u='r' c='open_log'/>
+<use f='exim/src/log.c' l='504' u='r' c='open_log'/>
+<use f='exim/src/daemon.c' l='664' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='1566' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1835' u='r' c='daemon_go'/>
+<use f='exim/src/dbfn.c' l='190' u='r' c='dbfn_open'/>

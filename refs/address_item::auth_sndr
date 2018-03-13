@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='568' type='uschar *'/>
 <offset>2432</offset>
 <doc f='exim/src/structs.h' l='568'>/* AUTH arg to SMTP MAIL, used by transport */</doc>
+<use f='exim/src/deliver.c' l='1232' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1233' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='3543' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4430' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='896' u='w' c='do_callout'/>
+<use f='exim/src/globals.c' l='375' u='w'/>

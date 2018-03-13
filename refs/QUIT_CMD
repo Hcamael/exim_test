@@ -1,0 +1,11 @@
+<dec f='exim/src/smtp_in.c' l='110' type='16'/>
+<use f='exim/src/smtp_in.c' l='199'/>
+<use f='exim/src/smtp_in.c' l='199'/>
+<use f='exim/src/smtp_in.c' l='199'/>
+<use f='exim/src/smtp_in.c' l='199'/>
+<use f='exim/src/smtp_in.c' l='605' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='614' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='1658' c='smtp_closedown'/>
+<use f='exim/src/smtp_in.c' l='2270' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='5392' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5421' c='smtp_setup_msg'/>

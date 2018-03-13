@@ -1,0 +1,8 @@
+<dec f='exim/src/transports/smtp.h' l='162' type='int'/>
+<use f='exim/src/drtables.c' l='434' u='a'/>
+<use f='exim/src/drtables.c' l='434' u='a'/>
+<use f='exim/src/drtables.c' l='434' u='a'/>
+<use f='exim/src/drtables.c' l='434' u='a'/>
+<def f='exim/src/transports/smtp.c' l='190' ll='191' type='int'/>
+<doc f='exim/src/transports/smtp.c' l='187'>/* Size of the options list. An extern variable has to be used so that its
+address can appear in the tables drtables.c. */</doc>

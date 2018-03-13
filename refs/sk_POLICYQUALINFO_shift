@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='245' macro='1' type='POLICYQUALINFO * sk_POLICYQUALINFO_shift(struct stack_st_POLICYQUALINFO * sk)'/>

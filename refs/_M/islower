@@ -1,1 +1,2 @@
 <dec f='include/ctype.h' l='201'/>
+<use f='exim/src/auths/auth-spa.c' l='837' u='c'/>

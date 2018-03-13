@@ -1,2 +1,18 @@
 <dec f='exim/src/globals.h' l='759' type='int'/>
 <doc f='exim/src/globals.h' l='759'>/* Indicate which headers have rewrites */</doc>
+<use f='exim/src/verify.c' l='1661' u='r' c='verify_address'/>
+<def f='exim/src/globals.c' l='1158' type='int'/>
+<use f='exim/src/parse.c' l='1692' u='r' c='parse_forward_list'/>
+<use f='exim/src/filter.c' l='1760' u='r' c='interpret_commands'/>
+<use f='exim/src/smtp_in.c' l='2146' u='r' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2206' u='r' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='4657' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4913' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/routers/rf_change_domain.c' l='75' u='r' c='rf_change_domain'/>
+<use f='exim/src/rewrite.c' l='777' u='r' c='rewrite_test'/>
+<use f='exim/src/rewrite.c' l='786' u='r' c='rewrite_test'/>
+<use f='exim/src/rewrite.c' l='802' u='r' c='rewrite_test'/>
+<use f='exim/src/receive.c' l='2451' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2733' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2909' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2932' u='r' c='receive_msg'/>

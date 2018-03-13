@@ -1,1 +1,22 @@
 <dec f='exim/src/functions.h' l='169' type='BOOL dns_is_secure(const dns_answer * )'/>
+<use f='exim/src/lookups/dnsdb.c' l='360' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='364' u='c' c='dnsdb_find'/>
+<use f='exim/src/host.c' l='1709' u='c' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='2341' u='c' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2345' u='c' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2374' u='c' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2620' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2626' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2638' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2672' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2677' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2693' u='c' c='host_find_bydns'/>
+<def f='exim/src/dns.c' l='496' ll='532' type='BOOL dns_is_secure(const dns_answer * dnsa)'/>
+<use f='exim/src/dns.c' l='948' u='c' c='dns_lookup'/>
+<doc f='exim/src/dns.c' l='488'>/* We do not perform DNSSEC work ourselves; if the administrator has installed
+a verifying resolver which sets AD as appropriate, though, we&apos;ll use that.
+(AD = Authentic Data, AA = Authoritative Answer)
+
+Argument:   pointer to dns answer block
+Returns:    bool indicating presence of AD bit
+*/</doc>

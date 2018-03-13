@@ -1,0 +1,1 @@
+<def f='include/openssl/conf.h' l='32' macro='1' type='struct lhash_st_CONF_VALUE * lh_CONF_VALUE_new(unsigned long (*)(const CONF_VALUE *) hfn, int (*)(const CONF_VALUE *, const CONF_VALUE *) cfn)'/>

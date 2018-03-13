@@ -1,1 +1,8 @@
 <dec f='exim/src/functions.h' l='408' type='int smtp_sock_connect(host_item * , int , int , uschar * , transport_instance * tb, int , const blob * )'/>
+<def f='exim/src/smtp_out.c' l='203' ll='316' type='int smtp_sock_connect(host_item * host, int host_af, int port, uschar * interface, transport_instance * tb, int timeout, const blob * early_data)'/>
+<use f='exim/src/smtp_out.c' l='384' u='c' c='smtp_connect'/>
+<doc f='exim/src/smtp_out.c' l='197'>/* Arguments as for smtp_connect(), plus
+  early_data	if non-NULL, data to be sent - preferably in the TCP SYN segment
+
+Returns:      connected socket number, or -1 with errno set
+*/</doc>

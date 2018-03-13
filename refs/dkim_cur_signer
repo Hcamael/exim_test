@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='388' type='uschar *'/>
 <doc f='exim/src/globals.h' l='388'>/* Expansion variable, holds the current &quot;signer&quot; domain or identity during a acl_smtp_dkim run */</doc>
+<def f='exim/src/globals.c' l='663' type='uschar *'/>
+<use f='exim/src/exim.c' l='5120' u='w' c='main'/>
+<use f='exim/src/acl.c' l='3434' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3435' u='r' c='acl_check_condition'/>
+<use f='exim/src/expand.c' l='498' u='a'/>
+<use f='exim/src/expand.c' l='498' u='a'/>
+<use f='exim/src/expand.c' l='498' u='a'/>
+<use f='exim/src/expand.c' l='498' u='a'/>
+<use f='exim/src/daemon.c' l='574' u='w' c='handle_smtp_call'/>

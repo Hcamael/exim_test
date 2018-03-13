@@ -1,1 +1,32 @@
 <dec f='exim/src/functions.h' l='145' type='void decode_bits(unsigned int * , size_t , int * , uschar * , bit_table * , int , uschar * , int )'/>
+<use f='exim/src/exim.c' l='2474' u='c' c='main'/>
+<use f='exim/src/exim.c' l='3865' u='c' c='main'/>
+<def f='exim/src/log.c' l='1277' ll='1375' type='void decode_bits(unsigned int * selector, size_t selsize, int * notall, uschar * string, bit_table * options, int count, uschar * which, int flags)'/>
+<use f='exim/src/log.c' l='1416' u='c' c='debug_logging_activate'/>
+<doc f='exim/src/log.c' l='1249'>/* This function decodes a string containing bit settings in the form of +name
+and/or -name sequences, and sets/unsets bits in a bit string accordingly. It
+also recognizes a numeric setting of the form =&lt;number&gt;, but this is not
+intended for user use. It&apos;s an easy way for Exim to pass the debug settings
+when it is re-exec&apos;ed.
+
+The option table is a list of names and bit indexes. The index -1
+means &quot;set all bits, except for those listed in notall&quot;. The notall
+list is terminated by -1.
+
+The action taken for bad values varies depending upon why we&apos;re here.
+For log messages, or if the debugging is triggered from config, then we write
+to the log on the way out.  For debug setting triggered from the command-line,
+we treat it as an unknown option: error message to stderr and die.
+
+Arguments:
+  selector       address of the bit string
+  selsize        number of words in the bit string
+  notall         list of bits to exclude from &quot;all&quot;
+  string         the configured string
+  options        the table of option names
+  count          size of table
+  which          &quot;log&quot; or &quot;debug&quot;
+  flags          DEBUG_FROM_CONFIG
+
+Returns:         nothing on success - bomb out on failure
+*/</doc>

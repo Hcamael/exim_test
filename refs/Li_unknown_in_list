@@ -1,2 +1,10 @@
 <dec f='exim/src/macros.h' l='490' type='65'/>
 <use f='exim/src/macros.h' l='492' u='r'/>
+<use f='exim/src/globals.c' l='941' macro='1'/>
+<use f='exim/src/globals.c' l='941' macro='1'/>
+<use f='exim/src/globals.c' l='941' macro='1'/>
+<use f='exim/src/globals.c' l='941' macro='1'/>
+<use f='exim/src/match.c' l='768' macro='1' u='r'/>
+<use f='exim/src/match.c' l='768' macro='1' u='r'/>
+<use f='exim/src/match.c' l='877' macro='1' u='r'/>
+<use f='exim/src/match.c' l='877' macro='1' u='r'/>

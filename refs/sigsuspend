@@ -4,3 +4,4 @@
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */</doc>
+<use f='exim/src/exim.c' l='303' u='c' c='milliwait'/>

@@ -1,1 +1,4 @@
 <dec f='exim/src/functions.h' l='87' type='int acl_eval(int , uschar * , uschar ** , uschar ** )'/>
+<def f='exim/src/acl.c' l='4297' ll='4324' type='int acl_eval(int where, uschar * s, uschar ** user_msgptr, uschar ** log_msgptr)'/>
+<doc f='exim/src/acl.c' l='4296'>/* Alternate interface for ACL, used by expansions */</doc>
+<use f='exim/src/expand.c' l='2098' u='c' c='eval_acl'/>

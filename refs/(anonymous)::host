@@ -1,3 +1,36 @@
 <dec f='exim/src/globals.h' l='316' type='host_item'/>
 <offset>384</offset>
 <doc f='exim/src/globals.h' l='316'>/* Host used */</doc>
+<dec f='exim/src/transports/smtp.h' l='99' type='host_item *'/>
+<use f='exim/src/deliver.c' l='4486' u='m' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4487' u='m' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='8566' u='m' c='delivery_re_exec'/>
+<use f='exim/src/deliver.c' l='8567' u='m' c='delivery_re_exec'/>
+<offset>128</offset>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='377' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='405' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='426' u='a' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='671' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='1053' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='1058' u='m' c='do_callout'/>
+<use f='exim/src/verify.c' l='1059' u='m' c='do_callout'/>
+<use f='exim/src/verify.c' l='1064' u='a' c='do_callout'/>

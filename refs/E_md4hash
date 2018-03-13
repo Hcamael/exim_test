@@ -1,0 +1,6 @@
+<def f='exim/src/auths/auth-spa.c' l='913' ll='930' type='void E_md4hash(uschar * passwd, uschar * p16)'/>
+<use f='exim/src/auths/auth-spa.c' l='943' u='c' c='nt_lm_owf_gen'/>
+<use f='exim/src/auths/auth-spa.c' l='1010' u='c' c='spa_smb_nt_encrypt'/>
+<doc f='exim/src/auths/auth-spa.c' l='909'>/*
+ * Creates the MD4 Hash of the users password in NT UNICODE.
+ */</doc>

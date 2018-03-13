@@ -1,0 +1,3 @@
+<dec f='include/x86_64-linux-gnu/gnu/libc-version.h' l='30' type='const char * gnu_get_libc_version()'/>
+<use f='exim/src/exim.c' l='996' u='c' c='show_whats_supported'/>
+<doc f='include/x86_64-linux-gnu/gnu/libc-version.h' l='29'>/* Return string describing version of currently running GNU libc.  */</doc>

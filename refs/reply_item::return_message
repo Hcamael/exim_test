@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='478' type='BOOL'/>
 <offset>832</offset>
 <doc f='exim/src/structs.h' l='478'>/* send back the original message */</doc>
+<use f='exim/src/filter.c' l='2312' u='w' c='interpret_commands'/>
+<use f='exim/src/rda.c' l='748' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='924' u='w' c='rda_interpret'/>

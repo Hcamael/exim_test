@@ -1,0 +1,2 @@
+<dec f='exim/src/pdkim/pdkim.h' l='301' type='void pdkim_init()'/>
+<def f='exim/src/pdkim/pdkim.c' l='1923' ll='1927' type='void pdkim_init()'/>

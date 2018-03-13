@@ -1,1 +1,7 @@
 <dec f='exim/src/local_scan.h' l='177' type='BOOL header_testname_incomplete(header_line * , const uschar * , int , BOOL )'/>
+<def f='exim/src/header.c' l='46' ll='53' type='BOOL header_testname_incomplete(header_line * h, const uschar * name, int len, BOOL notdel)'/>
+<doc f='exim/src/header.c' l='41'>/* This is a copy of the function above, only that it is possible to pass
+   only the beginning of a header name. It simply does a front-anchored
+   substring match. Arguments and Return codes are the same as for
+   header_testname() above. */</doc>
+<use f='exim/src/receive.c' l='1251' u='c' c='add_acl_headers'/>

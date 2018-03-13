@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='813' type='int'/>
 <offset>32</offset>
 <doc f='exim/src/structs.h' l='813'>/* the size of the buffer */</doc>
+<use f='exim/src/verify.c' l='1286' u='w' c='cutthrough_response'/>
+<use f='exim/src/smtp_out.c' l='587' u='r' c='read_response_line'/>

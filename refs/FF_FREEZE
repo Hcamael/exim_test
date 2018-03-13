@@ -1,2 +1,8 @@
 <dec f='exim/src/macros.h' l='637' type='7'/>
 <doc f='exim/src/macros.h' l='637'>/* Freeze requested */</doc>
+<use f='exim/src/deliver.c' l='5921' u='r' c='deliver_message'/>
+<use f='exim/src/filter.c' l='2049' u='r' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2560' c='filter_interpret'/>
+<use f='exim/src/rda.c' l='715' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='866' u='r' c='rda_interpret'/>
+<use f='exim/src/routers/redirect.c' l='787' c='redirect_router_entry'/>

@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='816' type='int'/>
 <doc f='exim/src/globals.h' l='816'>/* Queue after so many msgs */</doc>
+<def f='exim/src/globals.c' l='1312' type='int'/>
+<use f='exim/src/exim.c' l='5646' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5647' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5692' u='r' c='main'/>
+<use f='exim/src/daemon.c' l='585' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='586' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='624' u='r' c='handle_smtp_call'/>
+<use f='exim/src/readconf.c' l='283' u='a'/>
+<use f='exim/src/readconf.c' l='283' u='a'/>
+<use f='exim/src/readconf.c' l='283' u='a'/>
+<use f='exim/src/readconf.c' l='283' u='a'/>

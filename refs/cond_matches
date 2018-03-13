@@ -1,0 +1,8 @@
+<dec f='exim/src/filter.c' l='142' type='9'/>
+<use f='exim/src/filter.c' l='193'/>
+<use f='exim/src/filter.c' l='193'/>
+<use f='exim/src/filter.c' l='193'/>
+<use f='exim/src/filter.c' l='193'/>
+<use f='exim/src/filter.c' l='783' c='print_condition'/>
+<use f='exim/src/filter.c' l='1588' c='test_condition'/>
+<use f='exim/src/filter.c' l='1599' u='r' c='test_condition'/>

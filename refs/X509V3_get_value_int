@@ -1,0 +1,1 @@
+<dec f='include/openssl/x509v3.h' l='588' type='int X509V3_get_value_int(const CONF_VALUE * value, ASN1_INTEGER ** aint)'/>

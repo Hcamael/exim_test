@@ -1,1 +1,11 @@
 <dec f='exim/src/functions.h' l='114' type='void bits_clear(unsigned int * , size_t , int * )'/>
+<def f='exim/src/log.c' l='1229' ll='1234' type='void bits_clear(unsigned int * selector, size_t selsize, int * bits)'/>
+<use f='exim/src/log.c' l='1337' u='c' c='decode_bits'/>
+<doc f='exim/src/log.c' l='1220'>/* These functions take a list of bit indexes (terminated by -1) and
+clear or set the corresponding bits in the selector.
+
+Arguments:
+  selector       address of the bit string
+  selsize        number of words in the bit string
+  bits           list of bits to set
+*/</doc>

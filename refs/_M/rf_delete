@@ -1,2 +1,12 @@
 <dec f='exim/src/structs.h' l='456'/>
 <doc f='exim/src/structs.h' l='454'>/* Retry data flags */</doc>
+<use f='exim/src/deliver.c' l='3141' u='c'/>
+<use f='exim/src/deliver.c' l='3446' u='c'/>
+<use f='exim/src/deliver.c' l='3455' u='c'/>
+<use f='exim/src/deliver.c' l='3469' u='c'/>
+<use f='exim/src/deliver.c' l='6759' u='c'/>
+<use f='exim/src/deliver.c' l='6760' u='c'/>
+<use f='exim/src/deliver.c' l='6761' u='c'/>
+<use f='exim/src/deliver.c' l='6763' u='c'/>
+<use f='exim/src/retry.c' l='604' u='c'/>
+<use f='exim/src/retry.c' l='609' u='c'/>

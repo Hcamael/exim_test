@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='877' type='BOOL'/>
 <doc f='exim/src/globals.h' l='877'>/* TRUE to use multiple subdirs */</doc>
+<def f='exim/src/globals.c' l='1378' type='BOOL'/>
+<use f='exim/src/queue.c' l='310' u='r' c='queue_get_spool_list'/>
+<use f='exim/src/queue.c' l='1049' u='r' c='queue_action'/>
+<use f='exim/src/spool_in.c' l='56' u='r' c='spool_open_datafile'/>
+<use f='exim/src/spool_in.c' l='339' u='r' c='spool_read_header'/>
+<use f='exim/src/readconf.c' l='310' u='a'/>
+<use f='exim/src/readconf.c' l='310' u='a'/>
+<use f='exim/src/readconf.c' l='310' u='a'/>
+<use f='exim/src/readconf.c' l='310' u='a'/>
+<use f='exim/src/receive.c' l='2651' u='r' c='receive_msg'/>

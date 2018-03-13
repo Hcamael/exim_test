@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='544' type='BOOL'/>
 <doc f='exim/src/globals.h' l='544'>/* Retain Sender: (with no From: check) */</doc>
+<def f='exim/src/globals.c' l='849' type='BOOL'/>
+<use f='exim/src/exim.c' l='5435' u='r' c='main'/>
+<use f='exim/src/smtp_in.c' l='1979' u='r' c='smtp_reset'/>
+<use f='exim/src/readconf.c' l='199' u='a'/>
+<use f='exim/src/readconf.c' l='199' u='a'/>
+<use f='exim/src/readconf.c' l='199' u='a'/>
+<use f='exim/src/readconf.c' l='199' u='a'/>

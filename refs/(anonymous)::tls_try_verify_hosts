@@ -1,0 +1,5 @@
+<dec f='exim/src/transports/smtp.h' l='87' type='uschar *'/>
+<offset>3008</offset>
+<use f='exim/src/tls-openssl.c' l='2128' u='r' c='tls_client_basic_ctx_init'/>
+<use f='exim/src/tls-openssl.c' l='2128' u='r' c='tls_client_basic_ctx_init'/>
+<use f='exim/src/tls-openssl.c' l='2133' u='a' c='tls_client_basic_ctx_init'/>

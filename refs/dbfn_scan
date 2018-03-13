@@ -1,1 +1,13 @@
 <dec f='exim/src/dbfunctions.h' l='15' type='uschar * dbfn_scan(open_db * , BOOL , DBC ** )'/>
+<def f='exim/src/dbfn.c' l='405' ll='426' type='uschar * dbfn_scan(open_db * dbblock, BOOL start, DBC ** cursor)'/>
+<doc f='exim/src/dbfn.c' l='393'>/*
+Arguments:
+  dbblock  a pointer to an open database block
+  start    TRUE if starting a new scan
+           FALSE if continuing with the current scan
+  cursor   a pointer to a pointer to a cursor anchor, for those dbm libraries
+           that use the notion of a cursor
+
+Returns:   the next record from the file, or
+           NULL if there are no more
+*/</doc>

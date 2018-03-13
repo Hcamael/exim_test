@@ -22,3 +22,5 @@ Side effect: sets errno to ERRNO_BADUGID, ERRNO_NOTREGULAR or ERRNO_BADMODE for
              bad uid/gid, not a regular file, or bad mode; otherwise leaves it
              to what fstat set it to.
 */</doc>
+<use f='exim/src/lookups/lsearch.c' l='52' u='c' c='lsearch_check'/>
+<use f='exim/src/lookups/dbmdb.c' l='57' u='c' c='dbmdb_check'/>

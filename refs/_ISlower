@@ -1,2 +1,3 @@
 <dec f='include/ctype.h' l='49' type='512'/>
 <doc f='include/ctype.h' l='49'>/* lowercase.  */</doc>
+<use f='exim/src/auths/auth-spa.c' l='837' macro='1' u='r'/>

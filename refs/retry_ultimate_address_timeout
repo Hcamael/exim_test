@@ -1,1 +1,17 @@
 <dec f='exim/src/functions.h' l='362' type='BOOL retry_ultimate_address_timeout(uschar * , const uschar * , dbdata_retry * , time_t )'/>
+<use f='exim/src/deliver.c' l='2949' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='6656' u='c' c='deliver_message'/>
+<def f='exim/src/retry.c' l='31' ll='73' type='BOOL retry_ultimate_address_timeout(uschar * retry_key, const uschar * domain, dbdata_retry * retry_record, time_t now)'/>
+<use f='exim/src/retry.c' l='223' u='c' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='250' u='c' c='retry_check_address'/>
+<doc f='exim/src/retry.c' l='19'>/* This function tests whether a message has been on the queue longer than
+the maximum retry time for a particular host or address.
+
+Arguments:
+  retry_key     the key to look up a retry rule
+  domain        the domain to look up a domain retry rule
+  retry_record  contains error information for finding rule
+  now           the time
+
+Returns:        TRUE if the ultimate timeout has been reached
+*/</doc>

@@ -1,0 +1,7 @@
+<dec f='exim/src/auths/plaintext.h' l='28' type='int auth_plaintext_server(auth_instance * , uschar * )'/>
+<use f='exim/src/drtables.c' l='140'/>
+<use f='exim/src/drtables.c' l='140'/>
+<use f='exim/src/drtables.c' l='140'/>
+<use f='exim/src/drtables.c' l='140'/>
+<def f='exim/src/auths/plaintext.c' l='76' ll='157' type='int auth_plaintext_server(auth_instance * ablock, uschar * data)'/>
+<doc f='exim/src/auths/plaintext.c' l='74'>/* For interface, see auths/README */</doc>

@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='778' type='uschar *'/>
 <doc f='exim/src/globals.h' l='778'>/* address_data from sender verify */</doc>
+<def f='exim/src/globals.c' l='1268' type='uschar *'/>
+<use f='exim/src/acl.c' l='2026' u='w' c='acl_verify'/>
+<use f='exim/src/acl.c' l='4473' u='w' c='acl_check'/>
+<use f='exim/src/expand.c' l='660' u='a'/>
+<use f='exim/src/expand.c' l='660' u='a'/>
+<use f='exim/src/expand.c' l='660' u='a'/>
+<use f='exim/src/expand.c' l='660' u='a'/>

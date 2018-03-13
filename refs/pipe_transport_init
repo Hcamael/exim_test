@@ -1,0 +1,6 @@
+<dec f='exim/src/transports/pipe.h' l='49' type='void pipe_transport_init(transport_instance * )'/>
+<use f='exim/src/drtables.c' l='409'/>
+<use f='exim/src/drtables.c' l='409'/>
+<use f='exim/src/drtables.c' l='409'/>
+<use f='exim/src/drtables.c' l='409'/>
+<def f='exim/src/transports/pipe.c' l='103' type='void pipe_transport_init(transport_instance * tblock)'/>

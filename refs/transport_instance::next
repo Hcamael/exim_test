@@ -1,2 +1,8 @@
 <dec f='exim/src/structs.h' l='136' type='struct transport_instance *'/>
 <offset>0</offset>
+<use f='exim/src/deliver.c' l='3034' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='5223' u='r' c='continue_closedown'/>
+<use f='exim/src/deliver.c' l='6074' u='r' c='deliver_message'/>
+<use f='exim/src/globals.c' l='1446' u='w'/>
+<use f='exim/src/routers/queryprogram.c' l='492' u='r' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/rf_get_transport.c' l='74' u='r' c='rf_get_transport'/>

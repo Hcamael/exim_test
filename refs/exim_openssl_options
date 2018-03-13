@@ -1,0 +1,32 @@
+<def f='exim/src/tls-openssl.c' l='2956' ll='3044' type='struct exim_openssl_option [27]'/>
+<use f='exim/src/tls-openssl.c' l='3046' u='r'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='m' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3060' u='m' c='tls_openssl_one_option_parse'/>
+<doc f='exim/src/tls-openssl.c' l='2947'>/* We could use a macro to expand, but we need the ifdef and not all the
+options document which version they were introduced in.  Policylet: include
+all options unless explicitly for DTLS, let the administrator choose which
+to apply.
+
+This list is current as of:
+  ==&gt;  1.0.1b  &lt;==
+Plus SSL_OP_SAFARI_ECDHE_ECDSA_BUG from 2013-June patch/discussion on openssl-dev
+*/</doc>

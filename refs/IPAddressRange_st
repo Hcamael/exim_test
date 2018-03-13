@@ -1,0 +1,4 @@
+<def f='include/openssl/x509v3.h' l='757' ll='759'/>
+<size>16</size>
+<mbr r='IPAddressRange_st::min' o='0' t='ASN1_BIT_STRING *'/>
+<mbr r='IPAddressRange_st::max' o='64' t='ASN1_BIT_STRING *'/>

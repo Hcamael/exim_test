@@ -1,2 +1,36 @@
 <dec f='exim/src/globals.h' l='878' type='uschar *'/>
 <doc f='exim/src/globals.h' l='878'>/* Name of spool directory */</doc>
+<use f='exim/src/deliver.c' l='368' u='r' c='open_msglog_file'/>
+<use f='exim/src/deliver.c' l='7907' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1379' ll='1380' type='uschar *'/>
+<def f='exim/src/exim_dbmbuild.c' l='33' type='uschar *'/>
+<doc f='exim/src/exim_dbmbuild.c' l='33'>/* dummy for dbstuff.h */</doc>
+<use f='exim/src/directory.c' l='41' u='r' c='directory_make'/>
+<def f='exim/src/exim_dbutil.c' l='42' type='uschar *'/>
+<use f='exim/src/exim_dbutil.c' l='262' u='r' c='dbfn_open'/>
+<use f='exim/src/exim_dbutil.c' l='777' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='975' u='w' c='main'/>
+<doc f='exim/src/exim_dbutil.c' l='40'>/* This is used by our cut-down dbfn_open(). */</doc>
+<use f='exim/src/exim.c' l='3931' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4122' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4125' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4126' u='r' c='main'/>
+<use f='exim/src/queue.c' l='21' u='r' c='spool_pname_buf'/>
+<use f='exim/src/queue.c' l='28' u='r' c='spool_dname'/>
+<use f='exim/src/queue.c' l='46' u='r' c='spool_fname'/>
+<use f='exim/src/log.c' l='824' u='r' c='log_write'/>
+<use f='exim/src/expand.c' l='710' u='a'/>
+<use f='exim/src/expand.c' l='710' u='a'/>
+<use f='exim/src/expand.c' l='710' u='a'/>
+<use f='exim/src/expand.c' l='710' u='a'/>
+<use f='exim/src/daemon.c' l='1541' u='r' c='daemon_go'/>
+<use f='exim/src/readconf.c' l='311' u='a'/>
+<use f='exim/src/readconf.c' l='311' u='a'/>
+<use f='exim/src/readconf.c' l='311' u='a'/>
+<use f='exim/src/readconf.c' l='311' u='a'/>
+<use f='exim/src/receive.c' l='135' u='r' c='receive_statvfs'/>
+<use f='exim/src/receive.c' l='168' u='r' c='receive_statvfs'/>
+<use f='exim/src/receive.c' l='3028' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4032' u='r' c='receive_msg'/>
+<use f='exim/src/dbfn.c' l='109' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='115' u='r' c='dbfn_open'/>

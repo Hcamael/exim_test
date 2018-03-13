@@ -1,0 +1,7 @@
+<dec f='exim/src/transports/autoreply.h' l='42' type='BOOL autoreply_transport_entry(transport_instance * , address_item * )'/>
+<use f='exim/src/drtables.c' l='382'/>
+<use f='exim/src/drtables.c' l='382'/>
+<use f='exim/src/drtables.c' l='382'/>
+<use f='exim/src/drtables.c' l='382'/>
+<doc f='exim/src/transports/autoreply.h' l='40'>/* The main and init entry points for the transport */</doc>
+<def f='exim/src/transports/autoreply.c' l='71' type='BOOL autoreply_transport_entry(transport_instance * tblock, address_item * addr)'/>

@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='924' type='BOOL'/>
 <doc f='exim/src/globals.h' l='924'>/* TRUE when running system filter */</doc>
+<use f='exim/src/deliver.c' l='5849' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5897' u='w' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1426' type='BOOL'/>
+<use f='exim/src/filtertest.c' l='262' u='w' c='filter_runtest'/>
+<use f='exim/src/filtertest.c' l='268' u='w' c='filter_runtest'/>
+<use f='exim/src/filter.c' l='953' u='r' c='read_command'/>
+<use f='exim/src/filter.c' l='1455' u='r' c='test_condition'/>
+<use f='exim/src/filter.c' l='1777' u='r' c='interpret_commands'/>
+<use f='exim/src/rda.c' l='361' u='r' c='rda_extract'/>
+<use f='exim/src/rda.c' l='675' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='828' u='r' c='rda_interpret'/>

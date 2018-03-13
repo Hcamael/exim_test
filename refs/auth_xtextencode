@@ -1,1 +1,13 @@
 <dec f='exim/src/functions.h' l='104' type='uschar * auth_xtextencode(uschar * , int )'/>
+<def f='exim/src/auths/xtextencode.c' l='27' ll='55' type='uschar * auth_xtextencode(uschar * clear, int len)'/>
+<doc f='exim/src/auths/xtextencode.c' l='15'>/* This function encodes a string of bytes, containing any values whatsoever,
+as &quot;xtext&quot;, as defined in RFC 1891 and required by the SMTP AUTH extension (RFC
+2554).
+
+Arguments:
+  clear       points to the clear text bytes
+  len         the number of bytes to encode
+
+Returns:      a pointer to the zero-terminated xtext string, which
+              is in working store
+*/</doc>

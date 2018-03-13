@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='807' type='int'/>
 <doc f='exim/src/globals.h' l='807'>/* Log DNS lookups taking longer than N millisecs */</doc>
+<def f='exim/src/globals.c' l='1303' type='int'/>
+<doc f='exim/src/globals.c' l='1303'>/* millisecs, zero disables */</doc>
+<use f='exim/src/readconf.c' l='275' u='a'/>
+<use f='exim/src/readconf.c' l='275' u='a'/>
+<use f='exim/src/readconf.c' l='275' u='a'/>
+<use f='exim/src/readconf.c' l='275' u='a'/>
+<use f='exim/src/host.c' l='135' u='r' c='dns_lookup_timerwrap'/>
+<use f='exim/src/host.c' l='140' u='r' c='dns_lookup_timerwrap'/>
+<use f='exim/src/host.c' l='1522' u='r' c='host_name_lookup_byaddr'/>
+<use f='exim/src/host.c' l='1558' u='r' c='host_name_lookup_byaddr'/>
+<use f='exim/src/host.c' l='1559' u='r' c='host_name_lookup_byaddr'/>
+<use f='exim/src/host.c' l='2032' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2057' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2058' u='r' c='host_find_byname'/>

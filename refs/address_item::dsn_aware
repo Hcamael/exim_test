@@ -1,3 +1,14 @@
 <dec f='exim/src/structs.h' l='572' type='int'/>
 <offset>2592</offset>
 <doc f='exim/src/structs.h' l='572'>/* DSN aware flag */</doc>
+<use f='exim/src/deliver.c' l='3565' u='a' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3565' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3566' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3567' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4866' u='a' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4866' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4867' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='7229' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7234' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7306' u='r' c='deliver_message'/>
+<use f='exim/src/globals.c' l='378' u='w'/>

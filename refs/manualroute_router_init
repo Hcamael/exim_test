@@ -1,0 +1,6 @@
+<dec f='exim/src/routers/manualroute.h' l='37' type='void manualroute_router_init(router_instance * )'/>
+<use f='exim/src/drtables.c' l='310'/>
+<use f='exim/src/drtables.c' l='310'/>
+<use f='exim/src/drtables.c' l='310'/>
+<use f='exim/src/drtables.c' l='310'/>
+<def f='exim/src/routers/manualroute.c' l='42' type='void manualroute_router_init(router_instance * rblock)'/>

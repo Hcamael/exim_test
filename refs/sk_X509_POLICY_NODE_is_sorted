@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='716' macro='1' type='int sk_X509_POLICY_NODE_is_sorted(const struct stack_st_X509_POLICY_NODE * sk)'/>

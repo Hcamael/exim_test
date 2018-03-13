@@ -1,1 +1,5 @@
 <dec f='exim/src/functions.h' l='455' type='int string_compare_by_pointer(const void * , const void * )'/>
+<def f='exim/src/string.c' l='1569' ll='1573' type='int string_compare_by_pointer(const void * a, const void * b)'/>
+<doc f='exim/src/string.c' l='1565'>/* qsort(3), currently used to sort the environment variables
+for -bP environment output, needs a function to compare two pointers to string
+pointers. Here it is. */</doc>

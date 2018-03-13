@@ -1,1 +1,20 @@
 <dec f='exim/src/functions.h' l='274' type='int match_address_list_basic(const uschar * , const uschar ** , int )'/>
+<def f='exim/src/match.c' l='1338' ll='1342' type='int match_address_list_basic(const uschar * address, const uschar ** listptr, int sep)'/>
+<doc f='exim/src/match.c' l='1323'>/* Simpler version of match_address_list; always caseless, expanding,
+no cache bits, no value-return.
+
+Arguments:
+  address         address to test
+  listptr         list to check against
+  sep             separator character for the list;
+                  may be 0 to get separator from the list;
+                  may be UCHAR_MAX+1 for one-item list
+
+Returns:          OK    for a positive match, or end list after a negation;
+                  FAIL  for a negative match, or end list after non-negation;
+                  DEFER if a lookup deferred
+*/</doc>
+<use f='exim/src/receive.c' l='90' u='c' c='receive_check_set_sender'/>
+<use f='exim/src/retry.c' l='477' u='c' c='retry_find_config'/>
+<use f='exim/src/retry.c' l='484' u='c' c='retry_find_config'/>
+<use f='exim/src/retry.c' l='486' u='c' c='retry_find_config'/>

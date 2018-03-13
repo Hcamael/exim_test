@@ -2,3 +2,7 @@
 <offset>384</offset>
 <doc f='exim/src/structs.h' l='148'>/**************************************/</doc>
 <doc f='exim/src/structs.h' l='149'>/* )                                  */</doc>
+<use f='exim/src/deliver.c' l='2758' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2784' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2803' u='r' c='do_local_deliveries'/>
+<use f='exim/src/globals.c' l='1452' u='w'/>

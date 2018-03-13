@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='909' type='int'/>
 <doc f='exim/src/globals.h' l='909'>/* As defined by Syslog.h */</doc>
+<def f='exim/src/globals.c' l='1411' type='int'/>
+<use f='exim/src/log.c' l='160' u='r' c='write_syslog'/>

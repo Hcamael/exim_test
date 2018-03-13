@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='196' type='BOOL'/>
 <doc f='exim/src/globals.h' l='196'>/* TRUE to give details for 4xx error */</doc>
+<def f='exim/src/globals.c' l='265' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='3283' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/acl.c' l='1900' u='w' c='acl_verify'/>
+<use f='exim/src/acl.c' l='2053' u='w' c='acl_verify'/>
+<use f='exim/src/acl.c' l='4068' u='w' c='acl_check_internal'/>
+<use f='exim/src/acl.c' l='4090' u='w' c='acl_check_internal'/>
+<use f='exim/src/acl.c' l='4094' u='w' c='acl_check_internal'/>
+<use f='exim/src/acl.c' l='4151' u='w' c='acl_check_internal'/>
+<use f='exim/src/acl.c' l='4434' u='w' c='acl_check'/>

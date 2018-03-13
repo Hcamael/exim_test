@@ -1,1 +1,4 @@
 <dec f='exim/src/store.h' l='15' type='2'/>
+<use f='exim/src/search.c' l='259' u='r' c='search_tidyup'/>
+<use f='exim/src/search.c' l='342' u='r' c='search_open'/>
+<use f='exim/src/search.c' l='490' u='r' c='internal_search_find'/>

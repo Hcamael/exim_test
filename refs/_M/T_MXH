@@ -1,1 +1,5 @@
 <dec f='exim/src/exim.h' l='378'/>
+<use f='exim/src/lookups/dnsdb.c' l='61' u='c'/>
+<use f='exim/src/lookups/dnsdb.c' l='318' u='c'/>
+<use f='exim/src/lookups/dnsdb.c' l='452' u='c'/>
+<use f='exim/src/dns.c' l='995' u='c'/>

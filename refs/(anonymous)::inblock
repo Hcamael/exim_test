@@ -1,0 +1,11 @@
+<dec f='exim/src/transports/smtp.h' l='145' type='smtp_inblock'/>
+<offset>768</offset>
+<use f='exim/src/verify.c' l='816' u='a' c='do_callout'/>
+<use f='exim/src/verify.c' l='827' u='m' c='do_callout'/>
+<use f='exim/src/verify.c' l='828' u='m' c='do_callout'/>
+<use f='exim/src/verify.c' l='913' u='a' c='do_callout'/>
+<use f='exim/src/verify.c' l='939' u='a' c='do_callout'/>
+<use f='exim/src/verify.c' l='1084' u='a' c='do_callout'/>
+<use f='exim/src/verify.c' l='1088' u='m' c='do_callout'/>
+<use f='exim/src/verify.c' l='1094' u='m' c='do_callout'/>
+<use f='exim/src/verify.c' l='1095' u='m' c='do_callout'/>

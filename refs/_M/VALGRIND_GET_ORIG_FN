@@ -1,0 +1,5 @@
+<dec f='exim/src/valgrind.h' l='743'/>
+<doc f='exim/src/valgrind.h' l='739'>/* Use this macro from within a wrapper function to collect the
+   context (address and possibly other info) of the original function.
+   Once you have that you can then use it in one of the CALL_FN_
+   macros.  The type of the argument _lval is OrigFn. */</doc>

@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='299' type='void moan_tell_someone(uschar * , address_item * , const uschar * , const char * )'/>
+<use f='exim/src/deliver.c' l='8348' u='c' c='deliver_message'/>
+<def f='exim/src/moan.c' l='477' ll='518' type='void moan_tell_someone(uschar * who, address_item * addr, const uschar * subject, const char * format)'/>
+<doc f='exim/src/moan.c' l='464'>/* This is called when exim is configured to tell someone (often the
+mailmaster) about some incident.
+
+Arguments:
+  who           address to send mail to
+  addr          chain of deferred addresses whose details are to be included
+  subject       subject text for the message
+  format        a printf() format for the body of the message
+  ...           arguments for the format
+
+Returns:        nothing
+*/</doc>
+<use f='exim/src/receive.c' l='4195' u='c' c='receive_msg'/>

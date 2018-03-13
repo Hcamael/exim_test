@@ -1,1 +1,18 @@
 <dec f='exim/src/functions.h' l='456' type='uschar * string_copy_dnsdomain(uschar * )'/>
+<def f='exim/src/string.c' l='601' ll='626' type='uschar * string_copy_dnsdomain(uschar * s)'/>
+<doc f='exim/src/string.c' l='589'>/* If a domain name contains top-bit characters, some resolvers return
+the fully qualified name with those characters turned into escapes. The
+convention is a backslash followed by _decimal_ digits. We convert these
+back into the original binary values. This will be relevant when
+allow_utf8_domains is set true and UTF-8 characters are used in domain
+names. Backslash can also be used to escape other characters, though we
+shouldn&apos;t come across them in domain names.
+
+Argument:   the domain name string
+Returns:    copy of string in new store, de-escaped
+*/</doc>
+<use f='exim/src/host.c' l='2098' u='c' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2439' u='c' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2863' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2880' u='c' c='host_find_bydns'/>
+<use f='exim/src/dns.c' l='922' u='c' c='dns_lookup'/>

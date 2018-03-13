@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='796' type='uschar *'/>
 <doc f='exim/src/globals.h' l='796'>/* Configured smoothing period */</doc>
+<def f='exim/src/globals.c' l='1290' type='uschar *'/>
+<use f='exim/src/exim.c' l='5126' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='2021' u='w' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='2249' u='w' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2250' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2251' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2254' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2357' u='r' c='acl_ratelimit'/>
+<use f='exim/src/expand.c' l='675' u='a'/>
+<use f='exim/src/expand.c' l='675' u='a'/>
+<use f='exim/src/expand.c' l='675' u='a'/>
+<use f='exim/src/expand.c' l='675' u='a'/>

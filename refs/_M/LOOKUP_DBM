@@ -1,2 +1,9 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='91'/>
 <doc f='exim/build-Linux-x86_64/config.h' l='90'>/* LOOKUP_CDB not set */</doc>
+<use f='exim/src/drtables.c' l='539' u='a'/>
+<use f='exim/src/drtables.c' l='539' u='c'/>
+<use f='exim/src/drtables.c' l='616' u='a'/>
+<use f='exim/src/drtables.c' l='616' u='c'/>
+<use f='exim/src/macro_predef.c' l='197' u='a'/>
+<use f='exim/src/exim.c' l='899' u='a'/>
+<use f='exim/src/exim.c' l='899' u='c'/>

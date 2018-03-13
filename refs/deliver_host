@@ -1,2 +1,22 @@
 <dec f='exim/src/globals.h' l='357' type='const uschar *'/>
 <doc f='exim/src/globals.h' l='357'>/* (First) host for routed local deliveries */</doc>
+<use f='exim/src/deliver.c' l='188' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='193' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='876' u='r' c='msg_event_raise'/>
+<use f='exim/src/deliver.c' l='887' u='w' c='msg_event_raise'/>
+<use f='exim/src/deliver.c' l='897' u='w' c='msg_event_raise'/>
+<use f='exim/src/deliver.c' l='1213' u='w' c='delivery_log'/>
+<use f='exim/src/verify.c' l='383' u='w' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='657' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='709' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='898' u='w' c='do_callout'/>
+<use f='exim/src/globals.c' l='216' u='a'/>
+<use f='exim/src/globals.c' l='216' u='a'/>
+<def f='exim/src/globals.c' l='633' type='const uschar *'/>
+<use f='exim/src/exim.c' l='5782' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='2006' u='w' c='smtp_reset'/>
+<use f='exim/src/expand.c' l='541' u='a'/>
+<use f='exim/src/expand.c' l='541' u='a'/>
+<use f='exim/src/expand.c' l='541' u='a'/>
+<use f='exim/src/expand.c' l='541' u='a'/>
+<use f='exim/src/daemon.c' l='569' u='w' c='handle_smtp_call'/>

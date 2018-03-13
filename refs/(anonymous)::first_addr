@@ -1,0 +1,6 @@
+<dec f='exim/src/transports/smtp.h' l='141' type='address_item *'/>
+<offset>576</offset>
+<use f='exim/src/verify.c' l='733' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='835' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='847' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='925' u='w' c='do_callout'/>

@@ -1,1 +1,6 @@
 <dec f='exim/src/functions.h' l='445' type='int stdin_getc(unsigned int )'/>
+<def f='exim/src/receive.c' l='40' ll='44' type='int stdin_getc(unsigned int lim)'/>
+<doc f='exim/src/receive.c' l='35'>/* These are the default functions that are set up in the variables such as
+receive_getc initially. They just call the standard functions, passing stdin as
+the file. (When SMTP input is occurring, different functions are used by
+changing the pointer variables.) */</doc>

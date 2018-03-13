@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='294' type='uid_t'/>
 <doc f='exim/src/globals.h' l='294'>/* Additional owner */</doc>
+<def f='exim/src/globals.c' l='535' type='uid_t'/>
+<use f='exim/src/exim.c' l='966' u='r' c='show_whats_supported'/>

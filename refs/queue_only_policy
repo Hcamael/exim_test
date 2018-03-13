@@ -1,2 +1,15 @@
 <dec f='exim/src/globals.h' l='697' type='BOOL'/>
 <doc f='exim/src/globals.h' l='697'>/* ACL or local_scan wants queue_only */</doc>
+<def f='exim/src/globals.c' l='1068' type='BOOL'/>
+<use f='exim/src/exim.c' l='5678' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5703' u='r' c='main'/>
+<use f='exim/src/smtp_in.c' l='1966' u='w' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='3172' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3269' u='r' c='acl_check_condition'/>
+<use f='exim/src/daemon.c' l='637' u='r' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='3624' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3695' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3697' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3830' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4056' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4182' u='r' c='receive_msg'/>

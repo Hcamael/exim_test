@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='759' type='int'/>
 <offset>8256</offset>
 <doc f='exim/src/structs.h' l='759'>/* size of data */</doc>
+<use f='exim/src/lookups/dnsdb.c' l='411' u='r' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='433' u='r' c='dnsdb_find'/>
+<use f='exim/src/dns.c' l='395' u='w' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='398' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='433' u='w' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='439' u='r' c='dns_next_rr'/>

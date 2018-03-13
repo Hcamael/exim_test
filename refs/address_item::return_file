@@ -1,3 +1,14 @@
 <dec f='exim/src/structs.h' l='629' type='short'/>
 <offset>2912</offset>
 <doc f='exim/src/structs.h' l='629'>/* fileno of return data file */</doc>
+<use f='exim/src/deliver.c' l='1520' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1524' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1528' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1581' u='w' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1584' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='2248' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='3055' u='w' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3176' u='w' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3176' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='7608' u='r' c='deliver_message'/>
+<use f='exim/src/globals.c' l='389' u='w'/>

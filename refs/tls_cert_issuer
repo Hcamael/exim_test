@@ -1,1 +1,14 @@
 <dec f='exim/src/functions.h' l='31' type='uschar * tls_cert_issuer(void * , uschar * mod)'/>
+<def f='exim/src/tlscert-openssl.c' l='205' ll='210' type='uschar * tls_cert_issuer(void * cert, uschar * mod)'/>
+<doc f='exim/src/tlscert-openssl.c' l='196'>/* Now the extractors, called from expand.c
+Arguments:
+  cert		The certificate
+  mod		Optional modifiers for the operator
+
+Return:
+  Allocated string with extracted value
+*/</doc>
+<use f='exim/src/expand.c' l='1275' u='a'/>
+<use f='exim/src/expand.c' l='1275' u='a'/>
+<use f='exim/src/expand.c' l='1275' u='a'/>
+<use f='exim/src/expand.c' l='1275' u='a'/>

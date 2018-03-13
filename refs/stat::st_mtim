@@ -1,3 +1,8 @@
 <dec f='include/x86_64-linux-gnu/bits/stat.h' l='92' type='struct timespec'/>
 <offset>704</offset>
 <doc f='include/x86_64-linux-gnu/bits/stat.h' l='92'>/* Time of last modification.  */</doc>
+<use f='exim/src/transports/tf_maildir.c' l='310' macro='1' u='m'/>
+<use f='exim/src/transports/tf_maildir.c' l='310' macro='1' u='m'/>
+<use f='exim/src/transports/tf_maildir.c' l='515' macro='1' u='m'/>
+<use f='exim/src/expand.c' l='7383' macro='1' u='m'/>
+<use f='exim/src/sieve.c' l='3490' macro='1' u='m'/>

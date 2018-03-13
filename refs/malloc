@@ -1,2 +1,16 @@
 <dec f='include/stdlib.h' l='466' type='void * malloc(size_t __size)'/>
 <doc f='include/stdlib.h' l='465'>/* Allocate SIZE bytes of memory.  */</doc>
+<use f='exim/src/exim_dbmbuild.c' l='156' u='c' c='main'/>
+<use f='exim/src/exim_dbmbuild.c' l='157' u='c' c='main'/>
+<use f='exim/src/macro.c' l='14' u='c' c='macro_create'/>
+<use f='exim/src/macro.c' l='48' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='1645' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='2399' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2424' u='c' c='smtp_start_session'/>
+<use f='exim/src/auths/auth-spa.c' l='1380' macro='1' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1494' macro='1' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1505' macro='1' u='c'/>
+<use f='exim/src/log.c' l='516' u='c' c='open_log'/>
+<use f='exim/src/log.c' l='595' u='c' c='log_write_failed'/>
+<use f='exim/src/log.c' l='761' u='c' c='log_write'/>
+<use f='exim/src/store.c' l='544' u='c' c='store_malloc_3'/>

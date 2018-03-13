@@ -1,0 +1,8 @@
+<dec f='exim/src/routers/dnslookup.h' l='28' type='int'/>
+<use f='exim/src/drtables.c' l='268' u='a'/>
+<use f='exim/src/drtables.c' l='268' u='a'/>
+<use f='exim/src/drtables.c' l='268' u='a'/>
+<use f='exim/src/drtables.c' l='268' u='a'/>
+<def f='exim/src/routers/dnslookup.c' l='48' ll='49' type='int'/>
+<doc f='exim/src/routers/dnslookup.c' l='45'>/* Size of the options list. An extern variable has to be used so that its
+address can appear in the tables drtables.c. */</doc>

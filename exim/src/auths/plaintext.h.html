@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>plaintext.h source code [exim/src/auths/plaintext.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/auths/plaintext.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>auths</a>/<a href='plaintext.h.html'>plaintext.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2009 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Private structure for the private options. */</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><b>typedef</b> <b>struct</b> {</td></tr>
+<tr><th id="11">11</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::server_prompts" title='(anonymous struct)::server_prompts' data-ref="(anonymous)::server_prompts">server_prompts</dfn>;</td></tr>
+<tr><th id="12">12</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::client_send" title='(anonymous struct)::client_send' data-ref="(anonymous)::client_send">client_send</dfn>;</td></tr>
+<tr><th id="13">13</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>    <dfn class="decl field" id="(anonymous)::client_ignore_invalid_base64" title='(anonymous struct)::client_ignore_invalid_base64' data-ref="(anonymous)::client_ignore_invalid_base64">client_ignore_invalid_base64</dfn>;</td></tr>
+<tr><th id="14">14</th><td>} <dfn class="typedef" id="auth_plaintext_options_block" title='auth_plaintext_options_block' data-type='struct auth_plaintext_options_block' data-ref="auth_plaintext_options_block">auth_plaintext_options_block</dfn>;</td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><i>/* Data for reading the private options. */</i></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><b>extern</b> <a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a> <dfn class="decl" id="auth_plaintext_options" title='auth_plaintext_options' data-ref="auth_plaintext_options">auth_plaintext_options</dfn>[];</td></tr>
+<tr><th id="19">19</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="auth_plaintext_options_count" title='auth_plaintext_options_count' data-ref="auth_plaintext_options_count">auth_plaintext_options_count</dfn>;</td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><i>/* Block containing default values. */</i></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><b>extern</b> <a class="typedef" href="#auth_plaintext_options_block" title='auth_plaintext_options_block' data-type='struct auth_plaintext_options_block' data-ref="auth_plaintext_options_block">auth_plaintext_options_block</a> <dfn class="decl" id="auth_plaintext_option_defaults" title='auth_plaintext_option_defaults' data-ref="auth_plaintext_option_defaults">auth_plaintext_option_defaults</dfn>;</td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><i>/* The entry points for the mechanism */</i></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="auth_plaintext_init" title='auth_plaintext_init' data-ref="auth_plaintext_init">auth_plaintext_init</dfn>(<a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *);</td></tr>
+<tr><th id="28">28</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="auth_plaintext_server" title='auth_plaintext_server' data-ref="auth_plaintext_server">auth_plaintext_server</dfn>(<a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="29">29</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="auth_plaintext_client" title='auth_plaintext_client' data-ref="auth_plaintext_client">auth_plaintext_client</dfn>(<a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *, <a class="typedef" href="../structs.h.html#smtp_inblock" title='smtp_inblock' data-type='struct smtp_inblock' data-ref="smtp_inblock">smtp_inblock</a> *,</td></tr>
+<tr><th id="30">30</th><td>                                 <a class="typedef" href="../structs.h.html#smtp_outblock" title='smtp_outblock' data-type='struct smtp_outblock' data-ref="smtp_outblock">smtp_outblock</a> *, <em>int</em>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em>);</td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><i>/* End of plaintext.h */</i></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../drtables.c.html'>exim/src/drtables.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

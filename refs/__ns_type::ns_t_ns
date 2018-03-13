@@ -1,2 +1,8 @@
 <dec f='include/arpa/nameser.h' l='255' type='2'/>
 <doc f='include/arpa/nameser.h' l='255'>/*%&lt; Authoritative server. */</doc>
+<use f='exim/src/lookups/dnsdb.c' l='62' macro='1'/>
+<use f='exim/src/lookups/dnsdb.c' l='62' macro='1'/>
+<use f='exim/src/lookups/dnsdb.c' l='319' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='476' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='586' macro='1' c='dns_text_type'/>
+<use f='exim/src/dns.c' l='1001' macro='1' u='r'/>

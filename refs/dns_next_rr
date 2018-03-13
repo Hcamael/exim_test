@@ -1,1 +1,44 @@
 <dec f='exim/src/functions.h' l='173' type='dns_record * dns_next_rr(const dns_answer * , dns_scan * , int )'/>
+<use f='exim/src/verify.c' l='3407' u='c' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3409' u='c' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3570' u='c' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3572' u='c' c='one_check_dnsbl'/>
+<use f='exim/src/lookups/dnsdb.c' l='381' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='382' u='c' c='dnsdb_find'/>
+<use f='exim/src/acl.c' l='1273' u='c' c='acl_verify_csa_address'/>
+<use f='exim/src/acl.c' l='1275' u='c' c='acl_verify_csa_address'/>
+<use f='exim/src/acl.c' l='1414' u='c' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1416' u='c' c='acl_verify_csa'/>
+<use f='exim/src/host.c' l='253' u='c' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='255' u='c' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='269' u='c' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='271' u='c' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='1716' u='c' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1718' u='c' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1729' u='c' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1731' u='c' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='2405' u='c' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2407' u='c' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2790' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2792' u='c' c='host_find_bydns'/>
+<def f='exim/src/dns.c' l='331' ll='451' type='dns_record * dns_next_rr(const dns_answer * dnsa, dns_scan * dnss, int reset)'/>
+<use f='exim/src/dns.c' l='474' u='c' c='dns_extract_auth_name'/>
+<use f='exim/src/dns.c' l='475' u='c' c='dns_extract_auth_name'/>
+<use f='exim/src/dns.c' l='895' u='c' c='dns_lookup'/>
+<use f='exim/src/dns.c' l='896' u='c' c='dns_lookup'/>
+<use f='exim/src/dns.c' l='1099' u='c' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1100' u='c' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1134' u='c' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1135' u='c' c='dns_special_lookup'/>
+<doc f='exim/src/dns.c' l='318'>/* Call this with reset == RESET_ANSWERS to scan the answer block, reset ==
+RESET_AUTHORITY to scan the authority records, reset == RESET_ADDITIONAL to
+scan the additional records, and reset == RESET_NEXT to get the next record.
+The result is in static storage which must be copied if it is to be preserved.
+
+Arguments:
+  dnsa      pointer to dns answer block
+  dnss      pointer to dns scan block
+  reset     option specifying what portion to scan, as described above
+
+Returns:    next dns record, or NULL when no more
+*/</doc>

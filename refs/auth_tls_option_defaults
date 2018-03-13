@@ -1,0 +1,8 @@
+<dec f='exim/src/auths/tls.h' l='23' type='auth_tls_options_block'/>
+<use f='exim/src/drtables.c' l='165' u='a'/>
+<use f='exim/src/drtables.c' l='165' u='a'/>
+<use f='exim/src/drtables.c' l='165' u='a'/>
+<use f='exim/src/drtables.c' l='165' u='a'/>
+<doc f='exim/src/auths/tls.h' l='21'>/* Block containing default values. */</doc>
+<def f='exim/src/auths/tls.c' l='36' ll='40' type='auth_tls_options_block'/>
+<doc f='exim/src/auths/tls.c' l='34'>/* Default private options block for the authentication method. */</doc>

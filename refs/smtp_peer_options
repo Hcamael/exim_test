@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='856' type='unsigned int'/>
 <doc f='exim/src/globals.h' l='856'>/* Global flags for passed connections */</doc>
+<use f='exim/src/deliver.c' l='4491' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='8533' u='w' c='delivery_re_exec'/>
+<use f='exim/src/deliver.c' l='8539' u='w' c='delivery_re_exec'/>
+<use f='exim/src/verify.c' l='1052' u='r' c='do_callout'/>
+<def f='exim/src/globals.c' l='1356' type='unsigned int'/>
+<use f='exim/src/exim.c' l='2719' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2729' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2734' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2749' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2769' u='w' c='main'/>

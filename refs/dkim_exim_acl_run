@@ -1,1 +1,2 @@
 <dec f='exim/src/dkim.h' l='14' type='int dkim_exim_acl_run(uschar * , gstring ** , uschar ** , uschar ** )'/>
+<use f='exim/src/receive.c' l='3409' u='c' c='receive_msg'/>

@@ -1,1 +1,19 @@
 <dec f='exim/src/functions.h' l='457' type='uschar * string_copy_malloc(const uschar * )'/>
+<def f='exim/src/string.c' l='442' ll='449' type='uschar * string_copy_malloc(const uschar * s)'/>
+<doc f='exim/src/string.c' l='436'>/* This function assumes that memcpy() is faster than strcpy().
+
+Argument: string to copy
+Returns:  copy of string in new store
+*/</doc>
+<use f='exim/src/smtp_in.c' l='454' u='c' c='smtp_refill'/>
+<use f='exim/src/smtp_in.c' l='1884' u='c' c='check_helo'/>
+<use f='exim/src/smtp_in.c' l='3626' u='c' c='smtp_in_auth'/>
+<use f='exim/src/smtp_in.c' l='3646' u='c' c='smtp_in_auth'/>
+<use f='exim/src/smtp_in.c' l='3666' u='c' c='smtp_in_auth'/>
+<use f='exim/src/smtp_in.c' l='3672' u='c' c='smtp_in_auth'/>
+<use f='exim/src/acl.c' l='3501' u='c' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3604' u='c' c='acl_check_condition'/>
+<use f='exim/src/daemon.c' l='708' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='1574' u='c' c='daemon_go'/>
+<use f='exim/src/receive.c' l='4154' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4162' u='c' c='receive_msg'/>

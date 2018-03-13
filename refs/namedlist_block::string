@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='866' type='const uschar *'/>
 <offset>0</offset>
 <doc f='exim/src/structs.h' l='866'>/* the list string */</doc>
+<use f='exim/src/match.c' l='643' u='a' c='match_check_list'/>
+<use f='exim/src/expand.c' l='6628' u='r' c='expand_string_internal'/>

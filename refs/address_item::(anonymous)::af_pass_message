@@ -1,3 +1,13 @@
 <dec f='exim/src/structs.h' l='603' type='BOOL'/>
 <offset>24</offset>
 <doc f='exim/src/structs.h' l='603'>/* pass message in bounces */</doc>
+<use f='exim/src/deliver.c' l='5337' u='r' c='print_address_error'/>
+<use f='exim/src/deliver.c' l='5386' u='r' c='print_dsn_diagnostic_code'/>
+<use f='exim/src/deliver.c' l='6171' u='w' c='deliver_message'/>
+<use f='exim/src/verify.c' l='1498' u='w' c='copy_error'/>
+<use f='exim/src/verify.c' l='1498' u='r' c='copy_error'/>
+<use f='exim/src/routers/rf_self_action.c' l='134' u='w' c='rf_self_action'/>
+<use f='exim/src/routers/dnslookup.c' l='377' u='w' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/queryprogram.c' l='463' u='w' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='779' u='w' c='redirect_router_entry'/>
+<use f='exim/src/acl.c' l='2053' u='r' c='acl_verify'/>

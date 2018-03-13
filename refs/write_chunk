@@ -1,1 +1,3 @@
 <dec f='exim/src/functions.h' l='547' type='BOOL write_chunk(transport_ctx * , uschar * , int )'/>
+<use f='exim/src/dkim_transport.c' l='175' u='c' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='177' u='c' c='dkt_direct'/>

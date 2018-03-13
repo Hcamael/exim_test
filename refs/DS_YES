@@ -1,1 +1,14 @@
 <dec f='exim/src/structs.h' l='61' type='1'/>
+<use f='exim/src/deliver.c' l='781' u='r' c='d_hostlog'/>
+<use f='exim/src/deliver.c' l='1216' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='3636' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4949' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='2147' u='r' c='verify_address'/>
+<use f='exim/src/smtp_in.c' l='3532' u='r' c='smtp_verify_helo'/>
+<use f='exim/src/host.c' l='1855' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1856' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='2378' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2389' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2627' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2680' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3186' u='r' c='host_find_bydns'/>

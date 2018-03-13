@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='868' type='int'/>
 <offset>128</offset>
 <doc f='exim/src/structs.h' l='868'>/* the number of the list for caching */</doc>
+<use f='exim/src/match.c' l='626' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='634' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='635' u='r' c='match_check_list'/>

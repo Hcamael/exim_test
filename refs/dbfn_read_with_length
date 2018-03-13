@@ -1,1 +1,44 @@
 <dec f='exim/src/dbfunctions.h' l='14' type='void * dbfn_read_with_length(open_db * , const uschar * , int * )'/>
+<use f='exim/src/deliver.c' l='2915' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='6558' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='6564' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='6574' macro='1' u='c'/>
+<use f='exim/src/verify.c' l='71' u='c' c='get_callout_cache_record'/>
+<def f='exim/src/exim_dbutil.c' l='360' ll='383' type='void * dbfn_read_with_length(open_db * dbblock, const uschar * key, int * length)'/>
+<use f='exim/src/exim_dbutil.c' l='802' u='c' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='979' u='c' c='main'/>
+<doc f='exim/src/exim_dbutil.c' l='347'>/* Passing back the pointer unchanged is useless, because there is no guarantee
+of alignment. Since all the records used by Exim need to be properly aligned to
+pick out the timestamps, etc., do the copying centrally here.
+
+Arguments:
+  dbblock   a pointer to an open database block
+  key       the key of the record to be read
+  length    where to put the length (or NULL if length not wanted)
+
+Returns: a pointer to the retrieved record, or
+         NULL if the record is not found
+*/</doc>
+<use f='exim/src/acl.c' l='2421' u='c' c='acl_ratelimit'/>
+<use f='exim/src/retry.c' l='180' macro='1' u='c'/>
+<use f='exim/src/retry.c' l='181' macro='1' u='c'/>
+<use f='exim/src/retry.c' l='665' macro='1' u='c'/>
+<def f='exim/src/dbfn.c' l='293' ll='318' type='void * dbfn_read_with_length(open_db * dbblock, const uschar * key, int * length)'/>
+<doc f='exim/src/dbfn.c' l='276'>/* Passing back the pointer unchanged is useless, because there is
+no guarantee of alignment. Since all the records used by Exim need
+to be properly aligned to pick out the timestamps, etc., we might as
+well do the copying centrally here.
+
+Most calls don&apos;t need the length, so there is a macro called dbfn_read which
+has two arguments; it calls this function adding NULL as the third.
+
+Arguments:
+  dbblock   a pointer to an open database block
+  key       the key of the record to be read
+  length    a pointer to an int into which to return the length, if not NULL
+
+Returns: a pointer to the retrieved record, or
+         NULL if the record is not found
+*/</doc>
+<use f='exim/src/enq.c' l='56' macro='1' u='c'/>
+<use f='exim/src/enq.c' l='105' macro='1' u='c'/>

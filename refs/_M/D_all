@@ -1,2 +1,4 @@
 <dec f='exim/src/macros.h' l='411'/>
 <doc f='exim/src/macros.h' l='409'>/* Multi-bit debug masks */</doc>
+<use f='exim/src/tls-openssl.c' l='2911' u='c'/>
+<use f='exim/src/smtp_in.c' l='4079' u='c'/>

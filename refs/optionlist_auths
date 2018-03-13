@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='631' type='optionlist []'/>
 <doc f='exim/src/globals.h' l='631'>/* These option lists are made */</doc>
+<def f='exim/src/globals.c' l='17' ll='36' type='optionlist [9]'/>
+<use f='exim/src/globals.c' l='38' u='r'/>
+<use f='exim/src/globals.c' l='38' u='r'/>
+<doc f='exim/src/globals.c' l='14'>/* Generic options for auths, all of which live inside auth_instance
+data blocks and hence have the opt_public flag set. */</doc>
+<use f='exim/src/readconf.c' l='396' u='r' c='options_auths'/>

@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='478' type='int'/>
 <doc f='exim/src/globals.h' l='478'>/* Retry count for getpwnam() */</doc>
+<def f='exim/src/globals.c' l='754' type='int'/>
+<use f='exim/src/exim.c' l='4755' u='r' c='main'/>
+<use f='exim/src/readconf.c' l='150' u='a'/>
+<use f='exim/src/readconf.c' l='150' u='a'/>
+<use f='exim/src/readconf.c' l='150' u='a'/>
+<use f='exim/src/readconf.c' l='150' u='a'/>

@@ -1,1 +1,9 @@
 <dec f='exim/src/functions.h' l='442' type='int spool_open_temp(uschar * )'/>
+<def f='exim/src/spool_out.c' l='71' ll='103' type='int spool_open_temp(uschar * temp_name)'/>
+<use f='exim/src/spool_out.c' l='142' u='c' c='spool_write_header'/>
+<doc f='exim/src/spool_out.c' l='64'>/* This is used for opening spool files under a temporary name,
+with a single attempt at deleting if they already exist.
+
+Argument: temporary name for spool header file
+Returns:  file descriptor of open file, or &lt; 0 on failure, with errno unchanged
+*/</doc>

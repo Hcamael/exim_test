@@ -1,1 +1,5 @@
 <dec f='exim/src/macros.h' l='1026'/>
+<use f='exim/src/expand.c' l='7516' u='c'/>
+<use f='exim/src/expand.c' l='7519' u='c'/>
+<use f='exim/src/expand.c' l='7548' u='c'/>
+<use f='exim/src/expand.c' l='7551' u='c'/>

@@ -1,1 +1,2 @@
 <dec f='exim/src/functions.h' l='519' type='void tree_write(tree_node * , FILE * )'/>
+<use f='exim/src/spool_out.c' l='275' u='c' c='spool_write_header'/>

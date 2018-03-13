@@ -1,2 +1,18 @@
 <dec f='exim/src/macros.h' l='630' type='0'/>
 <doc f='exim/src/macros.h' l='630'>/* Success, took significant action */</doc>
+<use f='exim/src/deliver.c' l='5973' u='r' c='deliver_message'/>
+<use f='exim/src/parse.c' l='1283' u='r' c='parse_forward_list'/>
+<use f='exim/src/parse.c' l='1564' u='r' c='parse_forward_list'/>
+<use f='exim/src/filter.c' l='2077' u='r' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2082' u='r' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2092' u='r' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2355' u='r' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2568' c='filter_interpret'/>
+<use f='exim/src/rda.c' l='714' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='865' u='r' c='rda_interpret'/>
+<use f='exim/src/routers/queryprogram.c' l='427' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='745' u='r' c='redirect_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='887' u='r' c='redirect_router_entry'/>
+<use f='exim/src/sieve.c' l='3651' u='r' c='sieve_interpret'/>
+<use f='exim/src/sieve.c' l='3656' u='r' c='sieve_interpret'/>
+<use f='exim/src/sieve.c' l='3667' u='r' c='sieve_interpret'/>

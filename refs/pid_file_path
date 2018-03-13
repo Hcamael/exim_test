@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='649' type='uschar *'/>
 <doc f='exim/src/globals.h' l='649'>/* For writing daemon pids */</doc>
+<def f='exim/src/globals.c' l='1029' ll='1030' type='uschar *'/>
+<use f='exim/src/exim.c' l='3927' u='r' c='main'/>
+<use f='exim/src/daemon.c' l='1538' u='w' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1540' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1541' u='w' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1543' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1547' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1552' u='r' c='daemon_go'/>
+<use f='exim/src/readconf.c' l='235' u='a'/>
+<use f='exim/src/readconf.c' l='235' u='a'/>
+<use f='exim/src/readconf.c' l='235' u='a'/>
+<use f='exim/src/readconf.c' l='235' u='a'/>

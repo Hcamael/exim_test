@@ -1,3 +1,15 @@
 <dec f='exim/src/structs.h' l='828' type='uschar *'/>
 <offset>128</offset>
 <doc f='exim/src/structs.h' l='828'>/* current position in the buffer */</doc>
+<use f='exim/src/verify.c' l='1070' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='1199' u='w' c='cutthrough_send'/>
+<use f='exim/src/verify.c' l='1214' u='r' c='_cutthrough_puts'/>
+<use f='exim/src/verify.c' l='1218' u='w' c='_cutthrough_puts'/>
+<use f='exim/src/verify.c' l='1244' u='r' c='_cutthrough_flush_send'/>
+<use f='exim/src/verify.c' l='1381' u='w' c='close_cutthrough_connection'/>
+<use f='exim/src/verify.c' l='1398' u='w' c='close_cutthrough_connection'/>
+<use f='exim/src/smtp_out.c' l='407' u='r' c='flush_buffer'/>
+<use f='exim/src/smtp_out.c' l='432' u='w' c='flush_buffer'/>
+<use f='exim/src/smtp_out.c' l='479' u='r' c='smtp_write_command'/>
+<use f='exim/src/smtp_out.c' l='485' u='r' c='smtp_write_command'/>
+<use f='exim/src/smtp_out.c' l='486' u='w' c='smtp_write_command'/>

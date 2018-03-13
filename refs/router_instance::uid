@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='328' type='uid_t'/>
 <offset>2848</offset>
 <doc f='exim/src/structs.h' l='328'>/* Fixed uid value */</doc>
+<use f='exim/src/globals.c' l='1235' u='w'/>
+<use f='exim/src/routers/rf_get_ugid.c' l='34' u='r' c='rf_get_ugid'/>

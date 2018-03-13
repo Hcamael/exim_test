@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='694' type='BOOL'/>
 <doc f='exim/src/globals.h' l='694'>/* Latch queue_only_load TRUE */</doc>
+<def f='exim/src/globals.c' l='1066' type='BOOL'/>
+<use f='exim/src/exim.c' l='5670' u='r' c='main'/>
+<use f='exim/src/daemon.c' l='609' u='r' c='handle_smtp_call'/>
+<use f='exim/src/readconf.c' l='252' u='a'/>
+<use f='exim/src/readconf.c' l='252' u='a'/>
+<use f='exim/src/readconf.c' l='252' u='a'/>
+<use f='exim/src/readconf.c' l='252' u='a'/>

@@ -1,3 +1,16 @@
 <dec f='exim/src/structs.h' l='346' type='int *'/>
 <offset>128</offset>
 <doc f='exim/src/structs.h' l='346'>/* -&gt; Number of entries in table */</doc>
+<use f='exim/src/drtables.c' l='255' u='w'/>
+<use f='exim/src/drtables.c' l='268' u='w'/>
+<use f='exim/src/drtables.c' l='281' u='w'/>
+<use f='exim/src/drtables.c' l='307' u='w'/>
+<use f='exim/src/drtables.c' l='320' u='w'/>
+<use f='exim/src/drtables.c' l='333' u='w'/>
+<use f='exim/src/drtables.c' l='255' u='w'/>
+<use f='exim/src/drtables.c' l='268' u='w'/>
+<use f='exim/src/drtables.c' l='281' u='w'/>
+<use f='exim/src/drtables.c' l='307' u='w'/>
+<use f='exim/src/drtables.c' l='320' u='w'/>
+<use f='exim/src/drtables.c' l='333' u='w'/>
+<use f='exim/src/route.c' l='162' u='r' c='options_routers'/>

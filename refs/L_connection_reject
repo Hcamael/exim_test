@@ -1,1 +1,8 @@
 <dec f='exim/src/macros.h' l='442' macro='1' type='4'/>
+<use f='exim/src/smtp_in.c' l='2689' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2746' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2769' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='3311' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/daemon.c' l='223' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='242' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='313' u='r' c='handle_smtp_call'/>

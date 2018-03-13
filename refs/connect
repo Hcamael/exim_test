@@ -6,3 +6,6 @@
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */</doc>
+<use f='exim/src/ip.c' l='298' u='c' c='ip_connect'/>
+<use f='exim/src/ip.c' l='478' u='c' c='ip_unixsocket'/>
+<use f='exim/src/expand.c' l='4850' u='c' c='expand_string_internal'/>

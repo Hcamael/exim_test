@@ -1,2 +1,15 @@
 <dec f='exim/src/globals.h' l='647' type='BOOL'/>
 <doc f='exim/src/globals.h' l='647'>/* In the middle of a group */</doc>
+<use f='exim/src/verify.c' l='2283' u='w' c='verify_check_headers'/>
+<use f='exim/src/verify.c' l='2401' u='w' c='verify_check_notblind'/>
+<use f='exim/src/verify.c' l='2621' u='w' c='verify_check_header_address'/>
+<def f='exim/src/globals.c' l='1027' type='BOOL'/>
+<use f='exim/src/parse.c' l='673' u='w' c='parse_extract_address'/>
+<use f='exim/src/parse.c' l='793' u='r' c='parse_extract_address'/>
+<use f='exim/src/parse.c' l='795' u='w' c='parse_extract_address'/>
+<use f='exim/src/parse.c' l='827' u='r' c='parse_extract_address'/>
+<use f='exim/src/parse.c' l='829' u='w' c='parse_extract_address'/>
+<use f='exim/src/filter.c' l='1530' u='w' c='test_condition'/>
+<use f='exim/src/rewrite.c' l='677' u='w' c='rewrite_one_header'/>
+<use f='exim/src/receive.c' l='2551' u='w' c='receive_msg'/>
+<use f='exim/src/sieve.c' l='2185' u='w' c='parse_test'/>

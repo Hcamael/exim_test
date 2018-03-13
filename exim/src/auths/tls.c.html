@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>tls.c source code [exim/src/auths/tls.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/auths/tls.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>auths</a>/<a href='tls.c.html'>tls.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) Jeremy Harris 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* This file provides an Exim authenticator driver for</i></td></tr>
+<tr><th id="9">9</th><td><i>a server to verify a client SSL certificate</i></td></tr>
+<tr><th id="10">10</th><td><i>*/</i></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><u>#include <a href="../exim.h.html">"../exim.h"</a></u></td></tr>
+<tr><th id="14">14</th><td><u>#include <a href="tls.h.html">"tls.h"</a></u></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><i>/* Options specific to the tls authentication mechanism. */</i></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a> <dfn class="decl def" id="auth_tls_options" title='auth_tls_options' data-ref="auth_tls_options">auth_tls_options</dfn>[] = {</td></tr>
+<tr><th id="19">19</th><td>  { <q>"server_param"</q>,     <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="20">20</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(auth_tls_options_block, server_param1)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="tls.h.html#auth_tls_options_block" title='auth_tls_options_block' data-type='struct auth_tls_options_block' data-ref="auth_tls_options_block">auth_tls_options_block</a>, server_param1)) },</td></tr>
+<tr><th id="21">21</th><td>  { <q>"server_param1"</q>,    <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="22">22</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(auth_tls_options_block, server_param1)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="tls.h.html#auth_tls_options_block" title='auth_tls_options_block' data-type='struct auth_tls_options_block' data-ref="auth_tls_options_block">auth_tls_options_block</a>, server_param1)) },</td></tr>
+<tr><th id="23">23</th><td>  { <q>"server_param2"</q>,    <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="24">24</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(auth_tls_options_block, server_param2)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="tls.h.html#auth_tls_options_block" title='auth_tls_options_block' data-type='struct auth_tls_options_block' data-ref="auth_tls_options_block">auth_tls_options_block</a>, server_param2)) },</td></tr>
+<tr><th id="25">25</th><td>  { <q>"server_param3"</q>,    <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="26">26</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(auth_tls_options_block, server_param3)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="tls.h.html#auth_tls_options_block" title='auth_tls_options_block' data-type='struct auth_tls_options_block' data-ref="auth_tls_options_block">auth_tls_options_block</a>, server_param3)) },</td></tr>
+<tr><th id="27">27</th><td>};</td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><i>/* Size of the options list. An extern variable has to be used so that its</i></td></tr>
+<tr><th id="30">30</th><td><i>address can appear in the tables drtables.c. */</i></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><em>int</em> <dfn class="decl def" id="auth_tls_options_count" title='auth_tls_options_count' data-ref="auth_tls_options_count">auth_tls_options_count</dfn> = <a class="macro" href="../macros.h.html#16" title="(sizeof(auth_tls_options) / sizeof(*auth_tls_options))" data-ref="_M/nelem">nelem</a>(<a class="ref" href="tls.h.html#auth_tls_options" title='auth_tls_options' data-ref="auth_tls_options">auth_tls_options</a>);</td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><i>/* Default private options block for the authentication method. */</i></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><a class="typedef" href="tls.h.html#auth_tls_options_block" title='auth_tls_options_block' data-type='struct auth_tls_options_block' data-ref="auth_tls_options_block">auth_tls_options_block</a> <dfn class="decl def" id="auth_tls_option_defaults" title='auth_tls_option_defaults' data-ref="auth_tls_option_defaults">auth_tls_option_defaults</dfn> = {</td></tr>
+<tr><th id="37">37</th><td>    <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,	<i>/* server_param1 */</i></td></tr>
+<tr><th id="38">38</th><td>    <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,	<i>/* server_param2 */</i></td></tr>
+<tr><th id="39">39</th><td>    <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,	<i>/* server_param3 */</i></td></tr>
+<tr><th id="40">40</th><td>};</td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><u>#<span data-ppcond="43">ifdef</span> <span class="macro" data-ref="_M/MACRO_PREDEF">MACRO_PREDEF</span></u></td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><i>/* Dummy values */</i></td></tr>
+<tr><th id="46">46</th><td><em>void</em> <dfn class="decl def fn" id="auth_tls_init" title='auth_tls_init' data-ref="auth_tls_init">auth_tls_init</dfn>(<a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *<dfn class="local col1 decl" id="1ablock" title='ablock' data-type='auth_instance *' data-ref="1ablock">ablock</dfn>) {}</td></tr>
+<tr><th id="47">47</th><td><em>int</em> <dfn class="decl def fn" id="auth_tls_server" title='auth_tls_server' data-ref="auth_tls_server">auth_tls_server</dfn>(<a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *<dfn class="local col2 decl" id="2ablock" title='ablock' data-type='auth_instance *' data-ref="2ablock">ablock</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="3data" title='data' data-type='uschar *' data-ref="3data">data</dfn>) {<b>return</b> <var>0</var>;}</td></tr>
+<tr><th id="48">48</th><td><em>int</em> <dfn class="decl def fn" id="auth_tls_client" title='auth_tls_client' data-ref="auth_tls_client">auth_tls_client</dfn>(<a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *<dfn class="local col4 decl" id="4ablock" title='ablock' data-type='auth_instance *' data-ref="4ablock">ablock</dfn>, <a class="typedef" href="../structs.h.html#smtp_inblock" title='smtp_inblock' data-type='struct smtp_inblock' data-ref="smtp_inblock">smtp_inblock</a> *<dfn class="local col5 decl" id="5inblock" title='inblock' data-type='smtp_inblock *' data-ref="5inblock">inblock</dfn>,</td></tr>
+<tr><th id="49">49</th><td>  <a class="typedef" href="../structs.h.html#smtp_outblock" title='smtp_outblock' data-type='struct smtp_outblock' data-ref="smtp_outblock">smtp_outblock</a> *<dfn class="local col6 decl" id="6outblock" title='outblock' data-type='smtp_outblock *' data-ref="6outblock">outblock</dfn>, <em>int</em> <dfn class="local col7 decl" id="7timeout" title='timeout' data-type='int' data-ref="7timeout">timeout</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col8 decl" id="8buffer" title='buffer' data-type='uschar *' data-ref="8buffer">buffer</dfn>, <em>int</em> <dfn class="local col9 decl" id="9buffsize" title='buffsize' data-type='int' data-ref="9buffsize">buffsize</dfn>) {<b>return</b> <var>0</var>;}</td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td><u>#<span data-ppcond="43">else</span>   /*!MACRO_PREDEF*/</u></td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="57">57</th><td><i>*          Initialization entry point            *</i></td></tr>
+<tr><th id="58">58</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td><i>/* Called for each instance, after its options have been read, to</i></td></tr>
+<tr><th id="61">61</th><td><i>enable consistency checks to be done, or anything else that needs</i></td></tr>
+<tr><th id="62">62</th><td><i>to be set up. */</i></td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><em>void</em></td></tr>
+<tr><th id="65">65</th><td>auth_tls_init(auth_instance *ablock)</td></tr>
+<tr><th id="66">66</th><td>{</td></tr>
+<tr><th id="67">67</th><td>ablock-&gt;public_name = ablock-&gt;name;	<i>/* needed for core code */</i></td></tr>
+<tr><th id="68">68</th><td>}</td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="73">73</th><td><i>*             Server entry point                 *</i></td></tr>
+<tr><th id="74">74</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><i>/* For interface, see auths/README */</i></td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><em>int</em></td></tr>
+<tr><th id="79">79</th><td>auth_tls_server(auth_instance *ablock, uschar *data)</td></tr>
+<tr><th id="80">80</th><td>{</td></tr>
+<tr><th id="81">81</th><td>auth_tls_options_block * ob = (auth_tls_options_block *)ablock-&gt;options_block;</td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td><b>if</b> (ob-&gt;server_param1)</td></tr>
+<tr><th id="84">84</th><td>  auth_vars[expand_nmax++] = expand_string(ob-&gt;server_param1);</td></tr>
+<tr><th id="85">85</th><td><b>if</b> (ob-&gt;server_param2)</td></tr>
+<tr><th id="86">86</th><td>  auth_vars[expand_nmax++] = expand_string(ob-&gt;server_param2);</td></tr>
+<tr><th id="87">87</th><td><b>if</b> (ob-&gt;server_param3)</td></tr>
+<tr><th id="88">88</th><td>  auth_vars[expand_nmax++] = expand_string(ob-&gt;server_param3);</td></tr>
+<tr><th id="89">89</th><td><b>return</b> auth_check_serv_cond(ablock);</td></tr>
+<tr><th id="90">90</th><td>}</td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td><u>#<span data-ppcond="43">endif</span>   /*!MACRO_PREDEF*/</u></td></tr>
+<tr><th id="94">94</th><td><i>/* End of tls.c */</i></td></tr>
+<tr><th id="95">95</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

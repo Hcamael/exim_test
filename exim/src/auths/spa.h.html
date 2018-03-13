@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>spa.h source code [exim/src/auths/spa.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/auths/spa.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>auths</a>/<a href='spa.h.html'>spa.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2009 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* This file, which provides support for Microsoft's Secure Password</i></td></tr>
+<tr><th id="9">9</th><td><i>Authentication, was contributed by Marc Prud'hommeaux. */</i></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td><u>#include <a href="auth-spa.h.html">"auth-spa.h"</a></u></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><i>/* Private structure for the private options. */</i></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><b>typedef</b> <b>struct</b> {</td></tr>
+<tr><th id="17">17</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::spa_username" title='(anonymous struct)::spa_username' data-ref="(anonymous)::spa_username">spa_username</dfn>;</td></tr>
+<tr><th id="18">18</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::spa_password" title='(anonymous struct)::spa_password' data-ref="(anonymous)::spa_password">spa_password</dfn>;</td></tr>
+<tr><th id="19">19</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::spa_domain" title='(anonymous struct)::spa_domain' data-ref="(anonymous)::spa_domain">spa_domain</dfn>;</td></tr>
+<tr><th id="20">20</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::spa_serverpassword" title='(anonymous struct)::spa_serverpassword' data-ref="(anonymous)::spa_serverpassword">spa_serverpassword</dfn>;</td></tr>
+<tr><th id="21">21</th><td>} <dfn class="typedef" id="auth_spa_options_block" title='auth_spa_options_block' data-type='struct auth_spa_options_block' data-ref="auth_spa_options_block">auth_spa_options_block</dfn>;</td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><i>/* Data for reading the private options. */</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><b>extern</b> <a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a> <dfn class="decl" id="auth_spa_options" title='auth_spa_options' data-ref="auth_spa_options">auth_spa_options</dfn>[];</td></tr>
+<tr><th id="26">26</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="auth_spa_options_count" title='auth_spa_options_count' data-ref="auth_spa_options_count">auth_spa_options_count</dfn>;</td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><i>/* Block containing default values. */</i></td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><b>extern</b> <a class="typedef" href="#auth_spa_options_block" title='auth_spa_options_block' data-type='struct auth_spa_options_block' data-ref="auth_spa_options_block">auth_spa_options_block</a> <dfn class="decl" id="auth_spa_option_defaults" title='auth_spa_option_defaults' data-ref="auth_spa_option_defaults">auth_spa_option_defaults</dfn>;</td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><i>/* The entry points for the mechanism */</i></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><b>extern</b> <em>void</em> <a class="decl fn" href="spa.c.html#auth_spa_init" title='auth_spa_init' data-ref="auth_spa_init" id="auth_spa_init">auth_spa_init</a>(<a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *);</td></tr>
+<tr><th id="35">35</th><td><b>extern</b> <em>int</em> <a class="decl fn" href="spa.c.html#auth_spa_server" title='auth_spa_server' data-ref="auth_spa_server" id="auth_spa_server">auth_spa_server</a>(<a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="36">36</th><td><b>extern</b> <em>int</em> <a class="decl fn" href="spa.c.html#auth_spa_client" title='auth_spa_client' data-ref="auth_spa_client" id="auth_spa_client">auth_spa_client</a>(<a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *, <a class="typedef" href="../structs.h.html#smtp_inblock" title='smtp_inblock' data-type='struct smtp_inblock' data-ref="smtp_inblock">smtp_inblock</a> *,</td></tr>
+<tr><th id="37">37</th><td>                                 <a class="typedef" href="../structs.h.html#smtp_outblock" title='smtp_outblock' data-type='struct smtp_outblock' data-ref="smtp_outblock">smtp_outblock</a> *, <em>int</em>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em>);</td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><i>/* End of spa.h */</i></td></tr>
+<tr><th id="40">40</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='spa.c.html'>exim/src/auths/spa.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

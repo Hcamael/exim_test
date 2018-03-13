@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='422' type='int'/>
 <doc f='exim/src/globals.h' l='422'>/* When constructing DNS query, set DO flag */</doc>
+<def f='exim/src/globals.c' l='697' type='int'/>
+<doc f='exim/src/globals.c' l='697'>/* &lt;0 = not coerced */</doc>
+<use f='exim/src/readconf.c' l='128' u='a'/>
+<use f='exim/src/readconf.c' l='128' u='a'/>
+<use f='exim/src/readconf.c' l='128' u='a'/>
+<use f='exim/src/readconf.c' l='128' u='a'/>
+<use f='exim/src/dns.c' l='184' u='r' c='dns_init'/>
+<use f='exim/src/dns.c' l='186' u='r' c='dns_init'/>
+<use f='exim/src/dns.c' l='193' u='r' c='dns_init'/>
+<use f='exim/src/dns.c' l='198' u='r' c='dns_init'/>

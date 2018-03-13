@@ -1,0 +1,6 @@
+<dec f='exim/src/transports/autoreply.h' l='43' type='void autoreply_transport_init(transport_instance * )'/>
+<use f='exim/src/drtables.c' l='381'/>
+<use f='exim/src/drtables.c' l='381'/>
+<use f='exim/src/drtables.c' l='381'/>
+<use f='exim/src/drtables.c' l='381'/>
+<def f='exim/src/transports/autoreply.c' l='70' type='void autoreply_transport_init(transport_instance * tblock)'/>

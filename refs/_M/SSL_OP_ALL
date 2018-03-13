@@ -4,3 +4,5 @@
  * This used to be 0x000FFFFFL before 0.9.7.
  * This used to be 0x80000BFFU before 1.1.1.
  */</doc>
+<use f='exim/src/tls-openssl.c' l='2958' u='a'/>
+<use f='exim/src/tls-openssl.c' l='2959' u='c'/>

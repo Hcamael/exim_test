@@ -3,3 +3,13 @@
 <offset>128</offset>
 <doc f='exim/src/dbstuff.h' l='717'>/* Random local part was accepted */</doc>
 <doc f='exim/src/dbstuff.h' l='735'>/* Random result */</doc>
+<use f='exim/src/verify.c' l='111' u='w' c='get_callout_cache_record'/>
+<use f='exim/src/verify.c' l='194' u='r' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='206' u='w' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='329' u='r' c='cache_callout_write'/>
+<use f='exim/src/verify.c' l='521' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='802' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='807' u='w' c='do_callout'/>
+<use f='exim/src/exim_dbutil.c' l='874' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1045' u='r' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1046' u='r' c='main'/>

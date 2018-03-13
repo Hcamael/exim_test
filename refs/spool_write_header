@@ -1,1 +1,28 @@
 <dec f='exim/src/functions.h' l='444' type='int spool_write_header(uschar * , int , uschar ** )'/>
+<use f='exim/src/deliver.c' l='5682' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6988' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7441' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7857' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7877' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8372' u='c' c='deliver_message'/>
+<use f='exim/src/queue.c' l='1162' u='c' c='queue_action'/>
+<use f='exim/src/queue.c' l='1186' u='c' c='queue_action'/>
+<use f='exim/src/queue.c' l='1278' u='c' c='queue_action'/>
+<use f='exim/src/queue.c' l='1380' u='c' c='queue_action'/>
+<use f='exim/src/receive.c' l='3850' u='c' c='receive_msg'/>
+<def f='exim/src/spool_out.c' l='127' ll='392' type='int spool_write_header(uschar * id, int where, uschar ** errmsg)'/>
+<doc f='exim/src/spool_out.c' l='111'>/* Returns the size of the file for success; zero for failure. The file is
+written under a temporary name, and then renamed. It&apos;s done this way so that it
+works with re-writing the file on message deferral as well as for the initial
+write. Whenever this function is called, the data file for the message should
+be open and locked, thus preventing any other exim process from working on this
+message.
+
+Argument:
+  id      the message id
+  where   SW_RECEIVING, SW_DELIVERING, or SW_MODIFYING
+  errmsg  where to put an error message; if NULL, panic-die on error
+
+Returns:  the size of the header texts on success;
+          negative on writing failure, unless errmsg == NULL
+*/</doc>

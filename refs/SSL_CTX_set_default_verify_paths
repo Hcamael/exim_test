@@ -1,1 +1,2 @@
 <dec f='include/openssl/ssl.h' l='1701' type='int SSL_CTX_set_default_verify_paths(SSL_CTX * ctx)'/>
+<use f='exim/src/tls-openssl.c' l='1796' u='c' c='setup_certs'/>

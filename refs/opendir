@@ -4,3 +4,7 @@
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */</doc>
+<use f='exim/src/queue.c' l='212' u='c' c='queue_get_spool_list'/>
+<use f='exim/src/transports/tf_maildir.c' l='261' u='c' c='maildir_compute_size'/>
+<use f='exim/src/dbfn.c' l='198' u='c' c='dbfn_open'/>
+<use f='exim/src/sieve.c' l='3473' u='c' c='parse_start'/>

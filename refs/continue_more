@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='298' type='BOOL'/>
 <doc f='exim/src/globals.h' l='298'>/* Flag more addresses waiting */</doc>
+<use f='exim/src/deliver.c' l='4500' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4575' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4580' u='w' c='do_remote_deliveries'/>
+<def f='exim/src/globals.c' l='542' type='BOOL'/>

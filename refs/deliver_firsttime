@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='352' type='BOOL'/>
 <doc f='exim/src/globals.h' l='352'>/* True for first delivery attempt */</doc>
+<use f='exim/src/deliver.c' l='1358' u='r' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='8312' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8314' u='w' c='deliver_message'/>
+<def f='exim/src/globals.c' l='628' type='BOOL'/>
+<use f='exim/src/filter.c' l='1474' u='r' c='test_condition'/>
+<use f='exim/src/queue.c' l='549' u='r' c='queue_run'/>
+<use f='exim/src/spool_in.c' l='259' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='526' u='w' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='2236' u='r' c='eval_condition'/>
+<use f='exim/src/receive.c' l='3805' u='w' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='217' u='r' c='spool_write_header'/>

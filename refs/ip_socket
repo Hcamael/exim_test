@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='245' type='int ip_socket(int , int )'/>
+<use f='exim/src/verify.c' l='2679' u='c' c='verify_get_ident'/>
+<use f='exim/src/smtp_out.c' l='224' u='c' c='smtp_sock_connect'/>
+<def f='exim/src/ip.c' l='31' ll='39' type='int ip_socket(int type, int af)'/>
+<use f='exim/src/ip.c' l='406' u='c' c='ip_connectedsocket'/>
+<use f='exim/src/ip.c' l='407' u='c' c='ip_connectedsocket'/>
+<doc f='exim/src/ip.c' l='21'>/* Socket creation happens in a number of places so it&apos;s packaged here for
+convenience.
+
+Arguments:
+  type       SOCK_DGRAM or SOCK_STREAM
+  af         AF_INET or AF_INET6
+
+Returns:     socket number or -1 on failure
+*/</doc>
+<use f='exim/src/daemon.c' l='1378' u='c' c='daemon_go'/>

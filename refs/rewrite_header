@@ -1,1 +1,26 @@
 <dec f='exim/src/functions.h' l='367' type='header_line * rewrite_header(header_line * , const uschar * , const uschar * , rewrite_rule * , int , BOOL )'/>
+<use f='exim/src/routers/rf_change_domain.c' l='74' u='c' c='rf_change_domain'/>
+<def f='exim/src/rewrite.c' l='723' ll='756' type='header_line * rewrite_header(header_line * h, const uschar * routed_old, const uschar * routed_new, rewrite_rule * rewrite_rules, int existflags, BOOL replace)'/>
+<doc f='exim/src/rewrite.c' l='700'>/* This function may be passed any old header line. It must detect those which
+contain addresses, then then apply any rewriting rules that apply. If
+routed_old is NULL, only the configured rewriting rules are consulted.
+Otherwise, the rewriting rule is &quot;change routed_old into routed_new&quot;, and it
+applies to all header lines that contain addresses. Then header-specific
+rewriting rules are applied.
+
+The old header line is flagged as &quot;old&quot;. Old headers are saved on the spool for
+debugging but are never sent to any recipients.
+
+Arguments:
+  h              header line to rewrite
+  routed_old     if not NULL, this is a rewrite caused by a router, changing
+                   this domain into routed_new
+  routed_new     new routed domain if routed_old is not NULL
+  rewrite_rules  points to chain of rewrite rules
+  existflags     bits indicating which rewrites exist
+  replace        if TRUE, the new header is inserted into the header chain
+                    after the old one, and the old one is marked replaced
+
+Returns:         NULL if header unchanged; otherwise the rewritten header
+*/</doc>
+<use f='exim/src/receive.c' l='2931' u='c' c='receive_msg'/>

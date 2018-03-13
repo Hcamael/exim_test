@@ -6,3 +6,23 @@
 <use f='include/x86_64-linux-gnu/bits/stdio.h' l='72' macro='1' u='r'/>
 <doc f='include/stdio.h' l='167'>/* Standard streams.  */</doc>
 <doc f='include/stdio.h' l='168'>/* Standard input stream.  */</doc>
+<use f='exim/src/moan.c' l='282' macro='1' u='r'/>
+<use f='exim/src/exim_dbmbuild.c' l='177' macro='1' u='r'/>
+<use f='exim/src/exim_dbutil.c' l='748' macro='1' u='r'/>
+<use f='exim/src/filtertest.c' l='48' macro='1' u='r'/>
+<use f='exim/src/filtertest.c' l='52' macro='1' u='r'/>
+<use f='exim/src/filtertest.c' l='65' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='1223' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='2691' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='4991' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='5089' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='5285' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='5471' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='5510' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='43' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='49' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='55' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='61' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='1943' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='2165' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='2481' macro='1' u='r'/>

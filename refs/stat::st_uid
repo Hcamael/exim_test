@@ -2,3 +2,7 @@
 <offset>224</offset>
 <doc f='include/x86_64-linux-gnu/bits/stat.h' l='64'>/* User ID of the file&apos;s owner.	*/</doc>
 <use f='exim/src/lookups/lf_check_file.c' l='86' u='r' c='lf_check_file'/>
+<use f='exim/src/rda.c' l='250' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/rda.c' l='256' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/expand.c' l='7381' u='r' c='expand_string_internal'/>
+<use f='exim/src/dbfn.c' l='205' u='r' c='dbfn_open'/>

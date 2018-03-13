@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>crypt16.c source code [exim/src/crypt16.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/crypt16.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='crypt16.c.html'>crypt16.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i> * Copyright (c) 2000-2002</i></td></tr>
+<tr><th id="3">3</th><td><i> *   Chris Adams &lt;cmadams@iruntheinter.net&gt;</i></td></tr>
+<tr><th id="4">4</th><td><i> *   written for HiWAAY Internet Services</i></td></tr>
+<tr><th id="5">5</th><td><i> *</i></td></tr>
+<tr><th id="6">6</th><td><i> * This program is free software; you can redistribute it and/or modify</i></td></tr>
+<tr><th id="7">7</th><td><i> * it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="8">8</th><td><i> * the Free Software Foundation; either version 2 of the License, or</i></td></tr>
+<tr><th id="9">9</th><td><i> * (at your option) any later version.</i></td></tr>
+<tr><th id="10">10</th><td><i> *</i></td></tr>
+<tr><th id="11">11</th><td><i> * This program is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="12">12</th><td><i> * but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="13">13</th><td><i> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="14">14</th><td><i> * GNU General Public License for more details.</i></td></tr>
+<tr><th id="15">15</th><td><i> *</i></td></tr>
+<tr><th id="16">16</th><td><i> * You should have received a copy of the GNU General Public License</i></td></tr>
+<tr><th id="17">17</th><td><i> * along with this program; if not, write to the Free Software</i></td></tr>
+<tr><th id="18">18</th><td><i> * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307</i></td></tr>
+<tr><th id="19">19</th><td><i> * USA</i></td></tr>
+<tr><th id="20">20</th><td><i> */</i></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><i>/*</i></td></tr>
+<tr><th id="23">23</th><td><i> * Adapted for Exim by Tamas TEVESZ &lt;ice@extreme.hu&gt;</i></td></tr>
+<tr><th id="24">24</th><td><i> * Further adapted by Philip Hazel to cut out this function for operating</i></td></tr>
+<tr><th id="25">25</th><td><i> *   systems that have a built-in version.</i></td></tr>
+<tr><th id="26">26</th><td><i> */</i></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><i>/* The OS has a built-in crypt16(). Some compilers don't like compiling empty</i></td></tr>
+<tr><th id="29">29</th><td><i>modules, so keep them happy with a dummy when skipping the rest. */</i></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><u>#include <a href="../build-Linux-x86_64/config.h.html">"config.h"</a></u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><u>#<span data-ppcond="33">ifdef</span> <span class="macro" data-ref="_M/HAVE_CRYPT16">HAVE_CRYPT16</span></u></td></tr>
+<tr><th id="34">34</th><td><em>static</em> <em>void</em> dummy(<em>int</em> x) { dummy(x-<var>1</var>); }</td></tr>
+<tr><th id="35">35</th><td><u>#<span data-ppcond="33">else</span></u></td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><i>/* The OS doesn't have a built-in crypt16(). Compile this one. */</i></td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><u>#include <a href="../../include/unistd.h.html">&lt;unistd.h&gt;</a></u></td></tr>
+<tr><th id="40">40</th><td><u>#include <a href="../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="41">41</th><td><u>#include <a href="../build-Linux-x86_64/os.h.html">"os.h"</a></u></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><u>#<span data-ppcond="43">ifdef</span> <a class="macro" href="../build-Linux-x86_64/os.h.html#14" data-ref="_M/CRYPT_H">CRYPT_H</a></u></td></tr>
+<tr><th id="44">44</th><td><u>#include <a href="../../include/crypt.h.html">&lt;crypt.h&gt;</a></u></td></tr>
+<tr><th id="45">45</th><td><u>#<span data-ppcond="43">endif</span></u></td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td><em>char</em> *</td></tr>
+<tr><th id="48">48</th><td><dfn class="decl def fn" id="crypt16" title='crypt16' data-ref="crypt16">crypt16</dfn>(<em>char</em> *<dfn class="local col6 decl" id="6key" title='key' data-type='char *' data-ref="6key">key</dfn>, <em>char</em> *<dfn class="local col7 decl" id="7salt" title='salt' data-type='char *' data-ref="7salt">salt</dfn>)</td></tr>
+<tr><th id="49">49</th><td>{</td></tr>
+<tr><th id="50">50</th><td><em>static</em> <em>char</em> <dfn class="local col8 decl" id="8res" title='res' data-type='char [25]' data-ref="8res">res</dfn>[<var>25</var>];	<i>/* Not threadsafe; like crypt() */</i></td></tr>
+<tr><th id="51">51</th><td><em>static</em> <em>char</em> <dfn class="local col9 decl" id="9s2" title='s2' data-type='char [3]' data-ref="9s2">s2</dfn>[<var>3</var>];</td></tr>
+<tr><th id="52">52</th><td><em>char</em> *<dfn class="local col0 decl" id="10p" title='p' data-type='char *' data-ref="10p">p</dfn>;</td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><i>/* Clear the string of any previous data */</i></td></tr>
+<tr><th id="55">55</th><td><a class="ref fn" href="../../include/string.h.html#memset" title='memset' data-ref="memset">memset</a> (<a class="local col8 ref" href="#8res" title='res' data-ref="8res">res</a>, <var>0</var>, <b>sizeof</b> (<a class="local col8 ref" href="#8res" title='res' data-ref="8res">res</a>));</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><i>/* crypt the first part */</i></td></tr>
+<tr><th id="58">58</th><td><b>if</b> (!(<a class="local col0 ref" href="#10p" title='p' data-ref="10p">p</a> = <a class="ref fn" href="../../include/crypt.h.html#crypt" title='crypt' data-ref="crypt">crypt</a> (<a class="local col6 ref" href="#6key" title='key' data-ref="6key">key</a>, <a class="local col7 ref" href="#7salt" title='salt' data-ref="7salt">salt</a>))) <b>return</b> <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="59">59</th><td><a class="macro" href="../../include/x86_64-linux-gnu/bits/string2.h.html#760" title="__builtin_strncpy (res, p, 13)" data-ref="_M/strncpy">strncpy</a> (<a class="local col8 ref" href="#8res" title='res' data-ref="8res">res</a>, <a class="local col0 ref" href="#10p" title='p' data-ref="10p">p</a>, <var>13</var>);</td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><b>if</b> (<a class="ref fn" href="../../include/string.h.html#strlen" title='strlen' data-ref="strlen">strlen</a> (<a class="local col6 ref" href="#6key" title='key' data-ref="6key">key</a>) &gt; <var>8</var>)</td></tr>
+<tr><th id="62">62</th><td>  {</td></tr>
+<tr><th id="63">63</th><td>  <i>/* crypt the rest</i></td></tr>
+<tr><th id="64">64</th><td><i>   * the first two characters of the first block (not counting</i></td></tr>
+<tr><th id="65">65</th><td><i>   * the salt) make up the new salt */</i></td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td>  <a class="macro" href="../../include/x86_64-linux-gnu/bits/string2.h.html#760" title="__builtin_strncpy (s2, res+2, 2)" data-ref="_M/strncpy">strncpy</a> (<a class="local col9 ref" href="#9s2" title='s2' data-ref="9s2">s2</a>, <a class="local col8 ref" href="#8res" title='res' data-ref="8res">res</a>+<var>2</var>, <var>2</var>);</td></tr>
+<tr><th id="68">68</th><td>  <a class="local col0 ref" href="#10p" title='p' data-ref="10p">p</a> = <a class="ref fn" href="../../include/crypt.h.html#crypt" title='crypt' data-ref="crypt">crypt</a> (<a class="local col6 ref" href="#6key" title='key' data-ref="6key">key</a>+<var>8</var>, <a class="local col9 ref" href="#9s2" title='s2' data-ref="9s2">s2</a>);</td></tr>
+<tr><th id="69">69</th><td>  <a class="macro" href="../../include/x86_64-linux-gnu/bits/string2.h.html#760" title="__builtin_strncpy (res+13, p+2, 11)" data-ref="_M/strncpy">strncpy</a> (<a class="local col8 ref" href="#8res" title='res' data-ref="8res">res</a>+<var>13</var>, <a class="local col0 ref" href="#10p" title='p' data-ref="10p">p</a>+<var>2</var>, <var>11</var>);</td></tr>
+<tr><th id="70">70</th><td>  <a class="ref fn" href="../../include/string.h.html#memset" title='memset' data-ref="memset">memset</a> (<a class="local col9 ref" href="#9s2" title='s2' data-ref="9s2">s2</a>, <var>0</var>, <b>sizeof</b>(<a class="local col9 ref" href="#9s2" title='s2' data-ref="9s2">s2</a>));</td></tr>
+<tr><th id="71">71</th><td>  }</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><b>return</b> (<a class="local col8 ref" href="#8res" title='res' data-ref="8res">res</a>);</td></tr>
+<tr><th id="74">74</th><td>}</td></tr>
+<tr><th id="75">75</th><td><u>#<span data-ppcond="33">endif</span></u></td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td><i>/* End of crypt16.c */</i></td></tr>
+<tr><th id="78">78</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,1 +1,2 @@
 <dec f='exim/src/dkim.h' l='27'/>
+<use f='exim/src/expand.c' l='507' u='c'/>

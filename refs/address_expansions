@@ -2,3 +2,11 @@
 <doc f='exim/src/globals.h' l='151'>/* For clearing, saving, restoring address expansion variables. We have to have
 the size of this vector set explicitly, because it is referenced from more than
 one module. */</doc>
+<use f='exim/src/deliver.c' l='177' u='r' c='deliver_set_expansions'/>
+<def f='exim/src/globals.c' l='203' ll='221' type='const uschar **[18]'/>
+<use f='exim/src/globals.c' l='223' u='r'/>
+<doc f='exim/src/globals.c' l='199'>/* List of per-address expansion variables for clearing and saving/restoring
+when verifying one address while routing/verifying another. We have to have
+the size explicit, because it is referenced from more than one module. */</doc>
+<use f='exim/src/routers/rf_get_errors_address.c' l='97' u='r' c='rf_get_errors_address'/>
+<use f='exim/src/routers/rf_get_errors_address.c' l='122' u='r' c='rf_get_errors_address'/>

@@ -1,1 +1,13 @@
 <dec f='exim/src/functions.h' l='255' type='int log_create_as_exim(uschar * )'/>
+<use f='exim/src/exim.c' l='225' u='c' c='usr1_handler'/>
+<def f='exim/src/log.c' l='303' ll='341' type='int log_create_as_exim(uschar * name)'/>
+<use f='exim/src/log.c' l='486' u='c' c='open_log'/>
+<doc f='exim/src/log.c' l='293'>/* This function is called when we are root to spawn an exim:exim subprocess
+in which we can create a log file. It must be signal-safe since it is called
+by the usr1_handler().
+
+Arguments:
+  name         the file name
+
+Returns:       a file descriptor, or &lt; 0 on failure (errno set)
+*/</doc>

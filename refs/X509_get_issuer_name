@@ -1,1 +1,2 @@
 <dec f='include/openssl/x509.h' l='621' type='X509_NAME * X509_get_issuer_name(const X509 * a)'/>
+<use f='exim/src/tlscert-openssl.c' l='208' u='c' c='tls_cert_issuer'/>

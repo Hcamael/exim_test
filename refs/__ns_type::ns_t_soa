@@ -1,2 +1,9 @@
 <dec f='include/arpa/nameser.h' l='259' type='6'/>
 <doc f='include/arpa/nameser.h' l='259'>/*%&lt; Start of authority zone. */</doc>
+<use f='exim/src/lookups/dnsdb.c' l='64' macro='1'/>
+<use f='exim/src/lookups/dnsdb.c' l='64' macro='1'/>
+<use f='exim/src/lookups/dnsdb.c' l='521' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='476' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='584' macro='1' c='dns_text_type'/>
+<use f='exim/src/dns.c' l='1003' macro='1' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1102' macro='1' u='r'/>

@@ -1,3 +1,29 @@
 <dec f='exim/src/structs.h' l='630' type='short'/>
 <offset>2928</offset>
 <doc f='exim/src/structs.h' l='630'>/* ( used when when deferred or failed */</doc>
+<use f='exim/src/deliver.c' l='433' u='w' c='replicate_status'/>
+<use f='exim/src/deliver.c' l='433' u='r' c='replicate_status'/>
+<use f='exim/src/deliver.c' l='1660' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1697' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1701' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='2419' u='a' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2487' u='a' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2595' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2606' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2635' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='3611' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3723' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3803' u='r' c='remote_post_process'/>
+<use f='exim/src/deliver.c' l='4055' u='w' c='par_wait'/>
+<use f='exim/src/deliver.c' l='4924' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='2532' u='r' c='verify_check_header_address'/>
+<use f='exim/src/verify.c' l='2534' u='r' c='verify_check_header_address'/>
+<use f='exim/src/globals.c' l='390' u='w'/>
+<use f='exim/src/smtp_in.c' l='3233' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/routers/rf_self_action.c' l='93' u='w' c='rf_self_action'/>
+<use f='exim/src/routers/queryprogram.c' l='466' u='w' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='205' u='w' c='rf_lookup_hostlist'/>
+<use f='exim/src/routers/redirect.c' l='794' u='w' c='redirect_router_entry'/>
+<use f='exim/src/acl.c' l='1942' u='r' c='acl_verify'/>
+<use f='exim/src/acl.c' l='2014' u='w' c='acl_verify'/>
+<use f='exim/src/transports/tf_maildir.c' l='125' u='w' c='maildir_ensure_directories'/>

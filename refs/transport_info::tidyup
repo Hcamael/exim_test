@@ -1,3 +1,11 @@
 <dec f='exim/src/structs.h' l='216' type='void (*)(struct transport_instance *)'/>
 <offset>448</offset>
 <doc f='exim/src/structs.h' l='216'>/* Tidyup function */</doc>
+<use f='exim/src/drtables.c' l='369' u='w'/>
+<use f='exim/src/drtables.c' l='383' u='w'/>
+<use f='exim/src/drtables.c' l='411' u='w'/>
+<use f='exim/src/drtables.c' l='439' u='w'/>
+<use f='exim/src/drtables.c' l='369' u='w'/>
+<use f='exim/src/drtables.c' l='383' u='w'/>
+<use f='exim/src/drtables.c' l='411' u='w'/>
+<use f='exim/src/drtables.c' l='439' u='w'/>

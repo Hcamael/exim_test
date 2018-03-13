@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='509' type='uschar *'/>
 <doc f='exim/src/globals.h' l='509'>/* Order of host lookup types */</doc>
+<def f='exim/src/globals.c' l='807' type='uschar *'/>
+<use f='exim/src/readconf.c' l='168' u='a'/>
+<use f='exim/src/readconf.c' l='168' u='a'/>
+<use f='exim/src/readconf.c' l='168' u='a'/>
+<use f='exim/src/readconf.c' l='168' u='a'/>
+<use f='exim/src/host.c' l='1663' u='r' c='host_name_lookup'/>

@@ -1,2 +1,24 @@
 <dec f='exim/src/structs.h' l='652' type='const uschar *'/>
 <offset>64</offset>
+<use f='exim/src/moan.c' l='102' u='r' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='103' u='r' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='104' u='r' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='121' u='r' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='158' u='r' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='197' u='r' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='198' u='r' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='409' u='r' c='moan_to_sender'/>
+<use f='exim/src/moan.c' l='442' u='r' c='moan_to_sender'/>
+<use f='exim/src/moan.c' l='446' u='r' c='moan_to_sender'/>
+<use f='exim/src/moan.c' l='705' u='r' c='moan_skipped_syntax_errors'/>
+<use f='exim/src/moan.c' l='708' u='r' c='moan_skipped_syntax_errors'/>
+<use f='exim/src/moan.c' l='756' u='r' c='moan_skipped_syntax_errors'/>
+<use f='exim/src/parse.c' l='1673' u='w' c='parse_forward_list'/>
+<use f='exim/src/exim.c' l='5507' u='w' c='main'/>
+<use f='exim/src/rda.c' l='663' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='818' u='w' c='rda_interpret'/>
+<use f='exim/src/routers/redirect.c' l='820' u='w' c='redirect_router_entry'/>
+<use f='exim/src/receive.c' l='1139' u='w' c='give_local_error'/>
+<use f='exim/src/receive.c' l='2524' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3238' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3276' u='r' c='receive_msg'/>

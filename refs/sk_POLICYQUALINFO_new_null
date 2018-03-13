@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='245' macro='1' type='struct stack_st_POLICYQUALINFO * sk_POLICYQUALINFO_new_null()'/>

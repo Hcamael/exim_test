@@ -1,1 +1,2 @@
 <dec f='exim/src/dkim.h' l='15' type='uschar * dkim_exim_expand_query(int )'/>
+<use f='exim/src/expand.c' l='1937' u='c' c='find_variable'/>

@@ -1,0 +1,6 @@
+<dec f='exim/src/smtp_in.c' l='251' type='1'/>
+<use f='exim/src/smtp_in.c' l='267'/>
+<use f='exim/src/smtp_in.c' l='267'/>
+<use f='exim/src/smtp_in.c' l='267'/>
+<use f='exim/src/smtp_in.c' l='267'/>
+<use f='exim/src/smtp_in.c' l='4452' c='smtp_setup_msg'/>

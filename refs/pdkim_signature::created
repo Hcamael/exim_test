@@ -1,0 +1,7 @@
+<dec f='exim/src/pdkim/pdkim.h' l='169' type='unsigned long'/>
+<use f='exim/src/pdkim/pdkim.c' l='578' u='w' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1262' u='r' c='pdkim_create_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1266' u='r' c='pdkim_create_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1862' u='w' c='pdkim_set_optional'/>
+<offset>448</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='168'>/* (t=) Timestamp of signature creation */</doc>

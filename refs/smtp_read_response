@@ -1,1 +1,32 @@
 <dec f='exim/src/functions.h' l='423' type='BOOL smtp_read_response(smtp_inblock * , uschar * , int , int , int )'/>
+<use f='exim/src/verify.c' l='816' u='c' c='do_callout'/>
+<use f='exim/src/verify.c' l='913' u='c' c='do_callout'/>
+<use f='exim/src/verify.c' l='939' u='c' c='do_callout'/>
+<use f='exim/src/verify.c' l='1084' u='c' c='do_callout'/>
+<use f='exim/src/verify.c' l='1291' u='c' c='cutthrough_response'/>
+<def f='exim/src/smtp_out.c' l='635' ll='695' type='BOOL smtp_read_response(smtp_inblock * inblock, uschar * buffer, int size, int okdigit, int timeout)'/>
+<doc f='exim/src/smtp_out.c' l='618'>/* This function reads an SMTP response with a timeout, and returns the
+response in the given buffer, as a string. A multiline response will contain
+newline characters between the lines. The function also analyzes the first
+digit of the reply code and returns FALSE if it is not acceptable. FALSE is
+also returned after a reading error. In this case buffer[0] will be zero, and
+the error code will be in errno.
+
+Arguments:
+  inblock   the SMTP input block (contains holding buffer, socket, etc.)
+  buffer    where to put the response
+  size      the size of the buffer
+  okdigit   the expected first digit of the response
+  timeout   the timeout to use, in seconds
+
+Returns:    TRUE if a valid, non-error response was received; else FALSE
+*/</doc>
+<use f='exim/src/auths/spa.c' l='327' u='c' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='343' u='c' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='363' u='c' c='auth_spa_client'/>
+<use f='exim/src/auths/plaintext.c' l='205' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='255' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='269' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='291' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/auths/cram_md5.c' l='299' u='c' c='auth_cram_md5_client'/>
+<use f='exim/src/auths/cram_md5.c' l='330' u='c' c='auth_cram_md5_client'/>

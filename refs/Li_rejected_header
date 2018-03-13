@@ -1,1 +1,17 @@
 <dec f='exim/src/macros.h' l='478' type='53'/>
+<use f='exim/src/globals.c' l='868'/>
+<use f='exim/src/globals.c' l='868'/>
+<use f='exim/src/globals.c' l='921' macro='1'/>
+<use f='exim/src/globals.c' l='921' macro='1'/>
+<use f='exim/src/globals.c' l='922'/>
+<use f='exim/src/globals.c' l='922'/>
+<use f='exim/src/globals.c' l='921' macro='1'/>
+<use f='exim/src/globals.c' l='921' macro='1'/>
+<use f='exim/src/globals.c' l='922'/>
+<use f='exim/src/globals.c' l='922'/>
+<use f='exim/src/log.c' l='1035' macro='1' u='r'/>
+<use f='exim/src/log.c' l='1035' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='3744' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3744' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3753' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3753' u='r' c='receive_msg'/>

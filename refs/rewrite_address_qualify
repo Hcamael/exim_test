@@ -1,1 +1,22 @@
 <dec f='exim/src/functions.h' l='366' type='uschar * rewrite_address_qualify(uschar * , BOOL )'/>
+<use f='exim/src/verify.c' l='1645' u='c' c='verify_address'/>
+<use f='exim/src/parse.c' l='1693' u='c' c='parse_forward_list'/>
+<use f='exim/src/filter.c' l='1761' u='c' c='interpret_commands'/>
+<use f='exim/src/smtp_in.c' l='2168' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2226' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='3695' u='c' c='qualify_recipient'/>
+<use f='exim/src/smtp_in.c' l='4721' u='c' c='smtp_setup_msg'/>
+<def f='exim/src/rewrite.c' l='62' ll='68' type='uschar * rewrite_address_qualify(uschar * s, BOOL is_recipient)'/>
+<use f='exim/src/rewrite.c' l='238' u='c' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='407' u='c' c='rewrite_address'/>
+<use f='exim/src/rewrite.c' l='541' u='c' c='rewrite_one_header'/>
+<doc f='exim/src/rewrite.c' l='54'>/*
+Arguments:
+  s              address to check
+  is_recipient   TRUE if a recipient address; FALSE if a sender address
+
+Returns:         fully-qualified address
+*/</doc>
+<use f='exim/src/receive.c' l='2070' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3716' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3718' u='c' c='receive_msg'/>

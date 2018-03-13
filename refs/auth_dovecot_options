@@ -1,0 +1,5 @@
+<dec f='exim/src/auths/dovecot.h' l='16' type='optionlist []'/>
+<def f='exim/src/auths/dovecot.c' l='53' ll='59' type='optionlist [1]'/>
+<use f='exim/src/auths/dovecot.c' l='65' u='r'/>
+<doc f='exim/src/auths/dovecot.c' l='52'>/* Options specific to the authentication mechanism. */</doc>
+<doc f='exim/src/auths/dovecot.h' l='14'>/* Data for reading the private options. */</doc>

@@ -1,1 +1,5 @@
 <dec f='exim/src/functions.h' l='339' type='BOOL readconf_print(uschar * , uschar * , BOOL )'/>
+<use f='exim/src/exim.c' l='4579' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4589' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4593' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4601' u='c' c='main'/>

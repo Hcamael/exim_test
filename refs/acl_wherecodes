@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='201' type='uschar *[]'/>
 <doc f='exim/src/globals.h' l='201'>/* Response codes for ACL fails */</doc>
+<def f='exim/src/globals.c' l='299' ll='322' type='uschar *[21]'/>
+<doc f='exim/src/globals.c' l='299'>/* RCPT */</doc>
+<use f='exim/src/smtp_in.c' l='3192' u='r' c='smtp_handle_acl_fail'/>

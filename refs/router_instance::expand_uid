@@ -1,3 +1,7 @@
 <dec f='exim/src/structs.h' l='277' type='uschar *'/>
 <offset>832</offset>
 <doc f='exim/src/structs.h' l='277'>/* Expanded uid string */</doc>
+<use f='exim/src/globals.c' l='1184' u='w'/>
+<use f='exim/src/routers/rf_get_ugid.c' l='43' u='r' c='rf_get_ugid'/>
+<use f='exim/src/routers/rf_get_ugid.c' l='45' u='r' c='rf_get_ugid'/>
+<use f='exim/src/routers/redirect.c' l='259' u='r' c='redirect_router_init'/>

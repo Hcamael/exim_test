@@ -1,0 +1,5 @@
+<def f='exim/src/tls-openssl.c' l='103' ll='106'/>
+<size>24</size>
+<doc f='exim/src/tls-openssl.c' l='101'>/* Structure for collecting random data for seeding. */</doc>
+<mbr r='randstuff::tv' o='0' t='struct timeval'/>
+<mbr r='randstuff::p' o='128' t='pid_t'/>

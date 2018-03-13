@@ -1,1 +1,2 @@
 <dec f='include/x86_64-linux-gnu/bits/mathcalls.h' l='100' type='double exp(double __x)'/>
+<use f='exim/src/acl.c' l='2645' u='c' c='acl_ratelimit'/>

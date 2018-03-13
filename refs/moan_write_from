@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='302' type='void moan_write_from(FILE * )'/>
+<use f='exim/src/deliver.c' l='2626' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='7527' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8147' u='c' c='deliver_message'/>
+<def f='exim/src/moan.c' l='28' ll='39' type='void moan_write_from(FILE * f)'/>
+<use f='exim/src/moan.c' l='91' u='c' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='495' u='c' c='moan_tell_someone'/>
+<use f='exim/src/moan.c' l='735' u='c' c='moan_skipped_syntax_errors'/>
+<doc f='exim/src/moan.c' l='19'>/* This function is called to write the From: line in automatically generated
+messages - bounces, warnings, etc. It expands a configuration item in order to
+get the text. If the expansion fails, a panic is logged and the default value
+for the option is used.
+
+Argument:   the FILE to write to
+Returns:    nothing
+*/</doc>

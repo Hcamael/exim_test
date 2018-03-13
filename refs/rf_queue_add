@@ -1,0 +1,22 @@
+<dec f='exim/src/routers/rf_functions.h' l='25' type='BOOL rf_queue_add(address_item * , address_item ** , address_item ** , router_instance * , struct passwd * )'/>
+<use f='exim/src/routers/dnslookup.c' l='480' u='c' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/queryprogram.c' l='554' u='c' c='queryprogram_router_entry'/>
+<def f='exim/src/routers/rf_queue_add.c' l='35' ll='106' type='BOOL rf_queue_add(address_item * addr, address_item ** paddr_local, address_item ** paddr_remote, router_instance * rblock, struct passwd * pw)'/>
+<doc f='exim/src/routers/rf_queue_add.c' l='16'>/* This function is called to put an address onto the local or remote transport
+queue, as appropriate. When the driver is for verifying only, a transport need
+not be set, in which case it doesn&apos;t actually matter which queue the address
+gets put on.
+
+The generic uid/gid options are inspected and put into the address if they are
+set. For a remote transport, if there are fallback hosts, they are added to the
+address.
+
+Arguments:
+  addr          the address, with the transport field set (if not verify only)
+  paddr_local   pointer to the anchor of the local transport chain
+  paddr_remote  pointer to the anchor of the remote transport chain
+  rblock        the router block
+  pw            password entry if check_local_user was set, or NULL
+
+Returns:        FALSE on error; the only case is failing to get a uid/gid
+*/</doc>

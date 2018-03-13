@@ -1,0 +1,3 @@
+<def f='exim/src/auths/auth-spa.c' l='826' ll='843' type='void strupper(char * s)'/>
+<use f='exim/src/auths/auth-spa.c' l='861' u='c' c='spa_smb_encrypt'/>
+<use f='exim/src/auths/auth-spa.c' l='953' u='c' c='nt_lm_owf_gen'/>

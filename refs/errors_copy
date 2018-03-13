@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='443' type='uschar *'/>
 <doc f='exim/src/globals.h' l='443'>/* For taking copies of errors */</doc>
+<def f='exim/src/globals.c' l='714' type='uschar *'/>
+<use f='exim/src/moan.c' l='613' u='r' c='moan_check_errorcopy'/>
+<use f='exim/src/moan.c' l='619' u='r' c='moan_check_errorcopy'/>
+<use f='exim/src/readconf.c' l='140' u='a'/>
+<use f='exim/src/readconf.c' l='140' u='a'/>
+<use f='exim/src/readconf.c' l='140' u='a'/>
+<use f='exim/src/readconf.c' l='140' u='a'/>

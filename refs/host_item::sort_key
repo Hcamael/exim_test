@@ -1,3 +1,26 @@
 <dec f='exim/src/structs.h' l='69' type='int'/>
 <offset>256</offset>
 <doc f='exim/src/structs.h' l='69'>/* MX*1000 plus random &quot;fraction&quot; */</doc>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='85' u='r' c='rf_lookup_hostlist'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='224' u='w' c='rf_lookup_hostlist'/>
+<use f='exim/src/host.c' l='341' u='w' c='host_build_hostlist'/>
+<use f='exim/src/host.c' l='354' u='r' c='host_build_hostlist'/>
+<use f='exim/src/host.c' l='354' u='r' c='host_build_hostlist'/>
+<use f='exim/src/host.c' l='361' u='r' c='host_build_hostlist'/>
+<use f='exim/src/host.c' l='361' u='r' c='host_build_hostlist'/>
+<use f='exim/src/host.c' l='2441' u='w' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2473' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2478' u='w' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2491' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2497' u='w' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2759' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2843' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2867' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2884' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2892' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2909' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2961' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2975' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2977' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2994' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3038' u='w' c='host_find_bydns'/>

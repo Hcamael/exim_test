@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='698' type='BOOL'/>
 <doc f='exim/src/globals.h' l='698'>/* As opposed to random */</doc>
+<def f='exim/src/globals.c' l='1071' type='BOOL'/>
+<use f='exim/src/queue.c' l='458' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='459' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='475' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='708' u='r' c='queue_run'/>
+<use f='exim/src/readconf.c' l='254' u='a'/>
+<use f='exim/src/readconf.c' l='254' u='a'/>
+<use f='exim/src/readconf.c' l='254' u='a'/>
+<use f='exim/src/readconf.c' l='254' u='a'/>

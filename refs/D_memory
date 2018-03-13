@@ -1,1 +1,10 @@
 <dec f='exim/src/macros.h' l='393' macro='1' type='131072'/>
+<use f='exim/src/exim.c' l='2465' macro='1' u='r'/>
+<use f='exim/src/log.c' l='1414' macro='1' u='r'/>
+<use f='exim/src/store.c' l='195' u='r' c='store_get_3'/>
+<use f='exim/src/store.c' l='287' u='r' c='store_extend_3'/>
+<use f='exim/src/store.c' l='412' u='r' c='store_reset_3'/>
+<use f='exim/src/store.c' l='464' u='r' c='store_release_3'/>
+<use f='exim/src/store.c' l='564' u='r' c='store_malloc_3'/>
+<use f='exim/src/store.c' l='569' u='r' c='store_malloc_3'/>
+<use f='exim/src/store.c' l='599' u='r' c='store_free_3'/>

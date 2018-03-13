@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='194' type='BOOL'/>
 <offset>2400</offset>
 <doc f='exim/src/structs.h' l='194'>/* Defaults true for local, false for remote */</doc>
+<use f='exim/src/deliver.c' l='2907' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3142' u='r' c='do_local_deliveries'/>
+<use f='exim/src/globals.c' l='1495' u='w'/>

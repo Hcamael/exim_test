@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='789' type='BOOL'/>
 <doc f='exim/src/globals.h' l='789'>/* Set for -bs and -bS */</doc>
+<def f='exim/src/globals.c' l='1283' type='BOOL'/>
+<use f='exim/src/exim.c' l='5092' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5221' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='371' u='r' c='check_sync'/>
+<use f='exim/src/smtp_in.c' l='385' u='r' c='pipeline_response'/>
+<use f='exim/src/smtp_in.c' l='1572' u='r' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='1621' u='r' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='1698' u='r' c='smtp_get_connection_info'/>
+<use f='exim/src/smtp_in.c' l='2378' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2506' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2653' u='r' c='smtp_start_session'/>
+<use f='exim/src/receive.c' l='4089' u='r' c='receive_msg'/>

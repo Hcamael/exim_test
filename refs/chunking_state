@@ -1,1 +1,26 @@
 <dec f='exim/src/globals.h' l='278' type='chunking_state_t'/>
+<def f='exim/src/globals.c' l='509' type='chunking_state_t'/>
+<use f='exim/src/smtp_in.c' l='580' u='r' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='589' u='w' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='590' u='r' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='639' u='w' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='643' u='r' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='646' u='r' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='694' u='r' c='bdat_flush_data'/>
+<use f='exim/src/smtp_in.c' l='696' u='w' c='bdat_flush_data'/>
+<use f='exim/src/smtp_in.c' l='697' u='r' c='bdat_flush_data'/>
+<use f='exim/src/smtp_in.c' l='3792' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4297' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5071' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5086' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5090' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5134' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5147' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/receive.c' l='1082' u='r' c='receive_swallow_smtp'/>
+<use f='exim/src/receive.c' l='1729' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2180' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2988' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3086' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3945' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4259' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4263' u='w' c='receive_msg'/>

@@ -1,1 +1,14 @@
 <dec f='include/openssl/bio.h' l='534' type='int BIO_free(BIO * a)'/>
+<use f='exim/src/tls-openssl.c' l='655' u='c' c='init_dh'/>
+<use f='exim/src/tls-openssl.c' l='692' u='c' c='init_dh'/>
+<use f='exim/src/tls-openssl.c' l='861' u='c' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='1466' u='c' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1760' u='c' c='chain_from_pem_file'/>
+<use f='exim/src/tlscert-openssl.c' l='55' u='c' c='tls_export_cert'/>
+<use f='exim/src/tlscert-openssl.c' l='79' u='c' c='tls_import_cert'/>
+<use f='exim/src/tlscert-openssl.c' l='115' u='c' c='bio_string_copy'/>
+<use f='exim/src/tlscert-openssl.c' l='177' u='c' c='asn1_time_copy'/>
+<use f='exim/src/tlscert-openssl.c' l='238' u='c' c='tls_cert_serial_number'/>
+<use f='exim/src/tlscert-openssl.c' l='264' u='c' c='tls_cert_signature'/>
+<use f='exim/src/tlscert-openssl.c' l='292' u='c' c='tls_cert_signature_algorithm'/>
+<use f='exim/src/tlscert-openssl.c' l='488' u='c' c='tls_cert_der_b64'/>

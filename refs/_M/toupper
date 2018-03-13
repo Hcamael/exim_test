@@ -1,1 +1,17 @@
 <dec f='include/ctype.h' l='229'/>
+<use f='exim/src/pdkim/pdkim.c' l='365' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='366' u='c'/>
+<use f='exim/src/deliver.c' l='1325' u='c'/>
+<use f='exim/src/string.c' l='802' u='c'/>
+<use f='exim/src/string.c' l='816' u='c'/>
+<use f='exim/src/string.c' l='824' u='c'/>
+<use f='exim/src/string.c' l='1492' u='c'/>
+<use f='exim/src/macro_predef.c' l='50' u='c'/>
+<use f='exim/src/filter.c' l='2060' u='c'/>
+<use f='exim/src/exim.c' l='4713' u='c'/>
+<use f='exim/src/smtp_in.c' l='4281' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='838' u='c'/>
+<use f='exim/src/rewrite.c' l='814' u='c'/>
+<use f='exim/src/expand.c' l='6395' u='c'/>
+<use f='exim/src/expand.c' l='6537' u='c'/>
+<use f='exim/src/rfc2047.c' l='120' u='c'/>

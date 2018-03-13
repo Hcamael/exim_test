@@ -1,1 +1,2 @@
 <dec f='exim/src/exim.h' l='577'/>
+<use f='exim/src/globals.c' l='1029' u='c'/>

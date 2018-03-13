@@ -1,1 +1,23 @@
 <dec f='exim/src/macros.h' l='944' type='12'/>
+<use f='exim/src/smtp_in.c' l='4094' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4097' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/acl.c' l='152' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='152' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='213' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='213' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='285' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='285' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='292' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='292' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='152' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='152' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='213' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='213' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='285' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='285' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='292' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='292' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='394' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='394' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='394' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='394' macro='1' u='r'/>

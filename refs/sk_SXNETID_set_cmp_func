@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='219' macro='1' type='sk_SXNETID_compfunc sk_SXNETID_set_cmp_func(struct stack_st_SXNETID * sk, sk_SXNETID_compfunc compare)'/>

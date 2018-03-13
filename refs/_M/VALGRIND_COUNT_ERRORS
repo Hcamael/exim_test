@@ -1,0 +1,4 @@
+<dec f='exim/src/valgrind.h' l='4563'/>
+<doc f='exim/src/valgrind.h' l='4560'>/* Counts the number of errors that have been recorded by a tool.  Nb:
+   the tool must record the errors with VG_(maybe_record_error)() or
+   VG_(unique_error)() for them to be counted. */</doc>

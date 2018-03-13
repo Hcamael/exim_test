@@ -14,3 +14,4 @@
 <mbr r='statvfs64::f_flag' o='576' t='unsigned long'/>
 <mbr r='statvfs64::f_namemax' o='640' t='unsigned long'/>
 <mbr r='statvfs64::__f_spare' o='704' t='int [6]'/>
+<use f='exim/src/receive.c' l='182' macro='1' u='c'/>

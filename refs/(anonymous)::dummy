@@ -1,2 +1,5 @@
 <dec f='include/openssl/crypto.h' l='67' type='int'/>
 <offset>0</offset>
+<dec f='exim/src/routers/accept.h' l='11' type='uschar *'/>
+<dec f='exim/src/routers/ipliteral.h' l='14' type='int'/>
+<offset>0</offset>

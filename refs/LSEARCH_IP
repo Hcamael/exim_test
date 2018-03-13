@@ -1,0 +1,4 @@
+<dec f='exim/src/lookups/lsearch.c' l='17' type='3'/>
+<use f='exim/src/lookups/lsearch.c' l='211' c='internal_lsearch_find'/>
+<use f='exim/src/lookups/lsearch.c' l='381' u='r' c='iplsearch_find'/>
+<doc f='exim/src/lookups/lsearch.c' l='17'>/* IP addresses and networks */</doc>

@@ -1,1 +1,6 @@
 <dec f='exim/src/exim.h' l='118'/>
+<use f='exim/src/expand.c' l='3646' u='c'/>
+<use f='exim/src/expand.c' l='3650' u='c'/>
+<use f='exim/src/expand.c' l='7710' u='c'/>
+<use f='exim/src/expand.c' l='7715' u='c'/>
+<use f='exim/src/expand.c' l='7720' u='c'/>

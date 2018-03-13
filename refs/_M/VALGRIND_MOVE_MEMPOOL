@@ -1,0 +1,2 @@
+<dec f='exim/src/valgrind.h' l='4717'/>
+<doc f='exim/src/valgrind.h' l='4716'>/* Resize and/or move a piece associated with a memory pool. */</doc>

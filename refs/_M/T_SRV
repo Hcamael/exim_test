@@ -1,2 +1,14 @@
 <dec f='include/arpa/nameser_compat.h' l='162'/>
 <use f='exim/src/exim.h' l='317' u='a'/>
+<use f='exim/src/lookups/dnsdb.c' l='66' u='c'/>
+<use f='exim/src/lookups/dnsdb.c' l='309' u='c'/>
+<use f='exim/src/lookups/dnsdb.c' l='317' u='c'/>
+<use f='exim/src/lookups/dnsdb.c' l='463' u='c'/>
+<use f='exim/src/acl.c' l='1416' u='c'/>
+<use f='exim/src/host.c' l='2608' u='c'/>
+<use f='exim/src/host.c' l='2946' u='c'/>
+<use f='exim/src/dns.c' l='585' u='c'/>
+<use f='exim/src/dns.c' l='729' u='c'/>
+<use f='exim/src/dns.c' l='1034' u='c'/>
+<use f='exim/src/dns.c' l='1126' u='c'/>
+<use f='exim/src/dns.c' l='1135' u='c'/>

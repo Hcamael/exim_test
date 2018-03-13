@@ -1,3 +1,41 @@
 <dec f='exim/src/globals.h' l='83' type='int'/>
 <offset>0</offset>
 <doc f='exim/src/globals.h' l='83'>/* fd/socket when in a TLS session */</doc>
+<use f='exim/src/verify.c' l='603' macro='1' u='r'/>
+<use f='exim/src/verify.c' l='1046' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='1193' u='r' c='cutthrough_send'/>
+<use f='exim/src/dkim_transport.c' l='59' u='r' c='dkt_send_file'/>
+<use f='exim/src/dkim_transport.c' l='87' u='r' c='dkt_send_file'/>
+<use f='exim/src/smtp_out.c' l='414' u='r' c='flush_buffer'/>
+<use f='exim/src/tls-openssl.c' l='1959' u='r' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2110' u='w' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2432' u='w' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2473' u='w' c='tls_refill'/>
+<use f='exim/src/tls-openssl.c' l='2715' u='a' c='tls_close'/>
+<use f='exim/src/tls-openssl.c' l='2715' u='a' c='tls_close'/>
+<use f='exim/src/globals.c' l='104' u='w'/>
+<use f='exim/src/globals.c' l='121' u='w'/>
+<use f='exim/src/exim.c' l='5293' macro='1' u='r'/>
+<use f='exim/src/smtp_in.c' l='343' u='r' c='wouldblock_reading'/>
+<use f='exim/src/smtp_in.c' l='870' u='r' c='smtp_vprintf'/>
+<use f='exim/src/smtp_in.c' l='899' u='r' c='smtp_fflush'/>
+<use f='exim/src/smtp_in.c' l='922' u='r' c='command_timeout_handler'/>
+<use f='exim/src/smtp_in.c' l='1660' macro='1' u='r'/>
+<use f='exim/src/smtp_in.c' l='3409' macro='1' u='r'/>
+<use f='exim/src/smtp_in.c' l='3633' u='r' c='smtp_in_auth'/>
+<use f='exim/src/smtp_in.c' l='3837' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4054' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4306' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4344' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4367' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5309' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5352' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5454' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/acl.c' l='3398' macro='1' u='r'/>
+<use f='exim/src/ip.c' l='615' u='r' c='ip_recv'/>
+<use f='exim/src/ip.c' l='617' u='r' c='ip_recv'/>
+<use f='exim/src/daemon.c' l='397' macro='1' u='r'/>
+<use f='exim/src/daemon.c' l='483' macro='1' u='r'/>
+<use f='exim/src/daemon.c' l='511' macro='1' u='r'/>
+<use f='exim/src/daemon.c' l='524' macro='1' u='r'/>
+<use f='exim/src/daemon.c' l='645' macro='1' u='r'/>

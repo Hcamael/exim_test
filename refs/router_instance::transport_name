@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='295' type='uschar *'/>
 <offset>1984</offset>
 <doc f='exim/src/structs.h' l='295'>/* Transport name */</doc>
+<use f='exim/src/globals.c' l='1202' u='w'/>
+<use f='exim/src/routers/dnslookup.c' l='474' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/queryprogram.c' l='510' u='r' c='queryprogram_router_entry'/>

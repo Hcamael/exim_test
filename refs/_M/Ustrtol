@@ -1,1 +1,17 @@
 <dec f='exim/src/mytypes.h' l='115'/>
+<use f='exim/src/deliver.c' l='3377' u='c'/>
+<use f='exim/src/smtp_out.c' l='114' u='c'/>
+<use f='exim/src/filter.c' l='994' u='c'/>
+<use f='exim/src/filter.c' l='1731' u='c'/>
+<use f='exim/src/acl.c' l='2760' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='479' u='c'/>
+<use f='exim/src/ip.c' l='761' u='c'/>
+<use f='exim/src/expand.c' l='4802' u='c'/>
+<use f='exim/src/expand.c' l='5147' u='c'/>
+<use f='exim/src/expand.c' l='6695' u='c'/>
+<use f='exim/src/daemon.c' l='1136' u='c'/>
+<use f='exim/src/host.c' l='412' u='c'/>
+<use f='exim/src/host.c' l='433' u='c'/>
+<use f='exim/src/host.c' l='1058' u='c'/>
+<use f='exim/src/host.c' l='1059' u='c'/>
+<use f='exim/src/host.c' l='1251' u='c'/>

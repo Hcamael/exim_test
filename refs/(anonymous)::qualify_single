@@ -1,0 +1,4 @@
+<dec f='exim/src/routers/dnslookup.h' l='12' type='BOOL'/>
+<offset>32</offset>
+<use f='exim/src/routers/dnslookup.c' l='71' u='w'/>
+<use f='exim/src/routers/dnslookup.c' l='297' u='r' c='dnslookup_router_entry'/>

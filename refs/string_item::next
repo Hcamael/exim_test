@@ -1,2 +1,11 @@
 <dec f='exim/src/structs.h' l='436' type='struct string_item *'/>
 <offset>0</offset>
+<use f='exim/src/header.c' l='446' u='r' c='header_match'/>
+<use f='exim/src/filter.c' l='532' u='w' c='read_condition'/>
+<use f='exim/src/smtp_in.c' l='2052' u='r' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='1144' u='r' c='acl_warn'/>
+<use f='exim/src/acl.c' l='1154' u='w' c='acl_warn'/>
+<use f='exim/src/sieve.c' l='449' u='w' c='parse_mailto_uri'/>
+<use f='exim/src/sieve.c' l='507' u='w' c='parse_mailto_uri'/>
+<use f='exim/src/sieve.c' l='3111' u='r' c='parse_commands'/>
+<use f='exim/src/sieve.c' l='3249' u='w' c='parse_commands'/>

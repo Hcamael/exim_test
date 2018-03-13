@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='643' type='uschar *'/>
 <doc f='exim/src/globals.h' l='643'>/* Value of -oX argument */</doc>
+<def f='exim/src/globals.c' l='1023' type='uschar *'/>
+<use f='exim/src/exim.c' l='3154' u='w' c='main'/>
+<use f='exim/src/daemon.c' l='1072' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1079' u='r' c='daemon_go'/>

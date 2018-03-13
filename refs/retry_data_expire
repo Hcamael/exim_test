@@ -1,2 +1,15 @@
 <dec f='exim/src/globals.h' l='754' type='int'/>
 <doc f='exim/src/globals.h' l='754'>/* When to expire retry data */</doc>
+<use f='exim/src/deliver.c' l='2933' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2941' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='6560' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6566' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6576' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1152' type='int'/>
+<use f='exim/src/readconf.c' l='268' u='a'/>
+<use f='exim/src/readconf.c' l='268' u='a'/>
+<use f='exim/src/readconf.c' l='268' u='a'/>
+<use f='exim/src/readconf.c' l='268' u='a'/>
+<use f='exim/src/retry.c' l='190' u='r' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='200' u='r' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='667' u='r' c='retry_update'/>

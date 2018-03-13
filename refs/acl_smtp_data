@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='174' type='uschar *'/>
 <doc f='exim/src/globals.h' l='174'>/* ACL run after DATA received */</doc>
+<def f='exim/src/globals.c' l='243' type='uschar *'/>
+<use f='exim/src/readconf.c' l='41' u='a'/>
+<use f='exim/src/readconf.c' l='41' u='a'/>
+<use f='exim/src/readconf.c' l='41' u='a'/>
+<use f='exim/src/readconf.c' l='41' u='a'/>
+<use f='exim/src/receive.c' l='3530' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3532' u='r' c='receive_msg'/>

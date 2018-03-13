@@ -1,0 +1,29 @@
+<def f='exim/src/pdkim/pdkim.h' l='135' ll='259'/>
+<size>192</size>
+<doc f='exim/src/pdkim/pdkim.h' l='134'>/* Signature as it appears in a DKIM-Signature header */</doc>
+<mbr r='pdkim_signature::next' o='0' t='struct pdkim_signature *'/>
+<mbr r='pdkim_signature::version' o='64' t='int'/>
+<mbr r='pdkim_signature::keytype' o='96' t='int'/>
+<mbr r='pdkim_signature::hashtype' o='128' t='int'/>
+<mbr r='pdkim_signature::canon_headers' o='160' t='int'/>
+<mbr r='pdkim_signature::canon_body' o='192' t='int'/>
+<mbr r='pdkim_signature::querymethod' o='224' t='int'/>
+<mbr r='pdkim_signature::selector' o='256' t='uschar *'/>
+<mbr r='pdkim_signature::domain' o='320' t='uschar *'/>
+<mbr r='pdkim_signature::identity' o='384' t='uschar *'/>
+<mbr r='pdkim_signature::created' o='448' t='unsigned long'/>
+<mbr r='pdkim_signature::expires' o='512' t='unsigned long'/>
+<mbr r='pdkim_signature::bodylength' o='576' t='long'/>
+<mbr r='pdkim_signature::headernames' o='640' t='uschar *'/>
+<mbr r='pdkim_signature::copiedheaders' o='704' t='uschar *'/>
+<mbr r='pdkim_signature::sighash' o='768' t='blob'/>
+<mbr r='pdkim_signature::bodyhash' o='896' t='blob'/>
+<mbr r='pdkim_signature::signature_header' o='1024' t='uschar *'/>
+<mbr r='pdkim_signature::verify_status' o='1088' t='int'/>
+<mbr r='pdkim_signature::verify_ext_status' o='1120' t='int'/>
+<mbr r='pdkim_signature::pubkey' o='1152' t='pdkim_pubkey *'/>
+<mbr r='pdkim_signature::calc_body_hash' o='1216' t='pdkim_bodyhash *'/>
+<mbr r='pdkim_signature::headers' o='1280' t='pdkim_stringlist *'/>
+<mbr r='pdkim_signature::privkey' o='1344' t='uschar *'/>
+<mbr r='pdkim_signature::sign_headers' o='1408' t='uschar *'/>
+<mbr r='pdkim_signature::rawsig_no_b_val' o='1472' t='uschar *'/>

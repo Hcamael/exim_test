@@ -1,0 +1,9 @@
+<dec f='exim/src/auths/auth-spa.h' l='86' type='void spa_smb_encrypt(unsigned char * passwd, unsigned char * c8, unsigned char * p24)'/>
+<use f='exim/src/auths/spa.c' l='243' u='c' c='auth_spa_server'/>
+<def f='exim/src/auths/auth-spa.c' l='852' ll='872' type='void spa_smb_encrypt(uschar * passwd, uschar * c8, uschar * p24)'/>
+<use f='exim/src/auths/auth-spa.c' l='1509' u='c' c='spa_build_auth_response'/>
+<doc f='exim/src/auths/auth-spa.c' l='846'>/*
+ This implements the X/Open SMB password encryption
+ It takes a password, a 8 byte &quot;crypt key&quot; and puts 24 bytes of
+ encrypted password into p24
+ */</doc>

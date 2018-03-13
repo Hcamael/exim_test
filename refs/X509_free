@@ -1,1 +1,5 @@
 <dec f='include/openssl/x509.h' l='540' macro='1' type='void X509_free(X509 * a)'/>
+<use f='exim/src/tls-openssl.c' l='335' u='c' c='verify_event'/>
+<use f='exim/src/tls-openssl.c' l='1033' u='c' c='tls_install_selfsign'/>
+<use f='exim/src/tlscert-openssl.c' l='68' u='c' c='tls_import_cert'/>
+<use f='exim/src/tlscert-openssl.c' l='90' u='c' c='tls_free_cert'/>

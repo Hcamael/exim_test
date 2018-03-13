@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='955' type='tree_node *'/>
 <doc f='exim/src/globals.h' l='955'>/* Tree of duplicate addresses */</doc>
+<use f='exim/src/deliver.c' l='5446' u='r' c='do_duplicate_check'/>
+<use f='exim/src/deliver.c' l='6369' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6373' u='r' c='deliver_message'/>
+<use f='exim/src/verify.c' l='2103' u='r' c='verify_address'/>
+<def f='exim/src/globals.c' l='1511' type='tree_node *'/>
+<use f='exim/src/expand.c' l='7870' u='r' c='assert_no_variables'/>

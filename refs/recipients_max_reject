@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='733' type='BOOL'/>
 <doc f='exim/src/globals.h' l='733'>/* If TRUE, reject whole message */</doc>
+<def f='exim/src/globals.c' l='1133' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='2201' u='r' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='4949' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5139' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/readconf.c' l='262' u='a'/>
+<use f='exim/src/readconf.c' l='262' u='a'/>
+<use f='exim/src/readconf.c' l='262' u='a'/>
+<use f='exim/src/readconf.c' l='262' u='a'/>

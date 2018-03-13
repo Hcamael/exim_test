@@ -1,2 +1,18 @@
 <dec f='exim/src/macros.h' l='817' type='0'/>
 <doc f='exim/src/macros.h' l='817'>/* failed to find the host */</doc>
+<use f='exim/src/routers/dnslookup.c' l='346' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='148' c='rf_lookup_hostlist'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='185' u='r' c='rf_lookup_hostlist'/>
+<use f='exim/src/acl.c' l='2778' u='r' c='acl_udpsend'/>
+<use f='exim/src/host.c' l='1379' u='r' c='host_scan_for_local_hosts'/>
+<use f='exim/src/host.c' l='2175' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2226' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2362' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2690' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2727' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2748' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2934' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2953' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3063' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3169' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3180' u='r' c='host_find_bydns'/>

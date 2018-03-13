@@ -1,1 +1,2 @@
 <dec f='include/openssl/evp.h' l='660' type='const EVP_MD * EVP_sha1()'/>
+<use f='exim/src/tlscert-openssl.c' l='520' u='c' c='tls_cert_fprt_sha1'/>

@@ -1,0 +1,4 @@
+<def f='exim/src/tls-openssl.c' l='110' type='BOOL'/>
+<use f='exim/src/tls-openssl.c' l='504' u='a' c='verify_callback_client'/>
+<use f='exim/src/tls-openssl.c' l='2297' u='w' c='tls_client_start'/>
+<doc f='exim/src/tls-openssl.c' l='108'>/* Local static variables */</doc>

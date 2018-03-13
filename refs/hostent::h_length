@@ -1,3 +1,6 @@
 <dec f='include/netdb.h' l='105' type='int'/>
 <offset>160</offset>
 <doc f='include/netdb.h' l='105'>/* Length of address.  */</doc>
+<use f='exim/src/host.c' l='209' u='w' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='266' u='w' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='2105' u='r' c='host_find_byname'/>

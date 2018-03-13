@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='172' type='uschar *'/>
 <doc f='exim/src/globals.h' l='172'>/* ACL run for AUTH */</doc>
+<def f='exim/src/globals.c' l='241' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='3848' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='3849' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='3915' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='3916' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/readconf.c' l='39' u='a'/>
+<use f='exim/src/readconf.c' l='39' u='a'/>
+<use f='exim/src/readconf.c' l='39' u='a'/>
+<use f='exim/src/readconf.c' l='39' u='a'/>

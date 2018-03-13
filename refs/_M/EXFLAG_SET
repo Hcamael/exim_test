@@ -1,0 +1,2 @@
+<dec f='include/openssl/x509v3.h' l='359'/>
+<doc f='include/openssl/x509v3.h' l='358'>/* EXFLAG_SET is set to indicate that some values have been precomputed */</doc>

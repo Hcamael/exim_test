@@ -2,3 +2,10 @@
 <offset>384</offset>
 <doc f='exim/src/structs.h' l='406'>/****/</doc>
 <doc f='exim/src/structs.h' l='407'>/* server function */</doc>
+<use f='exim/src/drtables.c' l='70' u='w'/>
+<use f='exim/src/drtables.c' l='140' u='w'/>
+<use f='exim/src/drtables.c' l='168' u='w'/>
+<use f='exim/src/drtables.c' l='70' u='w'/>
+<use f='exim/src/drtables.c' l='140' u='w'/>
+<use f='exim/src/drtables.c' l='168' u='w'/>
+<use f='exim/src/smtp_in.c' l='3599' u='r' c='smtp_in_auth'/>

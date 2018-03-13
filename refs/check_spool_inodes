@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='272' type='int'/>
 <doc f='exim/src/globals.h' l='272'>/* Minimum for message acceptance */</doc>
+<def f='exim/src/globals.c' l='502' type='int'/>
+<use f='exim/src/readconf.c' l='93' u='a'/>
+<use f='exim/src/readconf.c' l='93' u='a'/>
+<use f='exim/src/readconf.c' l='93' u='a'/>
+<use f='exim/src/readconf.c' l='93' u='a'/>
+<use f='exim/src/receive.c' l='237' u='r' c='receive_check_fs'/>
+<use f='exim/src/receive.c' l='244' u='r' c='receive_check_fs'/>
+<use f='exim/src/receive.c' l='247' u='r' c='receive_check_fs'/>

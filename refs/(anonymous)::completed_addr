@@ -1,0 +1,6 @@
+<dec f='exim/src/transports/smtp.h' l='125' type='BOOL'/>
+<offset>332</offset>
+<use f='exim/src/verify.c' l='736' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='838' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='850' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='928' u='w' c='do_callout'/>

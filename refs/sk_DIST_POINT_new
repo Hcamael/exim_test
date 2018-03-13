@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='204' macro='1' type='struct stack_st_DIST_POINT * sk_DIST_POINT_new(sk_DIST_POINT_compfunc compare)'/>

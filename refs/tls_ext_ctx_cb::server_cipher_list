@@ -1,0 +1,7 @@
+<dec f='exim/src/tls-openssl.c' l='171' type='uschar *'/>
+<use f='exim/src/tls-openssl.c' l='1241' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1242' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1525' u='w' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='1992' u='w' c='tls_server_start'/>
+<offset>512</offset>
+<doc f='exim/src/tls-openssl.c' l='170'>/* these are cached from first expand */</doc>

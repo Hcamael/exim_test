@@ -1,0 +1,2 @@
+<dec f='exim/src/sieve.c' l='96' type='1'/>
+<use f='exim/src/sieve.c' l='798' c='eq_asciinumeric'/>

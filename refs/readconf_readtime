@@ -1,1 +1,14 @@
 <dec f='exim/src/functions.h' l='342' type='int readconf_readtime(const uschar * , int , BOOL )'/>
+<use f='exim/src/deliver.c' l='8083' u='c' c='deliver_message'/>
+<use f='exim/src/filter.c' l='2319' u='c' c='interpret_commands'/>
+<use f='exim/src/exim.c' l='2248' u='c' c='main'/>
+<use f='exim/src/exim.c' l='3141' u='c' c='main'/>
+<use f='exim/src/exim.c' l='3143' u='c' c='main'/>
+<use f='exim/src/exim.c' l='3284' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='2679' u='c' c='smtp_start_session'/>
+<use f='exim/src/lookups/dnsdb.c' l='220' u='c' c='dnsdb_find'/>
+<use f='exim/src/acl.c' l='1828' u='c' c='acl_verify'/>
+<use f='exim/src/acl.c' l='2251' u='c' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='3369' u='c' c='acl_check_condition'/>
+<use f='exim/src/expand.c' l='4763' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='7175' u='c' c='expand_string_internal'/>

@@ -1,1 +1,2 @@
 <dec f='include/openssl/ssl.h' l='1581' type='int SSL_connect(SSL * ssl)'/>
+<use f='exim/src/tls-openssl.c' l='2407' u='c' c='tls_client_start'/>

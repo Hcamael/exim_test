@@ -1,1 +1,8 @@
 <dec f='exim/src/functions.h' l='125' type='uschar * cutthrough_finaldot()'/>
+<def f='exim/src/verify.c' l='1427' ll='1467' type='uschar * cutthrough_finaldot()'/>
+<doc f='exim/src/verify.c' l='1422'>/* Have senders final-dot.  Send one to cutthrough target, and grab the response.
+   Log an OK response as a transmission.
+   Close the connection.
+   Return smtp response-class digit.
+*/</doc>
+<use f='exim/src/receive.c' l='4144' u='c' c='receive_msg'/>

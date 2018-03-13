@@ -1,0 +1,6 @@
+<dec f='exim/src/lookups/lsearch.c' l='15' type='1'/>
+<use f='exim/src/lookups/lsearch.c' l='90' u='r' c='internal_lsearch_find'/>
+<use f='exim/src/lookups/lsearch.c' l='178' c='internal_lsearch_find'/>
+<use f='exim/src/lookups/lsearch.c' l='190' u='r' c='internal_lsearch_find'/>
+<use f='exim/src/lookups/lsearch.c' l='343' u='r' c='wildlsearch_find'/>
+<doc f='exim/src/lookups/lsearch.c' l='15'>/* Wild card keys, expanded */</doc>

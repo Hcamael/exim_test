@@ -1,0 +1,2 @@
+<dec f='exim/src/pdkim/pdkim.h' l='322' type='int pdkim_feed(pdkim_ctx * , uschar * , int )'/>
+<def f='exim/src/pdkim/pdkim.c' l='999' ll='1070' type='int pdkim_feed(pdkim_ctx * ctx, uschar * data, int len)'/>

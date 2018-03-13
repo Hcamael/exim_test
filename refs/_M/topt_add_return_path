@@ -1,2 +1,5 @@
 <dec f='exim/src/macros.h' l='856'/>
 <doc f='exim/src/macros.h' l='854'>/* Options for transport_write_message */</doc>
+<use f='exim/src/deliver.c' l='7355' u='c'/>
+<use f='exim/src/deliver.c' l='7766' u='c'/>
+<use f='exim/src/deliver.c' l='8280' u='c'/>

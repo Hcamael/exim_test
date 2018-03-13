@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='804' type='int'/>
 <doc f='exim/src/globals.h' l='804'>/* Port of outgoing interface */</doc>
+<use f='exim/src/deliver.c' l='766' u='r' c='d_log_interface'/>
+<use f='exim/src/deliver.c' l='3655' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4490' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4965' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='8541' u='w' c='delivery_re_exec'/>
+<use f='exim/src/verify.c' l='1051' u='r' c='do_callout'/>
+<use f='exim/src/smtp_out.c' l='302' u='a' c='smtp_sock_connect'/>
+<def f='exim/src/globals.c' l='1300' type='int'/>
+<use f='exim/src/exim.c' l='2694' u='a' c='main'/>
+<use f='exim/src/exim.c' l='2759' u='w' c='main'/>
+<use f='exim/src/expand.c' l='679' u='a'/>
+<use f='exim/src/expand.c' l='679' u='a'/>
+<use f='exim/src/expand.c' l='679' u='a'/>
+<use f='exim/src/expand.c' l='679' u='a'/>

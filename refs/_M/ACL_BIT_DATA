@@ -1,1 +1,14 @@
 <dec f='exim/src/macros.h' l='961'/>
+<use f='exim/src/acl.c' l='141' u='c'/>
+<use f='exim/src/acl.c' l='255' u='c'/>
+<use f='exim/src/acl.c' l='276' u='c'/>
+<use f='exim/src/acl.c' l='412' u='c'/>
+<use f='exim/src/acl.c' l='448' u='c'/>
+<use f='exim/src/acl.c' l='458' u='c'/>
+<use f='exim/src/acl.c' l='468' u='c'/>
+<use f='exim/src/acl.c' l='509' u='c'/>
+<use f='exim/src/acl.c' l='1542' u='c'/>
+<use f='exim/src/acl.c' l='1543' u='c'/>
+<use f='exim/src/acl.c' l='1544' u='c'/>
+<use f='exim/src/acl.c' l='1546' u='c'/>
+<use f='exim/src/acl.c' l='1549' u='c'/>

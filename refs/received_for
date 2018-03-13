@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='722' type='uschar *'/>
 <doc f='exim/src/globals.h' l='722'>/* For &quot;for&quot; field */</doc>
+<def f='exim/src/globals.c' l='1100' type='uschar *'/>
+<use f='exim/src/expand.c' l='641' u='a'/>
+<use f='exim/src/expand.c' l='641' u='a'/>
+<use f='exim/src/expand.c' l='641' u='a'/>
+<use f='exim/src/expand.c' l='641' u='a'/>
+<use f='exim/src/receive.c' l='1484' u='w' c='received_header_gen'/>
+<use f='exim/src/receive.c' l='1486' u='w' c='received_header_gen'/>

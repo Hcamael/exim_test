@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='773' macro='1' type='sk_IPAddressOrRange_compfunc sk_IPAddressOrRange_set_cmp_func(struct stack_st_IPAddressOrRange * sk, sk_IPAddressOrRange_compfunc compare)'/>

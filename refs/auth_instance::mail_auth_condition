@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='386' type='uschar *'/>
 <offset>640</offset>
 <doc f='exim/src/structs.h' l='386'>/* Condition for AUTH on MAIL command */</doc>
+<use f='exim/src/globals.c' l='441' u='w'/>
+<use f='exim/src/smtp_in.c' l='4571' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4572' u='r' c='smtp_setup_msg'/>

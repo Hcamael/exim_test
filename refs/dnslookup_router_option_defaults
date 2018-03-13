@@ -1,0 +1,8 @@
+<dec f='exim/src/routers/dnslookup.h' l='32' type='dnslookup_router_options_block'/>
+<use f='exim/src/drtables.c' l='269' u='a'/>
+<use f='exim/src/drtables.c' l='269' u='a'/>
+<use f='exim/src/drtables.c' l='269' u='a'/>
+<use f='exim/src/drtables.c' l='269' u='a'/>
+<doc f='exim/src/routers/dnslookup.h' l='30'>/* Block containing default values. */</doc>
+<def f='exim/src/routers/dnslookup.c' l='69' ll='82' type='dnslookup_router_options_block'/>
+<doc f='exim/src/routers/dnslookup.c' l='67'>/* Default private options block for the dnslookup router. */</doc>

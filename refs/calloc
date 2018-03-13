@@ -1,2 +1,6 @@
 <dec f='include/stdlib.h' l='468' type='void * calloc(size_t __nmemb, size_t __size)'/>
 <doc f='include/stdlib.h' l='467'>/* Allocate NMEMB elements of SIZE bytes each, all initialized to 0.  */</doc>
+<use f='exim/src/macro.c' l='48' macro='1' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1380' macro='1' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1494' macro='1' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1505' macro='1' u='c'/>

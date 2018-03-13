@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='492' type='int'/>
 <doc f='exim/src/globals.h' l='492'>/* Number of entries */</doc>
+<use f='exim/src/header.c' l='304' u='r' c='header_checkname'/>
+<def f='exim/src/globals.c' l='788' type='int'/>

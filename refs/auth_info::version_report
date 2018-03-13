@@ -1,3 +1,11 @@
 <dec f='exim/src/structs.h' l='417' type='void (*)(FILE *)'/>
 <offset>512</offset>
 <doc f='exim/src/structs.h' l='417'>/* diagnostic version reporting */</doc>
+<use f='exim/src/drtables.c' l='72' u='w'/>
+<use f='exim/src/drtables.c' l='142' u='w'/>
+<use f='exim/src/drtables.c' l='170' u='w'/>
+<use f='exim/src/drtables.c' l='72' u='w'/>
+<use f='exim/src/drtables.c' l='142' u='w'/>
+<use f='exim/src/drtables.c' l='170' u='w'/>
+<use f='exim/src/exim.c' l='1009' u='r' c='show_whats_supported'/>
+<use f='exim/src/exim.c' l='1010' u='r' c='show_whats_supported'/>

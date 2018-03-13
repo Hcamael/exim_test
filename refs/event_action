@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='448' type='uschar *'/>
 <doc f='exim/src/globals.h' l='448'>/* expansion for delivery events */</doc>
+<use f='exim/src/deliver.c' l='6235' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7944' u='r' c='deliver_message'/>
+<use f='exim/src/tls-openssl.c' l='313' u='r' c='verify_event'/>
+<def f='exim/src/globals.c' l='719' type='uschar *'/>
+<doc f='exim/src/globals.c' l='719'>/* expansion for delivery events */</doc>
+<use f='exim/src/readconf.c' l='143' u='a'/>
+<use f='exim/src/readconf.c' l='143' u='a'/>
+<use f='exim/src/readconf.c' l='143' u='a'/>
+<use f='exim/src/readconf.c' l='143' u='a'/>

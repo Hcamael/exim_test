@@ -1,3 +1,7 @@
 <dec f='exim/src/structs.h' l='825' type='int'/>
 <offset>32</offset>
 <doc f='exim/src/structs.h' l='825'>/* count of buffered commands */</doc>
+<use f='exim/src/smtp_out.c' l='433' u='w' c='flush_buffer'/>
+<use f='exim/src/smtp_out.c' l='481' u='r' c='smtp_write_command'/>
+<use f='exim/src/smtp_out.c' l='487' u='w' c='smtp_write_command'/>
+<use f='exim/src/smtp_out.c' l='514' u='r' c='smtp_write_command'/>

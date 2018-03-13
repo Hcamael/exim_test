@@ -1,3 +1,4 @@
 <dec f='include/resolv.h' l='105' type='int'/>
 <offset>0</offset>
 <doc f='include/resolv.h' l='105'>/* retransmition time interval */</doc>
+<use f='exim/src/dns.c' l='156' u='w' c='dns_init'/>

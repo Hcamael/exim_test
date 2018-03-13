@@ -1,1 +1,5 @@
 <dec f='exim/src/functions.h' l='451' type='gstring * string_append_listele_n(gstring * , uschar , const uschar * , unsigned int )'/>
+<use f='exim/src/pdkim/pdkim.c' l='1498' u='c' c='pdkim_feed_finish'/>
+<use f='exim/src/tlscert-openssl.c' l='425' u='c' c='tls_cert_ocsp_uri'/>
+<use f='exim/src/tlscert-openssl.c' l='460' u='c' c='tls_cert_crl_uri'/>
+<def f='exim/src/string.c' l='1030' ll='1049' type='gstring * string_append_listele_n(gstring * list, uschar sep, const uschar * ele, unsigned int len)'/>

@@ -1,0 +1,2 @@
+<dec f='include/openssl/rand.h' l='46' type='int RAND_bytes(unsigned char * buf, int num)'/>
+<use f='exim/src/tls-openssl.c' l='2906' u='c' c='vaguely_random_number'/>

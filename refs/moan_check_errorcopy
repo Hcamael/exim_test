@@ -1,1 +1,11 @@
 <dec f='exim/src/functions.h' l='295' type='uschar * moan_check_errorcopy(uschar * )'/>
+<use f='exim/src/deliver.c' l='7548' u='c' c='deliver_message'/>
+<def f='exim/src/moan.c' l='609' ll='667' type='uschar * moan_check_errorcopy(uschar * recipient)'/>
+<doc f='exim/src/moan.c' l='600'>/* This function is passed the recipient of an error message, and must check
+the error_copies string to see whether there is an additional recipient list to
+which errors for this recipient must be bcc&apos;d. The incoming recipient is always
+fully qualified.
+
+Argument:   recipient address
+Returns:    additional recipient list or NULL
+*/</doc>

@@ -1,2 +1,4 @@
 <dec f='exim/src/macros.h' l='850' type='2'/>
 <doc f='exim/src/macros.h' l='850'>/* error in the envelope */</doc>
+<use f='exim/src/spool_in.c' l='934' u='r' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='945' u='r' c='spool_read_header'/>

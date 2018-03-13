@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='680' type='BOOL'/>
 <doc f='exim/src/globals.h' l='680'>/* Run queue in 2-stage manner */</doc>
+<use f='exim/src/deliver.c' l='1670' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='8059' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1058' type='BOOL'/>
+<use f='exim/src/exim.c' l='1910' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3224' u='w' c='main'/>
+<use f='exim/src/queue.c' l='393' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='405' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='695' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='725' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='727' u='w' c='queue_run'/>
+<use f='exim/src/routers/redirect.c' l='362' u='r' c='add_generated'/>
+<use f='exim/src/daemon.c' l='1845' u='r' c='daemon_go'/>

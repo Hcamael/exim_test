@@ -1,1 +1,12 @@
 <dec f='exim/src/functions.h' l='251' type='int ipv6_nmtoa(int * , uschar * )'/>
+<use f='exim/src/expand.c' l='6743' u='c' c='expand_string_internal'/>
+<def f='exim/src/host.c' l='1178' ll='1222' type='int ipv6_nmtoa(int * binary, uschar * buffer)'/>
+<doc f='exim/src/host.c' l='1168'>/* Like host_nmtoa() but: ipv6-only, canonical output, no mask
+
+Arguments:
+  binary      points to the ints
+  buffer      big enough to hold the result
+
+Returns:      the number of characters placed in buffer, not counting
+	      the final nul.
+*/</doc>

@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='289' type='gid_t'/>
 <doc f='exim/src/globals.h' l='289'>/* Additional group owner */</doc>
+<def f='exim/src/globals.c' l='525' type='gid_t'/>
+<use f='exim/src/exim.c' l='966' u='r' c='show_whats_supported'/>

@@ -1,2 +1,7 @@
 <dec f='exim/src/globals.h' l='475' type='uschar *'/>
 <doc f='exim/src/globals.h' l='475'>/* System filter test file */</doc>
+<def f='exim/src/globals.c' l='751' type='uschar *'/>
+<use f='exim/src/exim.c' l='2008' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3736' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3739' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5628' u='r' c='main'/>

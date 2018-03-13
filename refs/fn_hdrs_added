@@ -1,1 +1,9 @@
 <dec f='exim/src/functions.h' l='207' type='uschar * fn_hdrs_added()'/>
+<def f='exim/src/acl.c' l='1046' ll='1077' type='uschar * fn_hdrs_added()'/>
+<doc f='exim/src/acl.c' l='1043'>/*************************************************
+*        List the added header lines		 *
+*************************************************/</doc>
+<use f='exim/src/expand.c' l='539' u='a'/>
+<use f='exim/src/expand.c' l='539' u='a'/>
+<use f='exim/src/expand.c' l='539' u='a'/>
+<use f='exim/src/expand.c' l='539' u='a'/>

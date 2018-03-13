@@ -1,3 +1,10 @@
 <dec f='exim/src/structs.h' l='556' type='void *'/>
 <offset>2112</offset>
 <doc f='exim/src/structs.h' l='556'>/* Certificate from peer, binary */</doc>
+<use f='exim/src/deliver.c' l='1616' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1617' u='w' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='3516' u='a' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3518' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4811' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4814' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/globals.c' l='365' u='w'/>

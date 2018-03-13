@@ -1,2 +1,4 @@
 <dec f='include/openssl/ssl.h' l='269'/>
 <doc f='include/openssl/ssl.h' l='268'>/* Allow initial connection to servers that don&apos;t support RI */</doc>
+<use f='exim/src/tls-openssl.c' l='2973' u='a'/>
+<use f='exim/src/tls-openssl.c' l='2974' u='c'/>

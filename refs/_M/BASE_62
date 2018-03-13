@@ -1,2 +1,10 @@
 <dec f='exim/src/exim.h' l='50'/>
 <use f='exim/src/exim.h' l='55' u='c'/>
+<use f='exim/src/deliver.c' l='5621' u='c'/>
+<use f='exim/src/string.c' l='207' u='c'/>
+<use f='exim/src/string.c' l='208' u='c'/>
+<use f='exim/src/globals.c' l='460' u='c'/>
+<use f='exim/src/expand.c' l='6358' u='c'/>
+<use f='exim/src/expand.c' l='6361' u='c'/>
+<use f='exim/src/receive.c' l='2624' u='c'/>
+<use f='exim/src/receive.c' l='2636' u='c'/>

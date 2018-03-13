@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='604' type='BOOL'/>
 <offset>25</offset>
 <doc f='exim/src/structs.h' l='604'>/* filter could not generate autoreply */</doc>
+<use f='exim/src/deliver.c' l='6338' u='r' c='deliver_message'/>
+<use f='exim/src/filter.c' l='2298' u='w' c='interpret_commands'/>

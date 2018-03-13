@@ -1,3 +1,7 @@
 <dec f='include/x86_64-linux-gnu/sys/time.h' l='110' type='struct timeval'/>
 <offset>0</offset>
 <doc f='include/x86_64-linux-gnu/sys/time.h' l='109'>/* Value to put into `it_value&apos; when the timer expires.  */</doc>
+<use f='exim/src/exim.c' l='326' u='m' c='millisleep'/>
+<use f='exim/src/exim.c' l='327' u='m' c='millisleep'/>
+<use f='exim/src/exim.c' l='397' u='m' c='exim_wait_tick'/>
+<use f='exim/src/exim.c' l='398' u='m' c='exim_wait_tick'/>

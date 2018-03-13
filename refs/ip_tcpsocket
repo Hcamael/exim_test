@@ -1,1 +1,4 @@
 <dec f='exim/src/functions.h' l='247' type='int ip_tcpsocket(const uschar * , uschar ** , int )'/>
+<def f='exim/src/ip.c' l='439' ll='460' type='int ip_tcpsocket(const uschar * hostport, uschar ** errstr, int tmo)'/>
+<use f='exim/src/ip.c' l='493' u='c' c='ip_streamsocket'/>
+<doc f='exim/src/ip.c' l='438'>/*XXX TFO? */</doc>

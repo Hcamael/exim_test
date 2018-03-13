@@ -1,2 +1,13 @@
 <dec f='include/stdio.h' l='386' type='int snprintf(char *restrict __s, size_t __maxlen, const char *restrict __format)'/>
 <doc f='include/stdio.h' l='385'>/* Maximum chars of output to write in MAXLEN.  */</doc>
+<use f='exim/src/pdkim/pdkim.c' l='1266' u='c' c='pdkim_create_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1274' u='c' c='pdkim_create_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1282' u='c' c='pdkim_create_header'/>
+<use f='exim/src/deliver.c' l='4151' u='c' c='rmt_dlv_checked_write'/>
+<use f='exim/src/verify.c' l='2690' u='c' c='verify_get_ident'/>
+<use f='exim/src/exim_dbutil.c' l='262' u='c' c='dbfn_open'/>
+<use f='exim/src/exim_dbutil.c' l='263' u='c' c='dbfn_open'/>
+<use f='exim/src/queue.c' l='21' u='c' c='spool_pname_buf'/>
+<use f='exim/src/dbfn.c' l='109' u='c' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='110' u='c' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='163' u='c' c='dbfn_open'/>

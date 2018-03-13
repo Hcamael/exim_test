@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='261' macro='1' type='int sk_POLICY_MAPPING_num(const struct stack_st_POLICY_MAPPING * sk)'/>

@@ -1,1 +1,14 @@
 <dec f='exim/src/functions.h' l='464' type='gstring * string_get(unsigned int )'/>
+<use f='exim/src/deliver.c' l='1139' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1305' u='c' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='1381' u='c' c='failure_log'/>
+<use f='exim/src/deliver.c' l='5186' u='c' c='next_emf'/>
+<def f='exim/src/string.c' l='1056' ll='1064' type='gstring * string_get(unsigned int size)'/>
+<use f='exim/src/string.c' l='1146' u='c' c='string_catn'/>
+<doc f='exim/src/string.c' l='1054'>/* Create a growable-string with some preassigned space */</doc>
+<use f='exim/src/smtp_in.c' l='2883' u='c' c='smtp_start_session'/>
+<use f='exim/src/lookups/lsearch.c' l='256' u='c' c='internal_lsearch_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='151' u='c' c='dnsdb_find'/>
+<use f='exim/src/expand.c' l='3856' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='7497' u='c' c='expand_string_internal'/>
+<use f='exim/src/receive.c' l='3903' u='c' c='receive_msg'/>

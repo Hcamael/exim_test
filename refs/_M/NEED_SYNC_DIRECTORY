@@ -5,3 +5,4 @@ be possible to sync it - in that case, Exim now should ignore the error. But
 if you have problems in that area, try undefining this. But be aware that you
 may be in a situation where files are not being properly &quot;committed to stable
 storage&quot; as quickly as Exim thinks they are. */</doc>
+<use f='exim/src/spool_out.c' l='366' u='a'/>

@@ -1,2 +1,15 @@
 <dec f='exim/src/globals.h' l='659' type='uschar []'/>
 <doc f='exim/src/globals.h' l='659'>/* For SIGUSR1 output */</doc>
+<def f='exim/src/globals.c' l='1036' type='uschar [256]'/>
+<use f='exim/src/exim.c' l='177' u='r' c='set_process_info'/>
+<use f='exim/src/exim.c' l='180' u='r' c='set_process_info'/>
+<use f='exim/src/exim.c' l='181' u='r' c='set_process_info'/>
+<use f='exim/src/exim.c' l='182' u='r' c='set_process_info'/>
+<use f='exim/src/exim.c' l='183' u='w' c='set_process_info'/>
+<use f='exim/src/exim.c' l='184' u='w' c='set_process_info'/>
+<use f='exim/src/exim.c' l='186' c='set_process_info'/>
+<use f='exim/src/exim.c' l='234' u='r' c='usr1_handler'/>
+<use f='exim/src/receive.c' l='1617' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2644' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2979' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4217' u='w' c='receive_msg'/>

@@ -1,2 +1,7 @@
 <dec f='exim/src/globals.h' l='738' type='const pcre *'/>
 <doc f='exim/src/globals.h' l='738'>/* For recognizing IGNOREQUOTA (LMTP) */</doc>
+<use f='exim/src/deliver.c' l='7058' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7059' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8472' u='r' c='deliver_init'/>
+<use f='exim/src/deliver.c' l='8472' u='w' c='deliver_init'/>
+<def f='exim/src/globals.c' l='1137' type='const pcre *'/>

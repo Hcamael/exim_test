@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='272' type='uschar *'/>
 <offset>512</offset>
 <doc f='exim/src/structs.h' l='272'>/* For use during delivery */</doc>
+<use f='exim/src/globals.c' l='1179' u='w'/>
+<use f='exim/src/routers/rf_queue_add.c' l='78' u='r' c='rf_queue_add'/>
+<use f='exim/src/routers/redirect.c' l='421' u='r' c='add_generated'/>

@@ -1,0 +1,4 @@
+<dec f='exim/src/filter.c' l='117' type='13'/>
+<use f='exim/src/filter.c' l='1233' u='m' c='read_command'/>
+<use f='exim/src/filter.c' l='2215' u='m' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2313' u='m' c='interpret_commands'/>

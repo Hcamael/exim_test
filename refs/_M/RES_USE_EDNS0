@@ -1,1 +1,5 @@
 <dec f='include/resolv.h' l='217'/>
+<use f='exim/src/dns.c' l='159' u='a'/>
+<use f='exim/src/dns.c' l='163' u='c'/>
+<use f='exim/src/dns.c' l='165' u='c'/>
+<use f='exim/src/dns.c' l='179' u='a'/>

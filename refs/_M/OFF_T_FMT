@@ -1,1 +1,12 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='10'/>
+<use f='exim/src/deliver.c' l='5604' u='c'/>
+<use f='exim/src/queue.c' l='930' u='c'/>
+<use f='exim/src/rda.c' l='301' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='336' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='459' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='459' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='494' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='565' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='565' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='593' u='c'/>
+<use f='exim/src/expand.c' l='7379' u='c'/>

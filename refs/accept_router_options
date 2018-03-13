@@ -1,0 +1,10 @@
+<dec f='exim/src/routers/accept.h' l='16' type='optionlist []'/>
+<use f='exim/src/drtables.c' l='254'/>
+<use f='exim/src/drtables.c' l='254'/>
+<use f='exim/src/drtables.c' l='254'/>
+<use f='exim/src/drtables.c' l='254'/>
+<doc f='exim/src/routers/accept.h' l='14'>/* Data for reading the private options. */</doc>
+<def f='exim/src/routers/accept.c' l='17' ll='19' type='optionlist [1]'/>
+<use f='exim/src/routers/accept.c' l='25' u='r'/>
+<doc f='exim/src/routers/accept.c' l='14'>/* Options specific to the accept router. Because some compilers do not like
+empty declarations (&quot;undefined&quot; in the Standard) we put in a dummy value. */</doc>

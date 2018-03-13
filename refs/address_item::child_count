@@ -1,3 +1,15 @@
 <dec f='exim/src/structs.h' l='628' type='unsigned short'/>
 <offset>2896</offset>
 <doc f='exim/src/structs.h' l='628'>/* number of child addresses */</doc>
+<use f='exim/src/deliver.c' l='723' u='w' c='child_done'/>
+<use f='exim/src/deliver.c' l='5140' u='w' c='deliver_split_address'/>
+<use f='exim/src/deliver.c' l='6009' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6012' u='w' c='deliver_message'/>
+<use f='exim/src/globals.c' l='388' u='w'/>
+<use f='exim/src/routers/queryprogram.c' l='139' u='r' c='add_generated'/>
+<use f='exim/src/routers/queryprogram.c' l='142' u='w' c='add_generated'/>
+<use f='exim/src/routers/rf_change_domain.c' l='60' u='w' c='rf_change_domain'/>
+<use f='exim/src/routers/redirect.c' l='352' u='r' c='add_generated'/>
+<use f='exim/src/routers/redirect.c' l='355' u='w' c='add_generated'/>
+<use f='exim/src/routers/redirect.c' l='795' u='w' c='redirect_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='914' u='w' c='redirect_router_entry'/>

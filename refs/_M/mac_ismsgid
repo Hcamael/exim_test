@@ -1,2 +1,10 @@
 <dec f='exim/src/macros.h' l='210'/>
 <doc f='exim/src/macros.h' l='208'>/* Macros for trivial functions */</doc>
+<use f='exim/src/exim.c' l='2490' u='c'/>
+<use f='exim/src/exim.c' l='2681' u='c'/>
+<use f='exim/src/exim.c' l='2872' u='c'/>
+<use f='exim/src/exim.c' l='2886' u='c'/>
+<use f='exim/src/exim.c' l='3071' u='c'/>
+<use f='exim/src/exim.c' l='3272' u='c'/>
+<use f='exim/src/exim.c' l='3275' u='c'/>
+<use f='exim/src/exim.c' l='3277' u='c'/>

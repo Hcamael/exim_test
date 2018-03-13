@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='716' macro='1' type='struct stack_st_X509_POLICY_NODE * sk_X509_POLICY_NODE_deep_copy(const struct stack_st_X509_POLICY_NODE * sk, sk_X509_POLICY_NODE_copyfunc copyfunc, sk_X509_POLICY_NODE_freefunc freefunc)'/>

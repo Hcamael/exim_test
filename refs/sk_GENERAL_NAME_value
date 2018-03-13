@@ -1,0 +1,2 @@
+<def f='include/openssl/x509v3.h' l='165' macro='1' type='GENERAL_NAME * sk_GENERAL_NAME_value(const struct stack_st_GENERAL_NAME * sk, int idx)'/>
+<use f='exim/src/tlscert-openssl.c' l='457' u='c' c='tls_cert_crl_uri'/>

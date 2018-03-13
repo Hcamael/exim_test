@@ -1,3 +1,13 @@
 <dec f='exim/src/structs.h' l='218' type='void (*)(struct transport_instance *)'/>
 <offset>512</offset>
 <doc f='exim/src/structs.h' l='218'>/* For closing down a passed channel */</doc>
+<use f='exim/src/deliver.c' l='5226' u='r' c='continue_closedown'/>
+<use f='exim/src/deliver.c' l='5226' u='r' c='continue_closedown'/>
+<use f='exim/src/drtables.c' l='370' u='w'/>
+<use f='exim/src/drtables.c' l='384' u='w'/>
+<use f='exim/src/drtables.c' l='412' u='w'/>
+<use f='exim/src/drtables.c' l='440' u='w'/>
+<use f='exim/src/drtables.c' l='370' u='w'/>
+<use f='exim/src/drtables.c' l='384' u='w'/>
+<use f='exim/src/drtables.c' l='412' u='w'/>
+<use f='exim/src/drtables.c' l='440' u='w'/>

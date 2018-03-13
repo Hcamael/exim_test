@@ -2,3 +2,19 @@
 <doc f='include/unistd.h' l='756'>/* Clone the calling process, creating an exact copy.
    Return -1 for errors, 0 to the new process,
    and the process ID of the new process to the old process.  */</doc>
+<use f='exim/src/deliver.c' l='2271' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='4660' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='8548' u='c' c='delivery_re_exec'/>
+<use f='exim/src/exim.c' l='4641' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5719' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='5594' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5605' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/queue.c' l='649' u='c' c='queue_run'/>
+<use f='exim/src/rda.c' l='623' u='c' c='rda_interpret'/>
+<use f='exim/src/log.c' l='306' u='c' c='log_create_as_exim'/>
+<use f='exim/src/daemon.c' l='348' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='647' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='1339' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1809' u='c' c='daemon_go'/>
+<use f='exim/src/child.c' l='221' u='c' c='child_open_exim2'/>
+<use f='exim/src/child.c' l='338' u='c' c='child_open_uid'/>

@@ -1,0 +1,8 @@
+<dec f='exim/src/transports/smtp.h' l='166' type='smtp_transport_options_block'/>
+<doc f='exim/src/transports/smtp.h' l='164'>/* Block containing default values. */</doc>
+<use f='exim/src/drtables.c' l='435' u='a'/>
+<use f='exim/src/drtables.c' l='435' u='a'/>
+<use f='exim/src/drtables.c' l='435' u='a'/>
+<use f='exim/src/drtables.c' l='435' u='a'/>
+<def f='exim/src/transports/smtp.c' l='197' type='smtp_transport_options_block'/>
+<doc f='exim/src/transports/smtp.c' l='196'>/* Dummy values */</doc>

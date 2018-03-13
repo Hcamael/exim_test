@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='718' type='int'/>
 <doc f='exim/src/globals.h' l='718'>/* Mainly for BSMTP errors */</doc>
+<def f='exim/src/globals.c' l='1096' type='int'/>
+<use f='exim/src/moan.c' l='561' u='r' c='moan_smtp_batch'/>
+<use f='exim/src/moan.c' l='577' u='r' c='moan_smtp_batch'/>
+<use f='exim/src/smtp_in.c' l='1529' u='w' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='2088' u='r' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2119' u='r' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2265' u='r' c='smtp_setup_batch_msg'/>
+<use f='exim/src/receive.c' l='1957' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3091' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3095' u='w' c='receive_msg'/>

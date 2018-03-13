@@ -1,0 +1,9 @@
+<dec f='include/assert.h' l='69' type='void __assert_fail(const char * __assertion, const char * __file, unsigned int __line, const char * __function)'/>
+<use f='exim/src/deliver.c' l='8514' macro='1' u='c'/>
+<doc f='include/assert.h' l='68'>/* This prints an &quot;Assertion failed&quot; message and aborts.  */</doc>
+<use f='exim/src/smtp_in.c' l='4633' macro='1' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1291' macro='1' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1310' macro='1' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1326' macro='1' u='c'/>
+<use f='exim/src/hash.c' l='80' macro='1' u='c'/>
+<use f='exim/src/hash.c' l='101' macro='1' u='c'/>

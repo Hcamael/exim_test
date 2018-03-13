@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='181' type='int'/>
 <offset>1984</offset>
 <doc f='exim/src/structs.h' l='181'>/* Bits showing which headers are rewritten */</doc>
+<use f='exim/src/globals.c' l='1482' u='w'/>

@@ -6,3 +6,5 @@
  * implementations cannot handle it at all, which is why we include it in
  * SSL_OP_ALL. Added in 0.9.6e
  */</doc>
+<use f='exim/src/tls-openssl.c' l='2967' u='a'/>
+<use f='exim/src/tls-openssl.c' l='2968' u='c'/>

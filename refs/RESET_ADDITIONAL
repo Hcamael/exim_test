@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='216' type='3'/>
+<use f='exim/src/acl.c' l='1481' u='r' c='acl_verify_csa'/>
+<use f='exim/src/dns.c' l='375' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='382' u='r' c='dns_next_rr'/>

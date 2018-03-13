@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='928' type='BOOL'/>
 <doc f='exim/src/globals.h' l='928'>/* conn usefully used fastopen */</doc>
+<def f='exim/src/globals.c' l='1430' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='1786' u='r' c='smtp_log_no_mail'/>
+<use f='exim/src/smtp_in.c' l='2328' u='w' c='tfo_in_check'/>
+<use f='exim/src/smtp_in.c' l='5481' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5489' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/receive.c' l='1314' u='r' c='add_host_info_for_log'/>

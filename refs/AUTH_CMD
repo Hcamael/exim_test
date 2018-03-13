@@ -1,0 +1,9 @@
+<dec f='exim/src/smtp_in.c' l='106' type='15'/>
+<use f='exim/src/smtp_in.c' l='187'/>
+<use f='exim/src/smtp_in.c' l='187'/>
+<use f='exim/src/smtp_in.c' l='187'/>
+<use f='exim/src/smtp_in.c' l='187'/>
+<use f='exim/src/smtp_in.c' l='3889' c='smtp_setup_msg'/>
+<doc f='exim/src/smtp_in.c' l='102'>/* I have been unable to find a statement about the use of pipelining
+  with AUTH, so to be on the safe side it is here, though I kind of feel
+  it should be up there with the synchronized commands. */</doc>

@@ -1,0 +1,4 @@
+<dec f='exim/src/routers/redirect.h' l='46' type='int'/>
+<offset>1376</offset>
+<use f='exim/src/routers/redirect.c' l='260' u='r' c='redirect_router_init'/>
+<use f='exim/src/routers/redirect.c' l='550' u='r' c='redirect_router_entry'/>

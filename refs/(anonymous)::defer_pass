@@ -1,3 +1,9 @@
 <dec f='exim/src/globals.h' l='307' type='unsigned int'/>
 <offset>2</offset>
 <doc f='exim/src/globals.h' l='307'>/* Pass 4xx to caller rather than spooling */</doc>
+<use f='exim/src/globals.c' l='550' u='w'/>
+<use f='exim/src/acl.c' l='3284' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='4427' u='r' c='acl_check'/>
+<use f='exim/src/receive.c' l='4154' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4294' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4307' u='w' c='receive_msg'/>

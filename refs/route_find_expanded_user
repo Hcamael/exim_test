@@ -1,1 +1,4 @@
 <dec f='exim/src/functions.h' l='383' type='BOOL route_find_expanded_user(uschar * , uschar * , uschar * , struct passwd ** , uid_t * , uschar ** )'/>
+<use f='exim/src/deliver.c' l='1883' u='c' c='findugid'/>
+<use f='exim/src/routers/queryprogram.c' l='252' u='c' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/rf_get_ugid.c' l='45' u='c' c='rf_get_ugid'/>

@@ -1,0 +1,6 @@
+<dec f='exim/src/routers/redirect.h' l='49' type='BOOL'/>
+<dec f='exim/src/transports/appendfile.h' l='52' type='BOOL'/>
+<offset>2112</offset>
+<use f='exim/src/routers/redirect.c' l='240' u='r' c='redirect_router_init'/>
+<use f='exim/src/routers/redirect.c' l='241' u='w' c='redirect_router_init'/>
+<use f='exim/src/routers/redirect.c' l='709' u='r' c='redirect_router_entry'/>

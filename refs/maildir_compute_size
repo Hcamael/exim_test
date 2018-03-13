@@ -1,0 +1,30 @@
+<dec f='exim/src/transports/tf_maildir.h' l='11' type='off_t maildir_compute_size(uschar * , int * , time_t * , const pcre * , const pcre * , BOOL )'/>
+<def f='exim/src/transports/tf_maildir.c' l='252' ll='341' type='off_t maildir_compute_size(uschar * path, int * filecount, time_t * latest, const pcre * regex, const pcre * dir_regex, BOOL timestamp_only)'/>
+<use f='exim/src/transports/tf_maildir.c' l='316' u='c' c='maildir_compute_size'/>
+<use f='exim/src/transports/tf_maildir.c' l='555' u='c' c='maildir_ensure_sizefile'/>
+<use f='exim/src/transports/tf_maildir.c' l='580' u='c' c='maildir_ensure_sizefile'/>
+<doc f='exim/src/transports/tf_maildir.c' l='228'>/* This function is called when we have to recalculate the size of a maildir by
+scanning all the files and directories therein. There are rules and conventions
+about which files or directories are included. We support this by the use of a
+regex to match directories that are to be included.
+
+Maildirs can only be one level deep. However, this function recurses, so it
+might cope with deeper nestings. We use the existing check_dir_size() function
+to add up the sizes of the files in a directory that contains messages.
+
+The function returns the most recent timestamp encountered. It can also be run
+in a dummy mode in which it does not scan for sizes, but just returns the
+timestamp.
+
+Arguments:
+  path            the path to the maildir
+  filecount       where to store the count of messages
+  latest          where to store the latest timestamp encountered
+  regex           a regex for getting files sizes from file names
+  dir_regex       a regex for matching directories to be included
+  timestamp_only  don&apos;t actually compute any sizes
+
+Returns:      the sum of the sizes of the messages
+*/</doc>
+<doc f='exim/src/transports/tf_maildir.h' l='8'>/* Header file for the functions that are used to support the use of
+maildirsize files for quota handling in maildir directories. */</doc>

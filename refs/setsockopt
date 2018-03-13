@@ -2,3 +2,15 @@
 <doc f='include/x86_64-linux-gnu/sys/socket.h' l='223'>/* Set socket FD&apos;s option OPTNAME at protocol level LEVEL
    to *OPTVAL (which is OPTLEN bytes long).
    Returns 0 on success, -1 for errors.  */</doc>
+<use f='exim/src/smtp_out.c' l='228' u='c' c='smtp_sock_connect'/>
+<use f='exim/src/smtp_out.c' l='239' u='c' c='smtp_sock_connect'/>
+<use f='exim/src/smtp_out.c' l='246' u='c' c='smtp_sock_connect'/>
+<use f='exim/src/smtp_in.c' l='3869' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5183' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/acl.c' l='3072' u='c' c='acl_check_condition'/>
+<use f='exim/src/ip.c' l='514' u='c' c='ip_keepalive'/>
+<use f='exim/src/daemon.c' l='968' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1396' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1406' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1414' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1467' u='c' c='daemon_go'/>

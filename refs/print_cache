@@ -1,0 +1,7 @@
+<def f='exim/src/exim_dbutil.c' l='176' ll='182' type='uschar * print_cache(int value)'/>
+<use f='exim/src/exim_dbutil.c' l='1039' u='c' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1043' u='c' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1045' u='c' c='main'/>
+<doc f='exim/src/exim_dbutil.c' l='172'>/*************************************************
+*        Format a cache value for printing       *
+*************************************************/</doc>

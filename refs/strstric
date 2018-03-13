@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='487' type='uschar * strstric(uschar * , uschar * , BOOL )'/>
+<use f='exim/src/header.c' l='425' u='c' c='one_pattern_match'/>
+<def f='exim/src/string.c' l='796' ll='829' type='uschar * strstric(uschar * s, uschar * t, BOOL space_follows)'/>
+<doc f='exim/src/string.c' l='785'>/* The third argument specifies whether whitespace is required
+to follow the matched string.
+
+Arguments:
+  s              string to search
+  t              substring to search for
+  space_follows  if TRUE, match only if whitespace follows
+
+Returns:         pointer to substring in string, or NULL if not found
+*/</doc>
+<use f='exim/src/filter.c' l='1563' u='c' c='test_condition'/>
+<use f='exim/src/queue.c' l='566' u='c' c='queue_run'/>
+<use f='exim/src/queue.c' l='586' u='c' c='queue_run'/>

@@ -1,0 +1,4 @@
+<dec f='exim/src/transports/smtp.h' l='156' type='int smtp_write_mail_and_rcpt_cmds(smtp_context * , int * )'/>
+<use f='exim/src/verify.c' l='798' u='c' c='do_callout'/>
+<use f='exim/src/verify.c' l='864' u='c' c='do_callout'/>
+<use f='exim/src/verify.c' l='931' u='c' c='do_callout'/>

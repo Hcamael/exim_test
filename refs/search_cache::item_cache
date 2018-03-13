@@ -1,3 +1,7 @@
 <dec f='exim/src/structs.h' l='749' type='tree_node *'/>
 <offset>256</offset>
 <doc f='exim/src/structs.h' l='749'>/* tree of cached results */</doc>
+<use f='exim/src/search.c' l='426' u='w' c='search_open'/>
+<use f='exim/src/search.c' l='495' u='r' c='internal_search_find'/>
+<use f='exim/src/search.c' l='549' u='a' c='internal_search_find'/>
+<use f='exim/src/search.c' l='559' u='w' c='internal_search_find'/>

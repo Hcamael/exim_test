@@ -1,1 +1,51 @@
 <dec f='exim/src/functions.h' l='275' type='int match_check_list(const uschar ** , int , tree_node ** , unsigned int ** , int (*)(void *, const uschar *, const uschar **, uschar **) , void * , int , const uschar * , const uschar ** )'/>
+<use f='exim/src/verify.c' l='3175' u='c' c='verify_check_this_host'/>
+<def f='exim/src/match.c' l='437' ll='906' type='int match_check_list(const uschar ** listptr, int sep, tree_node ** anchorptr, unsigned int ** cache_ptr, int (*)(void *, const uschar *, const uschar **, uschar **) func, void * arg, int type, const uschar * name, const uschar ** valueptr)'/>
+<use f='exim/src/match.c' l='643' u='c' c='match_check_list'/>
+<use f='exim/src/match.c' l='962' u='c' c='match_isinlist'/>
+<use f='exim/src/match.c' l='1227' u='c' c='check_address'/>
+<use f='exim/src/match.c' l='1318' u='c' c='match_address_list'/>
+<doc f='exim/src/match.c' l='393'>/* This function scans a list of patterns, and runs a matching function for
+each item in the list. It is called from the functions that match domains,
+local parts, hosts, and addresses, because its overall structure is the same in
+all cases. However, the details of each particular match is different, so it
+calls back to a given function do perform an actual match.
+
+We can&apos;t quite keep the different types anonymous here because they permit
+different special cases. A pity.
+
+If a list item starts with !, that implies negation if the subject matches the
+rest of the item (ignoring white space after the !). The result when the end of
+the list is reached is FALSE unless the last item on the list is negated, in
+which case it is TRUE. A file name in the list causes its lines to be
+interpolated as if items in the list. An item starting with + is a named
+sublist, obtained by searching the tree pointed to by anchorptr, with possible
+cached match results in cache_bits.
+
+Arguments:
+  listptr      pointer to the pointer to the list
+  sep          separator character for string_nextinlist();
+                 normally zero for a standard list;
+                 sometimes UCHAR_MAX+1 for single items;
+  anchorptr    -&gt; tree of named items, or NULL if no named items
+  cache_ptr    pointer to pointer to cache bits for named items, or
+                 pointer to NULL if not caching; may get set NULL if an
+                 uncacheable named list is encountered
+  func         function to call back to do one test
+  arg          pointer to pass to the function; the string to be matched is
+                 in the structure it points to
+  type         MCL_STRING, MCL_DOMAIN, MCL_HOST, MCL_ADDRESS, or MCL_LOCALPART
+                 these are used for some special handling
+               MCL_NOEXPAND (whose value is greater than any of them) may
+                 be added to any value to suppress expansion of the list
+  name         string to use in debugging info
+  valueptr     where to pass back data from a lookup
+
+Returns:       OK    if matched a non-negated item
+               OK    if hit end of list after a negated item
+               FAIL  if expansion force-failed
+               FAIL  if matched a negated item
+               FAIL  if hit end of list after a non-negated item
+               DEFER if a something deferred or expansion failed
+*/</doc>
+<use f='exim/src/expand.c' l='2639' u='c' c='eval_condition'/>

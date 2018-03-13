@@ -1,0 +1,18 @@
+<dec f='exim/src/pdkim/pdkim.h' l='144' type='int'/>
+<use f='exim/src/pdkim/pdkim.c' l='120' u='r' c='dkim_sig_to_a_tag'/>
+<use f='exim/src/pdkim/pdkim.c' l='120' u='r' c='dkim_sig_to_a_tag'/>
+<use f='exim/src/pdkim/pdkim.c' l='124' u='r' c='dkim_sig_to_a_tag'/>
+<use f='exim/src/pdkim/pdkim.c' l='449' u='w' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='538' u='w' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='539' u='r' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='610' u='r' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1366' u='r' c='pdkim_key_from_dns'/>
+<use f='exim/src/pdkim/pdkim.c' l='1375' u='r' c='pdkim_key_from_dns'/>
+<use f='exim/src/pdkim/pdkim.c' l='1488' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1625' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1667' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1720' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1815' u='w' c='pdkim_init_sign'/>
+<offset>96</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='143'>/* (a=) The signature algorithm. Either PDKIM_ALGO_RSA_SHA256 */</doc>
+<doc f='exim/src/pdkim/pdkim.h' l='144'>/* pdkim_keytypes index */</doc>

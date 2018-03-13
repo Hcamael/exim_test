@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='162' type='tree_node *'/>
 <doc f='exim/src/globals.h' l='162'>/* Tree of named ACLs */</doc>
+<def f='exim/src/globals.c' l='228' type='tree_node *'/>
+<use f='exim/src/acl.c' l='3989' u='r' c='acl_check_internal'/>
+<use f='exim/src/acl.c' l='4053' u='a' c='acl_check_internal'/>

@@ -1,0 +1,803 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>drtables.c source code [exim/src/drtables.c] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="lookupmodulestr "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/drtables.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='drtables.c.html'>drtables.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><u>#include <a href="exim.h.html">"exim.h"</a></u></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><u>#include <a href="../../include/string.h.html">&lt;string.h&gt;</a></u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><i>/* This module contains tables that define the lookup methods and drivers</i></td></tr>
+<tr><th id="14">14</th><td><i>that are actually included in the binary. Its contents are controlled by</i></td></tr>
+<tr><th id="15">15</th><td><i>various macros in config.h that ultimately come from Local/Makefile. They are</i></td></tr>
+<tr><th id="16">16</th><td><i>all described in src/EDITME. */</i></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><a class="typedef" href="lookupapi.h.html#lookup_info" title='lookup_info' data-type='struct lookup_info' data-ref="lookup_info">lookup_info</a> **<dfn class="decl def" id="lookup_list" title='lookup_list' data-ref="lookup_list">lookup_list</dfn>;</td></tr>
+<tr><th id="20">20</th><td><em>int</em> <dfn class="decl def" id="lookup_list_count" title='lookup_list_count' data-ref="lookup_list_count">lookup_list_count</dfn> = <var>0</var>;</td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><i>/* Table of information about all possible authentication mechanisms. All</i></td></tr>
+<tr><th id="23">23</th><td><i>entries are always present if any mechanism is declared, but the functions are</i></td></tr>
+<tr><th id="24">24</th><td><i>set to NULL for those that are not compiled into the binary. */</i></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="26">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#37" data-ref="_M/AUTH_CRAM_MD5">AUTH_CRAM_MD5</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="auths/cram_md5.h.html">"auths/cram_md5.h"</a></u></td></tr>
+<tr><th id="28">28</th><td><u>#<span data-ppcond="26">endif</span></u></td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><u>#<span data-ppcond="30">ifdef</span> <span class="macro" data-ref="_M/AUTH_CYRUS_SASL">AUTH_CYRUS_SASL</span></u></td></tr>
+<tr><th id="31">31</th><td><u>#include "auths/cyrus_sasl.h"</u></td></tr>
+<tr><th id="32">32</th><td><u>#<span data-ppcond="30">endif</span></u></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><u>#<span data-ppcond="34">ifdef</span> <span class="macro" data-ref="_M/AUTH_DOVECOT">AUTH_DOVECOT</span></u></td></tr>
+<tr><th id="35">35</th><td><u>#include "auths/dovecot.h"</u></td></tr>
+<tr><th id="36">36</th><td><u>#<span data-ppcond="34">endif</span></u></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><u>#<span data-ppcond="38">ifdef</span> <span class="macro" data-ref="_M/AUTH_GSASL">AUTH_GSASL</span></u></td></tr>
+<tr><th id="39">39</th><td><u>#include "auths/gsasl_exim.h"</u></td></tr>
+<tr><th id="40">40</th><td><u>#<span data-ppcond="38">endif</span></u></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><u>#<span data-ppcond="42">ifdef</span> <span class="macro" data-ref="_M/AUTH_HEIMDAL_GSSAPI">AUTH_HEIMDAL_GSSAPI</span></u></td></tr>
+<tr><th id="43">43</th><td><u>#include "auths/heimdal_gssapi.h"</u></td></tr>
+<tr><th id="44">44</th><td><u>#<span data-ppcond="42">endif</span></u></td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><u>#<span data-ppcond="46">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#42" data-ref="_M/AUTH_PLAINTEXT">AUTH_PLAINTEXT</a></u></td></tr>
+<tr><th id="47">47</th><td><u>#include <a href="auths/plaintext.h.html">"auths/plaintext.h"</a></u></td></tr>
+<tr><th id="48">48</th><td><u>#<span data-ppcond="46">endif</span></u></td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><u>#<span data-ppcond="50">ifdef</span> <span class="macro" data-ref="_M/AUTH_SPA">AUTH_SPA</span></u></td></tr>
+<tr><th id="51">51</th><td><u>#include "auths/spa.h"</u></td></tr>
+<tr><th id="52">52</th><td><u>#<span data-ppcond="50">endif</span></u></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><u>#<span data-ppcond="54">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#44" data-ref="_M/AUTH_TLS">AUTH_TLS</a></u></td></tr>
+<tr><th id="55">55</th><td><u>#include <a href="auths/tls.h.html">"auths/tls.h"</a></u></td></tr>
+<tr><th id="56">56</th><td><u>#<span data-ppcond="54">endif</span></u></td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><a class="typedef" href="structs.h.html#auth_info" title='auth_info' data-type='struct auth_info' data-ref="auth_info">auth_info</a> <dfn class="decl def" id="auths_available" title='auths_available' data-ref="auths_available">auths_available</dfn>[] = {</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td><i>/* Checking by an expansion condition on plain text */</i></td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><u>#<span data-ppcond="62">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#37" data-ref="_M/AUTH_CRAM_MD5">AUTH_CRAM_MD5</a></u></td></tr>
+<tr><th id="63">63</th><td>  {</td></tr>
+<tr><th id="64">64</th><td>  .<a class="ref field" href="structs.h.html#auth_info::driver_name" title='auth_info::driver_name' data-ref="auth_info::driver_name">driver_name</a> =	<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"cram_md5"</q>,                              <i>/* lookup name */</i></td></tr>
+<tr><th id="65">65</th><td>  .<a class="ref field" href="structs.h.html#auth_info::options" title='auth_info::options' data-ref="auth_info::options">options</a> =		<a class="ref" href="auths/cram_md5.h.html#auth_cram_md5_options" title='auth_cram_md5_options' data-ref="auth_cram_md5_options">auth_cram_md5_options</a>,</td></tr>
+<tr><th id="66">66</th><td>  .<a class="ref field" href="structs.h.html#auth_info::options_count" title='auth_info::options_count' data-ref="auth_info::options_count">options_count</a> =	&amp;<a class="ref" href="auths/cram_md5.h.html#auth_cram_md5_options_count" title='auth_cram_md5_options_count' data-ref="auth_cram_md5_options_count">auth_cram_md5_options_count</a>,</td></tr>
+<tr><th id="67">67</th><td>  .<a class="ref field" href="structs.h.html#auth_info::options_block" title='auth_info::options_block' data-ref="auth_info::options_block">options_block</a> =	&amp;<a class="ref" href="auths/cram_md5.h.html#auth_cram_md5_option_defaults" title='auth_cram_md5_option_defaults' data-ref="auth_cram_md5_option_defaults">auth_cram_md5_option_defaults</a>,</td></tr>
+<tr><th id="68">68</th><td>  .<a class="ref field" href="structs.h.html#auth_info::options_len" title='auth_info::options_len' data-ref="auth_info::options_len">options_len</a> =	<b>sizeof</b>(<a class="typedef" href="auths/cram_md5.h.html#auth_cram_md5_options_block" title='auth_cram_md5_options_block' data-type='struct auth_cram_md5_options_block' data-ref="auth_cram_md5_options_block">auth_cram_md5_options_block</a>),</td></tr>
+<tr><th id="69">69</th><td>  .<a class="ref field" href="structs.h.html#auth_info::init" title='auth_info::init' data-ref="auth_info::init">init</a> =		<a class="ref fn" href="auths/cram_md5.h.html#auth_cram_md5_init" title='auth_cram_md5_init' data-ref="auth_cram_md5_init">auth_cram_md5_init</a>,</td></tr>
+<tr><th id="70">70</th><td>  .<a class="ref field" href="structs.h.html#auth_info::servercode" title='auth_info::servercode' data-ref="auth_info::servercode">servercode</a> =		<a class="ref fn" href="auths/cram_md5.h.html#auth_cram_md5_server" title='auth_cram_md5_server' data-ref="auth_cram_md5_server">auth_cram_md5_server</a>,</td></tr>
+<tr><th id="71">71</th><td>  .<a class="ref field" href="structs.h.html#auth_info::clientcode" title='auth_info::clientcode' data-ref="auth_info::clientcode">clientcode</a> =		<a class="ref fn" href="auths/cram_md5.h.html#auth_cram_md5_client" title='auth_cram_md5_client' data-ref="auth_cram_md5_client">auth_cram_md5_client</a>,</td></tr>
+<tr><th id="72">72</th><td>  .<a class="ref field" href="structs.h.html#auth_info::version_report" title='auth_info::version_report' data-ref="auth_info::version_report">version_report</a> =	<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span></td></tr>
+<tr><th id="73">73</th><td>  },</td></tr>
+<tr><th id="74">74</th><td><u>#<span data-ppcond="62">endif</span></u></td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><u>#<span data-ppcond="76">ifdef</span> <span class="macro" data-ref="_M/AUTH_CYRUS_SASL">AUTH_CYRUS_SASL</span></u></td></tr>
+<tr><th id="77">77</th><td>  {</td></tr>
+<tr><th id="78">78</th><td>  .driver_name =	US<q>"cyrus_sasl"</q>,</td></tr>
+<tr><th id="79">79</th><td>  .options =		auth_cyrus_sasl_options,</td></tr>
+<tr><th id="80">80</th><td>  .options_count =	&amp;auth_cyrus_sasl_options_count,</td></tr>
+<tr><th id="81">81</th><td>  .options_block =	&amp;auth_cyrus_sasl_option_defaults,</td></tr>
+<tr><th id="82">82</th><td>  .options_len =	<b>sizeof</b>(auth_cyrus_sasl_options_block),</td></tr>
+<tr><th id="83">83</th><td>  .init =		auth_cyrus_sasl_init,</td></tr>
+<tr><th id="84">84</th><td>  .servercode =		auth_cyrus_sasl_server,</td></tr>
+<tr><th id="85">85</th><td>  .clientcode =		NULL,</td></tr>
+<tr><th id="86">86</th><td>  .version_report =	auth_cyrus_sasl_version_report</td></tr>
+<tr><th id="87">87</th><td>  },</td></tr>
+<tr><th id="88">88</th><td><u>#<span data-ppcond="76">endif</span></u></td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><u>#<span data-ppcond="90">ifdef</span> <span class="macro" data-ref="_M/AUTH_DOVECOT">AUTH_DOVECOT</span></u></td></tr>
+<tr><th id="91">91</th><td>  {</td></tr>
+<tr><th id="92">92</th><td>  .driver_name =	US<q>"dovecot"</q>,</td></tr>
+<tr><th id="93">93</th><td>  .options =		auth_dovecot_options,</td></tr>
+<tr><th id="94">94</th><td>  .options_count =	&amp;auth_dovecot_options_count,</td></tr>
+<tr><th id="95">95</th><td>  .options_block =	&amp;auth_dovecot_option_defaults,</td></tr>
+<tr><th id="96">96</th><td>  .options_len =	<b>sizeof</b>(auth_dovecot_options_block),</td></tr>
+<tr><th id="97">97</th><td>  .init =		auth_dovecot_init,</td></tr>
+<tr><th id="98">98</th><td>  .servercode =		auth_dovecot_server,</td></tr>
+<tr><th id="99">99</th><td>  .clientcode =		NULL,</td></tr>
+<tr><th id="100">100</th><td>  .version_report =	NULL</td></tr>
+<tr><th id="101">101</th><td>  },</td></tr>
+<tr><th id="102">102</th><td><u>#<span data-ppcond="90">endif</span></u></td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td><u>#<span data-ppcond="104">ifdef</span> <span class="macro" data-ref="_M/AUTH_GSASL">AUTH_GSASL</span></u></td></tr>
+<tr><th id="105">105</th><td>  {</td></tr>
+<tr><th id="106">106</th><td>  .driver_name =	US<q>"gsasl"</q>,</td></tr>
+<tr><th id="107">107</th><td>  .options =		auth_gsasl_options,</td></tr>
+<tr><th id="108">108</th><td>  .options_count =	&amp;auth_gsasl_options_count,</td></tr>
+<tr><th id="109">109</th><td>  .options_block =	&amp;auth_gsasl_option_defaults,</td></tr>
+<tr><th id="110">110</th><td>  .options_len =	<b>sizeof</b>(auth_gsasl_options_block),</td></tr>
+<tr><th id="111">111</th><td>  .init =		auth_gsasl_init,</td></tr>
+<tr><th id="112">112</th><td>  .servercode =		auth_gsasl_server,</td></tr>
+<tr><th id="113">113</th><td>  .clientcode =		NULL,</td></tr>
+<tr><th id="114">114</th><td>  .version_report =	auth_gsasl_version_report</td></tr>
+<tr><th id="115">115</th><td>  },</td></tr>
+<tr><th id="116">116</th><td><u>#<span data-ppcond="104">endif</span></u></td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td><u>#<span data-ppcond="118">ifdef</span> <span class="macro" data-ref="_M/AUTH_HEIMDAL_GSSAPI">AUTH_HEIMDAL_GSSAPI</span></u></td></tr>
+<tr><th id="119">119</th><td>  {</td></tr>
+<tr><th id="120">120</th><td>  .driver_name =	US<q>"heimdal_gssapi"</q>,</td></tr>
+<tr><th id="121">121</th><td>  .options =		auth_heimdal_gssapi_options,</td></tr>
+<tr><th id="122">122</th><td>  .options_count =	&amp;auth_heimdal_gssapi_options_count,</td></tr>
+<tr><th id="123">123</th><td>  .options_block =	&amp;auth_heimdal_gssapi_option_defaults,</td></tr>
+<tr><th id="124">124</th><td>  .options_len =	<b>sizeof</b>(auth_heimdal_gssapi_options_block),</td></tr>
+<tr><th id="125">125</th><td>  .init =		auth_heimdal_gssapi_init,</td></tr>
+<tr><th id="126">126</th><td>  .servercode =		auth_heimdal_gssapi_server,</td></tr>
+<tr><th id="127">127</th><td>  .clientcode =		NULL,</td></tr>
+<tr><th id="128">128</th><td>  .version_report =	auth_heimdal_gssapi_version_report</td></tr>
+<tr><th id="129">129</th><td>  },</td></tr>
+<tr><th id="130">130</th><td><u>#<span data-ppcond="118">endif</span></u></td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td><u>#<span data-ppcond="132">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#42" data-ref="_M/AUTH_PLAINTEXT">AUTH_PLAINTEXT</a></u></td></tr>
+<tr><th id="133">133</th><td>  {</td></tr>
+<tr><th id="134">134</th><td>  .<a class="ref field" href="structs.h.html#auth_info::driver_name" title='auth_info::driver_name' data-ref="auth_info::driver_name">driver_name</a> =	<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"plaintext"</q>,</td></tr>
+<tr><th id="135">135</th><td>  .<a class="ref field" href="structs.h.html#auth_info::options" title='auth_info::options' data-ref="auth_info::options">options</a> =		<a class="ref" href="auths/plaintext.h.html#auth_plaintext_options" title='auth_plaintext_options' data-ref="auth_plaintext_options">auth_plaintext_options</a>,</td></tr>
+<tr><th id="136">136</th><td>  .<a class="ref field" href="structs.h.html#auth_info::options_count" title='auth_info::options_count' data-ref="auth_info::options_count">options_count</a> =	&amp;<a class="ref" href="auths/plaintext.h.html#auth_plaintext_options_count" title='auth_plaintext_options_count' data-ref="auth_plaintext_options_count">auth_plaintext_options_count</a>,</td></tr>
+<tr><th id="137">137</th><td>  .<a class="ref field" href="structs.h.html#auth_info::options_block" title='auth_info::options_block' data-ref="auth_info::options_block">options_block</a> =	&amp;<a class="ref" href="auths/plaintext.h.html#auth_plaintext_option_defaults" title='auth_plaintext_option_defaults' data-ref="auth_plaintext_option_defaults">auth_plaintext_option_defaults</a>,</td></tr>
+<tr><th id="138">138</th><td>  .<a class="ref field" href="structs.h.html#auth_info::options_len" title='auth_info::options_len' data-ref="auth_info::options_len">options_len</a> =	<b>sizeof</b>(<a class="typedef" href="auths/plaintext.h.html#auth_plaintext_options_block" title='auth_plaintext_options_block' data-type='struct auth_plaintext_options_block' data-ref="auth_plaintext_options_block">auth_plaintext_options_block</a>),</td></tr>
+<tr><th id="139">139</th><td>  .<a class="ref field" href="structs.h.html#auth_info::init" title='auth_info::init' data-ref="auth_info::init">init</a> =		<a class="ref fn" href="auths/plaintext.h.html#auth_plaintext_init" title='auth_plaintext_init' data-ref="auth_plaintext_init">auth_plaintext_init</a>,</td></tr>
+<tr><th id="140">140</th><td>  .<a class="ref field" href="structs.h.html#auth_info::servercode" title='auth_info::servercode' data-ref="auth_info::servercode">servercode</a> =		<a class="ref fn" href="auths/plaintext.h.html#auth_plaintext_server" title='auth_plaintext_server' data-ref="auth_plaintext_server">auth_plaintext_server</a>,</td></tr>
+<tr><th id="141">141</th><td>  .<a class="ref field" href="structs.h.html#auth_info::clientcode" title='auth_info::clientcode' data-ref="auth_info::clientcode">clientcode</a> =		<a class="ref fn" href="auths/plaintext.h.html#auth_plaintext_client" title='auth_plaintext_client' data-ref="auth_plaintext_client">auth_plaintext_client</a>,</td></tr>
+<tr><th id="142">142</th><td>  .<a class="ref field" href="structs.h.html#auth_info::version_report" title='auth_info::version_report' data-ref="auth_info::version_report">version_report</a> =	<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span></td></tr>
+<tr><th id="143">143</th><td>  },</td></tr>
+<tr><th id="144">144</th><td><u>#<span data-ppcond="132">endif</span></u></td></tr>
+<tr><th id="145">145</th><td></td></tr>
+<tr><th id="146">146</th><td><u>#<span data-ppcond="146">ifdef</span> <span class="macro" data-ref="_M/AUTH_SPA">AUTH_SPA</span></u></td></tr>
+<tr><th id="147">147</th><td>  {</td></tr>
+<tr><th id="148">148</th><td>  .driver_name =	US<q>"spa"</q>,</td></tr>
+<tr><th id="149">149</th><td>  .options =		auth_spa_options,</td></tr>
+<tr><th id="150">150</th><td>  .options_count =	&amp;auth_spa_options_count,</td></tr>
+<tr><th id="151">151</th><td>  .options_block =	&amp;auth_spa_option_defaults,</td></tr>
+<tr><th id="152">152</th><td>  .options_len =	<b>sizeof</b>(auth_spa_options_block),</td></tr>
+<tr><th id="153">153</th><td>  .init =		auth_spa_init,</td></tr>
+<tr><th id="154">154</th><td>  .servercode =		auth_spa_server,</td></tr>
+<tr><th id="155">155</th><td>  .clientcode =		auth_spa_client,</td></tr>
+<tr><th id="156">156</th><td>  .version_report =	NULL</td></tr>
+<tr><th id="157">157</th><td>  },</td></tr>
+<tr><th id="158">158</th><td><u>#<span data-ppcond="146">endif</span></u></td></tr>
+<tr><th id="159">159</th><td></td></tr>
+<tr><th id="160">160</th><td><u>#<span data-ppcond="160">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#44" data-ref="_M/AUTH_TLS">AUTH_TLS</a></u></td></tr>
+<tr><th id="161">161</th><td>  {</td></tr>
+<tr><th id="162">162</th><td>  .<a class="ref field" href="structs.h.html#auth_info::driver_name" title='auth_info::driver_name' data-ref="auth_info::driver_name">driver_name</a> =	<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"tls"</q>,</td></tr>
+<tr><th id="163">163</th><td>  .<a class="ref field" href="structs.h.html#auth_info::options" title='auth_info::options' data-ref="auth_info::options">options</a> =		<a class="ref" href="auths/tls.h.html#auth_tls_options" title='auth_tls_options' data-ref="auth_tls_options">auth_tls_options</a>,</td></tr>
+<tr><th id="164">164</th><td>  .<a class="ref field" href="structs.h.html#auth_info::options_count" title='auth_info::options_count' data-ref="auth_info::options_count">options_count</a> =	&amp;<a class="ref" href="auths/tls.h.html#auth_tls_options_count" title='auth_tls_options_count' data-ref="auth_tls_options_count">auth_tls_options_count</a>,</td></tr>
+<tr><th id="165">165</th><td>  .<a class="ref field" href="structs.h.html#auth_info::options_block" title='auth_info::options_block' data-ref="auth_info::options_block">options_block</a> =	&amp;<a class="ref" href="auths/tls.h.html#auth_tls_option_defaults" title='auth_tls_option_defaults' data-ref="auth_tls_option_defaults">auth_tls_option_defaults</a>,</td></tr>
+<tr><th id="166">166</th><td>  .<a class="ref field" href="structs.h.html#auth_info::options_len" title='auth_info::options_len' data-ref="auth_info::options_len">options_len</a> =	<b>sizeof</b>(<a class="typedef" href="auths/tls.h.html#auth_tls_options_block" title='auth_tls_options_block' data-type='struct auth_tls_options_block' data-ref="auth_tls_options_block">auth_tls_options_block</a>),</td></tr>
+<tr><th id="167">167</th><td>  .<a class="ref field" href="structs.h.html#auth_info::init" title='auth_info::init' data-ref="auth_info::init">init</a> =		<a class="ref fn" href="auths/tls.h.html#auth_tls_init" title='auth_tls_init' data-ref="auth_tls_init">auth_tls_init</a>,</td></tr>
+<tr><th id="168">168</th><td>  .<a class="ref field" href="structs.h.html#auth_info::servercode" title='auth_info::servercode' data-ref="auth_info::servercode">servercode</a> =		<a class="ref fn" href="auths/tls.h.html#auth_tls_server" title='auth_tls_server' data-ref="auth_tls_server">auth_tls_server</a>,</td></tr>
+<tr><th id="169">169</th><td>  .<a class="ref field" href="structs.h.html#auth_info::clientcode" title='auth_info::clientcode' data-ref="auth_info::clientcode">clientcode</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="170">170</th><td>  .<a class="ref field" href="structs.h.html#auth_info::version_report" title='auth_info::version_report' data-ref="auth_info::version_report">version_report</a> =	<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span></td></tr>
+<tr><th id="171">171</th><td>  },</td></tr>
+<tr><th id="172">172</th><td><u>#<span data-ppcond="160">endif</span></u></td></tr>
+<tr><th id="173">173</th><td></td></tr>
+<tr><th id="174">174</th><td>  { .<a class="ref field" href="structs.h.html#auth_info::driver_name" title='auth_info::driver_name' data-ref="auth_info::driver_name">driver_name</a> = <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>""</q> }		<i>/* end marker */</i></td></tr>
+<tr><th id="175">175</th><td>};</td></tr>
+<tr><th id="176">176</th><td></td></tr>
+<tr><th id="177">177</th><td><em>void</em></td></tr>
+<tr><th id="178">178</th><td><dfn class="decl def fn" id="auth_show_supported" title='auth_show_supported' data-ref="auth_show_supported">auth_show_supported</dfn>(<a class="typedef" href="../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> * <dfn class="local col1 decl" id="1f" title='f' data-type='FILE *' data-ref="1f">f</dfn>)</td></tr>
+<tr><th id="179">179</th><td>{</td></tr>
+<tr><th id="180">180</th><td><a class="typedef" href="structs.h.html#auth_info" title='auth_info' data-type='struct auth_info' data-ref="auth_info">auth_info</a> * <dfn class="local col2 decl" id="2ai" title='ai' data-type='auth_info *' data-ref="2ai">ai</dfn>;</td></tr>
+<tr><th id="181">181</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col1 ref" href="#1f" title='f' data-ref="1f">f</a>, <q>"Authenticators:"</q>);</td></tr>
+<tr><th id="182">182</th><td><b>for</b> (<a class="local col2 ref" href="#2ai" title='ai' data-ref="2ai">ai</a> = <a class="ref" href="globals.h.html#auths_available" title='auths_available' data-ref="auths_available">auths_available</a>; <a class="local col2 ref" href="#2ai" title='ai' data-ref="2ai">ai</a>-&gt;<a class="ref field" href="structs.h.html#auth_info::driver_name" title='auth_info::driver_name' data-ref="auth_info::driver_name">driver_name</a>[<var>0</var>]; <a class="local col2 ref" href="#2ai" title='ai' data-ref="2ai">ai</a>++)</td></tr>
+<tr><th id="183">183</th><td>       	<a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col1 ref" href="#1f" title='f' data-ref="1f">f</a>, <q>" %s"</q>, <a class="local col2 ref" href="#2ai" title='ai' data-ref="2ai">ai</a>-&gt;<a class="ref field" href="structs.h.html#auth_info::driver_name" title='auth_info::driver_name' data-ref="auth_info::driver_name">driver_name</a>);</td></tr>
+<tr><th id="184">184</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col1 ref" href="#1f" title='f' data-ref="1f">f</a>, <q>"\n"</q>);</td></tr>
+<tr><th id="185">185</th><td>}</td></tr>
+<tr><th id="186">186</th><td></td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td><i>/* Tables of information about which routers and transports are included in the</i></td></tr>
+<tr><th id="189">189</th><td><i>exim binary. */</i></td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td><i>/* Pull in the necessary header files */</i></td></tr>
+<tr><th id="192">192</th><td></td></tr>
+<tr><th id="193">193</th><td><u>#include <a href="routers/rf_functions.h.html">"routers/rf_functions.h"</a></u></td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td><u>#<span data-ppcond="195">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#121" data-ref="_M/ROUTER_ACCEPT">ROUTER_ACCEPT</a></u></td></tr>
+<tr><th id="196">196</th><td><u>#include <a href="routers/accept.h.html">"routers/accept.h"</a></u></td></tr>
+<tr><th id="197">197</th><td><u>#<span data-ppcond="195">endif</span></u></td></tr>
+<tr><th id="198">198</th><td></td></tr>
+<tr><th id="199">199</th><td><u>#<span data-ppcond="199">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#122" data-ref="_M/ROUTER_DNSLOOKUP">ROUTER_DNSLOOKUP</a></u></td></tr>
+<tr><th id="200">200</th><td><u>#include <a href="routers/dnslookup.h.html">"routers/dnslookup.h"</a></u></td></tr>
+<tr><th id="201">201</th><td><u>#<span data-ppcond="199">endif</span></u></td></tr>
+<tr><th id="202">202</th><td></td></tr>
+<tr><th id="203">203</th><td><u>#<span data-ppcond="203">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#125" data-ref="_M/ROUTER_MANUALROUTE">ROUTER_MANUALROUTE</a></u></td></tr>
+<tr><th id="204">204</th><td><u>#include <a href="routers/manualroute.h.html">"routers/manualroute.h"</a></u></td></tr>
+<tr><th id="205">205</th><td><u>#<span data-ppcond="203">endif</span></u></td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td><u>#<span data-ppcond="207">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#123" data-ref="_M/ROUTER_IPLITERAL">ROUTER_IPLITERAL</a></u></td></tr>
+<tr><th id="208">208</th><td><u>#include <a href="routers/ipliteral.h.html">"routers/ipliteral.h"</a></u></td></tr>
+<tr><th id="209">209</th><td><u>#<span data-ppcond="207">endif</span></u></td></tr>
+<tr><th id="210">210</th><td></td></tr>
+<tr><th id="211">211</th><td><u>#<span data-ppcond="211">ifdef</span> <span class="macro" data-ref="_M/ROUTER_IPLOOKUP">ROUTER_IPLOOKUP</span></u></td></tr>
+<tr><th id="212">212</th><td><u>#include "routers/iplookup.h"</u></td></tr>
+<tr><th id="213">213</th><td><u>#<span data-ppcond="211">endif</span></u></td></tr>
+<tr><th id="214">214</th><td></td></tr>
+<tr><th id="215">215</th><td><u>#<span data-ppcond="215">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#126" data-ref="_M/ROUTER_QUERYPROGRAM">ROUTER_QUERYPROGRAM</a></u></td></tr>
+<tr><th id="216">216</th><td><u>#include <a href="routers/queryprogram.h.html">"routers/queryprogram.h"</a></u></td></tr>
+<tr><th id="217">217</th><td><u>#<span data-ppcond="215">endif</span></u></td></tr>
+<tr><th id="218">218</th><td></td></tr>
+<tr><th id="219">219</th><td><u>#<span data-ppcond="219">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#127" data-ref="_M/ROUTER_REDIRECT">ROUTER_REDIRECT</a></u></td></tr>
+<tr><th id="220">220</th><td><u>#include <a href="routers/redirect.h.html">"routers/redirect.h"</a></u></td></tr>
+<tr><th id="221">221</th><td><u>#<span data-ppcond="219">endif</span></u></td></tr>
+<tr><th id="222">222</th><td></td></tr>
+<tr><th id="223">223</th><td><u>#<span data-ppcond="223">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#151" data-ref="_M/TRANSPORT_APPENDFILE">TRANSPORT_APPENDFILE</a></u></td></tr>
+<tr><th id="224">224</th><td><u>#include <a href="transports/appendfile.h.html">"transports/appendfile.h"</a></u></td></tr>
+<tr><th id="225">225</th><td><u>#<span data-ppcond="223">endif</span></u></td></tr>
+<tr><th id="226">226</th><td></td></tr>
+<tr><th id="227">227</th><td><u>#<span data-ppcond="227">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#152" data-ref="_M/TRANSPORT_AUTOREPLY">TRANSPORT_AUTOREPLY</a></u></td></tr>
+<tr><th id="228">228</th><td><u>#include <a href="transports/autoreply.h.html">"transports/autoreply.h"</a></u></td></tr>
+<tr><th id="229">229</th><td><u>#<span data-ppcond="227">endif</span></u></td></tr>
+<tr><th id="230">230</th><td></td></tr>
+<tr><th id="231">231</th><td><u>#<span data-ppcond="231">ifdef</span> <span class="macro" data-ref="_M/TRANSPORT_LMTP">TRANSPORT_LMTP</span></u></td></tr>
+<tr><th id="232">232</th><td><u>#include "transports/lmtp.h"</u></td></tr>
+<tr><th id="233">233</th><td><u>#<span data-ppcond="231">endif</span></u></td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td><u>#<span data-ppcond="235">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#154" data-ref="_M/TRANSPORT_PIPE">TRANSPORT_PIPE</a></u></td></tr>
+<tr><th id="236">236</th><td><u>#include <a href="transports/pipe.h.html">"transports/pipe.h"</a></u></td></tr>
+<tr><th id="237">237</th><td><u>#<span data-ppcond="235">endif</span></u></td></tr>
+<tr><th id="238">238</th><td></td></tr>
+<tr><th id="239">239</th><td><u>#<span data-ppcond="239">ifdef</span> <span class="macro" data-ref="_M/EXPERIMENTAL_QUEUEFILE">EXPERIMENTAL_QUEUEFILE</span></u></td></tr>
+<tr><th id="240">240</th><td><u>#include "transports/queuefile.h"</u></td></tr>
+<tr><th id="241">241</th><td><u>#<span data-ppcond="239">endif</span></u></td></tr>
+<tr><th id="242">242</th><td></td></tr>
+<tr><th id="243">243</th><td><u>#<span data-ppcond="243">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#155" data-ref="_M/TRANSPORT_SMTP">TRANSPORT_SMTP</a></u></td></tr>
+<tr><th id="244">244</th><td><u>#include <a href="transports/smtp.h.html">"transports/smtp.h"</a></u></td></tr>
+<tr><th id="245">245</th><td><u>#<span data-ppcond="243">endif</span></u></td></tr>
+<tr><th id="246">246</th><td></td></tr>
+<tr><th id="247">247</th><td></td></tr>
+<tr><th id="248">248</th><td><i>/* Now set up the structures, terminated by an entry with a null name. */</i></td></tr>
+<tr><th id="249">249</th><td></td></tr>
+<tr><th id="250">250</th><td><a class="typedef" href="structs.h.html#router_info" title='router_info' data-type='struct router_info' data-ref="router_info">router_info</a> <dfn class="decl def" id="routers_available" title='routers_available' data-ref="routers_available">routers_available</dfn>[] = {</td></tr>
+<tr><th id="251">251</th><td><u>#<span data-ppcond="251">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#121" data-ref="_M/ROUTER_ACCEPT">ROUTER_ACCEPT</a></u></td></tr>
+<tr><th id="252">252</th><td>  {</td></tr>
+<tr><th id="253">253</th><td>  .<a class="ref field" href="structs.h.html#router_info::driver_name" title='router_info::driver_name' data-ref="router_info::driver_name">driver_name</a> =	<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"accept"</q>,</td></tr>
+<tr><th id="254">254</th><td>  .<a class="ref field" href="structs.h.html#router_info::options" title='router_info::options' data-ref="router_info::options">options</a> =		<a class="ref" href="routers/accept.h.html#accept_router_options" title='accept_router_options' data-ref="accept_router_options">accept_router_options</a>,</td></tr>
+<tr><th id="255">255</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_count" title='router_info::options_count' data-ref="router_info::options_count">options_count</a> =	&amp;<a class="ref" href="routers/accept.h.html#accept_router_options_count" title='accept_router_options_count' data-ref="accept_router_options_count">accept_router_options_count</a>,</td></tr>
+<tr><th id="256">256</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_block" title='router_info::options_block' data-ref="router_info::options_block">options_block</a> =	&amp;<a class="ref" href="routers/accept.h.html#accept_router_option_defaults" title='accept_router_option_defaults' data-ref="accept_router_option_defaults">accept_router_option_defaults</a>,</td></tr>
+<tr><th id="257">257</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_len" title='router_info::options_len' data-ref="router_info::options_len">options_len</a> =	<b>sizeof</b>(<a class="typedef" href="routers/accept.h.html#accept_router_options_block" title='accept_router_options_block' data-type='struct accept_router_options_block' data-ref="accept_router_options_block">accept_router_options_block</a>),</td></tr>
+<tr><th id="258">258</th><td>  .<a class="ref field" href="structs.h.html#router_info::init" title='router_info::init' data-ref="router_info::init">init</a> =		<a class="ref fn" href="routers/accept.h.html#accept_router_init" title='accept_router_init' data-ref="accept_router_init">accept_router_init</a>,</td></tr>
+<tr><th id="259">259</th><td>  .<a class="ref field" href="structs.h.html#router_info::code" title='router_info::code' data-ref="router_info::code">code</a> =		<a class="ref fn" href="routers/accept.h.html#accept_router_entry" title='accept_router_entry' data-ref="accept_router_entry">accept_router_entry</a>,</td></tr>
+<tr><th id="260">260</th><td>  .<a class="ref field" href="structs.h.html#router_info::tidyup" title='router_info::tidyup' data-ref="router_info::tidyup">tidyup</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,     <i>/* no tidyup entry */</i></td></tr>
+<tr><th id="261">261</th><td>  .<a class="ref field" href="structs.h.html#router_info::ri_flags" title='router_info::ri_flags' data-ref="router_info::ri_flags">ri_flags</a> =		<a class="macro" href="macros.h.html#908" title="0x0001" data-ref="_M/ri_yestransport">ri_yestransport</a></td></tr>
+<tr><th id="262">262</th><td>  },</td></tr>
+<tr><th id="263">263</th><td><u>#<span data-ppcond="251">endif</span></u></td></tr>
+<tr><th id="264">264</th><td><u>#<span data-ppcond="264">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#122" data-ref="_M/ROUTER_DNSLOOKUP">ROUTER_DNSLOOKUP</a></u></td></tr>
+<tr><th id="265">265</th><td>  {</td></tr>
+<tr><th id="266">266</th><td>  .<a class="ref field" href="structs.h.html#router_info::driver_name" title='router_info::driver_name' data-ref="router_info::driver_name">driver_name</a> =	<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"dnslookup"</q>,</td></tr>
+<tr><th id="267">267</th><td>  .<a class="ref field" href="structs.h.html#router_info::options" title='router_info::options' data-ref="router_info::options">options</a> =		<a class="ref" href="routers/dnslookup.h.html#dnslookup_router_options" title='dnslookup_router_options' data-ref="dnslookup_router_options">dnslookup_router_options</a>,</td></tr>
+<tr><th id="268">268</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_count" title='router_info::options_count' data-ref="router_info::options_count">options_count</a> =	&amp;<a class="ref" href="routers/dnslookup.h.html#dnslookup_router_options_count" title='dnslookup_router_options_count' data-ref="dnslookup_router_options_count">dnslookup_router_options_count</a>,</td></tr>
+<tr><th id="269">269</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_block" title='router_info::options_block' data-ref="router_info::options_block">options_block</a> =	&amp;<a class="ref" href="routers/dnslookup.h.html#dnslookup_router_option_defaults" title='dnslookup_router_option_defaults' data-ref="dnslookup_router_option_defaults">dnslookup_router_option_defaults</a>,</td></tr>
+<tr><th id="270">270</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_len" title='router_info::options_len' data-ref="router_info::options_len">options_len</a> =	<b>sizeof</b>(<a class="typedef" href="routers/dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a>),</td></tr>
+<tr><th id="271">271</th><td>  .<a class="ref field" href="structs.h.html#router_info::init" title='router_info::init' data-ref="router_info::init">init</a> =		<a class="ref fn" href="routers/dnslookup.h.html#dnslookup_router_init" title='dnslookup_router_init' data-ref="dnslookup_router_init">dnslookup_router_init</a>,</td></tr>
+<tr><th id="272">272</th><td>  .<a class="ref field" href="structs.h.html#router_info::code" title='router_info::code' data-ref="router_info::code">code</a> =		<a class="ref fn" href="routers/dnslookup.h.html#dnslookup_router_entry" title='dnslookup_router_entry' data-ref="dnslookup_router_entry">dnslookup_router_entry</a>,</td></tr>
+<tr><th id="273">273</th><td>  .<a class="ref field" href="structs.h.html#router_info::tidyup" title='router_info::tidyup' data-ref="router_info::tidyup">tidyup</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,     <i>/* no tidyup entry */</i></td></tr>
+<tr><th id="274">274</th><td>  .<a class="ref field" href="structs.h.html#router_info::ri_flags" title='router_info::ri_flags' data-ref="router_info::ri_flags">ri_flags</a> =		<a class="macro" href="macros.h.html#908" title="0x0001" data-ref="_M/ri_yestransport">ri_yestransport</a></td></tr>
+<tr><th id="275">275</th><td>  },</td></tr>
+<tr><th id="276">276</th><td><u>#<span data-ppcond="264">endif</span></u></td></tr>
+<tr><th id="277">277</th><td><u>#<span data-ppcond="277">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#123" data-ref="_M/ROUTER_IPLITERAL">ROUTER_IPLITERAL</a></u></td></tr>
+<tr><th id="278">278</th><td>  {</td></tr>
+<tr><th id="279">279</th><td>  .<a class="ref field" href="structs.h.html#router_info::driver_name" title='router_info::driver_name' data-ref="router_info::driver_name">driver_name</a> =	<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"ipliteral"</q>,</td></tr>
+<tr><th id="280">280</th><td>  .<a class="ref field" href="structs.h.html#router_info::options" title='router_info::options' data-ref="router_info::options">options</a> =		<a class="ref" href="routers/ipliteral.h.html#ipliteral_router_options" title='ipliteral_router_options' data-ref="ipliteral_router_options">ipliteral_router_options</a>,</td></tr>
+<tr><th id="281">281</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_count" title='router_info::options_count' data-ref="router_info::options_count">options_count</a> =	&amp;<a class="ref" href="routers/ipliteral.h.html#ipliteral_router_options_count" title='ipliteral_router_options_count' data-ref="ipliteral_router_options_count">ipliteral_router_options_count</a>,</td></tr>
+<tr><th id="282">282</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_block" title='router_info::options_block' data-ref="router_info::options_block">options_block</a> =	&amp;<a class="ref" href="routers/ipliteral.h.html#ipliteral_router_option_defaults" title='ipliteral_router_option_defaults' data-ref="ipliteral_router_option_defaults">ipliteral_router_option_defaults</a>,</td></tr>
+<tr><th id="283">283</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_len" title='router_info::options_len' data-ref="router_info::options_len">options_len</a> =	<b>sizeof</b>(<a class="typedef" href="routers/ipliteral.h.html#ipliteral_router_options_block" title='ipliteral_router_options_block' data-type='struct ipliteral_router_options_block' data-ref="ipliteral_router_options_block">ipliteral_router_options_block</a>),</td></tr>
+<tr><th id="284">284</th><td>  .<a class="ref field" href="structs.h.html#router_info::init" title='router_info::init' data-ref="router_info::init">init</a> =		<a class="ref fn" href="routers/ipliteral.h.html#ipliteral_router_init" title='ipliteral_router_init' data-ref="ipliteral_router_init">ipliteral_router_init</a>,</td></tr>
+<tr><th id="285">285</th><td>  .<a class="ref field" href="structs.h.html#router_info::code" title='router_info::code' data-ref="router_info::code">code</a> =		<a class="ref fn" href="routers/ipliteral.h.html#ipliteral_router_entry" title='ipliteral_router_entry' data-ref="ipliteral_router_entry">ipliteral_router_entry</a>,</td></tr>
+<tr><th id="286">286</th><td>  .<a class="ref field" href="structs.h.html#router_info::tidyup" title='router_info::tidyup' data-ref="router_info::tidyup">tidyup</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,     <i>/* no tidyup entry */</i></td></tr>
+<tr><th id="287">287</th><td>  .<a class="ref field" href="structs.h.html#router_info::ri_flags" title='router_info::ri_flags' data-ref="router_info::ri_flags">ri_flags</a> =		<a class="macro" href="macros.h.html#908" title="0x0001" data-ref="_M/ri_yestransport">ri_yestransport</a></td></tr>
+<tr><th id="288">288</th><td>  },</td></tr>
+<tr><th id="289">289</th><td><u>#<span data-ppcond="277">endif</span></u></td></tr>
+<tr><th id="290">290</th><td><u>#<span data-ppcond="290">ifdef</span> <span class="macro" data-ref="_M/ROUTER_IPLOOKUP">ROUTER_IPLOOKUP</span></u></td></tr>
+<tr><th id="291">291</th><td>  {</td></tr>
+<tr><th id="292">292</th><td>  .driver_name =	US<q>"iplookup"</q>,</td></tr>
+<tr><th id="293">293</th><td>  .options =		iplookup_router_options,</td></tr>
+<tr><th id="294">294</th><td>  .options_count =	&amp;iplookup_router_options_count,</td></tr>
+<tr><th id="295">295</th><td>  .options_block =	&amp;iplookup_router_option_defaults,</td></tr>
+<tr><th id="296">296</th><td>  .options_len =	<b>sizeof</b>(iplookup_router_options_block),</td></tr>
+<tr><th id="297">297</th><td>  .init =		iplookup_router_init,</td></tr>
+<tr><th id="298">298</th><td>  .code =		iplookup_router_entry,</td></tr>
+<tr><th id="299">299</th><td>  .tidyup =		NULL,     <i>/* no tidyup entry */</i></td></tr>
+<tr><th id="300">300</th><td>  .ri_flags =		ri_notransport</td></tr>
+<tr><th id="301">301</th><td>  },</td></tr>
+<tr><th id="302">302</th><td><u>#<span data-ppcond="290">endif</span></u></td></tr>
+<tr><th id="303">303</th><td><u>#<span data-ppcond="303">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#125" data-ref="_M/ROUTER_MANUALROUTE">ROUTER_MANUALROUTE</a></u></td></tr>
+<tr><th id="304">304</th><td>  {</td></tr>
+<tr><th id="305">305</th><td>  .<a class="ref field" href="structs.h.html#router_info::driver_name" title='router_info::driver_name' data-ref="router_info::driver_name">driver_name</a> =	<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"manualroute"</q>,</td></tr>
+<tr><th id="306">306</th><td>  .<a class="ref field" href="structs.h.html#router_info::options" title='router_info::options' data-ref="router_info::options">options</a> =		<a class="ref" href="routers/manualroute.h.html#manualroute_router_options" title='manualroute_router_options' data-ref="manualroute_router_options">manualroute_router_options</a>,</td></tr>
+<tr><th id="307">307</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_count" title='router_info::options_count' data-ref="router_info::options_count">options_count</a> =	&amp;<a class="ref" href="routers/manualroute.h.html#manualroute_router_options_count" title='manualroute_router_options_count' data-ref="manualroute_router_options_count">manualroute_router_options_count</a>,</td></tr>
+<tr><th id="308">308</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_block" title='router_info::options_block' data-ref="router_info::options_block">options_block</a> =	&amp;<a class="ref" href="routers/manualroute.h.html#manualroute_router_option_defaults" title='manualroute_router_option_defaults' data-ref="manualroute_router_option_defaults">manualroute_router_option_defaults</a>,</td></tr>
+<tr><th id="309">309</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_len" title='router_info::options_len' data-ref="router_info::options_len">options_len</a> =	<b>sizeof</b>(<a class="typedef" href="routers/manualroute.h.html#manualroute_router_options_block" title='manualroute_router_options_block' data-type='struct manualroute_router_options_block' data-ref="manualroute_router_options_block">manualroute_router_options_block</a>),</td></tr>
+<tr><th id="310">310</th><td>  .<a class="ref field" href="structs.h.html#router_info::init" title='router_info::init' data-ref="router_info::init">init</a> =		<a class="ref fn" href="routers/manualroute.h.html#manualroute_router_init" title='manualroute_router_init' data-ref="manualroute_router_init">manualroute_router_init</a>,</td></tr>
+<tr><th id="311">311</th><td>  .<a class="ref field" href="structs.h.html#router_info::code" title='router_info::code' data-ref="router_info::code">code</a> =		<a class="ref fn" href="routers/manualroute.h.html#manualroute_router_entry" title='manualroute_router_entry' data-ref="manualroute_router_entry">manualroute_router_entry</a>,</td></tr>
+<tr><th id="312">312</th><td>  .<a class="ref field" href="structs.h.html#router_info::tidyup" title='router_info::tidyup' data-ref="router_info::tidyup">tidyup</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,     <i>/* no tidyup entry */</i></td></tr>
+<tr><th id="313">313</th><td>  .<a class="ref field" href="structs.h.html#router_info::ri_flags" title='router_info::ri_flags' data-ref="router_info::ri_flags">ri_flags</a> =		<var>0</var></td></tr>
+<tr><th id="314">314</th><td>  },</td></tr>
+<tr><th id="315">315</th><td><u>#<span data-ppcond="303">endif</span></u></td></tr>
+<tr><th id="316">316</th><td><u>#<span data-ppcond="316">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#126" data-ref="_M/ROUTER_QUERYPROGRAM">ROUTER_QUERYPROGRAM</a></u></td></tr>
+<tr><th id="317">317</th><td>  {</td></tr>
+<tr><th id="318">318</th><td>  .<a class="ref field" href="structs.h.html#router_info::driver_name" title='router_info::driver_name' data-ref="router_info::driver_name">driver_name</a> =	<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"queryprogram"</q>,</td></tr>
+<tr><th id="319">319</th><td>  .<a class="ref field" href="structs.h.html#router_info::options" title='router_info::options' data-ref="router_info::options">options</a> =		<a class="ref" href="routers/queryprogram.h.html#queryprogram_router_options" title='queryprogram_router_options' data-ref="queryprogram_router_options">queryprogram_router_options</a>,</td></tr>
+<tr><th id="320">320</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_count" title='router_info::options_count' data-ref="router_info::options_count">options_count</a> =	&amp;<a class="ref" href="routers/queryprogram.h.html#queryprogram_router_options_count" title='queryprogram_router_options_count' data-ref="queryprogram_router_options_count">queryprogram_router_options_count</a>,</td></tr>
+<tr><th id="321">321</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_block" title='router_info::options_block' data-ref="router_info::options_block">options_block</a> =	&amp;<a class="ref" href="routers/queryprogram.h.html#queryprogram_router_option_defaults" title='queryprogram_router_option_defaults' data-ref="queryprogram_router_option_defaults">queryprogram_router_option_defaults</a>,</td></tr>
+<tr><th id="322">322</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_len" title='router_info::options_len' data-ref="router_info::options_len">options_len</a> =	<b>sizeof</b>(<a class="typedef" href="routers/queryprogram.h.html#queryprogram_router_options_block" title='queryprogram_router_options_block' data-type='struct queryprogram_router_options_block' data-ref="queryprogram_router_options_block">queryprogram_router_options_block</a>),</td></tr>
+<tr><th id="323">323</th><td>  .<a class="ref field" href="structs.h.html#router_info::init" title='router_info::init' data-ref="router_info::init">init</a> =		<a class="ref fn" href="routers/queryprogram.h.html#queryprogram_router_init" title='queryprogram_router_init' data-ref="queryprogram_router_init">queryprogram_router_init</a>,</td></tr>
+<tr><th id="324">324</th><td>  .<a class="ref field" href="structs.h.html#router_info::code" title='router_info::code' data-ref="router_info::code">code</a> =		<a class="ref fn" href="routers/queryprogram.h.html#queryprogram_router_entry" title='queryprogram_router_entry' data-ref="queryprogram_router_entry">queryprogram_router_entry</a>,</td></tr>
+<tr><th id="325">325</th><td>  .<a class="ref field" href="structs.h.html#router_info::tidyup" title='router_info::tidyup' data-ref="router_info::tidyup">tidyup</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,     <i>/* no tidyup entry */</i></td></tr>
+<tr><th id="326">326</th><td>  .<a class="ref field" href="structs.h.html#router_info::ri_flags" title='router_info::ri_flags' data-ref="router_info::ri_flags">ri_flags</a> =		<var>0</var></td></tr>
+<tr><th id="327">327</th><td>  },</td></tr>
+<tr><th id="328">328</th><td><u>#<span data-ppcond="316">endif</span></u></td></tr>
+<tr><th id="329">329</th><td><u>#<span data-ppcond="329">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#127" data-ref="_M/ROUTER_REDIRECT">ROUTER_REDIRECT</a></u></td></tr>
+<tr><th id="330">330</th><td>  {</td></tr>
+<tr><th id="331">331</th><td>  .<a class="ref field" href="structs.h.html#router_info::driver_name" title='router_info::driver_name' data-ref="router_info::driver_name">driver_name</a> =	<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"redirect"</q>,</td></tr>
+<tr><th id="332">332</th><td>  .<a class="ref field" href="structs.h.html#router_info::options" title='router_info::options' data-ref="router_info::options">options</a> =		<a class="ref" href="routers/redirect.h.html#redirect_router_options" title='redirect_router_options' data-ref="redirect_router_options">redirect_router_options</a>,</td></tr>
+<tr><th id="333">333</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_count" title='router_info::options_count' data-ref="router_info::options_count">options_count</a> =	&amp;<a class="ref" href="routers/redirect.h.html#redirect_router_options_count" title='redirect_router_options_count' data-ref="redirect_router_options_count">redirect_router_options_count</a>,</td></tr>
+<tr><th id="334">334</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_block" title='router_info::options_block' data-ref="router_info::options_block">options_block</a> =	&amp;<a class="ref" href="routers/redirect.h.html#redirect_router_option_defaults" title='redirect_router_option_defaults' data-ref="redirect_router_option_defaults">redirect_router_option_defaults</a>,</td></tr>
+<tr><th id="335">335</th><td>  .<a class="ref field" href="structs.h.html#router_info::options_len" title='router_info::options_len' data-ref="router_info::options_len">options_len</a> =	<b>sizeof</b>(<a class="typedef" href="routers/redirect.h.html#redirect_router_options_block" title='redirect_router_options_block' data-type='struct redirect_router_options_block' data-ref="redirect_router_options_block">redirect_router_options_block</a>),</td></tr>
+<tr><th id="336">336</th><td>  .<a class="ref field" href="structs.h.html#router_info::init" title='router_info::init' data-ref="router_info::init">init</a> =		<a class="ref fn" href="routers/redirect.h.html#redirect_router_init" title='redirect_router_init' data-ref="redirect_router_init">redirect_router_init</a>,</td></tr>
+<tr><th id="337">337</th><td>  .<a class="ref field" href="structs.h.html#router_info::code" title='router_info::code' data-ref="router_info::code">code</a> =		<a class="ref fn" href="routers/redirect.h.html#redirect_router_entry" title='redirect_router_entry' data-ref="redirect_router_entry">redirect_router_entry</a>,</td></tr>
+<tr><th id="338">338</th><td>  .<a class="ref field" href="structs.h.html#router_info::tidyup" title='router_info::tidyup' data-ref="router_info::tidyup">tidyup</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,     <i>/* no tidyup entry */</i></td></tr>
+<tr><th id="339">339</th><td>  .<a class="ref field" href="structs.h.html#router_info::ri_flags" title='router_info::ri_flags' data-ref="router_info::ri_flags">ri_flags</a> =		<a class="macro" href="macros.h.html#909" title="0x0002" data-ref="_M/ri_notransport">ri_notransport</a></td></tr>
+<tr><th id="340">340</th><td>  },</td></tr>
+<tr><th id="341">341</th><td><u>#<span data-ppcond="329">endif</span></u></td></tr>
+<tr><th id="342">342</th><td>  { <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>""</q> }</td></tr>
+<tr><th id="343">343</th><td>};</td></tr>
+<tr><th id="344">344</th><td></td></tr>
+<tr><th id="345">345</th><td></td></tr>
+<tr><th id="346">346</th><td><em>void</em></td></tr>
+<tr><th id="347">347</th><td><dfn class="decl def fn" id="route_show_supported" title='route_show_supported' data-ref="route_show_supported">route_show_supported</dfn>(<a class="typedef" href="../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> * <dfn class="local col3 decl" id="3f" title='f' data-type='FILE *' data-ref="3f">f</dfn>)</td></tr>
+<tr><th id="348">348</th><td>{</td></tr>
+<tr><th id="349">349</th><td><a class="typedef" href="structs.h.html#router_info" title='router_info' data-type='struct router_info' data-ref="router_info">router_info</a> * <dfn class="local col4 decl" id="4rr" title='rr' data-type='router_info *' data-ref="4rr">rr</dfn>;</td></tr>
+<tr><th id="350">350</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col3 ref" href="#3f" title='f' data-ref="3f">f</a>, <q>"Routers:"</q>);</td></tr>
+<tr><th id="351">351</th><td><b>for</b> (<a class="local col4 ref" href="#4rr" title='rr' data-ref="4rr">rr</a> = <a class="ref" href="globals.h.html#routers_available" title='routers_available' data-ref="routers_available">routers_available</a>; <a class="local col4 ref" href="#4rr" title='rr' data-ref="4rr">rr</a>-&gt;<a class="ref field" href="structs.h.html#router_info::driver_name" title='router_info::driver_name' data-ref="router_info::driver_name">driver_name</a>[<var>0</var>]; <a class="local col4 ref" href="#4rr" title='rr' data-ref="4rr">rr</a>++)</td></tr>
+<tr><th id="352">352</th><td>       	<a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col3 ref" href="#3f" title='f' data-ref="3f">f</a>, <q>" %s"</q>, <a class="local col4 ref" href="#4rr" title='rr' data-ref="4rr">rr</a>-&gt;<a class="ref field" href="structs.h.html#router_info::driver_name" title='router_info::driver_name' data-ref="router_info::driver_name">driver_name</a>);</td></tr>
+<tr><th id="353">353</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col3 ref" href="#3f" title='f' data-ref="3f">f</a>, <q>"\n"</q>);</td></tr>
+<tr><th id="354">354</th><td>}</td></tr>
+<tr><th id="355">355</th><td></td></tr>
+<tr><th id="356">356</th><td></td></tr>
+<tr><th id="357">357</th><td></td></tr>
+<tr><th id="358">358</th><td></td></tr>
+<tr><th id="359">359</th><td><a class="typedef" href="structs.h.html#transport_info" title='transport_info' data-type='struct transport_info' data-ref="transport_info">transport_info</a> <dfn class="decl def" id="transports_available" title='transports_available' data-ref="transports_available">transports_available</dfn>[] = {</td></tr>
+<tr><th id="360">360</th><td><u>#<span data-ppcond="360">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#151" data-ref="_M/TRANSPORT_APPENDFILE">TRANSPORT_APPENDFILE</a></u></td></tr>
+<tr><th id="361">361</th><td>  {</td></tr>
+<tr><th id="362">362</th><td>  .<a class="ref field" href="structs.h.html#transport_info::driver_name" title='transport_info::driver_name' data-ref="transport_info::driver_name">driver_name</a> =	<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"appendfile"</q>,</td></tr>
+<tr><th id="363">363</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options" title='transport_info::options' data-ref="transport_info::options">options</a> =		<a class="ref" href="transports/appendfile.h.html#appendfile_transport_options" title='appendfile_transport_options' data-ref="appendfile_transport_options">appendfile_transport_options</a>,</td></tr>
+<tr><th id="364">364</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options_count" title='transport_info::options_count' data-ref="transport_info::options_count">options_count</a> =	&amp;<a class="ref" href="transports/appendfile.h.html#appendfile_transport_options_count" title='appendfile_transport_options_count' data-ref="appendfile_transport_options_count">appendfile_transport_options_count</a>,</td></tr>
+<tr><th id="365">365</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options_block" title='transport_info::options_block' data-ref="transport_info::options_block">options_block</a> =	&amp;<a class="ref" href="transports/appendfile.h.html#appendfile_transport_option_defaults" title='appendfile_transport_option_defaults' data-ref="appendfile_transport_option_defaults">appendfile_transport_option_defaults</a>,       <i>/* private options defaults */</i></td></tr>
+<tr><th id="366">366</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options_len" title='transport_info::options_len' data-ref="transport_info::options_len">options_len</a> =	<b>sizeof</b>(<a class="typedef" href="transports/appendfile.h.html#appendfile_transport_options_block" title='appendfile_transport_options_block' data-type='struct appendfile_transport_options_block' data-ref="appendfile_transport_options_block">appendfile_transport_options_block</a>),</td></tr>
+<tr><th id="367">367</th><td>  .<a class="ref field" href="structs.h.html#transport_info::init" title='transport_info::init' data-ref="transport_info::init">init</a> =		<a class="ref fn" href="transports/appendfile.h.html#appendfile_transport_init" title='appendfile_transport_init' data-ref="appendfile_transport_init">appendfile_transport_init</a>,</td></tr>
+<tr><th id="368">368</th><td>  .<a class="ref field" href="structs.h.html#transport_info::code" title='transport_info::code' data-ref="transport_info::code">code</a> =		<a class="ref fn" href="transports/appendfile.h.html#appendfile_transport_entry" title='appendfile_transport_entry' data-ref="appendfile_transport_entry">appendfile_transport_entry</a>,</td></tr>
+<tr><th id="369">369</th><td>  .<a class="ref field" href="structs.h.html#transport_info::tidyup" title='transport_info::tidyup' data-ref="transport_info::tidyup">tidyup</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="370">370</th><td>  .<a class="ref field" href="structs.h.html#transport_info::closedown" title='transport_info::closedown' data-ref="transport_info::closedown">closedown</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="371">371</th><td>  .<a class="ref field" href="structs.h.html#transport_info::local" title='transport_info::local' data-ref="transport_info::local">local</a> =		<a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a></td></tr>
+<tr><th id="372">372</th><td>  },</td></tr>
+<tr><th id="373">373</th><td><u>#<span data-ppcond="360">endif</span></u></td></tr>
+<tr><th id="374">374</th><td><u>#<span data-ppcond="374">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#152" data-ref="_M/TRANSPORT_AUTOREPLY">TRANSPORT_AUTOREPLY</a></u></td></tr>
+<tr><th id="375">375</th><td>  {</td></tr>
+<tr><th id="376">376</th><td>  .<a class="ref field" href="structs.h.html#transport_info::driver_name" title='transport_info::driver_name' data-ref="transport_info::driver_name">driver_name</a> =	<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"autoreply"</q>,</td></tr>
+<tr><th id="377">377</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options" title='transport_info::options' data-ref="transport_info::options">options</a> =		<a class="ref" href="transports/autoreply.h.html#autoreply_transport_options" title='autoreply_transport_options' data-ref="autoreply_transport_options">autoreply_transport_options</a>,</td></tr>
+<tr><th id="378">378</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options_count" title='transport_info::options_count' data-ref="transport_info::options_count">options_count</a> =	&amp;<a class="ref" href="transports/autoreply.h.html#autoreply_transport_options_count" title='autoreply_transport_options_count' data-ref="autoreply_transport_options_count">autoreply_transport_options_count</a>,</td></tr>
+<tr><th id="379">379</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options_block" title='transport_info::options_block' data-ref="transport_info::options_block">options_block</a> =	&amp;<a class="ref" href="transports/autoreply.h.html#autoreply_transport_option_defaults" title='autoreply_transport_option_defaults' data-ref="autoreply_transport_option_defaults">autoreply_transport_option_defaults</a>,</td></tr>
+<tr><th id="380">380</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options_len" title='transport_info::options_len' data-ref="transport_info::options_len">options_len</a> =	<b>sizeof</b>(<a class="typedef" href="transports/autoreply.h.html#autoreply_transport_options_block" title='autoreply_transport_options_block' data-type='struct autoreply_transport_options_block' data-ref="autoreply_transport_options_block">autoreply_transport_options_block</a>),</td></tr>
+<tr><th id="381">381</th><td>  .<a class="ref field" href="structs.h.html#transport_info::init" title='transport_info::init' data-ref="transport_info::init">init</a> =		<a class="ref fn" href="transports/autoreply.h.html#autoreply_transport_init" title='autoreply_transport_init' data-ref="autoreply_transport_init">autoreply_transport_init</a>,</td></tr>
+<tr><th id="382">382</th><td>  .<a class="ref field" href="structs.h.html#transport_info::code" title='transport_info::code' data-ref="transport_info::code">code</a> =		<a class="ref fn" href="transports/autoreply.h.html#autoreply_transport_entry" title='autoreply_transport_entry' data-ref="autoreply_transport_entry">autoreply_transport_entry</a>,</td></tr>
+<tr><th id="383">383</th><td>  .<a class="ref field" href="structs.h.html#transport_info::tidyup" title='transport_info::tidyup' data-ref="transport_info::tidyup">tidyup</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="384">384</th><td>  .<a class="ref field" href="structs.h.html#transport_info::closedown" title='transport_info::closedown' data-ref="transport_info::closedown">closedown</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="385">385</th><td>  .<a class="ref field" href="structs.h.html#transport_info::local" title='transport_info::local' data-ref="transport_info::local">local</a> =		<a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a></td></tr>
+<tr><th id="386">386</th><td>  },</td></tr>
+<tr><th id="387">387</th><td><u>#<span data-ppcond="374">endif</span></u></td></tr>
+<tr><th id="388">388</th><td><u>#<span data-ppcond="388">ifdef</span> <span class="macro" data-ref="_M/TRANSPORT_LMTP">TRANSPORT_LMTP</span></u></td></tr>
+<tr><th id="389">389</th><td>  {</td></tr>
+<tr><th id="390">390</th><td>  .driver_name =	US<q>"lmtp"</q>,</td></tr>
+<tr><th id="391">391</th><td>  .options =		lmtp_transport_options,</td></tr>
+<tr><th id="392">392</th><td>  .options_count =	&amp;lmtp_transport_options_count,</td></tr>
+<tr><th id="393">393</th><td>  .options_block =	&amp;lmtp_transport_option_defaults,</td></tr>
+<tr><th id="394">394</th><td>  .options_len =	<b>sizeof</b>(lmtp_transport_options_block),</td></tr>
+<tr><th id="395">395</th><td>  .init =		lmtp_transport_init,</td></tr>
+<tr><th id="396">396</th><td>  .code =		lmtp_transport_entry,</td></tr>
+<tr><th id="397">397</th><td>  .tidyup =		NULL,</td></tr>
+<tr><th id="398">398</th><td>  .closedown =		NULL,</td></tr>
+<tr><th id="399">399</th><td>  .local =		TRUE</td></tr>
+<tr><th id="400">400</th><td>  },</td></tr>
+<tr><th id="401">401</th><td><u>#<span data-ppcond="388">endif</span></u></td></tr>
+<tr><th id="402">402</th><td><u>#<span data-ppcond="402">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#154" data-ref="_M/TRANSPORT_PIPE">TRANSPORT_PIPE</a></u></td></tr>
+<tr><th id="403">403</th><td>  {</td></tr>
+<tr><th id="404">404</th><td>  .<a class="ref field" href="structs.h.html#transport_info::driver_name" title='transport_info::driver_name' data-ref="transport_info::driver_name">driver_name</a> =	<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"pipe"</q>,</td></tr>
+<tr><th id="405">405</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options" title='transport_info::options' data-ref="transport_info::options">options</a> =		<a class="ref" href="transports/pipe.h.html#pipe_transport_options" title='pipe_transport_options' data-ref="pipe_transport_options">pipe_transport_options</a>,</td></tr>
+<tr><th id="406">406</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options_count" title='transport_info::options_count' data-ref="transport_info::options_count">options_count</a> =	&amp;<a class="ref" href="transports/pipe.h.html#pipe_transport_options_count" title='pipe_transport_options_count' data-ref="pipe_transport_options_count">pipe_transport_options_count</a>,</td></tr>
+<tr><th id="407">407</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options_block" title='transport_info::options_block' data-ref="transport_info::options_block">options_block</a> =	&amp;<a class="ref" href="transports/pipe.h.html#pipe_transport_option_defaults" title='pipe_transport_option_defaults' data-ref="pipe_transport_option_defaults">pipe_transport_option_defaults</a>,</td></tr>
+<tr><th id="408">408</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options_len" title='transport_info::options_len' data-ref="transport_info::options_len">options_len</a> =	<b>sizeof</b>(<a class="typedef" href="transports/pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>),</td></tr>
+<tr><th id="409">409</th><td>  .<a class="ref field" href="structs.h.html#transport_info::init" title='transport_info::init' data-ref="transport_info::init">init</a> =		<a class="ref fn" href="transports/pipe.h.html#pipe_transport_init" title='pipe_transport_init' data-ref="pipe_transport_init">pipe_transport_init</a>,</td></tr>
+<tr><th id="410">410</th><td>  .<a class="ref field" href="structs.h.html#transport_info::code" title='transport_info::code' data-ref="transport_info::code">code</a> =		<a class="ref fn" href="transports/pipe.h.html#pipe_transport_entry" title='pipe_transport_entry' data-ref="pipe_transport_entry">pipe_transport_entry</a>,</td></tr>
+<tr><th id="411">411</th><td>  .<a class="ref field" href="structs.h.html#transport_info::tidyup" title='transport_info::tidyup' data-ref="transport_info::tidyup">tidyup</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="412">412</th><td>  .<a class="ref field" href="structs.h.html#transport_info::closedown" title='transport_info::closedown' data-ref="transport_info::closedown">closedown</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="413">413</th><td>  .<a class="ref field" href="structs.h.html#transport_info::local" title='transport_info::local' data-ref="transport_info::local">local</a> =		<a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a></td></tr>
+<tr><th id="414">414</th><td>  },</td></tr>
+<tr><th id="415">415</th><td><u>#<span data-ppcond="402">endif</span></u></td></tr>
+<tr><th id="416">416</th><td><u>#<span data-ppcond="416">ifdef</span> <span class="macro" data-ref="_M/EXPERIMENTAL_QUEUEFILE">EXPERIMENTAL_QUEUEFILE</span></u></td></tr>
+<tr><th id="417">417</th><td>  {</td></tr>
+<tr><th id="418">418</th><td>  .driver_name =	US<q>"queuefile"</q>,</td></tr>
+<tr><th id="419">419</th><td>  .options =		queuefile_transport_options,</td></tr>
+<tr><th id="420">420</th><td>  .options_count =	&amp;queuefile_transport_options_count,</td></tr>
+<tr><th id="421">421</th><td>  .options_block =	&amp;queuefile_transport_option_defaults,</td></tr>
+<tr><th id="422">422</th><td>  .options_len =	<b>sizeof</b>(queuefile_transport_options_block),</td></tr>
+<tr><th id="423">423</th><td>  .init =		queuefile_transport_init,</td></tr>
+<tr><th id="424">424</th><td>  .code =		queuefile_transport_entry,</td></tr>
+<tr><th id="425">425</th><td>  .tidyup =		NULL,</td></tr>
+<tr><th id="426">426</th><td>  .closedown =		NULL,</td></tr>
+<tr><th id="427">427</th><td>  .local =		TRUE</td></tr>
+<tr><th id="428">428</th><td>  },</td></tr>
+<tr><th id="429">429</th><td><u>#<span data-ppcond="416">endif</span></u></td></tr>
+<tr><th id="430">430</th><td><u>#<span data-ppcond="430">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#155" data-ref="_M/TRANSPORT_SMTP">TRANSPORT_SMTP</a></u></td></tr>
+<tr><th id="431">431</th><td>  {</td></tr>
+<tr><th id="432">432</th><td>  .<a class="ref field" href="structs.h.html#transport_info::driver_name" title='transport_info::driver_name' data-ref="transport_info::driver_name">driver_name</a> =	<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"smtp"</q>,</td></tr>
+<tr><th id="433">433</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options" title='transport_info::options' data-ref="transport_info::options">options</a> =		<a class="ref" href="transports/smtp.h.html#smtp_transport_options" title='smtp_transport_options' data-ref="smtp_transport_options">smtp_transport_options</a>,</td></tr>
+<tr><th id="434">434</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options_count" title='transport_info::options_count' data-ref="transport_info::options_count">options_count</a> =	&amp;<a class="ref" href="transports/smtp.h.html#smtp_transport_options_count" title='smtp_transport_options_count' data-ref="smtp_transport_options_count">smtp_transport_options_count</a>,</td></tr>
+<tr><th id="435">435</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options_block" title='transport_info::options_block' data-ref="transport_info::options_block">options_block</a> =	&amp;<a class="ref" href="transports/smtp.h.html#smtp_transport_option_defaults" title='smtp_transport_option_defaults' data-ref="smtp_transport_option_defaults">smtp_transport_option_defaults</a>,</td></tr>
+<tr><th id="436">436</th><td>  .<a class="ref field" href="structs.h.html#transport_info::options_len" title='transport_info::options_len' data-ref="transport_info::options_len">options_len</a> =	<b>sizeof</b>(<a class="typedef" href="transports/smtp.h.html#smtp_transport_options_block" title='smtp_transport_options_block' data-type='struct smtp_transport_options_block' data-ref="smtp_transport_options_block">smtp_transport_options_block</a>),</td></tr>
+<tr><th id="437">437</th><td>  .<a class="ref field" href="structs.h.html#transport_info::init" title='transport_info::init' data-ref="transport_info::init">init</a> =		<a class="ref fn" href="transports/smtp.h.html#smtp_transport_init" title='smtp_transport_init' data-ref="smtp_transport_init">smtp_transport_init</a>,</td></tr>
+<tr><th id="438">438</th><td>  .<a class="ref field" href="structs.h.html#transport_info::code" title='transport_info::code' data-ref="transport_info::code">code</a> =		<a class="ref fn" href="transports/smtp.h.html#smtp_transport_entry" title='smtp_transport_entry' data-ref="smtp_transport_entry">smtp_transport_entry</a>,</td></tr>
+<tr><th id="439">439</th><td>  .<a class="ref field" href="structs.h.html#transport_info::tidyup" title='transport_info::tidyup' data-ref="transport_info::tidyup">tidyup</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="440">440</th><td>  .<a class="ref field" href="structs.h.html#transport_info::closedown" title='transport_info::closedown' data-ref="transport_info::closedown">closedown</a> =		<a class="ref fn" href="transports/smtp.h.html#smtp_transport_closedown" title='smtp_transport_closedown' data-ref="smtp_transport_closedown">smtp_transport_closedown</a>,</td></tr>
+<tr><th id="441">441</th><td>  .<a class="ref field" href="structs.h.html#transport_info::local" title='transport_info::local' data-ref="transport_info::local">local</a> =		<a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a></td></tr>
+<tr><th id="442">442</th><td>  },</td></tr>
+<tr><th id="443">443</th><td><u>#<span data-ppcond="430">endif</span></u></td></tr>
+<tr><th id="444">444</th><td>  { <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>""</q> }</td></tr>
+<tr><th id="445">445</th><td>};</td></tr>
+<tr><th id="446">446</th><td></td></tr>
+<tr><th id="447">447</th><td><em>void</em></td></tr>
+<tr><th id="448">448</th><td><dfn class="decl def fn" id="transport_show_supported" title='transport_show_supported' data-ref="transport_show_supported">transport_show_supported</dfn>(<a class="typedef" href="../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> * <dfn class="local col5 decl" id="5f" title='f' data-type='FILE *' data-ref="5f">f</dfn>)</td></tr>
+<tr><th id="449">449</th><td>{</td></tr>
+<tr><th id="450">450</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#5f" title='f' data-ref="5f">f</a>, <q>"Transports:"</q>);</td></tr>
+<tr><th id="451">451</th><td><u>#<span data-ppcond="451">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#151" data-ref="_M/TRANSPORT_APPENDFILE">TRANSPORT_APPENDFILE</a></u></td></tr>
+<tr><th id="452">452</th><td>  <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#5f" title='f' data-ref="5f">f</a>, <q>" appendfile"</q>);</td></tr>
+<tr><th id="453">453</th><td>  <u>#<span data-ppcond="453">ifdef</span> <span class="macro" data-ref="_M/SUPPORT_MAILDIR">SUPPORT_MAILDIR</span></u></td></tr>
+<tr><th id="454">454</th><td>    fprintf(f, <q>"/maildir"</q>);	<i>/* damn these subclasses */</i></td></tr>
+<tr><th id="455">455</th><td>  <u>#<span data-ppcond="453">endif</span></u></td></tr>
+<tr><th id="456">456</th><td>  <u>#<span data-ppcond="456">ifdef</span> <span class="macro" data-ref="_M/SUPPORT_MAILSTORE">SUPPORT_MAILSTORE</span></u></td></tr>
+<tr><th id="457">457</th><td>    fprintf(f, <q>"/mailstore"</q>);</td></tr>
+<tr><th id="458">458</th><td>  <u>#<span data-ppcond="456">endif</span></u></td></tr>
+<tr><th id="459">459</th><td>  <u>#<span data-ppcond="459">ifdef</span> <span class="macro" data-ref="_M/SUPPORT_MBX">SUPPORT_MBX</span></u></td></tr>
+<tr><th id="460">460</th><td>    fprintf(f, <q>"/mbx"</q>);</td></tr>
+<tr><th id="461">461</th><td>  <u>#<span data-ppcond="459">endif</span></u></td></tr>
+<tr><th id="462">462</th><td><u>#<span data-ppcond="451">endif</span></u></td></tr>
+<tr><th id="463">463</th><td><u>#<span data-ppcond="463">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#152" data-ref="_M/TRANSPORT_AUTOREPLY">TRANSPORT_AUTOREPLY</a></u></td></tr>
+<tr><th id="464">464</th><td>  <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#5f" title='f' data-ref="5f">f</a>, <q>" autoreply"</q>);</td></tr>
+<tr><th id="465">465</th><td><u>#<span data-ppcond="463">endif</span></u></td></tr>
+<tr><th id="466">466</th><td><u>#<span data-ppcond="466">ifdef</span> <span class="macro" data-ref="_M/TRANSPORT_LMTP">TRANSPORT_LMTP</span></u></td></tr>
+<tr><th id="467">467</th><td>  fprintf(f, <q>" lmtp"</q>);</td></tr>
+<tr><th id="468">468</th><td><u>#<span data-ppcond="466">endif</span></u></td></tr>
+<tr><th id="469">469</th><td><u>#<span data-ppcond="469">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#154" data-ref="_M/TRANSPORT_PIPE">TRANSPORT_PIPE</a></u></td></tr>
+<tr><th id="470">470</th><td>  <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#5f" title='f' data-ref="5f">f</a>, <q>" pipe"</q>);</td></tr>
+<tr><th id="471">471</th><td><u>#<span data-ppcond="469">endif</span></u></td></tr>
+<tr><th id="472">472</th><td><u>#<span data-ppcond="472">ifdef</span> <span class="macro" data-ref="_M/EXPERIMENTAL_QUEUEFILE">EXPERIMENTAL_QUEUEFILE</span></u></td></tr>
+<tr><th id="473">473</th><td>  fprintf(f, <q>" queuefile"</q>);</td></tr>
+<tr><th id="474">474</th><td><u>#<span data-ppcond="472">endif</span></u></td></tr>
+<tr><th id="475">475</th><td><u>#<span data-ppcond="475">ifdef</span> <a class="macro" href="../build-Linux-x86_64/config.h.html#155" data-ref="_M/TRANSPORT_SMTP">TRANSPORT_SMTP</a></u></td></tr>
+<tr><th id="476">476</th><td>  <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#5f" title='f' data-ref="5f">f</a>, <q>" smtp"</q>);</td></tr>
+<tr><th id="477">477</th><td><u>#<span data-ppcond="475">endif</span></u></td></tr>
+<tr><th id="478">478</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#5f" title='f' data-ref="5f">f</a>, <q>"\n"</q>);</td></tr>
+<tr><th id="479">479</th><td>}</td></tr>
+<tr><th id="480">480</th><td></td></tr>
+<tr><th id="481">481</th><td></td></tr>
+<tr><th id="482">482</th><td><u>#<span data-ppcond="482">ifndef</span> <span class="macro" data-ref="_M/MACRO_PREDEF">MACRO_PREDEF</span></u></td></tr>
+<tr><th id="483">483</th><td></td></tr>
+<tr><th id="484">484</th><td><b>struct</b> <dfn class="type def" id="lookupmodulestr" title='lookupmodulestr' data-ref="lookupmodulestr">lookupmodulestr</dfn></td></tr>
+<tr><th id="485">485</th><td>{</td></tr>
+<tr><th id="486">486</th><td>  <em>void</em> *<dfn class="tu decl field" id="lookupmodulestr::dl" title='lookupmodulestr::dl' data-type='void *' data-ref="lookupmodulestr::dl">dl</dfn>;</td></tr>
+<tr><th id="487">487</th><td>  <b>struct</b> <a class="type" href="lookupapi.h.html#lookup_module_info" title='lookup_module_info' data-ref="lookup_module_info">lookup_module_info</a> *<dfn class="tu decl field" id="lookupmodulestr::info" title='lookupmodulestr::info' data-type='struct lookup_module_info *' data-ref="lookupmodulestr::info">info</dfn>;</td></tr>
+<tr><th id="488">488</th><td>  <b>struct</b> <a class="type" href="#lookupmodulestr" title='lookupmodulestr' data-ref="lookupmodulestr">lookupmodulestr</a> *<dfn class="tu decl field" id="lookupmodulestr::next" title='lookupmodulestr::next' data-type='struct lookupmodulestr *' data-ref="lookupmodulestr::next">next</dfn>;</td></tr>
+<tr><th id="489">489</th><td>};</td></tr>
+<tr><th id="490">490</th><td></td></tr>
+<tr><th id="491">491</th><td><em>static</em> <b>struct</b> <a class="type" href="#lookupmodulestr" title='lookupmodulestr' data-ref="lookupmodulestr">lookupmodulestr</a> *<dfn class="tu decl def" id="lookupmodules" title='lookupmodules' data-type='struct lookupmodulestr *' data-ref="lookupmodules">lookupmodules</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="492">492</th><td></td></tr>
+<tr><th id="493">493</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="494">494</th><td><dfn class="tu decl def fn" id="addlookupmodule" title='addlookupmodule' data-type='void addlookupmodule(void * dl, struct lookup_module_info * info)' data-ref="addlookupmodule">addlookupmodule</dfn>(<em>void</em> *<dfn class="local col6 decl" id="6dl" title='dl' data-type='void *' data-ref="6dl">dl</dfn>, <b>struct</b> <a class="type" href="lookupapi.h.html#lookup_module_info" title='lookup_module_info' data-ref="lookup_module_info">lookup_module_info</a> *<dfn class="local col7 decl" id="7info" title='info' data-type='struct lookup_module_info *' data-ref="7info">info</dfn>)</td></tr>
+<tr><th id="495">495</th><td>{</td></tr>
+<tr><th id="496">496</th><td><b>struct</b> <a class="type" href="#lookupmodulestr" title='lookupmodulestr' data-ref="lookupmodulestr">lookupmodulestr</a> *<dfn class="local col8 decl" id="8p" title='p' data-type='struct lookupmodulestr *' data-ref="8p">p</dfn> = <a class="macro" href="store.h.html#36" title="store_malloc_3(sizeof(struct lookupmodulestr), &quot;/home/ubuntu/exim/src/build-Linux-x86_64/drtables.c&quot;, 496)" data-ref="_M/store_malloc">store_malloc</a>(<b>sizeof</b>(<b>struct</b> <a class="type" href="#lookupmodulestr" title='lookupmodulestr' data-ref="lookupmodulestr">lookupmodulestr</a>));</td></tr>
+<tr><th id="497">497</th><td></td></tr>
+<tr><th id="498">498</th><td><a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a>-&gt;<a class="tu ref field" href="#lookupmodulestr::dl" title='lookupmodulestr::dl' data-use='w' data-ref="lookupmodulestr::dl">dl</a> = <a class="local col6 ref" href="#6dl" title='dl' data-ref="6dl">dl</a>;</td></tr>
+<tr><th id="499">499</th><td><a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a>-&gt;<a class="tu ref field" href="#lookupmodulestr::info" title='lookupmodulestr::info' data-use='w' data-ref="lookupmodulestr::info">info</a> = <a class="local col7 ref" href="#7info" title='info' data-ref="7info">info</a>;</td></tr>
+<tr><th id="500">500</th><td><a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a>-&gt;<a class="tu ref field" href="#lookupmodulestr::next" title='lookupmodulestr::next' data-use='w' data-ref="lookupmodulestr::next">next</a> = <a class="tu ref" href="#lookupmodules" title='lookupmodules' data-use='r' data-ref="lookupmodules">lookupmodules</a>;</td></tr>
+<tr><th id="501">501</th><td><a class="tu ref" href="#lookupmodules" title='lookupmodules' data-use='w' data-ref="lookupmodules">lookupmodules</a> = <a class="local col8 ref" href="#8p" title='p' data-ref="8p">p</a>;</td></tr>
+<tr><th id="502">502</th><td><a class="ref" href="globals.h.html#lookup_list_count" title='lookup_list_count' data-ref="lookup_list_count">lookup_list_count</a> += <a class="local col7 ref" href="#7info" title='info' data-ref="7info">info</a>-&gt;<a class="ref field" href="lookupapi.h.html#lookup_module_info::lookupcount" title='lookup_module_info::lookupcount' data-ref="lookup_module_info::lookupcount">lookupcount</a>;</td></tr>
+<tr><th id="503">503</th><td>}</td></tr>
+<tr><th id="504">504</th><td></td></tr>
+<tr><th id="505">505</th><td><i  data-doc="add_lookup_to_list">/* only valid after lookup_list and lookup_list_count are assigned */</i></td></tr>
+<tr><th id="506">506</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="507">507</th><td><dfn class="tu decl def fn" id="add_lookup_to_list" title='add_lookup_to_list' data-type='void add_lookup_to_list(lookup_info * info)' data-ref="add_lookup_to_list">add_lookup_to_list</dfn>(<a class="typedef" href="lookupapi.h.html#lookup_info" title='lookup_info' data-type='struct lookup_info' data-ref="lookup_info">lookup_info</a> *<dfn class="local col9 decl" id="9info" title='info' data-type='lookup_info *' data-ref="9info">info</dfn>)</td></tr>
+<tr><th id="508">508</th><td>{</td></tr>
+<tr><th id="509">509</th><td><i>/* need to add the lookup to lookup_list, sorted */</i></td></tr>
+<tr><th id="510">510</th><td><em>int</em> <dfn class="local col0 decl" id="10pos" title='pos' data-type='int' data-ref="10pos">pos</dfn> = <var>0</var>;</td></tr>
+<tr><th id="511">511</th><td></td></tr>
+<tr><th id="512">512</th><td><i>/* strategy is to go through the list until we find</i></td></tr>
+<tr><th id="513">513</th><td><i>either an empty spot or a name that is higher.</i></td></tr>
+<tr><th id="514">514</th><td><i>this can't fail because we have enough space. */</i></td></tr>
+<tr><th id="515">515</th><td></td></tr>
+<tr><th id="516">516</th><td><b>while</b> (<a class="ref" href="globals.h.html#lookup_list" title='lookup_list' data-ref="lookup_list">lookup_list</a>[<a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a>] &amp;&amp; (<a class="macro" href="mytypes.h.html#100" title="__extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p ((const char *)(lookup_list[pos]-&gt;name)) &amp;&amp; __builtin_constant_p ((const char *)(info-&gt;name)) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(lookup_list[pos]-&gt;name)), __s2_len = __builtin_strlen ((const char *)(info-&gt;name)), (!((size_t)(const void *)(((const char *)(lookup_list[pos]-&gt;name)) + 1) - (size_t)(const void *)((const char *)(lookup_list[pos]-&gt;name)) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)(((const char *)(info-&gt;name)) + 1) - (size_t)(const void *)((const char *)(info-&gt;name)) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp ((const char *)(lookup_list[pos]-&gt;name), (const char *)(info-&gt;name)) : (__builtin_constant_p ((const char *)(lookup_list[pos]-&gt;name)) &amp;&amp; ((size_t)(const void *)(((const char *)(lookup_list[pos]-&gt;name)) + 1) - (size_t)(const void *)((const char *)(lookup_list[pos]-&gt;name)) == 1) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(lookup_list[pos]-&gt;name)), __s1_len &lt; 4) ? (__builtin_constant_p ((const char *)(info-&gt;name)) &amp;&amp; ((size_t)(const void *)(((const char *)(info-&gt;name)) + 1) - (size_t)(const void *)((const char *)(info-&gt;name)) == 1) ? __builtin_strcmp ((const char *)(lookup_list[pos]-&gt;name), (const char *)(info-&gt;name)) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(info-&gt;name)); int __result = (((const unsigned char *) (const char *) ((const char *)(lookup_list[pos]-&gt;name)))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(lookup_list[pos]-&gt;name)))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(lookup_list[pos]-&gt;name)))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(lookup_list[pos]-&gt;name)))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p ((const char *)(info-&gt;name)) &amp;&amp; ((size_t)(const void *)(((const char *)(info-&gt;name)) + 1) - (size_t)(const void *)((const char *)(info-&gt;name)) == 1) &amp;&amp; (__s2_len = __builtin_strlen ((const char *)(info-&gt;name)), __s2_len &lt; 4) ? (__builtin_constant_p ((const char *)(lookup_list[pos]-&gt;name)) &amp;&amp; ((size_t)(const void *)(((const char *)(lookup_list[pos]-&gt;name)) + 1) - (size_t)(const void *)((const char *)(lookup_list[pos]-&gt;name)) == 1) ? __builtin_strcmp ((const char *)(lookup_list[pos]-&gt;name), (const char *)(info-&gt;name)) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(lookup_list[pos]-&gt;name)); int __result = (((const unsigned char *) (const char *) ((const char *)(info-&gt;name)))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(info-&gt;name)))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(info-&gt;name)))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(info-&gt;name)))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp ((const char *)(lookup_list[pos]-&gt;name), (const char *)(info-&gt;name))))); })" data-ref="_M/Ustrcmp">Ustrcmp</a>(<a class="ref" href="globals.h.html#lookup_list" title='lookup_list' data-ref="lookup_list">lookup_list</a>[<a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a>]-&gt;<a class="ref field" href="lookupapi.h.html#lookup_info::name" title='lookup_info::name' data-ref="lookup_info::name">name</a>, <a class="local col9 ref" href="#9info" title='info' data-ref="9info">info</a>-&gt;<a class="ref field" href="lookupapi.h.html#lookup_info::name" title='lookup_info::name' data-ref="lookup_info::name">name</a>) &lt;= <var>0</var>))</td></tr>
+<tr><th id="517">517</th><td>  <a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a>++;</td></tr>
+<tr><th id="518">518</th><td></td></tr>
+<tr><th id="519">519</th><td><b>if</b> (<a class="ref" href="globals.h.html#lookup_list" title='lookup_list' data-ref="lookup_list">lookup_list</a>[<a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a>])</td></tr>
+<tr><th id="520">520</th><td>  {</td></tr>
+<tr><th id="521">521</th><td>  <i>/* need to insert it, so move all the other items up</i></td></tr>
+<tr><th id="522">522</th><td><i>  (last slot is still empty, of course) */</i></td></tr>
+<tr><th id="523">523</th><td></td></tr>
+<tr><th id="524">524</th><td>  <a class="ref fn" href="../../include/string.h.html#memmove" title='memmove' data-ref="memmove">memmove</a>(&amp;<a class="ref" href="globals.h.html#lookup_list" title='lookup_list' data-ref="lookup_list">lookup_list</a>[<a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a>+<var>1</var>],</td></tr>
+<tr><th id="525">525</th><td>	  &amp;<a class="ref" href="globals.h.html#lookup_list" title='lookup_list' data-ref="lookup_list">lookup_list</a>[<a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a>],</td></tr>
+<tr><th id="526">526</th><td>	  <b>sizeof</b>(<a class="typedef" href="lookupapi.h.html#lookup_info" title='lookup_info' data-type='struct lookup_info' data-ref="lookup_info">lookup_info</a> *) * (<a class="ref" href="globals.h.html#lookup_list_count" title='lookup_list_count' data-ref="lookup_list_count">lookup_list_count</a>-<a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a>-<var>1</var>));</td></tr>
+<tr><th id="527">527</th><td>  }</td></tr>
+<tr><th id="528">528</th><td><a class="ref" href="globals.h.html#lookup_list" title='lookup_list' data-ref="lookup_list">lookup_list</a>[<a class="local col0 ref" href="#10pos" title='pos' data-ref="10pos">pos</a>] = <a class="local col9 ref" href="#9info" title='info' data-ref="9info">info</a>;</td></tr>
+<tr><th id="529">529</th><td>}</td></tr>
+<tr><th id="530">530</th><td></td></tr>
+<tr><th id="531">531</th><td></td></tr>
+<tr><th id="532">532</th><td><i>/* These need to be at file level for old versions of gcc (2.95.2 reported),</i></td></tr>
+<tr><th id="533">533</th><td><i> * which give parse errors on an extern in function scope.  Each entry needs</i></td></tr>
+<tr><th id="534">534</th><td><i> * to also be invoked in init_lookup_list() below  */</i></td></tr>
+<tr><th id="535">535</th><td></td></tr>
+<tr><th id="536">536</th><td><u>#<span data-ppcond="536">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_CDB">LOOKUP_CDB</span>) &amp;&amp; LOOKUP_CDB!=2</u></td></tr>
+<tr><th id="537">537</th><td><b>extern</b> lookup_module_info cdb_lookup_module_info;</td></tr>
+<tr><th id="538">538</th><td><u>#<span data-ppcond="536">endif</span></u></td></tr>
+<tr><th id="539">539</th><td><u>#<span data-ppcond="539">if</span> defined(<a class="macro" href="../build-Linux-x86_64/config.h.html#91" data-ref="_M/LOOKUP_DBM">LOOKUP_DBM</a>) &amp;&amp; <a class="macro" href="../build-Linux-x86_64/config.h.html#91" title="yes" data-ref="_M/LOOKUP_DBM">LOOKUP_DBM</a>!=2</u></td></tr>
+<tr><th id="540">540</th><td><b>extern</b> <a class="typedef" href="lookupapi.h.html#lookup_module_info" title='lookup_module_info' data-type='struct lookup_module_info' data-ref="lookup_module_info">lookup_module_info</a> <dfn class="decl" id="dbmdb_lookup_module_info" title='dbmdb_lookup_module_info' data-ref="dbmdb_lookup_module_info">dbmdb_lookup_module_info</dfn>;</td></tr>
+<tr><th id="541">541</th><td><u>#<span data-ppcond="539">endif</span></u></td></tr>
+<tr><th id="542">542</th><td><u>#<span data-ppcond="542">if</span> defined(<a class="macro" href="../build-Linux-x86_64/config.h.html#92" data-ref="_M/LOOKUP_DNSDB">LOOKUP_DNSDB</a>) &amp;&amp; <a class="macro" href="../build-Linux-x86_64/config.h.html#92" title="yes" data-ref="_M/LOOKUP_DNSDB">LOOKUP_DNSDB</a>!=2</u></td></tr>
+<tr><th id="543">543</th><td><b>extern</b> <a class="typedef" href="lookupapi.h.html#lookup_module_info" title='lookup_module_info' data-type='struct lookup_module_info' data-ref="lookup_module_info">lookup_module_info</a> <dfn class="decl" id="dnsdb_lookup_module_info" title='dnsdb_lookup_module_info' data-ref="dnsdb_lookup_module_info">dnsdb_lookup_module_info</dfn>;</td></tr>
+<tr><th id="544">544</th><td><u>#<span data-ppcond="542">endif</span></u></td></tr>
+<tr><th id="545">545</th><td><u>#<span data-ppcond="545">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_DSEARCH">LOOKUP_DSEARCH</span>) &amp;&amp; LOOKUP_DSEARCH!=2</u></td></tr>
+<tr><th id="546">546</th><td><b>extern</b> lookup_module_info dsearch_lookup_module_info;</td></tr>
+<tr><th id="547">547</th><td><u>#<span data-ppcond="545">endif</span></u></td></tr>
+<tr><th id="548">548</th><td><u>#<span data-ppcond="548">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_IBASE">LOOKUP_IBASE</span>) &amp;&amp; LOOKUP_IBASE!=2</u></td></tr>
+<tr><th id="549">549</th><td><b>extern</b> lookup_module_info ibase_lookup_module_info;</td></tr>
+<tr><th id="550">550</th><td><u>#<span data-ppcond="548">endif</span></u></td></tr>
+<tr><th id="551">551</th><td><u>#<span data-ppcond="551">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_LDAP">LOOKUP_LDAP</span>)</u></td></tr>
+<tr><th id="552">552</th><td><b>extern</b> lookup_module_info ldap_lookup_module_info;</td></tr>
+<tr><th id="553">553</th><td><u>#<span data-ppcond="551">endif</span></u></td></tr>
+<tr><th id="554">554</th><td><u>#<span data-ppcond="554">if</span> defined(<a class="macro" href="../build-Linux-x86_64/config.h.html#96" data-ref="_M/LOOKUP_LSEARCH">LOOKUP_LSEARCH</a>) &amp;&amp; <a class="macro" href="../build-Linux-x86_64/config.h.html#96" title="yes" data-ref="_M/LOOKUP_LSEARCH">LOOKUP_LSEARCH</a>!=2</u></td></tr>
+<tr><th id="555">555</th><td><b>extern</b> <a class="typedef" href="lookupapi.h.html#lookup_module_info" title='lookup_module_info' data-type='struct lookup_module_info' data-ref="lookup_module_info">lookup_module_info</a> <dfn class="decl" id="lsearch_lookup_module_info" title='lsearch_lookup_module_info' data-ref="lsearch_lookup_module_info">lsearch_lookup_module_info</dfn>;</td></tr>
+<tr><th id="556">556</th><td><u>#<span data-ppcond="554">endif</span></u></td></tr>
+<tr><th id="557">557</th><td><u>#<span data-ppcond="557">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_MYSQL">LOOKUP_MYSQL</span>) &amp;&amp; LOOKUP_MYSQL!=2</u></td></tr>
+<tr><th id="558">558</th><td><b>extern</b> lookup_module_info mysql_lookup_module_info;</td></tr>
+<tr><th id="559">559</th><td><u>#<span data-ppcond="557">endif</span></u></td></tr>
+<tr><th id="560">560</th><td><u>#<span data-ppcond="560">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_NIS">LOOKUP_NIS</span>) &amp;&amp; LOOKUP_NIS!=2</u></td></tr>
+<tr><th id="561">561</th><td><b>extern</b> lookup_module_info nis_lookup_module_info;</td></tr>
+<tr><th id="562">562</th><td><u>#<span data-ppcond="560">endif</span></u></td></tr>
+<tr><th id="563">563</th><td><u>#<span data-ppcond="563">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_NISPLUS">LOOKUP_NISPLUS</span>) &amp;&amp; LOOKUP_NISPLUS!=2</u></td></tr>
+<tr><th id="564">564</th><td><b>extern</b> lookup_module_info nisplus_lookup_module_info;</td></tr>
+<tr><th id="565">565</th><td><u>#<span data-ppcond="563">endif</span></u></td></tr>
+<tr><th id="566">566</th><td><u>#<span data-ppcond="566">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_ORACLE">LOOKUP_ORACLE</span>) &amp;&amp; LOOKUP_ORACLE!=2</u></td></tr>
+<tr><th id="567">567</th><td><b>extern</b> lookup_module_info oracle_lookup_module_info;</td></tr>
+<tr><th id="568">568</th><td><u>#<span data-ppcond="566">endif</span></u></td></tr>
+<tr><th id="569">569</th><td><u>#<span data-ppcond="569">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_PASSWD">LOOKUP_PASSWD</span>) &amp;&amp; LOOKUP_PASSWD!=2</u></td></tr>
+<tr><th id="570">570</th><td><b>extern</b> lookup_module_info passwd_lookup_module_info;</td></tr>
+<tr><th id="571">571</th><td><u>#<span data-ppcond="569">endif</span></u></td></tr>
+<tr><th id="572">572</th><td><u>#<span data-ppcond="572">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_PGSQL">LOOKUP_PGSQL</span>) &amp;&amp; LOOKUP_PGSQL!=2</u></td></tr>
+<tr><th id="573">573</th><td><b>extern</b> lookup_module_info pgsql_lookup_module_info;</td></tr>
+<tr><th id="574">574</th><td><u>#<span data-ppcond="572">endif</span></u></td></tr>
+<tr><th id="575">575</th><td><u>#<span data-ppcond="575">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_REDIS">LOOKUP_REDIS</span>) &amp;&amp; LOOKUP_REDIS!=2</u></td></tr>
+<tr><th id="576">576</th><td><b>extern</b> lookup_module_info redis_lookup_module_info;</td></tr>
+<tr><th id="577">577</th><td><u>#<span data-ppcond="575">endif</span></u></td></tr>
+<tr><th id="578">578</th><td><u>#<span data-ppcond="578">if</span> defined(<span class="macro" data-ref="_M/EXPERIMENTAL_LMDB">EXPERIMENTAL_LMDB</span>)</u></td></tr>
+<tr><th id="579">579</th><td><b>extern</b> lookup_module_info lmdb_lookup_module_info;</td></tr>
+<tr><th id="580">580</th><td><u>#<span data-ppcond="578">endif</span></u></td></tr>
+<tr><th id="581">581</th><td><u>#<span data-ppcond="581">if</span> defined(<span class="macro" data-ref="_M/SUPPORT_SPF">SUPPORT_SPF</span>)</u></td></tr>
+<tr><th id="582">582</th><td><b>extern</b> lookup_module_info spf_lookup_module_info;</td></tr>
+<tr><th id="583">583</th><td><u>#<span data-ppcond="581">endif</span></u></td></tr>
+<tr><th id="584">584</th><td><u>#<span data-ppcond="584">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_SQLITE">LOOKUP_SQLITE</span>) &amp;&amp; LOOKUP_SQLITE!=2</u></td></tr>
+<tr><th id="585">585</th><td><b>extern</b> lookup_module_info sqlite_lookup_module_info;</td></tr>
+<tr><th id="586">586</th><td><u>#<span data-ppcond="584">endif</span></u></td></tr>
+<tr><th id="587">587</th><td><u>#<span data-ppcond="587">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_TESTDB">LOOKUP_TESTDB</span>) &amp;&amp; LOOKUP_TESTDB!=2</u></td></tr>
+<tr><th id="588">588</th><td><b>extern</b> lookup_module_info testdb_lookup_module_info;</td></tr>
+<tr><th id="589">589</th><td><u>#<span data-ppcond="587">endif</span></u></td></tr>
+<tr><th id="590">590</th><td><u>#<span data-ppcond="590">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_WHOSON">LOOKUP_WHOSON</span>) &amp;&amp; LOOKUP_WHOSON!=2</u></td></tr>
+<tr><th id="591">591</th><td><b>extern</b> lookup_module_info whoson_lookup_module_info;</td></tr>
+<tr><th id="592">592</th><td><u>#<span data-ppcond="590">endif</span></u></td></tr>
+<tr><th id="593">593</th><td></td></tr>
+<tr><th id="594">594</th><td></td></tr>
+<tr><th id="595">595</th><td><em>void</em></td></tr>
+<tr><th id="596">596</th><td><dfn class="decl def fn" id="init_lookup_list" title='init_lookup_list' data-ref="init_lookup_list">init_lookup_list</dfn>(<em>void</em>)</td></tr>
+<tr><th id="597">597</th><td>{</td></tr>
+<tr><th id="598">598</th><td><u>#<span data-ppcond="598">ifdef</span> <span class="macro" data-ref="_M/LOOKUP_MODULE_DIR">LOOKUP_MODULE_DIR</span></u></td></tr>
+<tr><th id="599">599</th><td>  DIR *dd;</td></tr>
+<tr><th id="600">600</th><td>  <b>struct</b> dirent *ent;</td></tr>
+<tr><th id="601">601</th><td>  <em>int</em> countmodules = <var>0</var>;</td></tr>
+<tr><th id="602">602</th><td>  <em>int</em> moduleerrors = <var>0</var>;</td></tr>
+<tr><th id="603">603</th><td><u>#<span data-ppcond="598">endif</span></u></td></tr>
+<tr><th id="604">604</th><td>  <b>struct</b> <a class="type" href="#lookupmodulestr" title='lookupmodulestr' data-ref="lookupmodulestr">lookupmodulestr</a> *<dfn class="local col1 decl" id="11p" title='p' data-type='struct lookupmodulestr *' data-ref="11p">p</dfn>;</td></tr>
+<tr><th id="605">605</th><td>  <em>static</em> <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col2 decl" id="12lookup_list_init_done" title='lookup_list_init_done' data-type='BOOL' data-ref="12lookup_list_init_done">lookup_list_init_done</dfn> = <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="606">606</th><td></td></tr>
+<tr><th id="607">607</th><td></td></tr>
+<tr><th id="608">608</th><td>  <b>if</b> (<a class="local col2 ref" href="#12lookup_list_init_done" title='lookup_list_init_done' data-ref="12lookup_list_init_done">lookup_list_init_done</a>)</td></tr>
+<tr><th id="609">609</th><td>    <b>return</b>;</td></tr>
+<tr><th id="610">610</th><td>  <a class="local col2 ref" href="#12lookup_list_init_done" title='lookup_list_init_done' data-ref="12lookup_list_init_done">lookup_list_init_done</a> = <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="611">611</th><td></td></tr>
+<tr><th id="612">612</th><td><u>#<span data-ppcond="612">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_CDB">LOOKUP_CDB</span>) &amp;&amp; LOOKUP_CDB!=2</u></td></tr>
+<tr><th id="613">613</th><td>  addlookupmodule(NULL, &amp;cdb_lookup_module_info);</td></tr>
+<tr><th id="614">614</th><td><u>#<span data-ppcond="612">endif</span></u></td></tr>
+<tr><th id="615">615</th><td></td></tr>
+<tr><th id="616">616</th><td><u>#<span data-ppcond="616">if</span> defined(<a class="macro" href="../build-Linux-x86_64/config.h.html#91" data-ref="_M/LOOKUP_DBM">LOOKUP_DBM</a>) &amp;&amp; <a class="macro" href="../build-Linux-x86_64/config.h.html#91" title="yes" data-ref="_M/LOOKUP_DBM">LOOKUP_DBM</a>!=2</u></td></tr>
+<tr><th id="617">617</th><td>  <a class="tu ref fn" href="#addlookupmodule" title='addlookupmodule' data-use='c' data-ref="addlookupmodule">addlookupmodule</a>(<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, &amp;<a class="ref" href="#dbmdb_lookup_module_info" title='dbmdb_lookup_module_info' data-ref="dbmdb_lookup_module_info">dbmdb_lookup_module_info</a>);</td></tr>
+<tr><th id="618">618</th><td><u>#<span data-ppcond="616">endif</span></u></td></tr>
+<tr><th id="619">619</th><td></td></tr>
+<tr><th id="620">620</th><td><u>#<span data-ppcond="620">if</span> defined(<a class="macro" href="../build-Linux-x86_64/config.h.html#92" data-ref="_M/LOOKUP_DNSDB">LOOKUP_DNSDB</a>) &amp;&amp; <a class="macro" href="../build-Linux-x86_64/config.h.html#92" title="yes" data-ref="_M/LOOKUP_DNSDB">LOOKUP_DNSDB</a>!=2</u></td></tr>
+<tr><th id="621">621</th><td>  <a class="tu ref fn" href="#addlookupmodule" title='addlookupmodule' data-use='c' data-ref="addlookupmodule">addlookupmodule</a>(<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, &amp;<a class="ref" href="#dnsdb_lookup_module_info" title='dnsdb_lookup_module_info' data-ref="dnsdb_lookup_module_info">dnsdb_lookup_module_info</a>);</td></tr>
+<tr><th id="622">622</th><td><u>#<span data-ppcond="620">endif</span></u></td></tr>
+<tr><th id="623">623</th><td></td></tr>
+<tr><th id="624">624</th><td><u>#<span data-ppcond="624">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_DSEARCH">LOOKUP_DSEARCH</span>) &amp;&amp; LOOKUP_DSEARCH!=2</u></td></tr>
+<tr><th id="625">625</th><td>  addlookupmodule(NULL, &amp;dsearch_lookup_module_info);</td></tr>
+<tr><th id="626">626</th><td><u>#<span data-ppcond="624">endif</span></u></td></tr>
+<tr><th id="627">627</th><td></td></tr>
+<tr><th id="628">628</th><td><u>#<span data-ppcond="628">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_IBASE">LOOKUP_IBASE</span>) &amp;&amp; LOOKUP_IBASE!=2</u></td></tr>
+<tr><th id="629">629</th><td>  addlookupmodule(NULL, &amp;ibase_lookup_module_info);</td></tr>
+<tr><th id="630">630</th><td><u>#<span data-ppcond="628">endif</span></u></td></tr>
+<tr><th id="631">631</th><td></td></tr>
+<tr><th id="632">632</th><td><u>#<span data-ppcond="632">ifdef</span> <span class="macro" data-ref="_M/LOOKUP_LDAP">LOOKUP_LDAP</span></u></td></tr>
+<tr><th id="633">633</th><td>  addlookupmodule(NULL, &amp;ldap_lookup_module_info);</td></tr>
+<tr><th id="634">634</th><td><u>#<span data-ppcond="632">endif</span></u></td></tr>
+<tr><th id="635">635</th><td></td></tr>
+<tr><th id="636">636</th><td><u>#<span data-ppcond="636">if</span> defined(<a class="macro" href="../build-Linux-x86_64/config.h.html#96" data-ref="_M/LOOKUP_LSEARCH">LOOKUP_LSEARCH</a>) &amp;&amp; <a class="macro" href="../build-Linux-x86_64/config.h.html#96" title="yes" data-ref="_M/LOOKUP_LSEARCH">LOOKUP_LSEARCH</a>!=2</u></td></tr>
+<tr><th id="637">637</th><td>  <a class="tu ref fn" href="#addlookupmodule" title='addlookupmodule' data-use='c' data-ref="addlookupmodule">addlookupmodule</a>(<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, &amp;<a class="ref" href="#lsearch_lookup_module_info" title='lsearch_lookup_module_info' data-ref="lsearch_lookup_module_info">lsearch_lookup_module_info</a>);</td></tr>
+<tr><th id="638">638</th><td><u>#<span data-ppcond="636">endif</span></u></td></tr>
+<tr><th id="639">639</th><td></td></tr>
+<tr><th id="640">640</th><td><u>#<span data-ppcond="640">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_MYSQL">LOOKUP_MYSQL</span>) &amp;&amp; LOOKUP_MYSQL!=2</u></td></tr>
+<tr><th id="641">641</th><td>  addlookupmodule(NULL, &amp;mysql_lookup_module_info);</td></tr>
+<tr><th id="642">642</th><td><u>#<span data-ppcond="640">endif</span></u></td></tr>
+<tr><th id="643">643</th><td></td></tr>
+<tr><th id="644">644</th><td><u>#<span data-ppcond="644">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_NIS">LOOKUP_NIS</span>) &amp;&amp; LOOKUP_NIS!=2</u></td></tr>
+<tr><th id="645">645</th><td>  addlookupmodule(NULL, &amp;nis_lookup_module_info);</td></tr>
+<tr><th id="646">646</th><td><u>#<span data-ppcond="644">endif</span></u></td></tr>
+<tr><th id="647">647</th><td></td></tr>
+<tr><th id="648">648</th><td><u>#<span data-ppcond="648">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_NISPLUS">LOOKUP_NISPLUS</span>) &amp;&amp; LOOKUP_NISPLUS!=2</u></td></tr>
+<tr><th id="649">649</th><td>  addlookupmodule(NULL, &amp;nisplus_lookup_module_info);</td></tr>
+<tr><th id="650">650</th><td><u>#<span data-ppcond="648">endif</span></u></td></tr>
+<tr><th id="651">651</th><td></td></tr>
+<tr><th id="652">652</th><td><u>#<span data-ppcond="652">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_ORACLE">LOOKUP_ORACLE</span>) &amp;&amp; LOOKUP_ORACLE!=2</u></td></tr>
+<tr><th id="653">653</th><td>  addlookupmodule(NULL, &amp;oracle_lookup_module_info);</td></tr>
+<tr><th id="654">654</th><td><u>#<span data-ppcond="652">endif</span></u></td></tr>
+<tr><th id="655">655</th><td></td></tr>
+<tr><th id="656">656</th><td><u>#<span data-ppcond="656">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_PASSWD">LOOKUP_PASSWD</span>) &amp;&amp; LOOKUP_PASSWD!=2</u></td></tr>
+<tr><th id="657">657</th><td>  addlookupmodule(NULL, &amp;passwd_lookup_module_info);</td></tr>
+<tr><th id="658">658</th><td><u>#<span data-ppcond="656">endif</span></u></td></tr>
+<tr><th id="659">659</th><td></td></tr>
+<tr><th id="660">660</th><td><u>#<span data-ppcond="660">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_PGSQL">LOOKUP_PGSQL</span>) &amp;&amp; LOOKUP_PGSQL!=2</u></td></tr>
+<tr><th id="661">661</th><td>  addlookupmodule(NULL, &amp;pgsql_lookup_module_info);</td></tr>
+<tr><th id="662">662</th><td><u>#<span data-ppcond="660">endif</span></u></td></tr>
+<tr><th id="663">663</th><td></td></tr>
+<tr><th id="664">664</th><td><u>#<span data-ppcond="664">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_REDIS">LOOKUP_REDIS</span>) &amp;&amp; LOOKUP_REDIS!=2</u></td></tr>
+<tr><th id="665">665</th><td>  addlookupmodule(NULL, &amp;redis_lookup_module_info);</td></tr>
+<tr><th id="666">666</th><td><u>#<span data-ppcond="664">endif</span></u></td></tr>
+<tr><th id="667">667</th><td></td></tr>
+<tr><th id="668">668</th><td><u>#<span data-ppcond="668">ifdef</span> <span class="macro" data-ref="_M/EXPERIMENTAL_LMDB">EXPERIMENTAL_LMDB</span></u></td></tr>
+<tr><th id="669">669</th><td>  addlookupmodule(NULL, &amp;lmdb_lookup_module_info);</td></tr>
+<tr><th id="670">670</th><td><u>#<span data-ppcond="668">endif</span></u></td></tr>
+<tr><th id="671">671</th><td></td></tr>
+<tr><th id="672">672</th><td><u>#<span data-ppcond="672">ifdef</span> <span class="macro" data-ref="_M/SUPPORT_SPF">SUPPORT_SPF</span></u></td></tr>
+<tr><th id="673">673</th><td>  addlookupmodule(NULL, &amp;spf_lookup_module_info);</td></tr>
+<tr><th id="674">674</th><td><u>#<span data-ppcond="672">endif</span></u></td></tr>
+<tr><th id="675">675</th><td></td></tr>
+<tr><th id="676">676</th><td><u>#<span data-ppcond="676">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_SQLITE">LOOKUP_SQLITE</span>) &amp;&amp; LOOKUP_SQLITE!=2</u></td></tr>
+<tr><th id="677">677</th><td>  addlookupmodule(NULL, &amp;sqlite_lookup_module_info);</td></tr>
+<tr><th id="678">678</th><td><u>#<span data-ppcond="676">endif</span></u></td></tr>
+<tr><th id="679">679</th><td></td></tr>
+<tr><th id="680">680</th><td><u>#<span data-ppcond="680">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_TESTDB">LOOKUP_TESTDB</span>) &amp;&amp; LOOKUP_TESTDB!=2</u></td></tr>
+<tr><th id="681">681</th><td>  addlookupmodule(NULL, &amp;testdb_lookup_module_info);</td></tr>
+<tr><th id="682">682</th><td><u>#<span data-ppcond="680">endif</span></u></td></tr>
+<tr><th id="683">683</th><td></td></tr>
+<tr><th id="684">684</th><td><u>#<span data-ppcond="684">if</span> defined(<span class="macro" data-ref="_M/LOOKUP_WHOSON">LOOKUP_WHOSON</span>) &amp;&amp; LOOKUP_WHOSON!=2</u></td></tr>
+<tr><th id="685">685</th><td>  addlookupmodule(NULL, &amp;whoson_lookup_module_info);</td></tr>
+<tr><th id="686">686</th><td><u>#<span data-ppcond="684">endif</span></u></td></tr>
+<tr><th id="687">687</th><td></td></tr>
+<tr><th id="688">688</th><td><u>#<span data-ppcond="688">ifdef</span> <span class="macro" data-ref="_M/LOOKUP_MODULE_DIR">LOOKUP_MODULE_DIR</span></u></td></tr>
+<tr><th id="689">689</th><td>  dd = opendir(LOOKUP_MODULE_DIR);</td></tr>
+<tr><th id="690">690</th><td>  <b>if</b> (dd == NULL) {</td></tr>
+<tr><th id="691">691</th><td>    DEBUG(D_lookup) debug_printf(<q>"Couldn't open %s: not loading lookup modules\n"</q>, LOOKUP_MODULE_DIR);</td></tr>
+<tr><th id="692">692</th><td>    log_write(<var>0</var>, LOG_MAIN, <q>"Couldn't open %s: not loading lookup modules\n"</q>, LOOKUP_MODULE_DIR);</td></tr>
+<tr><th id="693">693</th><td>  }</td></tr>
+<tr><th id="694">694</th><td>  <b>else</b> {</td></tr>
+<tr><th id="695">695</th><td>    <em>const</em> pcre *regex_islookupmod = regex_must_compile(</td></tr>
+<tr><th id="696">696</th><td>      US<q>"\\."</q> DYNLIB_FN_EXT <q>"$"</q>, FALSE, TRUE);</td></tr>
+<tr><th id="697">697</th><td></td></tr>
+<tr><th id="698">698</th><td>    DEBUG(D_lookup) debug_printf(<q>"Loading lookup modules from %s\n"</q>, LOOKUP_MODULE_DIR);</td></tr>
+<tr><th id="699">699</th><td>    <b>while</b> ((ent = readdir(dd)) != NULL) {</td></tr>
+<tr><th id="700">700</th><td>      <em>char</em> *name = ent-&gt;d_name;</td></tr>
+<tr><th id="701">701</th><td>      <em>int</em> len = (<em>int</em>)strlen(name);</td></tr>
+<tr><th id="702">702</th><td>      <b>if</b> (pcre_exec(regex_islookupmod, NULL, name, len, <var>0</var>, PCRE_EOPT, NULL, <var>0</var>) &gt;= <var>0</var>) {</td></tr>
+<tr><th id="703">703</th><td>        <em>int</em> pathnamelen = len + (<em>int</em>)strlen(LOOKUP_MODULE_DIR) + <var>2</var>;</td></tr>
+<tr><th id="704">704</th><td>        <em>void</em> *dl;</td></tr>
+<tr><th id="705">705</th><td>        <b>struct</b> lookup_module_info *info;</td></tr>
+<tr><th id="706">706</th><td>        <em>const</em> <em>char</em> *errormsg;</td></tr>
+<tr><th id="707">707</th><td></td></tr>
+<tr><th id="708">708</th><td>        <i>/* SRH: am I being paranoid here or what? */</i></td></tr>
+<tr><th id="709">709</th><td>        <b>if</b> (pathnamelen &gt; big_buffer_size) {</td></tr>
+<tr><th id="710">710</th><td>          fprintf(stderr, <q>"Loading lookup modules: %s/%s: name too long\n"</q>, LOOKUP_MODULE_DIR, name);</td></tr>
+<tr><th id="711">711</th><td>          log_write(<var>0</var>, LOG_MAIN|LOG_PANIC, <q>"%s/%s: name too long\n"</q>, LOOKUP_MODULE_DIR, name);</td></tr>
+<tr><th id="712">712</th><td>          <b>continue</b>;</td></tr>
+<tr><th id="713">713</th><td>        }</td></tr>
+<tr><th id="714">714</th><td></td></tr>
+<tr><th id="715">715</th><td>        <i>/* SRH: snprintf here? */</i></td></tr>
+<tr><th id="716">716</th><td>        sprintf(CS big_buffer, <q>"%s/%s"</q>, LOOKUP_MODULE_DIR, name);</td></tr>
+<tr><th id="717">717</th><td></td></tr>
+<tr><th id="718">718</th><td>        dl = dlopen(CS big_buffer, RTLD_NOW);<i>// TJ was LAZY</i></td></tr>
+<tr><th id="719">719</th><td>        <b>if</b> (dl == NULL) {</td></tr>
+<tr><th id="720">720</th><td>          fprintf(stderr, <q>"Error loading %s: %s\n"</q>, name, dlerror());</td></tr>
+<tr><th id="721">721</th><td>          moduleerrors++;</td></tr>
+<tr><th id="722">722</th><td>          log_write(<var>0</var>, LOG_MAIN|LOG_PANIC, <q>"Error loading lookup module %s: %s\n"</q>, name, dlerror());</td></tr>
+<tr><th id="723">723</th><td>          <b>continue</b>;</td></tr>
+<tr><th id="724">724</th><td>        }</td></tr>
+<tr><th id="725">725</th><td></td></tr>
+<tr><th id="726">726</th><td>        <i>/* FreeBSD nsdispatch() can trigger dlerror() errors about</i></td></tr>
+<tr><th id="727">727</th><td><i>         * _nss_cache_cycle_prevention_function; we need to clear the dlerror()</i></td></tr>
+<tr><th id="728">728</th><td><i>         * state before calling dlsym(), so that any error afterwards only</i></td></tr>
+<tr><th id="729">729</th><td><i>         * comes from dlsym().</i></td></tr>
+<tr><th id="730">730</th><td><i>         */</i></td></tr>
+<tr><th id="731">731</th><td>        errormsg = dlerror();</td></tr>
+<tr><th id="732">732</th><td></td></tr>
+<tr><th id="733">733</th><td>        info = (<b>struct</b> lookup_module_info*) dlsym(dl, <q>"_lookup_module_info"</q>);</td></tr>
+<tr><th id="734">734</th><td>        <b>if</b> ((errormsg = dlerror()) != NULL) {</td></tr>
+<tr><th id="735">735</th><td>          fprintf(stderr, <q>"%s does not appear to be a lookup module (%s)\n"</q>, name, errormsg);</td></tr>
+<tr><th id="736">736</th><td>          dlclose(dl);</td></tr>
+<tr><th id="737">737</th><td>          moduleerrors++;</td></tr>
+<tr><th id="738">738</th><td>          log_write(<var>0</var>, LOG_MAIN|LOG_PANIC, <q>"%s does not appear to be a lookup module (%s)\n"</q>, name, errormsg);</td></tr>
+<tr><th id="739">739</th><td>          <b>continue</b>;</td></tr>
+<tr><th id="740">740</th><td>        }</td></tr>
+<tr><th id="741">741</th><td>        <b>if</b> (info-&gt;magic != LOOKUP_MODULE_INFO_MAGIC) {</td></tr>
+<tr><th id="742">742</th><td>          fprintf(stderr, <q>"Lookup module %s is not compatible with this version of Exim\n"</q>, name);</td></tr>
+<tr><th id="743">743</th><td>          dlclose(dl);</td></tr>
+<tr><th id="744">744</th><td>          moduleerrors++;</td></tr>
+<tr><th id="745">745</th><td>          log_write(<var>0</var>, LOG_MAIN|LOG_PANIC, <q>"Lookup module %s is not compatible with this version of Exim\n"</q>, name);</td></tr>
+<tr><th id="746">746</th><td>          <b>continue</b>;</td></tr>
+<tr><th id="747">747</th><td>        }</td></tr>
+<tr><th id="748">748</th><td></td></tr>
+<tr><th id="749">749</th><td>        addlookupmodule(dl, info);</td></tr>
+<tr><th id="750">750</th><td>        DEBUG(D_lookup) debug_printf(<q>"Loaded \"%s\" (%d lookup types)\n"</q>, name, info-&gt;lookupcount);</td></tr>
+<tr><th id="751">751</th><td>        countmodules++;</td></tr>
+<tr><th id="752">752</th><td>      }</td></tr>
+<tr><th id="753">753</th><td>    }</td></tr>
+<tr><th id="754">754</th><td>    store_free((<em>void</em>*)regex_islookupmod);</td></tr>
+<tr><th id="755">755</th><td>    closedir(dd);</td></tr>
+<tr><th id="756">756</th><td>  }</td></tr>
+<tr><th id="757">757</th><td></td></tr>
+<tr><th id="758">758</th><td>  DEBUG(D_lookup) debug_printf(<q>"Loaded %d lookup modules\n"</q>, countmodules);</td></tr>
+<tr><th id="759">759</th><td><u>#<span data-ppcond="688">endif</span></u></td></tr>
+<tr><th id="760">760</th><td></td></tr>
+<tr><th id="761">761</th><td>  <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_lookup))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#392" title='D_lookup' data-ref="D_lookup">D_lookup</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"Total %d lookups\n"</q>, <a class="ref" href="globals.h.html#lookup_list_count" title='lookup_list_count' data-ref="lookup_list_count">lookup_list_count</a>);</td></tr>
+<tr><th id="762">762</th><td></td></tr>
+<tr><th id="763">763</th><td>  <a class="ref" href="globals.h.html#lookup_list" title='lookup_list' data-ref="lookup_list">lookup_list</a> = <a class="macro" href="store.h.html#36" title="store_malloc_3(sizeof(lookup_info *) * lookup_list_count, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/drtables.c&quot;, 763)" data-ref="_M/store_malloc">store_malloc</a>(<b>sizeof</b>(<a class="typedef" href="lookupapi.h.html#lookup_info" title='lookup_info' data-type='struct lookup_info' data-ref="lookup_info">lookup_info</a> *) * <a class="ref" href="globals.h.html#lookup_list_count" title='lookup_list_count' data-ref="lookup_list_count">lookup_list_count</a>);</td></tr>
+<tr><th id="764">764</th><td>  <a class="ref fn" href="../../include/string.h.html#memset" title='memset' data-ref="memset">memset</a>(<a class="ref" href="globals.h.html#lookup_list" title='lookup_list' data-ref="lookup_list">lookup_list</a>, <var>0</var>, <b>sizeof</b>(<a class="typedef" href="lookupapi.h.html#lookup_info" title='lookup_info' data-type='struct lookup_info' data-ref="lookup_info">lookup_info</a> *) * <a class="ref" href="globals.h.html#lookup_list_count" title='lookup_list_count' data-ref="lookup_list_count">lookup_list_count</a>);</td></tr>
+<tr><th id="765">765</th><td></td></tr>
+<tr><th id="766">766</th><td>  <i>/* now add all lookups to the real list */</i></td></tr>
+<tr><th id="767">767</th><td>  <a class="local col1 ref" href="#11p" title='p' data-ref="11p">p</a> = <a class="tu ref" href="#lookupmodules" title='lookupmodules' data-use='r' data-ref="lookupmodules">lookupmodules</a>;</td></tr>
+<tr><th id="768">768</th><td>  <b>while</b> (<a class="local col1 ref" href="#11p" title='p' data-ref="11p">p</a>) {</td></tr>
+<tr><th id="769">769</th><td>    <em>int</em> <dfn class="local col3 decl" id="13j" title='j' data-type='int' data-ref="13j">j</dfn>;</td></tr>
+<tr><th id="770">770</th><td>    <b>struct</b> <a class="type" href="#lookupmodulestr" title='lookupmodulestr' data-ref="lookupmodulestr">lookupmodulestr</a> *<dfn class="local col4 decl" id="14pnext" title='pnext' data-type='struct lookupmodulestr *' data-ref="14pnext">pnext</dfn>;</td></tr>
+<tr><th id="771">771</th><td></td></tr>
+<tr><th id="772">772</th><td>    <b>for</b> (<a class="local col3 ref" href="#13j" title='j' data-ref="13j">j</a> = <var>0</var>; <a class="local col3 ref" href="#13j" title='j' data-ref="13j">j</a> &lt; <a class="local col1 ref" href="#11p" title='p' data-ref="11p">p</a>-&gt;<a class="tu ref field" href="#lookupmodulestr::info" title='lookupmodulestr::info' data-use='r' data-ref="lookupmodulestr::info">info</a>-&gt;<a class="ref field" href="lookupapi.h.html#lookup_module_info::lookupcount" title='lookup_module_info::lookupcount' data-ref="lookup_module_info::lookupcount">lookupcount</a>; <a class="local col3 ref" href="#13j" title='j' data-ref="13j">j</a>++)</td></tr>
+<tr><th id="773">773</th><td>      <a class="tu ref fn" href="#add_lookup_to_list" title='add_lookup_to_list' data-use='c' data-ref="add_lookup_to_list">add_lookup_to_list</a>(<a class="local col1 ref" href="#11p" title='p' data-ref="11p">p</a>-&gt;<a class="tu ref field" href="#lookupmodulestr::info" title='lookupmodulestr::info' data-use='r' data-ref="lookupmodulestr::info">info</a>-&gt;<a class="ref field" href="lookupapi.h.html#lookup_module_info::lookups" title='lookup_module_info::lookups' data-ref="lookup_module_info::lookups">lookups</a>[<a class="local col3 ref" href="#13j" title='j' data-ref="13j">j</a>]);</td></tr>
+<tr><th id="774">774</th><td></td></tr>
+<tr><th id="775">775</th><td>    <a class="local col4 ref" href="#14pnext" title='pnext' data-ref="14pnext">pnext</a> = <a class="local col1 ref" href="#11p" title='p' data-ref="11p">p</a>-&gt;<a class="tu ref field" href="#lookupmodulestr::next" title='lookupmodulestr::next' data-use='r' data-ref="lookupmodulestr::next">next</a>;</td></tr>
+<tr><th id="776">776</th><td>    <a class="macro" href="store.h.html#33" title="store_free_3(p, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/drtables.c&quot;, 776)" data-ref="_M/store_free">store_free</a>(<a class="local col1 ref" href="#11p" title='p' data-ref="11p">p</a>);</td></tr>
+<tr><th id="777">777</th><td>    <a class="local col1 ref" href="#11p" title='p' data-ref="11p">p</a> = <a class="local col4 ref" href="#14pnext" title='pnext' data-ref="14pnext">pnext</a>;</td></tr>
+<tr><th id="778">778</th><td>  }</td></tr>
+<tr><th id="779">779</th><td>  <i>/* just to be sure */</i></td></tr>
+<tr><th id="780">780</th><td>  <a class="tu ref" href="#lookupmodules" title='lookupmodules' data-use='w' data-ref="lookupmodules">lookupmodules</a> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="781">781</th><td>}</td></tr>
+<tr><th id="782">782</th><td></td></tr>
+<tr><th id="783">783</th><td><u>#<span data-ppcond="482">endif</span>	/*!MACRO_PREDEF*/</u></td></tr>
+<tr><th id="784">784</th><td><i>/* End of drtables.c */</i></td></tr>
+<tr><th id="785">785</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,3 @@
+<dec f='exim/src/pdkim/pdkim.h' l='311' type='pdkim_ctx * pdkim_init_verify(uschar *(*)(char *) , BOOL )'/>
+<def f='exim/src/pdkim/pdkim.c' l='1776' ll='1789' type='pdkim_ctx * pdkim_init_verify(uschar *(*)(char *) dns_txt_callback, BOOL dot_stuffing)'/>
+<doc f='exim/src/pdkim/pdkim.c' l='1774'>/* -------------------------------------------------------------------------- */</doc>

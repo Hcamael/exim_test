@@ -1,0 +1,6 @@
+<dec f='exim/src/transports/smtp.h' l='172' type='void smtp_transport_closedown(transport_instance * )'/>
+<use f='exim/src/drtables.c' l='440'/>
+<use f='exim/src/drtables.c' l='440'/>
+<use f='exim/src/drtables.c' l='440'/>
+<use f='exim/src/drtables.c' l='440'/>
+<def f='exim/src/transports/smtp.c' l='200' type='void smtp_transport_closedown(transport_instance * tblock)'/>

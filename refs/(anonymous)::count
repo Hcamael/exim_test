@@ -5,3 +5,15 @@
 <doc f='exim/src/dbstuff.h' l='746'>/* Count of message ids */</doc>
 <doc f='exim/src/dbstuff.h' l='765'>/*************/</doc>
 <doc f='exim/src/dbstuff.h' l='766'>/* Reserved for possible connection count */</doc>
+<use f='exim/src/exim_dbutil.c' l='1004' u='r' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1006' u='r' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1007' u='r' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1008' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1011' u='r' c='main'/>
+<use f='exim/src/enq.c' l='59' u='r' c='enq_start'/>
+<use f='exim/src/enq.c' l='66' u='w' c='enq_start'/>
+<use f='exim/src/enq.c' l='66' u='r' c='enq_start'/>
+<use f='exim/src/enq.c' l='69' u='w' c='enq_start'/>
+<use f='exim/src/enq.c' l='74' u='r' c='enq_start'/>
+<use f='exim/src/enq.c' l='108' u='w' c='enq_end'/>
+<use f='exim/src/enq.c' l='111' u='r' c='enq_end'/>

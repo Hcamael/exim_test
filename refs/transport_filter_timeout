@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='945' type='int'/>
 <doc f='exim/src/globals.h' l='945'>/* Timeout for same */</doc>
+<use f='exim/src/deliver.c' l='2386' u='w' c='deliver_local'/>
+<def f='exim/src/globals.c' l='1506' type='int'/>

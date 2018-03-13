@@ -1,2 +1,26 @@
 <dec f='include/ctype.h' l='59' type='8'/>
 <doc f='include/ctype.h' l='59'>/* Alphanumeric.  */</doc>
+<use f='exim/src/verify.c' l='2998' macro='1' u='r'/>
+<use f='exim/src/verify.c' l='3769' macro='1' u='r'/>
+<use f='exim/src/verify.c' l='3781' macro='1' u='r'/>
+<use f='exim/src/parse.c' l='324' macro='1' u='r'/>
+<use f='exim/src/parse.c' l='332' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='1104' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='2417' macro='1' u='r'/>
+<use f='exim/src/smtp_in.c' l='1875' macro='1' u='r'/>
+<use f='exim/src/smtp_in.c' l='3929' macro='1' u='r'/>
+<use f='exim/src/queue.c' l='229' macro='1' u='r'/>
+<use f='exim/src/log.c' l='434' macro='1' u='r'/>
+<use f='exim/src/log.c' l='438' macro='1' u='r'/>
+<use f='exim/src/log.c' l='1316' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='851' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='887' macro='1' u='r'/>
+<use f='exim/src/match.c' l='1039' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='1024' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='6860' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='6865' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='6933' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='2681' macro='1' u='r'/>
+<use f='exim/src/retry.c' l='370' macro='1' u='r'/>
+<use f='exim/src/sieve.c' l='466' macro='1' u='r'/>
+<use f='exim/src/sieve.c' l='488' macro='1' u='r'/>

@@ -1,3 +1,18 @@
 <dec f='exim/src/structs.h' l='775' type='const uschar *'/>
 <offset>64</offset>
 <doc f='exim/src/structs.h' l='775'>/* pointer in the answer while scanning */</doc>
+<use f='exim/src/dns.c' l='311' u='w' c='dnss_inc_aptr'/>
+<use f='exim/src/dns.c' l='351' u='w' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='359' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='390' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='395' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='395' u='w' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='419' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='429' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='429' u='w' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='432' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='432' u='w' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='433' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='433' u='w' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='434' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='439' u='w' c='dns_next_rr'/>

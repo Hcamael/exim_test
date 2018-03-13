@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='927' type='blob'/>
 <doc f='exim/src/globals.h' l='927'>/* for zero-data TFO connect requests */</doc>
+<use f='exim/src/smtp_out.c' l='268' u='a' c='smtp_sock_connect'/>
+<def f='exim/src/globals.c' l='1429' type='blob'/>

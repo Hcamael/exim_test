@@ -1,1 +1,44 @@
 <dec f='exim/src/functions.h' l='359' type='BOOL retry_check_address(const uschar * , host_item * , uschar * , BOOL , uschar ** , uschar ** )'/>
+<def f='exim/src/retry.c' l='124' ll='261' type='BOOL retry_check_address(const uschar * domain, host_item * host, uschar * portstring, BOOL include_ip_address, uschar ** retry_host_key, uschar ** retry_message_key)'/>
+<doc f='exim/src/retry.c' l='81'>/* This function is passed a host_item which contains a host name and an
+IP address string. Its job is to set the status of the address if it is not
+already set (indicated by hstatus_unknown). The possible values are:
+
+   hstatus_usable    the address is not listed in the unusable tree, and does
+                     not have a retry record, OR the time is past the next
+                     try time, OR the message has been on the queue for more
+                     than the maximum retry time for a failing host
+
+   hstatus_unusable  the address is listed in the unusable tree, or does have
+                     a retry record, and the time is not yet at the next retry
+                     time.
+
+   hstatus_unusable_expired  as above, but also the retry time has expired
+                     for this address.
+
+The reason a delivery is permitted when a message has been around for a very
+long time is to allow the ultimate address timeout to operate after a delivery
+failure. Otherwise some messages may stick around without being tried for too
+long.
+
+If a host retry record is retrieved from the hints database, the time of last
+trying is filled into the last_try field of the host block. If a host is
+generally usable, a check is made to see if there is a retry delay on this
+specific message at this host.
+
+If a non-standard port is being used, it is added to the retry key.
+
+Arguments:
+  domain              the address domain
+  host                pointer to a host item
+  portstring          &quot;&quot; for standard port, &quot;:xxxx&quot; for a non-standard port
+  include_ip_address  TRUE to include the address in the key - this is
+                        usual, but sometimes is not wanted
+  retry_host_key      where to put a pointer to the key for the host-specific
+                        retry record, if one is read and the host is usable
+  retry_message_key   where to put a pointer to the key for the message+host
+                        retry record, if one is read and the host is usable
+
+Returns:    TRUE if the host has expired but is usable because
+             its retry time has come
+*/</doc>

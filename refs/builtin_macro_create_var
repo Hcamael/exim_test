@@ -1,0 +1,5 @@
+<dec f='exim/src/macro_predef.h' l='12' type='void builtin_macro_create_var(const uschar * , const uschar * )'/>
+<use f='exim/src/dkim.c' l='23' u='c' c='params_dkim'/>
+<def f='exim/src/macro_predef.c' l='24' ll='28' type='void builtin_macro_create_var(const uschar * name, const uschar * val)'/>
+<use f='exim/src/macro_predef.c' l='34' u='c' c='builtin_macro_create'/>
+<doc f='exim/src/macro_predef.c' l='22'>/******************************************************************************/</doc>

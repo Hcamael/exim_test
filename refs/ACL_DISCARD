@@ -1,0 +1,7 @@
+<dec f='exim/src/acl.c' l='19' type='3'/>
+<use f='exim/src/acl.c' l='28' u='r'/>
+<use f='exim/src/acl.c' l='43'/>
+<use f='exim/src/acl.c' l='819' u='r' c='acl_read'/>
+<use f='exim/src/acl.c' l='2962' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3756' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='4165' c='acl_check_internal'/>

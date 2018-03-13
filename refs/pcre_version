@@ -1,1 +1,2 @@
 <dec f='include/pcre.h' l='639' type='const char * pcre_version()'/>
+<use f='exim/src/exim.c' l='1024' u='c' c='show_whats_supported'/>

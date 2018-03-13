@@ -1,2 +1,21 @@
 <dec f='exim/src/macros.h' l='941' type='9'/>
 <doc f='exim/src/macros.h' l='941'>/* required to be in a special order so they */</doc>
+<use f='exim/src/smtp_in.c' l='2835' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2838' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='3311' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/acl.c' l='152' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='152' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='284' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='284' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='291' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='291' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='152' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='152' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='284' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='284' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='291' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='291' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='394' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='394' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='394' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='394' macro='1' u='r'/>

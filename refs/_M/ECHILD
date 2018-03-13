@@ -1,1 +1,4 @@
 <dec f='include/asm-generic/errno-base.h' l='13'/>
+<use f='exim/src/deliver.c' l='2581' u='c'/>
+<use f='exim/src/deliver.c' l='3912' u='c'/>
+<use f='exim/src/rda.c' l='952' u='c'/>

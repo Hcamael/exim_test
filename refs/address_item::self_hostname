@@ -1,3 +1,27 @@
 <dec f='exim/src/structs.h' l='550' type='uschar *'/>
 <offset>1856</offset>
 <doc f='exim/src/structs.h' l='550'>/* after self=pass */</doc>
+<use f='exim/src/deliver.c' l='206' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='298' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='299' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/globals.c' l='360' u='w'/>
+<use f='exim/src/routers/rf_self_action.c' l='124' u='w' c='rf_self_action'/>

@@ -7,3 +7,10 @@
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */</doc>
+<use f='exim/src/deliver.c' l='3957' u='c' c='par_wait'/>
+<use f='exim/src/exim.c' l='5560' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='355' u='c' c='wouldblock_reading'/>
+<use f='exim/src/ip.c' l='555' u='c' c='fd_ready'/>
+<use f='exim/src/daemon.c' l='1952' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='2067' u='c' c='daemon_go'/>
+<use f='exim/src/receive.c' l='4099' u='c' c='receive_msg'/>

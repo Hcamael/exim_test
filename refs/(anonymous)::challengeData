@@ -1,0 +1,7 @@
+<dec f='exim/src/auths/auth-spa.h' l='44' type='uint8x [8]'/>
+<use f='exim/src/auths/spa.c' l='243' u='r' c='auth_spa_server'/>
+<use f='exim/src/auths/spa.c' l='244' u='r' c='auth_spa_server'/>
+<offset>192</offset>
+<use f='exim/src/auths/auth-spa.c' l='1431' u='r' c='spa_build_auth_challenge'/>
+<use f='exim/src/auths/auth-spa.c' l='1509' u='r' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1510' u='r' c='spa_build_auth_response'/>

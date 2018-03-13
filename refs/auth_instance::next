@@ -1,2 +1,6 @@
 <dec f='exim/src/structs.h' l='376' type='struct auth_instance *'/>
 <offset>0</offset>
+<use f='exim/src/globals.c' l='431' u='w'/>
+<use f='exim/src/smtp_in.c' l='3845' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='3951' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4257' u='r' c='smtp_setup_msg'/>

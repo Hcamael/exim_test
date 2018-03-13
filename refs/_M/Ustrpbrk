@@ -1,2 +1,5 @@
 <dec f='exim/src/mytypes.h' l='108'/>
 <use f='exim/src/lookups/lf_quote.c' l='46' u='c'/>
+<use f='exim/src/exim.c' l='1114' u='c'/>
+<use f='exim/src/expand.c' l='7570' u='c'/>
+<use f='exim/src/daemon.c' l='1086' u='c'/>

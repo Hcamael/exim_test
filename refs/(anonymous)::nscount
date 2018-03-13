@@ -1,3 +1,7 @@
 <dec f='include/arpa/nameser_compat.h' l='81' type='unsigned int'/>
 <offset>64</offset>
 <doc f='include/arpa/nameser_compat.h' l='81'>/*%&lt; number of authority entries */</doc>
+<use f='exim/src/dns.c' l='378' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='401' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='473' u='r' c='dns_extract_auth_name'/>
+<use f='exim/src/dns.c' l='1096' u='r' c='dns_special_lookup'/>

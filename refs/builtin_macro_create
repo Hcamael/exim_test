@@ -1,0 +1,19 @@
+<dec f='exim/src/macro_predef.h' l='11' type='void builtin_macro_create(const uschar * )'/>
+<def f='exim/src/macro_predef.c' l='31' ll='35' type='void builtin_macro_create(const uschar * name)'/>
+<use f='exim/src/macro_predef.c' l='82' u='c' c='options_from_list'/>
+<use f='exim/src/macro_predef.c' l='99' u='c' c='features'/>
+<use f='exim/src/macro_predef.c' l='102' u='c' c='features'/>
+<use f='exim/src/macro_predef.c' l='123' u='c' c='features'/>
+<use f='exim/src/macro_predef.c' l='127' u='c' c='features'/>
+<use f='exim/src/macro_predef.c' l='140' u='c' c='features'/>
+<use f='exim/src/macro_predef.c' l='143' u='c' c='features'/>
+<use f='exim/src/macro_predef.c' l='146' u='c' c='features'/>
+<use f='exim/src/macro_predef.c' l='152' u='c' c='features'/>
+<use f='exim/src/macro_predef.c' l='155' u='c' c='features'/>
+<use f='exim/src/macro_predef.c' l='164' u='c' c='features'/>
+<use f='exim/src/macro_predef.c' l='192' u='c' c='features'/>
+<use f='exim/src/macro_predef.c' l='198' u='c' c='features'/>
+<use f='exim/src/macro_predef.c' l='201' u='c' c='features'/>
+<use f='exim/src/route.c' l='161' u='c' c='options_routers'/>
+<use f='exim/src/transport.c' l='106' u='c' c='options_transports'/>
+<use f='exim/src/readconf.c' l='401' u='c' c='options_auths'/>

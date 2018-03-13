@@ -1,2 +1,30 @@
 <dec f='exim/src/globals.h' l='725' type='struct timeval'/>
 <doc f='exim/src/globals.h' l='725'>/* Time the message was received */</doc>
+<use f='exim/src/deliver.c' l='1272' u='a' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='5618' u='m' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5618' u='m' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5621' u='m' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5621' u='m' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5626' u='m' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7851' u='m' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7936' u='a' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8074' u='m' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1123' type='struct timeval'/>
+<use f='exim/src/queue.c' l='889' u='m' c='queue_list'/>
+<use f='exim/src/spool_in.c' l='400' u='m' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='402' u='m' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='404' u='m' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='602' u='m' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='645' u='m'/>
+<use f='exim/src/expand.c' l='645' u='m'/>
+<use f='exim/src/expand.c' l='645' u='m'/>
+<use f='exim/src/expand.c' l='645' u='m'/>
+<use f='exim/src/receive.c' l='1747' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3213' u='a' c='receive_msg'/>
+<use f='exim/src/retry.c' l='57' u='m' c='retry_ultimate_address_timeout'/>
+<use f='exim/src/retry.c' l='57' u='m' c='retry_ultimate_address_timeout'/>
+<use f='exim/src/retry.c' l='58' u='m' c='retry_ultimate_address_timeout'/>
+<use f='exim/src/retry.c' l='757' u='m' c='retry_update'/>
+<use f='exim/src/retry.c' l='765' u='m' c='retry_update'/>
+<use f='exim/src/spool_out.c' l='157' u='m' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='159' u='m' c='spool_write_header'/>

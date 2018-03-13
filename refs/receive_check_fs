@@ -1,1 +1,18 @@
 <dec f='exim/src/functions.h' l='348' type='BOOL receive_check_fs(int )'/>
+<use f='exim/src/exim.c' l='5269' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='4701' u='c' c='smtp_setup_msg'/>
+<def f='exim/src/receive.c' l='232' ll='274' type='BOOL receive_check_fs(int msg_size)'/>
+<doc f='exim/src/receive.c' l='217'>/* This function is called before accepting a message; if any thresholds are
+set, it checks them. If a message_size is supplied, it checks that there is
+enough space for that size plus the threshold - i.e. that the message won&apos;t
+reduce the space to the threshold. Not all OS have statvfs(); for those that
+don&apos;t, this function always returns TRUE. For some OS the old function and
+struct name statfs is used; that is handled by a macro, defined in exim.h.
+
+Arguments:
+  msg_size     the (estimated) size of an incoming message
+
+Returns:       FALSE if there isn&apos;t enough space, or if the information cannot
+                 be obtained
+               TRUE if no check was done or there is enough space
+*/</doc>

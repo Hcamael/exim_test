@@ -1,3 +1,39 @@
 <dec f='exim/src/structs.h' l='67' type='int'/>
 <offset>192</offset>
 <doc f='exim/src/structs.h' l='67'>/* port value in host order (if SRV lookup) */</doc>
+<use f='exim/src/deliver.c' l='195' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='513' u='r' c='same_hosts'/>
+<use f='exim/src/deliver.c' l='513' u='r' c='same_hosts'/>
+<use f='exim/src/deliver.c' l='787' u='r' c='d_hostlog'/>
+<use f='exim/src/deliver.c' l='1212' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1344' u='r' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='3634' u='a' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3634' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3635' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4945' u='a' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4945' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4946' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='385' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='405' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='405' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='659' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='2146' u='r' c='verify_address'/>
+<use f='exim/src/verify.c' l='2146' u='r' c='verify_address'/>
+<use f='exim/src/smtp_out.c' l='325' u='r' c='smtp_port_for_connect'/>
+<use f='exim/src/smtp_out.c' l='329' u='r' c='smtp_port_for_connect'/>
+<use f='exim/src/smtp_out.c' l='330' u='r' c='smtp_port_for_connect'/>
+<use f='exim/src/smtp_out.c' l='332' u='w' c='smtp_port_for_connect'/>
+<use f='exim/src/smtp_out.c' l='359' u='r' c='smtp_connect'/>
+<use f='exim/src/routers/dnslookup.c' l='284' u='w' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='215' u='w' c='rf_lookup_hostlist'/>
+<use f='exim/src/acl.c' l='2771' u='w' c='acl_udpsend'/>
+<use f='exim/src/ip.c' l='364' u='w' c='ip_connectedsocket'/>
+<use f='exim/src/ip.c' l='422' u='w' c='ip_connectedsocket'/>
+<use f='exim/src/host.c' l='339' u='w' c='host_build_hostlist'/>
+<use f='exim/src/host.c' l='2129' u='w' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2145' u='w' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2733' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2865' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2882' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3187' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3187' u='r' c='host_find_bydns'/>

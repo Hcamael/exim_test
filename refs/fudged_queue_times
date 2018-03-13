@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='482' type='uschar *'/>
 <doc f='exim/src/globals.h' l='482'>/* For use in test harness */</doc>
+<use f='exim/src/deliver.c' l='8081' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8083' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8087' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='758' type='uschar *'/>
+<use f='exim/src/exim.c' l='3384' u='w' c='main'/>
+<use f='exim/src/queue.c' l='697' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='697' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='697' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='698' u='w' c='queue_run'/>

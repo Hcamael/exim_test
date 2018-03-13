@@ -1,1 +1,13 @@
 <dec f='exim/src/functions.h' l='74' type='BOOL tls_is_name_for_cert(const uschar * , void * )'/>
+<def f='exim/src/tls.c' l='317' ll='356' type='BOOL tls_is_name_for_cert(const uschar * namelist, void * cert)'/>
+<doc f='exim/src/tls.c' l='305'>/* Compare a list of names with the dnsname elements
+of the Subject Alternate Name, if any, and the
+Subject otherwise.
+
+Arguments:
+	namelist names to compare
+	cert	 certificate
+
+Returns:
+	TRUE/FALSE
+*/</doc>

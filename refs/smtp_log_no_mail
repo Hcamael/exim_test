@@ -1,1 +1,14 @@
 <dec f='exim/src/functions.h' l='420' type='void smtp_log_no_mail()'/>
+<use f='exim/src/exim.c' l='5128' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5408' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5415' u='c' c='main'/>
+<def f='exim/src/smtp_in.c' l='1748' ll='1788' type='void smtp_log_no_mail()'/>
+<doc f='exim/src/smtp_in.c' l='1740'>/* This function is called when an SMTP session ends. If the log selector
+smtp_no_mail is set, write a log line giving some details of what has happened
+in the SMTP session.
+
+Arguments:   none
+Returns:     nothing
+*/</doc>
+<use f='exim/src/daemon.c' l='512' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='531' u='c' c='handle_smtp_call'/>

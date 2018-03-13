@@ -1,1 +1,2 @@
 <dec f='exim/src/functions.h' l='508' type='void transport_write_reset(int )'/>
+<use f='exim/src/dkim_transport.c' l='172' u='c' c='dkt_direct'/>

@@ -1,0 +1,5 @@
+<dec f='include/openssl/rand.h' l='48' type='void RAND_seed(const void * buf, int num)'/>
+<use f='exim/src/tls-openssl.c' l='1565' u='c' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='1566' u='c' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='1567' u='c' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='2884' u='c' c='vaguely_random_number'/>

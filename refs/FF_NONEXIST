@@ -1,2 +1,8 @@
 <dec f='exim/src/macros.h' l='636' type='6'/>
 <doc f='exim/src/macros.h' l='636'>/* Forward file does not exist */</doc>
+<use f='exim/src/deliver.c' l='5885' u='r' c='deliver_message'/>
+<use f='exim/src/rda.c' l='198' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/rda.c' l='205' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/rda.c' l='212' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/rda.c' l='604' u='r' c='rda_interpret'/>
+<use f='exim/src/routers/redirect.c' l='737' c='redirect_router_entry'/>

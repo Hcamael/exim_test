@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='164' type='BOOL'/>
 <offset>960</offset>
 <doc f='exim/src/structs.h' l='164'>/* gid is set */</doc>
+<use f='exim/src/deliver.c' l='608' u='r' c='same_ugid'/>
+<use f='exim/src/deliver.c' l='1849' u='r' c='findugid'/>
+<use f='exim/src/globals.c' l='1465' u='w'/>

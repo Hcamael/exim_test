@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='765' type='router_info []'/>
 <doc f='exim/src/globals.h' l='765'>/* Vector of available routers */</doc>
+<def f='exim/src/drtables.c' l='250' ll='343' type='router_info [7]'/>
+<use f='exim/src/drtables.c' l='351' u='r' c='route_show_supported'/>
+<doc f='exim/src/drtables.c' l='248'>/* Now set up the structures, terminated by an entry with a null name. */</doc>
+<use f='exim/src/route.c' l='158' u='r' c='options_routers'/>

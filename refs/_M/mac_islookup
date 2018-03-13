@@ -1,2 +1,10 @@
 <dec f='exim/src/macros.h' l='106'/>
 <doc f='exim/src/macros.h' l='104'>/* A macro to simplify testing bits in lookup types */</doc>
+<use f='exim/src/verify.c' l='2947' u='c'/>
+<use f='exim/src/verify.c' l='2955' u='c'/>
+<use f='exim/src/verify.c' l='3063' u='c'/>
+<use f='exim/src/search.c' l='189' u='c'/>
+<use f='exim/src/match.c' l='282' u='c'/>
+<use f='exim/src/match.c' l='290' u='c'/>
+<use f='exim/src/expand.c' l='4270' u='c'/>
+<use f='exim/src/expand.c' l='4318' u='c'/>

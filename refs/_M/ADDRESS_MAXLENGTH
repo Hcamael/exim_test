@@ -2,3 +2,4 @@
 <doc f='exim/src/macros.h' l='179'>/* A limit to the length of an address. RFC 2821 limits the local part to 64
 and the domain to 255, so this should be adequate, taking into account quotings
 etc. */</doc>
+<use f='exim/src/parse.c' l='814' u='c'/>

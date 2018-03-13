@@ -1,1 +1,18 @@
 <dec f='exim/src/local_scan.h' l='185' type='void receive_add_recipient(uschar * , int )'/>
+<use f='exim/src/deliver.c' l='8033' u='c' c='deliver_message'/>
+<use f='exim/src/exim.c' l='5515' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5605' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='2233' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='5008' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/queue.c' l='1346' u='c' c='queue_action'/>
+<def f='exim/src/receive.c' l='485' ll='508' type='void receive_add_recipient(uschar * recipient, int pno)'/>
+<use f='exim/src/receive.c' l='2539' u='c' c='receive_msg'/>
+<doc f='exim/src/receive.c' l='475'>/* This function builds a list of recipient addresses in argc/argv
+format.
+
+Arguments:
+  recipient   the next address to add to recipients_list
+  pno         parent number for fixed aliases; -1 otherwise
+
+Returns:      nothing
+*/</doc>

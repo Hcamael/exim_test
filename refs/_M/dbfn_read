@@ -1,2 +1,11 @@
 <dec f='exim/src/dbfunctions.h' l='20'/>
 <doc f='exim/src/dbfunctions.h' l='18'>/* Macro for the common call to read without wanting to know the length. */</doc>
+<use f='exim/src/deliver.c' l='2915' u='c'/>
+<use f='exim/src/deliver.c' l='6558' u='c'/>
+<use f='exim/src/deliver.c' l='6564' u='c'/>
+<use f='exim/src/deliver.c' l='6574' u='c'/>
+<use f='exim/src/retry.c' l='180' u='c'/>
+<use f='exim/src/retry.c' l='181' u='c'/>
+<use f='exim/src/retry.c' l='665' u='c'/>
+<use f='exim/src/enq.c' l='56' u='c'/>
+<use f='exim/src/enq.c' l='105' u='c'/>

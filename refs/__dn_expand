@@ -1,1 +1,10 @@
 <dec f='include/resolv.h' l='289' type='int __dn_expand(const u_char * , const u_char * , const u_char * , char * , int )'/>
+<use f='exim/src/lookups/dnsdb.c' l='507' macro='1' u='c'/>
+<use f='exim/src/lookups/dnsdb.c' l='528' macro='1' u='c'/>
+<use f='exim/src/acl.c' l='1456' macro='1' u='c'/>
+<use f='exim/src/host.c' l='1740' macro='1' u='c'/>
+<use f='exim/src/host.c' l='2820' macro='1' u='c'/>
+<use f='exim/src/dns.c' l='358' macro='1' u='c'/>
+<use f='exim/src/dns.c' l='389' macro='1' u='c'/>
+<use f='exim/src/dns.c' l='419' macro='1' u='c'/>
+<use f='exim/src/dns.c' l='943' macro='1' u='c'/>

@@ -1,0 +1,4 @@
+<dec f='exim/src/pdkim/pdkim.h' l='49'/>
+<use f='exim/src/pdkim/pdkim.c' l='169' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1018' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1032' u='c'/>

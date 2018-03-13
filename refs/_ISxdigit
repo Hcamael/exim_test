@@ -1,2 +1,22 @@
 <dec f='include/ctype.h' l='52' type='4096'/>
 <doc f='include/ctype.h' l='52'>/* Hexadecimal numeric.  */</doc>
+<use f='exim/src/pdkim/pdkim.c' l='362' macro='1' u='r'/>
+<use f='exim/src/pdkim/pdkim.c' l='362' macro='1' u='r'/>
+<use f='exim/src/string.c' l='114' macro='1' u='r'/>
+<use f='exim/src/string.c' l='115' macro='1' u='r'/>
+<use f='exim/src/string.c' l='115' macro='1' u='r'/>
+<use f='exim/src/string.c' l='115' macro='1' u='r'/>
+<use f='exim/src/string.c' l='258' macro='1' u='r'/>
+<use f='exim/src/string.c' l='262' macro='1' u='r'/>
+<use f='exim/src/exim_dbmbuild.c' l='114' macro='1' u='r'/>
+<use f='exim/src/exim_dbmbuild.c' l='118' macro='1' u='r'/>
+<use f='exim/src/parse.c' l='261' macro='1' u='r'/>
+<use f='exim/src/auths/xtextdecode.c' l='45' macro='1' u='r'/>
+<use f='exim/src/auths/xtextdecode.c' l='47' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='6518' macro='1' u='r'/>
+<use f='exim/src/rfc2047.c' l='60' macro='1' u='r'/>
+<use f='exim/src/rfc2047.c' l='60' macro='1' u='r'/>
+<use f='exim/src/sieve.c' l='369' macro='1' u='r'/>
+<use f='exim/src/sieve.c' l='369' macro='1' u='r'/>
+<use f='exim/src/sieve.c' l='1271' macro='1' u='r'/>
+<use f='exim/src/sieve.c' l='1325' macro='1' u='r'/>

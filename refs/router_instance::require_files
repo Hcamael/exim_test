@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='289' type='uschar *'/>
 <offset>1600</offset>
 <doc f='exim/src/structs.h' l='289'>/* File checks before router is run */</doc>
+<use f='exim/src/globals.c' l='1196' u='w'/>

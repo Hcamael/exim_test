@@ -1,0 +1,2 @@
+<dec f='exim/src/routers/iplookup.h' l='39' type='void iplookup_router_init(router_instance * )'/>
+<def f='exim/src/routers/iplookup.c' l='52' type='void iplookup_router_init(router_instance * rblock)'/>

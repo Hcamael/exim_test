@@ -1,1 +1,5 @@
 <dec f='include/openssl/ssl.h' l='1585' type='long SSL_ctrl(SSL * ssl, int cmd, long larg, void * parg)'/>
+<use f='exim/src/tls-openssl.c' l='1311' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='1336' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='2356' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='2392' macro='1' u='c'/>

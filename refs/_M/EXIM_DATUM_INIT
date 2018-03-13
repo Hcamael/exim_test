@@ -1,3 +1,20 @@
 <dec f='exim/src/dbstuff.h' l='213'/>
 <doc f='exim/src/dbstuff.h' l='210'>/* The whole datum structure contains other fields that must be cleared
 before use, but we don&apos;t have to free anything after reading data. */</doc>
+<use f='exim/src/exim_dbmbuild.c' l='298' u='c'/>
+<use f='exim/src/exim_dbmbuild.c' l='326' u='c'/>
+<use f='exim/src/exim_dbmbuild.c' l='392' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='370' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='371' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='415' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='416' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='446' u='c'/>
+<use f='exim/src/lookups/dbmdb.c' l='103' u='c'/>
+<use f='exim/src/lookups/dbmdb.c' l='104' u='c'/>
+<use f='exim/src/dbfn.c' l='305' u='c'/>
+<use f='exim/src/dbfn.c' l='306' u='c'/>
+<use f='exim/src/dbfn.c' l='350' u='c'/>
+<use f='exim/src/dbfn.c' l='351' u='c'/>
+<use f='exim/src/dbfn.c' l='381' u='c'/>
+<use f='exim/src/dbfn.c' l='416' u='c'/>
+<use f='exim/src/dbfn.c' l='417' u='c'/>

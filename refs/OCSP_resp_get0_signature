@@ -1,0 +1,1 @@
+<dec f='include/openssl/ocsp.h' l='212' type='const ASN1_OCTET_STRING * OCSP_resp_get0_signature(const OCSP_BASICRESP * bs)'/>

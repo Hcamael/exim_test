@@ -1,1 +1,13 @@
 <dec f='exim/src/functions.h' l='317' type='int vaguely_random_number(int )'/>
+<def f='exim/src/tls-openssl.c' l='2852' ll='2926' type='int vaguely_random_number(int max)'/>
+<doc f='exim/src/tls-openssl.c' l='2841'>/* Pseudo-random number generation.  The result is not expected to be
+cryptographically strong but not so weak that someone will shoot themselves
+in the foot using it as a nonce in input in some email header scheme or
+whatever weirdness they&apos;ll twist this into.  The result should handle fork()
+and avoid repeating sequences.  OpenSSL handles that for us.
+
+Arguments:
+  max       range maximum
+Returns     a random number in range [0, max-1]
+*/</doc>
+<use f='exim/src/expand.c' l='7398' u='c' c='expand_string_internal'/>

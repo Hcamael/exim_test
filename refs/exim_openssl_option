@@ -1,0 +1,11 @@
+<def f='exim/src/tls-openssl.c' l='2943' ll='2946'/>
+<size>16</size>
+<doc f='exim/src/tls-openssl.c' l='2935'>/* Parse one option for tls_openssl_options_parse below
+
+Arguments:
+  name    one option name
+  value   place to store a value for it
+Returns   success or failure in parsing
+*/</doc>
+<mbr r='exim_openssl_option::name' o='0' t='uschar *'/>
+<mbr r='exim_openssl_option::value' o='64' t='long'/>

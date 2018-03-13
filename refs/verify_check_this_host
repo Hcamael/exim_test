@@ -1,1 +1,36 @@
 <dec f='exim/src/functions.h' l='539' type='int verify_check_this_host(const uschar ** , unsigned int * , const uschar * , const uschar * , const uschar ** )'/>
+<def f='exim/src/verify.c' l='3150' ll='3188' type='int verify_check_this_host(const uschar ** listptr, unsigned int * cache_bits, const uschar * host_name, const uschar * host_address, const uschar ** valueptr)'/>
+<use f='exim/src/verify.c' l='3199' u='c' c='verify_check_given_host'/>
+<use f='exim/src/verify.c' l='3221' u='c' c='verify_check_host'/>
+<doc f='exim/src/verify.c' l='3122'>/* This function is passed a host list containing items in a number of
+different formats and the identity of a host. Its job is to determine whether
+the given host is in the set of hosts defined by the list. The host name is
+passed as a pointer so that it can be looked up if needed and not already
+known. This is commonly the case when called from verify_check_host() to check
+an incoming connection. When called from elsewhere the host name should usually
+be set.
+
+This function is now just a front end to match_check_list(), which runs common
+code for scanning a list. We pass it the check_host() function to perform a
+single test.
+
+Arguments:
+  listptr              pointer to the host list
+  cache_bits           pointer to cache for named lists, or NULL
+  host_name            the host name or NULL, implying use sender_host_name and
+                         sender_host_aliases, looking them up if required
+  host_address         the IP address
+  valueptr             if not NULL, data from a lookup is passed back here
+
+Returns:    OK    if the host is in the defined set
+            FAIL  if the host is not in the defined set,
+            DEFER if a data lookup deferred (not a host lookup)
+
+If the host name was needed in order to make a comparison, and could not be
+determined from the IP address, the result is FAIL unless the item
+&quot;+allow_unknown&quot; was met earlier in the list, in which case OK is returned. */</doc>
+<use f='exim/src/acl.c' l='3497' u='c' c='acl_check_condition'/>
+<use f='exim/src/host.c' l='2114' u='c' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2296' u='c' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2424' u='c' c='set_address_from_dns'/>
+<use f='exim/src/lss.c' l='98' u='c' c='lss_match_host'/>

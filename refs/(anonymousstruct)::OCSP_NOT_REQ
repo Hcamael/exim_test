@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='98' type='0'/>
 <doc f='exim/src/globals.h' l='98'>/* not requested */</doc>
+<use f='exim/src/deliver.c' l='1634' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='3530' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4830' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/globals.c' l='118'/>
+<use f='exim/src/globals.c' l='118'/>
+<use f='exim/src/globals.c' l='135'/>
+<use f='exim/src/globals.c' l='135'/>
+<use f='exim/src/globals.c' l='367'/>
+<use f='exim/src/globals.c' l='367'/>
+<use f='exim/src/smtp_in.c' l='2385' u='r' c='smtp_start_session'/>
+<use f='exim/src/spool_in.c' l='315' u='r' c='spool_read_header'/>

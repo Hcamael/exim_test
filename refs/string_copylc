@@ -1,1 +1,15 @@
 <dec f='exim/src/functions.h' l='458' type='uschar * string_copylc(const uschar * )'/>
+<use f='exim/src/deliver.c' l='5086' u='c' c='deliver_split_address'/>
+<use f='exim/src/deliver.c' l='5127' u='c' c='deliver_split_address'/>
+<use f='exim/src/deliver.c' l='5153' u='c' c='deliver_split_address'/>
+<use f='exim/src/deliver.c' l='6000' u='c' c='deliver_message'/>
+<def f='exim/src/string.c' l='462' ll='470' type='uschar * string_copylc(const uschar * s)'/>
+<doc f='exim/src/string.c' l='457'>/*
+Argument: string to copy
+Returns:  copy of string in new store, with letters lowercased
+*/</doc>
+<use f='exim/src/std-crypto.c' l='1004' u='c' c='std_dh_prime_named'/>
+<use f='exim/src/match.c' l='344' u='c' c='match_check_string'/>
+<use f='exim/src/match.c' l='956' u='c' c='match_isinlist'/>
+<use f='exim/src/match.c' l='1218' u='c' c='check_address'/>
+<use f='exim/src/host.c' l='1396' u='c' c='host_scan_for_local_hosts'/>

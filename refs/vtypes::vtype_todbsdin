@@ -1,0 +1,7 @@
+<dec f='exim/src/expand.c' l='405' type='14'/>
+<use f='exim/src/expand.c' l='760'/>
+<use f='exim/src/expand.c' l='760'/>
+<use f='exim/src/expand.c' l='760'/>
+<use f='exim/src/expand.c' l='760'/>
+<use f='exim/src/expand.c' l='1867' c='find_variable'/>
+<doc f='exim/src/expand.c' l='405'>/* value not used; generate BSD inbox tod */</doc>

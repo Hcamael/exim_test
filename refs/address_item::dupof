@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='517' type='struct address_item *'/>
 <offset>192</offset>
 <doc f='exim/src/structs.h' l='517'>/* points to address this is a duplicate of */</doc>
+<use f='exim/src/deliver.c' l='5451' u='w' c='do_duplicate_check'/>
+<use f='exim/src/deliver.c' l='6377' u='w' c='deliver_message'/>
+<use f='exim/src/globals.c' l='334' u='w'/>

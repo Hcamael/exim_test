@@ -1,1 +1,16 @@
 <dec f='exim/src/local_scan.h' l='174' type='void header_add_at_position(BOOL , uschar * , BOOL , int , const char * )'/>
+<def f='exim/src/header.c' l='213' ll='221' type='void header_add_at_position(BOOL after, uschar * name, BOOL topnot, int type, const char * format)'/>
+<doc f='exim/src/header.c' l='200'>/* This is an external interface to header_add_backend().
+
+Arguments:
+  after     TRUE for &quot;after&quot;, FALSE for &quot;before&quot;
+  name      name if adding at a specific header, else NULL
+  topnot    TRUE to add at top if no header found
+  type      Exim header type character (htype_something)
+  format    sprintf format
+  ...       format arguments
+
+Returns:    nothing
+*/</doc>
+<use f='exim/src/receive.c' l='2709' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2957' u='c' c='receive_msg'/>

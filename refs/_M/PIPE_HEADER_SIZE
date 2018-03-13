@@ -1,3 +1,12 @@
 <dec f='exim/src/macros.h' l='172'/>
 <doc f='exim/src/macros.h' l='170'>/* header size of pipe content
    currently: char id, char subid, char[5] length */</doc>
+<use f='exim/src/deliver.c' l='3344' u='c'/>
+<use f='exim/src/deliver.c' l='3348' u='c'/>
+<use f='exim/src/deliver.c' l='3363' u='c'/>
+<use f='exim/src/deliver.c' l='3368' u='c'/>
+<use f='exim/src/deliver.c' l='4126' u='c'/>
+<use f='exim/src/deliver.c' l='4127' u='c'/>
+<use f='exim/src/deliver.c' l='4130' u='c'/>
+<use f='exim/src/deliver.c' l='4151' u='c'/>
+<use f='exim/src/deliver.c' l='4151' u='c'/>

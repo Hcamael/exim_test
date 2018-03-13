@@ -1,1 +1,48 @@
 <dec f='exim/src/functions.h' l='394' type='void * search_open(uschar * , int , int , uid_t * , gid_t * )'/>
+<use f='exim/src/verify.c' l='2974' u='c' c='check_host'/>
+<def f='exim/src/search.c' l='329' ll='438' type='void * search_open(uschar * filename, int search_type, int modemask, uid_t * owners, gid_t * owngroups)'/>
+<doc f='exim/src/search.c' l='285'>/* A mode, and lists of owners and groups, are passed over for checking in
+the cases where the database is one or more files. Return NULL, with a message
+pointed to by message, in cases of error.
+
+For search types that use a file or files, check up on the mode after
+opening. It is tempting to do a stat before opening the file, and use it as
+an existence check. However, doing that opens a small security loophole in
+that the status could be changed before the file is opened. Can&apos;t quite see
+what problems this might lead to, but you can&apos;t be too careful where security
+is concerned. Fstat() on an open file can normally be expected to succeed,
+but there are some NFS states where it does not.
+
+There are two styles of query: (1) in the &quot;single-key+file&quot; style, a single
+key string and a file name are given, for example, for linear searches, DBM
+files, or for NIS. (2) In the &quot;query&quot; style, no &quot;filename&quot; is given; instead
+just a single query string is passed. This applies to multiple-key lookup
+types such as NIS+.
+
+Before opening, scan the tree of cached files to see if this file is already
+open for the correct search type. If so, return the saved handle. If not, put
+the handle in the tree for possible subsequent use. See search_tidyup above for
+closing all the cached files.
+
+A count of open databases which use real files is maintained, and if this
+gets too large, we have to close a cached file. Its entry remains in the tree,
+but is marked closed.
+
+Arguments:
+  filename       the name of the file for single-key+file style lookups,
+                 NULL for query-style lookups
+  search_type    the type of search required
+  modemask       if a real single file is used, this specifies mode bits that
+                 must not be set; otherwise it is ignored
+  owners         if a real single file is used, this specifies the possible
+                 owners of the file; otherwise it is ignored
+  owngroups      if a real single file is used, this specifies the possible
+                 group owners of the file; otherwise it is ignored
+
+Returns:         an identifying handle for the open database;
+                 this is the pointer to the tree block in the
+                 cache of open files; return NULL on open failure, with
+                 a message in search_error_message
+*/</doc>
+<use f='exim/src/match.c' l='300' u='c' c='check_string'/>
+<use f='exim/src/expand.c' l='4350' u='c' c='expand_string_internal'/>

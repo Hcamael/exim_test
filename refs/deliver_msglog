@@ -1,1 +1,19 @@
 <dec f='exim/src/functions.h' l='151' type='void deliver_msglog(const char * )'/>
+<def f='exim/src/deliver.c' l='393' ll='402' type='void deliver_msglog(const char * format)'/>
+<use f='exim/src/deliver.c' l='733' u='c' c='child_done'/>
+<use f='exim/src/deliver.c' l='1359' u='c' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='1425' u='c' c='failure_log'/>
+<use f='exim/src/deliver.c' l='1427' u='c' c='failure_log'/>
+<use f='exim/src/deliver.c' l='1603' u='c' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1607' u='c' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='5912' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7860' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8356' u='c' c='deliver_message'/>
+<doc f='exim/src/deliver.c' l='384'>/* Write to the message log, if configured. This function may also be called
+from transports.
+
+Arguments:
+  format       a string format
+
+Returns:       nothing
+*/</doc>

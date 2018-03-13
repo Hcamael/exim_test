@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='845' type='uschar *'/>
 <doc f='exim/src/globals.h' l='845'>/* ... expandable version */</doc>
+<def f='exim/src/globals.c' l='1345' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='2674' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2677' u='r' c='smtp_start_session'/>

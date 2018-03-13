@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='429' type='BOOL'/>
 <offset>96</offset>
 <doc f='exim/src/structs.h' l='429'>/* Used in the daemon */</doc>
+<use f='exim/src/daemon.c' l='801' u='w' c='check_special_case'/>
+<use f='exim/src/daemon.c' l='1667' u='r' c='daemon_go'/>
+<use f='exim/src/host.c' l='762' u='w' c='host_build_ifacelist'/>

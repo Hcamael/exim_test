@@ -1,2 +1,15 @@
 <dec f='exim/src/globals.h' l='349' type='const uschar *'/>
 <doc f='exim/src/globals.h' l='349'>/* The original local domain for delivery */</doc>
+<use f='exim/src/deliver.c' l='226' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/globals.c' l='207' u='a'/>
+<use f='exim/src/globals.c' l='207' u='a'/>
+<def f='exim/src/globals.c' l='625' type='const uschar *'/>
+<use f='exim/src/exim.c' l='5124' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5588' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5781' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='1984' u='w' c='smtp_reset'/>
+<use f='exim/src/expand.c' l='613' u='a'/>
+<use f='exim/src/expand.c' l='613' u='a'/>
+<use f='exim/src/expand.c' l='613' u='a'/>
+<use f='exim/src/expand.c' l='613' u='a'/>
+<use f='exim/src/daemon.c' l='570' u='w' c='handle_smtp_call'/>

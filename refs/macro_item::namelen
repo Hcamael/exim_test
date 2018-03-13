@@ -1,2 +1,11 @@
 <dec f='exim/src/structs.h' l='713' type='unsigned int'/>
 <offset>32</offset>
+<use f='exim/src/macro.c' l='39' u='w' c='macro_create'/>
+<use f='exim/src/macro.c' l='84' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='108' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>

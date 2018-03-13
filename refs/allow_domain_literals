@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='215' type='BOOL'/>
 <doc f='exim/src/globals.h' l='215'>/* As it says */</doc>
+<def f='exim/src/globals.c' l='419' type='BOOL'/>
+<use f='exim/src/parse.c' l='269' u='r' c='read_domain'/>
+<use f='exim/src/exim.c' l='2561' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2572' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3883' u='r' c='main'/>
+<use f='exim/src/readconf.c' l='66' u='a'/>
+<use f='exim/src/readconf.c' l='66' u='a'/>
+<use f='exim/src/readconf.c' l='66' u='a'/>
+<use f='exim/src/readconf.c' l='66' u='a'/>
+<use f='exim/src/receive.c' l='3980' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3981' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3984' u='w' c='receive_msg'/>

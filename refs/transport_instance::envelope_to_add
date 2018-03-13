@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='185' type='BOOL'/>
 <offset>2112</offset>
 <doc f='exim/src/structs.h' l='185'>/* Add Envelope-To header */</doc>
+<use f='exim/src/globals.c' l='1486' u='w'/>

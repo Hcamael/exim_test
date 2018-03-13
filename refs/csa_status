@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='302' type='uschar *'/>
 <doc f='exim/src/globals.h' l='302'>/* Client SMTP Authorization result */</doc>
+<def f='exim/src/globals.c' l='546' type='uschar *'/>
+<use f='exim/src/acl.c' l='1694' u='w' c='acl_verify'/>
+<use f='exim/src/acl.c' l='1695' u='r' c='acl_verify'/>
+<use f='exim/src/expand.c' l='486' u='a'/>
+<use f='exim/src/expand.c' l='486' u='a'/>
+<use f='exim/src/expand.c' l='486' u='a'/>
+<use f='exim/src/expand.c' l='486' u='a'/>

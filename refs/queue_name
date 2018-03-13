@@ -1,2 +1,46 @@
 <dec f='exim/src/globals.h' l='691' type='uschar *'/>
 <doc f='exim/src/globals.h' l='691'>/* Name of queue, if nondefault spooling */</doc>
+<use f='exim/src/deliver.c' l='1160' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1161' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1312' u='r' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='1313' u='r' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='1393' u='r' c='failure_log'/>
+<use f='exim/src/deliver.c' l='1394' u='r' c='failure_log'/>
+<def f='exim/src/globals.c' l='1062' type='uschar *'/>
+<use f='exim/src/exim.c' l='2723' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3263' u='w' c='main'/>
+<use f='exim/src/exim.c' l='4668' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4669' u='r' c='main'/>
+<use f='exim/src/smtp_in.c' l='5556' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5558' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/queue.c' l='21' u='r' c='spool_pname_buf'/>
+<use f='exim/src/queue.c' l='28' u='r' c='spool_dname'/>
+<use f='exim/src/queue.c' l='36' u='r' c='spool_sname'/>
+<use f='exim/src/queue.c' l='36' u='r' c='spool_sname'/>
+<use f='exim/src/queue.c' l='46' u='r' c='spool_fname'/>
+<use f='exim/src/queue.c' l='427' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='429' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='734' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='736' u='r' c='queue_run'/>
+<use f='exim/src/spool_in.c' l='72' u='r' c='spool_open_datafile'/>
+<use f='exim/src/spool_in.c' l='73' u='r' c='spool_open_datafile'/>
+<use f='exim/src/spool_in.c' l='73' u='r' c='spool_open_datafile'/>
+<use f='exim/src/acl.c' l='3604' u='w' c='acl_check_condition'/>
+<use f='exim/src/expand.c' l='636' u='a'/>
+<use f='exim/src/expand.c' l='636' u='a'/>
+<use f='exim/src/expand.c' l='636' u='a'/>
+<use f='exim/src/expand.c' l='636' u='a'/>
+<use f='exim/src/daemon.c' l='1709' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1710' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1851' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1852' u='r' c='daemon_go'/>
+<use f='exim/src/child.c' l='116' u='r' c='child_exec_exim'/>
+<use f='exim/src/child.c' l='119' u='r' c='child_exec_exim'/>
+<use f='exim/src/receive.c' l='3969' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3970' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4058' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4058' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4058' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4184' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4184' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4184' u='r' c='receive_msg'/>

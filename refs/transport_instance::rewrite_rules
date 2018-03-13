@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='180' type='rewrite_rule *'/>
 <offset>1920</offset>
 <doc f='exim/src/structs.h' l='180'>/* Parsed rewriting rules */</doc>
+<use f='exim/src/globals.c' l='1481' u='w'/>

@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='194' type='uschar *'/>
 <doc f='exim/src/globals.h' l='194'>/* ACL run for STARTTLS */</doc>
+<def f='exim/src/globals.c' l='262' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='5277' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5278' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/readconf.c' l='61' u='a'/>
+<use f='exim/src/readconf.c' l='61' u='a'/>
+<use f='exim/src/readconf.c' l='61' u='a'/>
+<use f='exim/src/readconf.c' l='61' u='a'/>

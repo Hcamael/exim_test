@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='403' type='int'/>
 <offset>256</offset>
 <doc f='exim/src/structs.h' l='403'>/* Length of same in bytes */</doc>
+<use f='exim/src/drtables.c' l='68' u='w'/>
+<use f='exim/src/drtables.c' l='138' u='w'/>
+<use f='exim/src/drtables.c' l='166' u='w'/>
+<use f='exim/src/drtables.c' l='68' u='w'/>
+<use f='exim/src/drtables.c' l='138' u='w'/>
+<use f='exim/src/drtables.c' l='166' u='w'/>

@@ -1,3 +1,7 @@
 <dec f='exim/src/structs.h' l='275' type='uschar *'/>
 <offset>704</offset>
 <doc f='exim/src/structs.h' l='275'>/* Errors address */</doc>
+<use f='exim/src/globals.c' l='1182' u='w'/>
+<use f='exim/src/routers/rf_get_errors_address.c' l='42' u='r' c='rf_get_errors_address'/>
+<use f='exim/src/routers/rf_get_errors_address.c' l='44' u='r' c='rf_get_errors_address'/>
+<use f='exim/src/routers/rf_get_errors_address.c' l='55' u='r' c='rf_get_errors_address'/>

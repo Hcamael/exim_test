@@ -1,2 +1,12 @@
 <dec f='exim/src/structs.h' l='787' type='struct dns_address *'/>
 <offset>0</offset>
+<use f='exim/src/verify.c' l='3417' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3417' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3418' u='a' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3450' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3450' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3461' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/lookups/dnsdb.c' l='390' u='r' c='dnsdb_find'/>
+<use f='exim/src/acl.c' l='1292' u='r' c='acl_verify_csa_address'/>
+<use f='exim/src/host.c' l='2420' u='r' c='set_address_from_dns'/>
+<use f='exim/src/dns.c' l='1198' u='w' c='dns_address_from_rr'/>

@@ -1,0 +1,3 @@
+<dec f='exim/src/pdkim/signing.h' l='89' type='gstring * exim_dkim_data_append(gstring * , uschar * )'/>
+<use f='exim/src/pdkim/pdkim.c' l='1508' u='c' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1620' u='c' c='pdkim_feed_finish'/>

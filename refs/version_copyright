@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='978' type='uschar *'/>
 <doc f='exim/src/globals.h' l='978'>/* Copyright notice */</doc>
+<def f='exim/src/globals.c' l='1551' ll='1553' type='uschar *'/>
+<use f='exim/src/exim.c' l='2233' u='r' c='main'/>

@@ -1,0 +1,5 @@
+<dec f='exim/src/acl.c' l='355' type='8'/>
+<use f='exim/src/acl.c' l='441'/>
+<use f='exim/src/acl.c' l='2138' u='r' c='decode_control'/>
+<use f='exim/src/acl.c' l='3095' c='acl_check_condition'/>
+<doc f='exim/src/acl.c' l='355'>/* pseudo-value for decode errors */</doc>

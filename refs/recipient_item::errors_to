@@ -1,3 +1,14 @@
 <dec f='exim/src/local_scan.h' l='130' type='uschar *'/>
 <offset>128</offset>
 <doc f='exim/src/local_scan.h' l='130'>/* the errors_to address or NULL */</doc>
+<use f='exim/src/deliver.c' l='6132' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8034' u='w' c='deliver_message'/>
+<use f='exim/src/spool_in.c' l='843' u='w' c='spool_read_header'/>
+<use f='exim/src/receive.c' l='507' u='w' c='receive_add_recipient'/>
+<use f='exim/src/receive.c' l='3717' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3718' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3718' u='r' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='283' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='287' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='287' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='298' u='r' c='spool_write_header'/>

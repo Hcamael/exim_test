@@ -1,2 +1,4 @@
 <dec f='exim/src/lookupapi.h' l='57' type='uint'/>
 <offset>128</offset>
+<use f='exim/src/drtables.c' l='502' u='r' c='addlookupmodule'/>
+<use f='exim/src/drtables.c' l='772' u='r' c='init_lookup_list'/>

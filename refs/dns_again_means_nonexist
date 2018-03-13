@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='413' type='uschar *'/>
 <doc f='exim/src/globals.h' l='413'>/* Domains that are badly set up */</doc>
+<def f='exim/src/globals.c' l='688' type='uschar *'/>
+<use f='exim/src/readconf.c' l='124' u='a'/>
+<use f='exim/src/readconf.c' l='124' u='a'/>
+<use f='exim/src/readconf.c' l='124' u='a'/>
+<use f='exim/src/readconf.c' l='124' u='a'/>
+<use f='exim/src/host.c' l='2219' u='a' c='host_find_byname'/>
+<use f='exim/src/dns.c' l='791' u='a' c='dns_basic_lookup'/>

@@ -3,3 +3,8 @@
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */</doc>
+<use f='exim/src/deliver.c' l='5812' u='c' c='deliver_message'/>
+<use f='exim/src/exim.c' l='603' u='c' c='exim_setugid'/>
+<use f='exim/src/exim.c' l='4688' u='c' c='main'/>
+<use f='exim/src/queue.c' l='1130' u='c' c='queue_action'/>
+<use f='exim/src/daemon.c' l='1573' u='c' c='daemon_go'/>

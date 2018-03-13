@@ -1,2 +1,4 @@
 <dec f='exim/src/structs.h' l='850' type='const uschar *'/>
 <offset>128</offset>
+<use f='exim/src/verify.c' l='3165' u='w' c='verify_check_this_host'/>
+<use f='exim/src/expand.c' l='2636' u='w' c='eval_condition'/>

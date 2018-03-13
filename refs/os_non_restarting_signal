@@ -1,1 +1,24 @@
 <dec f='exim/src/osfunctions.h' l='27' type='void os_non_restarting_signal(int , void (*)(int) )'/>
+<use f='exim/src/exim_dbutil.c' l='280' u='c' c='dbfn_open'/>
+<use f='exim/src/exim.c' l='263' u='c' c='sigalrm_handler'/>
+<use f='exim/src/exim.c' l='1640' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='1512' u='c' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='1518' u='c' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='1530' u='c' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='3803' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/daemon.c' l='85' u='c' c='main_sigchld_handler'/>
+<use f='exim/src/daemon.c' l='1589' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='2077' u='c' c='daemon_go'/>
+<use f='exim/src/receive.c' l='1752' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1759' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3162' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3647' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3648' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3649' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3650' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3656' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3660' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3668' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3669' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3670' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3671' u='c' c='receive_msg'/>

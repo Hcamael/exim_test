@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='196' type='uschar *'/>
 <offset>2432</offset>
 <doc f='exim/src/structs.h' l='196'>/* String to expand on notable events */</doc>
+<use f='exim/src/deliver.c' l='889' u='r' c='msg_event_raise'/>
+<use f='exim/src/verify.c' l='830' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='1097' u='r' c='do_callout'/>
+<use f='exim/src/smtp_out.c' l='221' u='r' c='smtp_sock_connect'/>
+<use f='exim/src/tls-openssl.c' l='2399' u='r' c='tls_client_start'/>
+<use f='exim/src/globals.c' l='1498' u='w'/>

@@ -1,1 +1,8 @@
 <dec f='exim/src/macros.h' l='346'/>
+<use f='exim/src/exim.c' l='5102' u='c'/>
+<use f='exim/src/exim.c' l='5289' u='c'/>
+<use f='exim/src/rda.c' l='639' u='c'/>
+<use f='exim/src/log.c' l='1233' u='c'/>
+<use f='exim/src/log.c' l='1345' u='c'/>
+<use f='exim/src/receive.c' l='3744' u='c'/>
+<use f='exim/src/receive.c' l='3753' u='c'/>

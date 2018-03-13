@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='224' type='uschar *'/>
 <doc f='exim/src/globals.h' l='224'>/* Only advertise to these */</doc>
+<def f='exim/src/globals.c' l='429' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='4252' u='a' c='smtp_setup_msg'/>
+<use f='exim/src/readconf.c' l='69' u='a'/>
+<use f='exim/src/readconf.c' l='69' u='a'/>
+<use f='exim/src/readconf.c' l='69' u='a'/>
+<use f='exim/src/readconf.c' l='69' u='a'/>

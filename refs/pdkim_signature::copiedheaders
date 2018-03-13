@@ -1,0 +1,4 @@
+<dec f='exim/src/pdkim/pdkim.h' l='183' type='uschar *'/>
+<use f='exim/src/pdkim/pdkim.c' l='586' u='w' c='pdkim_parse_sig_header'/>
+<offset>704</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='182'>/* (z=) */</doc>

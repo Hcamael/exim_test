@@ -1,2 +1,5 @@
 <dec f='exim/src/structs.h' l='621' type='unsigned int [1]'/>
 <offset>2752</offset>
+<use f='exim/src/verify.c' l='1664' u='w' c='verify_address'/>
+<use f='exim/src/globals.c' l='383' u='w'/>
+<use f='exim/src/acl.c' l='3506' u='r' c='acl_check_condition'/>

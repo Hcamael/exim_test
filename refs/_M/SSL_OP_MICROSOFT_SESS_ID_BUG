@@ -1,2 +1,4 @@
 <dec f='include/openssl/ssl.h' l='346'/>
 <doc f='include/openssl/ssl.h' l='345'>/* Related to removed SSLv2. */</doc>
+<use f='exim/src/tls-openssl.c' l='2979' u='a'/>
+<use f='exim/src/tls-openssl.c' l='2980' u='c'/>

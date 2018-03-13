@@ -1,0 +1,7 @@
+<dec f='exim/src/filter.c' l='116' type='12'/>
+<use f='exim/src/filter.c' l='1250' u='m' c='read_command'/>
+<use f='exim/src/filter.c' l='1293' u='m' c='read_command'/>
+<use f='exim/src/filter.c' l='2211' u='m' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2245' u='m' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2310' u='m' c='interpret_commands'/>
+<doc f='exim/src/filter.c' l='116'>/* first non-string argument */</doc>

@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='351' type='BOOL'/>
 <doc f='exim/src/globals.h' l='351'>/* TRUE for unprivileged delivery */</doc>
+<def f='exim/src/globals.c' l='627' type='BOOL'/>
+<use f='exim/src/exim.c' l='4040' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4332' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5177' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5728' u='r' c='main'/>
+<use f='exim/src/daemon.c' l='664' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='1835' u='r' c='daemon_go'/>
+<use f='exim/src/readconf.c' l='109' u='a'/>
+<use f='exim/src/readconf.c' l='109' u='a'/>
+<use f='exim/src/readconf.c' l='109' u='a'/>
+<use f='exim/src/readconf.c' l='109' u='a'/>

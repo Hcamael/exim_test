@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='638' type='uid_t'/>
 <doc f='exim/src/globals.h' l='638'>/* Original effective uid */</doc>
+<def f='exim/src/globals.c' l='1018' type='uid_t'/>
+<use f='exim/src/exim.c' l='1828' u='w' c='main'/>
+<use f='exim/src/exim.c' l='1859' u='r' c='main'/>

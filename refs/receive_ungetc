@@ -1,1 +1,14 @@
 <dec f='exim/src/globals.h' l='145' type='int (*)(int)'/>
+<use f='exim/src/tls-openssl.c' l='2105' u='w' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2466' u='w' c='tls_refill'/>
+<use f='exim/src/smtp_in.c' l='551' u='w' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='657' u='w' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='692' u='w' c='bdat_flush_data'/>
+<use f='exim/src/smtp_in.c' l='2430' u='w' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='5097' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5100' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/receive.c' l='1844' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1865' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1903' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1995' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4102' u='r' c='receive_msg'/>

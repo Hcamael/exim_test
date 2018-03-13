@@ -1,1 +1,14 @@
 <dec f='exim/src/macros.h' l='647'/>
+<use f='exim/src/verify.c' l='2190' u='c'/>
+<use f='exim/src/verify.c' l='2226' u='c'/>
+<use f='exim/src/verify.c' l='2483' u='c'/>
+<use f='exim/src/globals.c' l='778' u='c'/>
+<use f='exim/src/rewrite.c' l='734' u='c'/>
+<use f='exim/src/receive.c' l='2283' u='c'/>
+<use f='exim/src/receive.c' l='2284' u='c'/>
+<use f='exim/src/receive.c' l='2298' u='c'/>
+<use f='exim/src/receive.c' l='2777' u='c'/>
+<use f='exim/src/receive.c' l='2784' u='c'/>
+<use f='exim/src/receive.c' l='2789' u='c'/>
+<use f='exim/src/receive.c' l='2793' u='c'/>
+<use f='exim/src/receive.c' l='2806' u='c'/>

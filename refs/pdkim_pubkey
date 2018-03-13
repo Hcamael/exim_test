@@ -1,0 +1,12 @@
+<def f='exim/src/pdkim/pdkim.h' l='104' ll='116'/>
+<size>72</size>
+<doc f='exim/src/pdkim/pdkim.h' l='103'>/* Public key as (usually) fetched from DNS */</doc>
+<mbr r='pdkim_pubkey::version' o='0' t='const uschar *'/>
+<mbr r='pdkim_pubkey::granularity' o='64' t='const uschar *'/>
+<mbr r='pdkim_pubkey::hashes' o='128' t='const uschar *'/>
+<mbr r='pdkim_pubkey::keytype' o='192' t='const uschar *'/>
+<mbr r='pdkim_pubkey::srvtype' o='256' t='const uschar *'/>
+<mbr r='pdkim_pubkey::notes' o='320' t='uschar *'/>
+<mbr r='pdkim_pubkey::key' o='384' t='blob'/>
+<mbr r='pdkim_pubkey::testing' o='512' t='int'/>
+<mbr r='pdkim_pubkey::no_subdomaining' o='544' t='int'/>

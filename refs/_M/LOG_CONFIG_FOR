@@ -1,1 +1,11 @@
 <dec f='exim/src/macros.h' l='798'/>
+<use f='exim/src/verify.c' l='571' u='c'/>
+<use f='exim/src/auths/spa.c' l='108' u='c'/>
+<use f='exim/src/routers/queryprogram.c' l='89' u='c'/>
+<use f='exim/src/routers/queryprogram.c' l='95' u='c'/>
+<use f='exim/src/routers/redirect.c' l='214' u='c'/>
+<use f='exim/src/routers/redirect.c' l='227' u='c'/>
+<use f='exim/src/routers/redirect.c' l='231' u='c'/>
+<use f='exim/src/routers/redirect.c' l='251' u='c'/>
+<use f='exim/src/routers/redirect.c' l='261' u='c'/>
+<use f='exim/src/log.c' l='553' u='c'/>

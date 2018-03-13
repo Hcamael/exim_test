@@ -1,0 +1,11 @@
+<dec f='exim/src/tls-openssl.c' l='166' type='struct (anonymous struct at /home/ubuntu/exim/src/build-Linux-x86_64/tls-openssl.c:163:5)'/>
+<use f='exim/src/tls-openssl.c' l='411' u='m' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='416' u='m' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='1340' u='m' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1344' u='m' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1388' u='m' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1464' u='m' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1522' u='m' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='1654' u='m' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='2393' u='m' c='tls_client_start'/>
+<offset>0</offset>

@@ -1,0 +1,4 @@
+<dec f='exim/src/filter.c' l='118' type='14'/>
+<use f='exim/src/filter.c' l='1207' u='r' c='read_command'/>
+<use f='exim/src/filter.c' l='1212' u='r' c='read_command'/>
+<doc f='exim/src/filter.c' l='118'>/* total number of arguments */</doc>

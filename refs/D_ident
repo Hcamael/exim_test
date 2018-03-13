@@ -1,1 +1,5 @@
 <dec f='exim/src/macros.h' l='388' macro='1' type='4096'/>
+<use f='exim/src/verify.c' l='2672' u='r' c='verify_get_ident'/>
+<use f='exim/src/verify.c' l='2683' u='r' c='verify_get_ident'/>
+<use f='exim/src/verify.c' l='2702' u='r' c='verify_get_ident'/>
+<use f='exim/src/verify.c' l='2781' u='r' c='verify_get_ident'/>

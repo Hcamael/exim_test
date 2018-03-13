@@ -1,0 +1,14 @@
+<dec f='exim/src/routers/rf_functions.h' l='15' type='uschar * rf_expand_data(address_item * , uschar * , int * )'/>
+<def f='exim/src/routers/rf_expand_data.c' l='29' ll='46' type='uschar * rf_expand_data(address_item * addr, uschar * s, int * prc)'/>
+<doc f='exim/src/routers/rf_expand_data.c' l='17'>/* This little function is used by a couple of routers for expanding things. It
+just saves repeating this code too many times. It does an expansion, and
+chooses a suitable return code on error.
+
+Arguments:
+  addr       the address that&apos;s being routed
+  s          the string to be expanded
+  prc        pointer to where to put the return code on failure
+
+Returns:     the expanded string, or NULL (with prc set) on failure
+*/</doc>
+<use f='exim/src/routers/redirect.c' l='701' u='c' c='redirect_router_entry'/>

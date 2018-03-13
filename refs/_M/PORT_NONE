@@ -2,3 +2,17 @@
 <doc f='exim/src/macros.h' l='991'>/* host_item.port defaults to PORT_NONE; the only current case where this
 is changed before running the transport is when an dnslookup router sets an
 explicit port number. */</doc>
+<use f='exim/src/deliver.c' l='1346' u='c'/>
+<use f='exim/src/verify.c' l='2146' u='c'/>
+<use f='exim/src/smtp_out.c' l='325' u='c'/>
+<use f='exim/src/routers/dnslookup.c' l='284' u='c'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='212' u='c'/>
+<use f='exim/src/host.c' l='339' u='c'/>
+<use f='exim/src/host.c' l='467' u='c'/>
+<use f='exim/src/host.c' l='482' u='c'/>
+<use f='exim/src/host.c' l='488' u='c'/>
+<use f='exim/src/host.c' l='2129' u='c'/>
+<use f='exim/src/host.c' l='2145' u='c'/>
+<use f='exim/src/host.c' l='2733' u='c'/>
+<use f='exim/src/host.c' l='2796' u='c'/>
+<use f='exim/src/host.c' l='3187' u='c'/>

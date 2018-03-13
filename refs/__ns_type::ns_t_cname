@@ -1,2 +1,6 @@
 <dec f='include/arpa/nameser.h' l='258' type='5'/>
 <doc f='include/arpa/nameser.h' l='258'>/*%&lt; Canonical name. */</doc>
+<use f='exim/src/lookups/dnsdb.c' l='58' macro='1'/>
+<use f='exim/src/lookups/dnsdb.c' l='58' macro='1'/>
+<use f='exim/src/dns.c' l='587' macro='1' c='dns_text_type'/>
+<use f='exim/src/dns.c' l='902' macro='1' u='r'/>

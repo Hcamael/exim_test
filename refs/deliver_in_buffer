@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='361' type='uschar *'/>
 <doc f='exim/src/globals.h' l='361'>/* Buffer for copying file */</doc>
+<use f='exim/src/deliver.c' l='6255' u='w' c='deliver_message'/>
+<def f='exim/src/globals.c' l='636' type='uschar *'/>
+<use f='exim/src/queue.c' l='1143' u='w' c='queue_action'/>

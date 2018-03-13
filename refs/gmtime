@@ -1,0 +1,4 @@
+<use f='exim/src/tod.c' l='74' u='c' c='tod_stamp'/>
+<use f='exim/src/tod.c' l='87' u='c' c='tod_stamp'/>
+<use f='exim/src/tod.c' l='155' u='c' c='tod_stamp'/>
+<use f='exim/src/debug.c' l='191' u='c' c='debug_vprintf'/>

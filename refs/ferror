@@ -1,2 +1,6 @@
 <dec f='include/stdio.h' l='830' type='int ferror(FILE * __stream)'/>
 <doc f='include/stdio.h' l='829'>/* Return the error indicator for STREAM.  */</doc>
+<use f='exim/src/receive.c' l='61' u='c' c='stdin_ferror'/>
+<use f='exim/src/receive.c' l='3082' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3173' u='c' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='330' u='c' c='spool_write_header'/>

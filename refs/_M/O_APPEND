@@ -1,1 +1,17 @@
 <dec f='include/x86_64-linux-gnu/bits/fcntl-linux.h' l='59'/>
+<use f='exim/src/deliver.c' l='343' u='c'/>
+<use f='exim/src/deliver.c' l='4715' u='c'/>
+<use f='exim/src/deliver.c' l='5655' u='c'/>
+<use f='exim/src/deliver.c' l='7013' u='c'/>
+<use f='exim/src/filter.c' l='1967' u='c'/>
+<use f='exim/src/exim.c' l='215' u='c'/>
+<use f='exim/src/exim.c' l='223' u='c'/>
+<use f='exim/src/spool_in.c' l='64' u='c'/>
+<use f='exim/src/log.c' l='263' u='c'/>
+<use f='exim/src/log.c' l='281' u='c'/>
+<use f='exim/src/log.c' l='335' u='c'/>
+<use f='exim/src/log.c' l='459' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='170' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='395' u='c'/>
+<use f='exim/src/receive.c' l='4028' u='c'/>
+<use f='exim/src/receive.c' l='4035' u='c'/>

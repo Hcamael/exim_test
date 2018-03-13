@@ -1,0 +1,5 @@
+<dec f='include/openssl/x509v3.h' l='132' type='int'/>
+<use f='exim/src/tlscert-openssl.c' l='373' u='r' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='375' u='r' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='458' u='r' c='tls_cert_crl_uri'/>
+<offset>0</offset>

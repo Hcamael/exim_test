@@ -1,2 +1,30 @@
 <dec f='exim/src/globals.h' l='103' type='enum (anonymous enum at /home/ubuntu/exim/src/build-Linux-x86_64/./globals.h:97:3)'/>
 <offset>576</offset>
+<use f='exim/src/deliver.c' l='1621' u='w' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1634' u='w' c='post_process_one'/>
+<use f='exim/src/tls-openssl.c' l='1301' u='w' c='tls_server_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1312' u='w' c='tls_server_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1349' u='w' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1359' u='w' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1390' u='w' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1420' u='w' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1435' u='w' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1446' u='w' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1450' u='w' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1457' u='w' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='2394' u='w' c='tls_client_start'/>
+<use f='exim/src/globals.c' l='118' u='w'/>
+<use f='exim/src/globals.c' l='135' u='w'/>
+<use f='exim/src/smtp_in.c' l='2385' u='w' c='smtp_start_session'/>
+<use f='exim/src/spool_in.c' l='315' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='644' u='w' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='731' u='a'/>
+<use f='exim/src/expand.c' l='731' u='a'/>
+<use f='exim/src/expand.c' l='744' u='a'/>
+<use f='exim/src/expand.c' l='744' u='a'/>
+<use f='exim/src/expand.c' l='731' u='a'/>
+<use f='exim/src/expand.c' l='731' u='a'/>
+<use f='exim/src/expand.c' l='744' u='a'/>
+<use f='exim/src/expand.c' l='744' u='a'/>
+<use f='exim/src/spool_out.c' l='252' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='252' u='r' c='spool_write_header'/>

@@ -1,1 +1,28 @@
 <dec f='exim/src/macros.h' l='916' type='1'/>
+<use f='exim/src/deliver.c' l='3222' u='r' c='sort_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='3232' u='r' c='sort_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='5120' u='r' c='deliver_split_address'/>
+<use f='exim/src/deliver.c' l='6486' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6698' u='r' c='deliver_message'/>
+<use f='exim/src/smtp_in.c' l='4046' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/routers/dnslookup.c' l='314' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/dnslookup.c' l='351' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/acl.c' l='3465' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3632' u='r' c='acl_check_condition'/>
+<use f='exim/src/match.c' l='374' c='get_check_key'/>
+<use f='exim/src/match.c' l='485' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='614' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='960' u='r' c='match_isinlist'/>
+<use f='exim/src/match.c' l='960' u='r' c='match_isinlist'/>
+<use f='exim/src/match.c' l='1234' u='r' c='check_address'/>
+<use f='exim/src/expand.c' l='2614' u='r' c='eval_condition'/>
+<use f='exim/src/host.c' l='1397' u='r' c='host_scan_for_local_hosts'/>
+<use f='exim/src/host.c' l='2220' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2579' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2583' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2648' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2699' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2709' u='r' c='host_find_bydns'/>
+<use f='exim/src/lss.c' l='30' u='r' c='lss_match_domain'/>
+<use f='exim/src/dns.c' l='522' u='r' c='dns_is_secure'/>
+<use f='exim/src/dns.c' l='792' u='r' c='dns_basic_lookup'/>

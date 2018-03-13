@@ -1,0 +1,6 @@
+<dec f='exim/src/transports/appendfile.h' l='93' type='void appendfile_transport_init(transport_instance * )'/>
+<use f='exim/src/drtables.c' l='367'/>
+<use f='exim/src/drtables.c' l='367'/>
+<use f='exim/src/drtables.c' l='367'/>
+<use f='exim/src/drtables.c' l='367'/>
+<def f='exim/src/transports/appendfile.c' l='162' type='void appendfile_transport_init(transport_instance * tblock)'/>

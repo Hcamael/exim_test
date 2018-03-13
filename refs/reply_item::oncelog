@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='476' type='uschar *'/>
 <offset>704</offset>
 <doc f='exim/src/structs.h' l='476'>/* file to keep records in for once only */</doc>
+<use f='exim/src/rda.c' l='764' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='940' u='a' c='rda_interpret'/>
+<use f='exim/src/sieve.c' l='3373' u='w' c='parse_commands'/>

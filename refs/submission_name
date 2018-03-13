@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='904' type='uschar *'/>
 <doc f='exim/src/globals.h' l='904'>/* User name set from ACL */</doc>
+<def f='exim/src/globals.c' l='1406' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='1986' u='w' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='3200' u='w' c='acl_check_condition'/>
+<use f='exim/src/receive.c' l='2764' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2764' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2879' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2885' u='r' c='receive_msg'/>

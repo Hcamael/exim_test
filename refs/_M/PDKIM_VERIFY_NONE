@@ -1,0 +1,4 @@
+<dec f='exim/src/pdkim/pdkim.h' l='56'/>
+<use f='exim/src/pdkim/pdkim.c' l='134' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1743' u='c'/>
+<doc f='exim/src/pdkim/pdkim.h' l='55'>/* Main/Extended verification status */</doc>

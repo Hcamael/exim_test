@@ -1,3 +1,18 @@
 <dec f='exim/src/structs.h' l='377' type='uschar *'/>
 <offset>64</offset>
 <doc f='exim/src/structs.h' l='377'>/* Exim instance name */</doc>
+<use f='exim/src/globals.c' l='432' u='w'/>
+<use f='exim/src/smtp_in.c' l='3627' u='r' c='smtp_in_auth'/>
+<use f='exim/src/smtp_in.c' l='3963' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4266' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4573' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/auths/check_serv_cond.c' l='68' u='r' c='auth_check_some_cond'/>
+<use f='exim/src/auths/spa.c' l='103' u='r' c='auth_spa_init'/>
+<use f='exim/src/auths/spa.c' l='110' u='r' c='auth_spa_init'/>
+<use f='exim/src/auths/spa.c' l='294' u='r' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='303' u='r' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='314' u='r' c='auth_spa_client'/>
+<use f='exim/src/auths/plaintext.c' l='63' u='r' c='auth_plaintext_init'/>
+<use f='exim/src/auths/plaintext.c' l='213' u='r' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='271' u='r' c='auth_plaintext_client'/>
+<use f='exim/src/auths/cram_md5.c' l='289' u='r' c='auth_cram_md5_client'/>

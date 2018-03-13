@@ -1,1 +1,17 @@
 <dec f='exim/src/functions.h' l='312' type='uschar * parse_find_at(uschar * )'/>
+<use f='exim/src/verify.c' l='1635' u='c' c='verify_address'/>
+<def f='exim/src/parse.c' l='145' ll='161' type='uschar * parse_find_at(uschar * s)'/>
+<doc f='exim/src/parse.c' l='132'>/* This function is used when we have something that may not qualified. If we
+know it&apos;s qualified, searching for the rightmost &apos;@&apos; is sufficient. Here we
+have to be a bit more clever than just a plain search, in order to handle
+unqualified local parts like &quot;thing@thong&quot; correctly. Since quotes may not
+legally be part of a domain name, we can give up on hitting the first quote
+when searching from the right. Now that the parsing also permits the RFC 821
+form of address, where quoted-pairs are allowed in unquoted local parts, we
+must take care to handle that too.
+
+Argument:  pointer to an address, possibly unqualified
+Returns:   pointer to the last @ in an address, or NULL if none
+*/</doc>
+<use f='exim/src/rewrite.c' l='65' u='c' c='rewrite_address_qualify'/>
+<use f='exim/src/rewrite.c' l='806' u='c' c='rewrite_test'/>

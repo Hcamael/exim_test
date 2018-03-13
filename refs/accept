@@ -7,3 +7,4 @@
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */</doc>
+<use f='exim/src/daemon.c' l='1985' u='c' c='daemon_go'/>

@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='491' type='uschar *'/>
 <offset>64</offset>
 <doc f='exim/src/structs.h' l='491'>/* from &quot;domains&quot; lookup */</doc>
+<use f='exim/src/deliver.c' l='200' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/globals.c' l='394' u='w'/>
+<use f='exim/src/globals.c' l='394' u='w'/>
+<use f='exim/src/routers/rf_queue_add.c' l='39' u='w' c='rf_queue_add'/>
+<use f='exim/src/routers/rf_queue_add.c' l='101' u='r' c='rf_queue_add'/>
+<use f='exim/src/routers/redirect.c' l='560' u='w' c='redirect_router_entry'/>

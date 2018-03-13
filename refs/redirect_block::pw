@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='838' type='struct passwd *'/>
 <offset>192</offset>
 <doc f='exim/src/structs.h' l='838'>/* possible owner if not NULL */</doc>
+<use f='exim/src/deliver.c' l='5858' u='w' c='deliver_message'/>
+<use f='exim/src/rda.c' l='250' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/rda.c' l='250' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/rda.c' l='262' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/rda.c' l='262' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/routers/redirect.c' l='711' u='w' c='redirect_router_entry'/>

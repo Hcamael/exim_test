@@ -1,2 +1,26 @@
 <dec f='exim/src/local_scan.h' l='111' type='int'/>
 <offset>96</offset>
+<use f='exim/src/header.c' l='183' u='w' c='header_add_backend'/>
+<use f='exim/src/header.c' l='374' u='r' c='one_pattern_match'/>
+<use f='exim/src/header.c' l='427' u='r' c='one_pattern_match'/>
+<use f='exim/src/spool_in.c' l='876' u='w' c='spool_read_header'/>
+<use f='exim/src/routers/rf_get_munge_headers.c' l='80' u='w' c='rf_get_munge_headers'/>
+<use f='exim/src/acl.c' l='1030' u='w' c='setup_header'/>
+<use f='exim/src/rewrite.c' l='600' u='r' c='rewrite_one_header'/>
+<use f='exim/src/rewrite.c' l='604' u='r' c='rewrite_one_header'/>
+<use f='exim/src/rewrite.c' l='665' u='w' c='rewrite_one_header'/>
+<use f='exim/src/expand.c' l='1558' u='r' c='find_header'/>
+<use f='exim/src/expand.c' l='1568' u='r' c='find_header'/>
+<use f='exim/src/receive.c' l='1513' u='w' c='received_header_gen'/>
+<use f='exim/src/receive.c' l='1699' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1922' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2004' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2131' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2133' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2147' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2293' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3073' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3822' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3844' u='r' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='323' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='325' u='r' c='spool_write_header'/>

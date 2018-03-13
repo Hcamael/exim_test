@@ -1,3 +1,7 @@
 <dec f='exim/src/structs.h' l='516' type='struct address_item *'/>
 <offset>128</offset>
 <doc f='exim/src/structs.h' l='516'>/* points to first after group delivery */</doc>
+<use f='exim/src/deliver.c' l='4396' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/globals.c' l='333' u='w'/>
+<use f='exim/src/retry.c' l='912' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='914' u='r' c='retry_update'/>

@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='713' type='int'/>
 <doc f='exim/src/globals.h' l='713'>/* Those that got 4xx */</doc>
+<def f='exim/src/globals.c' l='1091' type='int'/>
+<use f='exim/src/smtp_in.c' l='1960' u='w' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='4959' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5040' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/expand.c' l='638' u='a'/>
+<use f='exim/src/expand.c' l='638' u='a'/>
+<use f='exim/src/expand.c' l='638' u='a'/>
+<use f='exim/src/expand.c' l='638' u='a'/>

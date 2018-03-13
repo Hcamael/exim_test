@@ -1,1 +1,9 @@
 <dec f='exim/src/macros.h' l='398' macro='1' type='4194304'/>
+<use f='exim/src/exim.c' l='555' u='r' c='close_unwanted'/>
+<use f='exim/src/exim.c' l='2465' macro='1' u='r'/>
+<use f='exim/src/log.c' l='1414' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='146' u='r' c='dns_init'/>
+<use f='exim/src/dns.c' l='149' u='r' c='dns_init'/>
+<use f='exim/src/dns.c' l='166' u='r' c='dns_init'/>
+<use f='exim/src/dns.c' l='188' u='r' c='dns_init'/>
+<use f='exim/src/dns.c' l='197' u='r' c='dns_init'/>

@@ -1,2 +1,21 @@
 <dec f='include/stdio.h' l='306' type='FILE * fdopen(int __fd, const char * __modes)'/>
 <doc f='include/stdio.h' l='305'>/* Create a new stream that refers to an existing system file descriptor.  */</doc>
+<use f='exim/src/deliver.c' l='2621' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='5664' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5798' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7271' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7470' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8130' u='c' c='deliver_message'/>
+<use f='exim/src/moan.c' l='88' u='c' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='493' u='c' c='moan_tell_someone'/>
+<use f='exim/src/moan.c' l='733' u='c' c='moan_skipped_syntax_errors'/>
+<use f='exim/src/parse.c' l='1477' u='c' c='parse_forward_list'/>
+<use f='exim/src/log.c' l='1428' u='c' c='debug_logging_activate'/>
+<use f='exim/src/expand.c' l='4897' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5023' u='c' c='expand_string_internal'/>
+<use f='exim/src/daemon.c' l='162' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='175' u='c' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='3052' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4043' u='c' c='receive_msg'/>
+<use f='exim/src/sieve.c' l='3109' u='c' c='parse_commands'/>
+<use f='exim/src/spool_out.c' l='144' u='c' c='spool_write_header'/>

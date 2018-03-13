@@ -1,0 +1,4 @@
+<dec f='exim/src/auths/plaintext.h' l='12' type='uschar *'/>
+<offset>64</offset>
+<use f='exim/src/auths/plaintext.c' l='65' u='r' c='auth_plaintext_init'/>
+<use f='exim/src/auths/plaintext.c' l='178' u='r' c='auth_plaintext_client'/>

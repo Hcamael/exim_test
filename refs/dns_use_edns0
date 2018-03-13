@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='424' type='int'/>
 <doc f='exim/src/globals.h' l='424'>/* Coerce EDNS0 support on/off in resolver. */</doc>
+<def f='exim/src/globals.c' l='699' type='int'/>
+<doc f='exim/src/globals.c' l='699'>/* &lt;0 = not coerced */</doc>
+<use f='exim/src/readconf.c' l='133' u='a'/>
+<use f='exim/src/readconf.c' l='133' u='a'/>
+<use f='exim/src/readconf.c' l='133' u='a'/>
+<use f='exim/src/readconf.c' l='133' u='a'/>
+<use f='exim/src/dns.c' l='160' u='r' c='dns_init'/>
+<use f='exim/src/dns.c' l='162' u='r' c='dns_init'/>
+<use f='exim/src/dns.c' l='168' u='r' c='dns_init'/>
+<use f='exim/src/dns.c' l='186' u='r' c='dns_init'/>

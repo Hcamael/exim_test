@@ -1,0 +1,7 @@
+<dec f='exim/src/pdkim/pdkim.h' l='257' type='uschar *'/>
+<use f='exim/src/pdkim/pdkim.c' l='1459' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1495' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1517' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1856' u='w' c='pdkim_set_optional'/>
+<offset>1408</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='257'>/* To-be-signed header names                   */</doc>

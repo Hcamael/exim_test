@@ -1,0 +1,7 @@
+<dec f='exim/src/pdkim/pdkim.h' l='108' type='const uschar *'/>
+<use f='exim/src/pdkim/pdkim.c' l='660' u='w' c='pdkim_parse_pubkey_record'/>
+<use f='exim/src/pdkim/pdkim.c' l='1710' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1712' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1719' u='r' c='pdkim_feed_finish'/>
+<offset>128</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='108'>/* h=  */</doc>

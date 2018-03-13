@@ -1,0 +1,5 @@
+<dec f='exim/src/pdkim/crypt_ver.h' l='27'/>
+<dec f='exim/src/pdkim/crypt_ver.h' l='27'/>
+<use f='exim/src/pdkim/signing.h' l='15' u='a'/>
+<use f='exim/src/pdkim/signing.h' l='41' u='a'/>
+<use f='exim/src/pdkim/pdkim.c' l='35' u='a'/>

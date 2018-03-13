@@ -1,2 +1,22 @@
 <dec f='exim/src/store.h' l='45' type='BOOL store_extend_3(void * , int , int , const char * , int )'/>
 <doc f='exim/src/store.h' l='44'>/* The value of the 2nd arg is __FILE__ in every call, so give its correct type */</doc>
+<use f='exim/src/string.c' l='1110' macro='1' u='c'/>
+<def f='exim/src/store.c' l='266' ll='302' type='BOOL store_extend_3(void * ptr, int oldsize, int newsize, const char * filename, int linenumber)'/>
+<doc f='exim/src/store.c' l='248'>/* While reading strings of unknown length, it is often the case that the
+string is being read into the block at the top of the stack. If it needs to be
+extended, it is more efficient just to extend the top block rather than
+allocate a new block and then have to copy the data. This function is provided
+for the use of string_cat(), but of course can be used elsewhere too.
+
+Arguments:
+  ptr        pointer to store block
+  oldsize    current size of the block, as requested by user
+  newsize    new size required
+  filename   source file from which called
+  linenumber line number in source file
+
+Returns:     TRUE if the block is at the top of the stack and has been
+             extended; FALSE if it isn&apos;t at the top of the stack, or cannot
+             be extended
+*/</doc>
+<use f='exim/src/receive.c' l='1816' macro='1' u='c'/>

@@ -1,0 +1,2 @@
+<def f='exim/src/auths/auth-spa.c' l='933' ll='967' type='void nt_lm_owf_gen(char * pwd, uschar * nt_p16, uschar * p16)'/>
+<doc f='exim/src/auths/auth-spa.c' l='932'>/* Does both the NT and LM owfs of a user&apos;s password */</doc>

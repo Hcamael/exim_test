@@ -1,2 +1,33 @@
 <dec f='exim/src/globals.h' l='354' type='BOOL'/>
 <doc f='exim/src/globals.h' l='354'>/* TRUE if delivery is frozen */</doc>
+<use f='exim/src/deliver.c' l='1662' u='w' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1706' u='w' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='5707' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5773' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5923' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7854' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7941' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8325' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='630' type='BOOL'/>
+<use f='exim/src/exim.c' l='5678' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5703' u='r' c='main'/>
+<use f='exim/src/smtp_in.c' l='1970' u='w' c='smtp_reset'/>
+<use f='exim/src/queue.c' l='541' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='942' u='r' c='queue_list'/>
+<use f='exim/src/queue.c' l='1152' u='r' c='queue_action'/>
+<use f='exim/src/queue.c' l='1159' u='w' c='queue_action'/>
+<use f='exim/src/queue.c' l='1177' u='r' c='queue_action'/>
+<use f='exim/src/queue.c' l='1184' u='w' c='queue_action'/>
+<use f='exim/src/spool_in.c' l='260' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='537' u='w' c='spool_read_header'/>
+<use f='exim/src/acl.c' l='3155' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3267' u='r' c='acl_check_condition'/>
+<use f='exim/src/daemon.c' l='637' u='r' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='3623' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3685' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3687' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3829' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4054' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4181' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4193' u='r' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='218' u='r' c='spool_write_header'/>

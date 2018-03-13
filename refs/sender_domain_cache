@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='782' type='unsigned int [1]'/>
 <doc f='exim/src/globals.h' l='782'>/* Cache bits for sender domain */</doc>
+<def f='exim/src/globals.c' l='1272' type='unsigned int [1]'/>
+<use f='exim/src/smtp_in.c' l='1991' u='r' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='1991' u='r' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='3632' u='r' c='acl_check_condition'/>

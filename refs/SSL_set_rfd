@@ -1,1 +1,2 @@
 <dec f='include/openssl/ssl.h' l='1352' type='int SSL_set_rfd(SSL * s, int fd)'/>
+<use f='exim/src/tls-openssl.c' l='2054' u='c' c='tls_server_start'/>

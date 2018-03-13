@@ -1,0 +1,5 @@
+<dec f='exim/src/auths/auth-spa.h' l='88' type='void spa_smb_nt_encrypt(unsigned char * passwd, unsigned char * c8, unsigned char * p24)'/>
+<use f='exim/src/auths/spa.c' l='244' u='c' c='auth_spa_server'/>
+<def f='exim/src/auths/auth-spa.c' l='1003' ll='1019' type='void spa_smb_nt_encrypt(uschar * passwd, uschar * c8, uschar * p24)'/>
+<use f='exim/src/auths/auth-spa.c' l='1510' u='c' c='spa_build_auth_response'/>
+<doc f='exim/src/auths/auth-spa.c' l='1001'>/* Does the NT MD4 hash then des encryption. */</doc>

@@ -1,0 +1,4 @@
+<dec f='exim/src/deliver.c' l='34' type='5'/>
+<use f='exim/src/deliver.c' l='5728' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5829' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6181' c='deliver_message'/>

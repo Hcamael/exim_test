@@ -1,2 +1,7 @@
 <dec f='exim/src/globals.h' l='685' type='BOOL'/>
 <doc f='exim/src/globals.h' l='685'>/* Local deliveries only in queue run */</doc>
+<use f='exim/src/deliver.c' l='7075' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1072' type='BOOL'/>
+<use f='exim/src/exim.c' l='3253' u='w' c='main'/>
+<use f='exim/src/queue.c' l='409' u='r' c='queue_run'/>
+<use f='exim/src/daemon.c' l='1849' u='r' c='daemon_go'/>

@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='786' type='uschar **'/>
 <doc f='exim/src/globals.h' l='786'>/* Points to list of alias names */</doc>
+<use f='exim/src/verify.c' l='3103' u='r' c='check_host'/>
+<def f='exim/src/globals.c' l='1276' type='uschar **'/>
+<use f='exim/src/smtp_in.c' l='3495' u='r' c='smtp_verify_helo'/>
+<use f='exim/src/host.c' l='1599' u='w' c='host_name_lookup_byaddr'/>
+<use f='exim/src/host.c' l='1725' u='w' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1810' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1829' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1899' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1900' u='w' c='host_name_lookup'/>

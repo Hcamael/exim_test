@@ -1,0 +1,26 @@
+<dec f='exim/src/deliver.c' l='5516' type='int'/>
+<use f='exim/src/deliver.c' l='5569' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8425' u='w' c='deliver_message'/>
+<def f='exim/src/acl.c' l='4346' type='int'/>
+<use f='exim/src/acl.c' l='4386' u='w' c='acl_check'/>
+<use f='exim/src/acl.c' l='4390' u='w' c='acl_check'/>
+<doc f='exim/src/acl.c' l='4328'>/* This is the external interface for ACL checks. It sets up an address and the
+expansions for $domain and $local_part when called after RCPT, then calls
+acl_check_internal() to do the actual work.
+
+Arguments:
+  where        ACL_WHERE_xxxx indicating where called from
+  recipient    RCPT address for RCPT check, else NULL
+  s            the input string; NULL is the same as an empty ACL =&gt; DENY
+  user_msgptr  where to put a user error (for SMTP response)
+  log_msgptr   where to put a logging message (not for SMTP response)
+
+Returns:       OK         access is granted by an ACCEPT verb
+               DISCARD    access is granted by a DISCARD verb
+               FAIL       access is denied
+               FAIL_DROP  access is denied; drop the connection
+               DEFER      can&apos;t tell at the moment
+               ERROR      disaster
+*/</doc>
+<dec f='exim/src/expand.c' l='2076' type='int'/>
+<use f='exim/src/expand.c' l='2098' u='r' c='eval_acl'/>

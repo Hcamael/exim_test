@@ -1,3 +1,6 @@
 <dec f='include/netinet/in.h' l='242' type='in_port_t'/>
 <offset>16</offset>
 <doc f='include/netinet/in.h' l='242'>/* Port number.  */</doc>
+<use f='exim/src/ip.c' l='131' u='w' c='ip_addr'/>
+<use f='exim/src/ip.c' l='235' u='w' c='ip_connect'/>
+<use f='exim/src/host.c' l='949' u='r' c='host_ntoa'/>

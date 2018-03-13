@@ -1,2 +1,7 @@
 <dec f='exim/src/globals.h' l='514' type='tree_node *'/>
 <doc f='exim/src/globals.h' l='514'>/* Tree of defined host lists */</doc>
+<use f='exim/src/verify.c' l='3178' u='a' c='verify_check_this_host'/>
+<def f='exim/src/globals.c' l='812' type='tree_node *'/>
+<use f='exim/src/expand.c' l='2642' u='a' c='eval_condition'/>
+<use f='exim/src/expand.c' l='6602' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6609' u='r' c='expand_string_internal'/>

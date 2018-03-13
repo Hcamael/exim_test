@@ -1,0 +1,8 @@
+<dec f='exim/src/transports/pipe.h' l='40' type='int'/>
+<use f='exim/src/drtables.c' l='406' u='a'/>
+<use f='exim/src/drtables.c' l='406' u='a'/>
+<use f='exim/src/drtables.c' l='406' u='a'/>
+<use f='exim/src/drtables.c' l='406' u='a'/>
+<def f='exim/src/transports/pipe.c' l='95' ll='96' type='int'/>
+<doc f='exim/src/transports/pipe.c' l='92'>/* Size of the options list. An extern variable has to be used so that its
+address can appear in the tables drtables.c. */</doc>

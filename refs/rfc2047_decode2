@@ -1,1 +1,43 @@
 <dec f='exim/src/functions.h' l='373' type='uschar * rfc2047_decode2(uschar * , BOOL , uschar * , int , int * , int * , uschar ** )'/>
+<use f='exim/src/expand.c' l='1643' u='c' c='find_header'/>
+<def f='exim/src/rfc2047.c' l='187' ll='339' type='uschar * rfc2047_decode2(uschar * string, BOOL lencheck, uschar * target, int zeroval, int * lenptr, int * sizeptr, uschar ** error)'/>
+<use f='exim/src/rfc2047.c' l='349' u='c' c='rfc2047_decode'/>
+<doc f='exim/src/rfc2047.c' l='147'>/* There are two functions defined here. The original one was rfc2047_decode()
+and it was documented in the local_scan() interface. I needed to add an extra
+argument for use by expand_string(), so I created rfc2047_decode2() for that
+purpose. The original function became a stub that just supplies NULL for the
+new argument (sizeptr).
+
+An RFC 2047-encoded string may contain one or more &quot;words&quot;, each of the
+form  =?...?.?...?=  with the first ... specifying the character code, the
+second being Q (for quoted printable) or B for Base64 encoding. The third ...
+is the actual data.
+
+This function first decodes each &quot;word&quot; into bytes from the Q or B encoding.
+Then, if provided with the name of a charset encoding, and if iconv() is
+available, it attempts to translate the result to the named character set.
+If this fails, the binary string is returned with an error message.
+
+If a binary zero is encountered in the decoded string, it is replaced by the
+contents of the zeroval argument. For use with Exim headers, the value must not
+be 0 because they are handled as zero-terminated strings. When zeroval==0,
+lenptr should not be NULL.
+
+Arguments:
+    string       the subject string
+    lencheck     TRUE to enforce maximum MIME word length
+    target       the name of the target encoding for MIME words, or NULL for
+                   no charset translation
+    zeroval      the value to use for binary zero bytes
+    lenptr       if not NULL, the length of the result is returned via
+                   this variable
+    sizeptr      if not NULL, the length of a new store block in which the
+                   result is built is placed here; if no new store is obtained,
+                   the value is not changed
+    error        for error messages; NULL if no problem; this can be set
+                   when the yield is non-NULL if there was a charset
+                   translation problem
+
+Returns:         the decoded, converted string, or NULL on error; if there are
+                   no MIME words in the string, the original string is returned
+*/</doc>

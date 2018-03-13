@@ -1,0 +1,5 @@
+<dec f='exim/src/pdkim/signing.h' l='44' type='keytype'/>
+<dec f='exim/src/pdkim/signing.h' l='49' type='keytype'/>
+<offset>0</offset>
+<use f='exim/src/pdkim/pdkim.c' l='1375' u='w' c='pdkim_key_from_dns'/>
+<use f='exim/src/pdkim/pdkim.c' l='1488' u='r' c='pdkim_feed_finish'/>

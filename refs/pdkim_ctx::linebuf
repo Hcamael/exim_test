@@ -1,0 +1,9 @@
+<dec f='exim/src/pdkim/pdkim.h' l='285' type='uschar *'/>
+<use f='exim/src/pdkim/pdkim.c' l='856' u='r' c='pdkim_bodyline_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='856' u='r' c='pdkim_bodyline_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='865' u='r' c='pdkim_bodyline_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='1016' u='r' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1022' u='r' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1785' u='w' c='pdkim_init_verify'/>
+<use f='exim/src/pdkim/pdkim.c' l='1918' u='w' c='pdkim_init_context'/>
+<offset>320</offset>

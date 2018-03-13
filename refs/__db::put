@@ -1,2 +1,8 @@
 <dec f='include/db.h' l='1684' type='int (*)(DB *, DB_TXN *, DBT *, DBT *, u_int32_t)'/>
 <offset>8192</offset>
+<use f='exim/src/exim_dbmbuild.c' l='302' macro='1' u='r'/>
+<use f='exim/src/exim_dbmbuild.c' l='313' macro='1' u='r'/>
+<use f='exim/src/exim_dbmbuild.c' l='396' macro='1' u='r'/>
+<use f='exim/src/exim_dbmbuild.c' l='406' macro='1' u='r'/>
+<use f='exim/src/exim_dbutil.c' l='421' macro='1' u='r'/>
+<use f='exim/src/dbfn.c' l='356' macro='1' u='r'/>

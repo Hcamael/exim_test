@@ -1,0 +1,4 @@
+<dec f='exim/src/routers/queryprogram.h' l='16' type='BOOL'/>
+<offset>160</offset>
+<use f='exim/src/routers/queryprogram.c' l='94' u='r' c='queryprogram_router_init'/>
+<use f='exim/src/routers/queryprogram.c' l='250' u='r' c='queryprogram_router_entry'/>

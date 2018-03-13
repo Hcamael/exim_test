@@ -1,1 +1,23 @@
 <dec f='exim/src/functions.h' l='392' type='int search_findtype_partial(const uschar * , int * , const uschar ** , int * , int * )'/>
+<use f='exim/src/verify.c' l='3054' u='c' c='check_host'/>
+<def f='exim/src/search.c' l='123' ll='207' type='int search_findtype_partial(const uschar * name, int * ptypeptr, const uschar ** ptypeaff, int * afflen, int * starflags)'/>
+<doc f='exim/src/search.c' l='104'>/* This function recognizes the &quot;partial-&quot; prefix and also terminating * and *@
+suffixes.
+
+Arguments:
+  name         the full lookup type name
+  ptypeptr     where to put the partial type
+                 after subtraction of 1024 or 2048:
+                   negative     =&gt; no partial matching
+                   non-negative =&gt; minimum number of non-wild components
+  ptypeaff     where to put a pointer to the affix
+                 the affix is within name if supplied therein
+                 otherwise it&apos;s a literal string
+  afflen       the length of the affix
+  starflags    where to put the SEARCH_STAR and SEARCH_STARAT flags
+
+Returns:     +ve =&gt; valid lookup name; value is offset in lookup_list
+             -ve =&gt; invalid name; message in search_error_message.
+*/</doc>
+<use f='exim/src/match.c' l='266' u='c' c='check_string'/>
+<use f='exim/src/expand.c' l='4259' u='c' c='expand_string_internal'/>

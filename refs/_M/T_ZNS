@@ -13,3 +13,6 @@ If any of these names appear in the RRtype list at:
   &lt;http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml&gt;
 then we should rename Exim&apos;s private type away from the conflict.
 */</doc>
+<use f='exim/src/lookups/dnsdb.c' l='69' u='c'/>
+<use f='exim/src/lookups/dnsdb.c' l='319' u='c'/>
+<use f='exim/src/dns.c' l='1000' u='c'/>

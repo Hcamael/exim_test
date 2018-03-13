@@ -3,3 +3,11 @@
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */</doc>
+<use f='exim/src/deliver.c' l='5406' u='c' c='print_dsn_diagnostic_code'/>
+<use f='exim/src/deliver.c' l='7803' u='c' c='deliver_message'/>
+<use f='exim/src/verify.c' l='2147' u='c' c='verify_address'/>
+<use f='exim/src/verify.c' l='2148' u='c' c='verify_address'/>
+<use f='exim/src/moan.c' l='307' u='c' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='311' u='c' c='moan_send_message'/>
+<use f='exim/src/receive.c' l='726' u='c' c='read_message_data'/>
+<use f='exim/src/receive.c' l='744' u='c' c='read_message_data'/>

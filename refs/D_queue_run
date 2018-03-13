@@ -1,1 +1,8 @@
 <dec f='exim/src/macros.h' l='396' macro='1' type='1048576'/>
+<use f='exim/src/deliver.c' l='5529' u='r' c='deliver_message'/>
+<use f='exim/src/exim.c' l='4663' u='r' c='main'/>
+<use f='exim/src/queue.c' l='211' u='r' c='queue_get_spool_list'/>
+<use f='exim/src/queue.c' l='465' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='551' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='570' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='595' u='r' c='queue_run'/>

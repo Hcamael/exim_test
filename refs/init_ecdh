@@ -1,0 +1,26 @@
+<def f='exim/src/tls-openssl.c' l='728' ll='812' type='BOOL init_ecdh(SSL_CTX * sctx, host_item * host, uschar ** errstr)'/>
+<use f='exim/src/tls-openssl.c' l='1237' u='c' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1612' u='c' c='tls_init'/>
+<doc f='exim/src/tls-openssl.c' l='704'>/* Load parameters for ECDH encryption.
+
+For now, we stick to NIST P-256 because: it&apos;s simple and easy to configure;
+it avoids any patent issues that might bite redistributors; despite events in
+the news and concerns over curve choices, we&apos;re not cryptographers, we&apos;re not
+pretending to be, and this is &quot;good enough&quot; to be better than no support,
+protecting against most adversaries.  Given another year or two, there might
+be sufficient clarity about a &quot;right&quot; way forward to let us make an informed
+decision, instead of a knee-jerk reaction.
+
+Longer-term, we should look at supporting both various named curves and
+external files generated with &quot;openssl ecparam&quot;, much as we do for init_dh().
+We should also support &quot;none&quot; as a value, to explicitly avoid initialisation.
+
+Patches welcome.
+
+Arguments:
+  sctx      The current SSL CTX (inbound or outbound)
+  host      connected host, if client; NULL if server
+  errstr    error string pointer
+
+Returns:    TRUE if OK (nothing to set up, or setup worked)
+*/</doc>

@@ -1,2 +1,8 @@
 <dec f='include/unistd.h' l='1123' type='char * crypt(const char * __key, const char * __salt)'/>
 <doc f='include/unistd.h' l='1122'>/* Encrypt at most 8 characters from KEY using salt to perturb DES.  */</doc>
+<dec f='include/crypt.h' l='32' type='char * crypt(const char * __key, const char * __salt)'/>
+<use f='exim/src/crypt16.c' l='58' u='c' c='crypt16'/>
+<use f='exim/src/crypt16.c' l='68' u='c' c='crypt16'/>
+<doc f='include/crypt.h' l='31'>/* Encrypt at most 8 characters from KEY using salt to perturb DES.  */</doc>
+<use f='exim/src/expand.c' l='2787' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='2788' u='c' c='eval_condition'/>

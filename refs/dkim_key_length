@@ -1,2 +1,7 @@
 <dec f='exim/src/globals.h' l='390' type='int'/>
 <doc f='exim/src/globals.h' l='390'>/* Expansion variable, length of signing key in bits */</doc>
+<def f='exim/src/globals.c' l='665' type='int'/>
+<use f='exim/src/expand.c' l='504' u='a'/>
+<use f='exim/src/expand.c' l='504' u='a'/>
+<use f='exim/src/expand.c' l='504' u='a'/>
+<use f='exim/src/expand.c' l='504' u='a'/>

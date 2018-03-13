@@ -1,1 +1,14 @@
 <dec f='exim/src/functions.h' l='227' type='void host_mask(int , int * , int )'/>
+<use f='exim/src/verify.c' l='2965' u='c' c='check_host'/>
+<use f='exim/src/expand.c' l='6708' u='c' c='expand_string_internal'/>
+<def f='exim/src/host.c' l='1089' ll='1110' type='void host_mask(int count, int * binary, int mask)'/>
+<doc f='exim/src/host.c' l='1078'>/* Mask an address held in 1 or 4 ints, with the ms bit in the ms bit of the
+first int, etc.
+
+Arguments:
+  count        the number of ints
+  binary       points to the ints to be masked
+  mask         the count of ms bits to leave, or -1 if no masking
+
+Returns:       nothing
+*/</doc>

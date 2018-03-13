@@ -1,1 +1,9 @@
 <dec f='exim/src/dbfunctions.h' l='27' type='void dbfn_bdb_error_callback(const DB_ENV * , const char * , const char * )'/>
+<def f='exim/src/exim_dbmbuild.c' l='63' ll='74' type='void dbfn_bdb_error_callback(const DB_ENV * dbenv, const char * pfx, const char * msg)'/>
+<use f='exim/src/exim_dbmbuild.c' l='217' macro='1' c='main'/>
+<def f='exim/src/exim_dbutil.c' l='55' ll='66' type='void dbfn_bdb_error_callback(const DB_ENV * dbenv, const char * pfx, const char * msg)'/>
+<use f='exim/src/exim_dbutil.c' l='300' macro='1' c='dbfn_open'/>
+<use f='exim/src/lookups/dbmdb.c' l='26' macro='1' c='dbmdb_open'/>
+<def f='exim/src/dbfn.c' l='45' ll='56' type='void dbfn_bdb_error_callback(const DB_ENV * dbenv, const char * pfx, const char * msg)'/>
+<use f='exim/src/dbfn.c' l='164' macro='1' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='171' macro='1' c='dbfn_open'/>

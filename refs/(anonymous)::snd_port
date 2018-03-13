@@ -1,3 +1,6 @@
 <dec f='exim/src/globals.h' l='314' type='int'/>
 <offset>320</offset>
 <doc f='exim/src/globals.h' l='314'>/* sending_port */</doc>
+<use f='exim/src/deliver.c' l='4490' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='8541' u='r' c='delivery_re_exec'/>
+<use f='exim/src/verify.c' l='1051' u='w' c='do_callout'/>

@@ -1,0 +1,30 @@
+<dec f='exim/src/routers/redirect.h' l='71' type='int redirect_router_entry(router_instance * , address_item * , struct passwd * , int , address_item ** , address_item ** , address_item ** , address_item ** )'/>
+<use f='exim/src/drtables.c' l='337'/>
+<use f='exim/src/drtables.c' l='337'/>
+<use f='exim/src/drtables.c' l='337'/>
+<use f='exim/src/drtables.c' l='337'/>
+<doc f='exim/src/routers/redirect.h' l='69'>/* The main and initialization entry points for the router */</doc>
+<def f='exim/src/routers/redirect.c' l='529' ll='938' type='int redirect_router_entry(router_instance * rblock, address_item * addr, struct passwd * pw, int verify, address_item ** addr_local, address_item ** addr_remote, address_item ** addr_new, address_item ** addr_succeed)'/>
+<doc f='exim/src/routers/redirect.c' l='505'>/* See local README for interface description. This router returns:
+
+DECLINE
+  . empty address list, or filter did nothing significant
+
+DEFER
+  . verifying the errors address caused a deferment or a big disaster such
+      as an expansion failure (rf_get_errors_address)
+  . expanding a headers_{add,remove} string caused a deferment or another
+      expansion error (rf_get_munge_headers)
+  . :defer: or &quot;freeze&quot; in a filter
+  . error in address list or filter
+  . skipped syntax errors, but failed to send the message
+
+DISCARD
+  . address was :blackhole:d or &quot;seen finish&quot;ed
+
+FAIL
+  . :fail:
+
+OK
+  . new addresses added to addr_new
+*/</doc>

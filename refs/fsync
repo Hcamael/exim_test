@@ -3,3 +3,8 @@
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */</doc>
+<use f='exim/src/deliver.c' l='1524' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='2567' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='3174' macro='1' u='c'/>
+<use f='exim/src/spool_out.c' l='337' macro='1' u='c'/>
+<use f='exim/src/spool_out.c' l='377' macro='1' u='c'/>

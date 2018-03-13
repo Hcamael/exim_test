@@ -1,1 +1,11 @@
 <dec f='exim/src/macros.h' l='829'/>
+<use f='exim/src/verify.c' l='1852' u='c'/>
+<use f='exim/src/smtp_in.c' l='3525' u='c'/>
+<use f='exim/src/routers/dnslookup.c' l='163' u='c'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='134' u='c'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='136' u='c'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='137' u='c'/>
+<use f='exim/src/host.c' l='1844' u='c'/>
+<use f='exim/src/host.c' l='2724' u='c'/>
+<use f='exim/src/host.c' l='3074' u='c'/>
+<use f='exim/src/host.c' l='3074' u='c'/>

@@ -1,1 +1,22 @@
 <dec f='exim/src/functions.h' l='328' type='int random_number(int )'/>
+<use f='exim/src/queue.c' l='712' u='c' c='queue_run'/>
+<def f='exim/src/host.c' l='80' ll='95' type='int random_number(int limit)'/>
+<use f='exim/src/host.c' l='341' u='c' c='host_build_hostlist'/>
+<use f='exim/src/host.c' l='2441' u='c' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2466' u='c' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2806' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2988' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3038' u='c' c='host_find_bydns'/>
+<doc f='exim/src/host.c' l='67'>/* This is a simple pseudo-random number generator. It does not have to be
+very good for the uses to which it is put. When running the regression tests,
+start with a fixed seed.
+
+If you need better, see vaguely_random_number() which is potentially stronger,
+if a crypto library is available, but might end up just calling this instead.
+
+Arguments:
+  limit:    one more than the largest number required
+
+Returns:    a pseudo-random number in the range 0 to limit-1
+*/</doc>
+<use f='exim/src/retry.c' l='800' u='c' c='retry_update'/>

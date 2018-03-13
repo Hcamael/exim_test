@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='906' type='BOOL'/>
 <doc f='exim/src/globals.h' l='906'>/* former is reset to this; override with -G */</doc>
+<def f='exim/src/globals.c' l='1408' type='BOOL'/>
+<use f='exim/src/exim.c' l='4239' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='1977' u='r' c='smtp_reset'/>

@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='254' type='uschar *'/>
 <doc f='exim/src/globals.h' l='254'>/* One-liner */</doc>
+<use f='exim/src/deliver.c' l='7576' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7577' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='484' type='uschar *'/>
+<use f='exim/src/readconf.c' l='79' u='a'/>
+<use f='exim/src/readconf.c' l='79' u='a'/>
+<use f='exim/src/readconf.c' l='79' u='a'/>
+<use f='exim/src/readconf.c' l='79' u='a'/>

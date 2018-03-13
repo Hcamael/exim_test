@@ -1,1 +1,36 @@
 <dec f='exim/src/functions.h' l='370' type='uschar * rewrite_one(uschar * , int , BOOL * , BOOL , uschar * , rewrite_rule * )'/>
+<use f='exim/src/filter.c' l='2426' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2428' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2445' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2447' u='c' c='filter_personal'/>
+<use f='exim/src/smtp_in.c' l='2147' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2207' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='4658' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4914' u='c' c='smtp_setup_msg'/>
+<def f='exim/src/rewrite.c' l='99' ll='375' type='uschar * rewrite_one(uschar * s, int flag, BOOL * whole, BOOL add_header, uschar * name, rewrite_rule * rewrite_rules)'/>
+<use f='exim/src/rewrite.c' l='410' u='c' c='rewrite_address'/>
+<use f='exim/src/rewrite.c' l='564' u='c' c='rewrite_one_header'/>
+<use f='exim/src/rewrite.c' l='788' u='c' c='rewrite_test'/>
+<use f='exim/src/rewrite.c' l='822' u='c' c='rewrite_test'/>
+<doc f='exim/src/rewrite.c' l='76'>/* The yield is the input address if there is no rewriting to be done. Assume
+the input is a valid address, except in the case of SMTP-time rewriting, which
+is handled specially. When this function is called while processing filter and
+forward files, the uid may be that of the user. Ensure it is reset while
+expanding a replacement, in case that involves file lookups.
+
+Arguments:
+  s              address to rewrite
+  flag           indicates where this address comes from; it must match the
+                   flags in the rewriting rule
+  whole          if not NULL, set TRUE if any rewriting rule contained the
+                   &quot;whole&quot; bit and it is a header that is being rewritten
+  add_header     if TRUE and rewriting occurs, add an &quot;X-rewrote-xxx&quot; header
+                   if headers are in existence; this should be TRUE only when
+                   a message is being received, not during delivery
+  name           name of header, for use when adding X-rewrote-xxxx
+  rewrite_rules  chain of rewriting rules
+
+Returns:         new address if rewritten; the input address if no change;
+                 for a header rewrite, if the &quot;whole&quot; bit is set, the entire
+                 rewritten address is returned, not just the active bit.
+*/</doc>

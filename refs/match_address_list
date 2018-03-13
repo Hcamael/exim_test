@@ -1,1 +1,38 @@
 <dec f='exim/src/functions.h' l='272' type='int match_address_list(const uschar * , BOOL , BOOL , const uschar ** , unsigned int * , int , int , const uschar ** )'/>
+<use f='exim/src/moan.c' l='648' u='c' c='moan_check_errorcopy'/>
+<use f='exim/src/acl.c' l='3612' u='c' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3637' u='c' c='acl_check_condition'/>
+<def f='exim/src/match.c' l='1276' ll='1321' type='int match_address_list(const uschar * address, BOOL caseless, BOOL expand, const uschar ** listptr, unsigned int * cache_bits, int expand_setup, int sep, const uschar ** valueptr)'/>
+<use f='exim/src/match.c' l='1341' u='c' c='match_address_list_basic'/>
+<doc f='exim/src/match.c' l='1246'>/* This function is given an address and a list of things to match it against.
+The list may contain individual addresses, regular expressions, lookup
+specifications, and indirection via bare files. Negation is supported. The
+address to check can consist of just a domain, which will then match only
+domain items or items specified as *@domain.
+
+Domains are always lower cased before the match. Local parts are also lower
+cased unless &quot;caseless&quot; is false. The work of actually scanning the list is
+done by match_check_list(), with an appropriate block of arguments and a
+callback to check_address(). During caseless matching, it will recognize
++caseful and revert to caseful matching.
+
+Arguments:
+  address         address to test
+  caseless        TRUE to start in caseless state
+  expand          TRUE to allow list expansion
+  listptr         list to check against
+  cache_bits      points to cache bits for named address lists, or NULL
+  expand_setup    controls setting up of $n variables - passed through
+                  to check_address (q.v.)
+  sep             separator character for the list;
+                  may be 0 to get separator from the list;
+                  may be UCHAR_MAX+1 for one-item list
+  valueptr        where to return a lookup value, or NULL
+
+Returns:          OK    for a positive match, or end list after a negation;
+                  FAIL  for a negative match, or end list after non-negation;
+                  DEFER if a lookup deferred
+*/</doc>
+<use f='exim/src/rewrite.c' l='166' u='c' c='rewrite_one'/>
+<use f='exim/src/expand.c' l='2609' u='c' c='eval_condition'/>
+<use f='exim/src/lss.c' l='74' u='c' c='lss_match_address'/>

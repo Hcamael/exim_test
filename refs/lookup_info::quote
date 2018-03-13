@@ -1,3 +1,5 @@
 <dec f='exim/src/lookupapi.h' l='41' type='uschar *(*)(uschar *, uschar *)'/>
 <offset>448</offset>
 <doc f='exim/src/lookupapi.h' l='41'>/* quoting function */</doc>
+<use f='exim/src/expand.c' l='6909' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6910' u='r' c='expand_string_internal'/>

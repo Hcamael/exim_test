@@ -1,2 +1,21 @@
 <dec f='exim/src/local_scan.h' l='160' type='int'/>
 <doc f='exim/src/local_scan.h' l='160'>/* Port number of sender */</doc>
+<use f='exim/src/verify.c' l='2691' u='r' c='verify_get_ident'/>
+<use f='exim/src/verify.c' l='2758' u='r' c='verify_get_ident'/>
+<def f='exim/src/globals.c' l='1282' type='int'/>
+<use f='exim/src/exim.c' l='4218' u='w' c='main'/>
+<use f='exim/src/exim.c' l='4229' u='w' c='main'/>
+<use f='exim/src/exim.c' l='4276' u='a' c='main'/>
+<use f='exim/src/exim.c' l='5073' u='r' c='main'/>
+<use f='exim/src/spool_in.c' l='281' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='561' u='w' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='671' u='a'/>
+<use f='exim/src/expand.c' l='671' u='a'/>
+<use f='exim/src/expand.c' l='671' u='a'/>
+<use f='exim/src/expand.c' l='671' u='a'/>
+<use f='exim/src/daemon.c' l='154' u='a' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='156' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='205' u='r' c='handle_smtp_call'/>
+<use f='exim/src/host.c' l='546' u='r' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='547' u='r' c='host_build_sender_fullhost'/>
+<use f='exim/src/spool_out.c' l='169' u='r' c='spool_write_header'/>

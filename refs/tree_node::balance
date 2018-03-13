@@ -1,3 +1,22 @@
 <dec f='exim/src/structs.h' l='693' type='uschar'/>
 <offset>192</offset>
 <doc f='exim/src/structs.h' l='693'>/* balancing factor */</doc>
+<use f='exim/src/tree.c' l='185' u='w' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='219' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='240' u='w' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='245' u='w' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='253' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='254' u='w' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='255' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='256' u='w' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='261' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='274' u='w' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='275' u='w' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='304' u='w' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='304' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='305' u='w' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='305' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='306' u='w' c='tree_insertnode'/>
+<use f='exim/src/debug.c' l='45' u='r' c='tree_printsub'/>
+<use f='exim/src/macro_predef.c' l='312' u='r' c='macro_dump'/>
+<use f='exim/src/spool_in.c' l='156' u='w' c='count_below'/>

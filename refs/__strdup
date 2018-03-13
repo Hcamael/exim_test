@@ -1,1 +1,4 @@
 <dec f='include/x86_64-linux-gnu/bits/string2.h' l='1278' type='char * __strdup(const char * __string)'/>
+<use f='exim/src/auths/auth-spa.c' l='1380' macro='1' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1494' macro='1' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1505' macro='1' u='c'/>

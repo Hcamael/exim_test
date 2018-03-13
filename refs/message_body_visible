@@ -1,2 +1,19 @@
 <dec f='exim/src/globals.h' l='580' type='int'/>
 <doc f='exim/src/globals.h' l='580'>/* Amount visible in message_body */</doc>
+<def f='exim/src/globals.c' l='967' type='int'/>
+<use f='exim/src/filtertest.c' l='41' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='42' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='56' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='58' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='85' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='87' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='93' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='95' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='109' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='112' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='119' u='r' c='read_message_body'/>
+<use f='exim/src/expand.c' l='1836' u='r' c='find_variable'/>
+<use f='exim/src/readconf.c' l='207' u='a'/>
+<use f='exim/src/readconf.c' l='207' u='a'/>
+<use f='exim/src/readconf.c' l='207' u='a'/>
+<use f='exim/src/readconf.c' l='207' u='a'/>

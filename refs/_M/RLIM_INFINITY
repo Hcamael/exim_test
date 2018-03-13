@@ -1,1 +1,4 @@
 <dec f='include/x86_64-linux-gnu/bits/resource.h' l='117'/>
+<use f='exim/src/exim.c' l='3619' u='a'/>
+<use f='exim/src/exim.c' l='3620' u='c'/>
+<use f='exim/src/exim.c' l='3622' u='c'/>

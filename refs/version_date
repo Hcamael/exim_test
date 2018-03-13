@@ -1,2 +1,15 @@
 <dec f='exim/src/globals.h' l='979' type='uschar *'/>
 <doc f='exim/src/globals.h' l='979'>/* Date of compilation */</doc>
+<def f='exim/src/globals.c' l='1554' type='uschar *'/>
+<use f='exim/src/version.c' l='58' u='w' c='version_init'/>
+<use f='exim/src/version.c' l='59' u='r' c='version_init'/>
+<use f='exim/src/version.c' l='60' u='r' c='version_init'/>
+<use f='exim/src/version.c' l='61' u='r' c='version_init'/>
+<use f='exim/src/version.c' l='62' u='r' c='version_init'/>
+<use f='exim/src/version.c' l='63' u='r' c='version_init'/>
+<use f='exim/src/version.c' l='64' u='r' c='version_init'/>
+<use f='exim/src/exim.c' l='2232' u='r' c='main'/>
+<use f='exim/src/expand.c' l='482' u='a'/>
+<use f='exim/src/expand.c' l='482' u='a'/>
+<use f='exim/src/expand.c' l='482' u='a'/>
+<use f='exim/src/expand.c' l='482' u='a'/>

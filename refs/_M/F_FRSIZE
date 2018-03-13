@@ -1,1 +1,2 @@
 <dec f='exim/src/exim.h' l='216'/>
+<use f='exim/src/receive.c' l='200' u='c'/>

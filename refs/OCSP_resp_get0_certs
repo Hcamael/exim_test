@@ -1,0 +1,1 @@
+<dec f='include/openssl/ocsp.h' l='217' type='const struct stack_st_X509 * OCSP_resp_get0_certs(const OCSP_BASICRESP * bs)'/>

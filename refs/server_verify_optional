@@ -1,0 +1,4 @@
+<def f='exim/src/tls-openssl.c' l='146' type='BOOL'/>
+<use f='exim/src/tls-openssl.c' l='511' u='a' c='verify_callback_server'/>
+<use f='exim/src/tls-openssl.c' l='2009' u='w' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2016' u='w' c='tls_server_start'/>

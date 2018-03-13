@@ -1,0 +1,4 @@
+<dec f='exim/src/routers/redirect.h' l='15' type='transport_instance *'/>
+<offset>128</offset>
+<use f='exim/src/routers/redirect.c' l='435' u='a' c='add_generated'/>
+<use f='exim/src/routers/redirect.c' l='437' u='r' c='add_generated'/>

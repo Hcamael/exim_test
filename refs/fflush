@@ -3,3 +3,32 @@
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */</doc>
+<use f='exim/src/deliver.c' l='400' u='c' c='deliver_msglog'/>
+<use f='exim/src/deliver.c' l='7348' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7357' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7361' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7807' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7821' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8277' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8286' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8290' u='c' c='deliver_message'/>
+<use f='exim/src/verify.c' l='603' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='2047' u='c' c='tls_server_start'/>
+<use f='exim/src/debug.c' l='264' u='c' c='debug_vprintf'/>
+<use f='exim/src/exim.c' l='1202' u='c' c='get_stdinput'/>
+<use f='exim/src/exim.c' l='5293' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='439' u='c' c='smtp_refill'/>
+<use f='exim/src/smtp_in.c' l='899' u='c' c='smtp_fflush'/>
+<use f='exim/src/smtp_in.c' l='1660' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='3409' macro='1' u='c'/>
+<use f='exim/src/acl.c' l='3398' macro='1' u='c'/>
+<use f='exim/src/daemon.c' l='397' macro='1' u='c'/>
+<use f='exim/src/daemon.c' l='483' macro='1' u='c'/>
+<use f='exim/src/daemon.c' l='511' macro='1' u='c'/>
+<use f='exim/src/daemon.c' l='524' macro='1' u='c'/>
+<use f='exim/src/daemon.c' l='645' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='3173' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3890' u='c' c='receive_msg'/>
+<use f='exim/src/sieve.c' l='3125' u='c' c='parse_commands'/>
+<use f='exim/src/spool_out.c' l='308' u='c' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='330' u='c' c='spool_write_header'/>

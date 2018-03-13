@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='325' type='BOOL'/>
 <offset>2784</offset>
 <doc f='exim/src/structs.h' l='325'>/* If TRUE, this router is a DSN endpoint */</doc>
+<use f='exim/src/globals.c' l='1232' u='w'/>

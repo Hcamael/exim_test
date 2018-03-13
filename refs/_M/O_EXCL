@@ -1,1 +1,9 @@
 <dec f='include/x86_64-linux-gnu/bits/fcntl-linux.h' l='50'/>
+<use f='exim/src/deliver.c' l='7013' u='c'/>
+<use f='exim/src/exim_dbmbuild.c' l='217' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='562' u='c'/>
+<use f='exim/src/transports/queuefile.c' l='139' u='c'/>
+<use f='exim/src/receive.c' l='3024' u='c'/>
+<use f='exim/src/receive.c' l='3031' u='c'/>
+<use f='exim/src/spool_out.c' l='74' u='c'/>
+<use f='exim/src/spool_out.c' l='87' u='c'/>

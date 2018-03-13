@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pipe.h source code [exim/src/transports/pipe.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/transports/pipe.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>transports</a>/<a href='pipe.h.html'>pipe.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2014 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Private structure for the private options. */</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><b>typedef</b> <b>struct</b> {</td></tr>
+<tr><th id="11">11</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::cmd" title='(anonymous struct)::cmd' data-ref="(anonymous)::cmd">cmd</dfn>;</td></tr>
+<tr><th id="12">12</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::allow_commands" title='(anonymous struct)::allow_commands' data-ref="(anonymous)::allow_commands">allow_commands</dfn>;</td></tr>
+<tr><th id="13">13</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::environment" title='(anonymous struct)::environment' data-ref="(anonymous)::environment">environment</dfn>;</td></tr>
+<tr><th id="14">14</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::path" title='(anonymous struct)::path' data-ref="(anonymous)::path">path</dfn>;</td></tr>
+<tr><th id="15">15</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::message_prefix" title='(anonymous struct)::message_prefix' data-ref="(anonymous)::message_prefix">message_prefix</dfn>;</td></tr>
+<tr><th id="16">16</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::message_suffix" title='(anonymous struct)::message_suffix' data-ref="(anonymous)::message_suffix">message_suffix</dfn>;</td></tr>
+<tr><th id="17">17</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::temp_errors" title='(anonymous struct)::temp_errors' data-ref="(anonymous)::temp_errors">temp_errors</dfn>;</td></tr>
+<tr><th id="18">18</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::check_string" title='(anonymous struct)::check_string' data-ref="(anonymous)::check_string">check_string</dfn>;</td></tr>
+<tr><th id="19">19</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::escape_string" title='(anonymous struct)::escape_string' data-ref="(anonymous)::escape_string">escape_string</dfn>;</td></tr>
+<tr><th id="20">20</th><td>  <em>int</em>   <dfn class="decl field" id="(anonymous)::umask" title='(anonymous struct)::umask' data-ref="(anonymous)::umask">umask</dfn>;</td></tr>
+<tr><th id="21">21</th><td>  <em>int</em>   <dfn class="decl field" id="(anonymous)::max_output" title='(anonymous struct)::max_output' data-ref="(anonymous)::max_output">max_output</dfn>;</td></tr>
+<tr><th id="22">22</th><td>  <em>int</em>   <dfn class="decl field" id="(anonymous)::timeout" title='(anonymous struct)::timeout' data-ref="(anonymous)::timeout">timeout</dfn>;</td></tr>
+<tr><th id="23">23</th><td>  <em>int</em>   <dfn class="decl field" id="(anonymous)::options" title='(anonymous struct)::options' data-ref="(anonymous)::options">options</dfn>;</td></tr>
+<tr><th id="24">24</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>  <dfn class="decl field" id="(anonymous)::force_command" title='(anonymous struct)::force_command' data-ref="(anonymous)::force_command">force_command</dfn>;</td></tr>
+<tr><th id="25">25</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>  <dfn class="decl field" id="(anonymous)::freeze_exec_fail" title='(anonymous struct)::freeze_exec_fail' data-ref="(anonymous)::freeze_exec_fail">freeze_exec_fail</dfn>;</td></tr>
+<tr><th id="26">26</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>  <dfn class="decl field" id="(anonymous)::freeze_signal" title='(anonymous struct)::freeze_signal' data-ref="(anonymous)::freeze_signal">freeze_signal</dfn>;</td></tr>
+<tr><th id="27">27</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>  <dfn class="decl field" id="(anonymous)::ignore_status" title='(anonymous struct)::ignore_status' data-ref="(anonymous)::ignore_status">ignore_status</dfn>;</td></tr>
+<tr><th id="28">28</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>  <dfn class="decl field" id="(anonymous)::permit_coredump" title='(anonymous struct)::permit_coredump' data-ref="(anonymous)::permit_coredump">permit_coredump</dfn>;</td></tr>
+<tr><th id="29">29</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>  <dfn class="decl field" id="(anonymous)::restrict_to_path" title='(anonymous struct)::restrict_to_path' data-ref="(anonymous)::restrict_to_path">restrict_to_path</dfn>;</td></tr>
+<tr><th id="30">30</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>  <dfn class="decl field" id="(anonymous)::timeout_defer" title='(anonymous struct)::timeout_defer' data-ref="(anonymous)::timeout_defer">timeout_defer</dfn>;</td></tr>
+<tr><th id="31">31</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>  <dfn class="decl field" id="(anonymous)::use_shell" title='(anonymous struct)::use_shell' data-ref="(anonymous)::use_shell">use_shell</dfn>;</td></tr>
+<tr><th id="32">32</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>  <dfn class="decl field" id="(anonymous)::use_bsmtp" title='(anonymous struct)::use_bsmtp' data-ref="(anonymous)::use_bsmtp">use_bsmtp</dfn>;</td></tr>
+<tr><th id="33">33</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>  <dfn class="decl field" id="(anonymous)::use_classresources" title='(anonymous struct)::use_classresources' data-ref="(anonymous)::use_classresources">use_classresources</dfn>;</td></tr>
+<tr><th id="34">34</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>  <dfn class="decl field" id="(anonymous)::use_crlf" title='(anonymous struct)::use_crlf' data-ref="(anonymous)::use_crlf">use_crlf</dfn>;</td></tr>
+<tr><th id="35">35</th><td>} <dfn class="typedef" id="pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</dfn>;</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td><i>/* Data for reading the private options. */</i></td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><b>extern</b> <a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a> <dfn class="decl" id="pipe_transport_options" title='pipe_transport_options' data-ref="pipe_transport_options">pipe_transport_options</dfn>[];</td></tr>
+<tr><th id="40">40</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="pipe_transport_options_count" title='pipe_transport_options_count' data-ref="pipe_transport_options_count">pipe_transport_options_count</dfn>;</td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><i>/* Block containing default values. */</i></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><b>extern</b> <a class="typedef" href="#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a> <dfn class="decl" id="pipe_transport_option_defaults" title='pipe_transport_option_defaults' data-ref="pipe_transport_option_defaults">pipe_transport_option_defaults</dfn>;</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><i>/* The main and init entry points for the transport */</i></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><b>extern</b> <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="decl fn" id="pipe_transport_entry" title='pipe_transport_entry' data-ref="pipe_transport_entry">pipe_transport_entry</dfn>(<a class="typedef" href="../structs.h.html#transport_instance" title='transport_instance' data-type='struct transport_instance' data-ref="transport_instance">transport_instance</a> *, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *);</td></tr>
+<tr><th id="49">49</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="pipe_transport_init" title='pipe_transport_init' data-ref="pipe_transport_init">pipe_transport_init</dfn>(<a class="typedef" href="../structs.h.html#transport_instance" title='transport_instance' data-type='struct transport_instance' data-ref="transport_instance">transport_instance</a> *);</td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td><i>/* End of transports/pipe.h */</i></td></tr>
+<tr><th id="52">52</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../drtables.c.html'>exim/src/drtables.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

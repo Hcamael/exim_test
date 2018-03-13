@@ -1,1 +1,2 @@
 <dec f='include/openssl/ssl.h' l='1609' type='const SSL_METHOD * TLS_client_method()'/>
+<use f='exim/src/tls-openssl.c' l='1548' macro='1' u='c'/>

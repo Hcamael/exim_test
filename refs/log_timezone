@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='560' type='BOOL'/>
 <doc f='exim/src/globals.h' l='560'>/* TRUE to include the timezone in log lines */</doc>
+<use f='exim/src/tod.c' l='83' u='r' c='tod_stamp'/>
+<def f='exim/src/globals.c' l='950' type='BOOL'/>
+<use f='exim/src/log.c' l='150' u='r' c='write_syslog'/>
+<use f='exim/src/readconf.c' l='203' u='a'/>
+<use f='exim/src/readconf.c' l='203' u='a'/>
+<use f='exim/src/readconf.c' l='203' u='a'/>
+<use f='exim/src/readconf.c' l='203' u='a'/>

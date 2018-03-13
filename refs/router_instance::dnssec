@@ -1,2 +1,6 @@
 <dec f='exim/src/structs.h' l='336' type='dnssec_domains'/>
 <offset>3200</offset>
+<use f='exim/src/globals.c' l='1243' u='w'/>
+<use f='exim/src/routers/dnslookup.c' l='303' u='a' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='111' u='a' c='rf_lookup_hostlist'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='142' u='a' c='rf_lookup_hostlist'/>

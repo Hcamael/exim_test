@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='1004' type='3'/>
+<use f='exim/src/filtertest.c' l='203' u='r' c='filter_runtest'/>
+<use f='exim/src/filtertest.c' l='272' u='r' c='filter_runtest'/>
+<use f='exim/src/rda.c' l='64' u='r' c='rda_is_filter'/>

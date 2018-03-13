@@ -1,1 +1,12 @@
 <dec f='exim/src/macros.h' l='206'/>
+<use f='exim/src/header.c' l='414' u='c'/>
+<use f='exim/src/header.c' l='427' u='c'/>
+<use f='exim/src/filter.c' l='1610' u='c'/>
+<use f='exim/src/exim.c' l='143' u='c'/>
+<use f='exim/src/smtp_in.c' l='3110' u='c'/>
+<use f='exim/src/queue.c' l='564' u='c'/>
+<use f='exim/src/queue.c' l='585' u='c'/>
+<use f='exim/src/routers/redirect.c' l='771' u='c'/>
+<use f='exim/src/match.c' l='134' u='c'/>
+<use f='exim/src/expand.c' l='5326' u='c'/>
+<use f='exim/src/dns.c' l='736' u='c'/>

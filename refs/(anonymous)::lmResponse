@@ -1,0 +1,16 @@
+<dec f='exim/src/auths/auth-spa.h' l='67' type='SPAStrHeader'/>
+<offset>96</offset>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1516' u='m' c='spa_build_auth_response'/>

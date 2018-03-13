@@ -1,1 +1,13 @@
 <dec f='exim/src/functions.h' l='243' type='void ip_keepalive(int , const uschar * , BOOL )'/>
+<use f='exim/src/smtp_out.c' l='310' u='c' c='smtp_sock_connect'/>
+<use f='exim/src/smtp_in.c' l='2654' u='c' c='smtp_start_session'/>
+<def f='exim/src/ip.c' l='510' ll='518' type='void ip_keepalive(int sock, const uschar * address, BOOL torf)'/>
+<doc f='exim/src/ip.c' l='500'>/* Can be called for both incoming and outgoing sockets.
+
+Arguments:
+  sock       the socket
+  address    the remote host address, for failure logging
+  torf       true for outgoing connection, false for incoming
+
+Returns:     nothing
+*/</doc>

@@ -1,2 +1,3 @@
 <dec f='exim/src/dkim.h' l='8' type='void dkim_exim_init()'/>
 <doc f='exim/src/dkim.h' l='6'>/* See the file NOTICE for conditions of use and distribution. */</doc>
+<use f='exim/src/exim.c' l='4608' u='c' c='main'/>

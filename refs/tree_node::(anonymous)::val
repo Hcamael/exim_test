@@ -1,3 +1,24 @@
 <dec f='exim/src/structs.h' l='691' type='int'/>
 <offset>0</offset>
 <doc f='exim/src/structs.h' l='691'>/* or integer data */</doc>
+<use f='exim/src/queue.c' l='789' u='r' c='queue_list_extras'/>
+<use f='exim/src/queue.c' l='955' u='w' c='queue_list'/>
+<use f='exim/src/acl.c' l='1384' u='r' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1398' u='w' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1404' u='w' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1440' u='w' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1448' u='w' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1466' u='w' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1474' u='w' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1482' u='w' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1500' u='w' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1506' u='w' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1515' u='w' c='acl_verify_csa'/>
+<use f='exim/src/retry.c' l='165' u='r' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='167' u='r' c='retry_check_address'/>
+<use f='exim/src/dns.c' l='626' u='w' c='dns_return'/>
+<use f='exim/src/dns.c' l='677' u='r' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='678' u='r' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='679' u='r' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='680' u='r' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='681' u='r' c='dns_basic_lookup'/>

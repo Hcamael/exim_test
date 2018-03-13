@@ -1,1 +1,19 @@
 <dec f='exim/src/store.h' l='15' type='1'/>
+<use f='exim/src/verify.c' l='1056' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='3367' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3578' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/tls-openssl.c' l='1208' u='r' c='tls_servername_cb'/>
+<use f='exim/src/exim.c' l='3203' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5250' u='r' c='main'/>
+<use f='exim/src/log.c' l='778' u='r' c='log_write'/>
+<use f='exim/src/acl.c' l='2378' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='3654' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='4044' u='r' c='acl_check_internal'/>
+<use f='exim/src/store.c' l='88' u='r'/>
+<use f='exim/src/store.c' l='236' u='r' c='store_get_perm_3'/>
+<use f='exim/src/match.c' l='670' u='r' c='match_check_list'/>
+<use f='exim/src/daemon.c' l='372' u='r' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='3366' u='r' c='receive_msg'/>
+<use f='exim/src/host.c' l='539' u='r' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='1714' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1915' u='r' c='host_name_lookup'/>

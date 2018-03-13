@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='583' type='BOOL'/>
 <offset>4</offset>
 <doc f='exim/src/structs.h' l='583'>/* expand pipe arguments */</doc>
+<use f='exim/src/filter.c' l='1889' u='w' c='interpret_commands'/>

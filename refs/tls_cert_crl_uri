@@ -1,1 +1,6 @@
 <dec f='exim/src/functions.h' l='29' type='uschar * tls_cert_crl_uri(void * , uschar * mod)'/>
+<def f='exim/src/tlscert-openssl.c' l='433' ll='466' type='uschar * tls_cert_crl_uri(void * cert, uschar * mod)'/>
+<use f='exim/src/expand.c' l='1280' u='a'/>
+<use f='exim/src/expand.c' l='1280' u='a'/>
+<use f='exim/src/expand.c' l='1280' u='a'/>
+<use f='exim/src/expand.c' l='1280' u='a'/>

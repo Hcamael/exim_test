@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='124' type='uschar *'/>
 <doc f='exim/src/globals.h' l='124'>/* So some can be avoided */</doc>
+<use f='exim/src/tls-openssl.c' l='2761' u='r' c='tls_validate_require_cipher'/>
+<use f='exim/src/tls-openssl.c' l='2761' u='r' c='tls_validate_require_cipher'/>
+<use f='exim/src/tls-openssl.c' l='2764' u='r' c='tls_validate_require_cipher'/>
+<def f='exim/src/globals.c' l='162' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='2823' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='5332' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/readconf.c' l='359' u='a'/>
+<use f='exim/src/readconf.c' l='359' u='a'/>
+<use f='exim/src/readconf.c' l='359' u='a'/>
+<use f='exim/src/readconf.c' l='359' u='a'/>

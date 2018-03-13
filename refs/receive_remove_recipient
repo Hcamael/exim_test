@@ -1,1 +1,10 @@
 <dec f='exim/src/local_scan.h' l='186' type='BOOL receive_remove_recipient(uschar * )'/>
+<def f='exim/src/receive.c' l='555' ll='572' type='BOOL receive_remove_recipient(uschar * recipient)'/>
+<use f='exim/src/receive.c' l='3506' u='c' c='receive_msg'/>
+<doc f='exim/src/receive.c' l='547'>/* This function is provided for local_scan() to use.
+
+Argument:
+  recipient   address to remove
+
+Returns:      TRUE if it did remove something; FALSE otherwise
+*/</doc>

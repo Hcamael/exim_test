@@ -1,2 +1,19 @@
 <dec f='exim/src/structs.h' l='344' type='uschar *'/>
 <offset>0</offset>
+<use f='exim/src/drtables.c' l='253' u='w'/>
+<use f='exim/src/drtables.c' l='266' u='w'/>
+<use f='exim/src/drtables.c' l='279' u='w'/>
+<use f='exim/src/drtables.c' l='305' u='w'/>
+<use f='exim/src/drtables.c' l='318' u='w'/>
+<use f='exim/src/drtables.c' l='331' u='w'/>
+<use f='exim/src/drtables.c' l='253' u='w'/>
+<use f='exim/src/drtables.c' l='266' u='w'/>
+<use f='exim/src/drtables.c' l='279' u='w'/>
+<use f='exim/src/drtables.c' l='305' u='w'/>
+<use f='exim/src/drtables.c' l='318' u='w'/>
+<use f='exim/src/drtables.c' l='331' u='w'/>
+<use f='exim/src/drtables.c' l='351' u='r' c='route_show_supported'/>
+<use f='exim/src/drtables.c' l='352' u='r' c='route_show_supported'/>
+<use f='exim/src/route.c' l='158' u='r' c='options_routers'/>
+<use f='exim/src/route.c' l='160' u='r' c='options_routers'/>
+<use f='exim/src/route.c' l='162' u='r' c='options_routers'/>

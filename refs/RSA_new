@@ -1,1 +1,2 @@
 <dec f='include/openssl/rsa.h' l='172' type='RSA * RSA_new()'/>
+<use f='exim/src/tls-openssl.c' l='261' u='c' c='rsa_callback'/>

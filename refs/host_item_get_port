@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='226' type='int host_item_get_port(host_item * )'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='79' u='c' c='rf_lookup_hostlist'/>
+<def f='exim/src/host.c' l='460' ll='492' type='int host_item_get_port(host_item * h)'/>
+<doc f='exim/src/host.c' l='446'>/* This function is called when finding the IP address for a host that is in a
+list of hosts explicitly configured, such as in the manualroute router, or in a
+fallback hosts list. We see if there is a port specification at the end of the
+host name, and if so, remove it. A minimum length of 3 is required for the
+original name; nothing shorter is recognized as having a port.
+
+We test for a name ending with a sequence of digits; if preceded by colon we
+have a port if the character before the colon is ] and the name starts with [
+or if there are no other colons in the name (i.e. it&apos;s not an IPv6 address).
+
+Arguments:  pointer to the host item
+Returns:    a port number or PORT_NONE
+*/</doc>

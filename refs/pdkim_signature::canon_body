@@ -1,0 +1,9 @@
+<dec f='exim/src/pdkim/pdkim.h' l='153' type='int'/>
+<use f='exim/src/pdkim/pdkim.c' l='559' u='w' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1216' u='r' c='pdkim_create_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1860' u='w' c='pdkim_set_optional'/>
+<use f='exim/src/pdkim/pdkim.c' l='1883' u='r' c='pdkim_set_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='1890' u='r' c='pdkim_set_bodyhash'/>
+<offset>192</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='151'>/* (c=/x) Body canonicalization method. Either PDKIM_CANON_SIMPLE
+     or PDKIM_CANON_RELAXED */</doc>

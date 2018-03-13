@@ -1,1 +1,2 @@
 <dec f='include/openssl/asn1.h' l='753' type='int ASN1_TIME_print(BIO * fp, const ASN1_TIME * a)'/>
+<use f='exim/src/tlscert-openssl.c' l='128' u='c' c='asn1_time_copy'/>

@@ -1,0 +1,7 @@
+<dec f='exim/src/expand.c' l='400' type='9'/>
+<use f='exim/src/expand.c' l='577'/>
+<use f='exim/src/expand.c' l='577'/>
+<use f='exim/src/expand.c' l='577'/>
+<use f='exim/src/expand.c' l='577'/>
+<use f='exim/src/expand.c' l='1823' c='find_variable'/>
+<doc f='exim/src/expand.c' l='400'>/* the message&apos;s headers, processed */</doc>

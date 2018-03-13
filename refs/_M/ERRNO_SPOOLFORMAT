@@ -1,1 +1,5 @@
 <dec f='exim/src/macros.h' l='520'/>
+<use f='exim/src/deliver.c' l='5598' u='c'/>
+<use f='exim/src/queue.c' l='924' u='c'/>
+<use f='exim/src/queue.c' l='1102' u='c'/>
+<use f='exim/src/spool_in.c' l='944' u='c'/>

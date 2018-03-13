@@ -1,1 +1,4 @@
 <dec f='include/openssl/x509.h' l='847' type='void * X509_get_ext_d2i(const X509 * x, int nid, int * crit, int * idx)'/>
+<use f='exim/src/tlscert-openssl.c' l='350' u='c' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='411' u='c' c='tls_cert_ocsp_uri'/>
+<use f='exim/src/tlscert-openssl.c' l='437' u='c' c='tls_cert_crl_uri'/>

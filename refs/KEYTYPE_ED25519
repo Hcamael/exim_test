@@ -1,0 +1,3 @@
+<dec f='exim/src/pdkim/signing.h' l='32' type='1'/>
+<use f='exim/src/pdkim/pdkim.c' l='1366' u='r' c='pdkim_key_from_dns'/>
+<use f='exim/src/pdkim/pdkim.c' l='1625' u='r' c='pdkim_feed_finish'/>

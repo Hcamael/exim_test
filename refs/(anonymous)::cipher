@@ -1,3 +1,39 @@
 <dec f='exim/src/globals.h' l='90' type='uschar *'/>
 <offset>128</offset>
 <doc f='exim/src/globals.h' l='90'>/* Cipher used */</doc>
+<use f='exim/src/deliver.c' l='1619' u='w' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1632' u='w' c='post_process_one'/>
+<use f='exim/src/tls-openssl.c' l='2078' u='w' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2424' u='w' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2475' u='w' c='tls_refill'/>
+<use f='exim/src/tls.c' l='216' u='a' c='tls_modify_variables'/>
+<use f='exim/src/globals.c' l='111' u='w'/>
+<use f='exim/src/globals.c' l='128' u='w'/>
+<use f='exim/src/smtp_in.c' l='1724' u='r' c='s_tlslog'/>
+<use f='exim/src/smtp_in.c' l='1725' u='r' c='s_tlslog'/>
+<use f='exim/src/smtp_in.c' l='1726' u='r' c='s_tlslog'/>
+<use f='exim/src/smtp_in.c' l='2382' u='w' c='smtp_start_session'/>
+<use f='exim/src/spool_in.c' l='308' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='632' u='w' c='spool_read_header'/>
+<use f='exim/src/acl.c' l='3475' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3478' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3478' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3478' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3479' u='r' c='acl_check_condition'/>
+<use f='exim/src/expand.c' l='726' u='a'/>
+<use f='exim/src/expand.c' l='726' u='a'/>
+<use f='exim/src/expand.c' l='730' u='a'/>
+<use f='exim/src/expand.c' l='730' u='a'/>
+<use f='exim/src/expand.c' l='740' u='a'/>
+<use f='exim/src/expand.c' l='740' u='a'/>
+<use f='exim/src/expand.c' l='726' u='a'/>
+<use f='exim/src/expand.c' l='726' u='a'/>
+<use f='exim/src/expand.c' l='730' u='a'/>
+<use f='exim/src/expand.c' l='730' u='a'/>
+<use f='exim/src/expand.c' l='740' u='a'/>
+<use f='exim/src/expand.c' l='740' u='a'/>
+<use f='exim/src/receive.c' l='3914' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3915' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3916' u='r' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='239' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='239' u='r' c='spool_write_header'/>

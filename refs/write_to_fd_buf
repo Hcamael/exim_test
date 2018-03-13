@@ -1,1 +1,15 @@
 <dec f='exim/src/functions.h' l='548' type='ssize_t write_to_fd_buf(int , const uschar * , size_t )'/>
+<def f='exim/src/log.c' l='620' ll='646' type='ssize_t write_to_fd_buf(int fd, const uschar * buf, size_t length)'/>
+<use f='exim/src/log.c' l='1017' u='c' c='log_write'/>
+<use f='exim/src/log.c' l='1138' u='c' c='log_write'/>
+<use f='exim/src/log.c' l='1176' u='c' c='log_write'/>
+<doc f='exim/src/log.c' l='610'>/* Basic write to fd for logs, handling EINTR.
+
+Arguments:
+  fd        the fd to write to
+  buf       the string to write
+  length    the string length being written
+
+Returns:
+  length actually written, persisting an errno from write()
+*/</doc>

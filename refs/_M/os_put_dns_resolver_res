@@ -1,1 +1,4 @@
 <dec f='exim/src/exim.h' l='402'/>
+<use f='exim/src/dns.c' l='147' u='c'/>
+<use f='exim/src/dns.c' l='150' u='c'/>
+<use f='exim/src/dns.c' l='212' u='c'/>

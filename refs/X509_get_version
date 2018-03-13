@@ -1,1 +1,2 @@
 <dec f='include/openssl/x509.h' l='615' type='long X509_get_version(const X509 * x)'/>
+<use f='exim/src/tlscert-openssl.c' l='306' u='c' c='tls_cert_version'/>

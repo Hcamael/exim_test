@@ -1,0 +1,1 @@
+<def f='include/openssl/conf.h' l='31' macro='1' type='struct stack_st_CONF_VALUE * sk_CONF_VALUE_deep_copy(const struct stack_st_CONF_VALUE * sk, sk_CONF_VALUE_copyfunc copyfunc, sk_CONF_VALUE_freefunc freefunc)'/>

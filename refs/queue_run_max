@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='699' type='uschar *'/>
 <doc f='exim/src/globals.h' l='699'>/* Max queue runners */</doc>
+<def f='exim/src/globals.c' l='1073' type='uschar *'/>
+<use f='exim/src/daemon.c' l='881' u='r' c='handle_ending_processes'/>
+<use f='exim/src/daemon.c' l='928' u='r' c='daemon_go'/>
+<use f='exim/src/readconf.c' l='255' u='a'/>
+<use f='exim/src/readconf.c' l='255' u='a'/>
+<use f='exim/src/readconf.c' l='255' u='a'/>
+<use f='exim/src/readconf.c' l='255' u='a'/>

@@ -1,0 +1,19 @@
+<def f='exim/src/tls-openssl.c' l='1496' ll='1681' type='int tls_init(SSL_CTX ** ctxp, host_item * host, uschar * dhparam, uschar * certificate, uschar * privatekey, uschar * ocsp_file, address_item * addr, tls_ext_ctx_cb ** cbp, uschar ** errstr)'/>
+<use f='exim/src/tls-openssl.c' l='1969' u='c' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2288' u='c' c='tls_client_start'/>
+<doc f='exim/src/tls-openssl.c' l='1479'>/* Called from both server and client code, to do preliminary initialization
+of the library.  We allocate and return a context structure.
+
+Arguments:
+  ctxp            returned SSL context
+  host            connected host, if client; NULL if server
+  dhparam         DH parameter file
+  certificate     certificate file
+  privatekey      private key
+  ocsp_file       file of stapling info (server); flag for require ocsp (client)
+  addr            address if client; NULL if server (for some randomness)
+  cbp             place to put allocated callback context
+  errstr	  error string pointer
+
+Returns:          OK/DEFER/FAIL
+*/</doc>

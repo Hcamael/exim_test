@@ -3,3 +3,10 @@
    If successful, two file descriptors are stored in PIPEDES;
    bytes written on PIPEDES[1] can be read from PIPEDES[0].
    Returns 0 if successful, -1 if not.  */</doc>
+<use f='exim/src/deliver.c' l='2258' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='4599' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/queue.c' l='620' u='c' c='queue_run'/>
+<use f='exim/src/rda.c' l='610' u='c' c='rda_interpret'/>
+<use f='exim/src/child.c' l='219' u='c' c='child_open_exim2'/>
+<use f='exim/src/child.c' l='325' u='c' c='child_open_uid'/>
+<use f='exim/src/child.c' l='326' u='c' c='child_open_uid'/>

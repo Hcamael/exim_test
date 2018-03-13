@@ -1,1 +1,24 @@
 <dec f='exim/src/functions.h' l='282' type='void md5_end(md5 * , const uschar * , int , uschar * )'/>
+<use f='exim/src/exim_dbutil.c' l='923' u='c' c='main'/>
+<def f='exim/src/auths/md5.c' l='231' ll='295' type='void md5_end(md5 * base, const uschar * text, int length, uschar * digest)'/>
+<doc f='exim/src/auths/md5.c' l='218'>/* The string may be of any length. It is padded out according to the rules
+for computing MD5 digests. The final result is then converted to text form
+and returned.
+
+Arguments:
+  base      pointer to the md5 storage structure
+  text      pointer to the final text vector
+  length    length of the final text vector
+  digest    points to 16 bytes in which to place the result
+
+Returns:    nothing
+*/</doc>
+<use f='exim/src/auths/cram_md5.c' l='124' u='c' c='compute_cram_md5'/>
+<use f='exim/src/auths/cram_md5.c' l='146' u='c' c='compute_cram_md5'/>
+<use f='exim/src/auths/cram_md5.c' l='152' u='c' c='compute_cram_md5'/>
+<use f='exim/src/acl.c' l='2544' u='c' c='acl_ratelimit'/>
+<use f='exim/src/expand.c' l='2692' u='c' c='eval_condition'/>
+<use f='exim/src/expand.c' l='3364' u='c' c='chash_end'/>
+<use f='exim/src/expand.c' l='6415' u='c' c='expand_string_internal'/>
+<use f='exim/src/sieve.c' l='3315' u='c' c='parse_commands'/>
+<use f='exim/src/sieve.c' l='3318' u='c' c='parse_commands'/>

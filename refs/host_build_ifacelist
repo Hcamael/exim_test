@@ -1,1 +1,20 @@
 <dec f='exim/src/functions.h' l='216' type='ip_address_item * host_build_ifacelist(const uschar * , uschar * )'/>
+<use f='exim/src/daemon.c' l='1182' u='c' c='daemon_go'/>
+<def f='exim/src/host.c' l='734' ll='774' type='ip_address_item * host_build_ifacelist(const uschar * list, uschar * name)'/>
+<use f='exim/src/host.c' l='828' u='c' c='host_find_interfaces'/>
+<use f='exim/src/host.c' l='830' u='c' c='host_find_interfaces'/>
+<doc f='exim/src/host.c' l='718'>/* This function interprets the contents of the local_interfaces or
+extra_local_interfaces options, and creates an ip_address_item block for each
+item on the list. There is no special interpretation of any IP addresses; in
+particular, 0.0.0.0 and ::0 are returned without modification. If any address
+includes a port, it is set in the block. Otherwise the port value is set to
+zero.
+
+Arguments:
+  list        the list
+  name        the name of the option being expanded
+
+Returns:      a chain of ip_address_items, each containing to a textual
+              version of an IP address, and a port number (host order) or
+              zero if no port was given with the address
+*/</doc>

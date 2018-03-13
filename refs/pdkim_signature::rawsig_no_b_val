@@ -1,0 +1,8 @@
+<dec f='exim/src/pdkim/pdkim.h' l='258' type='uschar *'/>
+<use f='exim/src/pdkim/pdkim.c' l='452' u='w' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='615' u='r' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='622' u='r' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='622' u='r' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1577' u='r' c='pdkim_feed_finish'/>
+<offset>1472</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='258'>/* Original signature header w/o b= tag value. */</doc>

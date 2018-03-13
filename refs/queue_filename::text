@@ -1,2 +1,150 @@
 <dec f='exim/src/structs.h' l='661' type='uschar [1]'/>
 <offset>72</offset>
+<use f='exim/src/queue.c' l='85' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='85' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='86' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='243' u='r' c='queue_get_spool_list'/>
+<use f='exim/src/queue.c' l='505' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='505' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='507' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='513' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='534' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='551' c='queue_run'/>
+<use f='exim/src/queue.c' l='571' c='queue_run'/>
+<use f='exim/src/queue.c' l='597' c='queue_run'/>
+<use f='exim/src/queue.c' l='647' c='queue_run'/>
+<use f='exim/src/queue.c' l='648' u='w' c='queue_run'/>
+<use f='exim/src/queue.c' l='654' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='665' c='queue_run'/>
+<use f='exim/src/queue.c' l='678' c='queue_run'/>
+<use f='exim/src/queue.c' l='837' u='r' c='queue_list'/>
+<use f='exim/src/queue.c' l='867' u='r' c='queue_list'/>
+<use f='exim/src/queue.c' l='878' u='r' c='queue_list'/>
+<use f='exim/src/queue.c' l='913' u='r' c='queue_list'/>
+<use f='exim/src/queue.c' l='927' u='r' c='queue_list'/>

@@ -2,3 +2,13 @@
 <offset>384</offset>
 <doc f='exim/src/structs.h' l='212'>/****/</doc>
 <doc f='exim/src/structs.h' l='213'>/* Main entry point */</doc>
+<use f='exim/src/deliver.c' l='2393' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='4739' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/drtables.c' l='368' u='w'/>
+<use f='exim/src/drtables.c' l='382' u='w'/>
+<use f='exim/src/drtables.c' l='410' u='w'/>
+<use f='exim/src/drtables.c' l='438' u='w'/>
+<use f='exim/src/drtables.c' l='368' u='w'/>
+<use f='exim/src/drtables.c' l='382' u='w'/>
+<use f='exim/src/drtables.c' l='410' u='w'/>
+<use f='exim/src/drtables.c' l='438' u='w'/>

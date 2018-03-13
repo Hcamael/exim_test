@@ -1,0 +1,7 @@
+<dec f='exim/src/sieve.c' l='92' type='4'/>
+<use f='exim/src/sieve.c' l='1863' u='r' c='parse_addresspart'/>
+<use f='exim/src/sieve.c' l='2056' u='r' c='parse_test'/>
+<use f='exim/src/sieve.c' l='2153' c='parse_test'/>
+<use f='exim/src/sieve.c' l='2396' u='r' c='parse_test'/>
+<use f='exim/src/sieve.c' l='2464' c='parse_test'/>
+<use f='exim/src/sieve.c' l='2479' c='parse_test'/>

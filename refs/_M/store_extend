@@ -1,3 +1,5 @@
 <dec f='exim/src/store.h' l='30'/>
 <doc f='exim/src/store.h' l='27'>/* Macros for calling the memory allocation routines with
 tracing information for debugging. */</doc>
+<use f='exim/src/string.c' l='1110' u='c'/>
+<use f='exim/src/receive.c' l='1816' u='c'/>

@@ -1,0 +1,3 @@
+<def f='exim/src/tls-openssl.c' l='305' ll='339' type='int verify_event(tls_support * tlsp, X509 * cert, int depth, const uschar * dn, BOOL * calledp, const BOOL * optionalp, const uschar * what)'/>
+<use f='exim/src/tls-openssl.c' l='423' u='c' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='487' u='c' c='verify_callback'/>

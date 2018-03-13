@@ -4,3 +4,8 @@ performance on outgoing mail a bit. Note: With older glibc versions
 this setting will conflict with the _FILE_OFFSET_BITS=64 setting
 defined as part of the Linux CFLAGS.  As of 2017 those are declared
 to be too old to build by default. */</doc>
+<use f='exim/src/dkim_transport.c' l='41' u='a'/>
+<use f='exim/src/dkim_transport.c' l='46' u='a'/>
+<use f='exim/src/dkim_transport.c' l='54' u='a'/>
+<use f='exim/src/dkim_transport.c' l='271' u='a'/>
+<use f='exim/src/dkim_transport.c' l='309' u='a'/>

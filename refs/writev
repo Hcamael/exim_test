@@ -7,3 +7,4 @@
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */</doc>
+<use f='exim/src/deliver.c' l='4158' u='c' c='rmt_dlv_checked_write'/>

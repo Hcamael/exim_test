@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='684' type='BOOL'/>
 <doc f='exim/src/globals.h' l='684'>/* TRUE to force during queue run */</doc>
+<def f='exim/src/globals.c' l='1070' type='BOOL'/>
+<use f='exim/src/exim.c' l='3241' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3311' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3356' u='w' c='main'/>
+<use f='exim/src/queue.c' l='376' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='407' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='488' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='671' u='r' c='queue_run'/>
+<use f='exim/src/daemon.c' l='1847' u='r' c='daemon_go'/>

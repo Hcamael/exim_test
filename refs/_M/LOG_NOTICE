@@ -1,1 +1,2 @@
 <dec f='include/x86_64-linux-gnu/sys/syslog.h' l='56'/>
+<use f='exim/src/log.c' l='1092' u='c'/>

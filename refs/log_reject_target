@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='555' type='int'/>
 <doc f='exim/src/globals.h' l='555'>/* Target log for ACL rejections */</doc>
+<def f='exim/src/globals.c' l='945' type='int'/>
+<use f='exim/src/smtp_in.c' l='3302' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3312' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/acl.c' l='3528' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='4307' u='w' c='acl_eval'/>
+<use f='exim/src/acl.c' l='4359' u='w' c='acl_check'/>
+<use f='exim/src/receive.c' l='3598' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3599' u='r' c='receive_msg'/>

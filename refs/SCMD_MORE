@@ -1,2 +1,3 @@
 <dec f='exim/src/macros.h' l='872' type='1'/>
 <doc f='exim/src/macros.h' l='872'>/* write to kernel, but likely more soon */</doc>
+<use f='exim/src/smtp_out.c' l='408' u='r' c='flush_buffer'/>

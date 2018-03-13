@@ -1,0 +1,2 @@
+<dec f='exim/src/pdkim/pdkim.h' l='330' type='const uschar * pdkim_errstr(int )'/>
+<def f='exim/src/pdkim/pdkim.c' l='160' ll='175' type='const uschar * pdkim_errstr(int status)'/>

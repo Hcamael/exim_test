@@ -1,1 +1,6 @@
 <dec f='include/openssl/x509.h' l='457' type='X509 * X509_dup(X509 * x509)'/>
+<use f='exim/src/tls-openssl.c' l='318' u='c' c='verify_event'/>
+<use f='exim/src/tls-openssl.c' l='400' u='c' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='478' u='c' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='2090' u='c' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2429' u='c' c='tls_client_start'/>

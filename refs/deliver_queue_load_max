@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='372' type='int'/>
 <doc f='exim/src/globals.h' l='372'>/* Different value for queue running */</doc>
+<def f='exim/src/globals.c' l='647' type='int'/>
+<use f='exim/src/queue.c' l='488' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='489' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='494' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='501' u='r' c='queue_run'/>
+<use f='exim/src/readconf.c' l='110' u='a'/>
+<use f='exim/src/readconf.c' l='110' u='a'/>
+<use f='exim/src/readconf.c' l='110' u='a'/>
+<use f='exim/src/readconf.c' l='110' u='a'/>

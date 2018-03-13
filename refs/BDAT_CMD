@@ -1,0 +1,17 @@
+<dec f='exim/src/smtp_in.c' l='100' type='14'/>
+<use f='exim/src/smtp_in.c' l='198'/>
+<use f='exim/src/smtp_in.c' l='198'/>
+<use f='exim/src/smtp_in.c' l='198'/>
+<use f='exim/src/smtp_in.c' l='198'/>
+<use f='exim/src/smtp_in.c' l='629' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='5066' c='smtp_setup_msg'/>
+<doc f='exim/src/smtp_in.c' l='89'>/* RFC3030 section 2: &quot;After all MAIL and RCPT responses are collected and
+  processed the message is sent using a series of BDAT commands&quot;
+  implies that BDAT should be synchronized.  However, we see Google, at least,
+  sending MAIL,RCPT,BDAT-LAST in a single packet, clearly not waiting for
+  processing of the RCPT response(s).  We shall do the same, and not require
+  synch for BDAT.  Worse, as the chunk may (very likely will) follow the
+  command-header in the same packet we cannot do the usual &quot;is there any
+  follow-on data after the command line&quot; even for non-pipeline mode.
+  So we&apos;ll need an explicit check after reading the expected chunk amount
+  when non-pipe, before sending the ACK. */</doc>

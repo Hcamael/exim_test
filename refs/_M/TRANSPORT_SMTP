@@ -1,1 +1,4 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='155'/>
+<use f='exim/src/drtables.c' l='243' u='a'/>
+<use f='exim/src/drtables.c' l='430' u='a'/>
+<use f='exim/src/drtables.c' l='475' u='a'/>

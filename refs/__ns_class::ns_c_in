@@ -1,2 +1,4 @@
 <dec f='include/arpa/nameser.h' l='323' type='1'/>
 <doc f='include/arpa/nameser.h' l='323'>/*%&lt; Internet. */</doc>
+<use f='exim/src/dns.c' l='119' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='766' macro='1' u='r'/>

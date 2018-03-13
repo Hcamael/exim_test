@@ -1,1 +1,12 @@
 <dec f='exim/src/functions.h' l='71' type='BOOL tls_openssl_options_parse(uschar * , long * )'/>
+<use f='exim/src/tls-openssl.c' l='1591' u='c' c='tls_init'/>
+<def f='exim/src/tls-openssl.c' l='3088' ll='3145' type='BOOL tls_openssl_options_parse(uschar * option_spec, long * results)'/>
+<doc f='exim/src/tls-openssl.c' l='3078'>/* OpenSSL has a number of compatibility options which an administrator might
+reasonably wish to set.  Interpret a list similarly to decode_bits(), so that
+we look like log_selector.
+
+Arguments:
+  option_spec  the administrator-supplied string of options
+  results      ptr to long storage for the options bitmap
+Returns        success or failure
+*/</doc>

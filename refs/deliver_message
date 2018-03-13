@@ -1,1 +1,41 @@
 <dec f='exim/src/functions.h' l='150' type='int deliver_message(uschar * , BOOL , BOOL )'/>
+<def f='exim/src/deliver.c' l='5505' ll='8427' type='int deliver_message(uschar * id, BOOL forced, BOOL give_up)'/>
+<doc f='exim/src/deliver.c' l='5470'>/* This is the function which is called when a message is to be delivered. It
+is passed the id of the message. It is possible that the message no longer
+exists, if some other process has delivered it, and it is also possible that
+the message is being worked on by another process, in which case the data file
+will be locked.
+
+If no delivery is attempted for any of the above reasons, the function returns
+DELIVER_NOT_ATTEMPTED.
+
+If the give_up flag is set true, do not attempt any deliveries, but instead
+fail all outstanding addresses and return the message to the sender (or
+whoever).
+
+A delivery operation has a process all to itself; we never deliver more than
+one message in the same process. Therefore we needn&apos;t worry too much about
+store leakage.
+
+Liable to be called as root.
+
+Arguments:
+  id          the id of the message to be delivered
+  forced      TRUE if delivery was forced by an administrator; this overrides
+              retry delays and causes a delivery to be tried regardless
+  give_up     TRUE if an administrator has requested that delivery attempts
+              be abandoned
+
+Returns:      When the global variable mua_wrapper is FALSE:
+                DELIVER_ATTEMPTED_NORMAL   if a delivery attempt was made
+                DELIVER_NOT_ATTEMPTED      otherwise (see comment above)
+              When the global variable mua_wrapper is TRUE:
+                DELIVER_MUA_SUCCEEDED      if delivery succeeded
+                DELIVER_MUA_FAILED         if delivery failed
+                DELIVER_NOT_ATTEMPTED      if not attempted (should not occur)
+*/</doc>
+<use f='exim/src/exim.c' l='4640' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4643' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5736' u='c' c='main'/>
+<use f='exim/src/queue.c' l='654' u='c' c='queue_run'/>
+<use f='exim/src/daemon.c' l='673' u='c' c='handle_smtp_call'/>

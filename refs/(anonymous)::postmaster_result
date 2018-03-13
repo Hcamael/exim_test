@@ -3,3 +3,15 @@
 <offset>96</offset>
 <doc f='exim/src/dbstuff.h' l='716'>/* Postmaster is accepted */</doc>
 <doc f='exim/src/dbstuff.h' l='734'>/* Postmaster result */</doc>
+<use f='exim/src/verify.c' l='81' u='r' c='get_callout_cache_record'/>
+<use f='exim/src/verify.c' l='108' u='w' c='get_callout_cache_record'/>
+<use f='exim/src/verify.c' l='225' u='r' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='238' u='r' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='255' u='w' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='328' u='r' c='cache_callout_write'/>
+<use f='exim/src/verify.c' l='520' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='947' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='952' u='w' c='do_callout'/>
+<use f='exim/src/exim_dbutil.c' l='870' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1043' u='r' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1044' u='r' c='main'/>

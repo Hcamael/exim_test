@@ -1,3 +1,15 @@
 <dec f='exim/src/structs.h' l='30' type='int'/>
 <offset>0</offset>
 <doc f='exim/src/structs.h' l='30'>/* Current capacity of string memory */</doc>
+<use f='exim/src/pdkim/pdkim.c' l='239' u='w' c='pdkim_strtrim'/>
+<use f='exim/src/string.c' l='1060' u='w' c='string_get'/>
+<use f='exim/src/string.c' l='1089' u='r' c='gstring_grow'/>
+<use f='exim/src/string.c' l='1098' u='w' c='gstring_grow'/>
+<use f='exim/src/string.c' l='1110' u='r' c='gstring_grow'/>
+<use f='exim/src/string.c' l='1111' u='r' c='gstring_grow'/>
+<use f='exim/src/string.c' l='1150' u='r' c='string_catn'/>
+<use f='exim/src/expand.c' l='4000' u='w' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='7463' u='w' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='7505' u='w' c='expand_string_internal'/>
+<use f='exim/src/rfc2047.c' l='212' u='w' c='rfc2047_decode2'/>
+<use f='exim/src/rfc2047.c' l='337' u='r' c='rfc2047_decode2'/>

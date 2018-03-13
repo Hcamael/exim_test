@@ -1,1 +1,18 @@
 <dec f='exim/src/functions.h' l='404' type='void smtp_closedown(uschar * )'/>
+<use f='exim/src/smtp_in.c' l='847' u='c' c='smtp_vprintf'/>
+<def f='exim/src/smtp_in.c' l='1646' ll='1671' type='void smtp_closedown(uschar * message)'/>
+<use f='exim/src/smtp_in.c' l='2448' u='c' c='smtp_start_session'/>
+<doc f='exim/src/smtp_in.c' l='1633'>/* This function is called from log.c when Exim is dying because of a serious
+disaster, and also from some other places. If an incoming non-batched SMTP
+channel is open, it swallows the rest of the incoming message if in the DATA
+phase, sends the reply string, and gives an error to all subsequent commands
+except QUIT. The existence of an SMTP call is detected by the non-NULLness of
+smtp_in.
+
+Arguments:
+  message   SMTP reply string to send, excluding the code
+
+Returns:    nothing
+*/</doc>
+<use f='exim/src/log.c' l='234' u='c' c='die'/>
+<use f='exim/src/receive.c' l='192' u='c' c='receive_statvfs'/>

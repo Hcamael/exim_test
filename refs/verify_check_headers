@@ -1,1 +1,12 @@
 <dec f='exim/src/functions.h' l='534' type='int verify_check_headers(uschar ** )'/>
+<def f='exim/src/verify.c' l='2181' ll='2287' type='int verify_check_headers(uschar ** msgptr)'/>
+<doc f='exim/src/verify.c' l='2171'>/* This function checks those header lines that contain addresses, and verifies
+that all the addresses therein are 5322-syntactially correct.
+
+Arguments:
+  msgptr     where to put an error message
+
+Returns:     OK
+             FAIL
+*/</doc>
+<use f='exim/src/acl.c' l='1704' u='c' c='acl_verify'/>

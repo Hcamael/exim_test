@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='773' macro='1' type='void sk_IPAddressOrRange_sort(struct stack_st_IPAddressOrRange * sk)'/>

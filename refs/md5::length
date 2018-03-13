@@ -1,2 +1,6 @@
 <dec f='exim/src/structs.h' l='794' type='unsigned int'/>
 <offset>0</offset>
+<use f='exim/src/auths/md5.c' l='42' u='w' c='md5_start'/>
+<use f='exim/src/auths/md5.c' l='70' u='w' c='md5_mid'/>
+<use f='exim/src/auths/md5.c' l='258' u='w' c='md5_end'/>
+<use f='exim/src/auths/md5.c' l='271' u='r' c='md5_end'/>

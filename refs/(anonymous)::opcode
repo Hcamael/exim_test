@@ -1,3 +1,4 @@
 <dec f='include/arpa/nameser_compat.h' l='69' type='unsigned int'/>
 <offset>19</offset>
 <doc f='include/arpa/nameser_compat.h' l='69'>/*%&lt; purpose of message */</doc>
+<use f='exim/src/dns.c' l='1093' u='r' c='dns_special_lookup'/>

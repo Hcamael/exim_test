@@ -1,1 +1,32 @@
 <dec f='exim/src/functions.h' l='118' type='int check_host(void * , const uschar * , const uschar ** , uschar ** )'/>
+<def f='exim/src/verify.c' l='2824' ll='3113' type='int check_host(void * arg, const uschar * ss, const uschar ** valueptr, uschar ** error)'/>
+<use f='exim/src/verify.c' l='3180' u='r' c='verify_check_this_host'/>
+<doc f='exim/src/verify.c' l='2795'>/* This function compares a host (name or address) against a single item
+from a host list. The host name gets looked up if it is needed and is not
+already known. The function is called from verify_check_this_host() via
+match_check_list(), which is why most of its arguments are in a single block.
+
+Arguments:
+  arg            the argument block (see below)
+  ss             the host-list item
+  valueptr       where to pass back looked up data, or NULL
+  error          for error message when returning ERROR
+
+The block contains:
+  host_name      (a) the host name, or
+                 (b) NULL, implying use sender_host_name and
+                       sender_host_aliases, looking them up if required, or
+                 (c) the empty string, meaning that only IP address matches
+                       are permitted
+  host_address   the host address
+  host_ipv4      the IPv4 address taken from an IPv6 one
+
+Returns:         OK      matched
+                 FAIL    did not match
+                 DEFER   lookup deferred
+                 ERROR   (a) failed to find the host name or IP address, or
+                         (b) unknown lookup type specified, or
+                         (c) host name encountered when only IP addresses are
+                               being matched
+*/</doc>
+<use f='exim/src/expand.c' l='2644' u='r' c='eval_condition'/>

@@ -1,0 +1,5 @@
+<dec f='exim/src/transports/smtp.h' l='18' type='uschar *'/>
+<use f='exim/src/deliver.c' l='4517' u='r' c='do_remote_deliveries'/>
+<offset>0</offset>
+<dec f='exim/src/routers/iplookup.h' l='16' type='uschar *'/>
+<offset>192</offset>

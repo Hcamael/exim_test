@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='602' type='BOOL'/>
 <offset>23</offset>
 <doc f='exim/src/structs.h' l='602'>/* delivered with verified TLS cert */</doc>
+<use f='exim/src/deliver.c' l='818' u='r' c='d_tlslog'/>
+<use f='exim/src/deliver.c' l='4787' u='w' c='do_remote_deliveries'/>

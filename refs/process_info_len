@@ -1,1 +1,4 @@
 <dec f='exim/src/globals.h' l='660' type='int'/>
+<def f='exim/src/globals.c' l='1037' type='int'/>
+<use f='exim/src/exim.c' l='185' u='w' c='set_process_info'/>
+<use f='exim/src/exim.c' l='234' u='r' c='usr1_handler'/>

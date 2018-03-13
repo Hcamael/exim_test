@@ -1,3 +1,6 @@
 <dec f='include/pwd.h' l='56' type='char *'/>
 <offset>256</offset>
 <doc f='include/pwd.h' l='56'>/* Home directory.  */</doc>
+<use f='exim/src/exim.c' l='4691' u='r' c='main'/>
+<use f='exim/src/routers/rf_queue_add.c' l='60' u='r' c='rf_queue_add'/>
+<use f='exim/src/routers/redirect.c' l='413' u='r' c='add_generated'/>

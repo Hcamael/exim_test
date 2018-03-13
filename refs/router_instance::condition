@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='271' type='uschar *'/>
 <offset>448</offset>
 <doc f='exim/src/structs.h' l='271'>/* General condition */</doc>
+<use f='exim/src/globals.c' l='1178' u='w'/>

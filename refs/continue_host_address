@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='297' type='uschar *'/>
 <doc f='exim/src/globals.h' l='297'>/* IP address for ditto */</doc>
+<use f='exim/src/deliver.c' l='4487' u='w' c='do_remote_deliveries'/>
+<def f='exim/src/globals.c' l='541' type='uschar *'/>
+<use f='exim/src/exim.c' l='2673' u='w' c='main'/>

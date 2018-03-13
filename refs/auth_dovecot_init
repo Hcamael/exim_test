@@ -1,0 +1,4 @@
+<dec f='exim/src/auths/dovecot.h' l='25' type='void auth_dovecot_init(auth_instance * )'/>
+<def f='exim/src/auths/dovecot.c' l='79' type='void auth_dovecot_init(auth_instance * ablock)'/>
+<doc f='exim/src/auths/dovecot.c' l='78'>/* Dummy values */</doc>
+<doc f='exim/src/auths/dovecot.h' l='23'>/* The entry points for the mechanism */</doc>

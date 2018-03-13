@@ -1,1 +1,31 @@
 <dec f='exim/src/functions.h' l='315' type='const uschar * parse_quote_2047(const uschar * , int , uschar * , uschar * , int , BOOL )'/>
+<def f='exim/src/parse.c' l='869' ll='929' type='const uschar * parse_quote_2047(const uschar * string, int len, uschar * charset, uschar * buffer, int buffer_size, BOOL fold)'/>
+<use f='exim/src/parse.c' l='1004' u='c' c='parse_fix_phrase'/>
+<doc f='exim/src/parse.c' l='843'>/* This function is used for quoting text in headers according to RFC 2047.
+If the only characters that strictly need quoting are spaces, we return the
+original string, unmodified. If a quoted string is too long for the buffer, it
+is truncated. (This shouldn&apos;t happen: this is normally handling short strings.)
+
+Hmmph. As always, things get perverted for other uses. This function was
+originally for the &quot;phrase&quot; part of addresses. Now it is being used for much
+longer texts in ACLs and via the ${rfc2047: expansion item. This means we have
+to check for overlong &quot;encoded-word&quot;s and split them. November 2004.
+
+Arguments:
+  string       the string to quote - already checked to contain non-printing
+                 chars
+  len          the length of the string
+  charset      the name of the character set; NULL =&gt; iso-8859-1
+  buffer       the buffer to put the answer in
+  buffer_size  the size of the buffer
+  fold         if TRUE, a newline is inserted before the separating space when
+                 more than one encoded-word is generated
+
+Returns:       pointer to the original string, if no quoting needed, or
+               pointer to buffer containing the quoted string, or
+               a pointer to &quot;String too long&quot; if the buffer can&apos;t even hold
+               the introduction
+*/</doc>
+<use f='exim/src/expand.c' l='6946' u='c' c='expand_string_internal'/>
+<use f='exim/src/sieve.c' l='3122' u='c' c='parse_commands'/>
+<use f='exim/src/sieve.c' l='3372' u='c' c='parse_commands'/>

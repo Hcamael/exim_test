@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='187' type='BOOL'/>
 <offset>2176</offset>
 <doc f='exim/src/structs.h' l='187'>/* TRUE to retain affixes in RCPT commands */</doc>
+<use f='exim/src/verify.c' l='414' u='r' c='cutthrough_multi'/>
+<use f='exim/src/globals.c' l='1488' u='w'/>

@@ -1,0 +1,4 @@
+<def f='include/openssl/x509v3.h' l='154' ll='157'/>
+<size>16</size>
+<mbr r='ACCESS_DESCRIPTION_st::method' o='0' t='ASN1_OBJECT *'/>
+<mbr r='ACCESS_DESCRIPTION_st::location' o='64' t='GENERAL_NAME *'/>

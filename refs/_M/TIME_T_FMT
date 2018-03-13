@@ -1,1 +1,15 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='15'/>
+<use f='exim/src/deliver.c' l='7280' u='c'/>
+<use f='exim/src/deliver.c' l='7531' u='c'/>
+<use f='exim/src/deliver.c' l='8151' u='c'/>
+<use f='exim/src/tod.c' l='65' u='c'/>
+<use f='exim/src/tod.c' l='70' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='155' u='c'/>
+<use f='exim/src/exim.c' l='417' u='c'/>
+<use f='exim/src/exim.c' l='417' u='c'/>
+<use f='exim/src/exim.c' l='420' u='c'/>
+<use f='exim/src/spool_in.c' l='400' u='c'/>
+<use f='exim/src/spool_in.c' l='538' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='559' u='c'/>
+<use f='exim/src/expand.c' l='3394' u='c'/>
+<use f='exim/src/spool_out.c' l='218' u='c'/>

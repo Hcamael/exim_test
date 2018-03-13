@@ -1,2 +1,25 @@
 <dec f='exim/src/structs.h' l='83' type='uschar *'/>
 <offset>192</offset>
+<use f='exim/src/rewrite.c' l='152' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='175' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='192' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='212' u='r' c='rewrite_one'/>

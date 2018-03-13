@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>tod.c source code [exim/src/tod.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/tod.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='tod.c.html'>tod.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* A function for returning the time of day in various formats */</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><u>#include <a href="exim.h.html">"exim.h"</a></u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><i  data-doc="timebuf">/* #define TESTING_LOG_DATESTAMP */</i></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><em>static</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="tu decl def" id="timebuf" title='timebuf' data-type='uschar [36]' data-ref="timebuf">timebuf</dfn>[<b>sizeof</b>(<q>"www, dd-mmm-yyyy hh:mm:ss.ddd +zzzz"</q>)];</td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="20">20</th><td><i>*                Return timestamp                *</i></td></tr>
+<tr><th id="21">21</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><i>/* The log timestamp format is dd-mmm-yy so as to be non-confusing on both</i></td></tr>
+<tr><th id="24">24</th><td><i>sides of the Atlantic. We calculate an explicit numerical offset from GMT for</i></td></tr>
+<tr><th id="25">25</th><td><i>the full datestamp and BSD inbox datestamp. Note that on some systems</i></td></tr>
+<tr><th id="26">26</th><td><i>localtime() and gmtime() re-use the same store, so we must save the local time</i></td></tr>
+<tr><th id="27">27</th><td><i>values before calling gmtime(). If timestamps_utc is set, don't use</i></td></tr>
+<tr><th id="28">28</th><td><i>localtime(); all times are then in UTC (with offset +0000).</i></td></tr>
+<tr><th id="29">29</th><td><i></i></td></tr>
+<tr><th id="30">30</th><td><i>There are also some contortions to get the day of the month without</i></td></tr>
+<tr><th id="31">31</th><td><i>a leading zero for the full stamp, since Ustrftime() doesn't provide this</i></td></tr>
+<tr><th id="32">32</th><td><i>option.</i></td></tr>
+<tr><th id="33">33</th><td><i></i></td></tr>
+<tr><th id="34">34</th><td><i>Argument:  type of timestamp required:</i></td></tr>
+<tr><th id="35">35</th><td><i>             tod_bsdin                  BSD inbox format</i></td></tr>
+<tr><th id="36">36</th><td><i>             tod_epoch                  Unix epoch format</i></td></tr>
+<tr><th id="37">37</th><td><i>             tod_epochl                 Unix epoch/usec format</i></td></tr>
+<tr><th id="38">38</th><td><i>             tod_full                   full date and time</i></td></tr>
+<tr><th id="39">39</th><td><i>             tod_log                    log file data line format,</i></td></tr>
+<tr><th id="40">40</th><td><i>                                          with zone if log_timezone is TRUE</i></td></tr>
+<tr><th id="41">41</th><td><i>             tod_log_bare               always without zone</i></td></tr>
+<tr><th id="42">42</th><td><i>             tod_log_datestamp_daily    for log file names when datestamped daily</i></td></tr>
+<tr><th id="43">43</th><td><i>             tod_log_datestamp_monthly  for log file names when datestamped monthly</i></td></tr>
+<tr><th id="44">44</th><td><i>             tod_log_zone               always with zone</i></td></tr>
+<tr><th id="45">45</th><td><i>             tod_mbx                    MBX inbox format</i></td></tr>
+<tr><th id="46">46</th><td><i>             tod_zone                   just the timezone offset</i></td></tr>
+<tr><th id="47">47</th><td><i>             tod_zulu                   time in 8601 zulu format</i></td></tr>
+<tr><th id="48">48</th><td><i></i></td></tr>
+<tr><th id="49">49</th><td><i>Returns:   pointer to fixed buffer containing the timestamp</i></td></tr>
+<tr><th id="50">50</th><td><i>*/</i></td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *</td></tr>
+<tr><th id="53">53</th><td><dfn class="decl def fn" id="tod_stamp" title='tod_stamp' data-ref="tod_stamp">tod_stamp</dfn>(<em>int</em> <dfn class="local col1 decl" id="1type" title='type' data-type='int' data-ref="1type">type</dfn>)</td></tr>
+<tr><th id="54">54</th><td>{</td></tr>
+<tr><th id="55">55</th><td><b>struct</b> <a class="type" href="../../include/x86_64-linux-gnu/bits/time.h.html#timeval" title='timeval' data-ref="timeval">timeval</a> <dfn class="local col2 decl" id="2now" title='now' data-type='struct timeval' data-ref="2now">now</dfn>;</td></tr>
+<tr><th id="56">56</th><td><b>struct</b> <a class="type" href="../../include/time.h.html#tm" title='tm' data-ref="tm">tm</a> * <dfn class="local col3 decl" id="3t" title='t' data-type='struct tm *' data-ref="3t">t</dfn>;</td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><a class="ref fn" href="../../include/x86_64-linux-gnu/sys/time.h.html#gettimeofday" title='gettimeofday' data-ref="gettimeofday">gettimeofday</a>(&amp;<a class="local col2 ref" href="#2now" title='now' data-ref="2now">now</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td><i>/* Styles that don't need local time */</i></td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><b>switch</b>(<a class="local col1 ref" href="#1type" title='type' data-ref="1type">type</a>)</td></tr>
+<tr><th id="63">63</th><td>  {</td></tr>
+<tr><th id="64">64</th><td>  <b>case</b> <a class="enum" href="macros.h.html#tod_epoch" title='tod_epoch' data-ref="tod_epoch">tod_epoch</a>:</td></tr>
+<tr><th id="65">65</th><td>    (<em>void</em>) <a class="ref fn" href="../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>, <a class="macro" href="../build-Linux-x86_64/config.h.html#15" title="&quot;%ld&quot;" data-ref="_M/TIME_T_FMT">TIME_T_FMT</a>, <a class="local col2 ref" href="#2now" title='now' data-ref="2now">now</a>.<a class="ref field" href="../../include/x86_64-linux-gnu/bits/time.h.html#timeval::tv_sec" title='timeval::tv_sec' data-ref="timeval::tv_sec">tv_sec</a>);  <i>/* Unix epoch format */</i></td></tr>
+<tr><th id="66">66</th><td>    <b>return</b> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>;	<i>/* NB the above will be wrong if time_t is FP */</i></td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td>  <b>case</b> <a class="enum" href="macros.h.html#tod_epoch_l" title='tod_epoch_l' data-ref="tod_epoch_l">tod_epoch_l</a>:</td></tr>
+<tr><th id="69">69</th><td>    <i>/* Unix epoch/usec format */</i></td></tr>
+<tr><th id="70">70</th><td>    (<em>void</em>) <a class="ref fn" href="../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>, <a class="macro" href="../build-Linux-x86_64/config.h.html#15" title="&quot;%ld&quot;" data-ref="_M/TIME_T_FMT">TIME_T_FMT</a> <q>"%06ld"</q>, <a class="local col2 ref" href="#2now" title='now' data-ref="2now">now</a>.<a class="ref field" href="../../include/x86_64-linux-gnu/bits/time.h.html#timeval::tv_sec" title='timeval::tv_sec' data-ref="timeval::tv_sec">tv_sec</a>, (<em>long</em>) <a class="local col2 ref" href="#2now" title='now' data-ref="2now">now</a>.<a class="ref field" href="../../include/x86_64-linux-gnu/bits/time.h.html#timeval::tv_usec" title='timeval::tv_usec' data-ref="timeval::tv_usec">tv_usec</a> );</td></tr>
+<tr><th id="71">71</th><td>    <b>return</b> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>;</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td>  <b>case</b> <a class="enum" href="macros.h.html#tod_zulu" title='tod_zulu' data-ref="tod_zulu">tod_zulu</a>:</td></tr>
+<tr><th id="74">74</th><td>    <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a> = <a class="ref fn" href="../../include/time.h.html#gmtime" title='gmtime' data-ref="gmtime">gmtime</a>(&amp;<a class="local col2 ref" href="#2now" title='now' data-ref="2now">now</a>.<a class="ref field" href="../../include/x86_64-linux-gnu/bits/time.h.html#timeval::tv_sec" title='timeval::tv_sec' data-ref="timeval::tv_sec">tv_sec</a>);</td></tr>
+<tr><th id="75">75</th><td>    (<em>void</em>) <a class="ref fn" href="../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>, <q>"%04d%02d%02d%02d%02d%02dZ"</q>,</td></tr>
+<tr><th id="76">76</th><td>      <var>1900</var> + <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_year" title='tm::tm_year' data-ref="tm::tm_year">tm_year</a>, <var>1</var> + <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_mon" title='tm::tm_mon' data-ref="tm::tm_mon">tm_mon</a>, <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_mday" title='tm::tm_mday' data-ref="tm::tm_mday">tm_mday</a>, <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_hour" title='tm::tm_hour' data-ref="tm::tm_hour">tm_hour</a>, <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_min" title='tm::tm_min' data-ref="tm::tm_min">tm_min</a>,</td></tr>
+<tr><th id="77">77</th><td>      <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_sec" title='tm::tm_sec' data-ref="tm::tm_sec">tm_sec</a>);</td></tr>
+<tr><th id="78">78</th><td>    <b>return</b> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>;</td></tr>
+<tr><th id="79">79</th><td>  }</td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td><i>/* Vary log type according to timezone requirement */</i></td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td><b>if</b> (<a class="local col1 ref" href="#1type" title='type' data-ref="1type">type</a> == <a class="enum" href="macros.h.html#tod_log" title='tod_log' data-ref="tod_log">tod_log</a>) <a class="local col1 ref" href="#1type" title='type' data-ref="1type">type</a> = <a class="ref" href="globals.h.html#log_timezone" title='log_timezone' data-ref="log_timezone">log_timezone</a> ? <a class="enum" href="macros.h.html#tod_log_zone" title='tod_log_zone' data-ref="tod_log_zone">tod_log_zone</a> : <a class="enum" href="macros.h.html#tod_log_bare" title='tod_log_bare' data-ref="tod_log_bare">tod_log_bare</a>;</td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td><i>/* Convert to local time or UTC */</i></td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td><a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a> = <a class="ref" href="globals.h.html#timestamps_utc" title='timestamps_utc' data-ref="timestamps_utc">timestamps_utc</a> ? <a class="ref fn" href="../../include/time.h.html#gmtime" title='gmtime' data-ref="gmtime">gmtime</a>(&amp;<a class="local col2 ref" href="#2now" title='now' data-ref="2now">now</a>.<a class="ref field" href="../../include/x86_64-linux-gnu/bits/time.h.html#timeval::tv_sec" title='timeval::tv_sec' data-ref="timeval::tv_sec">tv_sec</a>) : <a class="ref fn" href="../../include/time.h.html#localtime" title='localtime' data-ref="localtime">localtime</a>(&amp;<a class="local col2 ref" href="#2now" title='now' data-ref="2now">now</a>.<a class="ref field" href="../../include/x86_64-linux-gnu/bits/time.h.html#timeval::tv_sec" title='timeval::tv_sec' data-ref="timeval::tv_sec">tv_sec</a>);</td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td><b>switch</b>(<a class="local col1 ref" href="#1type" title='type' data-ref="1type">type</a>)</td></tr>
+<tr><th id="90">90</th><td>  {</td></tr>
+<tr><th id="91">91</th><td>  <b>case</b> <a class="enum" href="macros.h.html#tod_log_bare" title='tod_log_bare' data-ref="tod_log_bare">tod_log_bare</a>:          <i>/* Format used in logging without timezone */</i></td></tr>
+<tr><th id="92">92</th><td><u>#<span data-ppcond="92">ifndef</span> <span class="macro" data-ref="_M/COMPILE_UTILITY">COMPILE_UTILITY</span></u></td></tr>
+<tr><th id="93">93</th><td>    <b>if</b> (<a class="macro" href="macros.h.html#495" title="(((log_selector)[( (Li_millisec) / 32)] &amp; (1 &lt;&lt; (Li_millisec) % 32)) != 0)" data-ref="_M/LOGGING">LOGGING</a>(millisec))</td></tr>
+<tr><th id="94">94</th><td>      <a class="ref fn" href="../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>, <q>"%04d-%02d-%02d %02d:%02d:%02d.%03d"</q>,</td></tr>
+<tr><th id="95">95</th><td>      <var>1900</var> + <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_year" title='tm::tm_year' data-ref="tm::tm_year">tm_year</a>, <var>1</var> + <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_mon" title='tm::tm_mon' data-ref="tm::tm_mon">tm_mon</a>, <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_mday" title='tm::tm_mday' data-ref="tm::tm_mday">tm_mday</a>,</td></tr>
+<tr><th id="96">96</th><td>      <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_hour" title='tm::tm_hour' data-ref="tm::tm_hour">tm_hour</a>, <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_min" title='tm::tm_min' data-ref="tm::tm_min">tm_min</a>, <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_sec" title='tm::tm_sec' data-ref="tm::tm_sec">tm_sec</a>, (<em>int</em>)(<a class="local col2 ref" href="#2now" title='now' data-ref="2now">now</a>.<a class="ref field" href="../../include/x86_64-linux-gnu/bits/time.h.html#timeval::tv_usec" title='timeval::tv_usec' data-ref="timeval::tv_usec">tv_usec</a>/<var>1000</var>));</td></tr>
+<tr><th id="97">97</th><td>    <b>else</b></td></tr>
+<tr><th id="98">98</th><td><u>#<span data-ppcond="92">endif</span></u></td></tr>
+<tr><th id="99">99</th><td>      <a class="ref fn" href="../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>, <q>"%04d-%02d-%02d %02d:%02d:%02d"</q>,</td></tr>
+<tr><th id="100">100</th><td>      <var>1900</var> + <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_year" title='tm::tm_year' data-ref="tm::tm_year">tm_year</a>, <var>1</var> + <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_mon" title='tm::tm_mon' data-ref="tm::tm_mon">tm_mon</a>, <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_mday" title='tm::tm_mday' data-ref="tm::tm_mday">tm_mday</a>,</td></tr>
+<tr><th id="101">101</th><td>      <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_hour" title='tm::tm_hour' data-ref="tm::tm_hour">tm_hour</a>, <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_min" title='tm::tm_min' data-ref="tm::tm_min">tm_min</a>, <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_sec" title='tm::tm_sec' data-ref="tm::tm_sec">tm_sec</a>);</td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td>    <b>break</b>;</td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td>    <i>/* Format used as suffix of log file name when 'log_datestamp' is active. For</i></td></tr>
+<tr><th id="106">106</th><td><i>    testing purposes, it changes the file every second. */</i></td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td><u>#<span data-ppcond="108">ifdef</span> <span class="macro" data-ref="_M/TESTING_LOG_DATESTAMP">TESTING_LOG_DATESTAMP</span></u></td></tr>
+<tr><th id="109">109</th><td>  <b>case</b> tod_log_datestamp_daily:</td></tr>
+<tr><th id="110">110</th><td>  <b>case</b> tod_log_datestamp_monthly:</td></tr>
+<tr><th id="111">111</th><td>    sprintf(CS timebuf, <q>"%04d%02d%02d%02d%02d"</q>,</td></tr>
+<tr><th id="112">112</th><td>      <var>1900</var> + t-&gt;tm_year, <var>1</var> + t-&gt;tm_mon, t-&gt;tm_mday, t-&gt;tm_hour, t-&gt;tm_min);</td></tr>
+<tr><th id="113">113</th><td>    <b>break</b>;</td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><u>#<span data-ppcond="108">else</span></u></td></tr>
+<tr><th id="116">116</th><td>  <b>case</b> <a class="enum" href="macros.h.html#tod_log_datestamp_daily" title='tod_log_datestamp_daily' data-ref="tod_log_datestamp_daily">tod_log_datestamp_daily</a>:</td></tr>
+<tr><th id="117">117</th><td>    <a class="ref fn" href="../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>, <q>"%04d%02d%02d"</q>,</td></tr>
+<tr><th id="118">118</th><td>      <var>1900</var> + <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_year" title='tm::tm_year' data-ref="tm::tm_year">tm_year</a>, <var>1</var> + <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_mon" title='tm::tm_mon' data-ref="tm::tm_mon">tm_mon</a>, <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_mday" title='tm::tm_mday' data-ref="tm::tm_mday">tm_mday</a>);</td></tr>
+<tr><th id="119">119</th><td>    <b>break</b>;</td></tr>
+<tr><th id="120">120</th><td></td></tr>
+<tr><th id="121">121</th><td>  <b>case</b> <a class="enum" href="macros.h.html#tod_log_datestamp_monthly" title='tod_log_datestamp_monthly' data-ref="tod_log_datestamp_monthly">tod_log_datestamp_monthly</a>:</td></tr>
+<tr><th id="122">122</th><td><u>#<span data-ppcond="122">ifndef</span> <span class="macro" data-ref="_M/COMPILE_UTILITY">COMPILE_UTILITY</span></u></td></tr>
+<tr><th id="123">123</th><td>    <a class="ref fn" href="../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>, <q>"%04d%02d"</q>,</td></tr>
+<tr><th id="124">124</th><td>      <var>1900</var> + <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_year" title='tm::tm_year' data-ref="tm::tm_year">tm_year</a>, <var>1</var> + <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_mon" title='tm::tm_mon' data-ref="tm::tm_mon">tm_mon</a>);</td></tr>
+<tr><th id="125">125</th><td><u>#<span data-ppcond="122">endif</span></u></td></tr>
+<tr><th id="126">126</th><td>    <b>break</b>;</td></tr>
+<tr><th id="127">127</th><td><u>#<span data-ppcond="108">endif</span></u></td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td>    <i>/* Format used in BSD inbox separator lines. Sort-of documented in RFC 976</i></td></tr>
+<tr><th id="130">130</th><td><i>    ("UUCP Mail Interchange Format Standard") but only by example, not by</i></td></tr>
+<tr><th id="131">131</th><td><i>    explicit definition. The examples show no timezone offsets, and some MUAs</i></td></tr>
+<tr><th id="132">132</th><td><i>    appear to be sensitive to this, so Exim has been changed to remove the</i></td></tr>
+<tr><th id="133">133</th><td><i>    timezone offsets that originally appeared. */</i></td></tr>
+<tr><th id="134">134</th><td></td></tr>
+<tr><th id="135">135</th><td>  <b>case</b> <a class="enum" href="macros.h.html#tod_bsdin" title='tod_bsdin' data-ref="tod_bsdin">tod_bsdin</a>:</td></tr>
+<tr><th id="136">136</th><td>      {</td></tr>
+<tr><th id="137">137</th><td>      <em>int</em> <dfn class="local col4 decl" id="4len" title='len' data-type='int' data-ref="4len">len</dfn> = <a class="macro" href="mytypes.h.html#103" title="strftime((char *)(timebuf),sizeof(timebuf),&quot;%a %b %d %H:%M:%S&quot;,t)" data-ref="_M/Ustrftime">Ustrftime</a>(<a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>, <b>sizeof</b>(<a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>), <q>"%a %b %d %H:%M:%S"</q>, <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>);</td></tr>
+<tr><th id="138">138</th><td>      <a class="macro" href="mytypes.h.html#103" title="strftime((char *)(timebuf + len),sizeof(timebuf) - len,&quot; %Y&quot;,t)" data-ref="_M/Ustrftime">Ustrftime</a>(<a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a> + <a class="local col4 ref" href="#4len" title='len' data-ref="4len">len</a>, <b>sizeof</b>(<a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>) - <a class="local col4 ref" href="#4len" title='len' data-ref="4len">len</a>, <q>" %Y"</q>, <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>);</td></tr>
+<tr><th id="139">139</th><td>      }</td></tr>
+<tr><th id="140">140</th><td>    <b>break</b>;</td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td>    <i>/* Other types require the GMT offset to be calculated, or just set up in the</i></td></tr>
+<tr><th id="143">143</th><td><i>    case of UTC timestamping. We need to take a copy of the local time first. */</i></td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td>  <b>default</b>:</td></tr>
+<tr><th id="146">146</th><td>      {</td></tr>
+<tr><th id="147">147</th><td>      <em>int</em> <dfn class="local col5 decl" id="5diff_hour" title='diff_hour' data-type='int' data-ref="5diff_hour">diff_hour</dfn>, <dfn class="local col6 decl" id="6diff_min" title='diff_min' data-type='int' data-ref="6diff_min">diff_min</dfn>;</td></tr>
+<tr><th id="148">148</th><td>      <b>struct</b> <a class="type" href="../../include/time.h.html#tm" title='tm' data-ref="tm">tm</a> <dfn class="local col7 decl" id="7local" title='local' data-type='struct tm' data-ref="7local">local</dfn>;</td></tr>
+<tr><th id="149">149</th><td>      <a class="ref fn" href="../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a>(&amp;<a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>, <a class="local col3 ref" href="#3t" title='t' data-ref="3t">t</a>, <b>sizeof</b>(<b>struct</b> <a class="type" href="../../include/time.h.html#tm" title='tm' data-ref="tm">tm</a>));</td></tr>
+<tr><th id="150">150</th><td></td></tr>
+<tr><th id="151">151</th><td>      <b>if</b> (<a class="ref" href="globals.h.html#timestamps_utc" title='timestamps_utc' data-ref="timestamps_utc">timestamps_utc</a>)</td></tr>
+<tr><th id="152">152</th><td>	<a class="local col5 ref" href="#5diff_hour" title='diff_hour' data-ref="5diff_hour">diff_hour</a> = <a class="local col6 ref" href="#6diff_min" title='diff_min' data-ref="6diff_min">diff_min</a> = <var>0</var>;</td></tr>
+<tr><th id="153">153</th><td>      <b>else</b></td></tr>
+<tr><th id="154">154</th><td>	{</td></tr>
+<tr><th id="155">155</th><td>	<b>struct</b> <a class="type" href="../../include/time.h.html#tm" title='tm' data-ref="tm">tm</a> * <dfn class="local col8 decl" id="8gmt" title='gmt' data-type='struct tm *' data-ref="8gmt">gmt</dfn> = <a class="ref fn" href="../../include/time.h.html#gmtime" title='gmtime' data-ref="gmtime">gmtime</a>(&amp;<a class="local col2 ref" href="#2now" title='now' data-ref="2now">now</a>.<a class="ref field" href="../../include/x86_64-linux-gnu/bits/time.h.html#timeval::tv_sec" title='timeval::tv_sec' data-ref="timeval::tv_sec">tv_sec</a>);</td></tr>
+<tr><th id="156">156</th><td></td></tr>
+<tr><th id="157">157</th><td>	<a class="local col6 ref" href="#6diff_min" title='diff_min' data-ref="6diff_min">diff_min</a> = <var>60</var>*(<a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_hour" title='tm::tm_hour' data-ref="tm::tm_hour">tm_hour</a> - <a class="local col8 ref" href="#8gmt" title='gmt' data-ref="8gmt">gmt</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_hour" title='tm::tm_hour' data-ref="tm::tm_hour">tm_hour</a>) + <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_min" title='tm::tm_min' data-ref="tm::tm_min">tm_min</a> - <a class="local col8 ref" href="#8gmt" title='gmt' data-ref="8gmt">gmt</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_min" title='tm::tm_min' data-ref="tm::tm_min">tm_min</a>;</td></tr>
+<tr><th id="158">158</th><td>	<b>if</b> (<a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_year" title='tm::tm_year' data-ref="tm::tm_year">tm_year</a> != <a class="local col8 ref" href="#8gmt" title='gmt' data-ref="8gmt">gmt</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_year" title='tm::tm_year' data-ref="tm::tm_year">tm_year</a>)</td></tr>
+<tr><th id="159">159</th><td>	  <a class="local col6 ref" href="#6diff_min" title='diff_min' data-ref="6diff_min">diff_min</a> += (<a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_year" title='tm::tm_year' data-ref="tm::tm_year">tm_year</a> &gt; <a class="local col8 ref" href="#8gmt" title='gmt' data-ref="8gmt">gmt</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_year" title='tm::tm_year' data-ref="tm::tm_year">tm_year</a>)? <var>1440</var> : -<var>1440</var>;</td></tr>
+<tr><th id="160">160</th><td>	<b>else</b> <b>if</b> (<a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_yday" title='tm::tm_yday' data-ref="tm::tm_yday">tm_yday</a> != <a class="local col8 ref" href="#8gmt" title='gmt' data-ref="8gmt">gmt</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_yday" title='tm::tm_yday' data-ref="tm::tm_yday">tm_yday</a>)</td></tr>
+<tr><th id="161">161</th><td>	  <a class="local col6 ref" href="#6diff_min" title='diff_min' data-ref="6diff_min">diff_min</a> += (<a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_yday" title='tm::tm_yday' data-ref="tm::tm_yday">tm_yday</a> &gt; <a class="local col8 ref" href="#8gmt" title='gmt' data-ref="8gmt">gmt</a>-&gt;<a class="ref field" href="../../include/time.h.html#tm::tm_yday" title='tm::tm_yday' data-ref="tm::tm_yday">tm_yday</a>)? <var>1440</var> : -<var>1440</var>;</td></tr>
+<tr><th id="162">162</th><td>	<a class="local col5 ref" href="#5diff_hour" title='diff_hour' data-ref="5diff_hour">diff_hour</a> = <a class="local col6 ref" href="#6diff_min" title='diff_min' data-ref="6diff_min">diff_min</a>/<var>60</var>;</td></tr>
+<tr><th id="163">163</th><td>	<a class="local col6 ref" href="#6diff_min" title='diff_min' data-ref="6diff_min">diff_min</a>  = <a class="ref fn" href="../../include/stdlib.h.html#abs" title='abs' data-ref="abs">abs</a>(<a class="local col6 ref" href="#6diff_min" title='diff_min' data-ref="6diff_min">diff_min</a> - <a class="local col5 ref" href="#5diff_hour" title='diff_hour' data-ref="5diff_hour">diff_hour</a>*<var>60</var>);</td></tr>
+<tr><th id="164">164</th><td>	}</td></tr>
+<tr><th id="165">165</th><td></td></tr>
+<tr><th id="166">166</th><td>      <b>switch</b>(<a class="local col1 ref" href="#1type" title='type' data-ref="1type">type</a>)</td></tr>
+<tr><th id="167">167</th><td>	{</td></tr>
+<tr><th id="168">168</th><td>	<b>case</b> <a class="enum" href="macros.h.html#tod_log_zone" title='tod_log_zone' data-ref="tod_log_zone">tod_log_zone</a>:          <i>/* Format used in logging with timezone */</i></td></tr>
+<tr><th id="169">169</th><td><u>#<span data-ppcond="169">ifndef</span> <span class="macro" data-ref="_M/COMPILE_UTILITY">COMPILE_UTILITY</span></u></td></tr>
+<tr><th id="170">170</th><td>	  <b>if</b> (<a class="macro" href="macros.h.html#495" title="(((log_selector)[( (Li_millisec) / 32)] &amp; (1 &lt;&lt; (Li_millisec) % 32)) != 0)" data-ref="_M/LOGGING">LOGGING</a>(millisec))</td></tr>
+<tr><th id="171">171</th><td>	    (<em>void</em>) <a class="ref fn" href="../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>,</td></tr>
+<tr><th id="172">172</th><td>	      <q>"%04d-%02d-%02d %02d:%02d:%02d.%03d %+03d%02d"</q>,</td></tr>
+<tr><th id="173">173</th><td>	      <var>1900</var> + <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_year" title='tm::tm_year' data-ref="tm::tm_year">tm_year</a>, <var>1</var> + <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_mon" title='tm::tm_mon' data-ref="tm::tm_mon">tm_mon</a>, <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_mday" title='tm::tm_mday' data-ref="tm::tm_mday">tm_mday</a>,</td></tr>
+<tr><th id="174">174</th><td>	      <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_hour" title='tm::tm_hour' data-ref="tm::tm_hour">tm_hour</a>, <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_min" title='tm::tm_min' data-ref="tm::tm_min">tm_min</a>, <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_sec" title='tm::tm_sec' data-ref="tm::tm_sec">tm_sec</a>, (<em>int</em>)(<a class="local col2 ref" href="#2now" title='now' data-ref="2now">now</a>.<a class="ref field" href="../../include/x86_64-linux-gnu/bits/time.h.html#timeval::tv_usec" title='timeval::tv_usec' data-ref="timeval::tv_usec">tv_usec</a>/<var>1000</var>),</td></tr>
+<tr><th id="175">175</th><td>	      <a class="local col5 ref" href="#5diff_hour" title='diff_hour' data-ref="5diff_hour">diff_hour</a>, <a class="local col6 ref" href="#6diff_min" title='diff_min' data-ref="6diff_min">diff_min</a>);</td></tr>
+<tr><th id="176">176</th><td>	  <b>else</b></td></tr>
+<tr><th id="177">177</th><td><u>#<span data-ppcond="169">endif</span></u></td></tr>
+<tr><th id="178">178</th><td>	    (<em>void</em>) <a class="ref fn" href="../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>,</td></tr>
+<tr><th id="179">179</th><td>	      <q>"%04d-%02d-%02d %02d:%02d:%02d %+03d%02d"</q>,</td></tr>
+<tr><th id="180">180</th><td>	      <var>1900</var> + <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_year" title='tm::tm_year' data-ref="tm::tm_year">tm_year</a>, <var>1</var> + <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_mon" title='tm::tm_mon' data-ref="tm::tm_mon">tm_mon</a>, <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_mday" title='tm::tm_mday' data-ref="tm::tm_mday">tm_mday</a>,</td></tr>
+<tr><th id="181">181</th><td>	      <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_hour" title='tm::tm_hour' data-ref="tm::tm_hour">tm_hour</a>, <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_min" title='tm::tm_min' data-ref="tm::tm_min">tm_min</a>, <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_sec" title='tm::tm_sec' data-ref="tm::tm_sec">tm_sec</a>,</td></tr>
+<tr><th id="182">182</th><td>	      <a class="local col5 ref" href="#5diff_hour" title='diff_hour' data-ref="5diff_hour">diff_hour</a>, <a class="local col6 ref" href="#6diff_min" title='diff_min' data-ref="6diff_min">diff_min</a>);</td></tr>
+<tr><th id="183">183</th><td>	  <b>break</b>;</td></tr>
+<tr><th id="184">184</th><td></td></tr>
+<tr><th id="185">185</th><td>	<b>case</b> <a class="enum" href="macros.h.html#tod_zone" title='tod_zone' data-ref="tod_zone">tod_zone</a>:              <i>/* Just the timezone offset */</i></td></tr>
+<tr><th id="186">186</th><td>	  (<em>void</em>) <a class="ref fn" href="../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>, <q>"%+03d%02d"</q>, <a class="local col5 ref" href="#5diff_hour" title='diff_hour' data-ref="5diff_hour">diff_hour</a>, <a class="local col6 ref" href="#6diff_min" title='diff_min' data-ref="6diff_min">diff_min</a>);</td></tr>
+<tr><th id="187">187</th><td>	  <b>break</b>;</td></tr>
+<tr><th id="188">188</th><td></td></tr>
+<tr><th id="189">189</th><td>	<i>/* tod_mbx: format used in MBX mailboxes - subtly different to tod_full */</i></td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td>	  <u>#<span data-ppcond="191">ifdef</span> <span class="macro" data-ref="_M/SUPPORT_MBX">SUPPORT_MBX</span></u></td></tr>
+<tr><th id="192">192</th><td>	<b>case</b> tod_mbx:</td></tr>
+<tr><th id="193">193</th><td>	    {</td></tr>
+<tr><th id="194">194</th><td>	    <em>int</em> len;</td></tr>
+<tr><th id="195">195</th><td>	    (<em>void</em>) sprintf(CS timebuf, <q>"%02d-"</q>, local.tm_mday);</td></tr>
+<tr><th id="196">196</th><td>	    len = Ustrlen(timebuf);</td></tr>
+<tr><th id="197">197</th><td>	    len += Ustrftime(timebuf + len, <b>sizeof</b>(timebuf) - len, <q>"%b-%Y %H:%M:%S"</q>,</td></tr>
+<tr><th id="198">198</th><td>	      &amp;local);</td></tr>
+<tr><th id="199">199</th><td>	    (<em>void</em>) sprintf(CS timebuf + len, <q>" %+03d%02d"</q>, diff_hour, diff_min);</td></tr>
+<tr><th id="200">200</th><td>	    }</td></tr>
+<tr><th id="201">201</th><td>	  <b>break</b>;</td></tr>
+<tr><th id="202">202</th><td>	  <u>#<span data-ppcond="191">endif</span></u></td></tr>
+<tr><th id="203">203</th><td></td></tr>
+<tr><th id="204">204</th><td>	<i>/* tod_full: format used in Received: headers (use as default just in case</i></td></tr>
+<tr><th id="205">205</th><td><i>	called with a junk type value) */</i></td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td>	<b>default</b>:</td></tr>
+<tr><th id="208">208</th><td>	    {</td></tr>
+<tr><th id="209">209</th><td>	    <em>int</em> <dfn class="local col9 decl" id="9len" title='len' data-type='int' data-ref="9len">len</dfn> = <a class="macro" href="mytypes.h.html#103" title="strftime((char *)(timebuf),sizeof(timebuf),&quot;%a, &quot;,&amp;local)" data-ref="_M/Ustrftime">Ustrftime</a>(<a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>, <b>sizeof</b>(<a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>), <q>"%a, "</q>, &amp;<a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>);</td></tr>
+<tr><th id="210">210</th><td>	    (<em>void</em>) <a class="ref fn" href="../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a> + <a class="local col9 ref" href="#9len" title='len' data-ref="9len">len</a>, <q>"%02d "</q>, <a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>.<a class="ref field" href="../../include/time.h.html#tm::tm_mday" title='tm::tm_mday' data-ref="tm::tm_mday">tm_mday</a>);</td></tr>
+<tr><th id="211">211</th><td>	    <a class="local col9 ref" href="#9len" title='len' data-ref="9len">len</a> += <a class="macro" href="mytypes.h.html#104" title="(int)strlen((const char *)(timebuf + len))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a> + <a class="local col9 ref" href="#9len" title='len' data-ref="9len">len</a>);</td></tr>
+<tr><th id="212">212</th><td>	    <a class="local col9 ref" href="#9len" title='len' data-ref="9len">len</a> += <a class="macro" href="mytypes.h.html#103" title="strftime((char *)(timebuf + len),sizeof(timebuf) - len,&quot;%b %Y %H:%M:%S&quot;,&amp;local)" data-ref="_M/Ustrftime">Ustrftime</a>(<a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a> + <a class="local col9 ref" href="#9len" title='len' data-ref="9len">len</a>, <b>sizeof</b>(<a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>) - <a class="local col9 ref" href="#9len" title='len' data-ref="9len">len</a>, <q>"%b %Y %H:%M:%S"</q>,</td></tr>
+<tr><th id="213">213</th><td>	      &amp;<a class="local col7 ref" href="#7local" title='local' data-ref="7local">local</a>);</td></tr>
+<tr><th id="214">214</th><td>	    (<em>void</em>) <a class="ref fn" href="../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a> + <a class="local col9 ref" href="#9len" title='len' data-ref="9len">len</a>, <q>" %+03d%02d"</q>, <a class="local col5 ref" href="#5diff_hour" title='diff_hour' data-ref="5diff_hour">diff_hour</a>, <a class="local col6 ref" href="#6diff_min" title='diff_min' data-ref="6diff_min">diff_min</a>);</td></tr>
+<tr><th id="215">215</th><td>	    }</td></tr>
+<tr><th id="216">216</th><td>	  <b>break</b>;</td></tr>
+<tr><th id="217">217</th><td>	}</td></tr>
+<tr><th id="218">218</th><td>      }</td></tr>
+<tr><th id="219">219</th><td>    <b>break</b>;</td></tr>
+<tr><th id="220">220</th><td>  }</td></tr>
+<tr><th id="221">221</th><td></td></tr>
+<tr><th id="222">222</th><td><b>return</b> <a class="tu ref" href="#timebuf" title='timebuf' data-use='r' data-ref="timebuf">timebuf</a>;</td></tr>
+<tr><th id="223">223</th><td>}</td></tr>
+<tr><th id="224">224</th><td></td></tr>
+<tr><th id="225">225</th><td><i>/* End of tod.c */</i></td></tr>
+<tr><th id="226">226</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

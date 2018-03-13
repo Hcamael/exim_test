@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='73' type='uschar * tls_field_from_dn(uschar * , const uschar * )'/>
+<use f='exim/src/tlscert-openssl.c' l='209' u='c' c='tls_cert_issuer'/>
+<use f='exim/src/tlscert-openssl.c' l='300' u='c' c='tls_cert_subject'/>
+<def f='exim/src/tls.c' l='258' ll='283' type='uschar * tls_field_from_dn(uschar * dn, const uschar * mod)'/>
+<doc f='exim/src/tls.c' l='245'>/* Extract fields of a given type from an RFC4514-
+format Distinguished Name.  Return an Exim list.
+NOTE: We modify the supplied dn string during operation.
+
+Arguments:
+	dn	Distinguished Name string
+	mod	list containing optional output list-sep and
+		field selector match, comma-separated
+Return:
+	allocated string with list of matching fields,
+	field type stripped
+*/</doc>

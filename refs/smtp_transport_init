@@ -1,0 +1,6 @@
+<dec f='exim/src/transports/smtp.h' l='171' type='void smtp_transport_init(transport_instance * )'/>
+<use f='exim/src/drtables.c' l='437'/>
+<use f='exim/src/drtables.c' l='437'/>
+<use f='exim/src/drtables.c' l='437'/>
+<use f='exim/src/drtables.c' l='437'/>
+<def f='exim/src/transports/smtp.c' l='198' type='void smtp_transport_init(transport_instance * tblock)'/>

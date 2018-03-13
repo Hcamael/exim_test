@@ -1,0 +1,3 @@
+<dec f='exim/src/transports/smtp.h' l='68' type='BOOL'/>
+<use f='exim/src/deliver.c' l='4517' u='r' c='do_remote_deliveries'/>
+<offset>2208</offset>

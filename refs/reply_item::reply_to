@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='465' type='uschar *'/>
 <offset>64</offset>
 <doc f='exim/src/structs.h' l='465'>/* ) */</doc>
+<use f='exim/src/rda.c' l='758' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='934' u='a' c='rda_interpret'/>

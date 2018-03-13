@@ -1,0 +1,1 @@
+<dec f='exim/src/transports/smtp.h' l='176' type='int smtp_auth(uschar * , unsigned int , address_item * , host_item * , smtp_transport_options_block * , BOOL , smtp_inblock * , smtp_outblock * )'/>

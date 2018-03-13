@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='537' type='uschar *'/>
 <doc f='exim/src/globals.h' l='537'>/* Permitted prefixes */</doc>
+<def f='exim/src/globals.c' l='838' type='uschar *'/>
+<use f='exim/src/readconf.c' l='195' u='a'/>
+<use f='exim/src/readconf.c' l='195' u='a'/>
+<use f='exim/src/readconf.c' l='195' u='a'/>
+<use f='exim/src/readconf.c' l='195' u='a'/>
+<use f='exim/src/receive.c' l='2861' u='r' c='receive_msg'/>

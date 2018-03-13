@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='824' type='int'/>
 <offset>0</offset>
 <doc f='exim/src/structs.h' l='824'>/* the socket */</doc>
+<use f='exim/src/verify.c' l='828' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='1047' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='1072' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='1095' u='w' c='do_callout'/>
+<use f='exim/src/smtp_out.c' l='414' u='r' c='flush_buffer'/>
+<use f='exim/src/smtp_out.c' l='418' u='r' c='flush_buffer'/>

@@ -1,0 +1,6 @@
+<dec f='exim/src/auths/spa.h' l='34' type='void auth_spa_init(auth_instance * )'/>
+<def f='exim/src/auths/spa.c' l='95' ll='116' type='void auth_spa_init(auth_instance * ablock)'/>
+<doc f='exim/src/auths/spa.c' l='91'>/* Called for each instance, after its options have been read, to
+enable consistency checks to be done, or anything else that needs
+to be set up. */</doc>
+<doc f='exim/src/auths/spa.h' l='32'>/* The entry points for the mechanism */</doc>

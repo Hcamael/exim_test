@@ -1,1 +1,22 @@
 <dec f='exim/src/functions.h' l='240' type='int ip_connectedsocket(int , const uschar * , int , int , int , host_item * , uschar ** , const blob * )'/>
+<use f='exim/src/acl.c' l='2788' u='c' c='acl_udpsend'/>
+<def f='exim/src/ip.c' l='353' ll='435' type='int ip_connectedsocket(int type, const uschar * hostname, int portlo, int porthi, int timeout, host_item * connhost, uschar ** errstr, const blob * fastopen_blob)'/>
+<use f='exim/src/ip.c' l='458' u='c' c='ip_tcpsocket'/>
+<doc f='exim/src/ip.c' l='336'>/* Create a socket and connect to host (name or number, ipv6 ok)
+   at one of port-range.
+
+Arguments:
+  type          SOCK_DGRAM or SOCK_STREAM
+  af            AF_INET6 or AF_INET for the socket type
+  address       the remote address, in text form
+  portlo,porthi the remote port range
+  timeout       a timeout
+  connhost	if not NULL, host_item to be filled in with connection details
+  errstr        pointer for allocated string on error
+  fastopen_blob	with SOCK_STREAM, if non-null, request TCP Fast Open.
+		Additionally, optional early-data to send
+
+Return:
+  socket fd, or -1 on failure (having allocated an error string)
+*/</doc>
+<use f='exim/src/expand.c' l='4822' u='c' c='expand_string_internal'/>

@@ -1,0 +1,2 @@
+<dec f='exim/src/routers/rf_functions.h' l='11' type='void rf_add_generated(router_instance * , address_item ** , address_item * , address_item * , uschar * , header_line * , uschar * , ugid_block * , struct passwd * )'/>
+<doc f='exim/src/routers/rf_functions.h' l='8'>/* Header for the functions that are shared by the routers */</doc>

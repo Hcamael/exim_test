@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='709' type='uschar **'/>
 <doc f='exim/src/globals.h' l='709'>/* Before rewriting */</doc>
+<def f='exim/src/globals.c' l='1086' type='uschar **'/>
+<use f='exim/src/smtp_in.c' l='417' u='w' c='incomplete_transaction_log'/>
+<use f='exim/src/smtp_in.c' l='419' u='r' c='incomplete_transaction_log'/>
+<use f='exim/src/log.c' l='938' u='r' c='log_write'/>
+<use f='exim/src/receive.c' l='2720' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2722' u='r' c='receive_msg'/>

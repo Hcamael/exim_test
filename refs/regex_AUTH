@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='734' type='const pcre *'/>
 <doc f='exim/src/globals.h' l='734'>/* For recognizing AUTH settings */</doc>
+<use f='exim/src/deliver.c' l='8447' u='r' c='deliver_init'/>
+<use f='exim/src/deliver.c' l='8447' u='w' c='deliver_init'/>
+<def f='exim/src/globals.c' l='1134' type='const pcre *'/>

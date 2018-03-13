@@ -1,1 +1,12 @@
 <dec f='exim/src/functions.h' l='256' type='void log_close_all()'/>
+<def f='exim/src/log.c' l='1203' ll='1212' type='void log_close_all()'/>
+<doc f='exim/src/log.c' l='1199'>/*************************************************
+*            Close any open log files            *
+*************************************************/</doc>
+<use f='exim/src/daemon.c' l='749' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='1320' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1731' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1888' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='2020' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='2038' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='2102' u='c' c='daemon_go'/>

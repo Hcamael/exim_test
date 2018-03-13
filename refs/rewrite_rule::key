@@ -1,2 +1,5 @@
 <dec f='exim/src/structs.h' l='82' type='uschar *'/>
 <offset>128</offset>
+<use f='exim/src/rewrite.c' l='142' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='147' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='166' u='a' c='rewrite_one'/>

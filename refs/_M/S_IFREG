@@ -1,3 +1,8 @@
 <dec f='include/fcntl.h' l='83'/>
 <dec f='include/x86_64-linux-gnu/sys/stat.h' l='111'/>
 <use f='exim/src/lookups/lf_check_file.c' l='58' u='c'/>
+<use f='exim/src/parse.c' l='1534' u='c'/>
+<use f='exim/src/rda.c' l='231' u='c'/>
+<use f='exim/src/lookups/lsearch.c' l='52' u='c'/>
+<use f='exim/src/lookups/dbmdb.c' l='57' u='c'/>
+<use f='exim/src/expand.c' l='7363' u='c'/>

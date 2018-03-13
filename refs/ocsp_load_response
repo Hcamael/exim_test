@@ -1,0 +1,14 @@
+<def f='exim/src/tls-openssl.c' l='834' ll='969' type='void ocsp_load_response(SSL_CTX * sctx, tls_ext_ctx_cb * cbinfo, const uschar * expanded)'/>
+<use f='exim/src/tls-openssl.c' l='1163' u='c' c='tls_expand_session_files'/>
+<doc f='exim/src/tls-openssl.c' l='821'>/* Called to load the server OCSP response from the given file into memory, once
+caller has determined this is needed.  Checks validity.  Debugs a message
+if invalid.
+
+ASSUMES: single response, for single cert.
+
+Arguments:
+  sctx            the SSL_CTX* to update
+  cbinfo          various parts of session state
+  expanded        the filename putatively holding an OCSP response
+
+*/</doc>

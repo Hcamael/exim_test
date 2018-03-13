@@ -1,2 +1,23 @@
 <dec f='exim/src/globals.h' l='751' type='int'/>
 <doc f='exim/src/globals.h' l='751'>/* Maximum parallel delivery */</doc>
+<use f='exim/src/deliver.c' l='3918' u='r' c='par_wait'/>
+<use f='exim/src/deliver.c' l='3928' u='r' c='par_wait'/>
+<use f='exim/src/deliver.c' l='3944' u='r' c='par_wait'/>
+<use f='exim/src/deliver.c' l='3974' u='r' c='par_wait'/>
+<use f='exim/src/deliver.c' l='4001' u='r' c='par_wait'/>
+<use f='exim/src/deliver.c' l='4007' u='r' c='par_wait'/>
+<use f='exim/src/deliver.c' l='4208' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4209' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4216' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4217' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4343' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4346' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4639' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4645' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4696' u='r' c='do_remote_deliveries'/>
+<def f='exim/src/globals.c' l='1150' type='int'/>
+<use f='exim/src/exim.c' l='5176' u='w' c='main'/>
+<use f='exim/src/readconf.c' l='266' u='a'/>
+<use f='exim/src/readconf.c' l='266' u='a'/>
+<use f='exim/src/readconf.c' l='266' u='a'/>
+<use f='exim/src/readconf.c' l='266' u='a'/>

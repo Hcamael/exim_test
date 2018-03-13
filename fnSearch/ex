@@ -1,0 +1,15 @@
+exim_exit|exim_exit
+exim_nullstd|exim_nullstd
+exim_setugid|exim_setugid
+exim_wait_tick|exim_wait_tick
+exim_errstr|exim_errstr
+exp_bool|exp_bool
+expand_check_condition|expand_check_condition
+expand_cstring|expand_cstring
+expand_hide_passwords|expand_hide_passwords
+expand_string|expand_string
+expand_string_copy|expand_string_copy
+expand_string_integer|expand_string_integer
+exim_sha_finish|exim_sha_finish
+exim_sha_init|exim_sha_init
+exim_sha_update|exim_sha_update

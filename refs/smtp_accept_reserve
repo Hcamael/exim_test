@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='817' type='int'/>
 <doc f='exim/src/globals.h' l='817'>/* Reserve these SMTP connections */</doc>
+<def f='exim/src/globals.c' l='1313' type='int'/>
+<use f='exim/src/smtp_in.c' l='2742' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2750' u='r' c='smtp_start_session'/>
+<use f='exim/src/readconf.c' l='284' u='a'/>
+<use f='exim/src/readconf.c' l='284' u='a'/>
+<use f='exim/src/readconf.c' l='284' u='a'/>
+<use f='exim/src/readconf.c' l='284' u='a'/>

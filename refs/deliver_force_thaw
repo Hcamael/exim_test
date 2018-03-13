@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='369' type='BOOL'/>
 <doc f='exim/src/globals.h' l='369'>/* TRUE to force thaw in queue run */</doc>
+<use f='exim/src/deliver.c' l='5750' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='644' type='BOOL'/>
+<use f='exim/src/exim.c' l='2801' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3244' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3313' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3358' u='w' c='main'/>
+<use f='exim/src/exim.c' l='4634' u='w' c='main'/>
+<use f='exim/src/queue.c' l='408' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='541' u='r' c='queue_run'/>
+<use f='exim/src/daemon.c' l='1848' u='r' c='daemon_go'/>

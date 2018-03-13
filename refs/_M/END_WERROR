@@ -1,1 +1,16 @@
 <dec f='exim/src/macros.h' l='323'/>
+<use f='exim/src/receive.c' l='636' u='c'/>
+<use f='exim/src/receive.c' l='642' u='c'/>
+<use f='exim/src/receive.c' l='658' u='c'/>
+<use f='exim/src/receive.c' l='706' u='c'/>
+<use f='exim/src/receive.c' l='718' u='c'/>
+<use f='exim/src/receive.c' l='726' u='c'/>
+<use f='exim/src/receive.c' l='733' u='c'/>
+<use f='exim/src/receive.c' l='744' u='c'/>
+<use f='exim/src/receive.c' l='831' u='c'/>
+<use f='exim/src/receive.c' l='860' u='c'/>
+<use f='exim/src/receive.c' l='878' u='c'/>
+<use f='exim/src/receive.c' l='991' u='c'/>
+<use f='exim/src/receive.c' l='1005' u='c'/>
+<use f='exim/src/receive.c' l='1038' u='c'/>
+<use f='exim/src/receive.c' l='1054' u='c'/>

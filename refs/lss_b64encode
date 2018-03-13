@@ -1,1 +1,11 @@
 <dec f='exim/src/local_scan.h' l='180' type='uschar * lss_b64encode(uschar * , int )'/>
+<def f='exim/src/lss.c' l='117' ll='121' type='uschar * lss_b64encode(uschar * clear, int len)'/>
+<doc f='exim/src/lss.c' l='107'>/* These functions just give less &quot;internal&quot; names to the functions.
+
+Arguments:
+  clear       points to the clear text bytes
+  len         the number of bytes to encode
+
+Returns:      a pointer to the zero-terminated base 64 string, which
+              is in working store
+*/</doc>

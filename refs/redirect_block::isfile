@@ -1,3 +1,12 @@
 <dec f='exim/src/structs.h' l='840' type='BOOL'/>
 <offset>288</offset>
 <doc f='exim/src/structs.h' l='840'>/* TRUE if string is a file name */</doc>
+<use f='exim/src/deliver.c' l='5854' u='w' c='deliver_message'/>
+<use f='exim/src/rda.c' l='353' u='r' c='rda_extract'/>
+<use f='exim/src/rda.c' l='562' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='578' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='590' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='603' u='r' c='rda_interpret'/>
+<use f='exim/src/routers/queryprogram.c' l='391' u='w' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='716' u='w' c='redirect_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='721' u='w' c='redirect_router_entry'/>

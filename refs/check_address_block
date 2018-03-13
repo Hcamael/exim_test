@@ -1,0 +1,4 @@
+<def f='exim/src/match.c' l='30' ll='35'/>
+<size>24</size>
+<doc f='exim/src/match.c' l='27'>/* Argument block for the check_address() function. This is used for whole
+addresses. */</doc>

@@ -1,1 +1,6 @@
 <dec f='include/openssl/asn1.h' l='554' type='const unsigned char * ASN1_STRING_get0_data(const ASN1_STRING * x)'/>
+<use f='exim/src/tlscert-openssl.c' l='379' u='c' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='384' u='c' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='389' u='c' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='426' u='c' c='tls_cert_ocsp_uri'/>
+<use f='exim/src/tlscert-openssl.c' l='461' u='c' c='tls_cert_crl_uri'/>

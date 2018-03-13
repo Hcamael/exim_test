@@ -25,3 +25,4 @@ The return values of this function are:
                    is used in the rejection message.
 */</doc>
 <doc f='exim/src/local_scan.h' l='25'>/* The function and its return codes. */</doc>
+<use f='exim/src/receive.c' l='3658' u='c' c='receive_msg'/>

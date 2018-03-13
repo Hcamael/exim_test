@@ -1,2 +1,8 @@
 <dec f='exim/src/macros.h' l='819' type='2'/>
 <doc f='exim/src/macros.h' l='819'>/* dnssec required but not acheived */</doc>
+<use f='exim/src/routers/dnslookup.c' l='329' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='162' u='r' c='rf_lookup_hostlist'/>
+<use f='exim/src/host.c' l='2513' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2700' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3081' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3178' u='r' c='host_find_bydns'/>

@@ -1,0 +1,7 @@
+<dec f='exim/src/expand.c' l='393' type='2'/>
+<use f='exim/src/expand.c' l='548'/>
+<use f='exim/src/expand.c' l='548'/>
+<use f='exim/src/expand.c' l='548'/>
+<use f='exim/src/expand.c' l='548'/>
+<use f='exim/src/expand.c' l='1772' c='find_variable'/>
+<doc f='exim/src/expand.c' l='393'>/* value is address of ino_t (not always an int) */</doc>

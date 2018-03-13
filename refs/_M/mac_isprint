@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='74'/>
+<use f='exim/src/string.c' l='301' u='c'/>
+<use f='exim/src/string.c' l='320' u='c'/>
+<use f='exim/src/filter.c' l='2144' u='c'/>

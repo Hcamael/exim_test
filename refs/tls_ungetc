@@ -1,1 +1,12 @@
 <dec f='exim/src/functions.h' l='66' type='int tls_ungetc(int )'/>
+<use f='exim/src/tls-openssl.c' l='2105' u='r' c='tls_server_start'/>
+<def f='exim/src/tls.c' l='142' ll='147' type='int tls_ungetc(int ch)'/>
+<doc f='exim/src/tls.c' l='132'>/* Puts a character back in the input buffer. Only ever
+called once.
+Only used by the server-side TLS.
+
+Arguments:
+  ch           the character
+
+Returns:       the character
+*/</doc>

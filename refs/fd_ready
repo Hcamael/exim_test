@@ -1,1 +1,10 @@
 <dec f='exim/src/functions.h' l='200' type='BOOL fd_ready(int , int )'/>
+<def f='exim/src/ip.c' l='533' ll='587' type='BOOL fd_ready(int fd, int timeout)'/>
+<use f='exim/src/ip.c' l='608' u='c' c='ip_recv'/>
+<doc f='exim/src/ip.c' l='526'>/*
+Arguments:
+  fd          the file descriptor
+  timeout     the timeout, seconds
+Returns:      TRUE =&gt; ready for i/o
+              FALSE =&gt; timed out, or other error
+*/</doc>

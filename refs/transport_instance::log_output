@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='191' type='BOOL'/>
 <offset>2304</offset>
 <doc f='exim/src/structs.h' l='191'>/* Similarly for logging */</doc>
+<use f='exim/src/deliver.c' l='1534' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='2239' u='r' c='deliver_local'/>
+<use f='exim/src/globals.c' l='1492' u='w'/>

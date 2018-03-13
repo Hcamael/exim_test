@@ -1,2 +1,14 @@
 <dec f='exim/src/macros.h' l='818' type='1'/>
 <doc f='exim/src/macros.h' l='818'>/* could not resolve at this time */</doc>
+<use f='exim/src/verify.c' l='3028' u='r' c='check_host'/>
+<use f='exim/src/routers/dnslookup.c' l='334' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='168' u='r' c='rf_lookup_hostlist'/>
+<use f='exim/src/acl.c' l='2778' u='r' c='acl_udpsend'/>
+<use f='exim/src/match.c' l='228' u='r' c='check_string'/>
+<use f='exim/src/host.c' l='1872' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='2229' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2361' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2650' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2711' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3080' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3179' u='r' c='host_find_bydns'/>

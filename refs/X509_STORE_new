@@ -1,1 +1,2 @@
 <dec f='include/openssl/x509_vfy.h' l='261' type='X509_STORE * X509_STORE_new()'/>
+<use f='exim/src/tls-openssl.c' l='1654' u='c' c='tls_init'/>

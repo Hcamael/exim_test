@@ -1,1 +1,5 @@
 <dec f='exim/src/macros.h' l='833'/>
+<use f='exim/src/routers/dnslookup.c' l='273' u='c'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='97' u='c'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='136' u='c'/>
+<use f='exim/src/host.c' l='2334' u='c'/>

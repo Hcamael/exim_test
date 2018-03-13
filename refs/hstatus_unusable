@@ -1,1 +1,10 @@
 <dec f='exim/src/macros.h' l='743' type='2'/>
+<use f='exim/src/deliver.c' l='3767' u='r' c='remote_post_process'/>
+<use f='exim/src/deliver.c' l='4763' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='2148' u='r' c='verify_address'/>
+<use f='exim/src/host.c' l='2760' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3077' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3188' u='r' c='host_find_bydns'/>
+<use f='exim/src/retry.c' l='166' u='r' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='230' u='r' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='253' u='r' c='retry_check_address'/>

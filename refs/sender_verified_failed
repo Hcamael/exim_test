@@ -1,2 +1,24 @@
 <dec f='exim/src/globals.h' l='802' type='address_item *'/>
 <doc f='exim/src/globals.h' l='802'>/* The one that caused denial */</doc>
+<def f='exim/src/globals.c' l='1296' type='address_item *'/>
+<use f='exim/src/smtp_in.c' l='3222' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3223' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3228' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3233' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3234' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3235' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3236' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3238' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3240' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3246' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3255' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3256' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3286' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3287' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3289' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/acl.c' l='1136' u='r' c='acl_warn'/>
+<use f='exim/src/acl.c' l='1137' u='r' c='acl_warn'/>
+<use f='exim/src/acl.c' l='1139' u='r' c='acl_warn'/>
+<use f='exim/src/acl.c' l='2085' u='w' c='acl_verify'/>
+<use f='exim/src/acl.c' l='4305' u='w' c='acl_eval'/>
+<use f='exim/src/acl.c' l='4357' u='w' c='acl_check'/>

@@ -1,3 +1,13 @@
 <dec f='exim/src/structs.h' l='528' type='retry_item *'/>
 <offset>704</offset>
 <doc f='exim/src/structs.h' l='528'>/* chain of retry information */</doc>
+<use f='exim/src/deliver.c' l='3443' u='a' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3458' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3459' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4871' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/globals.c' l='342' u='w'/>
+<use f='exim/src/retry.c' l='298' u='r' c='retry_add_item'/>
+<use f='exim/src/retry.c' l='299' u='w' c='retry_add_item'/>
+<use f='exim/src/retry.c' l='567' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='571' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='879' u='r' c='retry_update'/>

@@ -1,2 +1,23 @@
 <dec f='exim/src/globals.h' l='679' type='uschar *'/>
 <doc f='exim/src/globals.h' l='679'>/* Domain to qualify senders with */</doc>
+<use f='exim/src/deliver.c' l='7298' u='r' c='deliver_message'/>
+<use f='exim/src/verify.c' l='538' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='540' u='r' c='do_callout'/>
+<def f='exim/src/globals.c' l='1057' type='uschar *'/>
+<use f='exim/src/exim.c' l='4847' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4888' u='r' c='main'/>
+<use f='exim/src/rewrite.c' l='67' u='r' c='rewrite_address_qualify'/>
+<use f='exim/src/expand.c' l='634' u='a'/>
+<use f='exim/src/expand.c' l='634' u='a'/>
+<use f='exim/src/expand.c' l='634' u='a'/>
+<use f='exim/src/expand.c' l='634' u='a'/>
+<use f='exim/src/readconf.c' l='245' u='a'/>
+<use f='exim/src/readconf.c' l='245' u='a'/>
+<use f='exim/src/readconf.c' l='245' u='a'/>
+<use f='exim/src/readconf.c' l='245' u='a'/>
+<use f='exim/src/receive.c' l='89' u='r' c='receive_check_set_sender'/>
+<use f='exim/src/receive.c' l='2299' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2778' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2785' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2844' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2850' u='r' c='receive_msg'/>

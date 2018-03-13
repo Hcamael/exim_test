@@ -1,1 +1,19 @@
 <dec f='exim/src/functions.h' l='542' type='void verify_get_ident(int )'/>
+<def f='exim/src/verify.c' l='2656' ll='2786' type='void verify_get_ident(int port)'/>
+<doc f='exim/src/verify.c' l='2641'>/* Attempt to get an id from the sending machine via the RFC 1413 protocol. If
+the timeout is set to zero, then the query is not done. There may also be lists
+of hosts and nets which are exempt. To guard against malefactors sending
+non-printing characters which could, for example, disrupt a message&apos;s headers,
+make sure the string consists of printing characters only.
+
+Argument:
+  port    the port to connect to; usually this is IDENT_PORT (113), but when
+          running in the test harness with -bh a different value is used.
+
+Returns:  nothing
+
+Side effect: any received ident value is put in sender_ident (NULL otherwise)
+*/</doc>
+<use f='exim/src/exim.c' l='5075' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5205' u='c' c='main'/>
+<use f='exim/src/daemon.c' l='445' u='c' c='handle_smtp_call'/>

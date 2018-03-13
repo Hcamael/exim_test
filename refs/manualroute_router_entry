@@ -1,0 +1,7 @@
+<dec f='exim/src/routers/manualroute.h' l='33' type='int manualroute_router_entry(router_instance * , address_item * , struct passwd * , int , address_item ** , address_item ** , address_item ** , address_item ** )'/>
+<use f='exim/src/drtables.c' l='311'/>
+<use f='exim/src/drtables.c' l='311'/>
+<use f='exim/src/drtables.c' l='311'/>
+<use f='exim/src/drtables.c' l='311'/>
+<doc f='exim/src/routers/manualroute.h' l='31'>/* The main and initialization entry points for the router */</doc>
+<def f='exim/src/routers/manualroute.c' l='43' ll='46' type='int manualroute_router_entry(router_instance * rblock, address_item * addr, struct passwd * pw, int verify, address_item ** addr_local, address_item ** addr_remote, address_item ** addr_new, address_item ** addr_succeed)'/>

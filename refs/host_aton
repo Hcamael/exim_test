@@ -1,1 +1,29 @@
 <dec f='exim/src/functions.h' l='214' type='int host_aton(const uschar * , int * )'/>
+<use f='exim/src/verify.c' l='2964' u='c' c='check_host'/>
+<use f='exim/src/verify.c' l='3255' u='c' c='invert_address'/>
+<use f='exim/src/verify.c' l='3492' u='c' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3498' u='c' c='one_check_dnsbl'/>
+<use f='exim/src/exim.c' l='5081' u='c' c='main'/>
+<use f='exim/src/expand.c' l='6707' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6727' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6733' u='c' c='expand_string_internal'/>
+<use f='exim/src/host.c' l='212' u='c' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='279' u='c' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='577' u='c' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='578' u='c' c='host_build_sender_fullhost'/>
+<def f='exim/src/host.c' l='988' ll='1071' type='int host_aton(const uschar * address, int * bin)'/>
+<use f='exim/src/host.c' l='1285' u='c' c='host_is_in_net'/>
+<use f='exim/src/host.c' l='1295' u='c' c='host_is_in_net'/>
+<doc f='exim/src/host.c' l='974'>/* Given the textual form of an IP address, convert it to binary in an
+array of ints. IPv4 addresses occupy one int; IPv6 addresses occupy 4 ints.
+The result has the first byte in the most significant byte of the first int. In
+other words, the result is not in network byte order, but in host byte order.
+As a result, this is not the converse of host_ntoa(), which expects network
+byte order. See host_nmtoa() below.
+
+Arguments:
+  address    points to the textual address, checked for syntax
+  bin        points to an array of 4 ints
+
+Returns:     the number of ints used
+*/</doc>

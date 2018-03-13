@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='219' macro='1' type='int sk_SXNETID_find(struct stack_st_SXNETID * sk, SXNETID * ptr)'/>

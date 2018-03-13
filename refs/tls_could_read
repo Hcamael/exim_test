@@ -1,1 +1,3 @@
 <dec f='exim/src/functions.h' l='54' type='BOOL tls_could_read()'/>
+<def f='exim/src/tls-openssl.c' l='2567' ll='2571' type='BOOL tls_could_read()'/>
+<use f='exim/src/smtp_in.c' l='344' u='c' c='wouldblock_reading'/>

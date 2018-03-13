@@ -1,0 +1,8 @@
+<def f='exim/src/tlscert-openssl.c' l='102' ll='107' type='uschar * badalloc()'/>
+<use f='exim/src/tlscert-openssl.c' l='127' u='c' c='asn1_time_copy'/>
+<use f='exim/src/tlscert-openssl.c' l='187' u='c' c='x509_name_copy'/>
+<use f='exim/src/tlscert-openssl.c' l='231' u='c' c='tls_cert_serial_number'/>
+<use f='exim/src/tlscert-openssl.c' l='248' u='c' c='tls_cert_signature'/>
+<use f='exim/src/tlscert-openssl.c' l='274' u='c' c='tls_cert_signature_algorithm'/>
+<use f='exim/src/tlscert-openssl.c' l='322' u='c' c='tls_cert_ext_by_oid'/>
+<doc f='exim/src/tlscert-openssl.c' l='100'>/* First, some internal service functions */</doc>

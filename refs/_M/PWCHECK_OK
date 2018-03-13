@@ -1,0 +1,6 @@
+<dec f='exim/src/auths/pwcheck.h' l='17'/>
+<doc f='exim/src/auths/pwcheck.h' l='13'>/* PWCHECK_OK   - auth successful
+   PWCHECK_NO   - access denied
+   PWCHECK_FAIL - [temporary] failure */</doc>
+<use f='exim/src/auths/call_pwcheck.c' l='54' u='c'/>
+<use f='exim/src/auths/call_pwcheck.c' l='105' u='c'/>

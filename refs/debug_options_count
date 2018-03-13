@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='339' type='int'/>
 <doc f='exim/src/globals.h' l='339'>/* Size of table */</doc>
+<def f='exim/src/globals.c' l='609' type='int'/>
+<use f='exim/src/exim.c' l='2475' u='r' c='main'/>
+<use f='exim/src/log.c' l='1417' u='r' c='debug_logging_activate'/>

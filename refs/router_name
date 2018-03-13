@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='768' type='uschar *'/>
 <doc f='exim/src/globals.h' l='768'>/* Name of router last started */</doc>
+<use f='exim/src/deliver.c' l='883' u='w' c='msg_event_raise'/>
+<use f='exim/src/deliver.c' l='900' u='w' c='msg_event_raise'/>
+<def f='exim/src/globals.c' l='1246' type='uschar *'/>
+<use f='exim/src/expand.c' l='656' u='a'/>
+<use f='exim/src/expand.c' l='656' u='a'/>
+<use f='exim/src/expand.c' l='656' u='a'/>
+<use f='exim/src/expand.c' l='656' u='a'/>

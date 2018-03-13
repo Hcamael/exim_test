@@ -1,3 +1,16 @@
 <dec f='exim/src/structs.h' l='345' type='optionlist *'/>
 <offset>64</offset>
 <doc f='exim/src/structs.h' l='345'>/* Table of private options names */</doc>
+<use f='exim/src/drtables.c' l='254' u='w'/>
+<use f='exim/src/drtables.c' l='267' u='w'/>
+<use f='exim/src/drtables.c' l='280' u='w'/>
+<use f='exim/src/drtables.c' l='306' u='w'/>
+<use f='exim/src/drtables.c' l='319' u='w'/>
+<use f='exim/src/drtables.c' l='332' u='w'/>
+<use f='exim/src/drtables.c' l='254' u='w'/>
+<use f='exim/src/drtables.c' l='267' u='w'/>
+<use f='exim/src/drtables.c' l='280' u='w'/>
+<use f='exim/src/drtables.c' l='306' u='w'/>
+<use f='exim/src/drtables.c' l='319' u='w'/>
+<use f='exim/src/drtables.c' l='332' u='w'/>
+<use f='exim/src/route.c' l='162' u='r' c='options_routers'/>

@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='491' type='header_name []'/>
 <doc f='exim/src/globals.h' l='491'>/* Table of header names */</doc>
+<use f='exim/src/header.c' l='303' u='r' c='header_checkname'/>
+<use f='exim/src/header.c' l='304' u='r' c='header_checkname'/>
+<def f='exim/src/globals.c' l='771' ll='786' type='header_name [13]'/>
+<use f='exim/src/globals.c' l='788' u='r'/>

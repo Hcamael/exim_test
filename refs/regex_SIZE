@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='740' type='const pcre *'/>
 <doc f='exim/src/globals.h' l='740'>/* For recognizing SIZE settings */</doc>
+<use f='exim/src/deliver.c' l='8444' u='r' c='deliver_init'/>
+<use f='exim/src/deliver.c' l='8444' u='w' c='deliver_init'/>
+<def f='exim/src/globals.c' l='1139' type='const pcre *'/>

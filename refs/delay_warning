@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='341' type='int []'/>
 <doc f='exim/src/globals.h' l='341'>/* Times between warnings */</doc>
+<use f='exim/src/deliver.c' l='8064' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8094' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8095' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8097' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8099' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8103' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8104' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='613' type='int [12]'/>
+<use f='exim/src/readconf.c' l='107' u='a'/>
+<use f='exim/src/readconf.c' l='107' u='a'/>
+<use f='exim/src/readconf.c' l='107' u='a'/>
+<use f='exim/src/readconf.c' l='107' u='a'/>

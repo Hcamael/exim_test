@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='348' type='uschar *'/>
 <doc f='exim/src/globals.h' l='348'>/* From domain lookup */</doc>
+<use f='exim/src/deliver.c' l='200' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/globals.c' l='206' u='a'/>
+<use f='exim/src/globals.c' l='206' u='a'/>
+<def f='exim/src/globals.c' l='624' type='uschar *'/>
+<use f='exim/src/routers/rf_queue_add.c' l='39' u='r' c='rf_queue_add'/>
+<use f='exim/src/routers/redirect.c' l='560' u='r' c='redirect_router_entry'/>
+<use f='exim/src/acl.c' l='3465' u='a' c='acl_check_condition'/>
+<use f='exim/src/expand.c' l='526' u='a'/>
+<use f='exim/src/expand.c' l='526' u='a'/>
+<use f='exim/src/expand.c' l='526' u='a'/>
+<use f='exim/src/expand.c' l='526' u='a'/>

@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='760' type='uschar *'/>
 <doc f='exim/src/globals.h' l='760'>/* RFC hosts */</doc>
+<use f='exim/src/verify.c' l='2669' u='a' c='verify_get_ident'/>
+<def f='exim/src/globals.c' l='1159' type='uschar *'/>
+<use f='exim/src/readconf.c' l='272' u='a'/>
+<use f='exim/src/readconf.c' l='272' u='a'/>
+<use f='exim/src/readconf.c' l='272' u='a'/>
+<use f='exim/src/readconf.c' l='272' u='a'/>

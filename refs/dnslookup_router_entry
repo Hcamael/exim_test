@@ -1,0 +1,46 @@
+<dec f='exim/src/routers/dnslookup.h' l='36' type='int dnslookup_router_entry(router_instance * , address_item * , struct passwd * , int , address_item ** , address_item ** , address_item ** , address_item ** )'/>
+<use f='exim/src/drtables.c' l='272'/>
+<use f='exim/src/drtables.c' l='272'/>
+<use f='exim/src/drtables.c' l='272'/>
+<use f='exim/src/drtables.c' l='272'/>
+<doc f='exim/src/routers/dnslookup.h' l='34'>/* The main and initialization entry points for the router */</doc>
+<def f='exim/src/routers/dnslookup.c' l='149' ll='482' type='int dnslookup_router_entry(router_instance * rblock, address_item * addr, struct passwd * pw, int verify, address_item ** addr_local, address_item ** addr_remote, address_item ** addr_new, address_item ** addr_succeed)'/>
+<doc f='exim/src/routers/dnslookup.c' l='109'>/* See local README for interface details. This router returns:
+
+DECLINE
+  . the domain does not exist in the DNS
+  . MX records point to non-existent hosts (including RHS = IP address)
+  . a single SRV record has a host name of &quot;.&quot; (=&gt; no service)
+  . syntactically invalid mail domain
+  . check_secondary_mx set, and local host not in host list
+
+DEFER
+  . lookup defer for mx_domains
+  . timeout etc on DNS lookup
+  . verifying the errors address caused a deferment or a big disaster such
+      as an expansion failure (rf_get_errors_address)
+  . expanding a headers_{add,remove} string caused a deferment or another
+      expansion error (rf_get_munge_headers)
+  . a problem in rf_get_transport: no transport when one is needed;
+      failed to expand dynamic transport; failed to find dynamic transport
+  . failure to expand or find a uid/gid (rf_get_ugid via rf_queue_add)
+  . self = &quot;freeze&quot;, self = &quot;defer&quot;
+
+PASS
+  . timeout etc on DNS lookup and pass_on_timeout set
+  . self = &quot;pass&quot;
+
+REROUTED
+  . routed to local host, but name was expanded by DNS lookup, so a
+      re-routing should take place
+  . self = &quot;reroute&quot;
+
+  In both cases the new address will have been set up as a child
+
+FAIL
+  . self = &quot;fail&quot;
+
+OK
+  added address to addr_local or addr_remote, as appropriate for the
+  type of transport; this includes the self=&quot;send&quot; case.
+*/</doc>

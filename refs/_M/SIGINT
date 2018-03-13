@@ -1,1 +1,5 @@
 <dec f='include/x86_64-linux-gnu/bits/signum.h' l='33'/>
+<use f='exim/src/deliver.c' l='2335' u='c'/>
+<use f='exim/src/receive.c' l='1766' u='c'/>
+<use f='exim/src/receive.c' l='3800' u='c'/>
+<use f='exim/src/receive.c' l='4223' u='c'/>

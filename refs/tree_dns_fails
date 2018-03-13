@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='954' type='tree_node *'/>
 <doc f='exim/src/globals.h' l='954'>/* Tree of DNS lookup failures */</doc>
+<def f='exim/src/globals.c' l='1510' type='tree_node *'/>
+<use f='exim/src/expand.c' l='7869' u='r' c='assert_no_variables'/>
+<use f='exim/src/dns.c' l='627' u='a' c='dns_return'/>
+<use f='exim/src/dns.c' l='673' u='r' c='dns_basic_lookup'/>

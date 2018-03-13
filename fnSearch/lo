@@ -1,1 +1,7 @@
 local_scan|local_scan
+log_write|log_write
+local_part_quote|local_part_quote
+log_close_all|log_close_all
+log_create|log_create
+log_create_as_exim|log_create_as_exim
+log_write|log_write

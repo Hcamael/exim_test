@@ -1,0 +1,1 @@
+<dec f='include/openssl/ocsp.h' l='328' macro='1' type='OCSP_CERTSTATUS * OCSP_CERTSTATUS_new()'/>

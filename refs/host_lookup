@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='506' type='uschar *'/>
 <doc f='exim/src/globals.h' l='506'>/* For which IP addresses are always looked up */</doc>
+<def f='exim/src/globals.c' l='804' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='2661' u='a' c='smtp_start_session'/>
+<use f='exim/src/readconf.c' l='167' u='a'/>
+<use f='exim/src/readconf.c' l='167' u='a'/>
+<use f='exim/src/readconf.c' l='167' u='a'/>
+<use f='exim/src/readconf.c' l='167' u='a'/>

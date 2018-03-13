@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='966' type='uschar *'/>
 <doc f='exim/src/globals.h' l='966'>/* To use when login id unknown */</doc>
+<def f='exim/src/globals.c' l='1521' type='uschar *'/>
+<use f='exim/src/exim.c' l='4765' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4767' u='r' c='main'/>
+<use f='exim/src/readconf.c' l='366' u='a'/>
+<use f='exim/src/readconf.c' l='366' u='a'/>
+<use f='exim/src/readconf.c' l='366' u='a'/>
+<use f='exim/src/readconf.c' l='366' u='a'/>

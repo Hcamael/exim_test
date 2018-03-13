@@ -1,1 +1,12 @@
 <dec f='exim/src/functions.h' l='57' type='int tls_ferror()'/>
+<use f='exim/src/tls-openssl.c' l='2107' u='r' c='tls_server_start'/>
+<def f='exim/src/tls.c' l='184' ll='188' type='int tls_ferror()'/>
+<doc f='exim/src/tls.c' l='174'>/* Tests for a previous read error, and returns with errno
+restored to what it was when the error was detected.
+Only used by the server-side TLS.
+
+&gt;&gt;&gt;&gt;&gt; Hmm. Errno not handled yet. Where do we get it from?  &gt;&gt;&gt;&gt;&gt;
+
+Arguments:     none
+Returns:       non-zero if the error flag is set
+*/</doc>

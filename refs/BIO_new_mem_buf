@@ -1,1 +1,4 @@
 <dec f='include/openssl/bio.h' l='574' type='BIO * BIO_new_mem_buf(const void * buf, int len)'/>
+<use f='exim/src/tls-openssl.c' l='626' u='c' c='init_dh'/>
+<use f='exim/src/tls-openssl.c' l='650' u='c' c='init_dh'/>
+<use f='exim/src/tlscert-openssl.c' l='70' u='c' c='tls_import_cert'/>

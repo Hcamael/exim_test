@@ -1,1 +1,9 @@
 <dec f='exim/src/structs.h' l='727'/>
+<use f='exim/src/macro.c' l='67' u='c'/>
+<use f='exim/src/macro.c' l='84' u='c'/>
+<use f='exim/src/macro.c' l='85' u='c'/>
+<use f='exim/src/macro.c' l='108' u='c'/>
+<use f='exim/src/macro.c' l='110' u='c'/>
+<use f='exim/src/macro_predef.c' l='295' u='c'/>
+<use f='exim/src/macro_predef.c' l='296' u='c'/>
+<use f='exim/src/macro_predef.c' l='335' u='c'/>

@@ -1,2 +1,17 @@
 <dec f='exim/src/globals.h' l='376' type='uschar *'/>
 <doc f='exim/src/globals.h' l='376'>/* For selecting by sender */</doc>
+<def f='exim/src/globals.c' l='651' type='uschar *'/>
+<use f='exim/src/exim.c' l='3367' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3369' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3488' u='r' c='main'/>
+<use f='exim/src/queue.c' l='377' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='422' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='424' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='439' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='441' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='522' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='561' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='566' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='571' u='r' c='queue_run'/>
+<use f='exim/src/daemon.c' l='1863' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1867' u='r' c='daemon_go'/>

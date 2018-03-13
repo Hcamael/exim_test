@@ -1,0 +1,505 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>dnslookup.c source code [exim/src/routers/dnslookup.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/routers/dnslookup.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>routers</a>/<a href='dnslookup.c.html'>dnslookup.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2018 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><u>#include <a href="../exim.h.html">"../exim.h"</a></u></td></tr>
+<tr><th id="9">9</th><td><u>#include <a href="rf_functions.h.html">"rf_functions.h"</a></u></td></tr>
+<tr><th id="10">10</th><td><u>#include <a href="dnslookup.h.html">"dnslookup.h"</a></u></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><i>/* Options specific to the dnslookup router. */</i></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a> <dfn class="decl def" id="dnslookup_router_options" title='dnslookup_router_options' data-ref="dnslookup_router_options">dnslookup_router_options</dfn>[] = {</td></tr>
+<tr><th id="17">17</th><td>  { <q>"check_secondary_mx"</q>, <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="18">18</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(dnslookup_router_options_block, check_secondary_mx)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a>, check_secondary_mx)) },</td></tr>
+<tr><th id="19">19</th><td>  { <q>"check_srv"</q>,          <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="20">20</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(dnslookup_router_options_block, check_srv)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a>, check_srv)) },</td></tr>
+<tr><th id="21">21</th><td>  { <q>"fail_defer_domains"</q>, <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="22">22</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(dnslookup_router_options_block, fail_defer_domains)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a>, fail_defer_domains)) },</td></tr>
+<tr><th id="23">23</th><td>  { <q>"ipv4_only"</q>,          <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="24">24</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(dnslookup_router_options_block, ipv4_only)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a>, ipv4_only)) },</td></tr>
+<tr><th id="25">25</th><td>  { <q>"ipv4_prefer"</q>,        <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="26">26</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(dnslookup_router_options_block, ipv4_prefer)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a>, ipv4_prefer)) },</td></tr>
+<tr><th id="27">27</th><td>  { <q>"mx_domains"</q>,         <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="28">28</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(dnslookup_router_options_block, mx_domains)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a>, mx_domains)) },</td></tr>
+<tr><th id="29">29</th><td>  { <q>"mx_fail_domains"</q>,    <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="30">30</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(dnslookup_router_options_block, mx_fail_domains)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a>, mx_fail_domains)) },</td></tr>
+<tr><th id="31">31</th><td>  { <q>"qualify_single"</q>,     <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="32">32</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(dnslookup_router_options_block, qualify_single)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a>, qualify_single)) },</td></tr>
+<tr><th id="33">33</th><td>  { <q>"rewrite_headers"</q>,    <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="34">34</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(dnslookup_router_options_block, rewrite_headers)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a>, rewrite_headers)) },</td></tr>
+<tr><th id="35">35</th><td>  { <q>"same_domain_copy_routing"</q>, <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>|<a class="macro" href="../macros.h.html#702" title="0x200" data-ref="_M/opt_public">opt_public</a>,</td></tr>
+<tr><th id="36">36</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(router_instance, same_domain_copy_routing)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="../structs.h.html#router_instance" title='router_instance' data-type='struct router_instance' data-ref="router_instance">router_instance</a>, same_domain_copy_routing)) },</td></tr>
+<tr><th id="37">37</th><td>  { <q>"search_parents"</q>,     <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="38">38</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(dnslookup_router_options_block, search_parents)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a>, search_parents)) },</td></tr>
+<tr><th id="39">39</th><td>  { <q>"srv_fail_domains"</q>,   <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="40">40</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(dnslookup_router_options_block, srv_fail_domains)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a>, srv_fail_domains)) },</td></tr>
+<tr><th id="41">41</th><td>  { <q>"widen_domains"</q>,      <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="42">42</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(dnslookup_router_options_block, widen_domains)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a>, widen_domains)) }</td></tr>
+<tr><th id="43">43</th><td>};</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><i>/* Size of the options list. An extern variable has to be used so that its</i></td></tr>
+<tr><th id="46">46</th><td><i>address can appear in the tables drtables.c. */</i></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><em>int</em> <dfn class="decl def" id="dnslookup_router_options_count" title='dnslookup_router_options_count' data-ref="dnslookup_router_options_count">dnslookup_router_options_count</dfn> =</td></tr>
+<tr><th id="49">49</th><td>  <b>sizeof</b>(<a class="ref" href="dnslookup.h.html#dnslookup_router_options" title='dnslookup_router_options' data-ref="dnslookup_router_options">dnslookup_router_options</a>)/<b>sizeof</b>(<a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a>);</td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><u>#<span data-ppcond="52">ifdef</span> <span class="macro" data-ref="_M/MACRO_PREDEF">MACRO_PREDEF</span></u></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><i>/* Dummy entries */</i></td></tr>
+<tr><th id="55">55</th><td>dnslookup_router_options_block dnslookup_router_option_defaults = {<var>0</var>};</td></tr>
+<tr><th id="56">56</th><td><em>void</em> dnslookup_router_init(router_instance *rblock) {}</td></tr>
+<tr><th id="57">57</th><td><em>int</em> dnslookup_router_entry(router_instance *rblock, address_item *addr,</td></tr>
+<tr><th id="58">58</th><td>  <b>struct</b> passwd *pw, <em>int</em> verify, address_item **addr_local,</td></tr>
+<tr><th id="59">59</th><td>  address_item **addr_remote, address_item **addr_new,</td></tr>
+<tr><th id="60">60</th><td>  address_item **addr_succeed) {<b>return</b> <var>0</var>;}</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><u>#<span data-ppcond="52">else</span>   /*!MACRO_PREDEF*/</u></td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td></td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td><i>/* Default private options block for the dnslookup router. */</i></td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td><a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a> <dfn class="decl def" id="dnslookup_router_option_defaults" title='dnslookup_router_option_defaults' data-ref="dnslookup_router_option_defaults">dnslookup_router_option_defaults</dfn> = {</td></tr>
+<tr><th id="70">70</th><td>  .<a class="ref field" href="dnslookup.h.html#(anonymous)::check_secondary_mx" title='(anonymous struct)::check_secondary_mx' data-ref="(anonymous)::check_secondary_mx">check_secondary_mx</a> =	<a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>,</td></tr>
+<tr><th id="71">71</th><td>  .<a class="ref field" href="dnslookup.h.html#(anonymous)::qualify_single" title='(anonymous struct)::qualify_single' data-ref="(anonymous)::qualify_single">qualify_single</a> =	<a class="macro" href="../mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>,</td></tr>
+<tr><th id="72">72</th><td>  .<a class="ref field" href="dnslookup.h.html#(anonymous)::search_parents" title='(anonymous struct)::search_parents' data-ref="(anonymous)::search_parents">search_parents</a> =	<a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>,</td></tr>
+<tr><th id="73">73</th><td>  .<a class="ref field" href="dnslookup.h.html#(anonymous)::rewrite_headers" title='(anonymous struct)::rewrite_headers' data-ref="(anonymous)::rewrite_headers">rewrite_headers</a> =	<a class="macro" href="../mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>,</td></tr>
+<tr><th id="74">74</th><td>  .<a class="ref field" href="dnslookup.h.html#(anonymous)::widen_domains" title='(anonymous struct)::widen_domains' data-ref="(anonymous)::widen_domains">widen_domains</a> =	<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="75">75</th><td>  .<a class="ref field" href="dnslookup.h.html#(anonymous)::mx_domains" title='(anonymous struct)::mx_domains' data-ref="(anonymous)::mx_domains">mx_domains</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="76">76</th><td>  .<a class="ref field" href="dnslookup.h.html#(anonymous)::mx_fail_domains" title='(anonymous struct)::mx_fail_domains' data-ref="(anonymous)::mx_fail_domains">mx_fail_domains</a> =	<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="77">77</th><td>  .<a class="ref field" href="dnslookup.h.html#(anonymous)::srv_fail_domains" title='(anonymous struct)::srv_fail_domains' data-ref="(anonymous)::srv_fail_domains">srv_fail_domains</a> =	<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="78">78</th><td>  .<a class="ref field" href="dnslookup.h.html#(anonymous)::check_srv" title='(anonymous struct)::check_srv' data-ref="(anonymous)::check_srv">check_srv</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="79">79</th><td>  .<a class="ref field" href="dnslookup.h.html#(anonymous)::fail_defer_domains" title='(anonymous struct)::fail_defer_domains' data-ref="(anonymous)::fail_defer_domains">fail_defer_domains</a> =	<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="80">80</th><td>  .<a class="ref field" href="dnslookup.h.html#(anonymous)::ipv4_only" title='(anonymous struct)::ipv4_only' data-ref="(anonymous)::ipv4_only">ipv4_only</a> =		<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="81">81</th><td>  .<a class="ref field" href="dnslookup.h.html#(anonymous)::ipv4_prefer" title='(anonymous struct)::ipv4_prefer' data-ref="(anonymous)::ipv4_prefer">ipv4_prefer</a> =	<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="82">82</th><td>};</td></tr>
+<tr><th id="83">83</th><td></td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="87">87</th><td><i>*          Initialization entry point            *</i></td></tr>
+<tr><th id="88">88</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><i>/* Called for each instance, after its options have been read, to enable</i></td></tr>
+<tr><th id="91">91</th><td><i>consistency checks to be done, or anything else that needs to be set up. */</i></td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td><em>void</em></td></tr>
+<tr><th id="94">94</th><td><dfn class="decl def fn" id="dnslookup_router_init" title='dnslookup_router_init' data-ref="dnslookup_router_init">dnslookup_router_init</dfn>(<a class="typedef" href="../structs.h.html#router_instance" title='router_instance' data-type='struct router_instance' data-ref="router_instance">router_instance</a> *<dfn class="local col1 decl" id="1rblock" title='rblock' data-type='router_instance *' data-ref="1rblock">rblock</dfn>)</td></tr>
+<tr><th id="95">95</th><td>{</td></tr>
+<tr><th id="96">96</th><td><i>/*</i></td></tr>
+<tr><th id="97">97</th><td><i>dnslookup_router_options_block *ob =</i></td></tr>
+<tr><th id="98">98</th><td><i>  (dnslookup_router_options_block *)(rblock-&gt;options_block);</i></td></tr>
+<tr><th id="99">99</th><td><i>*/</i></td></tr>
+<tr><th id="100">100</th><td><a class="local col1 ref" href="#1rblock" title='rblock' data-ref="1rblock">rblock</a> = <a class="local col1 ref" href="#1rblock" title='rblock' data-ref="1rblock">rblock</a>;</td></tr>
+<tr><th id="101">101</th><td>}</td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="106">106</th><td><i>*              Main entry point                  *</i></td></tr>
+<tr><th id="107">107</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="108">108</th><td></td></tr>
+<tr><th id="109">109</th><td><i>/* See local README for interface details. This router returns:</i></td></tr>
+<tr><th id="110">110</th><td><i></i></td></tr>
+<tr><th id="111">111</th><td><i>DECLINE</i></td></tr>
+<tr><th id="112">112</th><td><i>  . the domain does not exist in the DNS</i></td></tr>
+<tr><th id="113">113</th><td><i>  . MX records point to non-existent hosts (including RHS = IP address)</i></td></tr>
+<tr><th id="114">114</th><td><i>  . a single SRV record has a host name of "." (=&gt; no service)</i></td></tr>
+<tr><th id="115">115</th><td><i>  . syntactically invalid mail domain</i></td></tr>
+<tr><th id="116">116</th><td><i>  . check_secondary_mx set, and local host not in host list</i></td></tr>
+<tr><th id="117">117</th><td><i></i></td></tr>
+<tr><th id="118">118</th><td><i>DEFER</i></td></tr>
+<tr><th id="119">119</th><td><i>  . lookup defer for mx_domains</i></td></tr>
+<tr><th id="120">120</th><td><i>  . timeout etc on DNS lookup</i></td></tr>
+<tr><th id="121">121</th><td><i>  . verifying the errors address caused a deferment or a big disaster such</i></td></tr>
+<tr><th id="122">122</th><td><i>      as an expansion failure (rf_get_errors_address)</i></td></tr>
+<tr><th id="123">123</th><td><i>  . expanding a headers_{add,remove} string caused a deferment or another</i></td></tr>
+<tr><th id="124">124</th><td><i>      expansion error (rf_get_munge_headers)</i></td></tr>
+<tr><th id="125">125</th><td><i>  . a problem in rf_get_transport: no transport when one is needed;</i></td></tr>
+<tr><th id="126">126</th><td><i>      failed to expand dynamic transport; failed to find dynamic transport</i></td></tr>
+<tr><th id="127">127</th><td><i>  . failure to expand or find a uid/gid (rf_get_ugid via rf_queue_add)</i></td></tr>
+<tr><th id="128">128</th><td><i>  . self = "freeze", self = "defer"</i></td></tr>
+<tr><th id="129">129</th><td><i></i></td></tr>
+<tr><th id="130">130</th><td><i>PASS</i></td></tr>
+<tr><th id="131">131</th><td><i>  . timeout etc on DNS lookup and pass_on_timeout set</i></td></tr>
+<tr><th id="132">132</th><td><i>  . self = "pass"</i></td></tr>
+<tr><th id="133">133</th><td><i></i></td></tr>
+<tr><th id="134">134</th><td><i>REROUTED</i></td></tr>
+<tr><th id="135">135</th><td><i>  . routed to local host, but name was expanded by DNS lookup, so a</i></td></tr>
+<tr><th id="136">136</th><td><i>      re-routing should take place</i></td></tr>
+<tr><th id="137">137</th><td><i>  . self = "reroute"</i></td></tr>
+<tr><th id="138">138</th><td><i></i></td></tr>
+<tr><th id="139">139</th><td><i>  In both cases the new address will have been set up as a child</i></td></tr>
+<tr><th id="140">140</th><td><i></i></td></tr>
+<tr><th id="141">141</th><td><i>FAIL</i></td></tr>
+<tr><th id="142">142</th><td><i>  . self = "fail"</i></td></tr>
+<tr><th id="143">143</th><td><i></i></td></tr>
+<tr><th id="144">144</th><td><i>OK</i></td></tr>
+<tr><th id="145">145</th><td><i>  added address to addr_local or addr_remote, as appropriate for the</i></td></tr>
+<tr><th id="146">146</th><td><i>  type of transport; this includes the self="send" case.</i></td></tr>
+<tr><th id="147">147</th><td><i>*/</i></td></tr>
+<tr><th id="148">148</th><td></td></tr>
+<tr><th id="149">149</th><td><em>int</em></td></tr>
+<tr><th id="150">150</th><td><dfn class="decl def fn" id="dnslookup_router_entry" title='dnslookup_router_entry' data-ref="dnslookup_router_entry">dnslookup_router_entry</dfn>(</td></tr>
+<tr><th id="151">151</th><td>  <a class="typedef" href="../structs.h.html#router_instance" title='router_instance' data-type='struct router_instance' data-ref="router_instance">router_instance</a> *<dfn class="local col2 decl" id="2rblock" title='rblock' data-type='router_instance *' data-ref="2rblock">rblock</dfn>,        <i>/* data for this instantiation */</i></td></tr>
+<tr><th id="152">152</th><td>  <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *<dfn class="local col3 decl" id="3addr" title='addr' data-type='address_item *' data-ref="3addr">addr</dfn>,             <i>/* address we are working on */</i></td></tr>
+<tr><th id="153">153</th><td>  <b>struct</b> <a class="type" href="../../../include/pwd.h.html#passwd" title='passwd' data-ref="passwd">passwd</a> *<dfn class="local col4 decl" id="4pw" title='pw' data-type='struct passwd *' data-ref="4pw">pw</dfn>,              <i>/* passwd entry after check_local_user */</i></td></tr>
+<tr><th id="154">154</th><td>  <em>int</em> <dfn class="local col5 decl" id="5verify" title='verify' data-type='int' data-ref="5verify">verify</dfn>,                     <i>/* v_none/v_recipient/v_sender/v_expn */</i></td></tr>
+<tr><th id="155">155</th><td>  <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **<dfn class="local col6 decl" id="6addr_local" title='addr_local' data-type='address_item **' data-ref="6addr_local">addr_local</dfn>,      <i>/* add it to this if it's local */</i></td></tr>
+<tr><th id="156">156</th><td>  <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **<dfn class="local col7 decl" id="7addr_remote" title='addr_remote' data-type='address_item **' data-ref="7addr_remote">addr_remote</dfn>,     <i>/* add it to this if it's remote */</i></td></tr>
+<tr><th id="157">157</th><td>  <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **<dfn class="local col8 decl" id="8addr_new" title='addr_new' data-type='address_item **' data-ref="8addr_new">addr_new</dfn>,        <i>/* put new addresses on here */</i></td></tr>
+<tr><th id="158">158</th><td>  <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **<dfn class="local col9 decl" id="9addr_succeed" title='addr_succeed' data-type='address_item **' data-ref="9addr_succeed">addr_succeed</dfn>)    <i>/* put old address here on success */</i></td></tr>
+<tr><th id="159">159</th><td>{</td></tr>
+<tr><th id="160">160</th><td><a class="typedef" href="../structs.h.html#host_item" title='host_item' data-type='struct host_item' data-ref="host_item">host_item</a> <dfn class="local col0 decl" id="10h" title='h' data-type='host_item' data-ref="10h">h</dfn>;</td></tr>
+<tr><th id="161">161</th><td><em>int</em> <dfn class="local col1 decl" id="11rc" title='rc' data-type='int' data-ref="11rc">rc</dfn>;</td></tr>
+<tr><th id="162">162</th><td><em>int</em> <dfn class="local col2 decl" id="12widen_sep" title='widen_sep' data-type='int' data-ref="12widen_sep">widen_sep</dfn> = <var>0</var>;</td></tr>
+<tr><th id="163">163</th><td><em>int</em> <dfn class="local col3 decl" id="13whichrrs" title='whichrrs' data-type='int' data-ref="13whichrrs">whichrrs</dfn> = <a class="macro" href="../macros.h.html#828" title="(1 &lt;&lt; (1))" data-ref="_M/HOST_FIND_BY_MX">HOST_FIND_BY_MX</a> | <a class="macro" href="../macros.h.html#829" title="(1 &lt;&lt; (2))" data-ref="_M/HOST_FIND_BY_A">HOST_FIND_BY_A</a> | <a class="macro" href="../macros.h.html#830" title="(1 &lt;&lt; (3))" data-ref="_M/HOST_FIND_BY_AAAA">HOST_FIND_BY_AAAA</a>;</td></tr>
+<tr><th id="164">164</th><td><a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a> *<dfn class="local col4 decl" id="14ob" title='ob' data-type='dnslookup_router_options_block *' data-ref="14ob">ob</dfn> =</td></tr>
+<tr><th id="165">165</th><td>  (<a class="typedef" href="dnslookup.h.html#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a> *)(<a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::options_block" title='router_instance::options_block' data-ref="router_instance::options_block">options_block</a>);</td></tr>
+<tr><th id="166">166</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col5 decl" id="15srv_service" title='srv_service' data-type='uschar *' data-ref="15srv_service">srv_service</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="167">167</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="16widen" title='widen' data-type='uschar *' data-ref="16widen">widen</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="168">168</th><td><em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col7 decl" id="17pre_widen" title='pre_widen' data-type='const uschar *' data-ref="17pre_widen">pre_widen</dfn> = <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::domain" title='address_item::domain' data-ref="address_item::domain">domain</a>;</td></tr>
+<tr><th id="169">169</th><td><em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col8 decl" id="18post_widen" title='post_widen' data-type='const uschar *' data-ref="18post_widen">post_widen</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="170">170</th><td><em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col9 decl" id="19fully_qualified_name" title='fully_qualified_name' data-type='const uschar *' data-ref="19fully_qualified_name">fully_qualified_name</dfn>;</td></tr>
+<tr><th id="171">171</th><td><em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col0 decl" id="20listptr" title='listptr' data-type='const uschar *' data-ref="20listptr">listptr</dfn>;</td></tr>
+<tr><th id="172">172</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col1 decl" id="21widen_buffer" title='widen_buffer' data-type='uschar [256]' data-ref="21widen_buffer">widen_buffer</dfn>[<var>256</var>];</td></tr>
+<tr><th id="173">173</th><td></td></tr>
+<tr><th id="174">174</th><td><a class="local col8 ref" href="#8addr_new" title='addr_new' data-ref="8addr_new">addr_new</a> = <a class="local col8 ref" href="#8addr_new" title='addr_new' data-ref="8addr_new">addr_new</a>;          <i>/* Keep picky compilers happy */</i></td></tr>
+<tr><th id="175">175</th><td><a class="local col9 ref" href="#9addr_succeed" title='addr_succeed' data-ref="9addr_succeed">addr_succeed</a> = <a class="local col9 ref" href="#9addr_succeed" title='addr_succeed' data-ref="9addr_succeed">addr_succeed</a>;</td></tr>
+<tr><th id="176">176</th><td></td></tr>
+<tr><th id="177">177</th><td><a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_route))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#401" title='D_route' data-ref="D_route">D_route</a>)</td></tr>
+<tr><th id="178">178</th><td>  <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"%s router called for %s\n  domain = %s\n"</q>,</td></tr>
+<tr><th id="179">179</th><td>    <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::name" title='router_instance::name' data-ref="router_instance::name">name</a>, <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::address" title='address_item::address' data-ref="address_item::address">address</a>, <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::domain" title='address_item::domain' data-ref="address_item::domain">domain</a>);</td></tr>
+<tr><th id="180">180</th><td></td></tr>
+<tr><th id="181">181</th><td><i>/* If an SRV check is required, expand the service name */</i></td></tr>
+<tr><th id="182">182</th><td></td></tr>
+<tr><th id="183">183</th><td><b>if</b> (<a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::check_srv" title='(anonymous struct)::check_srv' data-ref="(anonymous)::check_srv">check_srv</a>)</td></tr>
+<tr><th id="184">184</th><td>  {</td></tr>
+<tr><th id="185">185</th><td>  <b>if</b> (  !(<a class="local col5 ref" href="#15srv_service" title='srv_service' data-ref="15srv_service">srv_service</a> = <a class="ref fn" href="../local_scan.h.html#expand_string" title='expand_string' data-ref="expand_string">expand_string</a>(<a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::check_srv" title='(anonymous struct)::check_srv' data-ref="(anonymous)::check_srv">check_srv</a>))</td></tr>
+<tr><th id="186">186</th><td>     &amp;&amp; !<a class="ref" href="../globals.h.html#expand_string_forcedfail" title='expand_string_forcedfail' data-ref="expand_string_forcedfail">expand_string_forcedfail</a>)</td></tr>
+<tr><th id="187">187</th><td>    {</td></tr>
+<tr><th id="188">188</th><td>    <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%s router: failed to expand \"%s\": %s"</q>,</td></tr>
+<tr><th id="189">189</th><td>      <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::name" title='router_instance::name' data-ref="router_instance::name">name</a>, <a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::check_srv" title='(anonymous struct)::check_srv' data-ref="(anonymous)::check_srv">check_srv</a>, <a class="ref" href="../local_scan.h.html#expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</a>);</td></tr>
+<tr><th id="190">190</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="191">191</th><td>    }</td></tr>
+<tr><th id="192">192</th><td>  <b>else</b> <a class="local col3 ref" href="#13whichrrs" title='whichrrs' data-ref="13whichrrs">whichrrs</a> |= <a class="macro" href="../macros.h.html#827" title="(1 &lt;&lt; (0))" data-ref="_M/HOST_FIND_BY_SRV">HOST_FIND_BY_SRV</a>;</td></tr>
+<tr><th id="193">193</th><td>  }</td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td><i>/* Set up the first of any widening domains. The code further down copes with</i></td></tr>
+<tr><th id="196">196</th><td><i>either pre- or post-widening, but at present there is no way to turn on</i></td></tr>
+<tr><th id="197">197</th><td><i>pre-widening, as actually doing so seems like a rather bad idea, and nobody has</i></td></tr>
+<tr><th id="198">198</th><td><i>requested it. Pre-widening would cause local abbreviated names to take</i></td></tr>
+<tr><th id="199">199</th><td><i>precedence over global names. For example, if the domain is "xxx.ch" it might</i></td></tr>
+<tr><th id="200">200</th><td><i>be something in the "ch" toplevel domain, but it also might be xxx.ch.xyz.com.</i></td></tr>
+<tr><th id="201">201</th><td><i>The choice of pre- or post-widening affects which takes precedence. If ever</i></td></tr>
+<tr><th id="202">202</th><td><i>somebody comes up with some kind of requirement for pre-widening, presumably</i></td></tr>
+<tr><th id="203">203</th><td><i>with some conditions under which it is done, it can be selected here.</i></td></tr>
+<tr><th id="204">204</th><td><i></i></td></tr>
+<tr><th id="205">205</th><td><i>The rewrite_headers option works only when routing an address at transport</i></td></tr>
+<tr><th id="206">206</th><td><i>time, because the alterations to the headers are not persistent so must be</i></td></tr>
+<tr><th id="207">207</th><td><i>worked out immediately before they are used. Sender addresses are routed for</i></td></tr>
+<tr><th id="208">208</th><td><i>verification purposes, but never at transport time, so any header changes that</i></td></tr>
+<tr><th id="209">209</th><td><i>you might expect as a result of sender domain widening do not occur. Therefore</i></td></tr>
+<tr><th id="210">210</th><td><i>we do not perform widening when verifying sender addresses; however, widening</i></td></tr>
+<tr><th id="211">211</th><td><i>sender addresses is OK if we do not have to rewrite the headers. A corollary</i></td></tr>
+<tr><th id="212">212</th><td><i>of this is that if the current address is not the original address, then it</i></td></tr>
+<tr><th id="213">213</th><td><i>does not appear in the message header so it is also OK to widen. The</i></td></tr>
+<tr><th id="214">214</th><td><i>suppression of widening for sender addresses is silent because it is the</i></td></tr>
+<tr><th id="215">215</th><td><i>normal desirable behaviour. */</i></td></tr>
+<tr><th id="216">216</th><td></td></tr>
+<tr><th id="217">217</th><td><b>if</b> (  <a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::widen_domains" title='(anonymous struct)::widen_domains' data-ref="(anonymous)::widen_domains">widen_domains</a></td></tr>
+<tr><th id="218">218</th><td>   &amp;&amp; (<a class="local col5 ref" href="#5verify" title='verify' data-ref="5verify">verify</a> != <a class="enum" href="../macros.h.html#v_sender" title='v_sender' data-ref="v_sender">v_sender</a> || !<a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::rewrite_headers" title='(anonymous struct)::rewrite_headers' data-ref="(anonymous)::rewrite_headers">rewrite_headers</a> || <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::parent" title='address_item::parent' data-ref="address_item::parent">parent</a>))</td></tr>
+<tr><th id="219">219</th><td>  {</td></tr>
+<tr><th id="220">220</th><td>  <a class="local col0 ref" href="#20listptr" title='listptr' data-ref="20listptr">listptr</a> = <a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::widen_domains" title='(anonymous struct)::widen_domains' data-ref="(anonymous)::widen_domains">widen_domains</a>;</td></tr>
+<tr><th id="221">221</th><td>  <a class="local col6 ref" href="#16widen" title='widen' data-ref="16widen">widen</a> = <a class="ref fn" href="../functions.h.html#string_nextinlist" title='string_nextinlist' data-ref="string_nextinlist">string_nextinlist</a>(&amp;<a class="local col0 ref" href="#20listptr" title='listptr' data-ref="20listptr">listptr</a>, &amp;<a class="local col2 ref" href="#12widen_sep" title='widen_sep' data-ref="12widen_sep">widen_sep</a>, <a class="local col1 ref" href="#21widen_buffer" title='widen_buffer' data-ref="21widen_buffer">widen_buffer</a>,</td></tr>
+<tr><th id="222">222</th><td>    <b>sizeof</b>(<a class="local col1 ref" href="#21widen_buffer" title='widen_buffer' data-ref="21widen_buffer">widen_buffer</a>));</td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td><i>/****</i></td></tr>
+<tr><th id="225">225</th><td><i>  if (some condition requiring pre-widening)</i></td></tr>
+<tr><th id="226">226</th><td><i>    {</i></td></tr>
+<tr><th id="227">227</th><td><i>    post_widen = pre_widen;</i></td></tr>
+<tr><th id="228">228</th><td><i>    pre_widen = NULL;</i></td></tr>
+<tr><th id="229">229</th><td><i>    }</i></td></tr>
+<tr><th id="230">230</th><td><i>****/</i></td></tr>
+<tr><th id="231">231</th><td>  }</td></tr>
+<tr><th id="232">232</th><td></td></tr>
+<tr><th id="233">233</th><td><i>/* Loop to cope with explicit widening of domains as configured. This code</i></td></tr>
+<tr><th id="234">234</th><td><i>copes with widening that may happen before or after the original name. The</i></td></tr>
+<tr><th id="235">235</th><td><i>decision as to which is taken above. */</i></td></tr>
+<tr><th id="236">236</th><td></td></tr>
+<tr><th id="237">237</th><td><b>for</b> (;;)</td></tr>
+<tr><th id="238">238</th><td>  {</td></tr>
+<tr><th id="239">239</th><td>  <em>int</em> <dfn class="local col2 decl" id="22flags" title='flags' data-type='int' data-ref="22flags">flags</dfn> = <a class="local col3 ref" href="#13whichrrs" title='whichrrs' data-ref="13whichrrs">whichrrs</a>;</td></tr>
+<tr><th id="240">240</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col3 decl" id="23removed" title='removed' data-type='BOOL' data-ref="23removed">removed</dfn> = <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="241">241</th><td></td></tr>
+<tr><th id="242">242</th><td>  <b>if</b> (<a class="local col7 ref" href="#17pre_widen" title='pre_widen' data-ref="17pre_widen">pre_widen</a>)</td></tr>
+<tr><th id="243">243</th><td>    {</td></tr>
+<tr><th id="244">244</th><td>    <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::name" title='host_item::name' data-ref="host_item::name">name</a> = <a class="local col7 ref" href="#17pre_widen" title='pre_widen' data-ref="17pre_widen">pre_widen</a>;</td></tr>
+<tr><th id="245">245</th><td>    <a class="local col7 ref" href="#17pre_widen" title='pre_widen' data-ref="17pre_widen">pre_widen</a> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="246">246</th><td>    }</td></tr>
+<tr><th id="247">247</th><td>  <b>else</b> <b>if</b> (<a class="local col6 ref" href="#16widen" title='widen' data-ref="16widen">widen</a>)</td></tr>
+<tr><th id="248">248</th><td>    {</td></tr>
+<tr><th id="249">249</th><td>    <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::name" title='host_item::name' data-ref="host_item::name">name</a> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%s.%s"</q>, <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::domain" title='address_item::domain' data-ref="address_item::domain">domain</a>, <a class="local col6 ref" href="#16widen" title='widen' data-ref="16widen">widen</a>);</td></tr>
+<tr><th id="250">250</th><td>    <a class="local col6 ref" href="#16widen" title='widen' data-ref="16widen">widen</a> = <a class="ref fn" href="../functions.h.html#string_nextinlist" title='string_nextinlist' data-ref="string_nextinlist">string_nextinlist</a>(&amp;<a class="local col0 ref" href="#20listptr" title='listptr' data-ref="20listptr">listptr</a>, &amp;<a class="local col2 ref" href="#12widen_sep" title='widen_sep' data-ref="12widen_sep">widen_sep</a>, <a class="local col1 ref" href="#21widen_buffer" title='widen_buffer' data-ref="21widen_buffer">widen_buffer</a>,</td></tr>
+<tr><th id="251">251</th><td>      <b>sizeof</b>(<a class="local col1 ref" href="#21widen_buffer" title='widen_buffer' data-ref="21widen_buffer">widen_buffer</a>));</td></tr>
+<tr><th id="252">252</th><td>    <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_route))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#401" title='D_route' data-ref="D_route">D_route</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"%s router widened %s to %s\n"</q>, <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::name" title='router_instance::name' data-ref="router_instance::name">name</a>,</td></tr>
+<tr><th id="253">253</th><td>      <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::domain" title='address_item::domain' data-ref="address_item::domain">domain</a>, <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::name" title='host_item::name' data-ref="host_item::name">name</a>);</td></tr>
+<tr><th id="254">254</th><td>    }</td></tr>
+<tr><th id="255">255</th><td>  <b>else</b> <b>if</b> (<a class="local col8 ref" href="#18post_widen" title='post_widen' data-ref="18post_widen">post_widen</a>)</td></tr>
+<tr><th id="256">256</th><td>    {</td></tr>
+<tr><th id="257">257</th><td>    <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::name" title='host_item::name' data-ref="host_item::name">name</a> = <a class="local col8 ref" href="#18post_widen" title='post_widen' data-ref="18post_widen">post_widen</a>;</td></tr>
+<tr><th id="258">258</th><td>    <a class="local col8 ref" href="#18post_widen" title='post_widen' data-ref="18post_widen">post_widen</a> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="259">259</th><td>    <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_route))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#401" title='D_route' data-ref="D_route">D_route</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"%s router trying %s after widening failed\n"</q>,</td></tr>
+<tr><th id="260">260</th><td>      <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::name" title='router_instance::name' data-ref="router_instance::name">name</a>, <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::name" title='host_item::name' data-ref="host_item::name">name</a>);</td></tr>
+<tr><th id="261">261</th><td>    }</td></tr>
+<tr><th id="262">262</th><td>  <b>else</b> <b>return</b> <a class="macro" href="../macros.h.html#289" title="5" data-ref="_M/DECLINE">DECLINE</a>;</td></tr>
+<tr><th id="263">263</th><td></td></tr>
+<tr><th id="264">264</th><td>  <i>/* Check if we must request only. or prefer, ipv4 */</i></td></tr>
+<tr><th id="265">265</th><td></td></tr>
+<tr><th id="266">266</th><td>  <b>if</b> (  <a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::ipv4_only" title='(anonymous struct)::ipv4_only' data-ref="(anonymous)::ipv4_only">ipv4_only</a></td></tr>
+<tr><th id="267">267</th><td>     &amp;&amp; <a class="ref fn" href="../functions.h.html#expand_check_condition" title='expand_check_condition' data-ref="expand_check_condition">expand_check_condition</a>(<a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::ipv4_only" title='(anonymous struct)::ipv4_only' data-ref="(anonymous)::ipv4_only">ipv4_only</a>, <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::name" title='router_instance::name' data-ref="router_instance::name">name</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"router"</q>))</td></tr>
+<tr><th id="268">268</th><td>    <a class="local col2 ref" href="#22flags" title='flags' data-ref="22flags">flags</a> = <a class="local col2 ref" href="#22flags" title='flags' data-ref="22flags">flags</a> <span class='warning' title="&apos;&amp;&apos; within &apos;|&apos;">&amp;</span> ~<a class="macro" href="../macros.h.html#830" title="(1 &lt;&lt; (3))" data-ref="_M/HOST_FIND_BY_AAAA">HOST_FIND_BY_AAAA</a> | <a class="macro" href="../macros.h.html#834" title="(1 &lt;&lt; (7))" data-ref="_M/HOST_FIND_IPV4_ONLY">HOST_FIND_IPV4_ONLY</a>;</td></tr>
+<tr><th id="269">269</th><td>  <b>else</b> <b>if</b> (<a class="ref" href="../globals.h.html#search_find_defer" title='search_find_defer' data-ref="search_find_defer">search_find_defer</a>)</td></tr>
+<tr><th id="270">270</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="271">271</th><td>  <b>if</b> (  <a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::ipv4_prefer" title='(anonymous struct)::ipv4_prefer' data-ref="(anonymous)::ipv4_prefer">ipv4_prefer</a></td></tr>
+<tr><th id="272">272</th><td>     &amp;&amp; <a class="ref fn" href="../functions.h.html#expand_check_condition" title='expand_check_condition' data-ref="expand_check_condition">expand_check_condition</a>(<a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::ipv4_prefer" title='(anonymous struct)::ipv4_prefer' data-ref="(anonymous)::ipv4_prefer">ipv4_prefer</a>, <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::name" title='router_instance::name' data-ref="router_instance::name">name</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"router"</q>))</td></tr>
+<tr><th id="273">273</th><td>    <a class="local col2 ref" href="#22flags" title='flags' data-ref="22flags">flags</a> |= <a class="macro" href="../macros.h.html#833" title="(1 &lt;&lt; (6))" data-ref="_M/HOST_FIND_IPV4_FIRST">HOST_FIND_IPV4_FIRST</a>;</td></tr>
+<tr><th id="274">274</th><td>  <b>else</b> <b>if</b> (<a class="ref" href="../globals.h.html#search_find_defer" title='search_find_defer' data-ref="search_find_defer">search_find_defer</a>)</td></tr>
+<tr><th id="275">275</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="276">276</th><td></td></tr>
+<tr><th id="277">277</th><td>  <i>/* Set up the rest of the initial host item. Others may get chained on if</i></td></tr>
+<tr><th id="278">278</th><td><i>  there is more than one IP address. We set it up here instead of outside the</i></td></tr>
+<tr><th id="279">279</th><td><i>  loop so as to re-initialize if a previous try succeeded but was rejected</i></td></tr>
+<tr><th id="280">280</th><td><i>  because of not having an MX record. */</i></td></tr>
+<tr><th id="281">281</th><td></td></tr>
+<tr><th id="282">282</th><td>  <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::next" title='host_item::next' data-ref="host_item::next">next</a> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="283">283</th><td>  <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::address" title='host_item::address' data-ref="host_item::address">address</a> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="284">284</th><td>  <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::port" title='host_item::port' data-ref="host_item::port">port</a> = <a class="macro" href="../macros.h.html#995" title="(-1)" data-ref="_M/PORT_NONE">PORT_NONE</a>;</td></tr>
+<tr><th id="285">285</th><td>  <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::mx" title='host_item::mx' data-ref="host_item::mx">mx</a> = <a class="macro" href="../macros.h.html#989" title="(-1)" data-ref="_M/MX_NONE">MX_NONE</a>;</td></tr>
+<tr><th id="286">286</th><td>  <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::status" title='host_item::status' data-ref="host_item::status">status</a> = <a class="enum" href="../macros.h.html#hstatus_unknown" title='hstatus_unknown' data-ref="hstatus_unknown">hstatus_unknown</a>;</td></tr>
+<tr><th id="287">287</th><td>  <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::why" title='host_item::why' data-ref="host_item::why">why</a> = <a class="enum" href="../macros.h.html#hwhy_unknown" title='hwhy_unknown' data-ref="hwhy_unknown">hwhy_unknown</a>;</td></tr>
+<tr><th id="288">288</th><td>  <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::last_try" title='host_item::last_try' data-ref="host_item::last_try">last_try</a> = <var>0</var>;</td></tr>
+<tr><th id="289">289</th><td></td></tr>
+<tr><th id="290">290</th><td>  <i>/* Unfortunately, we cannot set the mx_only option in advance, because the</i></td></tr>
+<tr><th id="291">291</th><td><i>  DNS lookup may extend an unqualified name. Therefore, we must do the test</i></td></tr>
+<tr><th id="292">292</th><td><i>  stoubsequently. We use the same logic as that for widen_domains above to avoid</i></td></tr>
+<tr><th id="293">293</th><td><i>  requesting a header rewrite that cannot work. */</i></td></tr>
+<tr><th id="294">294</th><td></td></tr>
+<tr><th id="295">295</th><td>  <b>if</b> (<a class="local col5 ref" href="#5verify" title='verify' data-ref="5verify">verify</a> != <a class="enum" href="../macros.h.html#v_sender" title='v_sender' data-ref="v_sender">v_sender</a> || !<a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::rewrite_headers" title='(anonymous struct)::rewrite_headers' data-ref="(anonymous)::rewrite_headers">rewrite_headers</a> || <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::parent" title='address_item::parent' data-ref="address_item::parent">parent</a>)</td></tr>
+<tr><th id="296">296</th><td>    {</td></tr>
+<tr><th id="297">297</th><td>    <b>if</b> (<a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::qualify_single" title='(anonymous struct)::qualify_single' data-ref="(anonymous)::qualify_single">qualify_single</a>) <a class="local col2 ref" href="#22flags" title='flags' data-ref="22flags">flags</a> |= <a class="macro" href="../macros.h.html#831" title="(1 &lt;&lt; (4))" data-ref="_M/HOST_FIND_QUALIFY_SINGLE">HOST_FIND_QUALIFY_SINGLE</a>;</td></tr>
+<tr><th id="298">298</th><td>    <b>if</b> (<a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::search_parents" title='(anonymous struct)::search_parents' data-ref="(anonymous)::search_parents">search_parents</a>) <a class="local col2 ref" href="#22flags" title='flags' data-ref="22flags">flags</a> |= <a class="macro" href="../macros.h.html#832" title="(1 &lt;&lt; (5))" data-ref="_M/HOST_FIND_SEARCH_PARENTS">HOST_FIND_SEARCH_PARENTS</a>;</td></tr>
+<tr><th id="299">299</th><td>    }</td></tr>
+<tr><th id="300">300</th><td></td></tr>
+<tr><th id="301">301</th><td>  <a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a> = <a class="ref fn" href="../functions.h.html#host_find_bydns" title='host_find_bydns' data-ref="host_find_bydns">host_find_bydns</a>(&amp;<a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>, <a class="macro" href="../mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a> <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::ignore_target_hosts" title='router_instance::ignore_target_hosts' data-ref="router_instance::ignore_target_hosts">ignore_target_hosts</a>, <a class="local col2 ref" href="#22flags" title='flags' data-ref="22flags">flags</a>,</td></tr>
+<tr><th id="302">302</th><td>    <a class="local col5 ref" href="#15srv_service" title='srv_service' data-ref="15srv_service">srv_service</a>, <a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::srv_fail_domains" title='(anonymous struct)::srv_fail_domains' data-ref="(anonymous)::srv_fail_domains">srv_fail_domains</a>, <a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::mx_fail_domains" title='(anonymous struct)::mx_fail_domains' data-ref="(anonymous)::mx_fail_domains">mx_fail_domains</a>,</td></tr>
+<tr><th id="303">303</th><td>    &amp;<a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::dnssec" title='router_instance::dnssec' data-ref="router_instance::dnssec">dnssec</a>, &amp;<a class="local col9 ref" href="#19fully_qualified_name" title='fully_qualified_name' data-ref="19fully_qualified_name">fully_qualified_name</a>, &amp;<a class="local col3 ref" href="#23removed" title='removed' data-ref="23removed">removed</a>);</td></tr>
+<tr><th id="304">304</th><td>  <b>if</b> (<a class="local col3 ref" href="#23removed" title='removed' data-ref="23removed">removed</a>) <a class="macro" href="../macros.h.html#33" title="addr-&gt;flags.af_local_host_removed = 1" data-ref="_M/setflag">setflag</a>(<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>, <a class="ref field" href="../structs.h.html#address_item::(anonymous)::af_local_host_removed" title='address_item::(anonymous struct)::af_local_host_removed' data-ref="address_item::(anonymous)::af_local_host_removed">af_local_host_removed</a>);</td></tr>
+<tr><th id="305">305</th><td></td></tr>
+<tr><th id="306">306</th><td>  <i>/* If host found with only address records, test for the domain's being in</i></td></tr>
+<tr><th id="307">307</th><td><i>  the mx_domains list. Note that this applies also to SRV records; the name of</i></td></tr>
+<tr><th id="308">308</th><td><i>  the option is historical. */</i></td></tr>
+<tr><th id="309">309</th><td></td></tr>
+<tr><th id="310">310</th><td>  <b>if</b> ((<a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a> == <a class="enum" href="../macros.h.html#HOST_FOUND" title='HOST_FOUND' data-ref="HOST_FOUND">HOST_FOUND</a> || <a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a> == <a class="enum" href="../macros.h.html#HOST_FOUND_LOCAL" title='HOST_FOUND_LOCAL' data-ref="HOST_FOUND_LOCAL">HOST_FOUND_LOCAL</a>) &amp;&amp; <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::mx" title='host_item::mx' data-ref="host_item::mx">mx</a> &lt; <var>0</var> &amp;&amp;</td></tr>
+<tr><th id="311">311</th><td>       <a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::mx_domains" title='(anonymous struct)::mx_domains' data-ref="(anonymous)::mx_domains">mx_domains</a>)</td></tr>
+<tr><th id="312">312</th><td>    <b>switch</b>(<a class="ref fn" href="../functions.h.html#match_isinlist" title='match_isinlist' data-ref="match_isinlist">match_isinlist</a>(<a class="local col9 ref" href="#19fully_qualified_name" title='fully_qualified_name' data-ref="19fully_qualified_name">fully_qualified_name</a>,</td></tr>
+<tr><th id="313">313</th><td>          <a class="macro" href="../mytypes.h.html#71" title="(const unsigned char **)" data-ref="_M/CUSS">CUSS</a> &amp;(<a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::mx_domains" title='(anonymous struct)::mx_domains' data-ref="(anonymous)::mx_domains">mx_domains</a>), <var>0</var>,</td></tr>
+<tr><th id="314">314</th><td>          &amp;<a class="ref" href="../globals.h.html#domainlist_anchor" title='domainlist_anchor' data-ref="domainlist_anchor">domainlist_anchor</a>, <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::domain_cache" title='address_item::domain_cache' data-ref="address_item::domain_cache">domain_cache</a>, <a class="enum" href="../macros.h.html#MCL_DOMAIN" title='MCL_DOMAIN' data-ref="MCL_DOMAIN">MCL_DOMAIN</a>, <a class="macro" href="../mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>))</td></tr>
+<tr><th id="315">315</th><td>      {</td></tr>
+<tr><th id="316">316</th><td>      <b>case</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>:</td></tr>
+<tr><th id="317">317</th><td>      <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"lookup defer for mx_domains"</q>;</td></tr>
+<tr><th id="318">318</th><td>      <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="319">319</th><td></td></tr>
+<tr><th id="320">320</th><td>      <b>case</b> <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>:</td></tr>
+<tr><th id="321">321</th><td>      <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_route))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#401" title='D_route' data-ref="D_route">D_route</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"%s router rejected %s: no MX record(s)\n"</q>,</td></tr>
+<tr><th id="322">322</th><td>        <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::name" title='router_instance::name' data-ref="router_instance::name">name</a>, <a class="local col9 ref" href="#19fully_qualified_name" title='fully_qualified_name' data-ref="19fully_qualified_name">fully_qualified_name</a>);</td></tr>
+<tr><th id="323">323</th><td>      <b>continue</b>;</td></tr>
+<tr><th id="324">324</th><td>      }</td></tr>
+<tr><th id="325">325</th><td></td></tr>
+<tr><th id="326">326</th><td>  <i>/* Deferral returns forthwith, and anything other than failure breaks the</i></td></tr>
+<tr><th id="327">327</th><td><i>  loop. */</i></td></tr>
+<tr><th id="328">328</th><td></td></tr>
+<tr><th id="329">329</th><td>  <b>if</b> (<a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a> == <a class="enum" href="../macros.h.html#HOST_FIND_SECURITY" title='HOST_FIND_SECURITY' data-ref="HOST_FIND_SECURITY">HOST_FIND_SECURITY</a>)</td></tr>
+<tr><th id="330">330</th><td>    {</td></tr>
+<tr><th id="331">331</th><td>    <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"host lookup done insecurely"</q>;</td></tr>
+<tr><th id="332">332</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="333">333</th><td>    }</td></tr>
+<tr><th id="334">334</th><td>  <b>if</b> (<a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a> == <a class="enum" href="../macros.h.html#HOST_FIND_AGAIN" title='HOST_FIND_AGAIN' data-ref="HOST_FIND_AGAIN">HOST_FIND_AGAIN</a>)</td></tr>
+<tr><th id="335">335</th><td>    {</td></tr>
+<tr><th id="336">336</th><td>    <b>if</b> (<a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::pass_on_timeout" title='router_instance::pass_on_timeout' data-ref="router_instance::pass_on_timeout">pass_on_timeout</a>)</td></tr>
+<tr><th id="337">337</th><td>      {</td></tr>
+<tr><th id="338">338</th><td>      <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_route))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#401" title='D_route' data-ref="D_route">D_route</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"%s router timed out, and pass_on_timeout is set\n"</q>,</td></tr>
+<tr><th id="339">339</th><td>        <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::name" title='router_instance::name' data-ref="router_instance::name">name</a>);</td></tr>
+<tr><th id="340">340</th><td>      <b>return</b> <a class="macro" href="../macros.h.html#291" title="6" data-ref="_M/PASS">PASS</a>;</td></tr>
+<tr><th id="341">341</th><td>      }</td></tr>
+<tr><th id="342">342</th><td>    <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"host lookup did not complete"</q>;</td></tr>
+<tr><th id="343">343</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="344">344</th><td>    }</td></tr>
+<tr><th id="345">345</th><td></td></tr>
+<tr><th id="346">346</th><td>  <b>if</b> (<a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a> != <a class="enum" href="../macros.h.html#HOST_FIND_FAILED" title='HOST_FIND_FAILED' data-ref="HOST_FIND_FAILED">HOST_FIND_FAILED</a>) <b>break</b>;</td></tr>
+<tr><th id="347">347</th><td></td></tr>
+<tr><th id="348">348</th><td>  <b>if</b> (<a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::fail_defer_domains" title='(anonymous struct)::fail_defer_domains' data-ref="(anonymous)::fail_defer_domains">fail_defer_domains</a>)</td></tr>
+<tr><th id="349">349</th><td>    <b>switch</b>(<a class="ref fn" href="../functions.h.html#match_isinlist" title='match_isinlist' data-ref="match_isinlist">match_isinlist</a>(<a class="local col9 ref" href="#19fully_qualified_name" title='fully_qualified_name' data-ref="19fully_qualified_name">fully_qualified_name</a>,</td></tr>
+<tr><th id="350">350</th><td>	  <a class="macro" href="../mytypes.h.html#71" title="(const unsigned char **)" data-ref="_M/CUSS">CUSS</a> &amp;<a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::fail_defer_domains" title='(anonymous struct)::fail_defer_domains' data-ref="(anonymous)::fail_defer_domains">fail_defer_domains</a>, <var>0</var>,</td></tr>
+<tr><th id="351">351</th><td>	  &amp;<a class="ref" href="../globals.h.html#domainlist_anchor" title='domainlist_anchor' data-ref="domainlist_anchor">domainlist_anchor</a>, <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::domain_cache" title='address_item::domain_cache' data-ref="address_item::domain_cache">domain_cache</a>, <a class="enum" href="../macros.h.html#MCL_DOMAIN" title='MCL_DOMAIN' data-ref="MCL_DOMAIN">MCL_DOMAIN</a>, <a class="macro" href="../mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>))</td></tr>
+<tr><th id="352">352</th><td>      {</td></tr>
+<tr><th id="353">353</th><td>      <b>case</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>:</td></tr>
+<tr><th id="354">354</th><td>	<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"lookup defer for fail_defer_domains option"</q>;</td></tr>
+<tr><th id="355">355</th><td>	<b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="356">356</th><td></td></tr>
+<tr><th id="357">357</th><td>      <b>case</b> <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>:</td></tr>
+<tr><th id="358">358</th><td>	<a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_route))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#401" title='D_route' data-ref="D_route">D_route</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"%s router: matched fail_defer_domains\n"</q>,</td></tr>
+<tr><th id="359">359</th><td>	  <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::name" title='router_instance::name' data-ref="router_instance::name">name</a>);</td></tr>
+<tr><th id="360">360</th><td>	<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"missing MX, or all MXs point to missing A records,"</q></td></tr>
+<tr><th id="361">361</th><td>	  <q>" and defer requested"</q>;</td></tr>
+<tr><th id="362">362</th><td>	<b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="363">363</th><td>      }</td></tr>
+<tr><th id="364">364</th><td>  <i>/* Check to see if the failure is the result of MX records pointing to</i></td></tr>
+<tr><th id="365">365</th><td><i>  non-existent domains, and if so, set an appropriate error message; the case</i></td></tr>
+<tr><th id="366">366</th><td><i>  of an MX or SRV record pointing to "." is another special case that we can</i></td></tr>
+<tr><th id="367">367</th><td><i>  detect. Otherwise "unknown mail domain" is used, which is confusing. Also, in</i></td></tr>
+<tr><th id="368">368</th><td><i>  this case don't do the widening. We need check only the first host to see if</i></td></tr>
+<tr><th id="369">369</th><td><i>  its MX has been filled in, but there is no address, because if there were any</i></td></tr>
+<tr><th id="370">370</th><td><i>  usable addresses returned, we would not have had HOST_FIND_FAILED.</i></td></tr>
+<tr><th id="371">371</th><td><i></i></td></tr>
+<tr><th id="372">372</th><td><i>  As a common cause of this problem is MX records with IP addresses on the</i></td></tr>
+<tr><th id="373">373</th><td><i>  RHS, give a special message in this case. */</i></td></tr>
+<tr><th id="374">374</th><td></td></tr>
+<tr><th id="375">375</th><td>  <b>if</b> (<a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::mx" title='host_item::mx' data-ref="host_item::mx">mx</a> &gt;= <var>0</var> &amp;&amp; <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::address" title='host_item::address' data-ref="host_item::address">address</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="376">376</th><td>    {</td></tr>
+<tr><th id="377">377</th><td>    <a class="macro" href="../macros.h.html#33" title="addr-&gt;flags.af_pass_message = 1" data-ref="_M/setflag">setflag</a>(<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>, <a class="ref field" href="../structs.h.html#address_item::(anonymous)::af_pass_message" title='address_item::(anonymous struct)::af_pass_message' data-ref="address_item::(anonymous)::af_pass_message">af_pass_message</a>);   <i>/* This is not a security risk */</i></td></tr>
+<tr><th id="378">378</th><td>    <b>if</b> (<a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::name" title='host_item::name' data-ref="host_item::name">name</a>[<var>0</var>] == <var>0</var>)</td></tr>
+<tr><th id="379">379</th><td>      <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"an MX or SRV record indicated no SMTP service"</q>;</td></tr>
+<tr><th id="380">380</th><td>    <b>else</b></td></tr>
+<tr><th id="381">381</th><td>      {</td></tr>
+<tr><th id="382">382</th><td>      <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::basic_errno" title='address_item::basic_errno' data-ref="address_item::basic_errno">basic_errno</a> = <a class="macro" href="../macros.h.html#532" title="(-32)" data-ref="_M/ERRNO_UNKNOWNHOST">ERRNO_UNKNOWNHOST</a>;</td></tr>
+<tr><th id="383">383</th><td>      <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"all relevant MX records point to non-existent hosts"</q>;</td></tr>
+<tr><th id="384">384</th><td>      <b>if</b> (!<a class="ref" href="../globals.h.html#allow_mx_to_ip" title='allow_mx_to_ip' data-ref="allow_mx_to_ip">allow_mx_to_ip</a> &amp;&amp; <a class="ref fn" href="../functions.h.html#string_is_ip_address" title='string_is_ip_address' data-ref="string_is_ip_address">string_is_ip_address</a>(<a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::name" title='host_item::name' data-ref="host_item::name">name</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) != <var>0</var>)</td></tr>
+<tr><th id="385">385</th><td>        {</td></tr>
+<tr><th id="386">386</th><td>        <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::user_message" title='address_item::user_message' data-ref="address_item::user_message">user_message</a> =</td></tr>
+<tr><th id="387">387</th><td>          <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"It appears that the DNS operator for %s\n"</q></td></tr>
+<tr><th id="388">388</th><td>            <q>"has installed an invalid MX record with an IP address\n"</q></td></tr>
+<tr><th id="389">389</th><td>            <q>"instead of a domain name on the right hand side."</q>, <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::domain" title='address_item::domain' data-ref="address_item::domain">domain</a>);</td></tr>
+<tr><th id="390">390</th><td>        <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%s or (invalidly) to IP addresses"</q>,</td></tr>
+<tr><th id="391">391</th><td>          <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a>);</td></tr>
+<tr><th id="392">392</th><td>        }</td></tr>
+<tr><th id="393">393</th><td>      }</td></tr>
+<tr><th id="394">394</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#289" title="5" data-ref="_M/DECLINE">DECLINE</a>;</td></tr>
+<tr><th id="395">395</th><td>    }</td></tr>
+<tr><th id="396">396</th><td></td></tr>
+<tr><th id="397">397</th><td>  <i>/* If there's a syntax error, do not continue with any widening, and note</i></td></tr>
+<tr><th id="398">398</th><td><i>  the error. */</i></td></tr>
+<tr><th id="399">399</th><td></td></tr>
+<tr><th id="400">400</th><td>  <b>if</b> (<a class="ref" href="../globals.h.html#host_find_failed_syntax" title='host_find_failed_syntax' data-ref="host_find_failed_syntax">host_find_failed_syntax</a>)</td></tr>
+<tr><th id="401">401</th><td>    {</td></tr>
+<tr><th id="402">402</th><td>    <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"mail domain \"%s\" is syntactically "</q></td></tr>
+<tr><th id="403">403</th><td>      <q>"invalid"</q>, <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>.<a class="ref field" href="../structs.h.html#host_item::name" title='host_item::name' data-ref="host_item::name">name</a>);</td></tr>
+<tr><th id="404">404</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#289" title="5" data-ref="_M/DECLINE">DECLINE</a>;</td></tr>
+<tr><th id="405">405</th><td>    }</td></tr>
+<tr><th id="406">406</th><td>  }</td></tr>
+<tr><th id="407">407</th><td></td></tr>
+<tr><th id="408">408</th><td><i>/* If the original domain name has been changed as a result of the host lookup,</i></td></tr>
+<tr><th id="409">409</th><td><i>set up a child address for rerouting and request header rewrites if so</i></td></tr>
+<tr><th id="410">410</th><td><i>configured. Then yield REROUTED. However, if the only change is a change of</i></td></tr>
+<tr><th id="411">411</th><td><i>case in the domain name, which some resolvers yield (others don't), just change</i></td></tr>
+<tr><th id="412">412</th><td><i>the domain name in the original address so that the official version is used in</i></td></tr>
+<tr><th id="413">413</th><td><i>RCPT commands. */</i></td></tr>
+<tr><th id="414">414</th><td></td></tr>
+<tr><th id="415">415</th><td><b>if</b> (<a class="macro" href="../mytypes.h.html#100" title="__extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p ((const char *)(addr-&gt;domain)) &amp;&amp; __builtin_constant_p ((const char *)(fully_qualified_name)) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(addr-&gt;domain)), __s2_len = __builtin_strlen ((const char *)(fully_qualified_name)), (!((size_t)(const void *)(((const char *)(addr-&gt;domain)) + 1) - (size_t)(const void *)((const char *)(addr-&gt;domain)) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)(((const char *)(fully_qualified_name)) + 1) - (size_t)(const void *)((const char *)(fully_qualified_name)) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp ((const char *)(addr-&gt;domain), (const char *)(fully_qualified_name)) : (__builtin_constant_p ((const char *)(addr-&gt;domain)) &amp;&amp; ((size_t)(const void *)(((const char *)(addr-&gt;domain)) + 1) - (size_t)(const void *)((const char *)(addr-&gt;domain)) == 1) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(addr-&gt;domain)), __s1_len &lt; 4) ? (__builtin_constant_p ((const char *)(fully_qualified_name)) &amp;&amp; ((size_t)(const void *)(((const char *)(fully_qualified_name)) + 1) - (size_t)(const void *)((const char *)(fully_qualified_name)) == 1) ? __builtin_strcmp ((const char *)(addr-&gt;domain), (const char *)(fully_qualified_name)) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(fully_qualified_name)); int __result = (((const unsigned char *) (const char *) ((const char *)(addr-&gt;domain)))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(addr-&gt;domain)))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(addr-&gt;domain)))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(addr-&gt;domain)))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p ((const char *)(fully_qualified_name)) &amp;&amp; ((size_t)(const void *)(((const char *)(fully_qualified_name)) + 1) - (size_t)(const void *)((const char *)(fully_qualified_name)) == 1) &amp;&amp; (__s2_len = __builtin_strlen ((const char *)(fully_qualified_name)), __s2_len &lt; 4) ? (__builtin_constant_p ((const char *)(addr-&gt;domain)) &amp;&amp; ((size_t)(const void *)(((const char *)(addr-&gt;domain)) + 1) - (size_t)(const void *)((const char *)(addr-&gt;domain)) == 1) ? __builtin_strcmp ((const char *)(addr-&gt;domain), (const char *)(fully_qualified_name)) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(addr-&gt;domain)); int __result = (((const unsigned char *) (const char *) ((const char *)(fully_qualified_name)))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(fully_qualified_name)))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(fully_qualified_name)))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(fully_qualified_name)))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp ((const char *)(addr-&gt;domain), (const char *)(fully_qualified_name))))); })" data-ref="_M/Ustrcmp">Ustrcmp</a>(<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::domain" title='address_item::domain' data-ref="address_item::domain">domain</a>, <a class="local col9 ref" href="#19fully_qualified_name" title='fully_qualified_name' data-ref="19fully_qualified_name">fully_qualified_name</a>) != <var>0</var>)</td></tr>
+<tr><th id="416">416</th><td>  {</td></tr>
+<tr><th id="417">417</th><td>  <b>if</b> (<a class="ref fn" href="../functions.h.html#strcmpic" title='strcmpic' data-ref="strcmpic">strcmpic</a>(<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::domain" title='address_item::domain' data-ref="address_item::domain">domain</a>, <a class="local col9 ref" href="#19fully_qualified_name" title='fully_qualified_name' data-ref="19fully_qualified_name">fully_qualified_name</a>) == <var>0</var>)</td></tr>
+<tr><th id="418">418</th><td>    {</td></tr>
+<tr><th id="419">419</th><td>    <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="24at" title='at' data-type='uschar *' data-ref="24at">at</dfn> = <a class="macro" href="../mytypes.h.html#109" title="(unsigned char *) strrchr((const char *)(addr-&gt;address),&apos;@&apos;)" data-ref="_M/Ustrrchr">Ustrrchr</a>(<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::address" title='address_item::address' data-ref="address_item::address">address</a>, <kbd>'@'</kbd>);</td></tr>
+<tr><th id="420">420</th><td>    <a class="ref fn" href="../../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a>(<a class="local col4 ref" href="#24at" title='at' data-ref="24at">at</a>+<var>1</var>, <a class="local col9 ref" href="#19fully_qualified_name" title='fully_qualified_name' data-ref="19fully_qualified_name">fully_qualified_name</a>, <a class="macro" href="../mytypes.h.html#104" title="(int)strlen((const char *)(at+1))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col4 ref" href="#24at" title='at' data-ref="24at">at</a>+<var>1</var>));</td></tr>
+<tr><th id="421">421</th><td>    }</td></tr>
+<tr><th id="422">422</th><td>  <b>else</b></td></tr>
+<tr><th id="423">423</th><td>    {</td></tr>
+<tr><th id="424">424</th><td>    <a class="ref fn" href="rf_functions.h.html#rf_change_domain" title='rf_change_domain' data-ref="rf_change_domain">rf_change_domain</a>(<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>, <a class="local col9 ref" href="#19fully_qualified_name" title='fully_qualified_name' data-ref="19fully_qualified_name">fully_qualified_name</a>, <a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::rewrite_headers" title='(anonymous struct)::rewrite_headers' data-ref="(anonymous)::rewrite_headers">rewrite_headers</a>, <a class="local col8 ref" href="#8addr_new" title='addr_new' data-ref="8addr_new">addr_new</a>);</td></tr>
+<tr><th id="425">425</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#295" title="9" data-ref="_M/REROUTED">REROUTED</a>;</td></tr>
+<tr><th id="426">426</th><td>    }</td></tr>
+<tr><th id="427">427</th><td>  }</td></tr>
+<tr><th id="428">428</th><td></td></tr>
+<tr><th id="429">429</th><td><i>/* If the yield is HOST_FOUND_LOCAL, the remote domain name either found MX</i></td></tr>
+<tr><th id="430">430</th><td><i>records with the lowest numbered one pointing to a host with an IP address that</i></td></tr>
+<tr><th id="431">431</th><td><i>is set on one of the interfaces of this machine, or found A records or got</i></td></tr>
+<tr><th id="432">432</th><td><i>addresses from gethostbyname() that contain one for this machine. This can</i></td></tr>
+<tr><th id="433">433</th><td><i>happen quite legitimately if the original name was a shortened form of a</i></td></tr>
+<tr><th id="434">434</th><td><i>domain, but we will have picked that up already via the name change test above.</i></td></tr>
+<tr><th id="435">435</th><td><i></i></td></tr>
+<tr><th id="436">436</th><td><i>Otherwise, the action to be taken can be configured by the self option, the</i></td></tr>
+<tr><th id="437">437</th><td><i>handling of which is in a separate function, as it is also required for other</i></td></tr>
+<tr><th id="438">438</th><td><i>routers. */</i></td></tr>
+<tr><th id="439">439</th><td></td></tr>
+<tr><th id="440">440</th><td><b>if</b> (<a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a> == <a class="enum" href="../macros.h.html#HOST_FOUND_LOCAL" title='HOST_FOUND_LOCAL' data-ref="HOST_FOUND_LOCAL">HOST_FOUND_LOCAL</a>)</td></tr>
+<tr><th id="441">441</th><td>  {</td></tr>
+<tr><th id="442">442</th><td>  <a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a> = <a class="ref fn" href="rf_functions.h.html#rf_self_action" title='rf_self_action' data-ref="rf_self_action">rf_self_action</a>(<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>, &amp;<a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>, <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::self_code" title='router_instance::self_code' data-ref="router_instance::self_code">self_code</a>, <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::self_rewrite" title='router_instance::self_rewrite' data-ref="router_instance::self_rewrite">self_rewrite</a>,</td></tr>
+<tr><th id="443">443</th><td>    <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::self" title='router_instance::self' data-ref="router_instance::self">self</a>, <a class="local col8 ref" href="#8addr_new" title='addr_new' data-ref="8addr_new">addr_new</a>);</td></tr>
+<tr><th id="444">444</th><td>  <b>if</b> (<a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a> != <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>) <b>return</b> <a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a>;</td></tr>
+<tr><th id="445">445</th><td>  }</td></tr>
+<tr><th id="446">446</th><td></td></tr>
+<tr><th id="447">447</th><td><i>/* Otherwise, insist on being a secondary MX if so configured */</i></td></tr>
+<tr><th id="448">448</th><td></td></tr>
+<tr><th id="449">449</th><td><b>else</b> <b>if</b> (<a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="dnslookup.h.html#(anonymous)::check_secondary_mx" title='(anonymous struct)::check_secondary_mx' data-ref="(anonymous)::check_secondary_mx">check_secondary_mx</a> &amp;&amp; !<a class="macro" href="../macros.h.html#36" title="(addr-&gt;flags.af_local_host_removed)" data-ref="_M/testflag">testflag</a>(<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>, <a class="ref field" href="../structs.h.html#address_item::(anonymous)::af_local_host_removed" title='address_item::(anonymous struct)::af_local_host_removed' data-ref="address_item::(anonymous)::af_local_host_removed">af_local_host_removed</a>))</td></tr>
+<tr><th id="450">450</th><td>  {</td></tr>
+<tr><th id="451">451</th><td>  <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_route))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#401" title='D_route' data-ref="D_route">D_route</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"check_secondary_mx set and local host not secondary\n"</q>);</td></tr>
+<tr><th id="452">452</th><td>  <b>return</b> <a class="macro" href="../macros.h.html#289" title="5" data-ref="_M/DECLINE">DECLINE</a>;</td></tr>
+<tr><th id="453">453</th><td>  }</td></tr>
+<tr><th id="454">454</th><td></td></tr>
+<tr><th id="455">455</th><td><i>/* Set up the errors address, if any. */</i></td></tr>
+<tr><th id="456">456</th><td></td></tr>
+<tr><th id="457">457</th><td><a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a> = <a class="ref fn" href="rf_functions.h.html#rf_get_errors_address" title='rf_get_errors_address' data-ref="rf_get_errors_address">rf_get_errors_address</a>(<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>, <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>, <a class="local col5 ref" href="#5verify" title='verify' data-ref="5verify">verify</a>, &amp;<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::prop" title='address_item::prop' data-ref="address_item::prop">prop</a>.<a class="ref field" href="../structs.h.html#address_item_propagated::errors_address" title='address_item_propagated::errors_address' data-ref="address_item_propagated::errors_address">errors_address</a>);</td></tr>
+<tr><th id="458">458</th><td><b>if</b> (<a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a> != <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>) <b>return</b> <a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a>;</td></tr>
+<tr><th id="459">459</th><td></td></tr>
+<tr><th id="460">460</th><td><i>/* Set up the additional and removeable headers for this address. */</i></td></tr>
+<tr><th id="461">461</th><td></td></tr>
+<tr><th id="462">462</th><td><a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a> = <a class="ref fn" href="rf_functions.h.html#rf_get_munge_headers" title='rf_get_munge_headers' data-ref="rf_get_munge_headers">rf_get_munge_headers</a>(<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>, <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>, &amp;<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::prop" title='address_item::prop' data-ref="address_item::prop">prop</a>.<a class="ref field" href="../structs.h.html#address_item_propagated::extra_headers" title='address_item_propagated::extra_headers' data-ref="address_item_propagated::extra_headers">extra_headers</a>,</td></tr>
+<tr><th id="463">463</th><td>  &amp;<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::prop" title='address_item::prop' data-ref="address_item::prop">prop</a>.<a class="ref field" href="../structs.h.html#address_item_propagated::remove_headers" title='address_item_propagated::remove_headers' data-ref="address_item_propagated::remove_headers">remove_headers</a>);</td></tr>
+<tr><th id="464">464</th><td><b>if</b> (<a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a> != <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>) <b>return</b> <a class="local col1 ref" href="#11rc" title='rc' data-ref="11rc">rc</a>;</td></tr>
+<tr><th id="465">465</th><td></td></tr>
+<tr><th id="466">466</th><td><i>/* Get store in which to preserve the original host item, chained on</i></td></tr>
+<tr><th id="467">467</th><td><i>to the address. */</i></td></tr>
+<tr><th id="468">468</th><td></td></tr>
+<tr><th id="469">469</th><td><a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::host_list" title='address_item::host_list' data-ref="address_item::host_list">host_list</a> = <a class="macro" href="../store.h.html#34" title="store_get_3(sizeof(host_item), &quot;/home/ubuntu/exim/src/build-Linux-x86_64/routers/dnslookup.c&quot;, 469)" data-ref="_M/store_get">store_get</a>(<b>sizeof</b>(<a class="typedef" href="../structs.h.html#host_item" title='host_item' data-type='struct host_item' data-ref="host_item">host_item</a>));</td></tr>
+<tr><th id="470">470</th><td><a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::host_list" title='address_item::host_list' data-ref="address_item::host_list">host_list</a>[<var>0</var>] = <a class="local col0 ref" href="#10h" title='h' data-ref="10h">h</a>;</td></tr>
+<tr><th id="471">471</th><td></td></tr>
+<tr><th id="472">472</th><td><i>/* Fill in the transport and queue the address for delivery. */</i></td></tr>
+<tr><th id="473">473</th><td></td></tr>
+<tr><th id="474">474</th><td><b>if</b> (!<a class="ref fn" href="rf_functions.h.html#rf_get_transport" title='rf_get_transport' data-ref="rf_get_transport">rf_get_transport</a>(<a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::transport_name" title='router_instance::transport_name' data-ref="router_instance::transport_name">transport_name</a>, &amp;(<a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::transport" title='router_instance::transport' data-ref="router_instance::transport">transport</a>),</td></tr>
+<tr><th id="475">475</th><td>      <a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>, <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::name" title='router_instance::name' data-ref="router_instance::name">name</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>))</td></tr>
+<tr><th id="476">476</th><td>  <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="477">477</th><td></td></tr>
+<tr><th id="478">478</th><td><a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::transport" title='address_item::transport' data-ref="address_item::transport">transport</a> = <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>-&gt;<a class="ref field" href="../structs.h.html#router_instance::transport" title='router_instance::transport' data-ref="router_instance::transport">transport</a>;</td></tr>
+<tr><th id="479">479</th><td></td></tr>
+<tr><th id="480">480</th><td><b>return</b> <a class="ref fn" href="rf_functions.h.html#rf_queue_add" title='rf_queue_add' data-ref="rf_queue_add">rf_queue_add</a>(<a class="local col3 ref" href="#3addr" title='addr' data-ref="3addr">addr</a>, <a class="local col6 ref" href="#6addr_local" title='addr_local' data-ref="6addr_local">addr_local</a>, <a class="local col7 ref" href="#7addr_remote" title='addr_remote' data-ref="7addr_remote">addr_remote</a>, <a class="local col2 ref" href="#2rblock" title='rblock' data-ref="2rblock">rblock</a>, <a class="local col4 ref" href="#4pw" title='pw' data-ref="4pw">pw</a>)?</td></tr>
+<tr><th id="481">481</th><td>  <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a> : <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="482">482</th><td>}</td></tr>
+<tr><th id="483">483</th><td></td></tr>
+<tr><th id="484">484</th><td><u>#<span data-ppcond="52">endif</span>   /*!MACRO_PREDEF*/</u></td></tr>
+<tr><th id="485">485</th><td><i>/* End of routers/dnslookup.c */</i></td></tr>
+<tr><th id="486">486</th><td><i>/* vi: aw ai sw=2</i></td></tr>
+<tr><th id="487">487</th><td><i>*/</i></td></tr>
+<tr><th id="488">488</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

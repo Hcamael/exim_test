@@ -1,1 +1,10 @@
 <dec f='exim/src/macros.h' l='607'/>
+<use f='exim/src/deliver.c' l='5870' u='c'/>
+<use f='exim/src/parse.c' l='1690' u='c'/>
+<use f='exim/src/filtertest.c' l='212' u='c'/>
+<use f='exim/src/filtertest.c' l='266' u='c'/>
+<use f='exim/src/filtertest.c' l='273' u='c'/>
+<use f='exim/src/filtertest.c' l='275' u='c'/>
+<use f='exim/src/filter.c' l='1758' u='c'/>
+<use f='exim/src/routers/queryprogram.c' l='397' u='c'/>
+<use f='exim/src/routers/redirect.c' l='183' u='c'/>

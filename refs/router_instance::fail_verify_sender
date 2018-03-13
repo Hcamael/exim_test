@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='308' type='BOOL'/>
 <offset>2240</offset>
 <doc f='exim/src/structs.h' l='308'>/* Fail verify if sender match this router */</doc>
+<use f='exim/src/globals.c' l='1215' u='w'/>

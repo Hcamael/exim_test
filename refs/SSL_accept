@@ -1,1 +1,2 @@
 <dec f='include/openssl/ssl.h' l='1580' type='int SSL_accept(SSL * ssl)'/>
+<use f='exim/src/tls-openssl.c' l='2061' u='c' c='tls_server_start'/>

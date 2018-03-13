@@ -1,0 +1,5 @@
+<dec f='exim/src/memcheck.h' l='169'/>
+<doc f='exim/src/memcheck.h' l='165'>/* Check that memory at _qzz_addr is addressable and defined for
+   _qzz_len bytes.  If suitable addressibility and definedness are not
+   established, Valgrind prints an error message and returns the
+   address of the first offending byte.  Otherwise it returns zero. */</doc>

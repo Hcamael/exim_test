@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='626' type='BOOL'/>
 <doc f='exim/src/globals.h' l='626'>/* For broken clients */</doc>
+<def f='exim/src/globals.c' l='1013' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='3017' u='r' c='smtp_respond'/>
+<use f='exim/src/smtp_in.c' l='3053' u='r' c='smtp_respond'/>
+<use f='exim/src/acl.c' l='3121' u='w' c='acl_check_condition'/>

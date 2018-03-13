@@ -1,3 +1,14 @@
 <dec f='exim/src/dbstuff.h' l='777' type='double'/>
 <offset>128</offset>
 <doc f='exim/src/dbstuff.h' l='777'>/* Smoothed sending rate at that time */</doc>
+<use f='exim/src/exim_dbutil.c' l='898' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1054' u='r' c='main'/>
+<use f='exim/src/acl.c' l='2402' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2404' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2586' u='w' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2653' u='w' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2653' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2665' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2665' u='w' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2672' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2704' u='r' c='acl_ratelimit'/>

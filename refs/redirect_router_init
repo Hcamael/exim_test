@@ -1,0 +1,8 @@
+<dec f='exim/src/routers/redirect.h' l='75' type='void redirect_router_init(router_instance * )'/>
+<use f='exim/src/drtables.c' l='336'/>
+<use f='exim/src/drtables.c' l='336'/>
+<use f='exim/src/drtables.c' l='336'/>
+<use f='exim/src/drtables.c' l='336'/>
+<def f='exim/src/routers/redirect.c' l='206' ll='264' type='void redirect_router_init(router_instance * rblock)'/>
+<doc f='exim/src/routers/redirect.c' l='203'>/* Called for each instance, after its options have been read, to enable
+consistency checks to be done, or anything else that needs to be set up. */</doc>

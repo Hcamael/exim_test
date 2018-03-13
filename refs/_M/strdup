@@ -1,1 +1,4 @@
 <dec f='include/x86_64-linux-gnu/bits/string2.h' l='1291'/>
+<use f='exim/src/auths/auth-spa.c' l='1380' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1494' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1505' u='c'/>

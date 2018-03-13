@@ -1,0 +1,6 @@
+<dec f='include/openssl/x509v3.h' l='819' type='int X509v3_asid_add_inherit(ASIdentifiers * asid, int which)'/>
+<doc f='include/openssl/x509v3.h' l='814'>/*
+ * Utilities to construct and extract values from RFC3779 extensions,
+ * since some of the encodings (particularly for IP address prefixes
+ * and ranges) are a bit tedious to work with directly.
+ */</doc>

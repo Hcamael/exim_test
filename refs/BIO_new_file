@@ -1,1 +1,4 @@
 <dec f='include/openssl/bio.h' l='529' type='BIO * BIO_new_file(const char * filename, const char * mode)'/>
+<use f='exim/src/tls-openssl.c' l='629' u='c' c='init_dh'/>
+<use f='exim/src/tls-openssl.c' l='853' u='c' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='1757' u='c' c='chain_from_pem_file'/>

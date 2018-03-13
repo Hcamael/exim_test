@@ -2,3 +2,5 @@
 <doc f='include/unistd.h' l='689'>/* If SIZE is zero, return the number of supplementary groups
    the calling process is in.  Otherwise, fill in the group IDs
    of its supplementary groups in LIST and return the number written.  */</doc>
+<use f='exim/src/exim.c' l='629' u='c' c='exim_setugid'/>
+<use f='exim/src/exim.c' l='3647' u='c' c='main'/>

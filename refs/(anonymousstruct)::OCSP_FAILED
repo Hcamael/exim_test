@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='101' type='3'/>
 <doc f='exim/src/globals.h' l='101'>/* verify failed */</doc>
+<use f='exim/src/tls-openssl.c' l='1349' u='r' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1359' u='r' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1390' u='r' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1420' u='r' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1435' u='r' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1450' u='r' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1457' u='r' c='tls_client_stapling_cb'/>

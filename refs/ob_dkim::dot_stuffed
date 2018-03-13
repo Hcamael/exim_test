@@ -1,2 +1,4 @@
 <dec f='exim/src/structs.h' l='902' type='BOOL'/>
 <offset>512</offset>
+<use f='exim/src/dkim_transport.c' l='153' u='w' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='258' u='w' c='dkt_via_kfile'/>

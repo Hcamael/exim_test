@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='126' type='uschar *'/>
 <doc f='exim/src/globals.h' l='126'>/* Path for certificates to check */</doc>
+<use f='exim/src/tls-openssl.c' l='1251' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='2006' u='r' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2013' u='r' c='tls_server_start'/>
+<def f='exim/src/globals.c' l='164' type='uschar *'/>
+<use f='exim/src/readconf.c' l='361' u='a'/>
+<use f='exim/src/readconf.c' l='361' u='a'/>
+<use f='exim/src/readconf.c' l='361' u='a'/>
+<use f='exim/src/readconf.c' l='361' u='a'/>

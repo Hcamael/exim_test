@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='788' type='BOOL'/>
 <doc f='exim/src/globals.h' l='788'>/* true if sender_host_name verified in DNSSEC */</doc>
+<def f='exim/src/globals.c' l='1280' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='3313' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3490' u='r' c='smtp_verify_helo'/>
+<use f='exim/src/smtp_in.c' l='3499' u='r' c='smtp_verify_helo'/>
+<use f='exim/src/expand.c' l='669' u='a'/>
+<use f='exim/src/expand.c' l='669' u='a'/>
+<use f='exim/src/expand.c' l='669' u='a'/>
+<use f='exim/src/expand.c' l='669' u='a'/>
+<use f='exim/src/receive.c' l='1305' u='r' c='add_host_info_for_log'/>
+<use f='exim/src/host.c' l='1668' u='w' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1709' u='w' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1712' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1841' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1856' u='w' c='host_name_lookup'/>

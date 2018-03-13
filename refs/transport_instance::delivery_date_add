@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='184' type='BOOL'/>
 <offset>2080</offset>
 <doc f='exim/src/structs.h' l='184'>/* Add Delivery-Date header */</doc>
+<use f='exim/src/globals.c' l='1485' u='w'/>

@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='852' type='int'/>
 <doc f='exim/src/globals.h' l='852'>/* Base interval for RCPT rate limit */</doc>
+<def f='exim/src/globals.c' l='1352' type='int'/>
+<use f='exim/src/smtp_in.c' l='4773' u='r' c='smtp_setup_msg'/>

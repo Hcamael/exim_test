@@ -1,0 +1,4 @@
+<dec f='exim/src/acl.c' l='19' type='4'/>
+<use f='exim/src/acl.c' l='29' u='r'/>
+<use f='exim/src/acl.c' l='44'/>
+<use f='exim/src/acl.c' l='4179' c='acl_check_internal'/>

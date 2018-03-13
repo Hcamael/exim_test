@@ -1,1 +1,2 @@
 <dec f='include/openssl/pem.h' l='356' macro='1' type='DH * PEM_read_bio_DHparams(BIO * bp, DH ** x, pem_password_cb * cb, void * u)'/>
+<use f='exim/src/tls-openssl.c' l='653' u='c' c='init_dh'/>

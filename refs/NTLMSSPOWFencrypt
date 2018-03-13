@@ -1,0 +1,2 @@
+<def f='exim/src/auths/auth-spa.c' l='982' ll='998' type='void NTLMSSPOWFencrypt(uschar * passwd, uschar * ntlmchalresp, uschar * p24)'/>
+<doc f='exim/src/auths/auth-spa.c' l='981'>/* Does the des encryption from the FIRST 8 BYTES of the NT or LM MD4 hash. */</doc>

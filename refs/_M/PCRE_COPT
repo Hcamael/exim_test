@@ -1,2 +1,7 @@
 <dec f='exim/src/macros.h' l='205'/>
 <doc f='exim/src/macros.h' l='203'>/* Fixed option values for all PCRE functions */</doc>
+<use f='exim/src/filter.c' l='1599' u='c'/>
+<use f='exim/src/exim.c' l='98' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='150' u='c'/>
+<use f='exim/src/expand.c' l='2597' u='c'/>
+<use f='exim/src/expand.c' l='5303' u='c'/>

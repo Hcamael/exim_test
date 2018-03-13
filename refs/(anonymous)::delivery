@@ -1,3 +1,19 @@
 <dec f='exim/src/globals.h' l='306' type='unsigned int'/>
 <offset>1</offset>
 <doc f='exim/src/globals.h' l='306'>/* When to attempt */</doc>
+<use f='exim/src/verify.c' l='534' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='1029' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='1042' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='1045' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='1236' u='r' c='cutthrough_data_puts'/>
+<use f='exim/src/verify.c' l='1404' u='r' c='cancel_cutthrough_connection'/>
+<use f='exim/src/verify.c' l='1406' u='w' c='cancel_cutthrough_connection'/>
+<use f='exim/src/verify.c' l='1416' u='w' c='release_cutthrough_connection'/>
+<use f='exim/src/globals.c' l='549' u='w'/>
+<use f='exim/src/acl.c' l='3277' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='4422' u='r' c='acl_check'/>
+<use f='exim/src/acl.c' l='4442' u='r' c='acl_check'/>
+<use f='exim/src/receive.c' l='1185' u='r' c='add_acl_headers'/>
+<use f='exim/src/receive.c' l='2996' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4142' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4306' u='w' c='receive_msg'/>

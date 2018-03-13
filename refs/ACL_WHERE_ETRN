@@ -1,2 +1,12 @@
 <dec f='exim/src/macros.h' l='942' type='10'/>
 <doc f='exim/src/macros.h' l='942'>/* are just alphabetical.                    */</doc>
+<use f='exim/src/smtp_in.c' l='5510' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5513' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/acl.c' l='287' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='287' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='294' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='294' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='287' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='287' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='294' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='294' macro='1' u='r'/>

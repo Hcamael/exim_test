@@ -1,0 +1,1 @@
+<dec f='include/openssl/x509v3.h' l='477' type='char * i2s_ASN1_IA5STRING(X509V3_EXT_METHOD * method, ASN1_IA5STRING * ia5)'/>

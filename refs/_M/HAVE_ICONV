@@ -1,2 +1,12 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='29'/>
 <use f='exim/src/exim.h' l='522' u='c'/>
+<use f='exim/src/macro_predef.c' l='101' u='c'/>
+<use f='exim/src/exim.c' l='798' u='c'/>
+<use f='exim/src/rfc2047.c' l='219' u='c'/>
+<use f='exim/src/rfc2047.c' l='233' u='c'/>
+<use f='exim/src/rfc2047.c' l='254' u='c'/>
+<use f='exim/src/rfc2047.c' l='314' u='c'/>
+<use f='exim/src/sieve.c' l='23' u='c'/>
+<use f='exim/src/sieve.c' l='584' u='c'/>
+<use f='exim/src/sieve.c' l='627' u='c'/>
+<use f='exim/src/sieve.c' l='717' u='c'/>

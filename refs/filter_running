@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='472' type='BOOL'/>
 <doc f='exim/src/globals.h' l='472'>/* TRUE while running a filter */</doc>
+<def f='exim/src/globals.c' l='748' type='BOOL'/>
+<use f='exim/src/filter.c' l='2524' u='w' c='filter_interpret'/>
+<use f='exim/src/filter.c' l='2593' u='w' c='filter_interpret'/>
+<use f='exim/src/expand.c' l='1765' u='r' c='find_variable'/>

@@ -1,2 +1,3 @@
 <dec f='exim/src/dbstuff.h' l='129'/>
 <doc f='exim/src/dbstuff.h' l='128'>/* Some text for messages */</doc>
+<use f='exim/src/lookups/dbmdb.c' l='30' u='c'/>

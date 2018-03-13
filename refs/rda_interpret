@@ -1,1 +1,58 @@
 <dec f='exim/src/functions.h' l='329' type='int rda_interpret(redirect_block * , int , uschar * , uschar * , uschar * , uschar * , uschar * , ugid_block * , address_item ** , uschar ** , error_block ** , int * , uschar * )'/>
+<use f='exim/src/deliver.c' l='5863' u='c' c='deliver_message'/>
+<def f='exim/src/rda.c' l='546' ll='1000' type='int rda_interpret(redirect_block * rdata, int options, uschar * include_directory, uschar * sieve_vacation_directory, uschar * sieve_enotify_mailto_owner, uschar * sieve_useraddress, uschar * sieve_subaddress, ugid_block * ugid, address_item ** generated, uschar ** error, error_block ** eblockp, int * filtertype, uschar * rname)'/>
+<doc f='exim/src/rda.c' l='492'>/* This function is passed a forward list string (unexpanded) or the name of a
+file (unexpanded) whose contents are the forwarding list. The list may in fact
+be a filter program if it starts with &quot;#Exim filter&quot; or &quot;#Sieve filter&quot;. Other
+types of filter, with different inital tag strings, may be introduced in due
+course.
+
+The job of the function is to process the forwarding list or filter. It is
+pulled out into this separate function, because it is used for system filter
+files as well as from the redirect router.
+
+If the function is given a uid/gid, it runs a subprocess that passes the
+results back via a pipe. This provides security for things like :include:s in
+users&apos; .forward files, and &quot;logwrite&quot; calls in users&apos; filter files. A
+sub-process is NOT used when:
+
+  . No uid/gid is provided
+  . The input is a string which is not a filter string, and does not contain
+    :include:
+  . The input is a file whose non-existence can be detected in the main
+    process (which is usually running as root).
+
+Arguments:
+  rdata                     redirect data (file + constraints, or data string)
+  options                   options to pass to the extraction functions,
+                              plus ENOTDIR and EACCES handling bits
+  include_directory         restrain :include: to this directory
+  sieve_vacation_directory  directory passed to sieve_interpret
+  sieve_enotify_mailto_owner passed to sieve_interpret
+  sieve_useraddress         passed to sieve_interpret
+  sieve_subaddress          passed to sieve_interpret
+  ugid                      uid/gid to run under - if NULL, no change
+  generated                 where to hang generated addresses, initially NULL
+  error                     pointer for error message
+  eblockp                   for skipped syntax errors; NULL if no skipping
+  filtertype                set to the type of file:
+                              FILTER_FORWARD =&gt; traditional .forward file
+                              FILTER_EXIM    =&gt; an Exim filter file
+                              FILTER_SIEVE   =&gt; a Sieve filter file
+                            a system filter is always forced to be FILTER_EXIM
+  rname                     router name for error messages in the format
+                              &quot;xxx router&quot; or &quot;system filter&quot;
+
+Returns:        values from extraction function, or FF_NONEXIST:
+                  FF_DELIVERED     success, a significant action was taken
+                  FF_NOTDELIVERED  success, no significant action
+                  FF_BLACKHOLE     :blackhole:
+                  FF_DEFER         defer requested
+                  FF_FAIL          fail requested
+                  FF_INCLUDEFAIL   some problem with :include:
+                  FF_FREEZE        freeze requested
+                  FF_ERROR         there was a problem
+                  FF_NONEXIST      the file does not exist
+*/</doc>
+<use f='exim/src/routers/queryprogram.c' l='393' u='c' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='724' u='c' c='redirect_router_entry'/>

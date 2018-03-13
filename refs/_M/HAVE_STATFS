@@ -1,3 +1,4 @@
 <dec f='exim/src/exim.h' l='19'/>
 <use f='exim/src/exim.h' l='212' u='a'/>
 <doc f='exim/src/exim.h' l='17'>/* Assume most systems have statfs() unless os.h undefines this macro */</doc>
+<use f='exim/src/receive.c' l='124' u='a'/>

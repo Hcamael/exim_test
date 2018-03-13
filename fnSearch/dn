@@ -1,0 +1,14 @@
+dnsdb_version_report|dnsdb_version_report
+dnslookup_router_entry|dnslookup_router_entry
+dnslookup_router_init|dnslookup_router_init
+dns_address_from_rr|dns_address_from_rr
+dns_basic_lookup|dns_basic_lookup
+dns_build_reverse|dns_build_reverse
+dns_init|dns_init
+dns_is_aa|dns_is_aa
+dns_is_secure|dns_is_secure
+dns_lookup|dns_lookup
+dns_next_rr|dns_next_rr
+dns_pattern_init|dns_pattern_init
+dns_special_lookup|dns_special_lookup
+dns_text_type|dns_text_type

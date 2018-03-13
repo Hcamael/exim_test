@@ -1,0 +1,14 @@
+<def f='exim/src/tls-openssl.c' l='135' type='SSL *'/>
+<use f='exim/src/tls-openssl.c' l='2336' u='w' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2338' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2339' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2340' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2356' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2392' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2407' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2421' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2423' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2428' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2592' u='r' c='tls_read'/>
+<use f='exim/src/tls-openssl.c' l='2638' u='r' c='tls_write'/>
+<use f='exim/src/tls-openssl.c' l='2714' u='a' c='tls_close'/>

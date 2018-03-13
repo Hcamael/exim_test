@@ -3,3 +3,28 @@
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */</doc>
+<use f='exim/src/deliver.c' l='1546' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='5183' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='5190' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='5667' macro='1' u='c'/>
+<use f='exim/src/moan.c' l='287' u='c' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='386' macro='1' u='c'/>
+<use f='exim/src/exim_dbmbuild.c' l='240' macro='1' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='748' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='1223' macro='1' u='c'/>
+<use f='exim/src/queue.c' l='902' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='188' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='196' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='356' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='368' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='389' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='399' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='429' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='440' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='693' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='717' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='857' macro='1' u='c'/>
+<use f='exim/src/lookups/lsearch.c' l='101' macro='1' u='c'/>
+<use f='exim/src/lookups/lsearch.c' l='263' macro='1' u='c'/>
+<use f='exim/src/match.c' l='805' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='3499' macro='1' u='c'/>

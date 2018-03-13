@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='380' type='uschar *'/>
 <offset>256</offset>
 <doc f='exim/src/structs.h' l='380'>/* Must be first */</doc>
+<use f='exim/src/globals.c' l='435' u='w'/>
+<use f='exim/src/smtp_in.c' l='3846' u='r' c='smtp_setup_msg'/>

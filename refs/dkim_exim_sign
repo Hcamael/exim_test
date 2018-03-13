@@ -1,1 +1,3 @@
 <dec f='exim/src/dkim.h' l='9' type='gstring * dkim_exim_sign(int , off_t , uschar * , struct ob_dkim * , const uschar ** )'/>
+<use f='exim/src/dkim_transport.c' l='155' u='c' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='259' u='c' c='dkt_via_kfile'/>

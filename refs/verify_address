@@ -1,1 +1,55 @@
 <dec f='exim/src/functions.h' l='529' type='int verify_address(address_item * , FILE * , int , int , int , int , uschar * , uschar * , BOOL * )'/>
+<use f='exim/src/verify.c' l='1172' u='c' c='open_cutthrough_connection'/>
+<def f='exim/src/verify.c' l='1592' ll='2162' type='int verify_address(address_item * vaddr, FILE * f, int options, int callout, int callout_overall, int callout_connect, uschar * se_mailfrom, uschar * pm_mailfrom, BOOL * routed)'/>
+<use f='exim/src/verify.c' l='2584' u='c' c='verify_check_header_address'/>
+<doc f='exim/src/verify.c' l='1546'>/* This function is used both for verification (-bv and at other times) and
+address testing (-bt), which is indicated by address_test_mode being set.
+
+Arguments:
+  vaddr            contains the address to verify; the next field in this block
+                     must be NULL
+  f                if not NULL, write the result to this file
+  options          various option bits:
+                     vopt_fake_sender =&gt; this sender verify is not for the real
+                       sender (it was verify=sender=xxxx or an address from a
+                       header line) - rewriting must not change sender_address
+                     vopt_is_recipient =&gt; this is a recipient address, otherwise
+                       it&apos;s a sender address - this affects qualification and
+                       rewriting and messages from callouts
+                     vopt_qualify =&gt; qualify an unqualified address; else error
+                     vopt_expn =&gt; called from SMTP EXPN command
+                     vopt_success_on_redirect =&gt; when a new address is generated
+                       the verification instantly succeeds
+
+                     These ones are used by do_callout() -- the options variable
+                       is passed to it.
+
+                     vopt_callout_fullpm =&gt; if postmaster check, do full one
+                     vopt_callout_no_cache =&gt; don&apos;t use callout cache
+                     vopt_callout_random =&gt; do the &quot;random&quot; thing
+                     vopt_callout_recipsender =&gt; use real sender for recipient
+                     vopt_callout_recippmaster =&gt; use postmaster for recipient
+
+  callout          if &gt; 0, specifies that callout is required, and gives timeout
+                     for individual commands
+  callout_overall  if &gt; 0, gives overall timeout for the callout function;
+                   if &lt; 0, a default is used (see do_callout())
+  callout_connect  the connection timeout for callouts
+  se_mailfrom      when callout is requested to verify a sender, use this
+                     in MAIL FROM; NULL =&gt; &quot;&quot;
+  pm_mailfrom      when callout is requested, if non-NULL, do the postmaster
+                     thing and use this as the sender address (may be &quot;&quot;)
+
+  routed           if not NULL, set TRUE if routing succeeded, so we can
+                     distinguish between routing failed and callout failed
+
+Returns:           OK      address verified
+                   FAIL    address failed to verify
+                   DEFER   can&apos;t tell at present
+*/</doc>
+<use f='exim/src/exim.c' l='733' u='c' c='test_address'/>
+<use f='exim/src/smtp_in.c' l='5218' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5255' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/routers/rf_get_errors_address.c' l='114' u='c' c='rf_get_errors_address'/>
+<use f='exim/src/acl.c' l='1989' u='c' c='acl_verify'/>
+<use f='exim/src/acl.c' l='2043' u='c' c='acl_verify'/>

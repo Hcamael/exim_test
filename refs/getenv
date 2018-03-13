@@ -1,2 +1,5 @@
 <dec f='include/stdlib.h' l='564' type='char * getenv(const char * __name)'/>
 <doc f='include/stdlib.h' l='563'>/* Return the value of envariable NAME, or NULL if it doesn&apos;t exist.  */</doc>
+<use f='exim/src/tls.c' l='91' u='c' c='to_tz'/>
+<use f='exim/src/exim.c' l='3988' u='c' c='main'/>
+<use f='exim/src/expand.c' l='6195' u='c' c='expand_string_internal'/>

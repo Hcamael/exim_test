@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='283' type='uschar *'/>
 <offset>1216</offset>
 <doc f='exim/src/structs.h' l='283'>/* Target hosts to ignore */</doc>
+<use f='exim/src/globals.c' l='1190' u='w'/>
+<use f='exim/src/routers/dnslookup.c' l='301' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/queryprogram.c' l='542' u='r' c='queryprogram_router_entry'/>

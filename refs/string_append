@@ -1,2 +1,88 @@
 <dec f='exim/src/functions.h' l='449' type='gstring * string_append(gstring * , int )'/>
 <use f='exim/src/lookups/lf_quote.c' l='33' u='c' c='lf_quote'/>
+<use f='exim/src/deliver.c' l='764' u='c' c='d_log_interface'/>
+<use f='exim/src/deliver.c' l='766' u='c' c='d_log_interface'/>
+<use f='exim/src/deliver.c' l='779' u='c' c='d_hostlog'/>
+<use f='exim/src/deliver.c' l='784' u='c' c='d_hostlog'/>
+<use f='exim/src/deliver.c' l='787' u='c' c='d_hostlog'/>
+<use f='exim/src/deliver.c' l='815' u='c' c='d_tlslog'/>
+<use f='exim/src/deliver.c' l='817' u='c' c='d_tlslog'/>
+<use f='exim/src/deliver.c' l='828' u='c' c='d_tlslog'/>
+<use f='exim/src/deliver.c' l='1066' u='c' c='string_log_address'/>
+<use f='exim/src/deliver.c' l='1142' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1151' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1161' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1174' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1177' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1181' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1183' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1186' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1194' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1228' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1231' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1233' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1265' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1271' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1277' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1313' u='c' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='1324' u='c' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='1328' u='c' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='1334' u='c' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='1339' u='c' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='1345' u='c' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='1351' u='c' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='1391' u='c' c='failure_log'/>
+<use f='exim/src/deliver.c' l='1394' u='c' c='failure_log'/>
+<use f='exim/src/deliver.c' l='1399' u='c' c='failure_log'/>
+<use f='exim/src/deliver.c' l='1402' u='c' c='failure_log'/>
+<use f='exim/src/deliver.c' l='1404' u='c' c='failure_log'/>
+<use f='exim/src/deliver.c' l='1414' u='c' c='failure_log'/>
+<use f='exim/src/deliver.c' l='1417' u='c' c='failure_log'/>
+<def f='exim/src/string.c' l='1189' ll='1203' type='gstring * string_append(gstring * string, int count)'/>
+<doc f='exim/src/string.c' l='1175'>/* This function can be used to build a string from many other strings.
+It calls string_cat() to do the dirty work.
+
+Arguments:
+  string   expanding-string that is being built, or NULL
+             if this is a new string that has no contents yet
+  count    the number of strings to append
+  ...      &quot;count&quot; uschar* arguments, which must be valid zero-terminated
+             C strings
+
+Returns:   pointer to the start of the string, changed if copied for expansion.
+           The string is not zero-terminated - see string_cat() above.
+*/</doc>
+<use f='exim/src/smtp_in.c' l='1725' u='c' c='s_tlslog'/>
+<use f='exim/src/smtp_in.c' l='1727' u='c' c='s_tlslog'/>
+<use f='exim/src/smtp_in.c' l='1729' u='c' c='s_tlslog'/>
+<use f='exim/src/smtp_in.c' l='1731' u='c' c='s_tlslog'/>
+<use f='exim/src/smtp_in.c' l='1760' u='c' c='smtp_log_no_mail'/>
+<use f='exim/src/smtp_in.c' l='1761' u='c' c='smtp_log_no_mail'/>
+<use f='exim/src/smtp_in.c' l='1773' u='c' c='smtp_log_no_mail'/>
+<use f='exim/src/smtp_in.c' l='1779' u='c' c='smtp_log_no_mail'/>
+<use f='exim/src/daemon.c' l='202' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='205' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='208' u='c' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='1307' u='c' c='add_host_info_for_log'/>
+<use f='exim/src/receive.c' l='1320' u='c' c='add_host_info_for_log'/>
+<use f='exim/src/receive.c' l='1322' u='c' c='add_host_info_for_log'/>
+<use f='exim/src/receive.c' l='3764' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3905' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3909' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3915' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3917' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3919' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3921' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3926' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3929' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3931' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3949' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3958' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3963' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3967' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3970' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3986' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4009' u='c' c='receive_msg'/>
+<use f='exim/src/host.c' l='609' u='c' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='612' u='c' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='616' u='c' c='host_build_sender_fullhost'/>

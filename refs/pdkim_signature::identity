@@ -1,0 +1,7 @@
+<dec f='exim/src/pdkim/pdkim.h' l='166' type='uschar *'/>
+<use f='exim/src/pdkim/pdkim.c' l='576' u='w' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1259' u='r' c='pdkim_create_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1260' u='r' c='pdkim_create_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1854' u='w' c='pdkim_set_optional'/>
+<offset>384</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='165'>/* (i=) The identity as given in the signature */</doc>

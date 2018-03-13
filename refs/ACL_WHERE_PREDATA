@@ -1,2 +1,44 @@
 <dec f='exim/src/macros.h' l='931' type='2'/>
 <doc f='exim/src/macros.h' l='931'>/* ) There are several tests for &quot;in message&quot;, */</doc>
+<use f='exim/src/smtp_in.c' l='3179' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='5161' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5169' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/acl.c' l='141' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='141' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='276' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='276' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='141' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='141' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='276' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='276' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='448' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='448' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='458' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='458' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='468' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='468' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='509' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='509' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='516' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='516' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='521' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='521' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='448' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='448' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='458' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='458' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='468' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='468' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='509' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='509' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='516' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='516' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='521' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='521' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='1546' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='1546' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='1546' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='1546' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='2289' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='4449' c='acl_check'/>
+<use f='exim/src/acl.c' l='4480' u='r' c='acl_check'/>

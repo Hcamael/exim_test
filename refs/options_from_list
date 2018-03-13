@@ -1,0 +1,9 @@
+<dec f='exim/src/macro_predef.h' l='13' type='void options_from_list(optionlist * , unsigned int , const uschar * , uschar * )'/>
+<def f='exim/src/macro_predef.c' l='61' ll='84' type='void options_from_list(optionlist * opts, unsigned int nopt, const uschar * section, uschar * group)'/>
+<use f='exim/src/route.c' l='156' u='c' c='options_routers'/>
+<use f='exim/src/route.c' l='162' u='c' c='options_routers'/>
+<use f='exim/src/transport.c' l='101' u='c' c='options_transports'/>
+<use f='exim/src/transport.c' l='107' u='c' c='options_transports'/>
+<use f='exim/src/readconf.c' l='387' u='c' c='options_main'/>
+<use f='exim/src/readconf.c' l='396' u='c' c='options_auths'/>
+<use f='exim/src/readconf.c' l='402' u='c' c='options_auths'/>

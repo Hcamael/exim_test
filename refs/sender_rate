@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='794' type='uschar *'/>
 <doc f='exim/src/globals.h' l='794'>/* Sender rate computed by ACL */</doc>
+<def f='exim/src/globals.c' l='1288' type='uschar *'/>
+<use f='exim/src/exim.c' l='5126' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='2021' u='w' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='2404' u='w' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2406' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2416' u='w' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2704' u='w' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2707' u='r' c='acl_ratelimit'/>
+<use f='exim/src/expand.c' l='673' u='a'/>
+<use f='exim/src/expand.c' l='673' u='a'/>
+<use f='exim/src/expand.c' l='673' u='a'/>
+<use f='exim/src/expand.c' l='673' u='a'/>

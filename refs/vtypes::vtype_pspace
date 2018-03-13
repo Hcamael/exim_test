@@ -1,0 +1,11 @@
+<dec f='exim/src/expand.c' l='417' type='26'/>
+<use f='exim/src/expand.c' l='565'/>
+<use f='exim/src/expand.c' l='565'/>
+<use f='exim/src/expand.c' l='712'/>
+<use f='exim/src/expand.c' l='712'/>
+<use f='exim/src/expand.c' l='565'/>
+<use f='exim/src/expand.c' l='565'/>
+<use f='exim/src/expand.c' l='712'/>
+<use f='exim/src/expand.c' l='712'/>
+<use f='exim/src/expand.c' l='1916' c='find_variable'/>
+<doc f='exim/src/expand.c' l='417'>/* partition space; value is T/F for spool/log */</doc>

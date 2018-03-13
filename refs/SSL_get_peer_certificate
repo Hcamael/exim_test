@@ -1,1 +1,2 @@
 <dec f='include/openssl/ssl.h' l='1457' type='X509 * SSL_get_peer_certificate(const SSL * s)'/>
+<use f='exim/src/tls-openssl.c' l='1729' u='c' c='peer_cert'/>

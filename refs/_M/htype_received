@@ -1,1 +1,6 @@
 <dec f='exim/src/macros.h' l='653'/>
+<use f='exim/src/globals.c' l='780' u='c'/>
+<use f='exim/src/spool_in.c' l='879' u='c'/>
+<use f='exim/src/receive.c' l='1510' u='c'/>
+<use f='exim/src/receive.c' l='2323' u='c'/>
+<use f='exim/src/receive.c' l='2324' u='c'/>

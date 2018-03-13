@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='579' type='int'/>
 <doc f='exim/src/globals.h' l='579'>/* Sic */</doc>
+<def f='exim/src/globals.c' l='966' type='int'/>
+<use f='exim/src/filtertest.c' l='104' u='w' c='read_message_body'/>
+<use f='exim/src/spool_in.c' l='114' u='w' c='spool_open_datafile'/>
+<use f='exim/src/spool_in.c' l='115' u='r' c='spool_open_datafile'/>
+<use f='exim/src/expand.c' l='575' u='a'/>
+<use f='exim/src/expand.c' l='575' u='a'/>
+<use f='exim/src/expand.c' l='575' u='a'/>
+<use f='exim/src/expand.c' l='575' u='a'/>
+<use f='exim/src/receive.c' l='3314' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3323' u='w' c='receive_msg'/>

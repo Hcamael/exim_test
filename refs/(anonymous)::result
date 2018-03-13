@@ -7,3 +7,22 @@
 <doc f='exim/src/dbstuff.h' l='723'>/* accept or reject */</doc>
 <doc f='exim/src/dbstuff.h' l='732'>/*************/</doc>
 <doc f='exim/src/dbstuff.h' l='733'>/* Domain reject or accept */</doc>
+<use f='exim/src/verify.c' l='80' u='r' c='get_callout_cache_record'/>
+<use f='exim/src/verify.c' l='97' u='r' c='get_callout_cache_record'/>
+<use f='exim/src/verify.c' l='170' u='r' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='172' u='r' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='173' u='r' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='273' u='r' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='315' u='r' c='cache_callout_write'/>
+<use f='exim/src/verify.c' l='327' u='r' c='cache_callout_write'/>
+<use f='exim/src/verify.c' l='335' u='r' c='cache_callout_write'/>
+<use f='exim/src/verify.c' l='348' u='r' c='cache_callout_write'/>
+<use f='exim/src/verify.c' l='519' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='718' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='738' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='869' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='874' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='886' u='w' c='do_callout'/>
+<use f='exim/src/exim_dbutil.c' l='866' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1039' u='r' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1040' u='r' c='main'/>

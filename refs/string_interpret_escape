@@ -1,1 +1,25 @@
 <dec f='exim/src/functions.h' l='465' type='int string_interpret_escape(const uschar ** )'/>
+<def f='exim/src/string.c' l='229' ll='269' type='int string_interpret_escape(const uschar ** pp)'/>
+<use f='exim/src/string.c' l='380' u='c' c='string_unprinting'/>
+<use f='exim/src/string.c' l='661' u='c' c='string_dequote'/>
+<use f='exim/src/string.c' l='683' u='c' c='string_dequote'/>
+<doc f='exim/src/string.c' l='220'>/* This function is called from several places where escape sequences are to be
+interpreted in strings.
+
+Arguments:
+  pp       points a pointer to the initiating &quot;\&quot; in the string;
+           the pointer gets updated to point to the final character
+Returns:   the value of the character escape
+*/</doc>
+<def f='exim/src/exim_dbmbuild.c' l='91' ll='125' type='int string_interpret_escape(const uschar ** pp)'/>
+<use f='exim/src/exim_dbmbuild.c' l='338' u='c' c='main'/>
+<doc f='exim/src/exim_dbmbuild.c' l='83'>/* This function is copied from the main Exim code.
+
+Arguments:
+  pp       points a pointer to the initiating &quot;\&quot; in the string;
+           the pointer gets updated to point to the final character
+Returns:   the value of the character escape
+*/</doc>
+<use f='exim/src/filter.c' l='358' u='c' c='nextitem'/>
+<use f='exim/src/lookups/lsearch.c' l='148' u='c' c='internal_lsearch_find'/>
+<use f='exim/src/expand.c' l='3903' u='c' c='expand_string_internal'/>

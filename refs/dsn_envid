@@ -1,2 +1,23 @@
 <dec f='exim/src/globals.h' l='131' type='uschar *'/>
 <doc f='exim/src/globals.h' l='131'>/* DSN envid string */</doc>
+<use f='exim/src/deliver.c' l='7227' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7227' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7316' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7319' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7320' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7703' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7707' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7708' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8244' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8248' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8249' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='138' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='2005' u='w' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='4522' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4528' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4529' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/spool_in.c' l='330' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='531' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_out.c' l='265' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='266' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='266' u='r' c='spool_write_header'/>

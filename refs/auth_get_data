@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='101' type='int auth_get_data(uschar ** , uschar * , int )'/>
+<use f='exim/src/auths/plaintext.c' l='135' u='c' c='auth_plaintext_server'/>
+<use f='exim/src/auths/cram_md5.c' l='187' u='c' c='auth_cram_md5_server'/>
+<def f='exim/src/auths/get_data.c' l='28' ll='45' type='int auth_get_data(uschar ** aptr, uschar * challenge, int challen)'/>
+<doc f='exim/src/auths/get_data.c' l='15'>/* This function is used by authentication drivers to output a challenge
+to the SMTP client and read the response line.
+
+Arguments:
+   aptr       set to point to the response (which is in big_buffer)
+   challenge  the challenge text (unencoded, may be binary)
+   challen    the length of the challenge text
+
+Returns:      OK on success
+              BAD64 if response too large for buffer
+              CANCELLED if response is &quot;*&quot;
+*/</doc>

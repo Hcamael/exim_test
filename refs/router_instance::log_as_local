@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='311' type='BOOL'/>
 <offset>2336</offset>
 <doc f='exim/src/structs.h' l='311'>/* TRUE logs as a local delivery */</doc>
+<use f='exim/src/deliver.c' l='997' u='r' c='string_log_address'/>
+<use f='exim/src/globals.c' l='1218' u='w'/>

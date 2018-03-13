@@ -1,1 +1,3 @@
 <dec f='exim/src/exim.h' l='405' type='res_state os_get_dns_resolver_res()'/>
+<use f='exim/src/dns.c' l='142' u='c' c='dns_init'/>
+<use f='exim/src/dns.c' l='602' u='c' c='dns_fail_tag'/>

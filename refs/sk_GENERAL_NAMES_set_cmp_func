@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='167' macro='1' type='sk_GENERAL_NAMES_compfunc sk_GENERAL_NAMES_set_cmp_func(struct stack_st_GENERAL_NAMES * sk, sk_GENERAL_NAMES_compfunc compare)'/>

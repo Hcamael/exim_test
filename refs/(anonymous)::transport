@@ -1,3 +1,6 @@
 <dec f='exim/src/globals.h' l='311' type='uschar *'/>
 <offset>128</offset>
 <doc f='exim/src/globals.h' l='311'>/* Name of transport */</doc>
+<use f='exim/src/deliver.c' l='4485' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='8566' u='r' c='delivery_re_exec'/>
+<use f='exim/src/verify.c' l='1049' u='w' c='do_callout'/>

@@ -1,1 +1,9 @@
 <dec f='include/asm-generic/errno-base.h' l='37'/>
+<use f='exim/src/smtp_in.c' l='4455' u='c'/>
+<use f='exim/src/expand.c' l='7710' u='c'/>
+<use f='exim/src/expand.c' l='7715' u='c'/>
+<use f='exim/src/expand.c' l='7720' u='c'/>
+<use f='exim/src/expand.c' l='7725' u='c'/>
+<use f='exim/src/sieve.c' l='1679' u='c'/>
+<use f='exim/src/sieve.c' l='1681' u='c'/>
+<use f='exim/src/sieve.c' l='1691' u='c'/>

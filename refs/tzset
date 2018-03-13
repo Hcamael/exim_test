@@ -1,0 +1,3 @@
+<use f='exim/src/tls.c' l='93' u='c' c='to_tz'/>
+<use f='exim/src/tls.c' l='104' u='c' c='restore_tz'/>
+<use f='exim/src/exim.c' l='4010' u='c' c='main'/>

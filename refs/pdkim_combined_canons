@@ -1,0 +1,24 @@
+<def f='exim/src/pdkim/pdkim.c' l='103' ll='111' type='pdkim_combined_canon_entry [7]'/>
+<use f='exim/src/pdkim/pdkim.c' l='555' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='556' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='558' u='m' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='559' u='m' c='pdkim_parse_sig_header'/>

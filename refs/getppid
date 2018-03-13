@@ -1,2 +1,5 @@
 <dec f='include/unistd.h' l='634' type='__pid_t getppid()'/>
 <doc f='include/unistd.h' l='633'>/* Get the process ID of the calling process&apos;s parent.  */</doc>
+<use f='exim/src/deliver.c' l='7265' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7460' u='c' c='deliver_message'/>
+<use f='exim/src/daemon.c' l='1337' u='c' c='daemon_go'/>

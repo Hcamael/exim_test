@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='901' type='BOOL'/>
 <doc f='exim/src/globals.h' l='901'>/* Remove dots at ends of domains */</doc>
+<def f='exim/src/globals.c' l='1403' type='BOOL'/>
+<use f='exim/src/parse.c' l='365' u='r' c='read_domain'/>
+<use f='exim/src/exim.c' l='2562' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2573' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3889' u='r' c='main'/>
+<use f='exim/src/readconf.c' l='327' u='a'/>
+<use f='exim/src/readconf.c' l='327' u='a'/>
+<use f='exim/src/readconf.c' l='327' u='a'/>
+<use f='exim/src/readconf.c' l='327' u='a'/>

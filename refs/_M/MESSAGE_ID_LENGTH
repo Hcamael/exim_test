@@ -2,3 +2,16 @@
 <doc f='exim/src/local_scan.h' l='82'>/* The length of message identification strings. This is the id used internally
 by exim. The external version for use in Received: strings has a leading &apos;E&apos;
 added to ensure it starts with a letter. */</doc>
+<use f='exim/src/globals.c' l='974' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='1013' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='1014' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='1016' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='1019' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='1023' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='1029' u='c'/>
+<use f='exim/src/queue.c' l='505' u='c'/>
+<use f='exim/src/queue.c' l='507' u='c'/>
+<use f='exim/src/spool_in.c' l='357' u='c'/>
+<use f='exim/src/spool_in.c' l='358' u='c'/>
+<use f='exim/src/receive.c' l='2625' u='c'/>
+<use f='exim/src/receive.c' l='2637' u='c'/>

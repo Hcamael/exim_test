@@ -1,3 +1,8 @@
 <dec f='exim/src/structs.h' l='72' type='int'/>
 <offset>352</offset>
 <doc f='exim/src/structs.h' l='72'>/* Time of last try if known */</doc>
+<use f='exim/src/routers/dnslookup.c' l='288' u='w' c='dnslookup_router_entry'/>
+<use f='exim/src/host.c' l='344' u='w' c='host_build_hostlist'/>
+<use f='exim/src/host.c' l='2149' u='w' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2888' u='w' c='host_find_bydns'/>
+<use f='exim/src/retry.c' l='232' u='w' c='retry_check_address'/>

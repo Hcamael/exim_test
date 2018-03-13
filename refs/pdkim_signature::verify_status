@@ -1,0 +1,29 @@
+<dec f='exim/src/pdkim/pdkim.h' l='213' type='int'/>
+<use f='exim/src/pdkim/pdkim.c' l='817' u='w' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='1326' u='w' c='pdkim_key_from_dns'/>
+<use f='exim/src/pdkim/pdkim.c' l='1345' u='w' c='pdkim_key_from_dns'/>
+<use f='exim/src/pdkim/pdkim.c' l='1370' u='w' c='pdkim_key_from_dns'/>
+<use f='exim/src/pdkim/pdkim.c' l='1672' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1684' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1722' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1736' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1743' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1745' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1755' u='r' c='pdkim_feed_finish'/>
+<offset>1088</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='197'>/* The main verification status. Verification only. One of:
+
+     PDKIM_VERIFY_NONE      Verification was not attempted. This status
+                            should not appear.
+
+     PDKIM_VERIFY_INVALID   There was an error while trying to verify
+                            the signature. A more precise description
+                            is available in verify_ext_status.
+
+     PDKIM_VERIFY_FAIL      Verification failed because either the body
+                            hash did not match, or the signature verification
+                            failed. This means the message was modified.
+                            Check verify_ext_status for the exact reason.
+
+     PDKIM_VERIFY_PASS      Verification succeeded.
+  */</doc>

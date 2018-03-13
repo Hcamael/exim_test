@@ -1,0 +1,357 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pdkim.h source code [exim/src/pdkim/pdkim.h] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="pdkim_bodyhash,pdkim_ctx,pdkim_pubkey,pdkim_signature "/>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/pdkim/pdkim.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>pdkim</a>/<a href='pdkim.h.html'>pdkim.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i> *  PDKIM - a RFC4871 (DKIM) implementation</i></td></tr>
+<tr><th id="3">3</th><td><i> *</i></td></tr>
+<tr><th id="4">4</th><td><i> *  Copyright (C) 2009 - 2012  Tom Kistner &lt;tom@duncanthrax.net&gt;</i></td></tr>
+<tr><th id="5">5</th><td><i> *  Copyright (c) 2016 - 2017  Jeremy Harris</i></td></tr>
+<tr><th id="6">6</th><td><i> *</i></td></tr>
+<tr><th id="7">7</th><td><i> *  <a href="http://duncanthrax.net/pdkim/">http://duncanthrax.net/pdkim/</a></i></td></tr>
+<tr><th id="8">8</th><td><i> *</i></td></tr>
+<tr><th id="9">9</th><td><i> *  This program is free software; you can redistribute it and/or modify</i></td></tr>
+<tr><th id="10">10</th><td><i> *  it under the terms of the GNU General Public License as published by</i></td></tr>
+<tr><th id="11">11</th><td><i> *  the Free Software Foundation; either version 2 of the License, or</i></td></tr>
+<tr><th id="12">12</th><td><i> *  (at your option) any later version.</i></td></tr>
+<tr><th id="13">13</th><td><i> *</i></td></tr>
+<tr><th id="14">14</th><td><i> *  This program is distributed in the hope that it will be useful,</i></td></tr>
+<tr><th id="15">15</th><td><i> *  but WITHOUT ANY WARRANTY; without even the implied warranty of</i></td></tr>
+<tr><th id="16">16</th><td><i> *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</i></td></tr>
+<tr><th id="17">17</th><td><i> *  GNU General Public License for more details.</i></td></tr>
+<tr><th id="18">18</th><td><i> *</i></td></tr>
+<tr><th id="19">19</th><td><i> *  You should have received a copy of the GNU General Public License along</i></td></tr>
+<tr><th id="20">20</th><td><i> *  with this program; if not, write to the Free Software Foundation, Inc.,</i></td></tr>
+<tr><th id="21">21</th><td><i> *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.</i></td></tr>
+<tr><th id="22">22</th><td><i> */</i></td></tr>
+<tr><th id="23">23</th><td><u>#<span data-ppcond="23">ifndef</span> <span class="macro" data-ref="_M/PDKIM_H">PDKIM_H</span></u></td></tr>
+<tr><th id="24">24</th><td><u>#define <dfn class="macro" id="_M/PDKIM_H" data-ref="_M/PDKIM_H">PDKIM_H</dfn></u></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><u>#include <a href="../blob.h.html">"../blob.h"</a></u></td></tr>
+<tr><th id="27">27</th><td><u>#include <a href="../hash.h.html">"../hash.h"</a></u></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><u>#define <dfn class="macro" id="_M/PDKIM_DEFAULT_SIGN_HEADERS" data-ref="_M/PDKIM_DEFAULT_SIGN_HEADERS">PDKIM_DEFAULT_SIGN_HEADERS</dfn> "From:Sender:Reply-To:Subject:Date:"\</u></td></tr>
+<tr><th id="30">30</th><td><u>                             "Message-ID:To:Cc:MIME-Version:Content-Type:"\</u></td></tr>
+<tr><th id="31">31</th><td><u>                             "Content-Transfer-Encoding:Content-ID:"\</u></td></tr>
+<tr><th id="32">32</th><td><u>                             "Content-Description:Resent-Date:Resent-From:"\</u></td></tr>
+<tr><th id="33">33</th><td><u>                             "Resent-Sender:Resent-To:Resent-Cc:"\</u></td></tr>
+<tr><th id="34">34</th><td><u>                             "Resent-Message-ID:In-Reply-To:References:"\</u></td></tr>
+<tr><th id="35">35</th><td><u>                             "List-Id:List-Help:List-Unsubscribe:"\</u></td></tr>
+<tr><th id="36">36</th><td><u>                             "List-Subscribe:List-Post:List-Owner:List-Archive"</u></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><i>/* -------------------------------------------------------------------------- */</i></td></tr>
+<tr><th id="39">39</th><td><i>/* Length of the preallocated buffer for the "answer" from the dns/txt</i></td></tr>
+<tr><th id="40">40</th><td><i>   callback function. This should match the maximum RDLENGTH from DNS. */</i></td></tr>
+<tr><th id="41">41</th><td><u>#define <dfn class="macro" id="_M/PDKIM_DNS_TXT_MAX_RECLEN" data-ref="_M/PDKIM_DNS_TXT_MAX_RECLEN">PDKIM_DNS_TXT_MAX_RECLEN</dfn>    (1 &lt;&lt; 16)</u></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><i>/* -------------------------------------------------------------------------- */</i></td></tr>
+<tr><th id="44">44</th><td><i>/* Function success / error codes */</i></td></tr>
+<tr><th id="45">45</th><td><u>#define <dfn class="macro" id="_M/PDKIM_OK" data-ref="_M/PDKIM_OK">PDKIM_OK</dfn>                      0</u></td></tr>
+<tr><th id="46">46</th><td><u>#define <dfn class="macro" id="_M/PDKIM_FAIL" data-ref="_M/PDKIM_FAIL">PDKIM_FAIL</dfn>                   -1</u></td></tr>
+<tr><th id="47">47</th><td><u>#define <dfn class="macro" id="_M/PDKIM_ERR_RSA_PRIVKEY" data-ref="_M/PDKIM_ERR_RSA_PRIVKEY">PDKIM_ERR_RSA_PRIVKEY</dfn>      -101</u></td></tr>
+<tr><th id="48">48</th><td><u>#define <dfn class="macro" id="_M/PDKIM_ERR_RSA_SIGNING" data-ref="_M/PDKIM_ERR_RSA_SIGNING">PDKIM_ERR_RSA_SIGNING</dfn>      -102</u></td></tr>
+<tr><th id="49">49</th><td><u>#define <dfn class="macro" id="_M/PDKIM_ERR_LONG_LINE" data-ref="_M/PDKIM_ERR_LONG_LINE">PDKIM_ERR_LONG_LINE</dfn>        -103</u></td></tr>
+<tr><th id="50">50</th><td><u>#define <dfn class="macro" id="_M/PDKIM_ERR_BUFFER_TOO_SMALL" data-ref="_M/PDKIM_ERR_BUFFER_TOO_SMALL">PDKIM_ERR_BUFFER_TOO_SMALL</dfn> -104</u></td></tr>
+<tr><th id="51">51</th><td><u>#define <dfn class="macro" id="_M/PDKIM_SIGN_PRIVKEY_WRAP" data-ref="_M/PDKIM_SIGN_PRIVKEY_WRAP">PDKIM_SIGN_PRIVKEY_WRAP</dfn>    -105</u></td></tr>
+<tr><th id="52">52</th><td><u>#define <dfn class="macro" id="_M/PDKIM_SIGN_PRIVKEY_B64D" data-ref="_M/PDKIM_SIGN_PRIVKEY_B64D">PDKIM_SIGN_PRIVKEY_B64D</dfn>    -106</u></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><i>/* -------------------------------------------------------------------------- */</i></td></tr>
+<tr><th id="55">55</th><td><i>/* Main/Extended verification status */</i></td></tr>
+<tr><th id="56">56</th><td><u>#define <dfn class="macro" id="_M/PDKIM_VERIFY_NONE" data-ref="_M/PDKIM_VERIFY_NONE">PDKIM_VERIFY_NONE</dfn>      0</u></td></tr>
+<tr><th id="57">57</th><td><u>#define <dfn class="macro" id="_M/PDKIM_VERIFY_INVALID" data-ref="_M/PDKIM_VERIFY_INVALID">PDKIM_VERIFY_INVALID</dfn>   1</u></td></tr>
+<tr><th id="58">58</th><td><u>#define <dfn class="macro" id="_M/PDKIM_VERIFY_FAIL" data-ref="_M/PDKIM_VERIFY_FAIL">PDKIM_VERIFY_FAIL</dfn>      2</u></td></tr>
+<tr><th id="59">59</th><td><u>#define <dfn class="macro" id="_M/PDKIM_VERIFY_PASS" data-ref="_M/PDKIM_VERIFY_PASS">PDKIM_VERIFY_PASS</dfn>      3</u></td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><u>#define <dfn class="macro" id="_M/PDKIM_VERIFY_FAIL_BODY" data-ref="_M/PDKIM_VERIFY_FAIL_BODY">PDKIM_VERIFY_FAIL_BODY</dfn>                    1</u></td></tr>
+<tr><th id="62">62</th><td><u>#define <dfn class="macro" id="_M/PDKIM_VERIFY_FAIL_MESSAGE" data-ref="_M/PDKIM_VERIFY_FAIL_MESSAGE">PDKIM_VERIFY_FAIL_MESSAGE</dfn>                 2</u></td></tr>
+<tr><th id="63">63</th><td><u>#define <dfn class="macro" id="_M/PDKIM_VERIFY_FAIL_SIG_ALGO_MISMATCH" data-ref="_M/PDKIM_VERIFY_FAIL_SIG_ALGO_MISMATCH">PDKIM_VERIFY_FAIL_SIG_ALGO_MISMATCH</dfn>	  3</u></td></tr>
+<tr><th id="64">64</th><td><u>#define <dfn class="macro" id="_M/PDKIM_VERIFY_INVALID_PUBKEY_UNAVAILABLE" data-ref="_M/PDKIM_VERIFY_INVALID_PUBKEY_UNAVAILABLE">PDKIM_VERIFY_INVALID_PUBKEY_UNAVAILABLE</dfn>   4</u></td></tr>
+<tr><th id="65">65</th><td><u>#define <dfn class="macro" id="_M/PDKIM_VERIFY_INVALID_BUFFER_SIZE" data-ref="_M/PDKIM_VERIFY_INVALID_BUFFER_SIZE">PDKIM_VERIFY_INVALID_BUFFER_SIZE</dfn>          5</u></td></tr>
+<tr><th id="66">66</th><td><u>#define <dfn class="macro" id="_M/PDKIM_VERIFY_INVALID_PUBKEY_DNSRECORD" data-ref="_M/PDKIM_VERIFY_INVALID_PUBKEY_DNSRECORD">PDKIM_VERIFY_INVALID_PUBKEY_DNSRECORD</dfn>     6</u></td></tr>
+<tr><th id="67">67</th><td><u>#define <dfn class="macro" id="_M/PDKIM_VERIFY_INVALID_PUBKEY_IMPORT" data-ref="_M/PDKIM_VERIFY_INVALID_PUBKEY_IMPORT">PDKIM_VERIFY_INVALID_PUBKEY_IMPORT</dfn>        7</u></td></tr>
+<tr><th id="68">68</th><td><u>#define <dfn class="macro" id="_M/PDKIM_VERIFY_INVALID_SIGNATURE_ERROR" data-ref="_M/PDKIM_VERIFY_INVALID_SIGNATURE_ERROR">PDKIM_VERIFY_INVALID_SIGNATURE_ERROR</dfn>      8</u></td></tr>
+<tr><th id="69">69</th><td><u>#define <dfn class="macro" id="_M/PDKIM_VERIFY_INVALID_DKIM_VERSION" data-ref="_M/PDKIM_VERIFY_INVALID_DKIM_VERSION">PDKIM_VERIFY_INVALID_DKIM_VERSION</dfn>         9</u></td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td><i>/* -------------------------------------------------------------------------- */</i></td></tr>
+<tr><th id="72">72</th><td><i>/* Some parameter values */</i></td></tr>
+<tr><th id="73">73</th><td><u>#define <dfn class="macro" id="_M/PDKIM_QUERYMETHOD_DNS_TXT" data-ref="_M/PDKIM_QUERYMETHOD_DNS_TXT">PDKIM_QUERYMETHOD_DNS_TXT</dfn> 0</u></td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td><i>/*#define PDKIM_ALGO_RSA_SHA256     0 */</i></td></tr>
+<tr><th id="76">76</th><td><i>/*#define PDKIM_ALGO_RSA_SHA1       1 */</i></td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><u>#define <dfn class="macro" id="_M/PDKIM_CANON_SIMPLE" data-ref="_M/PDKIM_CANON_SIMPLE">PDKIM_CANON_SIMPLE</dfn>        0</u></td></tr>
+<tr><th id="79">79</th><td><u>#define <dfn class="macro" id="_M/PDKIM_CANON_RELAXED" data-ref="_M/PDKIM_CANON_RELAXED">PDKIM_CANON_RELAXED</dfn>       1</u></td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td><i>/* -------------------------------------------------------------------------- */</i></td></tr>
+<tr><th id="82">82</th><td><i>/* Some required forward declarations, please ignore */</i></td></tr>
+<tr><th id="83">83</th><td><b>typedef</b> <b>struct</b> <a class="type" href="pdkim.c.html#pdkim_stringlist" title='pdkim_stringlist' data-ref="pdkim_stringlist" id="pdkim_stringlist"><a class="type" href="pdkim.c.html#pdkim_stringlist" title='pdkim_stringlist' data-ref="pdkim_stringlist">pdkim_stringlist</a></a> <dfn class="typedef" id="pdkim_stringlist" title='pdkim_stringlist' data-type='struct pdkim_stringlist' data-ref="pdkim_stringlist">pdkim_stringlist</dfn>;</td></tr>
+<tr><th id="84">84</th><td><b>typedef</b> <b>struct</b> <dfn class="type" id="pdkim_str" title='pdkim_str' data-ref="pdkim_str"><a class="type" href="#pdkim_str" title='pdkim_str' data-ref="pdkim_str">pdkim_str</a></dfn> <dfn class="typedef" id="pdkim_str" title='pdkim_str' data-type='struct pdkim_str' data-ref="pdkim_str">pdkim_str</dfn>;</td></tr>
+<tr><th id="85">85</th><td><b>typedef</b> <b>struct</b> <dfn class="type" id="sha1_context" title='sha1_context' data-ref="sha1_context"><a class="type" href="#sha1_context" title='sha1_context' data-ref="sha1_context">sha1_context</a></dfn> <dfn class="typedef" id="sha1_context" title='sha1_context' data-type='struct sha1_context' data-ref="sha1_context">sha1_context</dfn>;</td></tr>
+<tr><th id="86">86</th><td><b>typedef</b> <b>struct</b> <dfn class="type" id="sha2_context" title='sha2_context' data-ref="sha2_context"><a class="type" href="#sha2_context" title='sha2_context' data-ref="sha2_context">sha2_context</a></dfn> <dfn class="typedef" id="sha2_context" title='sha2_context' data-type='struct sha2_context' data-ref="sha2_context">sha2_context</dfn>;</td></tr>
+<tr><th id="87">87</th><td><u>#define <dfn class="macro" id="_M/HAVE_SHA1_CONTEXT" data-ref="_M/HAVE_SHA1_CONTEXT">HAVE_SHA1_CONTEXT</dfn></u></td></tr>
+<tr><th id="88">88</th><td><u>#define <dfn class="macro" id="_M/HAVE_SHA2_CONTEXT" data-ref="_M/HAVE_SHA2_CONTEXT">HAVE_SHA2_CONTEXT</dfn></u></td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><i>/* -------------------------------------------------------------------------- */</i></td></tr>
+<tr><th id="91">91</th><td><i>/* Some concessions towards Redmond */</i></td></tr>
+<tr><th id="92">92</th><td><u>#<span data-ppcond="92">ifdef</span> <span class="macro" data-ref="_M/WINDOWS">WINDOWS</span></u></td></tr>
+<tr><th id="93">93</th><td><u>#define snprintf _snprintf</u></td></tr>
+<tr><th id="94">94</th><td><u>#define strcasecmp _stricmp</u></td></tr>
+<tr><th id="95">95</th><td><u>#define strncasecmp _strnicmp</u></td></tr>
+<tr><th id="96">96</th><td><u>#define DLLEXPORT __declspec(dllexport)</u></td></tr>
+<tr><th id="97">97</th><td><u>#<span data-ppcond="92">else</span></u></td></tr>
+<tr><th id="98">98</th><td><u>#define <dfn class="macro" id="_M/DLLEXPORT" data-ref="_M/DLLEXPORT">DLLEXPORT</dfn></u></td></tr>
+<tr><th id="99">99</th><td><u>#<span data-ppcond="92">endif</span></u></td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td><i>/* -------------------------------------------------------------------------- */</i></td></tr>
+<tr><th id="103">103</th><td><i>/* Public key as (usually) fetched from DNS */</i></td></tr>
+<tr><th id="104">104</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="pdkim_pubkey" title='pdkim_pubkey' data-ref="pdkim_pubkey"><a class="type" href="#pdkim_pubkey" title='pdkim_pubkey' data-ref="pdkim_pubkey">pdkim_pubkey</a></dfn> {</td></tr>
+<tr><th id="105">105</th><td>  <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="decl field" id="pdkim_pubkey::version" title='pdkim_pubkey::version' data-ref="pdkim_pubkey::version">version</dfn>;         <i>/* v=  */</i></td></tr>
+<tr><th id="106">106</th><td>  <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="pdkim_pubkey::granularity" title='pdkim_pubkey::granularity' data-ref="pdkim_pubkey::granularity">granularity</dfn>;      <i>/* g=  */</i></td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td>  <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="decl field" id="pdkim_pubkey::hashes" title='pdkim_pubkey::hashes' data-ref="pdkim_pubkey::hashes">hashes</dfn>;          <i>/* h=  */</i></td></tr>
+<tr><th id="109">109</th><td>  <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="decl field" id="pdkim_pubkey::keytype" title='pdkim_pubkey::keytype' data-ref="pdkim_pubkey::keytype">keytype</dfn>;         <i>/* k=  */</i></td></tr>
+<tr><th id="110">110</th><td>  <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="decl field" id="pdkim_pubkey::srvtype" title='pdkim_pubkey::srvtype' data-ref="pdkim_pubkey::srvtype">srvtype</dfn>;         <i>/* s=  */</i></td></tr>
+<tr><th id="111">111</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="pdkim_pubkey::notes" title='pdkim_pubkey::notes' data-ref="pdkim_pubkey::notes">notes</dfn>;                  <i>/* n=  */</i></td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td>  <a class="typedef" href="../blob.h.html#blob" title='blob' data-type='struct blob' data-ref="blob">blob</a>  <dfn class="decl field" id="pdkim_pubkey::key" title='pdkim_pubkey::key' data-ref="pdkim_pubkey::key">key</dfn>;                      <i>/* p=  */</i></td></tr>
+<tr><th id="114">114</th><td>  <em>int</em>   <dfn class="decl field" id="pdkim_pubkey::testing" title='pdkim_pubkey::testing' data-ref="pdkim_pubkey::testing">testing</dfn>;                  <i>/* t=y */</i></td></tr>
+<tr><th id="115">115</th><td>  <em>int</em>   <dfn class="decl field" id="pdkim_pubkey::no_subdomaining" title='pdkim_pubkey::no_subdomaining' data-ref="pdkim_pubkey::no_subdomaining">no_subdomaining</dfn>;          <i>/* t=s */</i></td></tr>
+<tr><th id="116">116</th><td>} <dfn class="typedef" id="pdkim_pubkey" title='pdkim_pubkey' data-type='struct pdkim_pubkey' data-ref="pdkim_pubkey">pdkim_pubkey</dfn>;</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td><i>/* -------------------------------------------------------------------------- */</i></td></tr>
+<tr><th id="119">119</th><td><i>/* Body-hash to be calculated */</i></td></tr>
+<tr><th id="120">120</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="pdkim_bodyhash" title='pdkim_bodyhash' data-ref="pdkim_bodyhash"><a class="type" href="#pdkim_bodyhash" title='pdkim_bodyhash' data-ref="pdkim_bodyhash">pdkim_bodyhash</a></dfn> {</td></tr>
+<tr><th id="121">121</th><td>  <b>struct</b> <a class="type" href="#pdkim_bodyhash" title='pdkim_bodyhash' data-ref="pdkim_bodyhash">pdkim_bodyhash</a> *	<dfn class="decl field" id="pdkim_bodyhash::next" title='pdkim_bodyhash::next' data-ref="pdkim_bodyhash::next">next</dfn>;</td></tr>
+<tr><th id="122">122</th><td>  <em>int</em>				<dfn class="decl field" id="pdkim_bodyhash::hashtype" title='pdkim_bodyhash::hashtype' data-ref="pdkim_bodyhash::hashtype">hashtype</dfn>;</td></tr>
+<tr><th id="123">123</th><td>  <em>int</em> 				<dfn class="decl field" id="pdkim_bodyhash::canon_method" title='pdkim_bodyhash::canon_method' data-ref="pdkim_bodyhash::canon_method">canon_method</dfn>;</td></tr>
+<tr><th id="124">124</th><td>  <em>long</em>				<dfn class="decl field" id="pdkim_bodyhash::bodylength" title='pdkim_bodyhash::bodylength' data-ref="pdkim_bodyhash::bodylength">bodylength</dfn>;</td></tr>
+<tr><th id="125">125</th><td></td></tr>
+<tr><th id="126">126</th><td>  <a class="typedef" href="../hash.h.html#hctx" title='hctx' data-type='struct hctx' data-ref="hctx">hctx</a>         			<dfn class="decl field" id="pdkim_bodyhash::body_hash_ctx" title='pdkim_bodyhash::body_hash_ctx' data-ref="pdkim_bodyhash::body_hash_ctx">body_hash_ctx</dfn>;</td></tr>
+<tr><th id="127">127</th><td>  <em>unsigned</em> <em>long</em>			<dfn class="decl field" id="pdkim_bodyhash::signed_body_bytes" title='pdkim_bodyhash::signed_body_bytes' data-ref="pdkim_bodyhash::signed_body_bytes">signed_body_bytes</dfn>;	<i>/* done so far */</i></td></tr>
+<tr><th id="128">128</th><td>  <em>int</em>				<dfn class="decl field" id="pdkim_bodyhash::num_buffered_blanklines" title='pdkim_bodyhash::num_buffered_blanklines' data-ref="pdkim_bodyhash::num_buffered_blanklines">num_buffered_blanklines</dfn>;</td></tr>
+<tr><th id="129">129</th><td></td></tr>
+<tr><th id="130">130</th><td>  <a class="typedef" href="../blob.h.html#blob" title='blob' data-type='struct blob' data-ref="blob">blob</a>				<dfn class="decl field" id="pdkim_bodyhash::bh" title='pdkim_bodyhash::bh' data-ref="pdkim_bodyhash::bh">bh</dfn>;			<i>/* completed hash */</i></td></tr>
+<tr><th id="131">131</th><td>} <dfn class="typedef" id="pdkim_bodyhash" title='pdkim_bodyhash' data-type='struct pdkim_bodyhash' data-ref="pdkim_bodyhash">pdkim_bodyhash</dfn>;</td></tr>
+<tr><th id="132">132</th><td></td></tr>
+<tr><th id="133">133</th><td><i>/* -------------------------------------------------------------------------- */</i></td></tr>
+<tr><th id="134">134</th><td><i>/* Signature as it appears in a DKIM-Signature header */</i></td></tr>
+<tr><th id="135">135</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="pdkim_signature" title='pdkim_signature' data-ref="pdkim_signature"><a class="type" href="#pdkim_signature" title='pdkim_signature' data-ref="pdkim_signature">pdkim_signature</a></dfn> {</td></tr>
+<tr><th id="136">136</th><td>  <b>struct</b> <a class="type" href="#pdkim_signature" title='pdkim_signature' data-ref="pdkim_signature">pdkim_signature</a> * <dfn class="decl field" id="pdkim_signature::next" title='pdkim_signature::next' data-ref="pdkim_signature::next">next</dfn>;</td></tr>
+<tr><th id="137">137</th><td></td></tr>
+<tr><th id="138">138</th><td>  <i>/* Bits stored in a DKIM signature header --------------------------- */</i></td></tr>
+<tr><th id="139">139</th><td></td></tr>
+<tr><th id="140">140</th><td>  <i>/* (v=) The version, as an integer. Currently, always "1" */</i></td></tr>
+<tr><th id="141">141</th><td>  <em>int</em> <dfn class="decl field" id="pdkim_signature::version" title='pdkim_signature::version' data-ref="pdkim_signature::version">version</dfn>;</td></tr>
+<tr><th id="142">142</th><td></td></tr>
+<tr><th id="143">143</th><td>  <i>/* (a=) The signature algorithm. Either PDKIM_ALGO_RSA_SHA256 */</i></td></tr>
+<tr><th id="144">144</th><td>  <em>int</em> <dfn class="decl field" id="pdkim_signature::keytype" title='pdkim_signature::keytype' data-ref="pdkim_signature::keytype">keytype</dfn>;	<i>/* pdkim_keytypes index */</i></td></tr>
+<tr><th id="145">145</th><td>  <em>int</em> <dfn class="decl field" id="pdkim_signature::hashtype" title='pdkim_signature::hashtype' data-ref="pdkim_signature::hashtype">hashtype</dfn>;	<i>/* pdkim_hashes index */</i></td></tr>
+<tr><th id="146">146</th><td></td></tr>
+<tr><th id="147">147</th><td>  <i>/* (c=x/) Header canonicalization method. Either PDKIM_CANON_SIMPLE</i></td></tr>
+<tr><th id="148">148</th><td><i>     or PDKIM_CANON_RELAXED */</i></td></tr>
+<tr><th id="149">149</th><td>  <em>int</em> <dfn class="decl field" id="pdkim_signature::canon_headers" title='pdkim_signature::canon_headers' data-ref="pdkim_signature::canon_headers">canon_headers</dfn>;</td></tr>
+<tr><th id="150">150</th><td></td></tr>
+<tr><th id="151">151</th><td>  <i>/* (c=/x) Body canonicalization method. Either PDKIM_CANON_SIMPLE</i></td></tr>
+<tr><th id="152">152</th><td><i>     or PDKIM_CANON_RELAXED */</i></td></tr>
+<tr><th id="153">153</th><td>  <em>int</em> <dfn class="decl field" id="pdkim_signature::canon_body" title='pdkim_signature::canon_body' data-ref="pdkim_signature::canon_body">canon_body</dfn>;</td></tr>
+<tr><th id="154">154</th><td></td></tr>
+<tr><th id="155">155</th><td>  <i>/* (q=) Query Method. Currently, only PDKIM_QUERYMETHOD_DNS_TXT</i></td></tr>
+<tr><th id="156">156</th><td><i>     is specified */</i></td></tr>
+<tr><th id="157">157</th><td>  <em>int</em> <dfn class="decl field" id="pdkim_signature::querymethod" title='pdkim_signature::querymethod' data-ref="pdkim_signature::querymethod">querymethod</dfn>;</td></tr>
+<tr><th id="158">158</th><td></td></tr>
+<tr><th id="159">159</th><td>  <i>/* (s=) The selector string as given in the signature */</i></td></tr>
+<tr><th id="160">160</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="pdkim_signature::selector" title='pdkim_signature::selector' data-ref="pdkim_signature::selector">selector</dfn>;</td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td>  <i>/* (d=) The domain as given in the signature */</i></td></tr>
+<tr><th id="163">163</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="pdkim_signature::domain" title='pdkim_signature::domain' data-ref="pdkim_signature::domain">domain</dfn>;</td></tr>
+<tr><th id="164">164</th><td></td></tr>
+<tr><th id="165">165</th><td>  <i>/* (i=) The identity as given in the signature */</i></td></tr>
+<tr><th id="166">166</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="pdkim_signature::identity" title='pdkim_signature::identity' data-ref="pdkim_signature::identity">identity</dfn>;</td></tr>
+<tr><th id="167">167</th><td></td></tr>
+<tr><th id="168">168</th><td>  <i>/* (t=) Timestamp of signature creation */</i></td></tr>
+<tr><th id="169">169</th><td>  <em>unsigned</em> <em>long</em> <dfn class="decl field" id="pdkim_signature::created" title='pdkim_signature::created' data-ref="pdkim_signature::created">created</dfn>;</td></tr>
+<tr><th id="170">170</th><td></td></tr>
+<tr><th id="171">171</th><td>  <i>/* (x=) Timestamp of expiry of signature */</i></td></tr>
+<tr><th id="172">172</th><td>  <em>unsigned</em> <em>long</em> <dfn class="decl field" id="pdkim_signature::expires" title='pdkim_signature::expires' data-ref="pdkim_signature::expires">expires</dfn>;</td></tr>
+<tr><th id="173">173</th><td></td></tr>
+<tr><th id="174">174</th><td>  <i>/* (l=) Amount of hashed body bytes (after canonicalization). Default</i></td></tr>
+<tr><th id="175">175</th><td><i>     is -1. Note: a value of 0 means that the body is unsigned! */</i></td></tr>
+<tr><th id="176">176</th><td>  <em>long</em> <dfn class="decl field" id="pdkim_signature::bodylength" title='pdkim_signature::bodylength' data-ref="pdkim_signature::bodylength">bodylength</dfn>;</td></tr>
+<tr><th id="177">177</th><td></td></tr>
+<tr><th id="178">178</th><td>  <i>/* (h=) Colon-separated list of header names that are included in the</i></td></tr>
+<tr><th id="179">179</th><td><i>     signature */</i></td></tr>
+<tr><th id="180">180</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="pdkim_signature::headernames" title='pdkim_signature::headernames' data-ref="pdkim_signature::headernames">headernames</dfn>;</td></tr>
+<tr><th id="181">181</th><td></td></tr>
+<tr><th id="182">182</th><td>  <i>/* (z=) */</i></td></tr>
+<tr><th id="183">183</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="pdkim_signature::copiedheaders" title='pdkim_signature::copiedheaders' data-ref="pdkim_signature::copiedheaders">copiedheaders</dfn>;</td></tr>
+<tr><th id="184">184</th><td></td></tr>
+<tr><th id="185">185</th><td>  <i>/* (b=) Raw signature data, along with its length in bytes */</i></td></tr>
+<tr><th id="186">186</th><td>  <a class="typedef" href="../blob.h.html#blob" title='blob' data-type='struct blob' data-ref="blob">blob</a> <dfn class="decl field" id="pdkim_signature::sighash" title='pdkim_signature::sighash' data-ref="pdkim_signature::sighash">sighash</dfn>;</td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td>  <i>/* (bh=) Raw body hash data, along with its length in bytes */</i></td></tr>
+<tr><th id="189">189</th><td>  <a class="typedef" href="../blob.h.html#blob" title='blob' data-type='struct blob' data-ref="blob">blob</a> <dfn class="decl field" id="pdkim_signature::bodyhash" title='pdkim_signature::bodyhash' data-ref="pdkim_signature::bodyhash">bodyhash</dfn>;</td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td>  <i>/* Folded DKIM-Signature: header. Signing only, NULL for verifying.</i></td></tr>
+<tr><th id="192">192</th><td><i>     Ready for insertion into the message. Note: Folded using CRLFTB,</i></td></tr>
+<tr><th id="193">193</th><td><i>     but final line terminator is NOT included. Note2: This buffer is</i></td></tr>
+<tr><th id="194">194</th><td><i>     free()d when you call pdkim_free_ctx(). */</i></td></tr>
+<tr><th id="195">195</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="pdkim_signature::signature_header" title='pdkim_signature::signature_header' data-ref="pdkim_signature::signature_header">signature_header</dfn>;</td></tr>
+<tr><th id="196">196</th><td></td></tr>
+<tr><th id="197">197</th><td>  <i>/* The main verification status. Verification only. One of:</i></td></tr>
+<tr><th id="198">198</th><td><i></i></td></tr>
+<tr><th id="199">199</th><td><i>     PDKIM_VERIFY_NONE      Verification was not attempted. This status</i></td></tr>
+<tr><th id="200">200</th><td><i>                            should not appear.</i></td></tr>
+<tr><th id="201">201</th><td><i></i></td></tr>
+<tr><th id="202">202</th><td><i>     PDKIM_VERIFY_INVALID   There was an error while trying to verify</i></td></tr>
+<tr><th id="203">203</th><td><i>                            the signature. A more precise description</i></td></tr>
+<tr><th id="204">204</th><td><i>                            is available in verify_ext_status.</i></td></tr>
+<tr><th id="205">205</th><td><i></i></td></tr>
+<tr><th id="206">206</th><td><i>     PDKIM_VERIFY_FAIL      Verification failed because either the body</i></td></tr>
+<tr><th id="207">207</th><td><i>                            hash did not match, or the signature verification</i></td></tr>
+<tr><th id="208">208</th><td><i>                            failed. This means the message was modified.</i></td></tr>
+<tr><th id="209">209</th><td><i>                            Check verify_ext_status for the exact reason.</i></td></tr>
+<tr><th id="210">210</th><td><i></i></td></tr>
+<tr><th id="211">211</th><td><i>     PDKIM_VERIFY_PASS      Verification succeeded.</i></td></tr>
+<tr><th id="212">212</th><td><i>  */</i></td></tr>
+<tr><th id="213">213</th><td>  <em>int</em> <dfn class="decl field" id="pdkim_signature::verify_status" title='pdkim_signature::verify_status' data-ref="pdkim_signature::verify_status">verify_status</dfn>;</td></tr>
+<tr><th id="214">214</th><td></td></tr>
+<tr><th id="215">215</th><td>  <i>/* Extended verification status. Verification only. Depending on the value</i></td></tr>
+<tr><th id="216">216</th><td><i>     of verify_status, it can contain:</i></td></tr>
+<tr><th id="217">217</th><td><i></i></td></tr>
+<tr><th id="218">218</th><td><i>     For verify_status == PDKIM_VERIFY_INVALID:</i></td></tr>
+<tr><th id="219">219</th><td><i></i></td></tr>
+<tr><th id="220">220</th><td><i>        PDKIM_VERIFY_INVALID_PUBKEY_UNAVAILABLE</i></td></tr>
+<tr><th id="221">221</th><td><i>          Unable to retrieve a public key container.</i></td></tr>
+<tr><th id="222">222</th><td><i></i></td></tr>
+<tr><th id="223">223</th><td><i>        PDKIM_VERIFY_INVALID_BUFFER_SIZE</i></td></tr>
+<tr><th id="224">224</th><td><i>          Either the DNS name constructed to retrieve the public key record</i></td></tr>
+<tr><th id="225">225</th><td><i>          does not fit into PDKIM_DNS_TXT_MAX_NAMELEN bytes, or the retrieved</i></td></tr>
+<tr><th id="226">226</th><td><i>          record is longer than PDKIM_DNS_TXT_MAX_RECLEN bytes.</i></td></tr>
+<tr><th id="227">227</th><td><i></i></td></tr>
+<tr><th id="228">228</th><td><i>        PDKIM_VERIFY_INVALID_PUBKEY_PARSING</i></td></tr>
+<tr><th id="229">229</th><td><i>          (Syntax) error while parsing the retrieved public key record.</i></td></tr>
+<tr><th id="230">230</th><td><i></i></td></tr>
+<tr><th id="231">231</th><td><i></i></td></tr>
+<tr><th id="232">232</th><td><i>     For verify_status == PDKIM_VERIFY_FAIL:</i></td></tr>
+<tr><th id="233">233</th><td><i></i></td></tr>
+<tr><th id="234">234</th><td><i>        PDKIM_VERIFY_FAIL_BODY</i></td></tr>
+<tr><th id="235">235</th><td><i>          The calculated body hash does not match the advertised body hash</i></td></tr>
+<tr><th id="236">236</th><td><i>          from the bh= tag of the signature.</i></td></tr>
+<tr><th id="237">237</th><td><i></i></td></tr>
+<tr><th id="238">238</th><td><i>        PDKIM_VERIFY_FAIL_MESSAGE</i></td></tr>
+<tr><th id="239">239</th><td><i>          RSA verification of the signature (b= tag) failed.</i></td></tr>
+<tr><th id="240">240</th><td><i>  */</i></td></tr>
+<tr><th id="241">241</th><td>  <em>int</em> <dfn class="decl field" id="pdkim_signature::verify_ext_status" title='pdkim_signature::verify_ext_status' data-ref="pdkim_signature::verify_ext_status">verify_ext_status</dfn>;</td></tr>
+<tr><th id="242">242</th><td></td></tr>
+<tr><th id="243">243</th><td>  <i>/* Pointer to a public key record that was used to verify the signature.</i></td></tr>
+<tr><th id="244">244</th><td><i>     See pdkim_pubkey declaration above for more information.</i></td></tr>
+<tr><th id="245">245</th><td><i>     Caution: is NULL if signing or if no record was retrieved. */</i></td></tr>
+<tr><th id="246">246</th><td>  <a class="typedef" href="#pdkim_pubkey" title='pdkim_pubkey' data-type='struct pdkim_pubkey' data-ref="pdkim_pubkey">pdkim_pubkey</a> *<dfn class="decl field" id="pdkim_signature::pubkey" title='pdkim_signature::pubkey' data-ref="pdkim_signature::pubkey">pubkey</dfn>;</td></tr>
+<tr><th id="247">247</th><td></td></tr>
+<tr><th id="248">248</th><td>  <i>/* Properties below this point are used internally only ------------- */</i></td></tr>
+<tr><th id="249">249</th><td></td></tr>
+<tr><th id="250">250</th><td>  <i>/* Per-signature helper variables ----------------------------------- */</i></td></tr>
+<tr><th id="251">251</th><td>  <a class="typedef" href="#pdkim_bodyhash" title='pdkim_bodyhash' data-type='struct pdkim_bodyhash' data-ref="pdkim_bodyhash">pdkim_bodyhash</a> *<dfn class="decl field" id="pdkim_signature::calc_body_hash" title='pdkim_signature::calc_body_hash' data-ref="pdkim_signature::calc_body_hash">calc_body_hash</dfn>;	<i>/* hash to be / being calculated */</i></td></tr>
+<tr><th id="252">252</th><td></td></tr>
+<tr><th id="253">253</th><td>  <a class="typedef" href="#pdkim_stringlist" title='pdkim_stringlist' data-type='struct pdkim_stringlist' data-ref="pdkim_stringlist">pdkim_stringlist</a> *<dfn class="decl field" id="pdkim_signature::headers" title='pdkim_signature::headers' data-ref="pdkim_signature::headers">headers</dfn>;		<i>/* Raw headers included in the sig */</i></td></tr>
+<tr><th id="254">254</th><td></td></tr>
+<tr><th id="255">255</th><td>  <i>/* Signing specific ------------------------------------------------- */</i></td></tr>
+<tr><th id="256">256</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="decl field" id="pdkim_signature::privkey" title='pdkim_signature::privkey' data-ref="pdkim_signature::privkey">privkey</dfn>;	     <i>/* Private key                                 */</i></td></tr>
+<tr><th id="257">257</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="decl field" id="pdkim_signature::sign_headers" title='pdkim_signature::sign_headers' data-ref="pdkim_signature::sign_headers">sign_headers</dfn>;    <i>/* To-be-signed header names                   */</i></td></tr>
+<tr><th id="258">258</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="decl field" id="pdkim_signature::rawsig_no_b_val" title='pdkim_signature::rawsig_no_b_val' data-ref="pdkim_signature::rawsig_no_b_val">rawsig_no_b_val</dfn>; <i>/* Original signature header w/o b= tag value. */</i></td></tr>
+<tr><th id="259">259</th><td>} <dfn class="typedef" id="pdkim_signature" title='pdkim_signature' data-type='struct pdkim_signature' data-ref="pdkim_signature">pdkim_signature</dfn>;</td></tr>
+<tr><th id="260">260</th><td></td></tr>
+<tr><th id="261">261</th><td></td></tr>
+<tr><th id="262">262</th><td><i>/* -------------------------------------------------------------------------- */</i></td></tr>
+<tr><th id="263">263</th><td><i>/* Context to keep state between all operations. */</i></td></tr>
+<tr><th id="264">264</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="pdkim_ctx" title='pdkim_ctx' data-ref="pdkim_ctx"><a class="type" href="#pdkim_ctx" title='pdkim_ctx' data-ref="pdkim_ctx">pdkim_ctx</a></dfn> {</td></tr>
+<tr><th id="265">265</th><td></td></tr>
+<tr><th id="266">266</th><td><u>#define <dfn class="macro" id="_M/PDKIM_MODE_SIGN" data-ref="_M/PDKIM_MODE_SIGN">PDKIM_MODE_SIGN</dfn>   BIT(0)	/* if unset, mode==verify */</u></td></tr>
+<tr><th id="267">267</th><td><u>#define <dfn class="macro" id="_M/PDKIM_DOT_TERM" data-ref="_M/PDKIM_DOT_TERM">PDKIM_DOT_TERM</dfn>	  BIT(1)	/* dot termination and unstuffing */</u></td></tr>
+<tr><th id="268">268</th><td><u>#define <dfn class="macro" id="_M/PDKIM_SEEN_CR" data-ref="_M/PDKIM_SEEN_CR">PDKIM_SEEN_CR</dfn>	  BIT(2)</u></td></tr>
+<tr><th id="269">269</th><td><u>#define <dfn class="macro" id="_M/PDKIM_SEEN_LF" data-ref="_M/PDKIM_SEEN_LF">PDKIM_SEEN_LF</dfn>	  BIT(3)</u></td></tr>
+<tr><th id="270">270</th><td><u>#define <dfn class="macro" id="_M/PDKIM_PAST_HDRS" data-ref="_M/PDKIM_PAST_HDRS">PDKIM_PAST_HDRS</dfn>	  BIT(4)</u></td></tr>
+<tr><th id="271">271</th><td><u>#define <dfn class="macro" id="_M/PDKIM_SEEN_EOD" data-ref="_M/PDKIM_SEEN_EOD">PDKIM_SEEN_EOD</dfn>	  BIT(5)</u></td></tr>
+<tr><th id="272">272</th><td>  <em>unsigned</em>   <dfn class="decl field" id="pdkim_ctx::flags" title='pdkim_ctx::flags' data-ref="pdkim_ctx::flags">flags</dfn>;</td></tr>
+<tr><th id="273">273</th><td></td></tr>
+<tr><th id="274">274</th><td>  <i>/* One (signing) or several chained (verification) signatures */</i></td></tr>
+<tr><th id="275">275</th><td>  <a class="typedef" href="#pdkim_signature" title='pdkim_signature' data-type='struct pdkim_signature' data-ref="pdkim_signature">pdkim_signature</a> *<dfn class="decl field" id="pdkim_ctx::sig" title='pdkim_ctx::sig' data-ref="pdkim_ctx::sig">sig</dfn>;</td></tr>
+<tr><th id="276">276</th><td></td></tr>
+<tr><th id="277">277</th><td>  <i>/* One (signing) or several chained (verification) bodyhashes */</i></td></tr>
+<tr><th id="278">278</th><td>  <a class="typedef" href="#pdkim_bodyhash" title='pdkim_bodyhash' data-type='struct pdkim_bodyhash' data-ref="pdkim_bodyhash">pdkim_bodyhash</a> *<dfn class="decl field" id="pdkim_ctx::bodyhash" title='pdkim_ctx::bodyhash' data-ref="pdkim_ctx::bodyhash">bodyhash</dfn>;</td></tr>
+<tr><th id="279">279</th><td></td></tr>
+<tr><th id="280">280</th><td>  <i>/* Callback for dns/txt query method (verification only) */</i></td></tr>
+<tr><th id="281">281</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * (*<dfn class="decl field" id="pdkim_ctx::dns_txt_callback" title='pdkim_ctx::dns_txt_callback' data-ref="pdkim_ctx::dns_txt_callback">dns_txt_callback</dfn>)(<em>char</em> *);</td></tr>
+<tr><th id="282">282</th><td></td></tr>
+<tr><th id="283">283</th><td>  <i>/* Coder's little helpers */</i></td></tr>
+<tr><th id="284">284</th><td>  <a class="typedef" href="../structs.h.html#gstring" title='gstring' data-type='struct gstring' data-ref="gstring">gstring</a>   *<dfn class="decl field" id="pdkim_ctx::cur_header" title='pdkim_ctx::cur_header' data-ref="pdkim_ctx::cur_header">cur_header</dfn>;</td></tr>
+<tr><th id="285">285</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a>    *<dfn class="decl field" id="pdkim_ctx::linebuf" title='pdkim_ctx::linebuf' data-ref="pdkim_ctx::linebuf">linebuf</dfn>;</td></tr>
+<tr><th id="286">286</th><td>  <em>int</em>        <dfn class="decl field" id="pdkim_ctx::linebuf_offset" title='pdkim_ctx::linebuf_offset' data-ref="pdkim_ctx::linebuf_offset">linebuf_offset</dfn>;</td></tr>
+<tr><th id="287">287</th><td>  <em>int</em>        <dfn class="decl field" id="pdkim_ctx::num_headers" title='pdkim_ctx::num_headers' data-ref="pdkim_ctx::num_headers">num_headers</dfn>;</td></tr>
+<tr><th id="288">288</th><td>  <a class="typedef" href="#pdkim_stringlist" title='pdkim_stringlist' data-type='struct pdkim_stringlist' data-ref="pdkim_stringlist">pdkim_stringlist</a> *<dfn class="decl field" id="pdkim_ctx::headers" title='pdkim_ctx::headers' data-ref="pdkim_ctx::headers">headers</dfn>; <i>/* Raw headers for verification         */</i></td></tr>
+<tr><th id="289">289</th><td>} <dfn class="typedef" id="pdkim_ctx" title='pdkim_ctx' data-type='struct pdkim_ctx' data-ref="pdkim_ctx">pdkim_ctx</dfn>;</td></tr>
+<tr><th id="290">290</th><td></td></tr>
+<tr><th id="291">291</th><td></td></tr>
+<tr><th id="292">292</th><td><i>/* -------------------------------------------------------------------------- */</i></td></tr>
+<tr><th id="293">293</th><td><i>/* API functions. Please see the sample code in sample/test_sign.c and</i></td></tr>
+<tr><th id="294">294</th><td><i>   sample/test_verify.c for documentation.</i></td></tr>
+<tr><th id="295">295</th><td><i>*/</i></td></tr>
+<tr><th id="296">296</th><td></td></tr>
+<tr><th id="297">297</th><td><u>#<span data-ppcond="297">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="298">298</th><td><b>extern</b> <q>"C"</q> {</td></tr>
+<tr><th id="299">299</th><td><u>#<span data-ppcond="297">endif</span></u></td></tr>
+<tr><th id="300">300</th><td></td></tr>
+<tr><th id="301">301</th><td><em>void</em>	   <a class="decl fn" href="pdkim.c.html#pdkim_init" title='pdkim_init' data-ref="pdkim_init" id="pdkim_init">pdkim_init</a>         (<em>void</em>);</td></tr>
+<tr><th id="302">302</th><td></td></tr>
+<tr><th id="303">303</th><td><em>void</em>	   <a class="decl fn" href="pdkim.c.html#pdkim_init_context" title='pdkim_init_context' data-ref="pdkim_init_context" id="pdkim_init_context">pdkim_init_context</a> (<a class="typedef" href="#pdkim_ctx" title='pdkim_ctx' data-type='struct pdkim_ctx' data-ref="pdkim_ctx">pdkim_ctx</a> *, <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * (*)(<em>char</em> *));</td></tr>
+<tr><th id="304">304</th><td></td></tr>
+<tr><th id="305">305</th><td><a class="macro" href="#98" title="" data-ref="_M/DLLEXPORT">DLLEXPORT</a></td></tr>
+<tr><th id="306">306</th><td><a class="typedef" href="#pdkim_signature" title='pdkim_signature' data-type='struct pdkim_signature' data-ref="pdkim_signature">pdkim_signature</a> *<a class="decl fn" href="pdkim.c.html#pdkim_init_sign" title='pdkim_init_sign' data-ref="pdkim_init_sign" id="pdkim_init_sign">pdkim_init_sign</a>    (<a class="typedef" href="#pdkim_ctx" title='pdkim_ctx' data-type='struct pdkim_ctx' data-ref="pdkim_ctx">pdkim_ctx</a> *,</td></tr>
+<tr><th id="307">307</th><td>			       <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *,</td></tr>
+<tr><th id="308">308</th><td>			       <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **);</td></tr>
+<tr><th id="309">309</th><td></td></tr>
+<tr><th id="310">310</th><td><a class="macro" href="#98" title="" data-ref="_M/DLLEXPORT">DLLEXPORT</a></td></tr>
+<tr><th id="311">311</th><td><a class="typedef" href="#pdkim_ctx" title='pdkim_ctx' data-type='struct pdkim_ctx' data-ref="pdkim_ctx">pdkim_ctx</a> *<a class="decl fn" href="pdkim.c.html#pdkim_init_verify" title='pdkim_init_verify' data-ref="pdkim_init_verify" id="pdkim_init_verify">pdkim_init_verify</a>  (<a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * (*)(<em>char</em> *), <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>);</td></tr>
+<tr><th id="312">312</th><td></td></tr>
+<tr><th id="313">313</th><td><a class="macro" href="#98" title="" data-ref="_M/DLLEXPORT">DLLEXPORT</a></td></tr>
+<tr><th id="314">314</th><td><em>void</em>       <a class="decl fn" href="pdkim.c.html#pdkim_set_optional" title='pdkim_set_optional' data-ref="pdkim_set_optional" id="pdkim_set_optional">pdkim_set_optional</a> (<a class="typedef" href="#pdkim_signature" title='pdkim_signature' data-type='struct pdkim_signature' data-ref="pdkim_signature">pdkim_signature</a> *, <em>char</em> *, <em>char</em> *,<em>int</em>, <em>int</em>,</td></tr>
+<tr><th id="315">315</th><td>                               <em>long</em>,</td></tr>
+<tr><th id="316">316</th><td>                               <em>unsigned</em> <em>long</em>,</td></tr>
+<tr><th id="317">317</th><td>                               <em>unsigned</em> <em>long</em>);</td></tr>
+<tr><th id="318">318</th><td></td></tr>
+<tr><th id="319">319</th><td><a class="typedef" href="#pdkim_bodyhash" title='pdkim_bodyhash' data-type='struct pdkim_bodyhash' data-ref="pdkim_bodyhash">pdkim_bodyhash</a> *<a class="decl fn" href="pdkim.c.html#pdkim_set_bodyhash" title='pdkim_set_bodyhash' data-ref="pdkim_set_bodyhash" id="pdkim_set_bodyhash">pdkim_set_bodyhash</a>(<a class="typedef" href="#pdkim_ctx" title='pdkim_ctx' data-type='struct pdkim_ctx' data-ref="pdkim_ctx">pdkim_ctx</a> *, <a class="typedef" href="#pdkim_signature" title='pdkim_signature' data-type='struct pdkim_signature' data-ref="pdkim_signature">pdkim_signature</a> *);</td></tr>
+<tr><th id="320">320</th><td></td></tr>
+<tr><th id="321">321</th><td><a class="macro" href="#98" title="" data-ref="_M/DLLEXPORT">DLLEXPORT</a></td></tr>
+<tr><th id="322">322</th><td><em>int</em>        <a class="decl fn" href="pdkim.c.html#pdkim_feed" title='pdkim_feed' data-ref="pdkim_feed" id="pdkim_feed">pdkim_feed</a>         (<a class="typedef" href="#pdkim_ctx" title='pdkim_ctx' data-type='struct pdkim_ctx' data-ref="pdkim_ctx">pdkim_ctx</a> *, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em>);</td></tr>
+<tr><th id="323">323</th><td><a class="macro" href="#98" title="" data-ref="_M/DLLEXPORT">DLLEXPORT</a></td></tr>
+<tr><th id="324">324</th><td><em>int</em>        <a class="decl fn" href="pdkim.c.html#pdkim_feed_finish" title='pdkim_feed_finish' data-ref="pdkim_feed_finish" id="pdkim_feed_finish">pdkim_feed_finish</a>  (<a class="typedef" href="#pdkim_ctx" title='pdkim_ctx' data-type='struct pdkim_ctx' data-ref="pdkim_ctx">pdkim_ctx</a> *, <a class="typedef" href="#pdkim_signature" title='pdkim_signature' data-type='struct pdkim_signature' data-ref="pdkim_signature">pdkim_signature</a> **, <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **);</td></tr>
+<tr><th id="325">325</th><td></td></tr>
+<tr><th id="326">326</th><td><a class="macro" href="#98" title="" data-ref="_M/DLLEXPORT">DLLEXPORT</a></td></tr>
+<tr><th id="327">327</th><td><em>void</em>       <a class="decl fn" href="pdkim.c.html#pdkim_free_ctx" title='pdkim_free_ctx' data-ref="pdkim_free_ctx" id="pdkim_free_ctx">pdkim_free_ctx</a>     (<a class="typedef" href="#pdkim_ctx" title='pdkim_ctx' data-type='struct pdkim_ctx' data-ref="pdkim_ctx">pdkim_ctx</a> *);</td></tr>
+<tr><th id="328">328</th><td></td></tr>
+<tr><th id="329">329</th><td></td></tr>
+<tr><th id="330">330</th><td><em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *	<a class="decl fn" href="pdkim.c.html#pdkim_errstr" title='pdkim_errstr' data-ref="pdkim_errstr" id="pdkim_errstr">pdkim_errstr</a>(<em>int</em>);</td></tr>
+<tr><th id="331">331</th><td></td></tr>
+<tr><th id="332">332</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *	<a class="decl fn" href="pdkim.c.html#dkim_sig_to_a_tag" title='dkim_sig_to_a_tag' data-ref="dkim_sig_to_a_tag" id="dkim_sig_to_a_tag">dkim_sig_to_a_tag</a>(<em>const</em> <a class="typedef" href="#pdkim_signature" title='pdkim_signature' data-type='struct pdkim_signature' data-ref="pdkim_signature">pdkim_signature</a> * <dfn class="local col1 decl" id="1sig" title='sig' data-type='const pdkim_signature *' data-ref="1sig">sig</dfn>);</td></tr>
+<tr><th id="333">333</th><td></td></tr>
+<tr><th id="334">334</th><td><u>#<span data-ppcond="334">ifdef</span> <span class="macro" data-ref="_M/__cplusplus">__cplusplus</span></u></td></tr>
+<tr><th id="335">335</th><td>}</td></tr>
+<tr><th id="336">336</th><td><u>#<span data-ppcond="334">endif</span></u></td></tr>
+<tr><th id="337">337</th><td></td></tr>
+<tr><th id="338">338</th><td><u>#<span data-ppcond="23">endif</span></u></td></tr>
+<tr><th id="339">339</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='pdkim.c.html'>exim/src/pdkim/pdkim.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

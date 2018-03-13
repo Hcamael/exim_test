@@ -1,1 +1,9 @@
 <dec f='exim/src/functions.h' l='372' type='void rewrite_test(uschar * )'/>
+<use f='exim/src/exim.c' l='4828' u='c' c='main'/>
+<def f='exim/src/rewrite.c' l='771' ll='831' type='void rewrite_test(uschar * s)'/>
+<doc f='exim/src/rewrite.c' l='764'>/* Called from the mainline as a result of the -brw option. Test the
+address for all possible cases.
+
+Argument: the address to test
+Returns:  nothing
+*/</doc>

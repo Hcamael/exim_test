@@ -1,0 +1,5 @@
+<dec f='exim/src/routers/iplookup.h' l='26' type='optionlist []'/>
+<def f='exim/src/routers/iplookup.c' l='22' ll='39' type='optionlist [8]'/>
+<use f='exim/src/routers/iplookup.c' l='45' u='r'/>
+<doc f='exim/src/routers/iplookup.c' l='20'>/* Options specific to the iplookup router. */</doc>
+<doc f='exim/src/routers/iplookup.h' l='24'>/* Data for reading the private options. */</doc>

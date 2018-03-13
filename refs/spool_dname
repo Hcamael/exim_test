@@ -1,1 +1,4 @@
 <dec f='exim/src/functions.h' l='438' type='uschar * spool_dname(const uschar * , uschar * )'/>
+<def f='exim/src/queue.c' l='24' ll='29' type='uschar * spool_dname(const uschar * purpose, uschar * subdir)'/>
+<use f='exim/src/queue.c' l='316' u='c' c='queue_get_spool_list'/>
+<use f='exim/src/transports/queuefile.c' l='177' u='c' c='queuefile_transport_entry'/>

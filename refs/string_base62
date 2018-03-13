@@ -1,1 +1,14 @@
 <dec f='exim/src/functions.h' l='452' type='uschar * string_base62(unsigned long )'/>
+<def f='exim/src/string.c' l='199' ll='211' type='uschar * string_base62(unsigned long value)'/>
+<doc f='exim/src/string.c' l='191'>/* Convert a long integer into an ASCII base 62 string. For Cygwin the value of
+BASE_62 is actually 36. Always return exactly 6 characters plus zero, in a
+static area.
+
+Argument: a long integer
+Returns:  pointer to base 62 string
+*/</doc>
+<use f='exim/src/expand.c' l='6339' u='c' c='expand_string_internal'/>
+<use f='exim/src/receive.c' l='2613' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2615' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2626' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2638' u='c' c='receive_msg'/>

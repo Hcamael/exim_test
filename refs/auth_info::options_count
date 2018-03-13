@@ -1,3 +1,10 @@
 <dec f='exim/src/structs.h' l='401' type='int *'/>
 <offset>128</offset>
 <doc f='exim/src/structs.h' l='401'>/* -&gt; Number of entries in table */</doc>
+<use f='exim/src/drtables.c' l='66' u='w'/>
+<use f='exim/src/drtables.c' l='136' u='w'/>
+<use f='exim/src/drtables.c' l='164' u='w'/>
+<use f='exim/src/drtables.c' l='66' u='w'/>
+<use f='exim/src/drtables.c' l='136' u='w'/>
+<use f='exim/src/drtables.c' l='164' u='w'/>
+<use f='exim/src/readconf.c' l='402' u='r' c='options_auths'/>

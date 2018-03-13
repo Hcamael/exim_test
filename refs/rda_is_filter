@@ -1,1 +1,7 @@
 <dec f='exim/src/functions.h' l='332' type='int rda_is_filter(const uschar * )'/>
+<use f='exim/src/filtertest.c' l='198' u='c' c='filter_runtest'/>
+<def f='exim/src/rda.c' l='59' ll='66' type='int rda_is_filter(const uschar * s)'/>
+<use f='exim/src/rda.c' l='361' u='c' c='rda_extract'/>
+<use f='exim/src/rda.c' l='591' u='c' c='rda_interpret'/>
+<doc f='exim/src/rda.c' l='56'>/* This is the real function. It should be easy to add checking different
+tags for other types of filter. */</doc>

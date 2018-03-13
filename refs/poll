@@ -7,3 +7,4 @@
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */</doc>
+<use f='exim/src/acl.c' l='3410' u='c' c='acl_check_condition'/>

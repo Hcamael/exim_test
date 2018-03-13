@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='717' type='BOOL'/>
 <doc f='exim/src/globals.h' l='717'>/* Flag for crashing log */</doc>
+<def f='exim/src/globals.c' l='1095' type='BOOL'/>
+<use f='exim/src/log.c' l='233' u='r' c='die'/>
+<use f='exim/src/receive.c' l='4069' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4187' u='w' c='receive_msg'/>

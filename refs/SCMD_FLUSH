@@ -1,2 +1,18 @@
 <dec f='exim/src/macros.h' l='871' type='0'/>
 <doc f='exim/src/macros.h' l='871'>/* write to kernel */</doc>
+<use f='exim/src/verify.c' l='412' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='815' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='912' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='937' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='1081' u='r' c='do_callout'/>
+<use f='exim/src/smtp_out.c' l='482' u='r' c='smtp_write_command'/>
+<use f='exim/src/auths/spa.c' l='322' u='r' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='339' u='r' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='356' u='r' c='auth_spa_client'/>
+<use f='exim/src/auths/plaintext.c' l='204' u='r' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='239' u='r' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='246' u='r' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='268' u='r' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='290' u='r' c='auth_plaintext_client'/>
+<use f='exim/src/auths/cram_md5.c' l='296' u='r' c='auth_cram_md5_client'/>
+<use f='exim/src/auths/cram_md5.c' l='327' u='r' c='auth_cram_md5_client'/>

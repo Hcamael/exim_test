@@ -1,0 +1,2 @@
+<def f='exim/src/tls-openssl.c' l='500' ll='505' type='int verify_callback_client(int preverify_ok, X509_STORE_CTX * x509ctx)'/>
+<use f='exim/src/tls-openssl.c' l='2139' u='r' c='tls_client_basic_ctx_init'/>

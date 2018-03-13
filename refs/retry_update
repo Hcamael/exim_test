@@ -1,1 +1,21 @@
 <dec f='exim/src/functions.h' l='364' type='void retry_update(address_item ** , address_item ** , address_item ** )'/>
+<use f='exim/src/deliver.c' l='7207' u='c' c='deliver_message'/>
+<def f='exim/src/retry.c' l='520' ll='930' type='void retry_update(address_item ** addr_defer, address_item ** addr_failed, address_item ** addr_succeed)'/>
+<doc f='exim/src/retry.c' l='501'>/* Update the retry data for any directing/routing/transporting that was
+deferred, or delete it for those that succeeded after a previous defer. This is
+done all in one go to minimize opening/closing/locking of the database file.
+
+Note that, because SMTP delivery involves a list of destinations to try, there
+may be defer-type retry information for some of them even when the message was
+successfully delivered. Likewise if it eventually failed.
+
+This function may move addresses from the defer to the failed queue if the
+ultimate retry time has expired.
+
+Arguments:
+  addr_defer    queue of deferred addresses
+  addr_failed   queue of failed addresses
+  addr_succeed  queue of successful addresses
+
+Returns:        nothing
+*/</doc>

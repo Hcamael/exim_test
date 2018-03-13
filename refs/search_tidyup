@@ -1,1 +1,28 @@
 <dec f='exim/src/functions.h' l='395' type='void search_tidyup()'/>
+<use f='exim/src/deliver.c' l='2269' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2453' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='4657' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4746' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='6879' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8424' u='c' c='deliver_message'/>
+<use f='exim/src/exim.c' l='663' u='c' c='exim_exit'/>
+<use f='exim/src/exim.c' l='5717' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5737' u='c' c='main'/>
+<use f='exim/src/queue.c' l='642' u='c' c='queue_run'/>
+<use f='exim/src/rda.c' l='621' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='779' u='c' c='rda_interpret'/>
+<def f='exim/src/search.c' l='249' ll='276' type='void search_tidyup()'/>
+<doc f='exim/src/search.c' l='243'>/* The external entry point
+
+Argument: none
+Returns:  nothing
+*/</doc>
+<use f='exim/src/daemon.c' l='347' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='398' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='484' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='507' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='530' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='674' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='1321' u='c' c='daemon_go'/>
+<use f='exim/src/receive.c' l='1683' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2960' u='c' c='receive_msg'/>

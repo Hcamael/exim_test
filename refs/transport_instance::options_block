@@ -1,3 +1,12 @@
 <dec f='exim/src/structs.h' l='139' type='void *'/>
 <offset>192</offset>
 <doc f='exim/src/structs.h' l='139'>/* Pointer to private options */</doc>
+<use f='exim/src/deliver.c' l='4516' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='576' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='1868' u='r' c='verify_address'/>
+<use f='exim/src/smtp_out.c' l='208' u='r' c='smtp_sock_connect'/>
+<use f='exim/src/tls-openssl.c' l='2245' u='r' c='tls_client_start'/>
+<use f='exim/src/globals.c' l='1449' u='w'/>
+<use f='exim/src/transports/queuefile.c' l='56' u='r' c='queuefile_transport_init'/>
+<use f='exim/src/transports/queuefile.c' l='117' u='r' c='copy_spool_files'/>
+<use f='exim/src/transports/queuefile.c' l='175' u='r' c='queuefile_transport_entry'/>

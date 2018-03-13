@@ -1,1 +1,14 @@
 <dec f='exim/src/local_scan.h' l='170' type='pid_t child_open_exim2(int * , uschar * , uschar * )'/>
+<use f='exim/src/child.c' l='192' u='c' c='child_open_exim'/>
+<def f='exim/src/child.c' l='207' ll='279' type='pid_t child_open_exim2(int * fdptr, uschar * sender, uschar * sender_authentication)'/>
+<doc f='exim/src/child.c' l='196'>/* This is a more complicated function for creating a child Exim process, with
+more arguments.
+
+Arguments:
+  fdptr                   pointer to int for the stdin fd
+  sender                  for a sender address (data for -f)
+  sender_authentication   authenticated sender address or NULL
+
+Returns:          pid of the created process or -1 if anything has gone wrong
+*/</doc>
+<use f='exim/src/sieve.c' l='3103' u='c' c='parse_commands'/>

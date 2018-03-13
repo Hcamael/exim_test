@@ -1,2 +1,18 @@
 <dec f='exim/src/globals.h' l='942' type='int'/>
 <doc f='exim/src/globals.h' l='942'>/* Count of bytes transported */</doc>
+<use f='exim/src/deliver.c' l='1187' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='2414' u='a' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2414' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2414' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2481' u='a' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2482' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='3065' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3103' u='w' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3487' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3488' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4074' u='w' c='par_wait'/>
+<use f='exim/src/deliver.c' l='4773' u='a' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4773' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4774' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='1198' u='w' c='cutthrough_send'/>
+<def f='exim/src/globals.c' l='1502' type='int'/>

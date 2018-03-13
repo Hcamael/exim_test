@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='160' type='uschar *'/>
 <doc f='exim/src/globals.h' l='160'>/* List of environment variables to add */</doc>
+<use f='exim/src/environment.c' l='62' u='r' c='cleanup_environment'/>
+<use f='exim/src/environment.c' l='66' u='r' c='cleanup_environment'/>
+<def f='exim/src/globals.c' l='327' type='uschar *'/>
+<use f='exim/src/readconf.c' l='64' u='a'/>
+<use f='exim/src/readconf.c' l='64' u='a'/>
+<use f='exim/src/readconf.c' l='64' u='a'/>
+<use f='exim/src/readconf.c' l='64' u='a'/>

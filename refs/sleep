@@ -9,3 +9,5 @@
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */</doc>
+<use f='exim/src/exim.c' l='4756' u='c' c='main'/>
+<use f='exim/src/daemon.c' l='1456' u='c' c='daemon_go'/>

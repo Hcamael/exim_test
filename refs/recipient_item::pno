@@ -1,3 +1,9 @@
 <dec f='exim/src/local_scan.h' l='129' type='int'/>
 <offset>64</offset>
 <doc f='exim/src/local_scan.h' l='129'>/* parent number for &quot;one_time&quot; alias, or -1 */</doc>
+<use f='exim/src/deliver.c' l='6145' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6146' u='r' c='deliver_message'/>
+<use f='exim/src/spool_in.c' l='842' u='w' c='spool_read_header'/>
+<use f='exim/src/receive.c' l='499' u='w' c='receive_add_recipient'/>
+<use f='exim/src/spool_out.c' l='283' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='293' u='r' c='spool_write_header'/>

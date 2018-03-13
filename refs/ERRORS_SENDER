@@ -1,2 +1,9 @@
 <dec f='exim/src/macros.h' l='257' type='0'/>
 <doc f='exim/src/macros.h' l='257'>/* Return to sender (default) */</doc>
+<use f='exim/src/globals.c' l='715'/>
+<use f='exim/src/exim.c' l='2503' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2506' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2509' u='r' c='main'/>
+<use f='exim/src/receive.c' l='1135' u='r' c='give_local_error'/>
+<use f='exim/src/receive.c' l='1618' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3252' u='r' c='receive_msg'/>

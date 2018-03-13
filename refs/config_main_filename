@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='292' type='uschar *'/>
 <doc f='exim/src/globals.h' l='292'>/* File name actually used */</doc>
+<def f='exim/src/globals.c' l='529' type='uschar *'/>
+<use f='exim/src/exim.c' l='3871' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5143' u='r' c='main'/>
+<use f='exim/src/expand.c' l='485' u='a'/>
+<use f='exim/src/expand.c' l='485' u='a'/>
+<use f='exim/src/expand.c' l='485' u='a'/>
+<use f='exim/src/expand.c' l='485' u='a'/>
+<use f='exim/src/child.c' l='91' u='r' c='child_exec_exim'/>

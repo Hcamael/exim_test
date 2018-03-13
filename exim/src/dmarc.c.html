@@ -1,0 +1,656 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>dmarc.c source code [exim/src/dmarc.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/dmarc.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='dmarc.c.html'>dmarc.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td><i>/* Experimental DMARC support.</i></td></tr>
+<tr><th id="5">5</th><td><i>   Copyright (c) Todd Lyons &lt;tlyons@exim.org&gt; 2012 - 2014</i></td></tr>
+<tr><th id="6">6</th><td><i>   License: GPL */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Portions Copyright (c) 2012, 2013, The Trusted Domain Project;</i></td></tr>
+<tr><th id="9">9</th><td><i>   All rights reserved, licensed for use per LICENSE.opendmarc. */</i></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><i>/* Code for calling dmarc checks via libopendmarc. Called from acl.c. */</i></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><u>#include <a href="exim.h.html">"exim.h"</a></u></td></tr>
+<tr><th id="14">14</th><td><u>#<span data-ppcond="14">ifdef</span> <span class="macro" data-ref="_M/EXPERIMENTAL_DMARC">EXPERIMENTAL_DMARC</span></u></td></tr>
+<tr><th id="15">15</th><td><u># if !defined SUPPORT_SPF</u></td></tr>
+<tr><th id="16">16</th><td><u>#  error SPF must also be enabled for DMARC</u></td></tr>
+<tr><th id="17">17</th><td><u># elif defined DISABLE_DKIM</u></td></tr>
+<tr><th id="18">18</th><td><u>#  error DKIM must also be enabled for DMARC</u></td></tr>
+<tr><th id="19">19</th><td><u># else</u></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><u>#  include "functions.h"</u></td></tr>
+<tr><th id="22">22</th><td><u>#  include "dmarc.h"</u></td></tr>
+<tr><th id="23">23</th><td><u>#  include "pdkim/pdkim.h"</u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td>OPENDMARC_LIB_T     dmarc_ctx;</td></tr>
+<tr><th id="26">26</th><td>DMARC_POLICY_T     *dmarc_pctx = NULL;</td></tr>
+<tr><th id="27">27</th><td>OPENDMARC_STATUS_T  libdm_status, action, dmarc_policy;</td></tr>
+<tr><th id="28">28</th><td>OPENDMARC_STATUS_T  da, sa, action;</td></tr>
+<tr><th id="29">29</th><td>BOOL dmarc_abort  = FALSE;</td></tr>
+<tr><th id="30">30</th><td>uschar *dmarc_pass_fail = US<q>"skipped"</q>;</td></tr>
+<tr><th id="31">31</th><td><b>extern</b> pdkim_signature  *dkim_signatures;</td></tr>
+<tr><th id="32">32</th><td>header_line *from_header   = NULL;</td></tr>
+<tr><th id="33">33</th><td><b>extern</b> SPF_response_t   *spf_response;</td></tr>
+<tr><th id="34">34</th><td><em>int</em> dmarc_spf_ares_result  = <var>0</var>;</td></tr>
+<tr><th id="35">35</th><td>uschar *spf_sender_domain  = NULL;</td></tr>
+<tr><th id="36">36</th><td>uschar *spf_human_readable = NULL;</td></tr>
+<tr><th id="37">37</th><td>u_char *header_from_sender = NULL;</td></tr>
+<tr><th id="38">38</th><td><em>int</em> history_file_status    = DMARC_HIST_OK;</td></tr>
+<tr><th id="39">39</th><td>uschar *dkim_history_buffer= NULL;</td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><b>typedef</b> <b>struct</b> dmarc_exim_p {</td></tr>
+<tr><th id="42">42</th><td>  uschar *name;</td></tr>
+<tr><th id="43">43</th><td>  <em>int</em>    value;</td></tr>
+<tr><th id="44">44</th><td>} dmarc_exim_p;</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><em>static</em> dmarc_exim_p dmarc_policy_description[] = {</td></tr>
+<tr><th id="47">47</th><td>  <i>/* name		value */</i></td></tr>
+<tr><th id="48">48</th><td>  { US<q>""</q>,           DMARC_RECORD_P_UNSPECIFIED },</td></tr>
+<tr><th id="49">49</th><td>  { US<q>"none"</q>,       DMARC_RECORD_P_NONE },</td></tr>
+<tr><th id="50">50</th><td>  { US<q>"quarantine"</q>, DMARC_RECORD_P_QUARANTINE },</td></tr>
+<tr><th id="51">51</th><td>  { US<q>"reject"</q>,     DMARC_RECORD_P_REJECT },</td></tr>
+<tr><th id="52">52</th><td>  { NULL,           <var>0</var> }</td></tr>
+<tr><th id="53">53</th><td>};</td></tr>
+<tr><th id="54">54</th><td><i>/* Accept an error_block struct, initialize if empty, parse to the</i></td></tr>
+<tr><th id="55">55</th><td><i> * end, and append the two strings passed to it.  Used for adding</i></td></tr>
+<tr><th id="56">56</th><td><i> * variable amounts of value:pair data to the forensic emails. */</i></td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><em>static</em> error_block *</td></tr>
+<tr><th id="59">59</th><td>add_to_eblock(error_block *eblock, uschar *t1, uschar *t2)</td></tr>
+<tr><th id="60">60</th><td>{</td></tr>
+<tr><th id="61">61</th><td>error_block *eb = store_malloc(<b>sizeof</b>(error_block));</td></tr>
+<tr><th id="62">62</th><td><b>if</b> (eblock == NULL)</td></tr>
+<tr><th id="63">63</th><td>  eblock = eb;</td></tr>
+<tr><th id="64">64</th><td><b>else</b></td></tr>
+<tr><th id="65">65</th><td>  {</td></tr>
+<tr><th id="66">66</th><td>  <i>/* Find the end of the eblock struct and point it at eb */</i></td></tr>
+<tr><th id="67">67</th><td>  error_block *tmp = eblock;</td></tr>
+<tr><th id="68">68</th><td>  <b>while</b>(tmp-&gt;next != NULL)</td></tr>
+<tr><th id="69">69</th><td>    tmp = tmp-&gt;next;</td></tr>
+<tr><th id="70">70</th><td>  tmp-&gt;next = eb;</td></tr>
+<tr><th id="71">71</th><td>  }</td></tr>
+<tr><th id="72">72</th><td>eb-&gt;text1 = t1;</td></tr>
+<tr><th id="73">73</th><td>eb-&gt;text2 = t2;</td></tr>
+<tr><th id="74">74</th><td>eb-&gt;next  = NULL;</td></tr>
+<tr><th id="75">75</th><td><b>return</b> eblock;</td></tr>
+<tr><th id="76">76</th><td>}</td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><i>/* dmarc_init sets up a context that can be re-used for several</i></td></tr>
+<tr><th id="79">79</th><td><i>   messages on the same SMTP connection (that come from the</i></td></tr>
+<tr><th id="80">80</th><td><i>   same host with the same HELO string) */</i></td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><em>int</em></td></tr>
+<tr><th id="83">83</th><td>dmarc_init()</td></tr>
+<tr><th id="84">84</th><td>{</td></tr>
+<tr><th id="85">85</th><td><em>int</em> *netmask   = NULL;   <i>/* Ignored */</i></td></tr>
+<tr><th id="86">86</th><td><em>int</em> is_ipv6    = <var>0</var>;</td></tr>
+<tr><th id="87">87</th><td><em>char</em> *tld_file = dmarc_tld_file ? CS dmarc_tld_file : DMARC_TLD_FILE;</td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td><i>/* Set some sane defaults.  Also clears previous results when</i></td></tr>
+<tr><th id="90">90</th><td><i> * multiple messages in one connection. */</i></td></tr>
+<tr><th id="91">91</th><td>dmarc_pctx         = NULL;</td></tr>
+<tr><th id="92">92</th><td>dmarc_status       = US<q>"none"</q>;</td></tr>
+<tr><th id="93">93</th><td>dmarc_abort        = FALSE;</td></tr>
+<tr><th id="94">94</th><td>dmarc_pass_fail    = US<q>"skipped"</q>;</td></tr>
+<tr><th id="95">95</th><td>dmarc_used_domain  = US<q>""</q>;</td></tr>
+<tr><th id="96">96</th><td>dmarc_ar_header    = NULL;</td></tr>
+<tr><th id="97">97</th><td>dmarc_has_been_checked = FALSE;</td></tr>
+<tr><th id="98">98</th><td>header_from_sender = NULL;</td></tr>
+<tr><th id="99">99</th><td>spf_sender_domain  = NULL;</td></tr>
+<tr><th id="100">100</th><td>spf_human_readable = NULL;</td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td><i>/* ACLs have "control=dmarc_disable_verify" */</i></td></tr>
+<tr><th id="103">103</th><td><b>if</b> (dmarc_disable_verify == TRUE)</td></tr>
+<tr><th id="104">104</th><td>  <b>return</b> OK;</td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td>(<em>void</em>) memset(&amp;dmarc_ctx, <kbd>'\0'</kbd>, <b>sizeof</b> dmarc_ctx);</td></tr>
+<tr><th id="107">107</th><td>dmarc_ctx.nscount = <var>0</var>;</td></tr>
+<tr><th id="108">108</th><td>libdm_status = opendmarc_policy_library_init(&amp;dmarc_ctx);</td></tr>
+<tr><th id="109">109</th><td><b>if</b> (libdm_status != DMARC_PARSE_OKAY)</td></tr>
+<tr><th id="110">110</th><td>  {</td></tr>
+<tr><th id="111">111</th><td>  log_write(<var>0</var>, LOG_MAIN|LOG_PANIC, <q>"DMARC failure to init library: %s"</q>,</td></tr>
+<tr><th id="112">112</th><td>		       opendmarc_policy_status_to_str(libdm_status));</td></tr>
+<tr><th id="113">113</th><td>  dmarc_abort = TRUE;</td></tr>
+<tr><th id="114">114</th><td>  }</td></tr>
+<tr><th id="115">115</th><td><b>if</b> (dmarc_tld_file == NULL)</td></tr>
+<tr><th id="116">116</th><td>  dmarc_abort = TRUE;</td></tr>
+<tr><th id="117">117</th><td><b>else</b> <b>if</b> (opendmarc_tld_read_file(tld_file, NULL, NULL, NULL))</td></tr>
+<tr><th id="118">118</th><td>  {</td></tr>
+<tr><th id="119">119</th><td>  log_write(<var>0</var>, LOG_MAIN|LOG_PANIC, <q>"DMARC failure to load tld list %s: %d"</q>,</td></tr>
+<tr><th id="120">120</th><td>		       tld_file, errno);</td></tr>
+<tr><th id="121">121</th><td>  dmarc_abort = TRUE;</td></tr>
+<tr><th id="122">122</th><td>  }</td></tr>
+<tr><th id="123">123</th><td><b>if</b> (sender_host_address == NULL)</td></tr>
+<tr><th id="124">124</th><td>  dmarc_abort = TRUE;</td></tr>
+<tr><th id="125">125</th><td><i>/* This catches locally originated email and startup errors above. */</i></td></tr>
+<tr><th id="126">126</th><td><b>if</b> (!dmarc_abort)</td></tr>
+<tr><th id="127">127</th><td>  {</td></tr>
+<tr><th id="128">128</th><td>  is_ipv6 = string_is_ip_address(sender_host_address, netmask) == <var>6</var>;</td></tr>
+<tr><th id="129">129</th><td>  dmarc_pctx = opendmarc_policy_connect_init(sender_host_address, is_ipv6);</td></tr>
+<tr><th id="130">130</th><td>  <b>if</b> (dmarc_pctx == NULL)</td></tr>
+<tr><th id="131">131</th><td>    {</td></tr>
+<tr><th id="132">132</th><td>    log_write(<var>0</var>, LOG_MAIN|LOG_PANIC,</td></tr>
+<tr><th id="133">133</th><td>      <q>"DMARC failure creating policy context: ip=%s"</q>, sender_host_address);</td></tr>
+<tr><th id="134">134</th><td>    dmarc_abort = TRUE;</td></tr>
+<tr><th id="135">135</th><td>    }</td></tr>
+<tr><th id="136">136</th><td>  }</td></tr>
+<tr><th id="137">137</th><td></td></tr>
+<tr><th id="138">138</th><td><b>return</b> OK;</td></tr>
+<tr><th id="139">139</th><td>}</td></tr>
+<tr><th id="140">140</th><td></td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td><i>/* dmarc_store_data stores the header data so that subsequent</i></td></tr>
+<tr><th id="143">143</th><td><i> * dmarc_process can access the data */</i></td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td><em>int</em> dmarc_store_data(header_line *hdr) {</td></tr>
+<tr><th id="146">146</th><td>  <i>/* No debug output because would change every test debug output */</i></td></tr>
+<tr><th id="147">147</th><td>  <b>if</b> (dmarc_disable_verify != TRUE)</td></tr>
+<tr><th id="148">148</th><td>    from_header = hdr;</td></tr>
+<tr><th id="149">149</th><td>  <b>return</b> OK;</td></tr>
+<tr><th id="150">150</th><td>}</td></tr>
+<tr><th id="151">151</th><td></td></tr>
+<tr><th id="152">152</th><td></td></tr>
+<tr><th id="153">153</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="154">154</th><td>dmarc_send_forensic_report(u_char **ruf)</td></tr>
+<tr><th id="155">155</th><td>{</td></tr>
+<tr><th id="156">156</th><td><em>int</em>   c;</td></tr>
+<tr><th id="157">157</th><td>uschar *recipient, *save_sender;</td></tr>
+<tr><th id="158">158</th><td>BOOL  send_status = FALSE;</td></tr>
+<tr><th id="159">159</th><td>error_block *eblock = NULL;</td></tr>
+<tr><th id="160">160</th><td>FILE *message_file = NULL;</td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td><i>/* Earlier ACL does not have *required* control=dmarc_enable_forensic */</i></td></tr>
+<tr><th id="163">163</th><td><b>if</b> (!dmarc_enable_forensic)</td></tr>
+<tr><th id="164">164</th><td>  <b>return</b>;</td></tr>
+<tr><th id="165">165</th><td></td></tr>
+<tr><th id="166">166</th><td><b>if</b> (  dmarc_policy == DMARC_POLICY_REJECT     &amp;&amp; action == DMARC_RESULT_REJECT</td></tr>
+<tr><th id="167">167</th><td>   || dmarc_policy == DMARC_POLICY_QUARANTINE &amp;&amp; action == DMARC_RESULT_QUARANTINE</td></tr>
+<tr><th id="168">168</th><td>   || dmarc_policy == DMARC_POLICY_NONE       &amp;&amp; action == DMARC_RESULT_REJECT</td></tr>
+<tr><th id="169">169</th><td>   || dmarc_policy == DMARC_POLICY_NONE       &amp;&amp; action == DMARC_RESULT_QUARANTINE</td></tr>
+<tr><th id="170">170</th><td>   )</td></tr>
+<tr><th id="171">171</th><td>  <b>if</b> (ruf)</td></tr>
+<tr><th id="172">172</th><td>    {</td></tr>
+<tr><th id="173">173</th><td>    eblock = add_to_eblock(eblock, US<q>"Sender Domain"</q>, dmarc_used_domain);</td></tr>
+<tr><th id="174">174</th><td>    eblock = add_to_eblock(eblock, US<q>"Sender IP Address"</q>, sender_host_address);</td></tr>
+<tr><th id="175">175</th><td>    eblock = add_to_eblock(eblock, US<q>"Received Date"</q>, tod_stamp(tod_full));</td></tr>
+<tr><th id="176">176</th><td>    eblock = add_to_eblock(eblock, US<q>"SPF Alignment"</q>,</td></tr>
+<tr><th id="177">177</th><td>			   (sa==DMARC_POLICY_SPF_ALIGNMENT_PASS) ?US<q>"yes"</q>:US<q>"no"</q>);</td></tr>
+<tr><th id="178">178</th><td>    eblock = add_to_eblock(eblock, US<q>"DKIM Alignment"</q>,</td></tr>
+<tr><th id="179">179</th><td>			   (da==DMARC_POLICY_DKIM_ALIGNMENT_PASS)?US<q>"yes"</q>:US<q>"no"</q>);</td></tr>
+<tr><th id="180">180</th><td>    eblock = add_to_eblock(eblock, US<q>"DMARC Results"</q>, dmarc_status_text);</td></tr>
+<tr><th id="181">181</th><td>    <i>/* Set a sane default envelope sender */</i></td></tr>
+<tr><th id="182">182</th><td>    dsn_from = dmarc_forensic_sender ? dmarc_forensic_sender :</td></tr>
+<tr><th id="183">183</th><td>	       dsn_from ? dsn_from :</td></tr>
+<tr><th id="184">184</th><td>	       string_sprintf(<q>"do-not-reply@%s"</q>,primary_hostname);</td></tr>
+<tr><th id="185">185</th><td>    <b>for</b> (c = <var>0</var>; ruf[c]; c++)</td></tr>
+<tr><th id="186">186</th><td>      {</td></tr>
+<tr><th id="187">187</th><td>      recipient = string_copylc(ruf[c]);</td></tr>
+<tr><th id="188">188</th><td>      <b>if</b> (Ustrncmp(recipient, <q>"mailto:"</q>,<var>7</var>))</td></tr>
+<tr><th id="189">189</th><td>	<b>continue</b>;</td></tr>
+<tr><th id="190">190</th><td>      <i>/* Move to first character past the colon */</i></td></tr>
+<tr><th id="191">191</th><td>      recipient += <var>7</var>;</td></tr>
+<tr><th id="192">192</th><td>      DEBUG(D_receive)</td></tr>
+<tr><th id="193">193</th><td>	debug_printf(<q>"DMARC forensic report to %s%s\n"</q>, recipient,</td></tr>
+<tr><th id="194">194</th><td>	     (host_checking || running_in_test_harness) ? <q>" (not really)"</q> : <q>""</q>);</td></tr>
+<tr><th id="195">195</th><td>      <b>if</b> (host_checking || running_in_test_harness)</td></tr>
+<tr><th id="196">196</th><td>	<b>continue</b>;</td></tr>
+<tr><th id="197">197</th><td></td></tr>
+<tr><th id="198">198</th><td>      save_sender = sender_address;</td></tr>
+<tr><th id="199">199</th><td>      sender_address = recipient;</td></tr>
+<tr><th id="200">200</th><td>      send_status = moan_to_sender(ERRMESS_DMARC_FORENSIC, eblock,</td></tr>
+<tr><th id="201">201</th><td>				   header_list, message_file, FALSE);</td></tr>
+<tr><th id="202">202</th><td>      sender_address = save_sender;</td></tr>
+<tr><th id="203">203</th><td>      <b>if</b> (!send_status)</td></tr>
+<tr><th id="204">204</th><td>	log_write(<var>0</var>, LOG_MAIN|LOG_PANIC,</td></tr>
+<tr><th id="205">205</th><td>	  <q>"failure to send DMARC forensic report to %s"</q>, recipient);</td></tr>
+<tr><th id="206">206</th><td>      }</td></tr>
+<tr><th id="207">207</th><td>    }</td></tr>
+<tr><th id="208">208</th><td>}</td></tr>
+<tr><th id="209">209</th><td></td></tr>
+<tr><th id="210">210</th><td><i>/* dmarc_process adds the envelope sender address to the existing</i></td></tr>
+<tr><th id="211">211</th><td><i>   context (if any), retrieves the result, sets up expansion</i></td></tr>
+<tr><th id="212">212</th><td><i>   strings and evaluates the condition outcome. */</i></td></tr>
+<tr><th id="213">213</th><td></td></tr>
+<tr><th id="214">214</th><td><em>int</em></td></tr>
+<tr><th id="215">215</th><td>dmarc_process()</td></tr>
+<tr><th id="216">216</th><td>{</td></tr>
+<tr><th id="217">217</th><td><em>int</em> sr, origin;             <i>/* used in SPF section */</i></td></tr>
+<tr><th id="218">218</th><td><em>int</em> dmarc_spf_result  = <var>0</var>;  <i>/* stores spf into dmarc conn ctx */</i></td></tr>
+<tr><th id="219">219</th><td><em>int</em> tmp_ans, c;</td></tr>
+<tr><th id="220">220</th><td>pdkim_signature *sig  = NULL;</td></tr>
+<tr><th id="221">221</th><td>BOOL has_dmarc_record = TRUE;</td></tr>
+<tr><th id="222">222</th><td>u_char **ruf; <i>/* forensic report addressees, if called for */</i></td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td><i>/* ACLs have "control=dmarc_disable_verify" */</i></td></tr>
+<tr><th id="225">225</th><td><b>if</b> (dmarc_disable_verify)</td></tr>
+<tr><th id="226">226</th><td>  {</td></tr>
+<tr><th id="227">227</th><td>  dmarc_ar_header = dmarc_auth_results_header(from_header, NULL);</td></tr>
+<tr><th id="228">228</th><td>  <b>return</b> OK;</td></tr>
+<tr><th id="229">229</th><td>  }</td></tr>
+<tr><th id="230">230</th><td></td></tr>
+<tr><th id="231">231</th><td><i>/* Store the header From: sender domain for this part of DMARC.</i></td></tr>
+<tr><th id="232">232</th><td><i> * If there is no from_header struct, then it's likely this message</i></td></tr>
+<tr><th id="233">233</th><td><i> * is locally generated and relying on fixups to add it.  Just skip</i></td></tr>
+<tr><th id="234">234</th><td><i> * the entire DMARC system if we can't find a From: header....or if</i></td></tr>
+<tr><th id="235">235</th><td><i> * there was a previous error.</i></td></tr>
+<tr><th id="236">236</th><td><i> */</i></td></tr>
+<tr><th id="237">237</th><td><b>if</b> (!from_header || dmarc_abort)</td></tr>
+<tr><th id="238">238</th><td>  dmarc_abort = TRUE;</td></tr>
+<tr><th id="239">239</th><td><b>else</b></td></tr>
+<tr><th id="240">240</th><td>  {</td></tr>
+<tr><th id="241">241</th><td>    uschar * errormsg;</td></tr>
+<tr><th id="242">242</th><td>    <em>int</em> dummy, domain;</td></tr>
+<tr><th id="243">243</th><td>    uschar * p;</td></tr>
+<tr><th id="244">244</th><td>    uschar saveend;</td></tr>
+<tr><th id="245">245</th><td></td></tr>
+<tr><th id="246">246</th><td>    parse_allow_group = TRUE;</td></tr>
+<tr><th id="247">247</th><td>    p = parse_find_address_end(from_header-&gt;text, FALSE);</td></tr>
+<tr><th id="248">248</th><td>    saveend = *p; *p = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="249">249</th><td>    <b>if</b> ((header_from_sender = parse_extract_address(from_header-&gt;text, &amp;errormsg,</td></tr>
+<tr><th id="250">250</th><td>                                &amp;dummy, &amp;dummy, &amp;domain, FALSE)))</td></tr>
+<tr><th id="251">251</th><td>      header_from_sender += domain;</td></tr>
+<tr><th id="252">252</th><td>    *p = saveend;</td></tr>
+<tr><th id="253">253</th><td></td></tr>
+<tr><th id="254">254</th><td>    <i>/* The opendmarc library extracts the domain from the email address, but</i></td></tr>
+<tr><th id="255">255</th><td><i>     * only try to store it if it's not empty.  Otherwise, skip out of DMARC. */</i></td></tr>
+<tr><th id="256">256</th><td>    <b>if</b> (!header_from_sender || (strcmp( CCS header_from_sender, <q>""</q>) == <var>0</var>))</td></tr>
+<tr><th id="257">257</th><td>      dmarc_abort = TRUE;</td></tr>
+<tr><th id="258">258</th><td>    libdm_status = dmarc_abort ?</td></tr>
+<tr><th id="259">259</th><td>      DMARC_PARSE_OKAY :</td></tr>
+<tr><th id="260">260</th><td>      opendmarc_policy_store_from_domain(dmarc_pctx, header_from_sender);</td></tr>
+<tr><th id="261">261</th><td>    <b>if</b> (libdm_status != DMARC_PARSE_OKAY)</td></tr>
+<tr><th id="262">262</th><td>    {</td></tr>
+<tr><th id="263">263</th><td>    log_write(<var>0</var>, LOG_MAIN|LOG_PANIC,</td></tr>
+<tr><th id="264">264</th><td>	      <q>"failure to store header From: in DMARC: %s, header was '%s'"</q>,</td></tr>
+<tr><th id="265">265</th><td>	      opendmarc_policy_status_to_str(libdm_status), from_header-&gt;text);</td></tr>
+<tr><th id="266">266</th><td>    dmarc_abort = TRUE;</td></tr>
+<tr><th id="267">267</th><td>    }</td></tr>
+<tr><th id="268">268</th><td>  }</td></tr>
+<tr><th id="269">269</th><td></td></tr>
+<tr><th id="270">270</th><td><i>/* Skip DMARC if connection is SMTP Auth. Temporarily, admin should</i></td></tr>
+<tr><th id="271">271</th><td><i> * instead do this in the ACLs.  */</i></td></tr>
+<tr><th id="272">272</th><td><b>if</b> (!dmarc_abort &amp;&amp; !sender_host_authenticated)</td></tr>
+<tr><th id="273">273</th><td>  {</td></tr>
+<tr><th id="274">274</th><td>  <i>/* Use the envelope sender domain for this part of DMARC */</i></td></tr>
+<tr><th id="275">275</th><td>  spf_sender_domain = expand_string(US<q>"$sender_address_domain"</q>);</td></tr>
+<tr><th id="276">276</th><td>  <b>if</b> (!spf_response)</td></tr>
+<tr><th id="277">277</th><td>    {</td></tr>
+<tr><th id="278">278</th><td>    <i>/* No spf data means null envelope sender so generate a domain name</i></td></tr>
+<tr><th id="279">279</th><td><i>     * from the sender_helo_name  */</i></td></tr>
+<tr><th id="280">280</th><td>    <b>if</b> (!spf_sender_domain)</td></tr>
+<tr><th id="281">281</th><td>      {</td></tr>
+<tr><th id="282">282</th><td>      spf_sender_domain = sender_helo_name;</td></tr>
+<tr><th id="283">283</th><td>      log_write(<var>0</var>, LOG_MAIN, <q>"DMARC using synthesized SPF sender domain = %s\n"</q>,</td></tr>
+<tr><th id="284">284</th><td>			     spf_sender_domain);</td></tr>
+<tr><th id="285">285</th><td>      DEBUG(D_receive)</td></tr>
+<tr><th id="286">286</th><td>	debug_printf(<q>"DMARC using synthesized SPF sender domain = %s\n"</q>,</td></tr>
+<tr><th id="287">287</th><td>	  spf_sender_domain);</td></tr>
+<tr><th id="288">288</th><td>      }</td></tr>
+<tr><th id="289">289</th><td>    dmarc_spf_result = DMARC_POLICY_SPF_OUTCOME_NONE;</td></tr>
+<tr><th id="290">290</th><td>    dmarc_spf_ares_result = ARES_RESULT_UNKNOWN;</td></tr>
+<tr><th id="291">291</th><td>    origin = DMARC_POLICY_SPF_ORIGIN_HELO;</td></tr>
+<tr><th id="292">292</th><td>    spf_human_readable = US<q>""</q>;</td></tr>
+<tr><th id="293">293</th><td>    }</td></tr>
+<tr><th id="294">294</th><td>  <b>else</b></td></tr>
+<tr><th id="295">295</th><td>    {</td></tr>
+<tr><th id="296">296</th><td>    sr = spf_response-&gt;result;</td></tr>
+<tr><th id="297">297</th><td>    dmarc_spf_result = sr == SPF_RESULT_NEUTRAL  ? DMARC_POLICY_SPF_OUTCOME_NONE :</td></tr>
+<tr><th id="298">298</th><td>		       sr == SPF_RESULT_PASS     ? DMARC_POLICY_SPF_OUTCOME_PASS :</td></tr>
+<tr><th id="299">299</th><td>		       sr == SPF_RESULT_FAIL     ? DMARC_POLICY_SPF_OUTCOME_FAIL :</td></tr>
+<tr><th id="300">300</th><td>		       sr == SPF_RESULT_SOFTFAIL ? DMARC_POLICY_SPF_OUTCOME_TMPFAIL :</td></tr>
+<tr><th id="301">301</th><td>		       DMARC_POLICY_SPF_OUTCOME_NONE;</td></tr>
+<tr><th id="302">302</th><td>    dmarc_spf_ares_result = sr == SPF_RESULT_NEUTRAL   ? ARES_RESULT_NEUTRAL :</td></tr>
+<tr><th id="303">303</th><td>			    sr == SPF_RESULT_PASS      ? ARES_RESULT_PASS :</td></tr>
+<tr><th id="304">304</th><td>			    sr == SPF_RESULT_FAIL      ? ARES_RESULT_FAIL :</td></tr>
+<tr><th id="305">305</th><td>			    sr == SPF_RESULT_SOFTFAIL  ? ARES_RESULT_SOFTFAIL :</td></tr>
+<tr><th id="306">306</th><td>			    sr == SPF_RESULT_NONE      ? ARES_RESULT_NONE :</td></tr>
+<tr><th id="307">307</th><td>			    sr == SPF_RESULT_TEMPERROR ? ARES_RESULT_TEMPERROR :</td></tr>
+<tr><th id="308">308</th><td>			    sr == SPF_RESULT_PERMERROR ? ARES_RESULT_PERMERROR :</td></tr>
+<tr><th id="309">309</th><td>			    ARES_RESULT_UNKNOWN;</td></tr>
+<tr><th id="310">310</th><td>    origin = DMARC_POLICY_SPF_ORIGIN_MAILFROM;</td></tr>
+<tr><th id="311">311</th><td>    spf_human_readable = US spf_response-&gt;header_comment;</td></tr>
+<tr><th id="312">312</th><td>    DEBUG(D_receive)</td></tr>
+<tr><th id="313">313</th><td>      debug_printf(<q>"DMARC using SPF sender domain = %s\n"</q>, spf_sender_domain);</td></tr>
+<tr><th id="314">314</th><td>    }</td></tr>
+<tr><th id="315">315</th><td>  <b>if</b> (strcmp( CCS spf_sender_domain, <q>""</q>) == <var>0</var>)</td></tr>
+<tr><th id="316">316</th><td>    dmarc_abort = TRUE;</td></tr>
+<tr><th id="317">317</th><td>  <b>if</b> (!dmarc_abort)</td></tr>
+<tr><th id="318">318</th><td>    {</td></tr>
+<tr><th id="319">319</th><td>    libdm_status = opendmarc_policy_store_spf(dmarc_pctx, spf_sender_domain,</td></tr>
+<tr><th id="320">320</th><td>				dmarc_spf_result, origin, spf_human_readable);</td></tr>
+<tr><th id="321">321</th><td>    <b>if</b> (libdm_status != DMARC_PARSE_OKAY)</td></tr>
+<tr><th id="322">322</th><td>      log_write(<var>0</var>, LOG_MAIN|LOG_PANIC, <q>"failure to store spf for DMARC: %s"</q>,</td></tr>
+<tr><th id="323">323</th><td>			   opendmarc_policy_status_to_str(libdm_status));</td></tr>
+<tr><th id="324">324</th><td>    }</td></tr>
+<tr><th id="325">325</th><td></td></tr>
+<tr><th id="326">326</th><td>  <i>/* Now we cycle through the dkim signature results and put into</i></td></tr>
+<tr><th id="327">327</th><td><i>   * the opendmarc context, further building the DMARC reply.  */</i></td></tr>
+<tr><th id="328">328</th><td>  sig = dkim_signatures;</td></tr>
+<tr><th id="329">329</th><td>  dkim_history_buffer = US<q>""</q>;</td></tr>
+<tr><th id="330">330</th><td>  <b>while</b> (sig)</td></tr>
+<tr><th id="331">331</th><td>    {</td></tr>
+<tr><th id="332">332</th><td>    <em>int</em> dkim_result, dkim_ares_result, vs, ves;</td></tr>
+<tr><th id="333">333</th><td>    vs  = sig-&gt;verify_status;</td></tr>
+<tr><th id="334">334</th><td>    ves = sig-&gt;verify_ext_status;</td></tr>
+<tr><th id="335">335</th><td>    dkim_result = vs == PDKIM_VERIFY_PASS ? DMARC_POLICY_DKIM_OUTCOME_PASS :</td></tr>
+<tr><th id="336">336</th><td>		  vs == PDKIM_VERIFY_FAIL ? DMARC_POLICY_DKIM_OUTCOME_FAIL :</td></tr>
+<tr><th id="337">337</th><td>		  vs == PDKIM_VERIFY_INVALID ? DMARC_POLICY_DKIM_OUTCOME_TMPFAIL :</td></tr>
+<tr><th id="338">338</th><td>		  DMARC_POLICY_DKIM_OUTCOME_NONE;</td></tr>
+<tr><th id="339">339</th><td>    libdm_status = opendmarc_policy_store_dkim(dmarc_pctx, US sig-&gt;domain,</td></tr>
+<tr><th id="340">340</th><td>					       dkim_result, US<q>""</q>);</td></tr>
+<tr><th id="341">341</th><td>    DEBUG(D_receive)</td></tr>
+<tr><th id="342">342</th><td>      debug_printf(<q>"DMARC adding DKIM sender domain = %s\n"</q>, sig-&gt;domain);</td></tr>
+<tr><th id="343">343</th><td>    <b>if</b> (libdm_status != DMARC_PARSE_OKAY)</td></tr>
+<tr><th id="344">344</th><td>      log_write(<var>0</var>, LOG_MAIN|LOG_PANIC,</td></tr>
+<tr><th id="345">345</th><td>		<q>"failure to store dkim (%s) for DMARC: %s"</q>,</td></tr>
+<tr><th id="346">346</th><td>		sig-&gt;domain, opendmarc_policy_status_to_str(libdm_status));</td></tr>
+<tr><th id="347">347</th><td></td></tr>
+<tr><th id="348">348</th><td>    dkim_ares_result =</td></tr>
+<tr><th id="349">349</th><td>      vs == PDKIM_VERIFY_PASS    ? ARES_RESULT_PASS :</td></tr>
+<tr><th id="350">350</th><td>      vs == PDKIM_VERIFY_FAIL    ? ARES_RESULT_FAIL :</td></tr>
+<tr><th id="351">351</th><td>      vs == PDKIM_VERIFY_NONE    ? ARES_RESULT_NONE :</td></tr>
+<tr><th id="352">352</th><td>      vs == PDKIM_VERIFY_INVALID ?</td></tr>
+<tr><th id="353">353</th><td>       ves == PDKIM_VERIFY_INVALID_PUBKEY_UNAVAILABLE ? ARES_RESULT_PERMERROR :</td></tr>
+<tr><th id="354">354</th><td>       ves == PDKIM_VERIFY_INVALID_BUFFER_SIZE        ? ARES_RESULT_PERMERROR :</td></tr>
+<tr><th id="355">355</th><td>       ves == PDKIM_VERIFY_INVALID_PUBKEY_DNSRECORD   ? ARES_RESULT_PERMERROR :</td></tr>
+<tr><th id="356">356</th><td>       ves == PDKIM_VERIFY_INVALID_PUBKEY_IMPORT      ? ARES_RESULT_PERMERROR :</td></tr>
+<tr><th id="357">357</th><td>       ARES_RESULT_UNKNOWN :</td></tr>
+<tr><th id="358">358</th><td>      ARES_RESULT_UNKNOWN;</td></tr>
+<tr><th id="359">359</th><td>    dkim_history_buffer = string_sprintf(<q>"%sdkim %s %d\n"</q>, dkim_history_buffer,</td></tr>
+<tr><th id="360">360</th><td>					 sig-&gt;domain, dkim_ares_result);</td></tr>
+<tr><th id="361">361</th><td>    sig = sig-&gt;next;</td></tr>
+<tr><th id="362">362</th><td>    }</td></tr>
+<tr><th id="363">363</th><td>  libdm_status = opendmarc_policy_query_dmarc(dmarc_pctx, US<q>""</q>);</td></tr>
+<tr><th id="364">364</th><td>  <b>switch</b> (libdm_status)</td></tr>
+<tr><th id="365">365</th><td>    {</td></tr>
+<tr><th id="366">366</th><td>    <b>case</b> DMARC_DNS_ERROR_NXDOMAIN:</td></tr>
+<tr><th id="367">367</th><td>    <b>case</b> DMARC_DNS_ERROR_NO_RECORD:</td></tr>
+<tr><th id="368">368</th><td>      DEBUG(D_receive)</td></tr>
+<tr><th id="369">369</th><td>	debug_printf(<q>"DMARC no record found for %s\n"</q>, header_from_sender);</td></tr>
+<tr><th id="370">370</th><td>      has_dmarc_record = FALSE;</td></tr>
+<tr><th id="371">371</th><td>      <b>break</b>;</td></tr>
+<tr><th id="372">372</th><td>    <b>case</b> DMARC_PARSE_OKAY:</td></tr>
+<tr><th id="373">373</th><td>      DEBUG(D_receive)</td></tr>
+<tr><th id="374">374</th><td>	debug_printf(<q>"DMARC record found for %s\n"</q>, header_from_sender);</td></tr>
+<tr><th id="375">375</th><td>      <b>break</b>;</td></tr>
+<tr><th id="376">376</th><td>    <b>case</b> DMARC_PARSE_ERROR_BAD_VALUE:</td></tr>
+<tr><th id="377">377</th><td>      DEBUG(D_receive)</td></tr>
+<tr><th id="378">378</th><td>	debug_printf(<q>"DMARC record parse error for %s\n"</q>, header_from_sender);</td></tr>
+<tr><th id="379">379</th><td>      has_dmarc_record = FALSE;</td></tr>
+<tr><th id="380">380</th><td>      <b>break</b>;</td></tr>
+<tr><th id="381">381</th><td>    <b>default</b>:</td></tr>
+<tr><th id="382">382</th><td>      <i>/* everything else, skip dmarc */</i></td></tr>
+<tr><th id="383">383</th><td>      DEBUG(D_receive)</td></tr>
+<tr><th id="384">384</th><td>	debug_printf(<q>"DMARC skipping (%d), unsure what to do with %s"</q>,</td></tr>
+<tr><th id="385">385</th><td>		      libdm_status, from_header-&gt;text);</td></tr>
+<tr><th id="386">386</th><td>      has_dmarc_record = FALSE;</td></tr>
+<tr><th id="387">387</th><td>      <b>break</b>;</td></tr>
+<tr><th id="388">388</th><td>    }</td></tr>
+<tr><th id="389">389</th><td></td></tr>
+<tr><th id="390">390</th><td><i>/* Store the policy string in an expandable variable. */</i></td></tr>
+<tr><th id="391">391</th><td></td></tr>
+<tr><th id="392">392</th><td>  libdm_status = opendmarc_policy_fetch_p(dmarc_pctx, &amp;tmp_ans);</td></tr>
+<tr><th id="393">393</th><td>  <b>for</b> (c = <var>0</var>; dmarc_policy_description[c].name; c++)</td></tr>
+<tr><th id="394">394</th><td>    <b>if</b> (tmp_ans == dmarc_policy_description[c].value)</td></tr>
+<tr><th id="395">395</th><td>      {</td></tr>
+<tr><th id="396">396</th><td>      dmarc_domain_policy = string_sprintf(<q>"%s"</q>,dmarc_policy_description[c].name);</td></tr>
+<tr><th id="397">397</th><td>      <b>break</b>;</td></tr>
+<tr><th id="398">398</th><td>      }</td></tr>
+<tr><th id="399">399</th><td></td></tr>
+<tr><th id="400">400</th><td>  <i>/* Can't use exim's string manipulation functions so allocate memory</i></td></tr>
+<tr><th id="401">401</th><td><i>   * for libopendmarc using its max hostname length definition. */</i></td></tr>
+<tr><th id="402">402</th><td></td></tr>
+<tr><th id="403">403</th><td>  uschar *dmarc_domain = US calloc(DMARC_MAXHOSTNAMELEN, <b>sizeof</b>(uschar));</td></tr>
+<tr><th id="404">404</th><td>  libdm_status = opendmarc_policy_fetch_utilized_domain(dmarc_pctx,</td></tr>
+<tr><th id="405">405</th><td>    dmarc_domain, DMARC_MAXHOSTNAMELEN-<var>1</var>);</td></tr>
+<tr><th id="406">406</th><td>  dmarc_used_domain = string_copy(dmarc_domain);</td></tr>
+<tr><th id="407">407</th><td>  free(dmarc_domain);</td></tr>
+<tr><th id="408">408</th><td></td></tr>
+<tr><th id="409">409</th><td>  <b>if</b> (libdm_status != DMARC_PARSE_OKAY)</td></tr>
+<tr><th id="410">410</th><td>    log_write(<var>0</var>, LOG_MAIN|LOG_PANIC,</td></tr>
+<tr><th id="411">411</th><td>      <q>"failure to read domainname used for DMARC lookup: %s"</q>,</td></tr>
+<tr><th id="412">412</th><td>      opendmarc_policy_status_to_str(libdm_status));</td></tr>
+<tr><th id="413">413</th><td></td></tr>
+<tr><th id="414">414</th><td>  libdm_status = opendmarc_get_policy_to_enforce(dmarc_pctx);</td></tr>
+<tr><th id="415">415</th><td>  dmarc_policy = libdm_status;</td></tr>
+<tr><th id="416">416</th><td>  <b>switch</b>(libdm_status)</td></tr>
+<tr><th id="417">417</th><td>    {</td></tr>
+<tr><th id="418">418</th><td>    <b>case</b> DMARC_POLICY_ABSENT:     <i>/* No DMARC record found */</i></td></tr>
+<tr><th id="419">419</th><td>      dmarc_status = US<q>"norecord"</q>;</td></tr>
+<tr><th id="420">420</th><td>      dmarc_pass_fail = US<q>"none"</q>;</td></tr>
+<tr><th id="421">421</th><td>      dmarc_status_text = US<q>"No DMARC record"</q>;</td></tr>
+<tr><th id="422">422</th><td>      action = DMARC_RESULT_ACCEPT;</td></tr>
+<tr><th id="423">423</th><td>      <b>break</b>;</td></tr>
+<tr><th id="424">424</th><td>    <b>case</b> DMARC_FROM_DOMAIN_ABSENT:    <i>/* No From: domain */</i></td></tr>
+<tr><th id="425">425</th><td>      dmarc_status = US<q>"nofrom"</q>;</td></tr>
+<tr><th id="426">426</th><td>      dmarc_pass_fail = US<q>"temperror"</q>;</td></tr>
+<tr><th id="427">427</th><td>      dmarc_status_text = US<q>"No From: domain found"</q>;</td></tr>
+<tr><th id="428">428</th><td>      action = DMARC_RESULT_ACCEPT;</td></tr>
+<tr><th id="429">429</th><td>      <b>break</b>;</td></tr>
+<tr><th id="430">430</th><td>    <b>case</b> DMARC_POLICY_NONE:       <i>/* Accept and report */</i></td></tr>
+<tr><th id="431">431</th><td>      dmarc_status = US<q>"none"</q>;</td></tr>
+<tr><th id="432">432</th><td>      dmarc_pass_fail = US<q>"none"</q>;</td></tr>
+<tr><th id="433">433</th><td>      dmarc_status_text = US<q>"None, Accept"</q>;</td></tr>
+<tr><th id="434">434</th><td>      action = DMARC_RESULT_ACCEPT;</td></tr>
+<tr><th id="435">435</th><td>      <b>break</b>;</td></tr>
+<tr><th id="436">436</th><td>    <b>case</b> DMARC_POLICY_PASS:       <i>/* Explicit accept */</i></td></tr>
+<tr><th id="437">437</th><td>      dmarc_status = US<q>"accept"</q>;</td></tr>
+<tr><th id="438">438</th><td>      dmarc_pass_fail = US<q>"pass"</q>;</td></tr>
+<tr><th id="439">439</th><td>      dmarc_status_text = US<q>"Accept"</q>;</td></tr>
+<tr><th id="440">440</th><td>      action = DMARC_RESULT_ACCEPT;</td></tr>
+<tr><th id="441">441</th><td>      <b>break</b>;</td></tr>
+<tr><th id="442">442</th><td>    <b>case</b> DMARC_POLICY_REJECT:       <i>/* Explicit reject */</i></td></tr>
+<tr><th id="443">443</th><td>      dmarc_status = US<q>"reject"</q>;</td></tr>
+<tr><th id="444">444</th><td>      dmarc_pass_fail = US<q>"fail"</q>;</td></tr>
+<tr><th id="445">445</th><td>      dmarc_status_text = US<q>"Reject"</q>;</td></tr>
+<tr><th id="446">446</th><td>      action = DMARC_RESULT_REJECT;</td></tr>
+<tr><th id="447">447</th><td>      <b>break</b>;</td></tr>
+<tr><th id="448">448</th><td>    <b>case</b> DMARC_POLICY_QUARANTINE:       <i>/* Explicit quarantine */</i></td></tr>
+<tr><th id="449">449</th><td>      dmarc_status = US<q>"quarantine"</q>;</td></tr>
+<tr><th id="450">450</th><td>      dmarc_pass_fail = US<q>"fail"</q>;</td></tr>
+<tr><th id="451">451</th><td>      dmarc_status_text = US<q>"Quarantine"</q>;</td></tr>
+<tr><th id="452">452</th><td>      action = DMARC_RESULT_QUARANTINE;</td></tr>
+<tr><th id="453">453</th><td>      <b>break</b>;</td></tr>
+<tr><th id="454">454</th><td>    <b>default</b>:</td></tr>
+<tr><th id="455">455</th><td>      dmarc_status = US<q>"temperror"</q>;</td></tr>
+<tr><th id="456">456</th><td>      dmarc_pass_fail = US<q>"temperror"</q>;</td></tr>
+<tr><th id="457">457</th><td>      dmarc_status_text = US<q>"Internal Policy Error"</q>;</td></tr>
+<tr><th id="458">458</th><td>      action = DMARC_RESULT_TEMPFAIL;</td></tr>
+<tr><th id="459">459</th><td>      <b>break</b>;</td></tr>
+<tr><th id="460">460</th><td>    }</td></tr>
+<tr><th id="461">461</th><td></td></tr>
+<tr><th id="462">462</th><td>  libdm_status = opendmarc_policy_fetch_alignment(dmarc_pctx, &amp;da, &amp;sa);</td></tr>
+<tr><th id="463">463</th><td>  <b>if</b> (libdm_status != DMARC_PARSE_OKAY)</td></tr>
+<tr><th id="464">464</th><td>    log_write(<var>0</var>, LOG_MAIN|LOG_PANIC, <q>"failure to read DMARC alignment: %s"</q>,</td></tr>
+<tr><th id="465">465</th><td>			     opendmarc_policy_status_to_str(libdm_status));</td></tr>
+<tr><th id="466">466</th><td></td></tr>
+<tr><th id="467">467</th><td>  <b>if</b> (has_dmarc_record == TRUE)</td></tr>
+<tr><th id="468">468</th><td>    {</td></tr>
+<tr><th id="469">469</th><td>    log_write(<var>0</var>, LOG_MAIN, <q>"DMARC results: spf_domain=%s dmarc_domain=%s "</q></td></tr>
+<tr><th id="470">470</th><td>			   <q>"spf_align=%s dkim_align=%s enforcement='%s'"</q>,</td></tr>
+<tr><th id="471">471</th><td>			   spf_sender_domain, dmarc_used_domain,</td></tr>
+<tr><th id="472">472</th><td>			   (sa==DMARC_POLICY_SPF_ALIGNMENT_PASS) ?<q>"yes"</q>:<q>"no"</q>,</td></tr>
+<tr><th id="473">473</th><td>			   (da==DMARC_POLICY_DKIM_ALIGNMENT_PASS)?<q>"yes"</q>:<q>"no"</q>,</td></tr>
+<tr><th id="474">474</th><td>			   dmarc_status_text);</td></tr>
+<tr><th id="475">475</th><td>    history_file_status = dmarc_write_history_file();</td></tr>
+<tr><th id="476">476</th><td>    <i>/* Now get the forensic reporting addresses, if any */</i></td></tr>
+<tr><th id="477">477</th><td>    ruf = opendmarc_policy_fetch_ruf(dmarc_pctx, NULL, <var>0</var>, <var>1</var>);</td></tr>
+<tr><th id="478">478</th><td>    dmarc_send_forensic_report(ruf);</td></tr>
+<tr><th id="479">479</th><td>    }</td></tr>
+<tr><th id="480">480</th><td>  }</td></tr>
+<tr><th id="481">481</th><td></td></tr>
+<tr><th id="482">482</th><td><i>/* set some global variables here */</i></td></tr>
+<tr><th id="483">483</th><td>dmarc_ar_header = dmarc_auth_results_header(from_header, NULL);</td></tr>
+<tr><th id="484">484</th><td></td></tr>
+<tr><th id="485">485</th><td><i>/* shut down libopendmarc */</i></td></tr>
+<tr><th id="486">486</th><td><b>if</b> ( dmarc_pctx != NULL )</td></tr>
+<tr><th id="487">487</th><td>  (<em>void</em>) opendmarc_policy_connect_shutdown(dmarc_pctx);</td></tr>
+<tr><th id="488">488</th><td><b>if</b> ( dmarc_disable_verify == FALSE )</td></tr>
+<tr><th id="489">489</th><td>  (<em>void</em>) opendmarc_policy_library_shutdown(&amp;dmarc_ctx);</td></tr>
+<tr><th id="490">490</th><td></td></tr>
+<tr><th id="491">491</th><td><b>return</b> OK;</td></tr>
+<tr><th id="492">492</th><td>}</td></tr>
+<tr><th id="493">493</th><td></td></tr>
+<tr><th id="494">494</th><td><em>int</em></td></tr>
+<tr><th id="495">495</th><td>dmarc_write_history_file()</td></tr>
+<tr><th id="496">496</th><td>{</td></tr>
+<tr><th id="497">497</th><td><em>int</em> history_file_fd;</td></tr>
+<tr><th id="498">498</th><td>ssize_t written_len;</td></tr>
+<tr><th id="499">499</th><td><em>int</em> tmp_ans;</td></tr>
+<tr><th id="500">500</th><td>u_char **rua; <i>/* aggregate report addressees */</i></td></tr>
+<tr><th id="501">501</th><td>uschar *history_buffer = NULL;</td></tr>
+<tr><th id="502">502</th><td></td></tr>
+<tr><th id="503">503</th><td><b>if</b> (!dmarc_history_file)</td></tr>
+<tr><th id="504">504</th><td>  <b>return</b> DMARC_HIST_DISABLED;</td></tr>
+<tr><th id="505">505</th><td>history_file_fd = log_create(dmarc_history_file);</td></tr>
+<tr><th id="506">506</th><td></td></tr>
+<tr><th id="507">507</th><td><b>if</b> (history_file_fd &lt; <var>0</var>)</td></tr>
+<tr><th id="508">508</th><td>  {</td></tr>
+<tr><th id="509">509</th><td>  log_write(<var>0</var>, LOG_MAIN|LOG_PANIC, <q>"failure to create DMARC history file: %s"</q>,</td></tr>
+<tr><th id="510">510</th><td>			   dmarc_history_file);</td></tr>
+<tr><th id="511">511</th><td>  <b>return</b> DMARC_HIST_FILE_ERR;</td></tr>
+<tr><th id="512">512</th><td>  }</td></tr>
+<tr><th id="513">513</th><td></td></tr>
+<tr><th id="514">514</th><td><i>/* Generate the contents of the history file */</i></td></tr>
+<tr><th id="515">515</th><td>history_buffer = string_sprintf(</td></tr>
+<tr><th id="516">516</th><td>  <q>"job %s\nreporter %s\nreceived %ld\nipaddr %s\nfrom %s\nmfrom %s\n"</q>,</td></tr>
+<tr><th id="517">517</th><td>  message_id, primary_hostname, time(NULL), sender_host_address,</td></tr>
+<tr><th id="518">518</th><td>  header_from_sender, expand_string(US<q>"$sender_address_domain"</q>));</td></tr>
+<tr><th id="519">519</th><td></td></tr>
+<tr><th id="520">520</th><td><b>if</b> (spf_response)</td></tr>
+<tr><th id="521">521</th><td>  history_buffer = string_sprintf(<q>"%sspf %d\n"</q>, history_buffer, dmarc_spf_ares_result);</td></tr>
+<tr><th id="522">522</th><td>  <i>/* history_buffer = string_sprintf("%sspf -1\n", history_buffer); */</i></td></tr>
+<tr><th id="523">523</th><td></td></tr>
+<tr><th id="524">524</th><td>history_buffer = string_sprintf(</td></tr>
+<tr><th id="525">525</th><td>  <q>"%s%spdomain %s\npolicy %d\n"</q>,</td></tr>
+<tr><th id="526">526</th><td>  history_buffer, dkim_history_buffer, dmarc_used_domain, dmarc_policy);</td></tr>
+<tr><th id="527">527</th><td></td></tr>
+<tr><th id="528">528</th><td><b>if</b> ((rua = opendmarc_policy_fetch_rua(dmarc_pctx, NULL, <var>0</var>, <var>1</var>)))</td></tr>
+<tr><th id="529">529</th><td>  <b>for</b> (tmp_ans = <var>0</var>; rua[tmp_ans]; tmp_ans++)</td></tr>
+<tr><th id="530">530</th><td>    history_buffer = string_sprintf(<q>"%srua %s\n"</q>, history_buffer, rua[tmp_ans]);</td></tr>
+<tr><th id="531">531</th><td><b>else</b></td></tr>
+<tr><th id="532">532</th><td>  history_buffer = string_sprintf(<q>"%srua -\n"</q>, history_buffer);</td></tr>
+<tr><th id="533">533</th><td></td></tr>
+<tr><th id="534">534</th><td>opendmarc_policy_fetch_pct(dmarc_pctx, &amp;tmp_ans);</td></tr>
+<tr><th id="535">535</th><td>history_buffer = string_sprintf(<q>"%spct %d\n"</q>, history_buffer, tmp_ans);</td></tr>
+<tr><th id="536">536</th><td></td></tr>
+<tr><th id="537">537</th><td>opendmarc_policy_fetch_adkim(dmarc_pctx, &amp;tmp_ans);</td></tr>
+<tr><th id="538">538</th><td>history_buffer = string_sprintf(<q>"%sadkim %d\n"</q>, history_buffer, tmp_ans);</td></tr>
+<tr><th id="539">539</th><td></td></tr>
+<tr><th id="540">540</th><td>opendmarc_policy_fetch_aspf(dmarc_pctx, &amp;tmp_ans);</td></tr>
+<tr><th id="541">541</th><td>history_buffer = string_sprintf(<q>"%saspf %d\n"</q>, history_buffer, tmp_ans);</td></tr>
+<tr><th id="542">542</th><td></td></tr>
+<tr><th id="543">543</th><td>opendmarc_policy_fetch_p(dmarc_pctx, &amp;tmp_ans);</td></tr>
+<tr><th id="544">544</th><td>history_buffer = string_sprintf(<q>"%sp %d\n"</q>, history_buffer, tmp_ans);</td></tr>
+<tr><th id="545">545</th><td></td></tr>
+<tr><th id="546">546</th><td>opendmarc_policy_fetch_sp(dmarc_pctx, &amp;tmp_ans);</td></tr>
+<tr><th id="547">547</th><td>history_buffer = string_sprintf(<q>"%ssp %d\n"</q>, history_buffer, tmp_ans);</td></tr>
+<tr><th id="548">548</th><td></td></tr>
+<tr><th id="549">549</th><td>history_buffer = string_sprintf(</td></tr>
+<tr><th id="550">550</th><td>  <q>"%salign_dkim %d\nalign_spf %d\naction %d\n"</q>,</td></tr>
+<tr><th id="551">551</th><td>  history_buffer, da, sa, action);</td></tr>
+<tr><th id="552">552</th><td></td></tr>
+<tr><th id="553">553</th><td><i>/* Write the contents to the history file */</i></td></tr>
+<tr><th id="554">554</th><td>DEBUG(D_receive)</td></tr>
+<tr><th id="555">555</th><td>  debug_printf(<q>"DMARC logging history data for opendmarc reporting%s\n"</q>,</td></tr>
+<tr><th id="556">556</th><td>	     (host_checking || running_in_test_harness) ? <q>" (not really)"</q> : <q>""</q>);</td></tr>
+<tr><th id="557">557</th><td><b>if</b> (host_checking || running_in_test_harness)</td></tr>
+<tr><th id="558">558</th><td>  {</td></tr>
+<tr><th id="559">559</th><td>  DEBUG(D_receive)</td></tr>
+<tr><th id="560">560</th><td>    debug_printf(<q>"DMARC history data for debugging:\n%s"</q>, history_buffer);</td></tr>
+<tr><th id="561">561</th><td>  }</td></tr>
+<tr><th id="562">562</th><td><b>else</b></td></tr>
+<tr><th id="563">563</th><td>  {</td></tr>
+<tr><th id="564">564</th><td>  written_len = write_to_fd_buf(history_file_fd,</td></tr>
+<tr><th id="565">565</th><td>				history_buffer,</td></tr>
+<tr><th id="566">566</th><td>				Ustrlen(history_buffer));</td></tr>
+<tr><th id="567">567</th><td>  <b>if</b> (written_len == <var>0</var>)</td></tr>
+<tr><th id="568">568</th><td>    {</td></tr>
+<tr><th id="569">569</th><td>    log_write(<var>0</var>, LOG_MAIN|LOG_PANIC, <q>"failure to write to DMARC history file: %s"</q>,</td></tr>
+<tr><th id="570">570</th><td>			   dmarc_history_file);</td></tr>
+<tr><th id="571">571</th><td>    <b>return</b> DMARC_HIST_WRITE_ERR;</td></tr>
+<tr><th id="572">572</th><td>    }</td></tr>
+<tr><th id="573">573</th><td>  (<em>void</em>)close(history_file_fd);</td></tr>
+<tr><th id="574">574</th><td>  }</td></tr>
+<tr><th id="575">575</th><td><b>return</b> DMARC_HIST_OK;</td></tr>
+<tr><th id="576">576</th><td>}</td></tr>
+<tr><th id="577">577</th><td></td></tr>
+<tr><th id="578">578</th><td></td></tr>
+<tr><th id="579">579</th><td>uschar *</td></tr>
+<tr><th id="580">580</th><td>dmarc_exim_expand_query(<em>int</em> what)</td></tr>
+<tr><th id="581">581</th><td>{</td></tr>
+<tr><th id="582">582</th><td><b>if</b> (dmarc_disable_verify || !dmarc_pctx)</td></tr>
+<tr><th id="583">583</th><td>  <b>return</b> dmarc_exim_expand_defaults(what);</td></tr>
+<tr><th id="584">584</th><td></td></tr>
+<tr><th id="585">585</th><td><b>if</b> (what == DMARC_VERIFY_STATUS)</td></tr>
+<tr><th id="586">586</th><td>  <b>return</b> dmarc_status;</td></tr>
+<tr><th id="587">587</th><td><b>return</b> US<q>""</q>;</td></tr>
+<tr><th id="588">588</th><td>}</td></tr>
+<tr><th id="589">589</th><td></td></tr>
+<tr><th id="590">590</th><td>uschar *</td></tr>
+<tr><th id="591">591</th><td>dmarc_exim_expand_defaults(<em>int</em> what)</td></tr>
+<tr><th id="592">592</th><td>{</td></tr>
+<tr><th id="593">593</th><td><b>if</b> (what == DMARC_VERIFY_STATUS)</td></tr>
+<tr><th id="594">594</th><td>  <b>return</b> dmarc_disable_verify ?  US<q>"off"</q> : US<q>"none"</q>;</td></tr>
+<tr><th id="595">595</th><td><b>return</b> US<q>""</q>;</td></tr>
+<tr><th id="596">596</th><td>}</td></tr>
+<tr><th id="597">597</th><td></td></tr>
+<tr><th id="598">598</th><td>uschar *</td></tr>
+<tr><th id="599">599</th><td>dmarc_auth_results_header(header_line *from_header, uschar *hostname)</td></tr>
+<tr><th id="600">600</th><td>{</td></tr>
+<tr><th id="601">601</th><td>uschar *hdr_tmp    = US<q>""</q>;</td></tr>
+<tr><th id="602">602</th><td></td></tr>
+<tr><th id="603">603</th><td><i>/* Allow a server hostname to be passed to this function, but is</i></td></tr>
+<tr><th id="604">604</th><td><i> * currently unused */</i></td></tr>
+<tr><th id="605">605</th><td><b>if</b> (!hostname)</td></tr>
+<tr><th id="606">606</th><td>  hostname = primary_hostname;</td></tr>
+<tr><th id="607">607</th><td>hdr_tmp = string_sprintf(<q>"%s %s;"</q>, DMARC_AR_HEADER, hostname);</td></tr>
+<tr><th id="608">608</th><td></td></tr>
+<tr><th id="609">609</th><td><u>#if 0</u></td></tr>
+<tr><th id="610">610</th><td><i>/* I don't think this belongs here, but left it here commented out</i></td></tr>
+<tr><th id="611">611</th><td><i> * because it was a lot of work to get working right. */</i></td></tr>
+<tr><th id="612">612</th><td><b>if</b> (spf_response != NULL) {</td></tr>
+<tr><th id="613">613</th><td>  uschar *dmarc_ar_spf = US<q>""</q>;</td></tr>
+<tr><th id="614">614</th><td>  <em>int</em> sr               = <var>0</var>;</td></tr>
+<tr><th id="615">615</th><td>  sr = spf_response-&gt;result;</td></tr>
+<tr><th id="616">616</th><td>  dmarc_ar_spf = (sr == SPF_RESULT_NEUTRAL)  ? US<q>"neutral"</q> :</td></tr>
+<tr><th id="617">617</th><td>		 (sr == SPF_RESULT_PASS)     ? US<q>"pass"</q> :</td></tr>
+<tr><th id="618">618</th><td>		 (sr == SPF_RESULT_FAIL)     ? US<q>"fail"</q> :</td></tr>
+<tr><th id="619">619</th><td>		 (sr == SPF_RESULT_SOFTFAIL) ? US<q>"softfail"</q> :</td></tr>
+<tr><th id="620">620</th><td>		 US<q>"none"</q>;</td></tr>
+<tr><th id="621">621</th><td>  hdr_tmp = string_sprintf(<q>"%s spf=%s (%s) smtp.mail=%s;"</q>,</td></tr>
+<tr><th id="622">622</th><td>			   hdr_tmp, dmarc_ar_spf_result,</td></tr>
+<tr><th id="623">623</th><td>			   spf_response-&gt;header_comment,</td></tr>
+<tr><th id="624">624</th><td>			   expand_string(US<q>"$sender_address"</q>) );</td></tr>
+<tr><th id="625">625</th><td>}</td></tr>
+<tr><th id="626">626</th><td><u>#endif</u></td></tr>
+<tr><th id="627">627</th><td></td></tr>
+<tr><th id="628">628</th><td>hdr_tmp = string_sprintf(<q>"%s dmarc=%s"</q>, hdr_tmp, dmarc_pass_fail);</td></tr>
+<tr><th id="629">629</th><td><b>if</b> (header_from_sender)</td></tr>
+<tr><th id="630">630</th><td>  hdr_tmp = string_sprintf(<q>"%s header.from=%s"</q>,</td></tr>
+<tr><th id="631">631</th><td>			   hdr_tmp, header_from_sender);</td></tr>
+<tr><th id="632">632</th><td><b>return</b> hdr_tmp;</td></tr>
+<tr><th id="633">633</th><td>}</td></tr>
+<tr><th id="634">634</th><td></td></tr>
+<tr><th id="635">635</th><td><u># endif /* SUPPORT_SPF */</u></td></tr>
+<tr><th id="636">636</th><td><u>#<span data-ppcond="14">endif</span> /* EXPERIMENTAL_DMARC */</u></td></tr>
+<tr><th id="637">637</th><td><i>/* vi: aw ai sw=2</i></td></tr>
+<tr><th id="638">638</th><td><i> */</i></td></tr>
+<tr><th id="639">639</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

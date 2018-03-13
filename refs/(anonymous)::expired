@@ -1,3 +1,18 @@
 <dec f='exim/src/dbstuff.h' l='686' type='BOOL'/>
 <offset>256</offset>
 <doc f='exim/src/dbstuff.h' l='686'>/* Retry time has expired */</doc>
+<use f='exim/src/deliver.c' l='2936' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2943' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='6649' u='r' c='deliver_message'/>
+<use f='exim/src/exim_dbutil.c' l='840' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='841' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='997' u='r' c='main'/>
+<use f='exim/src/retry.c' l='42' u='r' c='retry_ultimate_address_timeout'/>
+<use f='exim/src/retry.c' l='222' u='r' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='229' u='r' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='238' u='r' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='677' u='w' c='retry_update'/>
+<use f='exim/src/retry.c' l='718' u='w' c='retry_update'/>
+<use f='exim/src/retry.c' l='728' u='w' c='retry_update'/>
+<use f='exim/src/retry.c' l='759' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='837' u='r' c='retry_update'/>

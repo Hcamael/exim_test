@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='292' type='uschar *'/>
 <offset>1792</offset>
 <doc f='exim/src/structs.h' l='292'>/* Specific senders */</doc>
+<use f='exim/src/globals.c' l='1199' u='w'/>

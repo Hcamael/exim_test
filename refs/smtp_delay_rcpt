@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='829' type='double'/>
 <doc f='exim/src/globals.h' l='829'>/* Current RCPT delay */</doc>
+<def f='exim/src/globals.c' l='1328' type='double'/>
+<use f='exim/src/smtp_in.c' l='4773' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4978' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4979' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4980' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4981' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4982' u='w' c='smtp_setup_msg'/>

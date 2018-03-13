@@ -1,3 +1,8 @@
 <dec f='exim/src/structs.h' l='596' type='BOOL'/>
 <offset>17</offset>
 <doc f='exim/src/structs.h' l='596'>/* verify failure was postmaster callout */</doc>
+<use f='exim/src/verify.c' l='227' u='w' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='233' u='w' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='605' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='951' u='w' c='do_callout'/>
+<use f='exim/src/smtp_in.c' l='3240' u='r' c='smtp_handle_acl_fail'/>

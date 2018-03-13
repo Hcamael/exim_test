@@ -1,0 +1,5 @@
+<def f='exim/src/ip.c' l='666' ll='669'/>
+<size>16</size>
+<doc f='exim/src/ip.c' l='662'>/*************************************************
+*       Lookup DSCP settings for a socket        *
+*************************************************/</doc>

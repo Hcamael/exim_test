@@ -1,0 +1,5 @@
+<dec f='exim/src/pdkim/pdkim.h' l='126' type='hctx'/>
+<use f='exim/src/pdkim/pdkim.c' l='757' u='a' c='pdkim_update_ctx_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='775' u='a' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='1892' u='a' c='pdkim_set_bodyhash'/>
+<offset>192</offset>

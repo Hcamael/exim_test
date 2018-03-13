@@ -1,2 +1,20 @@
 <dec f='exim/src/globals.h' l='620' type='BOOL'/>
 <doc f='exim/src/globals.h' l='620'>/* TRUE when Exim is wrapping an MUA */</doc>
+<use f='exim/src/deliver.c' l='4300' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4408' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='6901' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7119' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7151' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1007' type='BOOL'/>
+<use f='exim/src/exim.c' l='4277' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4800' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5172' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5677' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5738' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5763' u='r' c='main'/>
+<use f='exim/src/log.c' l='1155' u='r' c='log_write'/>
+<use f='exim/src/readconf.c' l='215' u='a'/>
+<use f='exim/src/readconf.c' l='215' u='a'/>
+<use f='exim/src/readconf.c' l='215' u='a'/>
+<use f='exim/src/readconf.c' l='215' u='a'/>
+<use f='exim/src/receive.c' l='3827' u='r' c='receive_msg'/>

@@ -1,0 +1,4 @@
+<dec f='include/openssl/x509v3.h' l='684'/>
+<doc f='include/openssl/x509v3.h' l='681'>/*
+ * Always check subject name for host match even if subject alt names present
+ */</doc>

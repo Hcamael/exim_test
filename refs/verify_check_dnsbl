@@ -1,1 +1,50 @@
 <dec f='exim/src/functions.h' l='531' type='int verify_check_dnsbl(int , const uschar ** , uschar ** )'/>
+<def f='exim/src/verify.c' l='3669' ll='3861' type='int verify_check_dnsbl(int where, const uschar ** listptr, uschar ** log_msgptr)'/>
+<doc f='exim/src/verify.c' l='3621'>/* This function runs checks against a list of DNS black lists, until one
+matches. Each item on the list can be of the form
+
+  domain=ip-address/key
+
+The domain is the right-most domain that is used for the query, for example,
+blackholes.mail-abuse.org. If the IP address is present, there is a match only
+if the DNS lookup returns a matching IP address. Several addresses may be
+given, comma-separated, for example: x.y.z=127.0.0.1,127.0.0.2.
+
+If no key is given, what is looked up in the domain is the inverted IP address
+of the current client host. If a key is given, it is used to construct the
+domain for the lookup. For example:
+
+  dsn.rfc-ignorant.org/$sender_address_domain
+
+After finding a match in the DNS, the domain is placed in $dnslist_domain, and
+then we check for a TXT record for an error message, and if found, save its
+value in $dnslist_text. We also cache everything in a tree, to optimize
+multiple lookups.
+
+The TXT record is normally looked up in the same domain as the A record, but
+when many lists are combined in a single DNS domain, this will not be a very
+specific message. It is possible to specify a different domain for looking up
+TXT records; this is given before the main domain, comma-separated. For
+example:
+
+  dnslists = http.dnsbl.sorbs.net,dnsbl.sorbs.net=127.0.0.2 : \
+             socks.dnsbl.sorbs.net,dnsbl.sorbs.net=127.0.0.3
+
+The caching ensures that only one lookup in dnsbl.sorbs.net is done.
+
+Note: an address for testing RBL is 192.203.178.39
+Note: an address for testing DUL is 192.203.178.4
+Note: a domain for testing RFCI is example.tld.dsn.rfc-ignorant.org
+
+Arguments:
+  where        the acl type
+  listptr      the domain/address/data list
+  log_msgptr   log message on error
+
+Returns:    OK      successful lookup (i.e. the address is on the list), or
+                      lookup deferred after +include_unknown
+            FAIL    name not found, or no data found for the given type, or
+                      lookup deferred after +exclude_unknown (default)
+            DEFER   lookup failure, if +defer_unknown was set
+*/</doc>
+<use f='exim/src/acl.c' l='3460' u='c' c='acl_check_condition'/>

@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='568' type='unsigned int'/>
 <doc f='exim/src/globals.h' l='568'>/* count of macros */</doc>
+<use f='exim/src/macro.c' l='41' u='w' c='macro_create'/>
+<def f='exim/src/macro_predef.c' l='15' type='unsigned int'/>
+<use f='exim/src/macro_predef.c' l='337' u='r' c='main'/>

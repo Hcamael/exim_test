@@ -1,2 +1,20 @@
 <dec f='exim/src/macros.h' l='1019'/>
 <doc f='exim/src/macros.h' l='1017'>/* Argument for *_getc */</doc>
+<use f='exim/src/smtp_in.c' l='358' u='c'/>
+<use f='exim/src/smtp_in.c' l='1653' u='c'/>
+<use f='exim/src/smtp_in.c' l='2104' u='c'/>
+<use f='exim/src/smtp_in.c' l='3873' u='c'/>
+<use f='exim/src/smtp_in.c' l='5378' u='c'/>
+<use f='exim/src/auths/get_no64_data.c' l='35' u='c'/>
+<use f='exim/src/auths/get_data.c' l='34' u='c'/>
+<use f='exim/src/receive.c' l='628' u='c'/>
+<use f='exim/src/receive.c' l='670' u='c'/>
+<use f='exim/src/receive.c' l='788' u='c'/>
+<use f='exim/src/receive.c' l='922' u='c'/>
+<use f='exim/src/receive.c' l='1040' u='c'/>
+<use f='exim/src/receive.c' l='1785' u='c'/>
+<use f='exim/src/receive.c' l='1859' u='c'/>
+<use f='exim/src/receive.c' l='1862' u='c'/>
+<use f='exim/src/receive.c' l='1893' u='c'/>
+<use f='exim/src/receive.c' l='1988' u='c'/>
+<use f='exim/src/receive.c' l='4101' u='c'/>

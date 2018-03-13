@@ -1,1 +1,21 @@
 <dec f='exim/src/macros.h' l='487' type='62'/>
+<use f='exim/src/deliver.c' l='814' macro='1' u='r'/>
+<use f='exim/src/deliver.c' l='814' macro='1' u='r'/>
+<use f='exim/src/tls-openssl.c' l='1340' macro='1' u='r'/>
+<use f='exim/src/tls-openssl.c' l='1340' macro='1' u='r'/>
+<use f='exim/src/tls-openssl.c' l='1350' macro='1' u='r'/>
+<use f='exim/src/tls-openssl.c' l='1350' macro='1' u='r'/>
+<use f='exim/src/tls-openssl.c' l='1360' macro='1' u='r'/>
+<use f='exim/src/tls-openssl.c' l='1360' macro='1' u='r'/>
+<use f='exim/src/tls-openssl.c' l='1391' macro='1' u='r'/>
+<use f='exim/src/tls-openssl.c' l='1391' macro='1' u='r'/>
+<use f='exim/src/globals.c' l='875'/>
+<use f='exim/src/globals.c' l='875'/>
+<use f='exim/src/globals.c' l='938' macro='1'/>
+<use f='exim/src/globals.c' l='938' macro='1'/>
+<use f='exim/src/globals.c' l='938' macro='1'/>
+<use f='exim/src/globals.c' l='938' macro='1'/>
+<use f='exim/src/smtp_in.c' l='1724' macro='1' u='r'/>
+<use f='exim/src/smtp_in.c' l='1724' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='3914' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='3914' macro='1' u='r'/>

@@ -1,1 +1,10 @@
 <dec f='exim/src/functions.h' l='316' type='uschar * parse_date_time(uschar * str, time_t * t)'/>
+<def f='exim/src/parse.c' l='2045' ll='2079' type='uschar * parse_date_time(uschar * str, time_t * t)'/>
+<doc f='exim/src/parse.c' l='2036'>/* Parse a RFC 2822 date-time and return it in seconds since the epoch.
+
+Arguments:
+  str          pointer to the start of the date-time
+  t            pointer to the parsed time
+
+Returns:       points after the processed date-time or NULL on error
+*/</doc>

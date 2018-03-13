@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='162' type='BOOL'/>
 <offset>896</offset>
 <doc f='exim/src/structs.h' l='162'>/* Initialize groups when setting uid */</doc>
+<use f='exim/src/deliver.c' l='1844' u='r' c='findugid'/>
+<use f='exim/src/globals.c' l='1463' u='w'/>

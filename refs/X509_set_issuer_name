@@ -1,1 +1,2 @@
 <dec f='include/openssl/x509.h' l='620' type='int X509_set_issuer_name(X509 * x, X509_NAME * name)'/>
+<use f='exim/src/tls-openssl.c' l='1015' u='c' c='tls_install_selfsign'/>

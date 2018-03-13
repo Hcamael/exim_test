@@ -2,3 +2,8 @@
 <offset>640</offset>
 <doc f='exim/src/structs.h' l='153'>/**************************************/</doc>
 <doc f='exim/src/structs.h' l='154'>/* )                                  */</doc>
+<use f='exim/src/deliver.c' l='4284' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4288' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4385' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4389' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/globals.c' l='1456' u='w'/>

@@ -1,0 +1,4 @@
+<dec f='exim/src/lookups/lsearch.c' l='14' type='0'/>
+<use f='exim/src/lookups/lsearch.c' l='170' c='internal_lsearch_find'/>
+<use f='exim/src/lookups/lsearch.c' l='326' u='r' c='lsearch_find'/>
+<doc f='exim/src/lookups/lsearch.c' l='14'>/* Literal keys */</doc>

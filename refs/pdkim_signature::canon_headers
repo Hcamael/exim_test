@@ -1,0 +1,10 @@
+<dec f='exim/src/pdkim/pdkim.h' l='149' type='int'/>
+<use f='exim/src/pdkim/pdkim.c' l='558' u='w' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1214' u='r' c='pdkim_create_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1500' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1561' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1594' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1859' u='w' c='pdkim_set_optional'/>
+<offset>160</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='147'>/* (c=x/) Header canonicalization method. Either PDKIM_CANON_SIMPLE
+     or PDKIM_CANON_RELAXED */</doc>

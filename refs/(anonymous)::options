@@ -1,0 +1,5 @@
+<dec f='exim/src/transports/appendfile.h' l='48' type='int'/>
+<dec f='exim/src/transports/pipe.h' l='23' type='int'/>
+<offset>672</offset>
+<dec f='exim/src/transports/lmtp.h' l='14' type='int'/>
+<offset>160</offset>

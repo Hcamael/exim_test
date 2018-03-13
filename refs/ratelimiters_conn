@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='705' type='tree_node *'/>
 <doc f='exim/src/globals.h' l='705'>/* Results of connection ratelimit checks */</doc>
+<def f='exim/src/globals.c' l='1082' type='tree_node *'/>
+<use f='exim/src/acl.c' l='2377' u='a' c='acl_ratelimit'/>

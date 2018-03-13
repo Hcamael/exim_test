@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='461' type='int'/>
 <doc f='exim/src/globals.h' l='461'>/* RDO flags for forbidding things */</doc>
+<def f='exim/src/globals.c' l='733' type='int'/>
+<use f='exim/src/filter.c' l='2311' u='r' c='interpret_commands'/>
+<use f='exim/src/rda.c' l='372' u='r' c='rda_extract'/>
+<use f='exim/src/rda.c' l='385' u='w' c='rda_extract'/>
+<use f='exim/src/rda.c' l='386' u='r' c='rda_extract'/>
+<use f='exim/src/rda.c' l='412' u='w' c='rda_extract'/>
+<use f='exim/src/expand.c' l='2279' u='r' c='eval_condition'/>
+<use f='exim/src/expand.c' l='4213' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='4687' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='4731' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='4967' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='7344' u='r' c='expand_string_internal'/>

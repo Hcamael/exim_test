@@ -1,2 +1,5 @@
 <dec f='include/unistd.h' l='678' type='__uid_t getuid()'/>
 <doc f='include/unistd.h' l='677'>/* Get the real user ID of the calling process.  */</doc>
+<use f='exim/src/debug.c' l='128' u='c' c='debug_print_ids'/>
+<use f='exim/src/exim.c' l='1835' u='c' c='main'/>
+<use f='exim/src/routers/queryprogram.c' l='218' u='c' c='queryprogram_router_entry'/>

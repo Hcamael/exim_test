@@ -1,0 +1,6 @@
+<dec f='exim/src/acl.c' l='53' type='0'/>
+<use f='exim/src/acl.c' l='136'/>
+<use f='exim/src/acl.c' l='2960' c='acl_check_condition'/>
+<doc f='exim/src/acl.c' l='49'>/* ACL condition and modifier codes - keep in step with the table that
+follows.
+down. */</doc>

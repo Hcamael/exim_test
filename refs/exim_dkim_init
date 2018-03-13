@@ -1,0 +1,2 @@
+<dec f='exim/src/pdkim/signing.h' l='88' type='void exim_dkim_init()'/>
+<use f='exim/src/pdkim/pdkim.c' l='1926' u='c' c='pdkim_init'/>

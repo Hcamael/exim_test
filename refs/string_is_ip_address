@@ -1,1 +1,45 @@
 <dec f='exim/src/functions.h' l='466' type='int string_is_ip_address(const uschar * , int * )'/>
+<use f='exim/src/verify.c' l='1860' u='c' c='verify_address'/>
+<use f='exim/src/verify.c' l='2871' u='c' c='check_host'/>
+<use f='exim/src/verify.c' l='3831' u='c' c='verify_check_dnsbl'/>
+<use f='exim/src/smtp_out.c' l='61' u='c' c='smtp_get_interface'/>
+<def f='exim/src/string.c' l='36' ll='148' type='int string_is_ip_address(const uschar * s, int * maskptr)'/>
+<doc f='exim/src/string.c' l='20'>/* This used just to be a regular expression, but with IPv6 things are a bit
+more complicated. If the address contains a colon, it is assumed to be a v6
+address (assuming HAVE_IPV6 is set). If a mask is permitted and one is present,
+and maskptr is not NULL, its offset is placed there.
+
+Arguments:
+  s         a string
+  maskptr   NULL if no mask is permitted to follow
+            otherwise, points to an int where the offset of &apos;/&apos; is placed
+            if there is no / followed by trailing digits, *maskptr is set 0
+
+Returns:    0 if the string is not a textual representation of an IP address
+            4 if it is an IPv4 address
+            6 if it is an IPv6 address
+*/</doc>
+<use f='exim/src/exim.c' l='693' u='c' c='check_port'/>
+<use f='exim/src/smtp_in.c' l='1861' u='c' c='check_helo'/>
+<use f='exim/src/smtp_in.c' l='1863' u='c' c='check_helo'/>
+<use f='exim/src/smtp_in.c' l='1865' u='c' c='check_helo'/>
+<use f='exim/src/lookups/lsearch.c' l='222' u='c' c='internal_lsearch_find'/>
+<use f='exim/src/lookups/lsearch.c' l='378' u='c' c='iplsearch_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='296' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='328' u='c' c='dnsdb_find'/>
+<use f='exim/src/routers/dnslookup.c' l='384' u='c' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='119' u='c' c='rf_lookup_hostlist'/>
+<use f='exim/src/acl.c' l='1371' u='c' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='2774' u='c' c='acl_udpsend'/>
+<use f='exim/src/ip.c' l='375' u='c' c='ip_connectedsocket'/>
+<use f='exim/src/ip.c' l='385' u='c' c='ip_connectedsocket'/>
+<use f='exim/src/expand.c' l='2290' u='c' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2618' u='c' c='eval_condition'/>
+<use f='exim/src/expand.c' l='6678' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6720' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='7410' u='c' c='expand_string_internal'/>
+<use f='exim/src/host.c' l='195' u='c' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='571' u='c' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='746' u='c' c='host_build_ifacelist'/>
+<use f='exim/src/host.c' l='2292' u='c' c='set_address_from_dns'/>
+<use f='exim/src/dns.c' l='757' u='c' c='dns_basic_lookup'/>

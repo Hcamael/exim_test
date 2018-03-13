@@ -1,0 +1,32 @@
+<def f='exim/src/tls-openssl.c' l='376' ll='498' type='int verify_callback(int preverify_ok, X509_STORE_CTX * x509ctx, tls_support * tlsp, BOOL * calledp, BOOL * optionalp)'/>
+<use f='exim/src/tls-openssl.c' l='503' u='c' c='verify_callback_client'/>
+<use f='exim/src/tls-openssl.c' l='510' u='c' c='verify_callback_server'/>
+<doc f='exim/src/tls-openssl.c' l='346'>/* The SSL library does certificate verification if set up to do so. This
+callback has the current yes/no state is in &quot;state&quot;. If verification succeeded,
+we set the certificate-verified flag. If verification failed, what happens
+depends on whether the client is required to present a verifiable certificate
+or not.
+
+If verification is optional, we change the state to yes, but still log the
+verification error. For some reason (it really would help to have proper
+documentation of OpenSSL), this callback function then gets called again, this
+time with state = 1.  We must take care not to set the private verified flag on
+the second time through.
+
+Note: this function is not called if the client fails to present a certificate
+when asked. We get here only if a certificate has been received. Handling of
+optional verification for this case is done when requesting SSL to verify, by
+setting SSL_VERIFY_FAIL_IF_NO_PEER_CERT in the non-optional case.
+
+May be called multiple times for different issues with a certificate, even
+for a given &quot;depth&quot; in the certificate chain.
+
+Arguments:
+  preverify_ok current yes/no state as 1/0
+  x509ctx      certificate information.
+  tlsp         per-direction (client vs. server) support data
+  calledp      has-been-called flag
+  optionalp    verification-is-optional flag
+
+Returns:     0 if verification should fail, otherwise 1
+*/</doc>

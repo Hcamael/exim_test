@@ -1,0 +1,4 @@
+<def f='exim/src/tlscert-openssl.c' l='493' ll='509' type='uschar * fingerprint(X509 * cert, const EVP_MD * fdig)'/>
+<use f='exim/src/tlscert-openssl.c' l='514' u='c' c='tls_cert_fprt_md5'/>
+<use f='exim/src/tlscert-openssl.c' l='520' u='c' c='tls_cert_fprt_sha1'/>
+<use f='exim/src/tlscert-openssl.c' l='526' u='c' c='tls_cert_fprt_sha256'/>

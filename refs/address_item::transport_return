@@ -2,3 +2,48 @@
 <offset>2944</offset>
 <doc f='exim/src/structs.h' l='634'>/* ( contains verify rc in sender verify cache */</doc>
 <doc f='exim/src/structs.h' l='635'>/* result of delivery attempt */</doc>
+<use f='exim/src/deliver.c' l='429' u='w' c='replicate_status'/>
+<use f='exim/src/deliver.c' l='429' u='r' c='replicate_status'/>
+<use f='exim/src/deliver.c' l='1565' u='w' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='2322' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2326' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2362' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2413' u='a' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2480' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2546' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='3046' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3053' u='w' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3073' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3121' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3161' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3165' u='w' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3165' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3169' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3610' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3722' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3780' u='r' c='remote_post_process'/>
+<use f='exim/src/deliver.c' l='3800' u='w' c='remote_post_process'/>
+<use f='exim/src/deliver.c' l='3802' u='r' c='remote_post_process'/>
+<use f='exim/src/deliver.c' l='4059' u='w' c='par_wait'/>
+<use f='exim/src/deliver.c' l='4274' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4924' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='682' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='701' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='799' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='834' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='846' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='866' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='922' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='932' u='r' c='do_callout'/>
+<use f='exim/src/smtp_out.c' l='49' u='w' c='smtp_get_interface'/>
+<use f='exim/src/smtp_out.c' l='63' u='w' c='smtp_get_interface'/>
+<use f='exim/src/smtp_out.c' l='105' u='w' c='smtp_get_port'/>
+<use f='exim/src/smtp_out.c' l='117' u='w' c='smtp_get_port'/>
+<use f='exim/src/smtp_out.c' l='129' u='w' c='smtp_get_port'/>
+<use f='exim/src/globals.c' l='391' u='w'/>
+<use f='exim/src/transports/queuefile.c' l='160' u='w' c='copy_spool_files'/>
+<use f='exim/src/transports/queuefile.c' l='194' u='w' c='queuefile_transport_entry'/>
+<use f='exim/src/transports/queuefile.c' l='209' u='w' c='queuefile_transport_entry'/>
+<use f='exim/src/transports/queuefile.c' l='221' u='w' c='queuefile_transport_entry'/>
+<use f='exim/src/transports/queuefile.c' l='234' u='w' c='queuefile_transport_entry'/>
+<use f='exim/src/transports/queuefile.c' l='261' u='w' c='queuefile_transport_entry'/>

@@ -1,2 +1,11 @@
 <dec f='include/arpa/nameser.h' l='265' type='12'/>
 <doc f='include/arpa/nameser.h' l='265'>/*%&lt; Domain name pointer. */</doc>
+<use f='exim/src/lookups/dnsdb.c' l='63' macro='1'/>
+<use f='exim/src/lookups/dnsdb.c' l='63' macro='1'/>
+<use f='exim/src/lookups/dnsdb.c' l='295' macro='1' u='r'/>
+<use f='exim/src/lookups/dnsdb.c' l='327' macro='1' u='r'/>
+<use f='exim/src/host.c' l='1694' macro='1' u='r'/>
+<use f='exim/src/host.c' l='1719' macro='1' u='r'/>
+<use f='exim/src/host.c' l='1734' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='583' macro='1' c='dns_text_type'/>
+<use f='exim/src/dns.c' l='719' macro='1' u='r'/>

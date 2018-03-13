@@ -1,3 +1,5 @@
 <dec f='include/netdb.h' l='104' type='int'/>
 <offset>128</offset>
 <doc f='include/netdb.h' l='104'>/* Host address type.  */</doc>
+<use f='exim/src/host.c' l='208' u='w' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='265' u='w' c='host_fake_gethostbyname'/>

@@ -1,3 +1,19 @@
 <dec f='include/db.h' l='220' type='void *'/>
 <offset>0</offset>
 <doc f='include/db.h' l='220'>/* Key/data */</doc>
+<use f='exim/src/exim_dbmbuild.c' l='299' macro='1' u='w'/>
+<use f='exim/src/exim_dbmbuild.c' l='327' macro='1' u='w'/>
+<use f='exim/src/exim_dbmbuild.c' l='393' macro='1' u='w'/>
+<use f='exim/src/exim_dbutil.c' l='372' macro='1' u='w'/>
+<use f='exim/src/exim_dbutil.c' l='378' macro='1' u='r'/>
+<use f='exim/src/exim_dbutil.c' l='417' macro='1' u='w'/>
+<use f='exim/src/exim_dbutil.c' l='419' macro='1' u='w'/>
+<use f='exim/src/exim_dbutil.c' l='447' macro='1' u='w'/>
+<use f='exim/src/lookups/dbmdb.c' l='105' macro='1' u='w'/>
+<use f='exim/src/lookups/dbmdb.c' l='110' macro='1' u='r'/>
+<use f='exim/src/dbfn.c' l='307' macro='1' u='w'/>
+<use f='exim/src/dbfn.c' l='313' macro='1' u='r'/>
+<use f='exim/src/dbfn.c' l='352' macro='1' u='w'/>
+<use f='exim/src/dbfn.c' l='354' macro='1' u='w'/>
+<use f='exim/src/dbfn.c' l='382' macro='1' u='w'/>
+<use f='exim/src/dbfn.c' l='420' macro='1' u='r'/>

@@ -1,0 +1,6 @@
+<def f='exim/src/acl.c' l='117' ll='133'/>
+<size>16</size>
+<doc f='exim/src/acl.c' l='112'>/* ACL conditions/modifiers: &quot;delay&quot;, &quot;control&quot;, &quot;continue&quot;, &quot;endpass&quot;,
+&quot;message&quot;, &quot;log_message&quot;, &quot;log_reject_target&quot;, &quot;logwrite&quot;, &quot;queue&quot; and &quot;set&quot; are
+modifiers that look like conditions but always return TRUE. They are used for
+their side effects. */</doc>

@@ -1,1 +1,2 @@
 <dec f='include/openssl/x509.h' l='770' type='int X509_NAME_print_ex(BIO * out, const X509_NAME * nm, int indent, unsigned long flags)'/>
+<use f='exim/src/tlscert-openssl.c' l='190' u='c' c='x509_name_copy'/>

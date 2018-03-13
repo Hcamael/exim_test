@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='565' type='int'/>
 <doc f='exim/src/globals.h' l='565'>/* Max lookup files to cache */</doc>
+<def f='exim/src/globals.c' l='953' type='int'/>
+<use f='exim/src/search.c' l='374' u='r' c='search_open'/>
+<use f='exim/src/readconf.c' l='204' u='a'/>
+<use f='exim/src/readconf.c' l='204' u='a'/>
+<use f='exim/src/readconf.c' l='204' u='a'/>
+<use f='exim/src/readconf.c' l='204' u='a'/>

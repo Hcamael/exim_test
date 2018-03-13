@@ -3,3 +3,4 @@
  * Note: SSL[_CTX]_set_{options,mode} use |= op on the previous value, they
  * cannot be used to clear bits.
  */</doc>
+<use f='exim/src/tls-openssl.c' l='1231' u='c' c='tls_servername_cb'/>

@@ -1,1 +1,17 @@
 <dec f='exim/src/macros.h' l='466' type='41'/>
+<use f='exim/src/deliver.c' l='761' macro='1' u='r'/>
+<use f='exim/src/deliver.c' l='761' macro='1' u='r'/>
+<use f='exim/src/deliver.c' l='4960' macro='1' u='r'/>
+<use f='exim/src/deliver.c' l='4960' macro='1' u='r'/>
+<use f='exim/src/globals.c' l='905' macro='1'/>
+<use f='exim/src/globals.c' l='905' macro='1'/>
+<use f='exim/src/globals.c' l='905' macro='1'/>
+<use f='exim/src/globals.c' l='905' macro='1'/>
+<use f='exim/src/smtp_in.c' l='1704' macro='1' u='r'/>
+<use f='exim/src/smtp_in.c' l='1704' macro='1' u='r'/>
+<use f='exim/src/daemon.c' l='207' macro='1' u='r'/>
+<use f='exim/src/daemon.c' l='207' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='1308' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='1308' macro='1' u='r'/>
+<use f='exim/src/host.c' l='697' macro='1' u='r'/>
+<use f='exim/src/host.c' l='697' macro='1' u='r'/>

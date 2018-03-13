@@ -1,1 +1,2 @@
 <dec f='include/openssl/x509.h' l='540' macro='1' type='X509 * X509_new()'/>
+<use f='exim/src/tls-openssl.c' l='991' u='c' c='tls_install_selfsign'/>

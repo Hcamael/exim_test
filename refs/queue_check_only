@@ -1,1 +1,10 @@
 <dec f='exim/src/functions.h' l='323' type='void queue_check_only()'/>
+<use f='exim/src/exim.c' l='5261' u='c' c='main'/>
+<def f='exim/src/queue.c' l='1415' ll='1448' type='void queue_check_only()'/>
+<doc f='exim/src/queue.c' l='1408'>/* The queue_only_file option forces certain kinds of queueing if a given file
+exists.
+
+Arguments:  none
+Returns:    nothing
+*/</doc>
+<use f='exim/src/daemon.c' l='407' u='c' c='handle_smtp_call'/>

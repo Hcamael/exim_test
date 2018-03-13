@@ -1,2 +1,5 @@
 <dec f='exim/src/structs.h' l='714' type='unsigned int'/>
 <offset>64</offset>
+<use f='exim/src/macro.c' l='40' u='w' c='macro_create'/>
+<use f='exim/src/macro.c' l='48' u='r' c='macro_create'/>
+<use f='exim/src/macro.c' l='48' u='r' c='macro_create'/>

@@ -1,0 +1,17 @@
+<def f='exim/src/tls-openssl.c' l='142' type='char [256]'/>
+<use f='exim/src/tls-openssl.c' l='225' u='r' c='tls_error'/>
+<use f='exim/src/tls-openssl.c' l='226' u='r' c='tls_error'/>
+<use f='exim/src/tls-openssl.c' l='269' u='r' c='rsa_callback'/>
+<use f='exim/src/tls-openssl.c' l='271' c='rsa_callback'/>
+<use f='exim/src/tls-openssl.c' l='916' u='r' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='917' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='1221' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1222' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='2486' u='r' c='tls_refill'/>
+<use f='exim/src/tls-openssl.c' l='2487' c='tls_refill'/>
+<use f='exim/src/tls-openssl.c' l='2668' u='r' c='tls_write'/>
+<use f='exim/src/tls-openssl.c' l='2669' c='tls_write'/>
+<use f='exim/src/tls-openssl.c' l='2780' u='r' c='tls_validate_require_cipher'/>
+<use f='exim/src/tls-openssl.c' l='2781' c='tls_validate_require_cipher'/>
+<use f='exim/src/tls-openssl.c' l='2789' u='r' c='tls_validate_require_cipher'/>
+<use f='exim/src/tls-openssl.c' l='2791' c='tls_validate_require_cipher'/>

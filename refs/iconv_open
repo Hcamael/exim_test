@@ -4,3 +4,4 @@
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */</doc>
+<use f='exim/src/rfc2047.c' l='237' u='c' c='rfc2047_decode2'/>

@@ -1,1 +1,21 @@
 <dec f='include/pcre.h' l='573' type='int pcre_exec(const pcre * , const pcre_extra * , const char * , int , int , int , int * , int )'/>
+<use f='exim/src/header.c' l='414' u='c' c='one_pattern_match'/>
+<use f='exim/src/header.c' l='427' u='c' c='one_pattern_match'/>
+<use f='exim/src/exim.c' l='142' u='c' c='regex_match_and_setup'/>
+<use f='exim/src/exim.c' l='2490' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='2681' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='2872' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='2886' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='3071' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='3272' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='3275' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='3277' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='3109' u='c' c='smtp_message_code'/>
+<use f='exim/src/queue.c' l='563' u='c' c='queue_run'/>
+<use f='exim/src/queue.c' l='584' u='c' c='queue_run'/>
+<use f='exim/src/routers/redirect.c' l='770' u='c' c='redirect_router_entry'/>
+<use f='exim/src/match.c' l='134' u='c' c='check_string'/>
+<use f='exim/src/transports/tf_maildir.c' l='161' u='c' c='maildir_ensure_directories'/>
+<use f='exim/src/transports/tf_maildir.c' l='276' u='c' c='maildir_compute_size'/>
+<use f='exim/src/expand.c' l='5325' u='c' c='expand_string_internal'/>
+<use f='exim/src/dns.c' l='735' u='c' c='dns_basic_lookup'/>

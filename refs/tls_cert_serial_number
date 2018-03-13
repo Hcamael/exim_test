@@ -1,1 +1,6 @@
 <dec f='exim/src/functions.h' l='35' type='uschar * tls_cert_serial_number(void * , uschar * mod)'/>
+<def f='exim/src/tlscert-openssl.c' l='224' ll='240' type='uschar * tls_cert_serial_number(void * cert, uschar * mod)'/>
+<use f='exim/src/expand.c' l='1271' u='a'/>
+<use f='exim/src/expand.c' l='1271' u='a'/>
+<use f='exim/src/expand.c' l='1271' u='a'/>
+<use f='exim/src/expand.c' l='1271' u='a'/>

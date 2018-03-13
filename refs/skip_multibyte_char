@@ -1,0 +1,2 @@
+<def f='exim/src/auths/auth-spa.c' l='778' ll='786' type='size_t skip_multibyte_char(char c)'/>
+<use f='exim/src/auths/auth-spa.c' l='832' u='c' c='strupper'/>

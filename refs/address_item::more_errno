@@ -1,3 +1,20 @@
 <dec f='exim/src/structs.h' l='623' type='int'/>
 <offset>2816</offset>
 <doc f='exim/src/structs.h' l='623'>/* additional error information */</doc>
+<use f='exim/src/deliver.c' l='431' u='w' c='replicate_status'/>
+<use f='exim/src/deliver.c' l='431' u='r' c='replicate_status'/>
+<use f='exim/src/deliver.c' l='1276' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1276' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='2417' u='a' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2485' u='a' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='3152' u='w' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3614' u='a' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3614' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3615' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4928' u='a' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4928' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4929' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='1496' u='w' c='copy_error'/>
+<use f='exim/src/verify.c' l='1496' u='r' c='copy_error'/>
+<use f='exim/src/globals.c' l='385' u='w'/>
+<use f='exim/src/retry.c' l='302' u='r' c='retry_add_item'/>

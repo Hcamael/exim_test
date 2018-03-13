@@ -1,0 +1,3 @@
+<def f='exim/src/tls-openssl.c' l='1751' ll='1762' type='BOOL chain_from_pem_file(const uschar * file, struct stack_st_X509 * verify_stack)'/>
+<use f='exim/src/tls-openssl.c' l='1824' u='c' c='setup_certs'/>
+<doc f='exim/src/tls-openssl.c' l='1749'>/* Load certs from file, return TRUE on success */</doc>

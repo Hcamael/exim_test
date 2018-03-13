@@ -1,2 +1,16 @@
 <dec f='include/arpa/nameser.h' l='254' type='1'/>
 <doc f='include/arpa/nameser.h' l='254'>/*%&lt; Host address. */</doc>
+<use f='exim/src/verify.c' l='3385' macro='1' u='r'/>
+<use f='exim/src/verify.c' l='3411' macro='1' u='r'/>
+<use f='exim/src/lookups/dnsdb.c' l='53' macro='1'/>
+<use f='exim/src/lookups/dnsdb.c' l='53' macro='1'/>
+<use f='exim/src/lookups/dnsdb.c' l='387' macro='1' u='r'/>
+<use f='exim/src/lookups/dnsdb.c' l='550' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='1279' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='1491' macro='1' u='r'/>
+<use f='exim/src/host.c' l='237' macro='1' u='r'/>
+<use f='exim/src/host.c' l='2332' macro='1' u='r'/>
+<use f='exim/src/host.c' l='2332' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='577' macro='1' c='dns_text_type'/>
+<use f='exim/src/dns.c' l='757' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='1191' macro='1' u='r'/>

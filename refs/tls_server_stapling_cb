@@ -1,0 +1,11 @@
+<dec f='exim/src/tls-openssl.c' l='195' type='int tls_server_stapling_cb(SSL * s, void * arg)'/>
+<use f='exim/src/tls-openssl.c' l='1246' u='r' c='tls_servername_cb'/>
+<def f='exim/src/tls-openssl.c' l='1284' ll='1314' type='int tls_server_stapling_cb(SSL * s, void * arg)'/>
+<use f='exim/src/tls-openssl.c' l='1641' u='r' c='tls_init'/>
+<doc f='exim/src/tls-openssl.c' l='1276'>/* Called when acting as server during the TLS session setup if the client
+requests OCSP information with a Certificate Status Request.
+
+Documentation via openssl s_server.c and the Apache patch from the OpenSSL
+project.
+
+*/</doc>

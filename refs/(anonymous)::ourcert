@@ -1,3 +1,22 @@
 <dec f='exim/src/globals.h' l='93' type='void *'/>
 <offset>320</offset>
 <doc f='exim/src/globals.h' l='93'>/* Certificate we presented, binary */</doc>
+<use f='exim/src/deliver.c' l='1614' u='w' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1630' u='a' c='post_process_one'/>
+<use f='exim/src/tls-openssl.c' l='2090' u='w' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2429' u='w' c='tls_client_start'/>
+<use f='exim/src/globals.c' l='114' u='w'/>
+<use f='exim/src/globals.c' l='131' u='w'/>
+<use f='exim/src/smtp_in.c' l='2383' u='w' c='smtp_start_session'/>
+<use f='exim/src/spool_in.c' l='310' u='a' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='635' u='a' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='732' u='a'/>
+<use f='exim/src/expand.c' l='732' u='a'/>
+<use f='exim/src/expand.c' l='745' u='a'/>
+<use f='exim/src/expand.c' l='745' u='a'/>
+<use f='exim/src/expand.c' l='732' u='a'/>
+<use f='exim/src/expand.c' l='732' u='a'/>
+<use f='exim/src/expand.c' l='745' u='a'/>
+<use f='exim/src/expand.c' l='745' u='a'/>
+<use f='exim/src/spool_out.c' l='247' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='249' u='r' c='spool_write_header'/>

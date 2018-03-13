@@ -1,1 +1,12 @@
 <dec f='exim/src/functions.h' l='538' type='int verify_check_given_host(uschar ** , host_item * )'/>
+<use f='exim/src/verify.c' l='695' u='c' c='do_callout'/>
+<def f='exim/src/verify.c' l='3196' ll='3200' type='int verify_check_given_host(uschar ** listptr, host_item * host)'/>
+<doc f='exim/src/verify.c' l='3193'>/*************************************************
+*      Check the given host item matches a list  *
+*************************************************/</doc>
+<use f='exim/src/smtp_out.c' l='267' u='c' c='smtp_sock_connect'/>
+<use f='exim/src/tls-openssl.c' l='2130' u='c' c='tls_client_basic_ctx_init'/>
+<use f='exim/src/tls-openssl.c' l='2133' u='c' c='tls_client_basic_ctx_init'/>
+<use f='exim/src/tls-openssl.c' l='2143' u='c' c='tls_client_basic_ctx_init'/>
+<use f='exim/src/tls-openssl.c' l='2277' u='c' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2284' u='c' c='tls_client_start'/>

@@ -1,2 +1,36 @@
 <dec f='exim/src/dbfunctions.h' l='11' type='void dbfn_close(open_db * )'/>
 <doc f='exim/src/dbfunctions.h' l='9'>/* Functions for reading/writing exim database files */</doc>
+<use f='exim/src/deliver.c' l='2979' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='6682' u='c' c='deliver_message'/>
+<use f='exim/src/verify.c' l='183' u='c' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='199' u='c' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='214' u='c' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='235' u='c' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='243' u='c' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='269' u='c' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='289' u='c' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='353' u='c' c='cache_callout_write'/>
+<def f='exim/src/exim_dbutil.c' l='333' ll='338' type='void dbfn_close(open_db * dbblock)'/>
+<use f='exim/src/exim_dbutil.c' l='787' u='c' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='797' u='c' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='965' u='c' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1069' u='c' c='main'/>
+<doc f='exim/src/exim_dbutil.c' l='326'>/* Closing a file automatically unlocks it, so after closing the database, just
+close the lock file.
+
+Argument: a pointer to an open database block
+Returns:  nothing
+*/</doc>
+<use f='exim/src/acl.c' l='2691' u='c' c='acl_ratelimit'/>
+<use f='exim/src/retry.c' l='182' u='c' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='927' u='c' c='retry_update'/>
+<def f='exim/src/dbfn.c' l='261' ll='267' type='void dbfn_close(open_db * dbblock)'/>
+<doc f='exim/src/dbfn.c' l='254'>/* Closing a file automatically unlocks it, so after closing the database, just
+close the lock file.
+
+Argument: a pointer to an open database block
+Returns:  nothing
+*/</doc>
+<use f='exim/src/enq.c' l='61' u='c' c='enq_start'/>
+<use f='exim/src/enq.c' l='76' u='c' c='enq_start'/>
+<use f='exim/src/enq.c' l='119' u='c' c='enq_end'/>

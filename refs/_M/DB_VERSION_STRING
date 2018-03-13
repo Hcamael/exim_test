@@ -1,3 +1,9 @@
 <dec f='include/db.h' l='50'/>
 <use f='exim/src/dbstuff.h' l='107' u='a'/>
 <use f='exim/src/dbfunctions.h' l='25' u='a'/>
+<use f='exim/src/exim_dbmbuild.c' l='62' u='a'/>
+<use f='exim/src/exim_dbutil.c' l='54' u='a'/>
+<use f='exim/src/exim.c' l='749' u='a'/>
+<use f='exim/src/exim.c' l='752' u='c'/>
+<use f='exim/src/exim.c' l='757' u='c'/>
+<use f='exim/src/dbfn.c' l='44' u='a'/>

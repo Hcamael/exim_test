@@ -1,2 +1,9 @@
 <dec f='include/unistd.h' l='340' type='__off64_t lseek(int __fd, __off64_t __offset, int __whence)'/>
 <dec f='include/unistd.h' l='348' type='__off64_t lseek64(int __fd, __off64_t __offset, int __whence)'/>
+<use f='exim/src/deliver.c' l='5663' u='c' c='deliver_message'/>
+<use f='exim/src/dkim_transport.c' l='76' u='c' c='dkt_send_file'/>
+<use f='exim/src/dkim_transport.c' l='274' u='c' c='dkt_via_kfile'/>
+<use f='exim/src/transports/tf_maildir.c' l='214' u='c' c='maildir_record_length'/>
+<use f='exim/src/transports/queuefile.c' l='79' u='c' c='copy_spool_file'/>
+<use f='exim/src/expand.c' l='1850' u='c' c='find_variable'/>
+<use f='exim/src/receive.c' l='3642' u='c' c='receive_msg'/>

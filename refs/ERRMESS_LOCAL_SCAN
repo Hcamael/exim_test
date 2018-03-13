@@ -1,2 +1,5 @@
 <dec f='exim/src/macros.h' l='246' type='10'/>
 <doc f='exim/src/macros.h' l='246'>/* Rejected by local scan */</doc>
+<use f='exim/src/moan.c' l='191' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='441' c='moan_to_sender'/>
+<use f='exim/src/receive.c' l='3789' u='r' c='receive_msg'/>

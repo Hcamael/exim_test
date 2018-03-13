@@ -1,0 +1,852 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>rewrite.c source code [exim/src/rewrite.c] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="where_list_block "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/rewrite.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='rewrite.c.html'>rewrite.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Functions concerned with rewriting headers */</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><u>#include <a href="exim.h.html">"exim.h"</a></u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><i  data-doc="rrname">/* Names for testing rewriting */</i></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><em>static</em> <em>const</em> <em>char</em> *<dfn class="tu decl def" id="rrname" title='rrname' data-type='const char *[8]' data-ref="rrname">rrname</dfn>[] = {</td></tr>
+<tr><th id="16">16</th><td>  <q>"  sender"</q>,</td></tr>
+<tr><th id="17">17</th><td>  <q>"    from"</q>,</td></tr>
+<tr><th id="18">18</th><td>  <q>"      to"</q>,</td></tr>
+<tr><th id="19">19</th><td>  <q>"      cc"</q>,</td></tr>
+<tr><th id="20">20</th><td>  <q>"     bcc"</q>,</td></tr>
+<tr><th id="21">21</th><td>  <q>"reply-to"</q>,</td></tr>
+<tr><th id="22">22</th><td>  <q>"env-from"</q>,</td></tr>
+<tr><th id="23">23</th><td>  <q>"  env-to"</q></td></tr>
+<tr><th id="24">24</th><td>};</td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><i>/* Structure and table for finding source of address for debug printing */</i></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="where_list_block" title='where_list_block' data-ref="where_list_block"><a class="type" href="#where_list_block" title='where_list_block' data-ref="where_list_block">where_list_block</a></dfn> {</td></tr>
+<tr><th id="29">29</th><td>  <em>int</em> <dfn class="tu decl field" id="where_list_block::bit" title='where_list_block::bit' data-type='int' data-ref="where_list_block::bit">bit</dfn>;</td></tr>
+<tr><th id="30">30</th><td>  <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="tu decl field" id="where_list_block::string" title='where_list_block::string' data-type='const uschar *' data-ref="where_list_block::string">string</dfn>;</td></tr>
+<tr><th id="31">31</th><td>} <dfn class="typedef" id="where_list_block" title='where_list_block' data-type='struct where_list_block' data-ref="where_list_block">where_list_block</dfn>;</td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><em>static</em> <a class="typedef" href="#where_list_block" title='where_list_block' data-type='struct where_list_block' data-ref="where_list_block">where_list_block</a> <dfn class="tu decl def" id="where_list" title='where_list' data-type='where_list_block [10]' data-ref="where_list">where_list</dfn>[] = {</td></tr>
+<tr><th id="34">34</th><td>  { <a class="macro" href="macros.h.html#766" title="0x0001" data-ref="_M/rewrite_sender">rewrite_sender</a>,  <a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a><q>"sender:"</q> },</td></tr>
+<tr><th id="35">35</th><td>  { <a class="macro" href="macros.h.html#767" title="0x0002" data-ref="_M/rewrite_from">rewrite_from</a>,    <a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a><q>"from:"</q> },</td></tr>
+<tr><th id="36">36</th><td>  { <a class="macro" href="macros.h.html#768" title="0x0004" data-ref="_M/rewrite_to">rewrite_to</a>,      <a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a><q>"to:"</q> },</td></tr>
+<tr><th id="37">37</th><td>  { <a class="macro" href="macros.h.html#769" title="0x0008" data-ref="_M/rewrite_cc">rewrite_cc</a>,      <a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a><q>"cc:"</q> },</td></tr>
+<tr><th id="38">38</th><td>  { <a class="macro" href="macros.h.html#770" title="0x0010" data-ref="_M/rewrite_bcc">rewrite_bcc</a>,     <a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a><q>"bcc:"</q> },</td></tr>
+<tr><th id="39">39</th><td>  { <a class="macro" href="macros.h.html#771" title="0x0020" data-ref="_M/rewrite_replyto">rewrite_replyto</a>, <a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a><q>"reply-to:"</q> },</td></tr>
+<tr><th id="40">40</th><td>  { <a class="macro" href="macros.h.html#774" title="0x0040" data-ref="_M/rewrite_envfrom">rewrite_envfrom</a>, <a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a><q>"env-from"</q> },</td></tr>
+<tr><th id="41">41</th><td>  { <a class="macro" href="macros.h.html#775" title="0x0080" data-ref="_M/rewrite_envto">rewrite_envto</a>,   <a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a><q>"env-to"</q> },</td></tr>
+<tr><th id="42">42</th><td>  { <a class="macro" href="macros.h.html#780" title="0x0100" data-ref="_M/rewrite_smtp">rewrite_smtp</a>,    <a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a><q>"smtp recipient"</q> },</td></tr>
+<tr><th id="43">43</th><td>  { <a class="macro" href="macros.h.html#780" title="0x0100" data-ref="_M/rewrite_smtp">rewrite_smtp</a>|<a class="macro" href="macros.h.html#781" title="0x0200" data-ref="_M/rewrite_smtp_sender">rewrite_smtp_sender</a>, <a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a><q>"smtp sender"</q> }</td></tr>
+<tr><th id="44">44</th><td>};</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><em>static</em> <em>int</em> <dfn class="tu decl def" id="where_list_size" title='where_list_size' data-type='int' data-ref="where_list_size">where_list_size</dfn> = <b>sizeof</b>(<a class="tu ref" href="#where_list" title='where_list' data-use='r' data-ref="where_list">where_list</a>)/<b>sizeof</b>(<a class="typedef" href="#where_list_block" title='where_list_block' data-type='struct where_list_block' data-ref="where_list_block">where_list_block</a>);</td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="51">51</th><td><i>*            Ensure an address is qualified      *</i></td></tr>
+<tr><th id="52">52</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><i>/*</i></td></tr>
+<tr><th id="55">55</th><td><i>Arguments:</i></td></tr>
+<tr><th id="56">56</th><td><i>  s              address to check</i></td></tr>
+<tr><th id="57">57</th><td><i>  is_recipient   TRUE if a recipient address; FALSE if a sender address</i></td></tr>
+<tr><th id="58">58</th><td><i></i></td></tr>
+<tr><th id="59">59</th><td><i>Returns:         fully-qualified address</i></td></tr>
+<tr><th id="60">60</th><td><i>*/</i></td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *</td></tr>
+<tr><th id="63">63</th><td><dfn class="decl def fn" id="rewrite_address_qualify" title='rewrite_address_qualify' data-ref="rewrite_address_qualify">rewrite_address_qualify</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="1s" title='s' data-type='uschar *' data-ref="1s">s</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col2 decl" id="2is_recipient" title='is_recipient' data-type='BOOL' data-ref="2is_recipient">is_recipient</dfn>)</td></tr>
+<tr><th id="64">64</th><td>{</td></tr>
+<tr><th id="65">65</th><td><b>return</b> (<a class="ref fn" href="functions.h.html#parse_find_at" title='parse_find_at' data-ref="parse_find_at">parse_find_at</a>(<a class="local col1 ref" href="#1s" title='s' data-ref="1s">s</a>) != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)? <a class="local col1 ref" href="#1s" title='s' data-ref="1s">s</a> :</td></tr>
+<tr><th id="66">66</th><td>  <a class="ref fn" href="local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%s@%s"</q>, <a class="local col1 ref" href="#1s" title='s' data-ref="1s">s</a>,</td></tr>
+<tr><th id="67">67</th><td>    <a class="local col2 ref" href="#2is_recipient" title='is_recipient' data-ref="2is_recipient">is_recipient</a>? <a class="ref" href="globals.h.html#qualify_domain_recipient" title='qualify_domain_recipient' data-ref="qualify_domain_recipient">qualify_domain_recipient</a> : <a class="ref" href="globals.h.html#qualify_domain_sender" title='qualify_domain_sender' data-ref="qualify_domain_sender">qualify_domain_sender</a>);</td></tr>
+<tr><th id="68">68</th><td>}</td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="73">73</th><td><i>*               Rewrite a single address         *</i></td></tr>
+<tr><th id="74">74</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><i>/* The yield is the input address if there is no rewriting to be done. Assume</i></td></tr>
+<tr><th id="77">77</th><td><i>the input is a valid address, except in the case of SMTP-time rewriting, which</i></td></tr>
+<tr><th id="78">78</th><td><i>is handled specially. When this function is called while processing filter and</i></td></tr>
+<tr><th id="79">79</th><td><i>forward files, the uid may be that of the user. Ensure it is reset while</i></td></tr>
+<tr><th id="80">80</th><td><i>expanding a replacement, in case that involves file lookups.</i></td></tr>
+<tr><th id="81">81</th><td><i></i></td></tr>
+<tr><th id="82">82</th><td><i>Arguments:</i></td></tr>
+<tr><th id="83">83</th><td><i>  s              address to rewrite</i></td></tr>
+<tr><th id="84">84</th><td><i>  flag           indicates where this address comes from; it must match the</i></td></tr>
+<tr><th id="85">85</th><td><i>                   flags in the rewriting rule</i></td></tr>
+<tr><th id="86">86</th><td><i>  whole          if not NULL, set TRUE if any rewriting rule contained the</i></td></tr>
+<tr><th id="87">87</th><td><i>                   "whole" bit and it is a header that is being rewritten</i></td></tr>
+<tr><th id="88">88</th><td><i>  add_header     if TRUE and rewriting occurs, add an "X-rewrote-xxx" header</i></td></tr>
+<tr><th id="89">89</th><td><i>                   if headers are in existence; this should be TRUE only when</i></td></tr>
+<tr><th id="90">90</th><td><i>                   a message is being received, not during delivery</i></td></tr>
+<tr><th id="91">91</th><td><i>  name           name of header, for use when adding X-rewrote-xxxx</i></td></tr>
+<tr><th id="92">92</th><td><i>  rewrite_rules  chain of rewriting rules</i></td></tr>
+<tr><th id="93">93</th><td><i></i></td></tr>
+<tr><th id="94">94</th><td><i>Returns:         new address if rewritten; the input address if no change;</i></td></tr>
+<tr><th id="95">95</th><td><i>                 for a header rewrite, if the "whole" bit is set, the entire</i></td></tr>
+<tr><th id="96">96</th><td><i>                 rewritten address is returned, not just the active bit.</i></td></tr>
+<tr><th id="97">97</th><td><i>*/</i></td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *</td></tr>
+<tr><th id="100">100</th><td><dfn class="decl def fn" id="rewrite_one" title='rewrite_one' data-ref="rewrite_one">rewrite_one</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="3s" title='s' data-type='uschar *' data-ref="3s">s</dfn>, <em>int</em> <dfn class="local col4 decl" id="4flag" title='flag' data-type='int' data-ref="4flag">flag</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> *<dfn class="local col5 decl" id="5whole" title='whole' data-type='BOOL *' data-ref="5whole">whole</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col6 decl" id="6add_header" title='add_header' data-type='BOOL' data-ref="6add_header">add_header</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col7 decl" id="7name" title='name' data-type='uschar *' data-ref="7name">name</dfn>,</td></tr>
+<tr><th id="101">101</th><td>  <a class="typedef" href="structs.h.html#rewrite_rule" title='rewrite_rule' data-type='struct rewrite_rule' data-ref="rewrite_rule">rewrite_rule</a> *<dfn class="local col8 decl" id="8rewrite_rules" title='rewrite_rules' data-type='rewrite_rule *' data-ref="8rewrite_rules">rewrite_rules</dfn>)</td></tr>
+<tr><th id="102">102</th><td>{</td></tr>
+<tr><th id="103">103</th><td><a class="typedef" href="structs.h.html#rewrite_rule" title='rewrite_rule' data-type='struct rewrite_rule' data-ref="rewrite_rule">rewrite_rule</a> *<dfn class="local col9 decl" id="9rule" title='rule' data-type='rewrite_rule *' data-ref="9rule">rule</dfn>;</td></tr>
+<tr><th id="104">104</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col0 decl" id="10yield" title='yield' data-type='uschar *' data-ref="10yield">yield</dfn> = <a class="local col3 ref" href="#3s" title='s' data-ref="3s">s</a>;</td></tr>
+<tr><th id="105">105</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="11subject" title='subject' data-type='uschar *' data-ref="11subject">subject</dfn> = <a class="local col3 ref" href="#3s" title='s' data-ref="3s">s</a>;</td></tr>
+<tr><th id="106">106</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="12domain" title='domain' data-type='uschar *' data-ref="12domain">domain</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="107">107</th><td><a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col3 decl" id="13done" title='done' data-type='BOOL' data-ref="13done">done</dfn> = <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="108">108</th><td><em>int</em> <dfn class="local col4 decl" id="14rule_number" title='rule_number' data-type='int' data-ref="14rule_number">rule_number</dfn> = <var>1</var>;</td></tr>
+<tr><th id="109">109</th><td><em>int</em> <dfn class="local col5 decl" id="15yield_start" title='yield_start' data-type='int' data-ref="15yield_start">yield_start</dfn> = <var>0</var>, <dfn class="local col6 decl" id="16yield_end" title='yield_end' data-type='int' data-ref="16yield_end">yield_end</dfn> = <var>0</var>;</td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td><b>if</b> (<a class="local col5 ref" href="#5whole" title='whole' data-ref="5whole">whole</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) *<a class="local col5 ref" href="#5whole" title='whole' data-ref="5whole">whole</a> = <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td><i>/* Scan the rewriting rules */</i></td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><b>for</b> (<a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a> = <a class="local col8 ref" href="#8rewrite_rules" title='rewrite_rules' data-ref="8rewrite_rules">rewrite_rules</a>;</td></tr>
+<tr><th id="116">116</th><td>     <a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> &amp;&amp; !<a class="local col3 ref" href="#13done" title='done' data-ref="13done">done</a>;</td></tr>
+<tr><th id="117">117</th><td>     <a class="local col4 ref" href="#14rule_number" title='rule_number' data-ref="14rule_number">rule_number</a>++, <a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a> = <a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::next" title='rewrite_rule::next' data-ref="rewrite_rule::next">next</a>)</td></tr>
+<tr><th id="118">118</th><td>  {</td></tr>
+<tr><th id="119">119</th><td>  <em>int</em> <dfn class="local col7 decl" id="17start" title='start' data-type='int' data-ref="17start">start</dfn>, <dfn class="local col8 decl" id="18end" title='end' data-type='int' data-ref="18end">end</dfn>, <dfn class="local col9 decl" id="19pdomain" title='pdomain' data-type='int' data-ref="19pdomain">pdomain</dfn>;</td></tr>
+<tr><th id="120">120</th><td>  <em>int</em> <dfn class="local col0 decl" id="20count" title='count' data-type='int' data-ref="20count">count</dfn> = <var>0</var>;</td></tr>
+<tr><th id="121">121</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="21save_localpart" title='save_localpart' data-type='uschar *' data-ref="21save_localpart">save_localpart</dfn>;</td></tr>
+<tr><th id="122">122</th><td>  <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="22save_domain" title='save_domain' data-type='const uschar *' data-ref="22save_domain">save_domain</dfn>;</td></tr>
+<tr><th id="123">123</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="23error" title='error' data-type='uschar *' data-ref="23error">error</dfn>, *<dfn class="local col4 decl" id="24new" title='new' data-type='uschar *' data-ref="24new">new</dfn>, *<dfn class="local col5 decl" id="25newparsed" title='newparsed' data-type='uschar *' data-ref="25newparsed">newparsed</dfn>;</td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td>  <i>/* Ensure that the flag matches the flags in the rule. */</i></td></tr>
+<tr><th id="126">126</th><td></td></tr>
+<tr><th id="127">127</th><td>  <b>if</b> ((<a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::flags" title='rewrite_rule::flags' data-ref="rewrite_rule::flags">flags</a> &amp; <a class="local col4 ref" href="#4flag" title='flag' data-ref="4flag">flag</a>) == <var>0</var>) <b>continue</b>;</td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td>  <i>/* Come back here for a repeat after a successful rewrite. We do this</i></td></tr>
+<tr><th id="130">130</th><td><i>  only so many times. */</i></td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td>  <dfn class="lbl" id="26REPEAT_RULE" data-ref="26REPEAT_RULE">REPEAT_RULE</dfn>:</td></tr>
+<tr><th id="133">133</th><td></td></tr>
+<tr><th id="134">134</th><td>  <i>/* If this is an SMTP-time rewrite, the pattern must be a regex and</i></td></tr>
+<tr><th id="135">135</th><td><i>  the subject may have any structure. No local part or domain variables</i></td></tr>
+<tr><th id="136">136</th><td><i>  can be set for the expansion. We expand the pattern in order to be consistent</i></td></tr>
+<tr><th id="137">137</th><td><i>  with the other kinds of rewrite, where expansion happens inside</i></td></tr>
+<tr><th id="138">138</th><td><i>  match_address_list(). */</i></td></tr>
+<tr><th id="139">139</th><td></td></tr>
+<tr><th id="140">140</th><td>  <b>if</b> ((<a class="local col4 ref" href="#4flag" title='flag' data-ref="4flag">flag</a> &amp; <a class="macro" href="macros.h.html#780" title="0x0100" data-ref="_M/rewrite_smtp">rewrite_smtp</a>) != <var>0</var>)</td></tr>
+<tr><th id="141">141</th><td>    {</td></tr>
+<tr><th id="142">142</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col7 decl" id="27key" title='key' data-type='uschar *' data-ref="27key">key</dfn> = <a class="ref fn" href="local_scan.h.html#expand_string" title='expand_string' data-ref="expand_string">expand_string</a>(<a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::key" title='rewrite_rule::key' data-ref="rewrite_rule::key">key</a>);</td></tr>
+<tr><th id="143">143</th><td>    <b>if</b> (<a class="local col7 ref" href="#27key" title='key' data-ref="27key">key</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="144">144</th><td>      {</td></tr>
+<tr><th id="145">145</th><td>      <b>if</b> (!<a class="ref" href="globals.h.html#expand_string_forcedfail" title='expand_string_forcedfail' data-ref="expand_string_forcedfail">expand_string_forcedfail</a>)</td></tr>
+<tr><th id="146">146</th><td>        <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>|<a class="macro" href="macros.h.html#792" title="2" data-ref="_M/LOG_PANIC">LOG_PANIC</a>, <q>"failed to expand \"%s\" while "</q></td></tr>
+<tr><th id="147">147</th><td>          <q>"checking for SMTP rewriting: %s"</q>, <a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::key" title='rewrite_rule::key' data-ref="rewrite_rule::key">key</a>, <a class="ref" href="local_scan.h.html#expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</a>);</td></tr>
+<tr><th id="148">148</th><td>      <b>continue</b>;</td></tr>
+<tr><th id="149">149</th><td>      }</td></tr>
+<tr><th id="150">150</th><td>    <b>if</b> (<a class="ref fn" href="functions.h.html#match_check_string" title='match_check_string' data-ref="match_check_string">match_check_string</a>(<a class="local col1 ref" href="#11subject" title='subject' data-ref="11subject">subject</a>, <a class="local col7 ref" href="#27key" title='key' data-ref="27key">key</a>, <var>0</var>, <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) != <a class="macro" href="macros.h.html#283" title="0" data-ref="_M/OK">OK</a>)</td></tr>
+<tr><th id="151">151</th><td>      <b>continue</b>;</td></tr>
+<tr><th id="152">152</th><td>    <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a> = <a class="ref fn" href="local_scan.h.html#expand_string" title='expand_string' data-ref="expand_string">expand_string</a>(<a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::replacement" title='rewrite_rule::replacement' data-ref="rewrite_rule::replacement">replacement</a>);</td></tr>
+<tr><th id="153">153</th><td>    }</td></tr>
+<tr><th id="154">154</th><td></td></tr>
+<tr><th id="155">155</th><td>  <i>/* All other rewrites expect the input to be a valid address, so local part</i></td></tr>
+<tr><th id="156">156</th><td><i>  and domain variables can be set for expansion. For the first rule, to be</i></td></tr>
+<tr><th id="157">157</th><td><i>  applied to this address, domain will be NULL and needs to be set. */</i></td></tr>
+<tr><th id="158">158</th><td></td></tr>
+<tr><th id="159">159</th><td>  <b>else</b></td></tr>
+<tr><th id="160">160</th><td>    {</td></tr>
+<tr><th id="161">161</th><td>    <b>if</b> (<a class="local col2 ref" href="#12domain" title='domain' data-ref="12domain">domain</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="local col2 ref" href="#12domain" title='domain' data-ref="12domain">domain</a> = <a class="macro" href="mytypes.h.html#109" title="(unsigned char *) strrchr((const char *)(subject),&apos;@&apos;)" data-ref="_M/Ustrrchr">Ustrrchr</a>(<a class="local col1 ref" href="#11subject" title='subject' data-ref="11subject">subject</a>, <kbd>'@'</kbd>) + <var>1</var>;</td></tr>
+<tr><th id="162">162</th><td></td></tr>
+<tr><th id="163">163</th><td>    <i>/* Use the general function for matching an address against a list (here</i></td></tr>
+<tr><th id="164">164</th><td><i>    just one item, so use the "impossible value" separator UCHAR_MAX+1). */</i></td></tr>
+<tr><th id="165">165</th><td></td></tr>
+<tr><th id="166">166</th><td>    <b>if</b> (<a class="ref fn" href="functions.h.html#match_address_list" title='match_address_list' data-ref="match_address_list">match_address_list</a>(<a class="local col1 ref" href="#11subject" title='subject' data-ref="11subject">subject</a>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>, <a class="macro" href="mytypes.h.html#71" title="(const unsigned char **)" data-ref="_M/CUSS">CUSS</a> &amp;(<a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::key" title='rewrite_rule::key' data-ref="rewrite_rule::key">key</a>), <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <var>0</var>,</td></tr>
+<tr><th id="167">167</th><td>        <span class="macro" title="(127*2 +1)" data-ref="_M/UCHAR_MAX">UCHAR_MAX</span> + <var>1</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) != <a class="macro" href="macros.h.html#283" title="0" data-ref="_M/OK">OK</a>)</td></tr>
+<tr><th id="168">168</th><td>      <b>continue</b>;</td></tr>
+<tr><th id="169">169</th><td></td></tr>
+<tr><th id="170">170</th><td>    <i>/* The source address matches, and numerical variables have been</i></td></tr>
+<tr><th id="171">171</th><td><i>    set up. If the replacement string consists of precisely "*" then no</i></td></tr>
+<tr><th id="172">172</th><td><i>    rewriting is required for this address - the behaviour is as for "fail"</i></td></tr>
+<tr><th id="173">173</th><td><i>    in the replacement expansion, but assuming the quit flag. */</i></td></tr>
+<tr><th id="174">174</th><td></td></tr>
+<tr><th id="175">175</th><td>    <b>if</b> (<a class="macro" href="mytypes.h.html#100" title="__extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p ((const char *)(rule-&gt;replacement)) &amp;&amp; __builtin_constant_p ((const char *)(&quot;*&quot;)) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(rule-&gt;replacement)), __s2_len = __builtin_strlen ((const char *)(&quot;*&quot;)), (!((size_t)(const void *)(((const char *)(rule-&gt;replacement)) + 1) - (size_t)(const void *)((const char *)(rule-&gt;replacement)) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)(((const char *)(&quot;*&quot;)) + 1) - (size_t)(const void *)((const char *)(&quot;*&quot;)) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp ((const char *)(rule-&gt;replacement), (const char *)(&quot;*&quot;)) : (__builtin_constant_p ((const char *)(rule-&gt;replacement)) &amp;&amp; ((size_t)(const void *)(((const char *)(rule-&gt;replacement)) + 1) - (size_t)(const void *)((const char *)(rule-&gt;replacement)) == 1) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(rule-&gt;replacement)), __s1_len &lt; 4) ? (__builtin_constant_p ((const char *)(&quot;*&quot;)) &amp;&amp; ((size_t)(const void *)(((const char *)(&quot;*&quot;)) + 1) - (size_t)(const void *)((const char *)(&quot;*&quot;)) == 1) ? __builtin_strcmp ((const char *)(rule-&gt;replacement), (const char *)(&quot;*&quot;)) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(&quot;*&quot;)); int __result = (((const unsigned char *) (const char *) ((const char *)(rule-&gt;replacement)))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(rule-&gt;replacement)))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(rule-&gt;replacement)))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(rule-&gt;replacement)))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p ((const char *)(&quot;*&quot;)) &amp;&amp; ((size_t)(const void *)(((const char *)(&quot;*&quot;)) + 1) - (size_t)(const void *)((const char *)(&quot;*&quot;)) == 1) &amp;&amp; (__s2_len = __builtin_strlen ((const char *)(&quot;*&quot;)), __s2_len &lt; 4) ? (__builtin_constant_p ((const char *)(rule-&gt;replacement)) &amp;&amp; ((size_t)(const void *)(((const char *)(rule-&gt;replacement)) + 1) - (size_t)(const void *)((const char *)(rule-&gt;replacement)) == 1) ? __builtin_strcmp ((const char *)(rule-&gt;replacement), (const char *)(&quot;*&quot;)) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(rule-&gt;replacement)); int __result = (((const unsigned char *) (const char *) ((const char *)(&quot;*&quot;)))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(&quot;*&quot;)))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(&quot;*&quot;)))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(&quot;*&quot;)))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp ((const char *)(rule-&gt;replacement), (const char *)(&quot;*&quot;))))); })" data-ref="_M/Ustrcmp">Ustrcmp</a>(<a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::replacement" title='rewrite_rule::replacement' data-ref="rewrite_rule::replacement">replacement</a>, <q>"*"</q>) == <var>0</var>) <b>break</b>;</td></tr>
+<tr><th id="176">176</th><td></td></tr>
+<tr><th id="177">177</th><td>    <i>/* Otherwise, expand the replacement string. Set $local_part and $domain to</i></td></tr>
+<tr><th id="178">178</th><td><i>    the appropriate values, restoring whatever value they previously had</i></td></tr>
+<tr><th id="179">179</th><td><i>    afterwards. */</i></td></tr>
+<tr><th id="180">180</th><td></td></tr>
+<tr><th id="181">181</th><td>    <a class="local col1 ref" href="#21save_localpart" title='save_localpart' data-ref="21save_localpart">save_localpart</a> = <a class="ref" href="globals.h.html#deliver_localpart" title='deliver_localpart' data-ref="deliver_localpart">deliver_localpart</a>;</td></tr>
+<tr><th id="182">182</th><td>    <a class="local col2 ref" href="#22save_domain" title='save_domain' data-ref="22save_domain">save_domain</a> = <a class="ref" href="globals.h.html#deliver_domain" title='deliver_domain' data-ref="deliver_domain">deliver_domain</a>;</td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td>    <i>/* We have subject pointing to "localpart@domain" and domain pointing to</i></td></tr>
+<tr><th id="185">185</th><td><i>    the domain. Temporarily terminate the local part so that it can be</i></td></tr>
+<tr><th id="186">186</th><td><i>    set up as an expansion variable */</i></td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td>    <a class="local col2 ref" href="#12domain" title='domain' data-ref="12domain">domain</a>[-<var>1</var>] = <var>0</var>;</td></tr>
+<tr><th id="189">189</th><td>    <a class="ref" href="globals.h.html#deliver_localpart" title='deliver_localpart' data-ref="deliver_localpart">deliver_localpart</a> = <a class="local col1 ref" href="#11subject" title='subject' data-ref="11subject">subject</a>;</td></tr>
+<tr><th id="190">190</th><td>    <a class="ref" href="globals.h.html#deliver_domain" title='deliver_domain' data-ref="deliver_domain">deliver_domain</a> = <a class="local col2 ref" href="#12domain" title='domain' data-ref="12domain">domain</a>;</td></tr>
+<tr><th id="191">191</th><td></td></tr>
+<tr><th id="192">192</th><td>    <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a> = <a class="ref fn" href="local_scan.h.html#expand_string" title='expand_string' data-ref="expand_string">expand_string</a>(<a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::replacement" title='rewrite_rule::replacement' data-ref="rewrite_rule::replacement">replacement</a>);</td></tr>
+<tr><th id="193">193</th><td></td></tr>
+<tr><th id="194">194</th><td>    <a class="local col2 ref" href="#12domain" title='domain' data-ref="12domain">domain</a>[-<var>1</var>] = <kbd>'@'</kbd>;</td></tr>
+<tr><th id="195">195</th><td>    <a class="ref" href="globals.h.html#deliver_localpart" title='deliver_localpart' data-ref="deliver_localpart">deliver_localpart</a> = <a class="local col1 ref" href="#21save_localpart" title='save_localpart' data-ref="21save_localpart">save_localpart</a>;</td></tr>
+<tr><th id="196">196</th><td>    <a class="ref" href="globals.h.html#deliver_domain" title='deliver_domain' data-ref="deliver_domain">deliver_domain</a> = <a class="local col2 ref" href="#22save_domain" title='save_domain' data-ref="22save_domain">save_domain</a>;</td></tr>
+<tr><th id="197">197</th><td>    }</td></tr>
+<tr><th id="198">198</th><td></td></tr>
+<tr><th id="199">199</th><td>  <i>/* If the expansion failed with the "forcedfail" flag, don't generate</i></td></tr>
+<tr><th id="200">200</th><td><i>  an error - just give up on this rewriting rule. If the "q" flag is set,</i></td></tr>
+<tr><th id="201">201</th><td><i>  give up altogether. For other expansion failures we have a configuration</i></td></tr>
+<tr><th id="202">202</th><td><i>  error. */</i></td></tr>
+<tr><th id="203">203</th><td></td></tr>
+<tr><th id="204">204</th><td>  <b>if</b> (<a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="205">205</th><td>    {</td></tr>
+<tr><th id="206">206</th><td>    <b>if</b> (<a class="ref" href="globals.h.html#expand_string_forcedfail" title='expand_string_forcedfail' data-ref="expand_string_forcedfail">expand_string_forcedfail</a>)</td></tr>
+<tr><th id="207">207</th><td>      { <b>if</b> ((<a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::flags" title='rewrite_rule::flags' data-ref="rewrite_rule::flags">flags</a> &amp; <a class="macro" href="macros.h.html#786" title="0x2000" data-ref="_M/rewrite_quit">rewrite_quit</a>) != <var>0</var>) <b>break</b>; <b>else</b> <b>continue</b>; }</td></tr>
+<tr><th id="208">208</th><td></td></tr>
+<tr><th id="209">209</th><td>    <a class="ref" href="local_scan.h.html#expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</a> = <a class="ref fn" href="functions.h.html#expand_hide_passwords" title='expand_hide_passwords' data-ref="expand_hide_passwords">expand_hide_passwords</a>(<a class="ref" href="local_scan.h.html#expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</a>);</td></tr>
+<tr><th id="210">210</th><td></td></tr>
+<tr><th id="211">211</th><td>    <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>|<a class="macro" href="macros.h.html#792" title="2" data-ref="_M/LOG_PANIC">LOG_PANIC</a>, <q>"Expansion of %s failed while rewriting: "</q></td></tr>
+<tr><th id="212">212</th><td>      <q>"%s"</q>, <a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::replacement" title='rewrite_rule::replacement' data-ref="rewrite_rule::replacement">replacement</a>, <a class="ref" href="local_scan.h.html#expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</a>);</td></tr>
+<tr><th id="213">213</th><td>    <b>break</b>;</td></tr>
+<tr><th id="214">214</th><td>    }</td></tr>
+<tr><th id="215">215</th><td></td></tr>
+<tr><th id="216">216</th><td>  <i>/* Check the what has been generated is a valid RFC 2822 address. Only</i></td></tr>
+<tr><th id="217">217</th><td><i>  envelope from or SMTP sender is permitted to be rewritten as &lt;&gt;.*/</i></td></tr>
+<tr><th id="218">218</th><td></td></tr>
+<tr><th id="219">219</th><td>  <a class="local col5 ref" href="#25newparsed" title='newparsed' data-ref="25newparsed">newparsed</a> = <a class="ref fn" href="functions.h.html#parse_extract_address" title='parse_extract_address' data-ref="parse_extract_address">parse_extract_address</a>(<a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a>, &amp;<a class="local col3 ref" href="#23error" title='error' data-ref="23error">error</a>, &amp;<a class="local col7 ref" href="#17start" title='start' data-ref="17start">start</a>, &amp;<a class="local col8 ref" href="#18end" title='end' data-ref="18end">end</a>, &amp;<a class="local col9 ref" href="#19pdomain" title='pdomain' data-ref="19pdomain">pdomain</a>,</td></tr>
+<tr><th id="220">220</th><td>    <a class="local col4 ref" href="#4flag" title='flag' data-ref="4flag">flag</a> == <a class="macro" href="macros.h.html#774" title="0x0040" data-ref="_M/rewrite_envfrom">rewrite_envfrom</a> || <a class="local col4 ref" href="#4flag" title='flag' data-ref="4flag">flag</a> == (<a class="macro" href="macros.h.html#780" title="0x0100" data-ref="_M/rewrite_smtp">rewrite_smtp</a>|<a class="macro" href="macros.h.html#781" title="0x0200" data-ref="_M/rewrite_smtp_sender">rewrite_smtp_sender</a>));</td></tr>
+<tr><th id="221">221</th><td></td></tr>
+<tr><th id="222">222</th><td>  <b>if</b> (<a class="local col5 ref" href="#25newparsed" title='newparsed' data-ref="25newparsed">newparsed</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="223">223</th><td>    {</td></tr>
+<tr><th id="224">224</th><td>    <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>|<a class="macro" href="macros.h.html#792" title="2" data-ref="_M/LOG_PANIC">LOG_PANIC</a>, <q>"Rewrite of %s yielded unparseable "</q></td></tr>
+<tr><th id="225">225</th><td>      <q>"address: %s in address %s"</q>, <a class="local col1 ref" href="#11subject" title='subject' data-ref="11subject">subject</a>, <a class="local col3 ref" href="#23error" title='error' data-ref="23error">error</a>, <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a>);</td></tr>
+<tr><th id="226">226</th><td>    <b>break</b>;   <i>/* Give up on this address */</i></td></tr>
+<tr><th id="227">227</th><td>    }</td></tr>
+<tr><th id="228">228</th><td></td></tr>
+<tr><th id="229">229</th><td>  <i>/* A non-null unqualified address can be qualified if requested. Otherwise,</i></td></tr>
+<tr><th id="230">230</th><td><i>  this is an error unless it's the empty address in circumstances where that is</i></td></tr>
+<tr><th id="231">231</th><td><i>  permitted. */</i></td></tr>
+<tr><th id="232">232</th><td></td></tr>
+<tr><th id="233">233</th><td>  <b>if</b> (<a class="local col9 ref" href="#19pdomain" title='pdomain' data-ref="19pdomain">pdomain</a> == <var>0</var> &amp;&amp; (*<a class="local col5 ref" href="#25newparsed" title='newparsed' data-ref="25newparsed">newparsed</a> != <var>0</var> ||</td></tr>
+<tr><th id="234">234</th><td>      (<a class="local col4 ref" href="#4flag" title='flag' data-ref="4flag">flag</a> != <a class="macro" href="macros.h.html#774" title="0x0040" data-ref="_M/rewrite_envfrom">rewrite_envfrom</a> &amp;&amp; <a class="local col4 ref" href="#4flag" title='flag' data-ref="4flag">flag</a> != (<a class="macro" href="macros.h.html#780" title="0x0100" data-ref="_M/rewrite_smtp">rewrite_smtp</a>|<a class="macro" href="macros.h.html#781" title="0x0200" data-ref="_M/rewrite_smtp_sender">rewrite_smtp_sender</a>))))</td></tr>
+<tr><th id="235">235</th><td>    {</td></tr>
+<tr><th id="236">236</th><td>    <b>if</b> ((<a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::flags" title='rewrite_rule::flags' data-ref="rewrite_rule::flags">flags</a> &amp; <a class="macro" href="macros.h.html#782" title="0x0400" data-ref="_M/rewrite_qualify">rewrite_qualify</a>) != <var>0</var>)</td></tr>
+<tr><th id="237">237</th><td>      {</td></tr>
+<tr><th id="238">238</th><td>      <a class="local col5 ref" href="#25newparsed" title='newparsed' data-ref="25newparsed">newparsed</a> = <a class="ref fn" href="#rewrite_address_qualify" title='rewrite_address_qualify' data-ref="rewrite_address_qualify">rewrite_address_qualify</a>(<a class="local col5 ref" href="#25newparsed" title='newparsed' data-ref="25newparsed">newparsed</a>, <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>);</td></tr>
+<tr><th id="239">239</th><td>      <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a> = <a class="ref fn" href="local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%.*s%s%.*s"</q>, <a class="local col7 ref" href="#17start" title='start' data-ref="17start">start</a>, <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a>, <a class="local col5 ref" href="#25newparsed" title='newparsed' data-ref="25newparsed">newparsed</a>,</td></tr>
+<tr><th id="240">240</th><td>        <a class="macro" href="mytypes.h.html#104" title="(int)strlen((const char *)(new))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a>) - <a class="local col8 ref" href="#18end" title='end' data-ref="18end">end</a>, <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a> + <a class="local col8 ref" href="#18end" title='end' data-ref="18end">end</a>);</td></tr>
+<tr><th id="241">241</th><td>      <a class="local col8 ref" href="#18end" title='end' data-ref="18end">end</a> = <a class="local col7 ref" href="#17start" title='start' data-ref="17start">start</a> + <a class="macro" href="mytypes.h.html#104" title="(int)strlen((const char *)(newparsed))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col5 ref" href="#25newparsed" title='newparsed' data-ref="25newparsed">newparsed</a>);</td></tr>
+<tr><th id="242">242</th><td>      }</td></tr>
+<tr><th id="243">243</th><td>    <b>else</b></td></tr>
+<tr><th id="244">244</th><td>      {</td></tr>
+<tr><th id="245">245</th><td>      <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>|<a class="macro" href="macros.h.html#792" title="2" data-ref="_M/LOG_PANIC">LOG_PANIC</a>, <q>"Rewrite of %s yielded unqualified "</q></td></tr>
+<tr><th id="246">246</th><td>        <q>"address \"%s\""</q>, <a class="local col1 ref" href="#11subject" title='subject' data-ref="11subject">subject</a>, <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a>);</td></tr>
+<tr><th id="247">247</th><td>      <b>break</b>;   <i>/* Give up on this address */</i></td></tr>
+<tr><th id="248">248</th><td>      }</td></tr>
+<tr><th id="249">249</th><td>    }</td></tr>
+<tr><th id="250">250</th><td></td></tr>
+<tr><th id="251">251</th><td>  <i>/* We have a validly rewritten address */</i></td></tr>
+<tr><th id="252">252</th><td></td></tr>
+<tr><th id="253">253</th><td>  <b>if</b> (<a class="macro" href="macros.h.html#495" title="(((log_selector)[( (Li_address_rewrite) / 32)] &amp; (1 &lt;&lt; (Li_address_rewrite) % 32)) != 0)" data-ref="_M/LOGGING">LOGGING</a>(address_rewrite) || (<a class="ref" href="local_scan.h.html#debug_selector" title='debug_selector' data-ref="debug_selector">debug_selector</a> &amp; <a class="enum" href="macros.h.html#400" title='D_rewrite' data-ref="D_rewrite">D_rewrite</a>) != <var>0</var>)</td></tr>
+<tr><th id="254">254</th><td>    {</td></tr>
+<tr><th id="255">255</th><td>    <em>int</em> <dfn class="local col8 decl" id="28i" title='i' data-type='int' data-ref="28i">i</dfn>;</td></tr>
+<tr><th id="256">256</th><td>    <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col9 decl" id="29where" title='where' data-type='const uschar *' data-ref="29where">where</dfn> = <a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a><q>"?"</q>;</td></tr>
+<tr><th id="257">257</th><td></td></tr>
+<tr><th id="258">258</th><td>    <b>for</b> (<a class="local col8 ref" href="#28i" title='i' data-ref="28i">i</a> = <var>0</var>; <a class="local col8 ref" href="#28i" title='i' data-ref="28i">i</a> &lt; <a class="tu ref" href="#where_list_size" title='where_list_size' data-use='r' data-ref="where_list_size">where_list_size</a>; <a class="local col8 ref" href="#28i" title='i' data-ref="28i">i</a>++)</td></tr>
+<tr><th id="259">259</th><td>      {</td></tr>
+<tr><th id="260">260</th><td>      <b>if</b> (<a class="local col4 ref" href="#4flag" title='flag' data-ref="4flag">flag</a> == <a class="tu ref" href="#where_list" title='where_list' data-use='m' data-ref="where_list">where_list</a>[<a class="local col8 ref" href="#28i" title='i' data-ref="28i">i</a>].<a class="tu ref field" href="#where_list_block::bit" title='where_list_block::bit' data-use='r' data-ref="where_list_block::bit">bit</a>)</td></tr>
+<tr><th id="261">261</th><td>        {</td></tr>
+<tr><th id="262">262</th><td>        <a class="local col9 ref" href="#29where" title='where' data-ref="29where">where</a> = <a class="tu ref" href="#where_list" title='where_list' data-use='m' data-ref="where_list">where_list</a>[<a class="local col8 ref" href="#28i" title='i' data-ref="28i">i</a>].<a class="tu ref field" href="#where_list_block::string" title='where_list_block::string' data-use='r' data-ref="where_list_block::string">string</a>;</td></tr>
+<tr><th id="263">263</th><td>        <b>break</b>;</td></tr>
+<tr><th id="264">264</th><td>        }</td></tr>
+<tr><th id="265">265</th><td>      }</td></tr>
+<tr><th id="266">266</th><td>    <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<a class="enum" href="macros.h.html#440" title='L_address_rewrite' data-ref="L_address_rewrite">L_address_rewrite</a>,</td></tr>
+<tr><th id="267">267</th><td>           <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"\"%s\" from %s rewritten as \"%s\" by rule %d"</q>,</td></tr>
+<tr><th id="268">268</th><td>           <a class="local col0 ref" href="#10yield" title='yield' data-ref="10yield">yield</a>, <a class="local col9 ref" href="#29where" title='where' data-ref="29where">where</a>, <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a>, <a class="local col4 ref" href="#14rule_number" title='rule_number' data-ref="14rule_number">rule_number</a>);</td></tr>
+<tr><th id="269">269</th><td>    }</td></tr>
+<tr><th id="270">270</th><td></td></tr>
+<tr><th id="271">271</th><td>  <i>/* A header will only actually be added if header_last is non-NULL,</i></td></tr>
+<tr><th id="272">272</th><td><i>  i.e. during message reception or delivery, but add_header should not</i></td></tr>
+<tr><th id="273">273</th><td><i>  be set TRUE during delivery, as otherwise multiple instances of the header</i></td></tr>
+<tr><th id="274">274</th><td><i>  can fill up the -H file and make it embarrassingly large. We don't need</i></td></tr>
+<tr><th id="275">275</th><td><i>  to set header_rewritten because the -H file always gets written at the end</i></td></tr>
+<tr><th id="276">276</th><td><i>  of message reception. */</i></td></tr>
+<tr><th id="277">277</th><td></td></tr>
+<tr><th id="278">278</th><td>  <b>if</b> (<a class="local col6 ref" href="#6add_header" title='add_header' data-ref="6add_header">add_header</a>)</td></tr>
+<tr><th id="279">279</th><td>    <a class="ref fn" href="local_scan.h.html#header_add" title='header_add' data-ref="header_add">header_add</a>(<a class="macro" href="macros.h.html#655" title="&apos;*&apos;" data-ref="_M/htype_old">htype_old</a>, <q>"X-rewrote-%s: %s\n"</q>, <a class="local col7 ref" href="#7name" title='name' data-ref="7name">name</a>, <a class="local col1 ref" href="#11subject" title='subject' data-ref="11subject">subject</a>);</td></tr>
+<tr><th id="280">280</th><td></td></tr>
+<tr><th id="281">281</th><td>  <i>/* Handle the case when replacement of the whole address is possible.</i></td></tr>
+<tr><th id="282">282</th><td><i>  This happens only when whole is not NULL and we are rewriting a header.</i></td></tr>
+<tr><th id="283">283</th><td><i>  If *whole is already TRUE it means that a previous rule had the w</i></td></tr>
+<tr><th id="284">284</th><td><i>  flag set and so we must preserve the non-active portion of the current</i></td></tr>
+<tr><th id="285">285</th><td><i>  subject unless the current rule also has the w flag set. */</i></td></tr>
+<tr><th id="286">286</th><td></td></tr>
+<tr><th id="287">287</th><td>  <b>if</b> (<a class="local col5 ref" href="#5whole" title='whole' data-ref="5whole">whole</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> &amp;&amp; (<a class="local col4 ref" href="#4flag" title='flag' data-ref="4flag">flag</a> &amp; <a class="macro" href="macros.h.html#772" title="0x003F" data-ref="_M/rewrite_all_headers">rewrite_all_headers</a>) != <var>0</var>)</td></tr>
+<tr><th id="288">288</th><td>    {</td></tr>
+<tr><th id="289">289</th><td>    <i>/* Current rule has the w flag set. We must ensure the phrase parts</i></td></tr>
+<tr><th id="290">290</th><td><i>    are syntactically valid if they are present. */</i></td></tr>
+<tr><th id="291">291</th><td></td></tr>
+<tr><th id="292">292</th><td>    <b>if</b> ((<a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::flags" title='rewrite_rule::flags' data-ref="rewrite_rule::flags">flags</a> &amp; <a class="macro" href="macros.h.html#785" title="0x1000" data-ref="_M/rewrite_whole">rewrite_whole</a>) != <var>0</var>)</td></tr>
+<tr><th id="293">293</th><td>      {</td></tr>
+<tr><th id="294">294</th><td>      <b>if</b> (<a class="local col7 ref" href="#17start" title='start' data-ref="17start">start</a> &gt; <var>0</var> &amp;&amp; <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a>[<a class="local col7 ref" href="#17start" title='start' data-ref="17start">start</a>-<var>1</var>] == <kbd>'&lt;'</kbd>)</td></tr>
+<tr><th id="295">295</th><td>        {</td></tr>
+<tr><th id="296">296</th><td>        <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col0 decl" id="30p1" title='p1' data-type='uschar *' data-ref="30p1">p1</dfn> = <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a> + <a class="local col7 ref" href="#17start" title='start' data-ref="17start">start</a> - <var>1</var>;</td></tr>
+<tr><th id="297">297</th><td>        <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="31p2" title='p2' data-type='uschar *' data-ref="31p2">p2</dfn> = <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a> + <a class="local col8 ref" href="#18end" title='end' data-ref="18end">end</a> + <var>1</var>;</td></tr>
+<tr><th id="298">298</th><td>        <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="32pf1" title='pf1' data-type='const uschar *' data-ref="32pf1">pf1</dfn>, *<dfn class="local col3 decl" id="33pf2" title='pf2' data-type='const uschar *' data-ref="33pf2">pf2</dfn>;</td></tr>
+<tr><th id="299">299</th><td>        <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col4 decl" id="34buff1" title='buff1' data-type='uschar [256]' data-ref="34buff1">buff1</dfn>[<var>256</var>], <dfn class="local col5 decl" id="35buff2" title='buff2' data-type='uschar [256]' data-ref="35buff2">buff2</dfn>[<var>256</var>];</td></tr>
+<tr><th id="300">300</th><td></td></tr>
+<tr><th id="301">301</th><td>        <b>while</b> (<a class="local col0 ref" href="#30p1" title='p1' data-ref="30p1">p1</a> &gt; <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a> &amp;&amp; <a class="local col0 ref" href="#30p1" title='p1' data-ref="30p1">p1</a>[-<var>1</var>] == <kbd>' '</kbd>) <a class="local col0 ref" href="#30p1" title='p1' data-ref="30p1">p1</a>--;</td></tr>
+<tr><th id="302">302</th><td>        <a class="local col2 ref" href="#32pf1" title='pf1' data-ref="32pf1">pf1</a> = <a class="ref fn" href="functions.h.html#parse_fix_phrase" title='parse_fix_phrase' data-ref="parse_fix_phrase">parse_fix_phrase</a>(<a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a>, <a class="local col0 ref" href="#30p1" title='p1' data-ref="30p1">p1</a> - <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a>, <a class="local col4 ref" href="#34buff1" title='buff1' data-ref="34buff1">buff1</a>, <b>sizeof</b>(<a class="local col4 ref" href="#34buff1" title='buff1' data-ref="34buff1">buff1</a>));</td></tr>
+<tr><th id="303">303</th><td>        <b>while</b> (*<a class="local col1 ref" href="#31p2" title='p2' data-ref="31p2">p2</a> == <kbd>' '</kbd>) <a class="local col1 ref" href="#31p2" title='p2' data-ref="31p2">p2</a>++;</td></tr>
+<tr><th id="304">304</th><td>        <a class="local col3 ref" href="#33pf2" title='pf2' data-ref="33pf2">pf2</a> = <a class="ref fn" href="functions.h.html#parse_fix_phrase" title='parse_fix_phrase' data-ref="parse_fix_phrase">parse_fix_phrase</a>(<a class="local col1 ref" href="#31p2" title='p2' data-ref="31p2">p2</a>, <a class="macro" href="mytypes.h.html#104" title="(int)strlen((const char *)(p2))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col1 ref" href="#31p2" title='p2' data-ref="31p2">p2</a>), <a class="local col5 ref" href="#35buff2" title='buff2' data-ref="35buff2">buff2</a>, <b>sizeof</b>(<a class="local col5 ref" href="#35buff2" title='buff2' data-ref="35buff2">buff2</a>));</td></tr>
+<tr><th id="305">305</th><td></td></tr>
+<tr><th id="306">306</th><td>        <i>/* Note that pf1 and pf2 are NOT necessarily buff1 and buff2. For</i></td></tr>
+<tr><th id="307">307</th><td><i>        a non-RFC 2047 phrase that does not need to be RFC 2822 quoted, they</i></td></tr>
+<tr><th id="308">308</th><td><i>        will be buff1+1 and buff2+1. */</i></td></tr>
+<tr><th id="309">309</th><td></td></tr>
+<tr><th id="310">310</th><td>        <a class="local col7 ref" href="#17start" title='start' data-ref="17start">start</a> = <a class="macro" href="mytypes.h.html#104" title="(int)strlen((const char *)(pf1))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col2 ref" href="#32pf1" title='pf1' data-ref="32pf1">pf1</a>) + <a class="local col7 ref" href="#17start" title='start' data-ref="17start">start</a> + <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a> - <a class="local col0 ref" href="#30p1" title='p1' data-ref="30p1">p1</a>;</td></tr>
+<tr><th id="311">311</th><td>        <a class="local col8 ref" href="#18end" title='end' data-ref="18end">end</a> = <a class="local col7 ref" href="#17start" title='start' data-ref="17start">start</a> + <a class="macro" href="mytypes.h.html#104" title="(int)strlen((const char *)(newparsed))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col5 ref" href="#25newparsed" title='newparsed' data-ref="25newparsed">newparsed</a>);</td></tr>
+<tr><th id="312">312</th><td>        <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a> = <a class="ref fn" href="local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%s%.*s%s"</q>, <a class="local col2 ref" href="#32pf1" title='pf1' data-ref="32pf1">pf1</a>, (<em>int</em>)(<a class="local col1 ref" href="#31p2" title='p2' data-ref="31p2">p2</a> - <a class="local col0 ref" href="#30p1" title='p1' data-ref="30p1">p1</a>), <a class="local col0 ref" href="#30p1" title='p1' data-ref="30p1">p1</a>, <a class="local col3 ref" href="#33pf2" title='pf2' data-ref="33pf2">pf2</a>);</td></tr>
+<tr><th id="313">313</th><td>        }</td></tr>
+<tr><th id="314">314</th><td></td></tr>
+<tr><th id="315">315</th><td>      <i>/* Now accept the whole thing */</i></td></tr>
+<tr><th id="316">316</th><td></td></tr>
+<tr><th id="317">317</th><td>      <a class="local col0 ref" href="#10yield" title='yield' data-ref="10yield">yield</a> = <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a>;</td></tr>
+<tr><th id="318">318</th><td>      <a class="local col5 ref" href="#15yield_start" title='yield_start' data-ref="15yield_start">yield_start</a> = <a class="local col7 ref" href="#17start" title='start' data-ref="17start">start</a>;</td></tr>
+<tr><th id="319">319</th><td>      <a class="local col6 ref" href="#16yield_end" title='yield_end' data-ref="16yield_end">yield_end</a> = <a class="local col8 ref" href="#18end" title='end' data-ref="18end">end</a>;</td></tr>
+<tr><th id="320">320</th><td>      <a class="local col1 ref" href="#11subject" title='subject' data-ref="11subject">subject</a> = <a class="local col5 ref" href="#25newparsed" title='newparsed' data-ref="25newparsed">newparsed</a>;</td></tr>
+<tr><th id="321">321</th><td>      *<a class="local col5 ref" href="#5whole" title='whole' data-ref="5whole">whole</a> = <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="322">322</th><td>      }</td></tr>
+<tr><th id="323">323</th><td></td></tr>
+<tr><th id="324">324</th><td>    <i>/* Current rule does not have the w flag set; if not previously</i></td></tr>
+<tr><th id="325">325</th><td><i>    done any whole rewriting, behave in non-whole manner. */</i></td></tr>
+<tr><th id="326">326</th><td></td></tr>
+<tr><th id="327">327</th><td>    <b>else</b> <b>if</b> (!*<a class="local col5 ref" href="#5whole" title='whole' data-ref="5whole">whole</a>) <b>goto</b> <a class="lbl" href="#36NEVER_WHOLE" data-ref="36NEVER_WHOLE">NEVER_WHOLE</a>;</td></tr>
+<tr><th id="328">328</th><td></td></tr>
+<tr><th id="329">329</th><td>    <i>/* Current rule does not have the w flag set, but a previous</i></td></tr>
+<tr><th id="330">330</th><td><i>    rule did rewrite the whole address. Thus yield and subject will be</i></td></tr>
+<tr><th id="331">331</th><td><i>    different. Preserve the previous non-active part of the address. */</i></td></tr>
+<tr><th id="332">332</th><td></td></tr>
+<tr><th id="333">333</th><td>    <b>else</b></td></tr>
+<tr><th id="334">334</th><td>      {</td></tr>
+<tr><th id="335">335</th><td>      <a class="local col1 ref" href="#11subject" title='subject' data-ref="11subject">subject</a> = <a class="local col5 ref" href="#25newparsed" title='newparsed' data-ref="25newparsed">newparsed</a>;</td></tr>
+<tr><th id="336">336</th><td>      <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a> = <a class="ref fn" href="local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%.*s%s%n%s"</q>,</td></tr>
+<tr><th id="337">337</th><td>         <a class="local col5 ref" href="#15yield_start" title='yield_start' data-ref="15yield_start">yield_start</a>, <a class="local col0 ref" href="#10yield" title='yield' data-ref="10yield">yield</a>, <a class="local col1 ref" href="#11subject" title='subject' data-ref="11subject">subject</a>, &amp;<a class="local col8 ref" href="#18end" title='end' data-ref="18end">end</a>, <a class="local col0 ref" href="#10yield" title='yield' data-ref="10yield">yield</a> + <a class="local col6 ref" href="#16yield_end" title='yield_end' data-ref="16yield_end">yield_end</a>);</td></tr>
+<tr><th id="338">338</th><td>      <a class="local col6 ref" href="#16yield_end" title='yield_end' data-ref="16yield_end">yield_end</a> = <a class="local col8 ref" href="#18end" title='end' data-ref="18end">end</a>;</td></tr>
+<tr><th id="339">339</th><td>      <a class="local col0 ref" href="#10yield" title='yield' data-ref="10yield">yield</a> = <a class="local col4 ref" href="#24new" title='new' data-ref="24new">new</a>;</td></tr>
+<tr><th id="340">340</th><td>      }</td></tr>
+<tr><th id="341">341</th><td>    }</td></tr>
+<tr><th id="342">342</th><td></td></tr>
+<tr><th id="343">343</th><td>  <i>/* Rule just rewrites active part, or handling an envelope. This</i></td></tr>
+<tr><th id="344">344</th><td><i>  code is obeyed only when all rules so far have not done "whole"</i></td></tr>
+<tr><th id="345">345</th><td><i>  replacement. */</i></td></tr>
+<tr><th id="346">346</th><td></td></tr>
+<tr><th id="347">347</th><td>  <b>else</b></td></tr>
+<tr><th id="348">348</th><td>    {</td></tr>
+<tr><th id="349">349</th><td>    <dfn class="lbl" id="36NEVER_WHOLE" data-ref="36NEVER_WHOLE">NEVER_WHOLE</dfn>:</td></tr>
+<tr><th id="350">350</th><td>    <a class="local col1 ref" href="#11subject" title='subject' data-ref="11subject">subject</a> = <a class="local col0 ref" href="#10yield" title='yield' data-ref="10yield">yield</a> = <a class="local col5 ref" href="#25newparsed" title='newparsed' data-ref="25newparsed">newparsed</a>;</td></tr>
+<tr><th id="351">351</th><td>    }</td></tr>
+<tr><th id="352">352</th><td></td></tr>
+<tr><th id="353">353</th><td>  <a class="local col2 ref" href="#12domain" title='domain' data-ref="12domain">domain</a> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;    <i>/* Reset for next rule */</i></td></tr>
+<tr><th id="354">354</th><td></td></tr>
+<tr><th id="355">355</th><td>  <i>/* If no further rewrites are to be done, set the done flag. This allows</i></td></tr>
+<tr><th id="356">356</th><td><i>  repeats of the current rule if configured before breaking the loop. */</i></td></tr>
+<tr><th id="357">357</th><td></td></tr>
+<tr><th id="358">358</th><td>  <b>if</b> ((<a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::flags" title='rewrite_rule::flags' data-ref="rewrite_rule::flags">flags</a> &amp; <a class="macro" href="macros.h.html#786" title="0x2000" data-ref="_M/rewrite_quit">rewrite_quit</a>) != <var>0</var>) <a class="local col3 ref" href="#13done" title='done' data-ref="13done">done</a> = <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="359">359</th><td></td></tr>
+<tr><th id="360">360</th><td>  <i>/* Allow the current rule to be applied up to 10 times if</i></td></tr>
+<tr><th id="361">361</th><td><i>  requested. */</i></td></tr>
+<tr><th id="362">362</th><td></td></tr>
+<tr><th id="363">363</th><td>  <b>if</b> ((<a class="local col9 ref" href="#9rule" title='rule' data-ref="9rule">rule</a>-&gt;<a class="ref field" href="structs.h.html#rewrite_rule::flags" title='rewrite_rule::flags' data-ref="rewrite_rule::flags">flags</a> &amp; <a class="macro" href="macros.h.html#783" title="0x0800" data-ref="_M/rewrite_repeat">rewrite_repeat</a>) != <var>0</var>)</td></tr>
+<tr><th id="364">364</th><td>    {</td></tr>
+<tr><th id="365">365</th><td>    <b>if</b> (<a class="local col0 ref" href="#20count" title='count' data-ref="20count">count</a>++ &lt; <var>10</var>) <b>goto</b> <a class="lbl" href="#26REPEAT_RULE" data-ref="26REPEAT_RULE">REPEAT_RULE</a>;</td></tr>
+<tr><th id="366">366</th><td>    <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>|<a class="macro" href="macros.h.html#792" title="2" data-ref="_M/LOG_PANIC">LOG_PANIC</a>, <q>"rewrite rule repeat ignored after 10 "</q></td></tr>
+<tr><th id="367">367</th><td>      <q>"times"</q>);</td></tr>
+<tr><th id="368">368</th><td>    }</td></tr>
+<tr><th id="369">369</th><td>  }</td></tr>
+<tr><th id="370">370</th><td></td></tr>
+<tr><th id="371">371</th><td><i>/* Unset expansion numeric variables, and that's it. */</i></td></tr>
+<tr><th id="372">372</th><td></td></tr>
+<tr><th id="373">373</th><td><a class="ref" href="globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a> = -<var>1</var>;</td></tr>
+<tr><th id="374">374</th><td><b>return</b> <a class="local col0 ref" href="#10yield" title='yield' data-ref="10yield">yield</a>;</td></tr>
+<tr><th id="375">375</th><td>}</td></tr>
+<tr><th id="376">376</th><td></td></tr>
+<tr><th id="377">377</th><td></td></tr>
+<tr><th id="378">378</th><td></td></tr>
+<tr><th id="379">379</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="380">380</th><td><i>*         Ensure qualification and rewrite       *</i></td></tr>
+<tr><th id="381">381</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="382">382</th><td></td></tr>
+<tr><th id="383">383</th><td><i>/* This function is called for envelope addresses, the boolean specifying</i></td></tr>
+<tr><th id="384">384</th><td><i>whether a recipient or a sender. It must first of all ensure the address is</i></td></tr>
+<tr><th id="385">385</th><td><i>fully qualified, and then apply any relevant re-writing rules. The add-header</i></td></tr>
+<tr><th id="386">386</th><td><i>flag causes a header to be added, recording the old address. This is marked</i></td></tr>
+<tr><th id="387">387</th><td><i>"old", so that it is never transported anywhere; it exists for local checking</i></td></tr>
+<tr><th id="388">388</th><td><i>and debugging purposes.</i></td></tr>
+<tr><th id="389">389</th><td><i></i></td></tr>
+<tr><th id="390">390</th><td><i>Arguments:</i></td></tr>
+<tr><th id="391">391</th><td><i>  s              the address to be considered</i></td></tr>
+<tr><th id="392">392</th><td><i>  is_recipient   TRUE for recipient addresses; FALSE otherwise</i></td></tr>
+<tr><th id="393">393</th><td><i>  add_header     add "X-rewrote-xxx" header when rewriting; this is</i></td></tr>
+<tr><th id="394">394</th><td><i>                   set TRUE only for calls from the reception functions</i></td></tr>
+<tr><th id="395">395</th><td><i>  rewrite_rules  points to chain of rewrite rules</i></td></tr>
+<tr><th id="396">396</th><td><i>  existflags     bits indicating which headers there are rewrites for</i></td></tr>
+<tr><th id="397">397</th><td><i>                 (just an optimisation)</i></td></tr>
+<tr><th id="398">398</th><td><i></i></td></tr>
+<tr><th id="399">399</th><td><i>Returns:         possibly rewritten address</i></td></tr>
+<tr><th id="400">400</th><td><i>*/</i></td></tr>
+<tr><th id="401">401</th><td></td></tr>
+<tr><th id="402">402</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *</td></tr>
+<tr><th id="403">403</th><td><dfn class="decl def fn" id="rewrite_address" title='rewrite_address' data-ref="rewrite_address">rewrite_address</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col7 decl" id="37s" title='s' data-type='uschar *' data-ref="37s">s</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col8 decl" id="38is_recipient" title='is_recipient' data-type='BOOL' data-ref="38is_recipient">is_recipient</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col9 decl" id="39add_header" title='add_header' data-type='BOOL' data-ref="39add_header">add_header</dfn>,</td></tr>
+<tr><th id="404">404</th><td>  <a class="typedef" href="structs.h.html#rewrite_rule" title='rewrite_rule' data-type='struct rewrite_rule' data-ref="rewrite_rule">rewrite_rule</a> *<dfn class="local col0 decl" id="40rewrite_rules" title='rewrite_rules' data-type='rewrite_rule *' data-ref="40rewrite_rules">rewrite_rules</dfn>, <em>int</em> <dfn class="local col1 decl" id="41existflags" title='existflags' data-type='int' data-ref="41existflags">existflags</dfn>)</td></tr>
+<tr><th id="405">405</th><td>{</td></tr>
+<tr><th id="406">406</th><td><em>int</em> <dfn class="local col2 decl" id="42flag" title='flag' data-type='int' data-ref="42flag">flag</dfn> = <a class="local col8 ref" href="#38is_recipient" title='is_recipient' data-ref="38is_recipient">is_recipient</a>? <a class="macro" href="macros.h.html#775" title="0x0080" data-ref="_M/rewrite_envto">rewrite_envto</a> : <a class="macro" href="macros.h.html#774" title="0x0040" data-ref="_M/rewrite_envfrom">rewrite_envfrom</a>;</td></tr>
+<tr><th id="407">407</th><td><a class="local col7 ref" href="#37s" title='s' data-ref="37s">s</a> = <a class="ref fn" href="#rewrite_address_qualify" title='rewrite_address_qualify' data-ref="rewrite_address_qualify">rewrite_address_qualify</a>(<a class="local col7 ref" href="#37s" title='s' data-ref="37s">s</a>, <a class="local col8 ref" href="#38is_recipient" title='is_recipient' data-ref="38is_recipient">is_recipient</a>);</td></tr>
+<tr><th id="408">408</th><td><b>if</b> ((<a class="local col1 ref" href="#41existflags" title='existflags' data-ref="41existflags">existflags</a> &amp; <a class="local col2 ref" href="#42flag" title='flag' data-ref="42flag">flag</a>) != <var>0</var>)</td></tr>
+<tr><th id="409">409</th><td>  {</td></tr>
+<tr><th id="410">410</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="43new" title='new' data-type='uschar *' data-ref="43new">new</dfn> = <a class="ref fn" href="#rewrite_one" title='rewrite_one' data-ref="rewrite_one">rewrite_one</a>(<a class="local col7 ref" href="#37s" title='s' data-ref="37s">s</a>, <a class="local col2 ref" href="#42flag" title='flag' data-ref="42flag">flag</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="local col9 ref" href="#39add_header" title='add_header' data-ref="39add_header">add_header</a>, <a class="local col8 ref" href="#38is_recipient" title='is_recipient' data-ref="38is_recipient">is_recipient</a>?</td></tr>
+<tr><th id="411">411</th><td>    <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"original-recipient"</q> : <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"sender"</q>, <a class="local col0 ref" href="#40rewrite_rules" title='rewrite_rules' data-ref="40rewrite_rules">rewrite_rules</a>);</td></tr>
+<tr><th id="412">412</th><td>  <b>if</b> (<a class="local col3 ref" href="#43new" title='new' data-ref="43new">new</a> != <a class="local col7 ref" href="#37s" title='s' data-ref="37s">s</a>) <a class="local col7 ref" href="#37s" title='s' data-ref="37s">s</a> = <a class="local col3 ref" href="#43new" title='new' data-ref="43new">new</a>;</td></tr>
+<tr><th id="413">413</th><td>  }</td></tr>
+<tr><th id="414">414</th><td><b>return</b> <a class="local col7 ref" href="#37s" title='s' data-ref="37s">s</a>;</td></tr>
+<tr><th id="415">415</th><td>}</td></tr>
+<tr><th id="416">416</th><td></td></tr>
+<tr><th id="417">417</th><td></td></tr>
+<tr><th id="418">418</th><td></td></tr>
+<tr><th id="419">419</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="420">420</th><td><i>*    Qualify and possibly rewrite one header     *</i></td></tr>
+<tr><th id="421">421</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="422">422</th><td></td></tr>
+<tr><th id="423">423</th><td><i  data-doc="rewrite_one_header">/* This is called only from rewrite_header() below, either when reading a</i></td></tr>
+<tr><th id="424">424</th><td><i  data-doc="rewrite_one_header">message. or when routing, in order to rewrite addresses that get changed by a</i></td></tr>
+<tr><th id="425">425</th><td><i  data-doc="rewrite_one_header">router. This is normally the addition of full qualification to a partial</i></td></tr>
+<tr><th id="426">426</th><td><i  data-doc="rewrite_one_header">domain. The first rewriting rule in this case is "change routed_old into</i></td></tr>
+<tr><th id="427">427</th><td><i  data-doc="rewrite_one_header">routed_new", and it applies to all header lines that contain addresses. Then</i></td></tr>
+<tr><th id="428">428</th><td><i  data-doc="rewrite_one_header">header-specific rewriting rules are applied.</i></td></tr>
+<tr><th id="429">429</th><td><i  data-doc="rewrite_one_header"></i></td></tr>
+<tr><th id="430">430</th><td><i  data-doc="rewrite_one_header">Before rewriting can be done, addresses without domains have to be qualified.</i></td></tr>
+<tr><th id="431">431</th><td><i  data-doc="rewrite_one_header">This should only be done for messages from "local" senders. This is a difficult</i></td></tr>
+<tr><th id="432">432</th><td><i  data-doc="rewrite_one_header">concept to pin down, what with the use of SMTP both as a submission and as a</i></td></tr>
+<tr><th id="433">433</th><td><i  data-doc="rewrite_one_header">transmission protocol. Exim normally requires incoming SMTP to contain fully-</i></td></tr>
+<tr><th id="434">434</th><td><i  data-doc="rewrite_one_header">qualified addresses, but there are options to permit unqualified ones from</i></td></tr>
+<tr><th id="435">435</th><td><i  data-doc="rewrite_one_header">certain hosts. For those hosts only, addresses in headers can also be</i></td></tr>
+<tr><th id="436">436</th><td><i  data-doc="rewrite_one_header">qualified. For other hosts, unqualified addresses in headers do not get touched</i></td></tr>
+<tr><th id="437">437</th><td><i  data-doc="rewrite_one_header">in any way. For locally sourced messages, unqualified addresses always get</i></td></tr>
+<tr><th id="438">438</th><td><i  data-doc="rewrite_one_header">qualified, except when -bnq is used to explicitly suppress this.</i></td></tr>
+<tr><th id="439">439</th><td><i  data-doc="rewrite_one_header"></i></td></tr>
+<tr><th id="440">440</th><td><i  data-doc="rewrite_one_header">Arguments:</i></td></tr>
+<tr><th id="441">441</th><td><i  data-doc="rewrite_one_header">  h              pointer to header line block</i></td></tr>
+<tr><th id="442">442</th><td><i  data-doc="rewrite_one_header">  flag           indicates which header this is</i></td></tr>
+<tr><th id="443">443</th><td><i  data-doc="rewrite_one_header">  routed_old     if not NULL, this is a rewrite caused by a router, changing</i></td></tr>
+<tr><th id="444">444</th><td><i  data-doc="rewrite_one_header">                   this domain into routed_new</i></td></tr>
+<tr><th id="445">445</th><td><i  data-doc="rewrite_one_header">  routed_new     new routed domain if routed_old is not NULL</i></td></tr>
+<tr><th id="446">446</th><td><i  data-doc="rewrite_one_header">  rewrite_rules  points to chain of rewriting rules</i></td></tr>
+<tr><th id="447">447</th><td><i  data-doc="rewrite_one_header">  existflags     bits indicating which rewrites exist</i></td></tr>
+<tr><th id="448">448</th><td><i  data-doc="rewrite_one_header">  replace        if TRUE, insert the new header in the chain after the old</i></td></tr>
+<tr><th id="449">449</th><td><i  data-doc="rewrite_one_header">                   one, and mark the old one "replaced"</i></td></tr>
+<tr><th id="450">450</th><td><i  data-doc="rewrite_one_header"></i></td></tr>
+<tr><th id="451">451</th><td><i  data-doc="rewrite_one_header">Returns:         NULL if header unchanged; otherwise the rewritten header</i></td></tr>
+<tr><th id="452">452</th><td><i  data-doc="rewrite_one_header">*/</i></td></tr>
+<tr><th id="453">453</th><td></td></tr>
+<tr><th id="454">454</th><td><em>static</em> <a class="typedef" href="local_scan.h.html#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *</td></tr>
+<tr><th id="455">455</th><td><dfn class="tu decl def fn" id="rewrite_one_header" title='rewrite_one_header' data-type='header_line * rewrite_one_header(header_line * h, int flag, const uschar * routed_old, const uschar * routed_new, rewrite_rule * rewrite_rules, int existflags, BOOL replace)' data-ref="rewrite_one_header">rewrite_one_header</dfn>(<a class="typedef" href="local_scan.h.html#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *<dfn class="local col4 decl" id="44h" title='h' data-type='header_line *' data-ref="44h">h</dfn>, <em>int</em> <dfn class="local col5 decl" id="45flag" title='flag' data-type='int' data-ref="45flag">flag</dfn>,</td></tr>
+<tr><th id="456">456</th><td>  <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="46routed_old" title='routed_old' data-type='const uschar *' data-ref="46routed_old">routed_old</dfn>, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col7 decl" id="47routed_new" title='routed_new' data-type='const uschar *' data-ref="47routed_new">routed_new</dfn>,</td></tr>
+<tr><th id="457">457</th><td>  <a class="typedef" href="structs.h.html#rewrite_rule" title='rewrite_rule' data-type='struct rewrite_rule' data-ref="rewrite_rule">rewrite_rule</a> *<dfn class="local col8 decl" id="48rewrite_rules" title='rewrite_rules' data-type='rewrite_rule *' data-ref="48rewrite_rules">rewrite_rules</dfn>, <em>int</em> <dfn class="local col9 decl" id="49existflags" title='existflags' data-type='int' data-ref="49existflags">existflags</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col0 decl" id="50replace" title='replace' data-type='BOOL' data-ref="50replace">replace</dfn>)</td></tr>
+<tr><th id="458">458</th><td>{</td></tr>
+<tr><th id="459">459</th><td><em>int</em> <dfn class="local col1 decl" id="51lastnewline" title='lastnewline' data-type='int' data-ref="51lastnewline">lastnewline</dfn> = <var>0</var>;</td></tr>
+<tr><th id="460">460</th><td><a class="typedef" href="local_scan.h.html#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *<dfn class="local col2 decl" id="52newh" title='newh' data-type='header_line *' data-ref="52newh">newh</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="461">461</th><td><em>void</em> *<dfn class="local col3 decl" id="53function_reset_point" title='function_reset_point' data-type='void *' data-ref="53function_reset_point">function_reset_point</dfn> = <a class="macro" href="store.h.html#34" title="store_get_3(0, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/rewrite.c&quot;, 461)" data-ref="_M/store_get">store_get</a>(<var>0</var>);</td></tr>
+<tr><th id="462">462</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="54s" title='s' data-type='uschar *' data-ref="54s">s</dfn> = <a class="macro" href="mytypes.h.html#97" title="(unsigned char *) (__extension__ (__builtin_constant_p (&apos;:&apos;) &amp;&amp; !__builtin_constant_p ((const char *)(h-&gt;text)) &amp;&amp; (&apos;:&apos;) == &apos;\0&apos; ? (char *) __rawmemchr ((const char *)(h-&gt;text), &apos;:&apos;) : __builtin_strchr ((const char *)(h-&gt;text), &apos;:&apos;)))" data-ref="_M/Ustrchr">Ustrchr</a>(<a class="local col4 ref" href="#44h" title='h' data-ref="44h">h</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::text" title='header_line::text' data-ref="header_line::text">text</a>, <kbd>':'</kbd>) + <var>1</var>;</td></tr>
+<tr><th id="463">463</th><td><b>while</b> (<a class="macro" href="../../include/ctype.h.html#205" title="((*__ctype_b_loc ())[(int) ((*s))] &amp; (unsigned short int) _ISspace)" data-ref="_M/isspace">isspace</a>(*<a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a>)) <a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a>++;</td></tr>
+<tr><th id="464">464</th><td></td></tr>
+<tr><th id="465">465</th><td><a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_rewrite))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#400" title='D_rewrite' data-ref="D_rewrite">D_rewrite</a>)</td></tr>
+<tr><th id="466">466</th><td>  <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"rewrite_one_header: type=%c:\n  %s"</q>, <a class="local col4 ref" href="#44h" title='h' data-ref="44h">h</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::type" title='header_line::type' data-ref="header_line::type">type</a>, <a class="local col4 ref" href="#44h" title='h' data-ref="44h">h</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::text" title='header_line::text' data-ref="header_line::text">text</a>);</td></tr>
+<tr><th id="467">467</th><td></td></tr>
+<tr><th id="468">468</th><td><a class="ref" href="globals.h.html#parse_allow_group" title='parse_allow_group' data-ref="parse_allow_group">parse_allow_group</a> = <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;     <i>/* Allow group syntax */</i></td></tr>
+<tr><th id="469">469</th><td></td></tr>
+<tr><th id="470">470</th><td><i>/* Loop for multiple addresses in the header. We have to go through them all</i></td></tr>
+<tr><th id="471">471</th><td><i>in case any need qualifying, even if there's no rewriting. Pathological headers</i></td></tr>
+<tr><th id="472">472</th><td><i>may have thousands of addresses in them, so cause the store to be reset for</i></td></tr>
+<tr><th id="473">473</th><td><i>any that don't actually get rewritten. We also play silly games for those that</i></td></tr>
+<tr><th id="474">474</th><td><i>_are_ rewritten so as to avoid runaway store usage for these kinds of header.</i></td></tr>
+<tr><th id="475">475</th><td><i>We want to avoid keeping store for any intermediate versions. */</i></td></tr>
+<tr><th id="476">476</th><td></td></tr>
+<tr><th id="477">477</th><td><b>while</b> (*<a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a> != <var>0</var>)</td></tr>
+<tr><th id="478">478</th><td>  {</td></tr>
+<tr><th id="479">479</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col5 decl" id="55sprev" title='sprev' data-type='uschar *' data-ref="55sprev">sprev</dfn>;</td></tr>
+<tr><th id="480">480</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="56ss" title='ss' data-type='uschar *' data-ref="56ss">ss</dfn> = <a class="ref fn" href="functions.h.html#parse_find_address_end" title='parse_find_address_end' data-ref="parse_find_address_end">parse_find_address_end</a>(<a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>);</td></tr>
+<tr><th id="481">481</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col7 decl" id="57recipient" title='recipient' data-type='uschar *' data-ref="57recipient">recipient</dfn>, *<dfn class="local col8 decl" id="58new" title='new' data-type='uschar *' data-ref="58new">new</dfn>, *<dfn class="local col9 decl" id="59errmess" title='errmess' data-type='uschar *' data-ref="59errmess">errmess</dfn>;</td></tr>
+<tr><th id="482">482</th><td>  <em>void</em> *<dfn class="local col0 decl" id="60loop_reset_point" title='loop_reset_point' data-type='void *' data-ref="60loop_reset_point">loop_reset_point</dfn> = <a class="macro" href="store.h.html#34" title="store_get_3(0, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/rewrite.c&quot;, 482)" data-ref="_M/store_get">store_get</a>(<var>0</var>);</td></tr>
+<tr><th id="483">483</th><td>  <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col1 decl" id="61changed" title='changed' data-type='BOOL' data-ref="61changed">changed</dfn> = <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="484">484</th><td>  <em>int</em> <dfn class="local col2 decl" id="62terminator" title='terminator' data-type='int' data-ref="62terminator">terminator</dfn> = *<a class="local col6 ref" href="#56ss" title='ss' data-ref="56ss">ss</a>;</td></tr>
+<tr><th id="485">485</th><td>  <em>int</em> <dfn class="local col3 decl" id="63start" title='start' data-type='int' data-ref="63start">start</dfn>, <dfn class="local col4 decl" id="64end" title='end' data-type='int' data-ref="64end">end</dfn>, <dfn class="local col5 decl" id="65domain" title='domain' data-type='int' data-ref="65domain">domain</dfn>;</td></tr>
+<tr><th id="486">486</th><td></td></tr>
+<tr><th id="487">487</th><td>  <i>/* Temporarily terminate the string at this point, and extract the</i></td></tr>
+<tr><th id="488">488</th><td><i>  operative address within. Then put back the terminator and prepare for</i></td></tr>
+<tr><th id="489">489</th><td><i>  the next address, saving the start of the old one. */</i></td></tr>
+<tr><th id="490">490</th><td></td></tr>
+<tr><th id="491">491</th><td>  *<a class="local col6 ref" href="#56ss" title='ss' data-ref="56ss">ss</a> = <var>0</var>;</td></tr>
+<tr><th id="492">492</th><td>  <a class="local col7 ref" href="#57recipient" title='recipient' data-ref="57recipient">recipient</a> = <a class="ref fn" href="functions.h.html#parse_extract_address" title='parse_extract_address' data-ref="parse_extract_address">parse_extract_address</a>(<a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a>,&amp;<a class="local col9 ref" href="#59errmess" title='errmess' data-ref="59errmess">errmess</a>,&amp;<a class="local col3 ref" href="#63start" title='start' data-ref="63start">start</a>,&amp;<a class="local col4 ref" href="#64end" title='end' data-ref="64end">end</a>,&amp;<a class="local col5 ref" href="#65domain" title='domain' data-ref="65domain">domain</a>,<a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>);</td></tr>
+<tr><th id="493">493</th><td>  *<a class="local col6 ref" href="#56ss" title='ss' data-ref="56ss">ss</a> = <a class="local col2 ref" href="#62terminator" title='terminator' data-ref="62terminator">terminator</a>;</td></tr>
+<tr><th id="494">494</th><td>  <a class="local col5 ref" href="#55sprev" title='sprev' data-ref="55sprev">sprev</a> = <a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a>;</td></tr>
+<tr><th id="495">495</th><td>  <a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a> = <a class="local col6 ref" href="#56ss" title='ss' data-ref="56ss">ss</a> + (<a class="local col2 ref" href="#62terminator" title='terminator' data-ref="62terminator">terminator</a>? <var>1</var>:<var>0</var>);</td></tr>
+<tr><th id="496">496</th><td>  <b>while</b> (<a class="macro" href="../../include/ctype.h.html#205" title="((*__ctype_b_loc ())[(int) ((*s))] &amp; (unsigned short int) _ISspace)" data-ref="_M/isspace">isspace</a>(*<a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a>)) <a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a>++;</td></tr>
+<tr><th id="497">497</th><td></td></tr>
+<tr><th id="498">498</th><td>  <i>/* There isn't much we can do for syntactic disasters at this stage.</i></td></tr>
+<tr><th id="499">499</th><td><i>  Pro tem (possibly for ever) ignore them. */</i></td></tr>
+<tr><th id="500">500</th><td></td></tr>
+<tr><th id="501">501</th><td>  <b>if</b> (<a class="local col7 ref" href="#57recipient" title='recipient' data-ref="57recipient">recipient</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="502">502</th><td>    {</td></tr>
+<tr><th id="503">503</th><td>    <a class="macro" href="store.h.html#39" title="store_reset_3(loop_reset_point, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/rewrite.c&quot;, 503)" data-ref="_M/store_reset">store_reset</a>(<a class="local col0 ref" href="#60loop_reset_point" title='loop_reset_point' data-ref="60loop_reset_point">loop_reset_point</a>);</td></tr>
+<tr><th id="504">504</th><td>    <b>continue</b>;</td></tr>
+<tr><th id="505">505</th><td>    }</td></tr>
+<tr><th id="506">506</th><td></td></tr>
+<tr><th id="507">507</th><td>  <i>/* If routed_old is not NULL, this is a rewrite caused by a router,</i></td></tr>
+<tr><th id="508">508</th><td><i>  consisting of changing routed_old into routed_new, and applying to all</i></td></tr>
+<tr><th id="509">509</th><td><i>  headers. If the header address has no domain, it is excluded, since a router</i></td></tr>
+<tr><th id="510">510</th><td><i>  rewrite affects domains only. The new value should always be fully qualified,</i></td></tr>
+<tr><th id="511">511</th><td><i>  but it may be something that has an explicit re-write rule set, so we need to</i></td></tr>
+<tr><th id="512">512</th><td><i>  check the configured rules subsequently as well. (Example: there's an</i></td></tr>
+<tr><th id="513">513</th><td><i>  explicit rewrite turning *.foo.com into foo.com, and an address is supplied</i></td></tr>
+<tr><th id="514">514</th><td><i>  as abc@xyz, which the DNS lookup turns into abc@xyz.foo.com). However, if no</i></td></tr>
+<tr><th id="515">515</th><td><i>  change is made here, don't bother carrying on. */</i></td></tr>
+<tr><th id="516">516</th><td></td></tr>
+<tr><th id="517">517</th><td>  <b>if</b> (<a class="local col6 ref" href="#46routed_old" title='routed_old' data-ref="46routed_old">routed_old</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="518">518</th><td>    {</td></tr>
+<tr><th id="519">519</th><td>    <b>if</b> (<a class="local col5 ref" href="#65domain" title='domain' data-ref="65domain">domain</a> &lt;= <var>0</var> || <a class="ref fn" href="functions.h.html#strcmpic" title='strcmpic' data-ref="strcmpic">strcmpic</a>(<a class="local col7 ref" href="#57recipient" title='recipient' data-ref="57recipient">recipient</a>+<a class="local col5 ref" href="#65domain" title='domain' data-ref="65domain">domain</a>, <a class="local col6 ref" href="#46routed_old" title='routed_old' data-ref="46routed_old">routed_old</a>) != <var>0</var>) <b>continue</b>;</td></tr>
+<tr><th id="520">520</th><td>    <a class="local col7 ref" href="#57recipient" title='recipient' data-ref="57recipient">recipient</a>[<a class="local col5 ref" href="#65domain" title='domain' data-ref="65domain">domain</a>-<var>1</var>] = <var>0</var>;</td></tr>
+<tr><th id="521">521</th><td>    <a class="local col8 ref" href="#58new" title='new' data-ref="58new">new</a> = <a class="ref fn" href="local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%s@%s"</q>, <a class="local col7 ref" href="#57recipient" title='recipient' data-ref="57recipient">recipient</a>, <a class="local col7 ref" href="#47routed_new" title='routed_new' data-ref="47routed_new">routed_new</a>);</td></tr>
+<tr><th id="522">522</th><td>    <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_rewrite))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#400" title='D_rewrite' data-ref="D_rewrite">D_rewrite</a>)</td></tr>
+<tr><th id="523">523</th><td>      {</td></tr>
+<tr><th id="524">524</th><td>      <a class="local col7 ref" href="#57recipient" title='recipient' data-ref="57recipient">recipient</a>[<a class="local col5 ref" href="#65domain" title='domain' data-ref="65domain">domain</a>-<var>1</var>] = <kbd>'@'</kbd>;</td></tr>
+<tr><th id="525">525</th><td>      <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"%s rewritten by router as %s\n"</q>, <a class="local col7 ref" href="#57recipient" title='recipient' data-ref="57recipient">recipient</a>, <a class="local col8 ref" href="#58new" title='new' data-ref="58new">new</a>);</td></tr>
+<tr><th id="526">526</th><td>      }</td></tr>
+<tr><th id="527">527</th><td>    <a class="local col7 ref" href="#57recipient" title='recipient' data-ref="57recipient">recipient</a> = <a class="local col8 ref" href="#58new" title='new' data-ref="58new">new</a>;</td></tr>
+<tr><th id="528">528</th><td>    <a class="local col1 ref" href="#61changed" title='changed' data-ref="61changed">changed</a> = <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="529">529</th><td>    }</td></tr>
+<tr><th id="530">530</th><td></td></tr>
+<tr><th id="531">531</th><td>  <i>/* This is not a router-inspired rewrite. Ensure the address is fully</i></td></tr>
+<tr><th id="532">532</th><td><i>  qualified if that is permitted. If an unqualified address was received</i></td></tr>
+<tr><th id="533">533</th><td><i>  from a host that isn't listed, do not continue rewriting this address.</i></td></tr>
+<tr><th id="534">534</th><td><i>  Sender, From or Reply-To headers are treated as senders, the rest as</i></td></tr>
+<tr><th id="535">535</th><td><i>  recipients. This matters only when there are different qualify strings. */</i></td></tr>
+<tr><th id="536">536</th><td></td></tr>
+<tr><th id="537">537</th><td>  <b>else</b></td></tr>
+<tr><th id="538">538</th><td>    {</td></tr>
+<tr><th id="539">539</th><td>    <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col6 decl" id="66is_recipient" title='is_recipient' data-type='BOOL' data-ref="66is_recipient">is_recipient</dfn> =</td></tr>
+<tr><th id="540">540</th><td>      (<a class="local col5 ref" href="#45flag" title='flag' data-ref="45flag">flag</a> &amp; (<a class="macro" href="macros.h.html#766" title="0x0001" data-ref="_M/rewrite_sender">rewrite_sender</a> | <a class="macro" href="macros.h.html#767" title="0x0002" data-ref="_M/rewrite_from">rewrite_from</a> | <a class="macro" href="macros.h.html#771" title="0x0020" data-ref="_M/rewrite_replyto">rewrite_replyto</a>)) == <var>0</var>;</td></tr>
+<tr><th id="541">541</th><td>    <a class="local col8 ref" href="#58new" title='new' data-ref="58new">new</a> = <a class="ref fn" href="#rewrite_address_qualify" title='rewrite_address_qualify' data-ref="rewrite_address_qualify">rewrite_address_qualify</a>(<a class="local col7 ref" href="#57recipient" title='recipient' data-ref="57recipient">recipient</a>, <a class="local col6 ref" href="#66is_recipient" title='is_recipient' data-ref="66is_recipient">is_recipient</a>);</td></tr>
+<tr><th id="542">542</th><td>    <a class="local col1 ref" href="#61changed" title='changed' data-ref="61changed">changed</a> = (<a class="local col8 ref" href="#58new" title='new' data-ref="58new">new</a> != <a class="local col7 ref" href="#57recipient" title='recipient' data-ref="57recipient">recipient</a>);</td></tr>
+<tr><th id="543">543</th><td>    <a class="local col7 ref" href="#57recipient" title='recipient' data-ref="57recipient">recipient</a> = <a class="local col8 ref" href="#58new" title='new' data-ref="58new">new</a>;</td></tr>
+<tr><th id="544">544</th><td></td></tr>
+<tr><th id="545">545</th><td>    <i>/* Can only qualify if permitted; if not, no rewrite. */</i></td></tr>
+<tr><th id="546">546</th><td></td></tr>
+<tr><th id="547">547</th><td>    <b>if</b> (<a class="local col1 ref" href="#61changed" title='changed' data-ref="61changed">changed</a> &amp;&amp; ((<a class="local col6 ref" href="#66is_recipient" title='is_recipient' data-ref="66is_recipient">is_recipient</a> &amp;&amp; !<a class="ref" href="globals.h.html#allow_unqualified_recipient" title='allow_unqualified_recipient' data-ref="allow_unqualified_recipient">allow_unqualified_recipient</a>) ||</td></tr>
+<tr><th id="548">548</th><td>                    (!<a class="local col6 ref" href="#66is_recipient" title='is_recipient' data-ref="66is_recipient">is_recipient</a> &amp;&amp; !<a class="ref" href="globals.h.html#allow_unqualified_sender" title='allow_unqualified_sender' data-ref="allow_unqualified_sender">allow_unqualified_sender</a>)))</td></tr>
+<tr><th id="549">549</th><td>      {</td></tr>
+<tr><th id="550">550</th><td>      <a class="macro" href="store.h.html#39" title="store_reset_3(loop_reset_point, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/rewrite.c&quot;, 550)" data-ref="_M/store_reset">store_reset</a>(<a class="local col0 ref" href="#60loop_reset_point" title='loop_reset_point' data-ref="60loop_reset_point">loop_reset_point</a>);</td></tr>
+<tr><th id="551">551</th><td>      <b>continue</b>;</td></tr>
+<tr><th id="552">552</th><td>      }</td></tr>
+<tr><th id="553">553</th><td>    }</td></tr>
+<tr><th id="554">554</th><td></td></tr>
+<tr><th id="555">555</th><td>  <i>/* If there are rewrite rules for this type of header, apply</i></td></tr>
+<tr><th id="556">556</th><td><i>  them. This test is just for efficiency, to save scanning the rules</i></td></tr>
+<tr><th id="557">557</th><td><i>  in cases when nothing is going to change. If any rewrite rule had the</i></td></tr>
+<tr><th id="558">558</th><td><i>  "whole" flag set, adjust the pointers so that the whole address gets</i></td></tr>
+<tr><th id="559">559</th><td><i>  replaced, except possibly a final \n. */</i></td></tr>
+<tr><th id="560">560</th><td></td></tr>
+<tr><th id="561">561</th><td>  <b>if</b> ((<a class="local col9 ref" href="#49existflags" title='existflags' data-ref="49existflags">existflags</a> &amp; <a class="local col5 ref" href="#45flag" title='flag' data-ref="45flag">flag</a>) != <var>0</var>)</td></tr>
+<tr><th id="562">562</th><td>    {</td></tr>
+<tr><th id="563">563</th><td>    <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col7 decl" id="67whole" title='whole' data-type='BOOL' data-ref="67whole">whole</dfn>;</td></tr>
+<tr><th id="564">564</th><td>    <a class="local col8 ref" href="#58new" title='new' data-ref="58new">new</a> = <a class="ref fn" href="#rewrite_one" title='rewrite_one' data-ref="rewrite_one">rewrite_one</a>(<a class="local col7 ref" href="#57recipient" title='recipient' data-ref="57recipient">recipient</a>, <a class="local col5 ref" href="#45flag" title='flag' data-ref="45flag">flag</a>, &amp;<a class="local col7 ref" href="#67whole" title='whole' data-ref="67whole">whole</a>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="local col8 ref" href="#48rewrite_rules" title='rewrite_rules' data-ref="48rewrite_rules">rewrite_rules</a>);</td></tr>
+<tr><th id="565">565</th><td>    <b>if</b> (<a class="local col8 ref" href="#58new" title='new' data-ref="58new">new</a> != <a class="local col7 ref" href="#57recipient" title='recipient' data-ref="57recipient">recipient</a>)</td></tr>
+<tr><th id="566">566</th><td>      {</td></tr>
+<tr><th id="567">567</th><td>      <a class="local col1 ref" href="#61changed" title='changed' data-ref="61changed">changed</a> = <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="568">568</th><td>      <b>if</b> (<a class="local col7 ref" href="#67whole" title='whole' data-ref="67whole">whole</a>)</td></tr>
+<tr><th id="569">569</th><td>        {</td></tr>
+<tr><th id="570">570</th><td>        <a class="local col3 ref" href="#63start" title='start' data-ref="63start">start</a> = <var>0</var>;</td></tr>
+<tr><th id="571">571</th><td>        <a class="local col4 ref" href="#64end" title='end' data-ref="64end">end</a> = <a class="local col6 ref" href="#56ss" title='ss' data-ref="56ss">ss</a> - <a class="local col5 ref" href="#55sprev" title='sprev' data-ref="55sprev">sprev</a>;</td></tr>
+<tr><th id="572">572</th><td>        <b>if</b> (<a class="local col5 ref" href="#55sprev" title='sprev' data-ref="55sprev">sprev</a>[<a class="local col4 ref" href="#64end" title='end' data-ref="64end">end</a>-<var>1</var>] == <kbd>'\n'</kbd>) <a class="local col4 ref" href="#64end" title='end' data-ref="64end">end</a>--;</td></tr>
+<tr><th id="573">573</th><td>        }</td></tr>
+<tr><th id="574">574</th><td>      }</td></tr>
+<tr><th id="575">575</th><td>    }</td></tr>
+<tr><th id="576">576</th><td></td></tr>
+<tr><th id="577">577</th><td>  <i>/* If nothing has changed, lose all dynamic store obtained in this loop, and</i></td></tr>
+<tr><th id="578">578</th><td><i>  move on to the next address. We can't reset to the function start store</i></td></tr>
+<tr><th id="579">579</th><td><i>  point, because we may have a rewritten line from a previous time round the</i></td></tr>
+<tr><th id="580">580</th><td><i>  loop. */</i></td></tr>
+<tr><th id="581">581</th><td></td></tr>
+<tr><th id="582">582</th><td>  <b>if</b> (!<a class="local col1 ref" href="#61changed" title='changed' data-ref="61changed">changed</a>) <a class="macro" href="store.h.html#39" title="store_reset_3(loop_reset_point, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/rewrite.c&quot;, 582)" data-ref="_M/store_reset">store_reset</a>(<a class="local col0 ref" href="#60loop_reset_point" title='loop_reset_point' data-ref="60loop_reset_point">loop_reset_point</a>);</td></tr>
+<tr><th id="583">583</th><td></td></tr>
+<tr><th id="584">584</th><td>  <i>/* If the address has changed, create a new header containing the</i></td></tr>
+<tr><th id="585">585</th><td><i>  rewritten address. We do not need to set the chain pointers at this</i></td></tr>
+<tr><th id="586">586</th><td><i>  stage. We want to avoid using more and more memory if the header is very long</i></td></tr>
+<tr><th id="587">587</th><td><i>  and contains lots and lots of rewritten addresses. Therefore, we build the</i></td></tr>
+<tr><th id="588">588</th><td><i>  new text string in malloc store, then at the end we reset dynamic store</i></td></tr>
+<tr><th id="589">589</th><td><i>  before copying the new header to a new block (and then freeing the malloc</i></td></tr>
+<tr><th id="590">590</th><td><i>  block). The header must end up in dynamic store so that it's freed at the end</i></td></tr>
+<tr><th id="591">591</th><td><i>  of receiving a message. */</i></td></tr>
+<tr><th id="592">592</th><td></td></tr>
+<tr><th id="593">593</th><td>  <b>else</b></td></tr>
+<tr><th id="594">594</th><td>    {</td></tr>
+<tr><th id="595">595</th><td>    <em>int</em> <dfn class="local col8 decl" id="68remlen" title='remlen' data-type='int' data-ref="68remlen">remlen</dfn>;</td></tr>
+<tr><th id="596">596</th><td>    <em>int</em> <dfn class="local col9 decl" id="69newlen" title='newlen' data-type='int' data-ref="69newlen">newlen</dfn> = <a class="macro" href="mytypes.h.html#104" title="(int)strlen((const char *)(new))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col8 ref" href="#58new" title='new' data-ref="58new">new</a>);</td></tr>
+<tr><th id="597">597</th><td>    <em>int</em> <dfn class="local col0 decl" id="70oldlen" title='oldlen' data-type='int' data-ref="70oldlen">oldlen</dfn> = <a class="local col4 ref" href="#64end" title='end' data-ref="64end">end</a> - <a class="local col3 ref" href="#63start" title='start' data-ref="63start">start</a>;</td></tr>
+<tr><th id="598">598</th><td></td></tr>
+<tr><th id="599">599</th><td>    <a class="typedef" href="local_scan.h.html#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *<dfn class="local col1 decl" id="71prev" title='prev' data-type='header_line *' data-ref="71prev">prev</dfn> = (<a class="local col2 ref" href="#52newh" title='newh' data-ref="52newh">newh</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)? <a class="local col4 ref" href="#44h" title='h' data-ref="44h">h</a> : <a class="local col2 ref" href="#52newh" title='newh' data-ref="52newh">newh</a>;</td></tr>
+<tr><th id="600">600</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="72newt" title='newt' data-type='uschar *' data-ref="72newt">newt</dfn> = <a class="macro" href="store.h.html#36" title="store_malloc_3(prev-&gt;slen - oldlen + newlen + 4, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/rewrite.c&quot;, 600)" data-ref="_M/store_malloc">store_malloc</a>(<a class="local col1 ref" href="#71prev" title='prev' data-ref="71prev">prev</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::slen" title='header_line::slen' data-ref="header_line::slen">slen</a> - <a class="local col0 ref" href="#70oldlen" title='oldlen' data-ref="70oldlen">oldlen</a> + <a class="local col9 ref" href="#69newlen" title='newlen' data-ref="69newlen">newlen</a> + <var>4</var>);</td></tr>
+<tr><th id="601">601</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="73newtstart" title='newtstart' data-type='uschar *' data-ref="73newtstart">newtstart</dfn> = <a class="local col2 ref" href="#72newt" title='newt' data-ref="72newt">newt</a>;</td></tr>
+<tr><th id="602">602</th><td></td></tr>
+<tr><th id="603">603</th><td>    <em>int</em> <dfn class="local col4 decl" id="74type" title='type' data-type='int' data-ref="74type">type</dfn> = <a class="local col1 ref" href="#71prev" title='prev' data-ref="71prev">prev</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::type" title='header_line::type' data-ref="header_line::type">type</a>;</td></tr>
+<tr><th id="604">604</th><td>    <em>int</em> <dfn class="local col5 decl" id="75slen" title='slen' data-type='int' data-ref="75slen">slen</dfn> = <a class="local col1 ref" href="#71prev" title='prev' data-ref="71prev">prev</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::slen" title='header_line::slen' data-ref="header_line::slen">slen</a> - <a class="local col0 ref" href="#70oldlen" title='oldlen' data-ref="70oldlen">oldlen</a> + <a class="local col9 ref" href="#69newlen" title='newlen' data-ref="69newlen">newlen</a>;</td></tr>
+<tr><th id="605">605</th><td></td></tr>
+<tr><th id="606">606</th><td>    <i>/* Build the new header text by copying the old and putting in the</i></td></tr>
+<tr><th id="607">607</th><td><i>    replacement. This process may make the header substantially longer</i></td></tr>
+<tr><th id="608">608</th><td><i>    than it was before - qualification of a list of bare addresses can</i></td></tr>
+<tr><th id="609">609</th><td><i>    often do this - so we stick in a newline after the re-written address</i></td></tr>
+<tr><th id="610">610</th><td><i>    if it has increased in length and ends more than 40 characters in. In</i></td></tr>
+<tr><th id="611">611</th><td><i>    fact, the code is not perfect, since it does not scan for existing</i></td></tr>
+<tr><th id="612">612</th><td><i>    newlines in the header, but it doesn't seem worth going to that</i></td></tr>
+<tr><th id="613">613</th><td><i>    amount of trouble. */</i></td></tr>
+<tr><th id="614">614</th><td></td></tr>
+<tr><th id="615">615</th><td>    <a class="macro" href="mytypes.h.html#107" title="__builtin_strncpy ((char *)(newt), (const char *)(prev-&gt;text), sprev - prev-&gt;text + start)" data-ref="_M/Ustrncpy">Ustrncpy</a>(<a class="local col2 ref" href="#72newt" title='newt' data-ref="72newt">newt</a>, <a class="local col1 ref" href="#71prev" title='prev' data-ref="71prev">prev</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::text" title='header_line::text' data-ref="header_line::text">text</a>, <a class="local col5 ref" href="#55sprev" title='sprev' data-ref="55sprev">sprev</a> - <a class="local col1 ref" href="#71prev" title='prev' data-ref="71prev">prev</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::text" title='header_line::text' data-ref="header_line::text">text</a> + <a class="local col3 ref" href="#63start" title='start' data-ref="63start">start</a>);</td></tr>
+<tr><th id="616">616</th><td>    <a class="local col2 ref" href="#72newt" title='newt' data-ref="72newt">newt</a> += <a class="local col5 ref" href="#55sprev" title='sprev' data-ref="55sprev">sprev</a> - <a class="local col1 ref" href="#71prev" title='prev' data-ref="71prev">prev</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::text" title='header_line::text' data-ref="header_line::text">text</a> + <a class="local col3 ref" href="#63start" title='start' data-ref="63start">start</a>;</td></tr>
+<tr><th id="617">617</th><td>    *<a class="local col2 ref" href="#72newt" title='newt' data-ref="72newt">newt</a> = <var>0</var>;</td></tr>
+<tr><th id="618">618</th><td>    <a class="macro" href="mytypes.h.html#96" title="strcat((char *)(newt),(const char *)(new))" data-ref="_M/Ustrcat">Ustrcat</a>(<a class="local col2 ref" href="#72newt" title='newt' data-ref="72newt">newt</a>, <a class="local col8 ref" href="#58new" title='new' data-ref="58new">new</a>);</td></tr>
+<tr><th id="619">619</th><td>    <a class="local col2 ref" href="#72newt" title='newt' data-ref="72newt">newt</a> += <a class="local col9 ref" href="#69newlen" title='newlen' data-ref="69newlen">newlen</a>;</td></tr>
+<tr><th id="620">620</th><td>    <a class="local col8 ref" href="#68remlen" title='remlen' data-ref="68remlen">remlen</a> = <a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a> - (<a class="local col5 ref" href="#55sprev" title='sprev' data-ref="55sprev">sprev</a> + <a class="local col4 ref" href="#64end" title='end' data-ref="64end">end</a>);</td></tr>
+<tr><th id="621">621</th><td>    <b>if</b> (<a class="local col8 ref" href="#68remlen" title='remlen' data-ref="68remlen">remlen</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="622">622</th><td>      {</td></tr>
+<tr><th id="623">623</th><td>      <a class="macro" href="mytypes.h.html#107" title="__builtin_strncpy ((char *)(newt), (const char *)(sprev + end), remlen)" data-ref="_M/Ustrncpy">Ustrncpy</a>(<a class="local col2 ref" href="#72newt" title='newt' data-ref="72newt">newt</a>, <a class="local col5 ref" href="#55sprev" title='sprev' data-ref="55sprev">sprev</a> + <a class="local col4 ref" href="#64end" title='end' data-ref="64end">end</a>, <a class="local col8 ref" href="#68remlen" title='remlen' data-ref="68remlen">remlen</a>);</td></tr>
+<tr><th id="624">624</th><td>      <a class="local col2 ref" href="#72newt" title='newt' data-ref="72newt">newt</a> += <a class="local col8 ref" href="#68remlen" title='remlen' data-ref="68remlen">remlen</a>;</td></tr>
+<tr><th id="625">625</th><td>      *<a class="local col2 ref" href="#72newt" title='newt' data-ref="72newt">newt</a> = <var>0</var>;</td></tr>
+<tr><th id="626">626</th><td>      }</td></tr>
+<tr><th id="627">627</th><td></td></tr>
+<tr><th id="628">628</th><td>    <i>/* Must check that there isn't a newline here anyway; in particular, there</i></td></tr>
+<tr><th id="629">629</th><td><i>    will be one at the very end of the header, where we DON'T want to insert</i></td></tr>
+<tr><th id="630">630</th><td><i>    another one! The pointer s has been skipped over white space, so just</i></td></tr>
+<tr><th id="631">631</th><td><i>    look back to see if the last non-space-or-tab was a newline. */</i></td></tr>
+<tr><th id="632">632</th><td></td></tr>
+<tr><th id="633">633</th><td>    <b>if</b> (<a class="local col9 ref" href="#69newlen" title='newlen' data-ref="69newlen">newlen</a> &gt; <a class="local col0 ref" href="#70oldlen" title='oldlen' data-ref="70oldlen">oldlen</a> &amp;&amp; <a class="local col2 ref" href="#72newt" title='newt' data-ref="72newt">newt</a> - <a class="local col3 ref" href="#73newtstart" title='newtstart' data-ref="73newtstart">newtstart</a> - <a class="local col1 ref" href="#51lastnewline" title='lastnewline' data-ref="51lastnewline">lastnewline</a> &gt; <var>40</var>)</td></tr>
+<tr><th id="634">634</th><td>      {</td></tr>
+<tr><th id="635">635</th><td>      <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="76p" title='p' data-type='uschar *' data-ref="76p">p</dfn> = <a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a> - <var>1</var>;</td></tr>
+<tr><th id="636">636</th><td>      <b>while</b> (<a class="local col6 ref" href="#76p" title='p' data-ref="76p">p</a> &gt;= <a class="local col1 ref" href="#71prev" title='prev' data-ref="71prev">prev</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::text" title='header_line::text' data-ref="header_line::text">text</a> &amp;&amp; (*<a class="local col6 ref" href="#76p" title='p' data-ref="76p">p</a> == <kbd>' '</kbd> || *<a class="local col6 ref" href="#76p" title='p' data-ref="76p">p</a> == <kbd>'\t'</kbd>)) <a class="local col6 ref" href="#76p" title='p' data-ref="76p">p</a>--;</td></tr>
+<tr><th id="637">637</th><td>      <b>if</b> (*<a class="local col6 ref" href="#76p" title='p' data-ref="76p">p</a> != <kbd>'\n'</kbd>)</td></tr>
+<tr><th id="638">638</th><td>        {</td></tr>
+<tr><th id="639">639</th><td>        <a class="local col1 ref" href="#51lastnewline" title='lastnewline' data-ref="51lastnewline">lastnewline</a> = <a class="local col2 ref" href="#72newt" title='newt' data-ref="72newt">newt</a> - <a class="local col3 ref" href="#73newtstart" title='newtstart' data-ref="73newtstart">newtstart</a>;</td></tr>
+<tr><th id="640">640</th><td>        <a class="macro" href="mytypes.h.html#96" title="strcat((char *)(newt),(const char *)(&quot;\n\t&quot;))" data-ref="_M/Ustrcat">Ustrcat</a>(<a class="local col2 ref" href="#72newt" title='newt' data-ref="72newt">newt</a>, <q>"\n\t"</q>);</td></tr>
+<tr><th id="641">641</th><td>        <a class="local col5 ref" href="#75slen" title='slen' data-ref="75slen">slen</a> += <var>2</var>;</td></tr>
+<tr><th id="642">642</th><td>        }</td></tr>
+<tr><th id="643">643</th><td>      }</td></tr>
+<tr><th id="644">644</th><td></td></tr>
+<tr><th id="645">645</th><td>    <i>/* Finally, the remaining unprocessed addresses, if any. */</i></td></tr>
+<tr><th id="646">646</th><td></td></tr>
+<tr><th id="647">647</th><td>    <a class="macro" href="mytypes.h.html#96" title="strcat((char *)(newt),(const char *)(s))" data-ref="_M/Ustrcat">Ustrcat</a>(<a class="local col2 ref" href="#72newt" title='newt' data-ref="72newt">newt</a>, <a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a>);</td></tr>
+<tr><th id="648">648</th><td></td></tr>
+<tr><th id="649">649</th><td>    <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_rewrite))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#400" title='D_rewrite' data-ref="D_rewrite">D_rewrite</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"newlen=%d newtype=%c newtext:\n%s"</q>,</td></tr>
+<tr><th id="650">650</th><td>      <a class="local col5 ref" href="#75slen" title='slen' data-ref="75slen">slen</a>, <a class="local col4 ref" href="#74type" title='type' data-ref="74type">type</a>, <a class="local col3 ref" href="#73newtstart" title='newtstart' data-ref="73newtstart">newtstart</a>);</td></tr>
+<tr><th id="651">651</th><td></td></tr>
+<tr><th id="652">652</th><td>    <i>/* Compute the length of the rest of the header line before we possibly</i></td></tr>
+<tr><th id="653">653</th><td><i>    flatten a previously rewritten copy. */</i></td></tr>
+<tr><th id="654">654</th><td></td></tr>
+<tr><th id="655">655</th><td>    <a class="local col8 ref" href="#68remlen" title='remlen' data-ref="68remlen">remlen</a> = (<a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a> - <a class="local col1 ref" href="#71prev" title='prev' data-ref="71prev">prev</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::text" title='header_line::text' data-ref="header_line::text">text</a>) - <a class="local col0 ref" href="#70oldlen" title='oldlen' data-ref="70oldlen">oldlen</a> + <a class="local col9 ref" href="#69newlen" title='newlen' data-ref="69newlen">newlen</a>;</td></tr>
+<tr><th id="656">656</th><td></td></tr>
+<tr><th id="657">657</th><td>    <i>/* We have the new text in a malloc block. That enables us to release all</i></td></tr>
+<tr><th id="658">658</th><td><i>    the memory that has been used, back to the point at which the function was</i></td></tr>
+<tr><th id="659">659</th><td><i>    entered. Then set up a new header in dynamic store. This will override a</i></td></tr>
+<tr><th id="660">660</th><td><i>    rewritten copy from a previous time round this loop. */</i></td></tr>
+<tr><th id="661">661</th><td></td></tr>
+<tr><th id="662">662</th><td>    <a class="macro" href="store.h.html#39" title="store_reset_3(function_reset_point, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/rewrite.c&quot;, 662)" data-ref="_M/store_reset">store_reset</a>(<a class="local col3 ref" href="#53function_reset_point" title='function_reset_point' data-ref="53function_reset_point">function_reset_point</a>);</td></tr>
+<tr><th id="663">663</th><td>    <a class="local col2 ref" href="#52newh" title='newh' data-ref="52newh">newh</a> = <a class="macro" href="store.h.html#34" title="store_get_3(sizeof(header_line), &quot;/home/ubuntu/exim/src/build-Linux-x86_64/rewrite.c&quot;, 663)" data-ref="_M/store_get">store_get</a>(<b>sizeof</b>(<a class="typedef" href="local_scan.h.html#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a>));</td></tr>
+<tr><th id="664">664</th><td>    <a class="local col2 ref" href="#52newh" title='newh' data-ref="52newh">newh</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::type" title='header_line::type' data-ref="header_line::type">type</a> = <a class="local col4 ref" href="#74type" title='type' data-ref="74type">type</a>;</td></tr>
+<tr><th id="665">665</th><td>    <a class="local col2 ref" href="#52newh" title='newh' data-ref="52newh">newh</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::slen" title='header_line::slen' data-ref="header_line::slen">slen</a> = <a class="local col5 ref" href="#75slen" title='slen' data-ref="75slen">slen</a>;</td></tr>
+<tr><th id="666">666</th><td>    <a class="local col2 ref" href="#52newh" title='newh' data-ref="52newh">newh</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::text" title='header_line::text' data-ref="header_line::text">text</a> = <a class="ref fn" href="local_scan.h.html#string_copyn" title='string_copyn' data-ref="string_copyn">string_copyn</a>(<a class="local col3 ref" href="#73newtstart" title='newtstart' data-ref="73newtstart">newtstart</a>, <a class="local col5 ref" href="#75slen" title='slen' data-ref="75slen">slen</a>);</td></tr>
+<tr><th id="667">667</th><td>    <a class="macro" href="store.h.html#33" title="store_free_3(newtstart, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/rewrite.c&quot;, 667)" data-ref="_M/store_free">store_free</a>(<a class="local col3 ref" href="#73newtstart" title='newtstart' data-ref="73newtstart">newtstart</a>);</td></tr>
+<tr><th id="668">668</th><td></td></tr>
+<tr><th id="669">669</th><td>    <i>/* Set up for scanning the rest of the header */</i></td></tr>
+<tr><th id="670">670</th><td></td></tr>
+<tr><th id="671">671</th><td>    <a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a> = <a class="local col2 ref" href="#52newh" title='newh' data-ref="52newh">newh</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::text" title='header_line::text' data-ref="header_line::text">text</a> + <a class="local col8 ref" href="#68remlen" title='remlen' data-ref="68remlen">remlen</a>;</td></tr>
+<tr><th id="672">672</th><td>    <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_rewrite))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#400" title='D_rewrite' data-ref="D_rewrite">D_rewrite</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"remainder: %s"</q>, (*<a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a> == <var>0</var>)? <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"\n"</q> : <a class="local col4 ref" href="#54s" title='s' data-ref="54s">s</a>);</td></tr>
+<tr><th id="673">673</th><td>    }</td></tr>
+<tr><th id="674">674</th><td>  }</td></tr>
+<tr><th id="675">675</th><td></td></tr>
+<tr><th id="676">676</th><td><a class="ref" href="globals.h.html#parse_allow_group" title='parse_allow_group' data-ref="parse_allow_group">parse_allow_group</a> = <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;  <i>/* Reset group flags */</i></td></tr>
+<tr><th id="677">677</th><td><a class="ref" href="globals.h.html#parse_found_group" title='parse_found_group' data-ref="parse_found_group">parse_found_group</a> = <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="678">678</th><td></td></tr>
+<tr><th id="679">679</th><td><i>/* If a rewrite happened and "replace" is true, put the new header into the</i></td></tr>
+<tr><th id="680">680</th><td><i>chain following the old one, and mark the old one as replaced. */</i></td></tr>
+<tr><th id="681">681</th><td></td></tr>
+<tr><th id="682">682</th><td><b>if</b> (<a class="local col2 ref" href="#52newh" title='newh' data-ref="52newh">newh</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> &amp;&amp; <a class="local col0 ref" href="#50replace" title='replace' data-ref="50replace">replace</a>)</td></tr>
+<tr><th id="683">683</th><td>  {</td></tr>
+<tr><th id="684">684</th><td>  <a class="local col2 ref" href="#52newh" title='newh' data-ref="52newh">newh</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::next" title='header_line::next' data-ref="header_line::next">next</a> = <a class="local col4 ref" href="#44h" title='h' data-ref="44h">h</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::next" title='header_line::next' data-ref="header_line::next">next</a>;</td></tr>
+<tr><th id="685">685</th><td>  <b>if</b> (<a class="local col2 ref" href="#52newh" title='newh' data-ref="52newh">newh</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::next" title='header_line::next' data-ref="header_line::next">next</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="ref" href="local_scan.h.html#header_last" title='header_last' data-ref="header_last">header_last</a> = <a class="local col2 ref" href="#52newh" title='newh' data-ref="52newh">newh</a>;</td></tr>
+<tr><th id="686">686</th><td>  <a class="local col4 ref" href="#44h" title='h' data-ref="44h">h</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::type" title='header_line::type' data-ref="header_line::type">type</a> = <a class="macro" href="macros.h.html#655" title="&apos;*&apos;" data-ref="_M/htype_old">htype_old</a>;</td></tr>
+<tr><th id="687">687</th><td>  <a class="local col4 ref" href="#44h" title='h' data-ref="44h">h</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::next" title='header_line::next' data-ref="header_line::next">next</a> = <a class="local col2 ref" href="#52newh" title='newh' data-ref="52newh">newh</a>;</td></tr>
+<tr><th id="688">688</th><td>  }</td></tr>
+<tr><th id="689">689</th><td></td></tr>
+<tr><th id="690">690</th><td><b>return</b> <a class="local col2 ref" href="#52newh" title='newh' data-ref="52newh">newh</a>;</td></tr>
+<tr><th id="691">691</th><td>}</td></tr>
+<tr><th id="692">692</th><td></td></tr>
+<tr><th id="693">693</th><td></td></tr>
+<tr><th id="694">694</th><td></td></tr>
+<tr><th id="695">695</th><td></td></tr>
+<tr><th id="696">696</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="697">697</th><td><i>*              Rewrite a header line             *</i></td></tr>
+<tr><th id="698">698</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="699">699</th><td></td></tr>
+<tr><th id="700">700</th><td><i>/* This function may be passed any old header line. It must detect those which</i></td></tr>
+<tr><th id="701">701</th><td><i>contain addresses, then then apply any rewriting rules that apply. If</i></td></tr>
+<tr><th id="702">702</th><td><i>routed_old is NULL, only the configured rewriting rules are consulted.</i></td></tr>
+<tr><th id="703">703</th><td><i>Otherwise, the rewriting rule is "change routed_old into routed_new", and it</i></td></tr>
+<tr><th id="704">704</th><td><i>applies to all header lines that contain addresses. Then header-specific</i></td></tr>
+<tr><th id="705">705</th><td><i>rewriting rules are applied.</i></td></tr>
+<tr><th id="706">706</th><td><i></i></td></tr>
+<tr><th id="707">707</th><td><i>The old header line is flagged as "old". Old headers are saved on the spool for</i></td></tr>
+<tr><th id="708">708</th><td><i>debugging but are never sent to any recipients.</i></td></tr>
+<tr><th id="709">709</th><td><i></i></td></tr>
+<tr><th id="710">710</th><td><i>Arguments:</i></td></tr>
+<tr><th id="711">711</th><td><i>  h              header line to rewrite</i></td></tr>
+<tr><th id="712">712</th><td><i>  routed_old     if not NULL, this is a rewrite caused by a router, changing</i></td></tr>
+<tr><th id="713">713</th><td><i>                   this domain into routed_new</i></td></tr>
+<tr><th id="714">714</th><td><i>  routed_new     new routed domain if routed_old is not NULL</i></td></tr>
+<tr><th id="715">715</th><td><i>  rewrite_rules  points to chain of rewrite rules</i></td></tr>
+<tr><th id="716">716</th><td><i>  existflags     bits indicating which rewrites exist</i></td></tr>
+<tr><th id="717">717</th><td><i>  replace        if TRUE, the new header is inserted into the header chain</i></td></tr>
+<tr><th id="718">718</th><td><i>                    after the old one, and the old one is marked replaced</i></td></tr>
+<tr><th id="719">719</th><td><i></i></td></tr>
+<tr><th id="720">720</th><td><i>Returns:         NULL if header unchanged; otherwise the rewritten header</i></td></tr>
+<tr><th id="721">721</th><td><i>*/</i></td></tr>
+<tr><th id="722">722</th><td></td></tr>
+<tr><th id="723">723</th><td><a class="typedef" href="local_scan.h.html#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *</td></tr>
+<tr><th id="724">724</th><td><dfn class="decl def fn" id="rewrite_header" title='rewrite_header' data-ref="rewrite_header">rewrite_header</dfn>(<a class="typedef" href="local_scan.h.html#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *<dfn class="local col7 decl" id="77h" title='h' data-type='header_line *' data-ref="77h">h</dfn>,</td></tr>
+<tr><th id="725">725</th><td>  <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col8 decl" id="78routed_old" title='routed_old' data-type='const uschar *' data-ref="78routed_old">routed_old</dfn>, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col9 decl" id="79routed_new" title='routed_new' data-type='const uschar *' data-ref="79routed_new">routed_new</dfn>,</td></tr>
+<tr><th id="726">726</th><td>  <a class="typedef" href="structs.h.html#rewrite_rule" title='rewrite_rule' data-type='struct rewrite_rule' data-ref="rewrite_rule">rewrite_rule</a> *<dfn class="local col0 decl" id="80rewrite_rules" title='rewrite_rules' data-type='rewrite_rule *' data-ref="80rewrite_rules">rewrite_rules</dfn>, <em>int</em> <dfn class="local col1 decl" id="81existflags" title='existflags' data-type='int' data-ref="81existflags">existflags</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col2 decl" id="82replace" title='replace' data-type='BOOL' data-ref="82replace">replace</dfn>)</td></tr>
+<tr><th id="727">727</th><td>{</td></tr>
+<tr><th id="728">728</th><td><b>switch</b> (<a class="local col7 ref" href="#77h" title='h' data-ref="77h">h</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::type" title='header_line::type' data-ref="header_line::type">type</a>)</td></tr>
+<tr><th id="729">729</th><td>  {</td></tr>
+<tr><th id="730">730</th><td>  <b>case</b> <a class="macro" href="macros.h.html#654" title="&apos;S&apos;" data-ref="_M/htype_sender">htype_sender</a>:</td></tr>
+<tr><th id="731">731</th><td>  <b>return</b> <a class="tu ref fn" href="#rewrite_one_header" title='rewrite_one_header' data-use='c' data-ref="rewrite_one_header">rewrite_one_header</a>(<a class="local col7 ref" href="#77h" title='h' data-ref="77h">h</a>, <a class="macro" href="macros.h.html#766" title="0x0001" data-ref="_M/rewrite_sender">rewrite_sender</a>, <a class="local col8 ref" href="#78routed_old" title='routed_old' data-ref="78routed_old">routed_old</a>, <a class="local col9 ref" href="#79routed_new" title='routed_new' data-ref="79routed_new">routed_new</a>,</td></tr>
+<tr><th id="732">732</th><td>    <a class="local col0 ref" href="#80rewrite_rules" title='rewrite_rules' data-ref="80rewrite_rules">rewrite_rules</a>, <a class="local col1 ref" href="#81existflags" title='existflags' data-ref="81existflags">existflags</a>, <a class="local col2 ref" href="#82replace" title='replace' data-ref="82replace">replace</a>);</td></tr>
+<tr><th id="733">733</th><td></td></tr>
+<tr><th id="734">734</th><td>  <b>case</b> <a class="macro" href="macros.h.html#647" title="&apos;F&apos;" data-ref="_M/htype_from">htype_from</a>:</td></tr>
+<tr><th id="735">735</th><td>  <b>return</b> <a class="tu ref fn" href="#rewrite_one_header" title='rewrite_one_header' data-use='c' data-ref="rewrite_one_header">rewrite_one_header</a>(<a class="local col7 ref" href="#77h" title='h' data-ref="77h">h</a>, <a class="macro" href="macros.h.html#767" title="0x0002" data-ref="_M/rewrite_from">rewrite_from</a>, <a class="local col8 ref" href="#78routed_old" title='routed_old' data-ref="78routed_old">routed_old</a>, <a class="local col9 ref" href="#79routed_new" title='routed_new' data-ref="79routed_new">routed_new</a>,</td></tr>
+<tr><th id="736">736</th><td>    <a class="local col0 ref" href="#80rewrite_rules" title='rewrite_rules' data-ref="80rewrite_rules">rewrite_rules</a>, <a class="local col1 ref" href="#81existflags" title='existflags' data-ref="81existflags">existflags</a>, <a class="local col2 ref" href="#82replace" title='replace' data-ref="82replace">replace</a>);</td></tr>
+<tr><th id="737">737</th><td></td></tr>
+<tr><th id="738">738</th><td>  <b>case</b> <a class="macro" href="macros.h.html#648" title="&apos;T&apos;" data-ref="_M/htype_to">htype_to</a>:</td></tr>
+<tr><th id="739">739</th><td>  <b>return</b> <a class="tu ref fn" href="#rewrite_one_header" title='rewrite_one_header' data-use='c' data-ref="rewrite_one_header">rewrite_one_header</a>(<a class="local col7 ref" href="#77h" title='h' data-ref="77h">h</a>, <a class="macro" href="macros.h.html#768" title="0x0004" data-ref="_M/rewrite_to">rewrite_to</a>, <a class="local col8 ref" href="#78routed_old" title='routed_old' data-ref="78routed_old">routed_old</a>, <a class="local col9 ref" href="#79routed_new" title='routed_new' data-ref="79routed_new">routed_new</a>,</td></tr>
+<tr><th id="740">740</th><td>    <a class="local col0 ref" href="#80rewrite_rules" title='rewrite_rules' data-ref="80rewrite_rules">rewrite_rules</a>, <a class="local col1 ref" href="#81existflags" title='existflags' data-ref="81existflags">existflags</a>, <a class="local col2 ref" href="#82replace" title='replace' data-ref="82replace">replace</a>);</td></tr>
+<tr><th id="741">741</th><td></td></tr>
+<tr><th id="742">742</th><td>  <b>case</b> <a class="macro" href="macros.h.html#649" title="&apos;C&apos;" data-ref="_M/htype_cc">htype_cc</a>:</td></tr>
+<tr><th id="743">743</th><td>  <b>return</b> <a class="tu ref fn" href="#rewrite_one_header" title='rewrite_one_header' data-use='c' data-ref="rewrite_one_header">rewrite_one_header</a>(<a class="local col7 ref" href="#77h" title='h' data-ref="77h">h</a>, <a class="macro" href="macros.h.html#769" title="0x0008" data-ref="_M/rewrite_cc">rewrite_cc</a>, <a class="local col8 ref" href="#78routed_old" title='routed_old' data-ref="78routed_old">routed_old</a>, <a class="local col9 ref" href="#79routed_new" title='routed_new' data-ref="79routed_new">routed_new</a>,</td></tr>
+<tr><th id="744">744</th><td>    <a class="local col0 ref" href="#80rewrite_rules" title='rewrite_rules' data-ref="80rewrite_rules">rewrite_rules</a>, <a class="local col1 ref" href="#81existflags" title='existflags' data-ref="81existflags">existflags</a>, <a class="local col2 ref" href="#82replace" title='replace' data-ref="82replace">replace</a>);</td></tr>
+<tr><th id="745">745</th><td></td></tr>
+<tr><th id="746">746</th><td>  <b>case</b> <a class="macro" href="macros.h.html#650" title="&apos;B&apos;" data-ref="_M/htype_bcc">htype_bcc</a>:</td></tr>
+<tr><th id="747">747</th><td>  <b>return</b> <a class="tu ref fn" href="#rewrite_one_header" title='rewrite_one_header' data-use='c' data-ref="rewrite_one_header">rewrite_one_header</a>(<a class="local col7 ref" href="#77h" title='h' data-ref="77h">h</a>, <a class="macro" href="macros.h.html#770" title="0x0010" data-ref="_M/rewrite_bcc">rewrite_bcc</a>, <a class="local col8 ref" href="#78routed_old" title='routed_old' data-ref="78routed_old">routed_old</a>, <a class="local col9 ref" href="#79routed_new" title='routed_new' data-ref="79routed_new">routed_new</a>,</td></tr>
+<tr><th id="748">748</th><td>    <a class="local col0 ref" href="#80rewrite_rules" title='rewrite_rules' data-ref="80rewrite_rules">rewrite_rules</a>, <a class="local col1 ref" href="#81existflags" title='existflags' data-ref="81existflags">existflags</a>, <a class="local col2 ref" href="#82replace" title='replace' data-ref="82replace">replace</a>);</td></tr>
+<tr><th id="749">749</th><td></td></tr>
+<tr><th id="750">750</th><td>  <b>case</b> <a class="macro" href="macros.h.html#652" title="&apos;R&apos;" data-ref="_M/htype_reply_to">htype_reply_to</a>:</td></tr>
+<tr><th id="751">751</th><td>  <b>return</b> <a class="tu ref fn" href="#rewrite_one_header" title='rewrite_one_header' data-use='c' data-ref="rewrite_one_header">rewrite_one_header</a>(<a class="local col7 ref" href="#77h" title='h' data-ref="77h">h</a>, <a class="macro" href="macros.h.html#771" title="0x0020" data-ref="_M/rewrite_replyto">rewrite_replyto</a>, <a class="local col8 ref" href="#78routed_old" title='routed_old' data-ref="78routed_old">routed_old</a>, <a class="local col9 ref" href="#79routed_new" title='routed_new' data-ref="79routed_new">routed_new</a>,</td></tr>
+<tr><th id="752">752</th><td>    <a class="local col0 ref" href="#80rewrite_rules" title='rewrite_rules' data-ref="80rewrite_rules">rewrite_rules</a>, <a class="local col1 ref" href="#81existflags" title='existflags' data-ref="81existflags">existflags</a>, <a class="local col2 ref" href="#82replace" title='replace' data-ref="82replace">replace</a>);</td></tr>
+<tr><th id="753">753</th><td>  }</td></tr>
+<tr><th id="754">754</th><td></td></tr>
+<tr><th id="755">755</th><td><b>return</b> <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="756">756</th><td>}</td></tr>
+<tr><th id="757">757</th><td></td></tr>
+<tr><th id="758">758</th><td></td></tr>
+<tr><th id="759">759</th><td></td></tr>
+<tr><th id="760">760</th><td><i>/************************************************</i></td></tr>
+<tr><th id="761">761</th><td><i>*            Test rewriting rules               *</i></td></tr>
+<tr><th id="762">762</th><td><i>************************************************/</i></td></tr>
+<tr><th id="763">763</th><td></td></tr>
+<tr><th id="764">764</th><td><i>/* Called from the mainline as a result of the -brw option. Test the</i></td></tr>
+<tr><th id="765">765</th><td><i>address for all possible cases.</i></td></tr>
+<tr><th id="766">766</th><td><i></i></td></tr>
+<tr><th id="767">767</th><td><i>Argument: the address to test</i></td></tr>
+<tr><th id="768">768</th><td><i>Returns:  nothing</i></td></tr>
+<tr><th id="769">769</th><td><i>*/</i></td></tr>
+<tr><th id="770">770</th><td></td></tr>
+<tr><th id="771">771</th><td><em>void</em> <dfn class="decl def fn" id="rewrite_test" title='rewrite_test' data-ref="rewrite_test">rewrite_test</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="83s" title='s' data-type='uschar *' data-ref="83s">s</dfn>)</td></tr>
+<tr><th id="772">772</th><td>{</td></tr>
+<tr><th id="773">773</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="84recipient" title='recipient' data-type='uschar *' data-ref="84recipient">recipient</dfn>, *<dfn class="local col5 decl" id="85error" title='error' data-type='uschar *' data-ref="85error">error</dfn>;</td></tr>
+<tr><th id="774">774</th><td><em>int</em> <dfn class="local col6 decl" id="86i" title='i' data-type='int' data-ref="86i">i</dfn>, <dfn class="local col7 decl" id="87start" title='start' data-type='int' data-ref="87start">start</dfn>, <dfn class="local col8 decl" id="88end" title='end' data-type='int' data-ref="88end">end</dfn>, <dfn class="local col9 decl" id="89domain" title='domain' data-type='int' data-ref="89domain">domain</dfn>;</td></tr>
+<tr><th id="775">775</th><td><a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col0 decl" id="90done_smtp" title='done_smtp' data-type='BOOL' data-ref="90done_smtp">done_smtp</dfn> = <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="776">776</th><td></td></tr>
+<tr><th id="777">777</th><td><b>if</b> (<a class="ref" href="globals.h.html#rewrite_existflags" title='rewrite_existflags' data-ref="rewrite_existflags">rewrite_existflags</a> == <var>0</var>)</td></tr>
+<tr><th id="778">778</th><td>  {</td></tr>
+<tr><th id="779">779</th><td>  <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"No rewrite rules are defined\n"</q>);</td></tr>
+<tr><th id="780">780</th><td>  <b>return</b>;</td></tr>
+<tr><th id="781">781</th><td>  }</td></tr>
+<tr><th id="782">782</th><td></td></tr>
+<tr><th id="783">783</th><td><i>/* Do SMTP rewrite only if a rule with the S flag exists. Allow &lt;&gt; by</i></td></tr>
+<tr><th id="784">784</th><td><i>pretending it is a sender. */</i></td></tr>
+<tr><th id="785">785</th><td></td></tr>
+<tr><th id="786">786</th><td><b>if</b> ((<a class="ref" href="globals.h.html#rewrite_existflags" title='rewrite_existflags' data-ref="rewrite_existflags">rewrite_existflags</a> &amp; <a class="macro" href="macros.h.html#780" title="0x0100" data-ref="_M/rewrite_smtp">rewrite_smtp</a>) != <var>0</var>)</td></tr>
+<tr><th id="787">787</th><td>  {</td></tr>
+<tr><th id="788">788</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="91new" title='new' data-type='uschar *' data-ref="91new">new</dfn> = <a class="ref fn" href="#rewrite_one" title='rewrite_one' data-ref="rewrite_one">rewrite_one</a>(<a class="local col3 ref" href="#83s" title='s' data-ref="83s">s</a>, <a class="macro" href="macros.h.html#780" title="0x0100" data-ref="_M/rewrite_smtp">rewrite_smtp</a>|<a class="macro" href="macros.h.html#781" title="0x0200" data-ref="_M/rewrite_smtp_sender">rewrite_smtp_sender</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>,</td></tr>
+<tr><th id="789">789</th><td>    <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>""</q>, <a class="ref" href="globals.h.html#global_rewrite_rules" title='global_rewrite_rules' data-ref="global_rewrite_rules">global_rewrite_rules</a>);</td></tr>
+<tr><th id="790">790</th><td>  <b>if</b> (<a class="local col1 ref" href="#91new" title='new' data-ref="91new">new</a> != <a class="local col3 ref" href="#83s" title='s' data-ref="83s">s</a>)</td></tr>
+<tr><th id="791">791</th><td>    {</td></tr>
+<tr><th id="792">792</th><td>    <b>if</b> (*<a class="local col1 ref" href="#91new" title='new' data-ref="91new">new</a> == <var>0</var>)</td></tr>
+<tr><th id="793">793</th><td>      <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"    SMTP: &lt;&gt;\n"</q>);</td></tr>
+<tr><th id="794">794</th><td>    <b>else</b></td></tr>
+<tr><th id="795">795</th><td>      <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"    SMTP: %s\n"</q>, <a class="local col1 ref" href="#91new" title='new' data-ref="91new">new</a>);</td></tr>
+<tr><th id="796">796</th><td>    <a class="local col0 ref" href="#90done_smtp" title='done_smtp' data-ref="90done_smtp">done_smtp</a> = <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="797">797</th><td>    }</td></tr>
+<tr><th id="798">798</th><td>  }</td></tr>
+<tr><th id="799">799</th><td></td></tr>
+<tr><th id="800">800</th><td><i>/* Do the other rewrites only if a rule without the S flag exists */</i></td></tr>
+<tr><th id="801">801</th><td></td></tr>
+<tr><th id="802">802</th><td><b>if</b> ((<a class="ref" href="globals.h.html#rewrite_existflags" title='rewrite_existflags' data-ref="rewrite_existflags">rewrite_existflags</a> &amp; ~<a class="macro" href="macros.h.html#780" title="0x0100" data-ref="_M/rewrite_smtp">rewrite_smtp</a>) == <var>0</var>) <b>return</b>;</td></tr>
+<tr><th id="803">803</th><td></td></tr>
+<tr><th id="804">804</th><td><i>/* Qualify if necessary before extracting the address */</i></td></tr>
+<tr><th id="805">805</th><td></td></tr>
+<tr><th id="806">806</th><td><b>if</b> (<a class="ref fn" href="functions.h.html#parse_find_at" title='parse_find_at' data-ref="parse_find_at">parse_find_at</a>(<a class="local col3 ref" href="#83s" title='s' data-ref="83s">s</a>) == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="807">807</th><td>  <a class="local col3 ref" href="#83s" title='s' data-ref="83s">s</a> = <a class="ref fn" href="local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%s@%s"</q>, <a class="local col3 ref" href="#83s" title='s' data-ref="83s">s</a>, <a class="ref" href="globals.h.html#qualify_domain_recipient" title='qualify_domain_recipient' data-ref="qualify_domain_recipient">qualify_domain_recipient</a>);</td></tr>
+<tr><th id="808">808</th><td></td></tr>
+<tr><th id="809">809</th><td><a class="local col4 ref" href="#84recipient" title='recipient' data-ref="84recipient">recipient</a> = <a class="ref fn" href="functions.h.html#parse_extract_address" title='parse_extract_address' data-ref="parse_extract_address">parse_extract_address</a>(<a class="local col3 ref" href="#83s" title='s' data-ref="83s">s</a>, &amp;<a class="local col5 ref" href="#85error" title='error' data-ref="85error">error</a>, &amp;<a class="local col7 ref" href="#87start" title='start' data-ref="87start">start</a>, &amp;<a class="local col8 ref" href="#88end" title='end' data-ref="88end">end</a>, &amp;<a class="local col9 ref" href="#89domain" title='domain' data-ref="89domain">domain</a>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>);</td></tr>
+<tr><th id="810">810</th><td></td></tr>
+<tr><th id="811">811</th><td><b>if</b> (<a class="local col4 ref" href="#84recipient" title='recipient' data-ref="84recipient">recipient</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="812">812</th><td>  {</td></tr>
+<tr><th id="813">813</th><td>  <b>if</b> (!<a class="local col0 ref" href="#90done_smtp" title='done_smtp' data-ref="90done_smtp">done_smtp</a>)</td></tr>
+<tr><th id="814">814</th><td>    <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"Syntax error in %s\n%c%s\n"</q>, <a class="local col3 ref" href="#83s" title='s' data-ref="83s">s</a>, <a class="macro" href="../../include/ctype.h.html#229" title="(__extension__ ({ int __res; if (sizeof (error[0]) &gt; 1) { if (__builtin_constant_p (error[0])) { int __c = (error[0]); __res = __c &lt; -128 || __c &gt; 255 ? __c : (*__ctype_toupper_loc ())[__c]; } else __res = toupper (error[0]); } else __res = (*__ctype_toupper_loc ())[(int) (error[0])]; __res; }))" data-ref="_M/toupper">toupper</a>(<a class="local col5 ref" href="#85error" title='error' data-ref="85error">error</a>[<var>0</var>]), <a class="local col5 ref" href="#85error" title='error' data-ref="85error">error</a>+<var>1</var>);</td></tr>
+<tr><th id="815">815</th><td>  <b>return</b>;</td></tr>
+<tr><th id="816">816</th><td>  }</td></tr>
+<tr><th id="817">817</th><td></td></tr>
+<tr><th id="818">818</th><td><b>for</b> (<a class="local col6 ref" href="#86i" title='i' data-ref="86i">i</a> = <var>0</var>; <a class="local col6 ref" href="#86i" title='i' data-ref="86i">i</a> &lt; <var>8</var>; <a class="local col6 ref" href="#86i" title='i' data-ref="86i">i</a>++)</td></tr>
+<tr><th id="819">819</th><td>  {</td></tr>
+<tr><th id="820">820</th><td>  <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col2 decl" id="92whole" title='whole' data-type='BOOL' data-ref="92whole">whole</dfn> = <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="821">821</th><td>  <em>int</em> <dfn class="local col3 decl" id="93flag" title='flag' data-type='int' data-ref="93flag">flag</dfn> = <var>1</var> &lt;&lt; <a class="local col6 ref" href="#86i" title='i' data-ref="86i">i</a>;</td></tr>
+<tr><th id="822">822</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="94new" title='new' data-type='uschar *' data-ref="94new">new</dfn> = <a class="ref fn" href="#rewrite_one" title='rewrite_one' data-ref="rewrite_one">rewrite_one</a>(<a class="local col4 ref" href="#84recipient" title='recipient' data-ref="84recipient">recipient</a>, <a class="local col3 ref" href="#93flag" title='flag' data-ref="93flag">flag</a>, &amp;<a class="local col2 ref" href="#92whole" title='whole' data-ref="92whole">whole</a>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>""</q>,</td></tr>
+<tr><th id="823">823</th><td>    <a class="ref" href="globals.h.html#global_rewrite_rules" title='global_rewrite_rules' data-ref="global_rewrite_rules">global_rewrite_rules</a>);</td></tr>
+<tr><th id="824">824</th><td>  <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"%s: "</q>, <a class="tu ref" href="#rrname" title='rrname' data-use='r' data-ref="rrname">rrname</a>[<a class="local col6 ref" href="#86i" title='i' data-ref="86i">i</a>]);</td></tr>
+<tr><th id="825">825</th><td>  <b>if</b> (*<a class="local col4 ref" href="#94new" title='new' data-ref="94new">new</a> == <var>0</var>)</td></tr>
+<tr><th id="826">826</th><td>    <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"&lt;&gt;\n"</q>);</td></tr>
+<tr><th id="827">827</th><td>  <b>else</b> <b>if</b> (<a class="local col2 ref" href="#92whole" title='whole' data-ref="92whole">whole</a> || (<a class="local col3 ref" href="#93flag" title='flag' data-ref="93flag">flag</a> &amp; <a class="macro" href="macros.h.html#772" title="0x003F" data-ref="_M/rewrite_all_headers">rewrite_all_headers</a>) == <var>0</var>)</td></tr>
+<tr><th id="828">828</th><td>    <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"%s\n"</q>, <a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col4 ref" href="#94new" title='new' data-ref="94new">new</a>);</td></tr>
+<tr><th id="829">829</th><td>  <b>else</b> <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"%.*s%s%s\n"</q>, <a class="local col7 ref" href="#87start" title='start' data-ref="87start">start</a>, <a class="local col3 ref" href="#83s" title='s' data-ref="83s">s</a>, <a class="local col4 ref" href="#94new" title='new' data-ref="94new">new</a>, <a class="local col3 ref" href="#83s" title='s' data-ref="83s">s</a>+<a class="local col8 ref" href="#88end" title='end' data-ref="88end">end</a>);</td></tr>
+<tr><th id="830">830</th><td>  }</td></tr>
+<tr><th id="831">831</th><td>}</td></tr>
+<tr><th id="832">832</th><td></td></tr>
+<tr><th id="833">833</th><td><i>/* End of rewrite.c */</i></td></tr>
+<tr><th id="834">834</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

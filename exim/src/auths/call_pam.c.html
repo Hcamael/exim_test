@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>call_pam.c source code [exim/src/auths/call_pam.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/auths/call_pam.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>auths</a>/<a href='call_pam.c.html'>call_pam.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><u>#include <a href="../exim.h.html">"../exim.h"</a></u></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><i>/* This module contains functions that call the PAM authentication mechanism</i></td></tr>
+<tr><th id="11">11</th><td><i>defined by Sun for Solaris and also available for Linux and other OS.</i></td></tr>
+<tr><th id="12">12</th><td><i></i></td></tr>
+<tr><th id="13">13</th><td><i>We can't just compile this code and allow the library mechanism to omit the</i></td></tr>
+<tr><th id="14">14</th><td><i>functions if they are not wanted, because we need to have the PAM headers</i></td></tr>
+<tr><th id="15">15</th><td><i>available for compiling. Therefore, compile these functions only if SUPPORT_PAM</i></td></tr>
+<tr><th id="16">16</th><td><i>is defined. However, some compilers don't like compiling empty modules, so keep</i></td></tr>
+<tr><th id="17">17</th><td><i>them happy with a dummy when skipping the rest. Make it reference itself to</i></td></tr>
+<tr><th id="18">18</th><td><i>stop picky compilers complaining that it is unused, and put in a dummy argument</i></td></tr>
+<tr><th id="19">19</th><td><i>to stop even pickier compilers complaining about infinite loops.</i></td></tr>
+<tr><th id="20">20</th><td><i>Then use a mutually-recursive pair as gcc is just getting stupid. */</i></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="22">ifndef</span> <span class="macro" data-ref="_M/SUPPORT_PAM">SUPPORT_PAM</span></u></td></tr>
+<tr><th id="23">23</th><td><em>static</em> <em>void</em> <a class="tu decl fn" href="#dummy" title='dummy' data-type='void dummy(int x)' data-ref="dummy">dummy</a>(<em>int</em> <dfn class="local col1 decl" id="1x" title='x' data-type='int' data-ref="1x">x</dfn>);</td></tr>
+<tr><th id="24">24</th><td><em>static</em> <em>void</em> <dfn class="tu decl def fn" id="dummy2" title='dummy2' data-type='void dummy2(int x)' data-ref="dummy2">dummy2</dfn>(<em>int</em> <dfn class="local col2 decl" id="2x" title='x' data-type='int' data-ref="2x">x</dfn>) { <a class="tu ref fn" href="#dummy" title='dummy' data-use='c' data-ref="dummy">dummy</a>(<a class="local col2 ref" href="#2x" title='x' data-ref="2x">x</a>-<var>1</var>); }</td></tr>
+<tr><th id="25">25</th><td><em>static</em> <em>void</em> <dfn class="tu decl def fn" id="dummy" title='dummy' data-type='void dummy(int x)' data-ref="dummy">dummy</dfn>(<em>int</em> <dfn class="local col3 decl" id="3x" title='x' data-type='int' data-ref="3x">x</dfn>) { <a class="tu ref fn" href="#dummy2" title='dummy2' data-use='c' data-ref="dummy2">dummy2</a>(<a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a>-<var>1</var>); }</td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="22">else</span>  /* SUPPORT_PAM */</u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><u>#ifdef PAM_H_IN_PAM</u></td></tr>
+<tr><th id="29">29</th><td><u>#include &lt;pam/pam_appl.h&gt;</u></td></tr>
+<tr><th id="30">30</th><td><u>#else</u></td></tr>
+<tr><th id="31">31</th><td><u>#include &lt;security/pam_appl.h&gt;</u></td></tr>
+<tr><th id="32">32</th><td><u>#endif</u></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><i>/* According to the specification, it should be possible to have an application</i></td></tr>
+<tr><th id="35">35</th><td><i>data pointer passed to the conversation function. However, I was unable to get</i></td></tr>
+<tr><th id="36">36</th><td><i>this to work on Solaris 2.6, so static variables are used instead. */</i></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><em>static</em> <em>int</em> pam_conv_had_error;</td></tr>
+<tr><th id="39">39</th><td><em>static</em> <em>const</em> uschar *pam_args;</td></tr>
+<tr><th id="40">40</th><td><em>static</em> BOOL pam_arg_ended;</td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="45">45</th><td><i>*           PAM conversation function            *</i></td></tr>
+<tr><th id="46">46</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><i>/* This function is passed to the PAM authentication function, and it calls it</i></td></tr>
+<tr><th id="49">49</th><td><i>back when it wants data from the client. The string list is in pam_args. When</i></td></tr>
+<tr><th id="50">50</th><td><i>we reach the end, we pass back an empty string once. If this function is called</i></td></tr>
+<tr><th id="51">51</th><td><i>again, it will give an error response. This is protection against something</i></td></tr>
+<tr><th id="52">52</th><td><i>crazy happening.</i></td></tr>
+<tr><th id="53">53</th><td><i></i></td></tr>
+<tr><th id="54">54</th><td><i>Arguments:</i></td></tr>
+<tr><th id="55">55</th><td><i>  num_msg        number of messages associated with the call</i></td></tr>
+<tr><th id="56">56</th><td><i>  msg            points to an array of length num_msg of pam_message structures</i></td></tr>
+<tr><th id="57">57</th><td><i>  resp           set to point to the response block, which has to be got by</i></td></tr>
+<tr><th id="58">58</th><td><i>                   this function</i></td></tr>
+<tr><th id="59">59</th><td><i>  appdata_ptr    the application data pointer - not used because in Solaris</i></td></tr>
+<tr><th id="60">60</th><td><i>                   2.6 it always arrived in pam_converse() as NULL</i></td></tr>
+<tr><th id="61">61</th><td><i></i></td></tr>
+<tr><th id="62">62</th><td><i>Returns:         a PAM return code</i></td></tr>
+<tr><th id="63">63</th><td><i>*/</i></td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="66">66</th><td>pam_converse (<em>int</em> num_msg, PAM_CONVERSE_ARG2_TYPE **msg,</td></tr>
+<tr><th id="67">67</th><td>  <b>struct</b> pam_response **resp, <em>void</em> *appdata_ptr)</td></tr>
+<tr><th id="68">68</th><td>{</td></tr>
+<tr><th id="69">69</th><td><em>int</em> i;</td></tr>
+<tr><th id="70">70</th><td><em>int</em> sep = <var>0</var>;</td></tr>
+<tr><th id="71">71</th><td><b>struct</b> pam_response *reply;</td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><b>if</b> (pam_arg_ended) <b>return</b> PAM_CONV_ERR;</td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td>reply = malloc(<b>sizeof</b>(<b>struct</b> pam_response) * num_msg);</td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td><b>if</b> (reply == NULL) <b>return</b> PAM_CONV_ERR;</td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><b>for</b> (i = <var>0</var>; i &lt; num_msg; i++)</td></tr>
+<tr><th id="80">80</th><td>  {</td></tr>
+<tr><th id="81">81</th><td>  uschar *arg;</td></tr>
+<tr><th id="82">82</th><td>  <b>switch</b> (msg[i]-&gt;msg_style)</td></tr>
+<tr><th id="83">83</th><td>    {</td></tr>
+<tr><th id="84">84</th><td>    <b>case</b> PAM_PROMPT_ECHO_ON:</td></tr>
+<tr><th id="85">85</th><td>    <b>case</b> PAM_PROMPT_ECHO_OFF:</td></tr>
+<tr><th id="86">86</th><td>    arg = string_nextinlist(&amp;pam_args, &amp;sep, big_buffer, big_buffer_size);</td></tr>
+<tr><th id="87">87</th><td>    <b>if</b> (arg == NULL)</td></tr>
+<tr><th id="88">88</th><td>      {</td></tr>
+<tr><th id="89">89</th><td>      arg = US<q>""</q>;</td></tr>
+<tr><th id="90">90</th><td>      pam_arg_ended = TRUE;</td></tr>
+<tr><th id="91">91</th><td>      }</td></tr>
+<tr><th id="92">92</th><td>    reply[i].resp = CS string_copy_malloc(arg); <i>/* PAM frees resp */</i></td></tr>
+<tr><th id="93">93</th><td>    reply[i].resp_retcode = PAM_SUCCESS;</td></tr>
+<tr><th id="94">94</th><td>    <b>break</b>;</td></tr>
+<tr><th id="95">95</th><td></td></tr>
+<tr><th id="96">96</th><td>    <b>case</b> PAM_TEXT_INFO:    <i>/* Just acknowledge messages */</i></td></tr>
+<tr><th id="97">97</th><td>    <b>case</b> PAM_ERROR_MSG:</td></tr>
+<tr><th id="98">98</th><td>    reply[i].resp_retcode = PAM_SUCCESS;</td></tr>
+<tr><th id="99">99</th><td>    reply[i].resp = NULL;</td></tr>
+<tr><th id="100">100</th><td>    <b>break</b>;</td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td>    <b>default</b>:  <i>/* Must be an error of some sort... */</i></td></tr>
+<tr><th id="103">103</th><td>    free (reply);</td></tr>
+<tr><th id="104">104</th><td>    pam_conv_had_error = TRUE;</td></tr>
+<tr><th id="105">105</th><td>    <b>return</b> PAM_CONV_ERR;</td></tr>
+<tr><th id="106">106</th><td>    }</td></tr>
+<tr><th id="107">107</th><td>  }</td></tr>
+<tr><th id="108">108</th><td></td></tr>
+<tr><th id="109">109</th><td>*resp = reply;</td></tr>
+<tr><th id="110">110</th><td><b>return</b> PAM_SUCCESS;</td></tr>
+<tr><th id="111">111</th><td>}</td></tr>
+<tr><th id="112">112</th><td></td></tr>
+<tr><th id="113">113</th><td></td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="116">116</th><td><i>*              Perform PAM authentication        *</i></td></tr>
+<tr><th id="117">117</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="118">118</th><td></td></tr>
+<tr><th id="119">119</th><td><i>/* This function calls the PAM authentication mechanism, passing over one or</i></td></tr>
+<tr><th id="120">120</th><td><i>more data strings.</i></td></tr>
+<tr><th id="121">121</th><td><i></i></td></tr>
+<tr><th id="122">122</th><td><i>Arguments:</i></td></tr>
+<tr><th id="123">123</th><td><i>  s        a colon-separated list of strings</i></td></tr>
+<tr><th id="124">124</th><td><i>  errptr   where to point an error message</i></td></tr>
+<tr><th id="125">125</th><td><i></i></td></tr>
+<tr><th id="126">126</th><td><i>Returns:   OK if authentication succeeded</i></td></tr>
+<tr><th id="127">127</th><td><i>           FAIL if authentication failed</i></td></tr>
+<tr><th id="128">128</th><td><i>           ERROR some other error condition</i></td></tr>
+<tr><th id="129">129</th><td><i>*/</i></td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td><em>int</em></td></tr>
+<tr><th id="132">132</th><td>auth_call_pam(<em>const</em> uschar *s, uschar **errptr)</td></tr>
+<tr><th id="133">133</th><td>{</td></tr>
+<tr><th id="134">134</th><td>pam_handle_t *pamh = NULL;</td></tr>
+<tr><th id="135">135</th><td><b>struct</b> pam_conv pamc;</td></tr>
+<tr><th id="136">136</th><td><em>int</em> pam_error;</td></tr>
+<tr><th id="137">137</th><td><em>int</em> sep = <var>0</var>;</td></tr>
+<tr><th id="138">138</th><td>uschar *user;</td></tr>
+<tr><th id="139">139</th><td></td></tr>
+<tr><th id="140">140</th><td><i>/* Set up the input data structure: the address of the conversation function,</i></td></tr>
+<tr><th id="141">141</th><td><i>and a pointer to application data, which we don't use because I couldn't get it</i></td></tr>
+<tr><th id="142">142</th><td><i>to work under Solaris 2.6 - it always arrived in pam_converse() as NULL. */</i></td></tr>
+<tr><th id="143">143</th><td></td></tr>
+<tr><th id="144">144</th><td>pamc.conv = pam_converse;</td></tr>
+<tr><th id="145">145</th><td>pamc.appdata_ptr = NULL;</td></tr>
+<tr><th id="146">146</th><td></td></tr>
+<tr><th id="147">147</th><td><i>/* Initialize the static data - the current input data, the error flag, and the</i></td></tr>
+<tr><th id="148">148</th><td><i>flag for data end. */</i></td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td>pam_args = s;</td></tr>
+<tr><th id="151">151</th><td>pam_conv_had_error = FALSE;</td></tr>
+<tr><th id="152">152</th><td>pam_arg_ended = FALSE;</td></tr>
+<tr><th id="153">153</th><td></td></tr>
+<tr><th id="154">154</th><td><i>/* The first string in the list is the user. If this is an empty string, we</i></td></tr>
+<tr><th id="155">155</th><td><i>fail. PAM doesn't support authentication with an empty user (it prompts for it,</i></td></tr>
+<tr><th id="156">156</th><td><i>causing a potential mis-interpretation). */</i></td></tr>
+<tr><th id="157">157</th><td></td></tr>
+<tr><th id="158">158</th><td>user = string_nextinlist(&amp;pam_args, &amp;sep, big_buffer, big_buffer_size);</td></tr>
+<tr><th id="159">159</th><td><b>if</b> (user == NULL || user[<var>0</var>] == <var>0</var>) <b>return</b> FAIL;</td></tr>
+<tr><th id="160">160</th><td></td></tr>
+<tr><th id="161">161</th><td><i>/* Start off PAM interaction */</i></td></tr>
+<tr><th id="162">162</th><td></td></tr>
+<tr><th id="163">163</th><td>DEBUG(D_auth)</td></tr>
+<tr><th id="164">164</th><td>  debug_printf(<q>"Running PAM authentication for user \"%s\"\n"</q>, user);</td></tr>
+<tr><th id="165">165</th><td></td></tr>
+<tr><th id="166">166</th><td>pam_error = pam_start (<q>"exim"</q>, CS user, &amp;pamc, &amp;pamh);</td></tr>
+<tr><th id="167">167</th><td></td></tr>
+<tr><th id="168">168</th><td><i>/* Do the authentication - the pam_authenticate() will call pam_converse() to</i></td></tr>
+<tr><th id="169">169</th><td><i>get the data it wants. After successful authentication we call pam_acct_mgmt()</i></td></tr>
+<tr><th id="170">170</th><td><i>to apply any other restrictions (e.g. only some times of day). */</i></td></tr>
+<tr><th id="171">171</th><td></td></tr>
+<tr><th id="172">172</th><td><b>if</b> (pam_error == PAM_SUCCESS)</td></tr>
+<tr><th id="173">173</th><td>  {</td></tr>
+<tr><th id="174">174</th><td>  pam_error = pam_authenticate (pamh, PAM_SILENT);</td></tr>
+<tr><th id="175">175</th><td>  <b>if</b> (pam_error == PAM_SUCCESS &amp;&amp; !pam_conv_had_error)</td></tr>
+<tr><th id="176">176</th><td>    pam_error = pam_acct_mgmt (pamh, PAM_SILENT);</td></tr>
+<tr><th id="177">177</th><td>  }</td></tr>
+<tr><th id="178">178</th><td></td></tr>
+<tr><th id="179">179</th><td><i>/* Finish the PAM interaction - this causes it to clean up store etc. Unclear</i></td></tr>
+<tr><th id="180">180</th><td><i>what should be passed as the second argument. */</i></td></tr>
+<tr><th id="181">181</th><td></td></tr>
+<tr><th id="182">182</th><td>pam_end(pamh, PAM_SUCCESS);</td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td><i>/* Sort out the return code. If not success, set the error message. */</i></td></tr>
+<tr><th id="185">185</th><td></td></tr>
+<tr><th id="186">186</th><td><b>if</b> (pam_error == PAM_SUCCESS)</td></tr>
+<tr><th id="187">187</th><td>  {</td></tr>
+<tr><th id="188">188</th><td>  DEBUG(D_auth) debug_printf(<q>"PAM success\n"</q>);</td></tr>
+<tr><th id="189">189</th><td>  <b>return</b> OK;</td></tr>
+<tr><th id="190">190</th><td>  }</td></tr>
+<tr><th id="191">191</th><td></td></tr>
+<tr><th id="192">192</th><td>*errptr = US pam_strerror(pamh, pam_error);</td></tr>
+<tr><th id="193">193</th><td>DEBUG(D_auth) debug_printf(<q>"PAM error: %s\n"</q>, *errptr);</td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td><b>if</b> (pam_error == PAM_USER_UNKNOWN ||</td></tr>
+<tr><th id="196">196</th><td>    pam_error == PAM_AUTH_ERR ||</td></tr>
+<tr><th id="197">197</th><td>    pam_error == PAM_ACCT_EXPIRED)</td></tr>
+<tr><th id="198">198</th><td>  <b>return</b> FAIL;</td></tr>
+<tr><th id="199">199</th><td></td></tr>
+<tr><th id="200">200</th><td><b>return</b> ERROR;</td></tr>
+<tr><th id="201">201</th><td>}</td></tr>
+<tr><th id="202">202</th><td></td></tr>
+<tr><th id="203">203</th><td><u>#<span data-ppcond="22">endif</span>  /* SUPPORT_PAM */</u></td></tr>
+<tr><th id="204">204</th><td></td></tr>
+<tr><th id="205">205</th><td><i>/* End of call_pam.c */</i></td></tr>
+<tr><th id="206">206</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

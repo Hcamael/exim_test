@@ -1,1 +1,23 @@
 <dec f='exim/src/functions.h' l='186' type='void exim_nullstd()'/>
+<def f='exim/src/exim.c' l='482' ll='499' type='void exim_nullstd()'/>
+<use f='exim/src/exim.c' l='5204' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5723' u='c' c='main'/>
+<doc f='exim/src/exim.c' l='468'>/* Some operating systems grumble if an exec() happens without a standard
+input, output, and error (fds 0, 1, 2) being defined. The worry is that some
+file will be opened and will use these fd values, and then some other bit of
+code will assume, for example, that it can write error messages to stderr.
+This function ensures that fds 0, 1, and 2 are open if they do not already
+exist, by connecting them to /dev/null.
+
+This function is also used to ensure that std{in,out,err} exist at all times,
+so that if any library that Exim calls tries to use them, it doesn&apos;t crash.
+
+Arguments:  None
+Returns:    Nothing
+*/</doc>
+<use f='exim/src/smtp_in.c' l='5608' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/daemon.c' l='948' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='958' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1325' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='2098' u='c' c='daemon_go'/>
+<use f='exim/src/child.c' l='150' u='c' c='child_exec_exim'/>

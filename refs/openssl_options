@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='111' type='uschar *'/>
 <doc f='exim/src/globals.h' l='111'>/* OpenSSL compatibility options */</doc>
+<use f='exim/src/tls-openssl.c' l='1591' u='r' c='tls_init'/>
+<def f='exim/src/globals.c' l='146' type='uschar *'/>
+<use f='exim/src/readconf.c' l='221' u='a'/>
+<use f='exim/src/readconf.c' l='221' u='a'/>
+<use f='exim/src/readconf.c' l='221' u='a'/>
+<use f='exim/src/readconf.c' l='221' u='a'/>

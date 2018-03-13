@@ -1,0 +1,5 @@
+<dec f='exim/src/routers/redirect.h' l='34' type='uid_t *'/>
+<offset>1216</offset>
+<use f='exim/src/routers/redirect.c' l='242' u='r' c='redirect_router_init'/>
+<use f='exim/src/routers/redirect.c' l='242' u='r' c='redirect_router_init'/>
+<use f='exim/src/routers/redirect.c' l='706' u='r' c='redirect_router_entry'/>

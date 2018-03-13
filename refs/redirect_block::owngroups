@@ -1,3 +1,8 @@
 <dec f='exim/src/structs.h' l='837' type='gid_t *'/>
 <offset>128</offset>
 <doc f='exim/src/structs.h' l='837'>/* allowed file groups */</doc>
+<use f='exim/src/deliver.c' l='5857' u='w' c='deliver_message'/>
+<use f='exim/src/rda.c' l='264' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/rda.c' l='267' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/rda.c' l='268' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/routers/redirect.c' l='707' u='w' c='redirect_router_entry'/>

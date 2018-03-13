@@ -1,1 +1,22 @@
 <dec f='exim/src/functions.h' l='86' type='int acl_check(int , uschar * , uschar * , uschar ** , uschar ** )'/>
+<use f='exim/src/exim.c' l='5396' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5544' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='2835' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='3384' u='c' c='smtp_notquit_exit'/>
+<use f='exim/src/smtp_in.c' l='3716' u='c' c='smtp_quit_handler'/>
+<use f='exim/src/smtp_in.c' l='3849' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='3916' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4094' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4563' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4746' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4993' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5161' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5210' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5248' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5278' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5395' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5510' u='c' c='smtp_setup_msg'/>
+<def f='exim/src/acl.c' l='4348' ll='4506' type='int acl_check(int where, uschar * recipient, uschar * s, uschar ** user_msgptr, uschar ** log_msgptr)'/>
+<use f='exim/src/receive.c' l='3473' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3532' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3578' u='c' c='receive_msg'/>

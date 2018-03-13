@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='599' type='BOOL'/>
 <offset>20</offset>
 <doc f='exim/src/structs.h' l='599'>/* for cached sender verify: routed OK */</doc>
+<use f='exim/src/acl.c' l='1938' u='r' c='acl_verify'/>
+<use f='exim/src/acl.c' l='2012' u='w' c='acl_verify'/>

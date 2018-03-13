@@ -1,0 +1,13 @@
+<def f='exim/src/tls-openssl.c' l='183' type='tls_ext_ctx_cb *'/>
+<use f='exim/src/tls-openssl.c' l='313' u='r' c='verify_event'/>
+<use f='exim/src/tls-openssl.c' l='411' u='r' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='416' u='r' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='419' u='r' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='432' u='r' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='2293' u='a' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2333' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2393' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2399' u='r' c='tls_client_start'/>
+<doc f='exim/src/tls-openssl.c' l='180'>/* should figure out a cleanup of API to handle state preserved per
+implementation, for various reasons, which can be void * in the APIs.
+For now, we hack around it. */</doc>

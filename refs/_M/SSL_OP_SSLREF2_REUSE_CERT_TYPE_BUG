@@ -1,2 +1,4 @@
 <dec f='include/openssl/ssl.h' l='355'/>
 <doc f='include/openssl/ssl.h' l='354'>/* Refers to ancient SSLREF and SSLv2. */</doc>
+<use f='exim/src/tls-openssl.c' l='3032' u='a'/>
+<use f='exim/src/tls-openssl.c' l='3033' u='c'/>

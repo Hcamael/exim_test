@@ -1,0 +1,7 @@
+<dec f='exim/src/routers/accept.h' l='29' type='void accept_router_init(router_instance * )'/>
+<use f='exim/src/drtables.c' l='258'/>
+<use f='exim/src/drtables.c' l='258'/>
+<use f='exim/src/drtables.c' l='258'/>
+<use f='exim/src/drtables.c' l='258'/>
+<def f='exim/src/routers/accept.c' l='38' type='void accept_router_init(router_instance * rblock)'/>
+<doc f='exim/src/routers/accept.c' l='37'>/* Dummy entries */</doc>

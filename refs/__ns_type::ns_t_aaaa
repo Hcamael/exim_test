@@ -1,2 +1,8 @@
 <dec f='include/arpa/nameser.h' l='281' type='28'/>
 <doc f='include/arpa/nameser.h' l='281'>/*%&lt; Ip6 Address. */</doc>
+<use f='exim/src/lookups/dnsdb.c' l='387' macro='1' u='r'/>
+<use f='exim/src/host.c' l='237' macro='1' u='r'/>
+<use f='exim/src/host.c' l='2332' macro='1' u='r'/>
+<use f='exim/src/host.c' l='2332' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='579' macro='1' c='dns_text_type'/>
+<use f='exim/src/dns.c' l='757' macro='1' u='r'/>

@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='410' type='int (*)(struct auth_instance *, struct smtp_inblock *, struct smtp_outblock *, int, uschar *, int)'/>
 <offset>448</offset>
 <doc f='exim/src/structs.h' l='410'>/* client function */</doc>
+<use f='exim/src/drtables.c' l='71' u='w'/>
+<use f='exim/src/drtables.c' l='141' u='w'/>
+<use f='exim/src/drtables.c' l='169' u='w'/>
+<use f='exim/src/drtables.c' l='71' u='w'/>
+<use f='exim/src/drtables.c' l='141' u='w'/>
+<use f='exim/src/drtables.c' l='169' u='w'/>

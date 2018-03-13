@@ -1,0 +1,2 @@
+<dec f='include/openssl/x509v3.h' l='702' type='int X509_check_host(X509 * x, const char * chk, size_t chklen, unsigned int flags, char ** peername)'/>
+<use f='exim/src/tls-openssl.c' l='448' u='c' c='verify_callback'/>

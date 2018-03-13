@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='178' type='void enq_end(uschar * )'/>
+<use f='exim/src/deliver.c' l='3113' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='4116' u='c' c='par_reduce'/>
+<use f='exim/src/deliver.c' l='4540' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='5040' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/smtp_in.c' l='5633' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5645' u='c' c='smtp_setup_msg'/>
+<def f='exim/src/enq.c' l='95' ll='120' type='void enq_end(uschar * key)'/>
+<doc f='exim/src/enq.c' l='86'>/* This function is called when a serialized host&apos;s connection or serialized
+ETRN queue run ends. We open the relevant database and delete its record.
+
+Arguments:
+  key          the serialization key
+
+Returns:       nothing
+*/</doc>

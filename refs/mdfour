@@ -1,0 +1,4 @@
+<dec f='exim/src/auths/auth-spa.c' l='341' type='void mdfour(uschar * out, uschar * in, int n)'/>
+<use f='exim/src/auths/auth-spa.c' l='929' u='c' c='E_md4hash'/>
+<def f='exim/src/auths/auth-spa.c' l='1153' ll='1204' type='void mdfour(uschar * out, uschar * in, int n)'/>
+<doc f='exim/src/auths/auth-spa.c' l='1152'>/* produce a md4 message digest from data of length n bytes */</doc>

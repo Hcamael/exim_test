@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='394' type='uschar *'/>
 <doc f='exim/src/globals.h' l='394'>/* First successful domain verified, or null */</doc>
+<def f='exim/src/globals.c' l='669' type='uschar *'/>
+<use f='exim/src/receive.c' l='3962' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3963' u='r' c='receive_msg'/>

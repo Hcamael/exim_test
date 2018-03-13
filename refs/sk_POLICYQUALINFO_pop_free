@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='245' macro='1' type='void sk_POLICYQUALINFO_pop_free(struct stack_st_POLICYQUALINFO * sk, sk_POLICYQUALINFO_freefunc freefunc)'/>

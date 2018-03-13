@@ -1,1 +1,4 @@
 <dec f='include/asm-generic/errno-base.h' l='25'/>
+<use f='exim/src/expand.c' l='2807' u='c'/>
+<use f='exim/src/rfc2047.c' l='243' u='c'/>
+<use f='exim/src/spool_out.c' l='377' u='c'/>

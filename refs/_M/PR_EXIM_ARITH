@@ -1,1 +1,4 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='197'/>
+<use f='exim/src/expand.c' l='3649' u='c'/>
+<use f='exim/src/expand.c' l='3649' u='c'/>
+<use f='exim/src/expand.c' l='7166' u='c'/>

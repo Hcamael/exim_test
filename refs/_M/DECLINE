@@ -1,2 +1,12 @@
 <dec f='exim/src/macros.h' l='289'/>
 <doc f='exim/src/macros.h' l='288'>/***********/</doc>
+<use f='exim/src/routers/rf_expand_data.c' l='37' u='c'/>
+<use f='exim/src/routers/dnslookup.c' l='262' u='c'/>
+<use f='exim/src/routers/dnslookup.c' l='394' u='c'/>
+<use f='exim/src/routers/dnslookup.c' l='404' u='c'/>
+<use f='exim/src/routers/dnslookup.c' l='452' u='c'/>
+<use f='exim/src/routers/queryprogram.c' l='458' u='c'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='194' u='c'/>
+<use f='exim/src/routers/redirect.c' l='739' u='c'/>
+<use f='exim/src/routers/redirect.c' l='866' u='c'/>
+<use f='exim/src/routers/redirect.c' l='910' u='c'/>

@@ -1,1 +1,2 @@
 <def f='include/openssl/x509.h' l='97' macro='1' type='struct stack_st_X509 * sk_X509_new_null()'/>
+<use f='exim/src/tls-openssl.c' l='1625' u='c' c='tls_init'/>

@@ -1,0 +1,4 @@
+<dec f='exim/src/memcheck.h' l='131'/>
+<doc f='exim/src/memcheck.h' l='128'>/* Similar to VALGRIND_MAKE_MEM_DEFINED except that addressability is
+   not altered: bytes which are addressable are marked as defined,
+   but those which are not addressable are left unchanged. */</doc>

@@ -1,0 +1,7 @@
+<dec f='exim/src/auths/cram_md5.h' l='29' type='int auth_cram_md5_client(auth_instance * , smtp_inblock * , smtp_outblock * , int , uschar * , int )'/>
+<use f='exim/src/drtables.c' l='71'/>
+<use f='exim/src/drtables.c' l='71'/>
+<use f='exim/src/drtables.c' l='71'/>
+<use f='exim/src/drtables.c' l='71'/>
+<def f='exim/src/auths/cram_md5.c' l='259' ll='332' type='int auth_cram_md5_client(auth_instance * ablock, smtp_inblock * inblock, smtp_outblock * outblock, int timeout, uschar * buffer, int buffsize)'/>
+<doc f='exim/src/auths/cram_md5.c' l='257'>/* For interface, see auths/README */</doc>

@@ -1,0 +1,19 @@
+<dec f='exim/src/expand.c' l='394' type='3'/>
+<use f='exim/src/expand.c' l='480'/>
+<use f='exim/src/expand.c' l='480'/>
+<use f='exim/src/expand.c' l='537'/>
+<use f='exim/src/expand.c' l='537'/>
+<use f='exim/src/expand.c' l='562'/>
+<use f='exim/src/expand.c' l='562'/>
+<use f='exim/src/expand.c' l='616'/>
+<use f='exim/src/expand.c' l='616'/>
+<use f='exim/src/expand.c' l='480'/>
+<use f='exim/src/expand.c' l='480'/>
+<use f='exim/src/expand.c' l='537'/>
+<use f='exim/src/expand.c' l='537'/>
+<use f='exim/src/expand.c' l='562'/>
+<use f='exim/src/expand.c' l='562'/>
+<use f='exim/src/expand.c' l='616'/>
+<use f='exim/src/expand.c' l='616'/>
+<use f='exim/src/expand.c' l='1780' c='find_variable'/>
+<doc f='exim/src/expand.c' l='394'>/* value is address of uid_t (not always an int) */</doc>

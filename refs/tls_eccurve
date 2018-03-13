@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='118' type='uschar *'/>
 <doc f='exim/src/globals.h' l='118'>/* EC curve */</doc>
+<use f='exim/src/tls-openssl.c' l='749' u='r' c='init_ecdh'/>
+<def f='exim/src/globals.c' l='156' type='uschar *'/>
+<use f='exim/src/readconf.c' l='352' u='a'/>
+<use f='exim/src/readconf.c' l='352' u='a'/>
+<use f='exim/src/readconf.c' l='352' u='a'/>
+<use f='exim/src/readconf.c' l='352' u='a'/>

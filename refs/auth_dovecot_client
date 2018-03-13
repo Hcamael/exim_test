@@ -1,0 +1,1 @@
+<def f='exim/src/auths/dovecot.c' l='81' ll='82' type='int auth_dovecot_client(auth_instance * ablock, smtp_inblock * inblock, smtp_outblock * outblock, int timeout, uschar * buffer, int buffsize)'/>

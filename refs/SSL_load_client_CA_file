@@ -1,1 +1,2 @@
 <dec f='include/openssl/ssl.h' l='1398' type='struct stack_st_X509_NAME * SSL_load_client_CA_file(const char * file)'/>
+<use f='exim/src/tls-openssl.c' l='1856' u='c' c='setup_certs'/>

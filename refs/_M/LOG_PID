@@ -5,3 +5,4 @@
  * LOG_ODELAY no longer does anything.
  * LOG_NDELAY is the inverse of what it used to be.
  */</doc>
+<use f='exim/src/log.c' l='160' u='c'/>

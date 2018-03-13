@@ -1,1 +1,9 @@
 <dec f='exim/src/macros.h' l='469' type='44'/>
+<use f='exim/src/deliver.c' l='761' macro='1' u='r'/>
+<use f='exim/src/deliver.c' l='761' macro='1' u='r'/>
+<use f='exim/src/globals.c' l='866'/>
+<use f='exim/src/globals.c' l='866'/>
+<use f='exim/src/globals.c' l='909' macro='1'/>
+<use f='exim/src/globals.c' l='909' macro='1'/>
+<use f='exim/src/globals.c' l='909' macro='1'/>
+<use f='exim/src/globals.c' l='909' macro='1'/>

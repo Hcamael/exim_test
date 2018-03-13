@@ -1,2 +1,8 @@
 <dec f='include/unistd.h' l='500' type='int chdir(const char * __path)'/>
 <doc f='include/unistd.h' l='499'>/* Change the process&apos;s working directory to PATH.  */</doc>
+<use f='exim/src/deliver.c' l='2360' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='4122' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='4126' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='5616' u='c' c='main'/>
+<use f='exim/src/transports/tf_maildir.c' l='131' macro='1' u='c'/>
+<use f='exim/src/child.c' l='365' macro='1' u='c'/>

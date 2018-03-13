@@ -1,0 +1,4 @@
+<def f='exim/src/drtables.c' l='595' ll='781' type='void init_lookup_list()'/>
+<dec f='exim/src/exim.c' l='26' type='void init_lookup_list()'/>
+<use f='exim/src/exim.c' l='1028' u='c' c='show_whats_supported'/>
+<use f='exim/src/exim.c' l='3765' u='c' c='main'/>

@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='787' type='unsigned int [1]'/>
 <doc f='exim/src/globals.h' l='787'>/* Cache bits for incoming host */</doc>
+<use f='exim/src/verify.c' l='3221' u='r' c='verify_check_host'/>
+<def f='exim/src/globals.c' l='1279' type='unsigned int [1]'/>
+<use f='exim/src/exim.c' l='5100' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5100' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5287' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5287' u='r' c='main'/>
+<use f='exim/src/acl.c' l='3497' u='r' c='acl_check_condition'/>
+<use f='exim/src/daemon.c' l='336' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='336' u='r' c='handle_smtp_call'/>

@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='815' type='uschar *'/>
 <offset>128</offset>
 <doc f='exim/src/structs.h' l='815'>/* end of data in the buffer */</doc>
+<use f='exim/src/verify.c' l='1288' u='w' c='cutthrough_response'/>
+<use f='exim/src/smtp_out.c' l='548' u='r' c='read_response_line'/>
+<use f='exim/src/smtp_out.c' l='598' u='w' c='read_response_line'/>

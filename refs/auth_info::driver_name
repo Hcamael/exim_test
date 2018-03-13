@@ -1,3 +1,17 @@
 <dec f='exim/src/structs.h' l='399' type='uschar *'/>
 <offset>0</offset>
 <doc f='exim/src/structs.h' l='399'>/* e.g. &quot;condition&quot; */</doc>
+<use f='exim/src/drtables.c' l='64' u='w'/>
+<use f='exim/src/drtables.c' l='134' u='w'/>
+<use f='exim/src/drtables.c' l='162' u='w'/>
+<use f='exim/src/drtables.c' l='174' u='w'/>
+<use f='exim/src/drtables.c' l='64' u='w'/>
+<use f='exim/src/drtables.c' l='134' u='w'/>
+<use f='exim/src/drtables.c' l='162' u='w'/>
+<use f='exim/src/drtables.c' l='174' u='w'/>
+<use f='exim/src/drtables.c' l='182' u='r' c='auth_show_supported'/>
+<use f='exim/src/drtables.c' l='183' u='r' c='auth_show_supported'/>
+<use f='exim/src/exim.c' l='1008' u='r' c='show_whats_supported'/>
+<use f='exim/src/readconf.c' l='398' u='r' c='options_auths'/>
+<use f='exim/src/readconf.c' l='400' u='r' c='options_auths'/>
+<use f='exim/src/readconf.c' l='402' u='r' c='options_auths'/>

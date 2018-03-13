@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='479' type='uid_t []'/>
 <doc f='exim/src/globals.h' l='479'>/* Can&apos;t be overridden */</doc>
+<use f='exim/src/deliver.c' l='1946' u='r' c='findugid'/>
+<def f='exim/src/globals.c' l='755' type='uid_t [2]'/>
+<use f='exim/src/exim.c' l='957' u='r' c='show_whats_supported'/>
+<use f='exim/src/exim.c' l='961' u='r' c='show_whats_supported'/>
+<use f='exim/src/exim.c' l='962' u='r' c='show_whats_supported'/>
+<use f='exim/src/exim.c' l='963' u='r' c='show_whats_supported'/>

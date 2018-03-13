@@ -1,1 +1,2 @@
 <dec f='include/openssl/x509_vfy.h' l='408' type='int X509_STORE_CTX_get_error_depth(X509_STORE_CTX * ctx)'/>
+<use f='exim/src/tls-openssl.c' l='381' u='c' c='verify_callback'/>

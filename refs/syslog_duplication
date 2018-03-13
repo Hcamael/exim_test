@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='908' type='BOOL'/>
 <doc f='exim/src/globals.h' l='908'>/* FALSE =&gt; no duplicate logging */</doc>
+<def f='exim/src/globals.c' l='1410' type='BOOL'/>
+<use f='exim/src/log.c' l='975' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='1091' u='r' c='log_write'/>
+<use f='exim/src/readconf.c' l='328' u='a'/>
+<use f='exim/src/readconf.c' l='328' u='a'/>
+<use f='exim/src/readconf.c' l='328' u='a'/>
+<use f='exim/src/readconf.c' l='328' u='a'/>

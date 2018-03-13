@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='390' type='BOOL'/>
 <offset>864</offset>
 <doc f='exim/src/structs.h' l='390'>/* TRUE if server options(s) set */</doc>
+<use f='exim/src/globals.c' l='445' u='w'/>
+<use f='exim/src/smtp_in.c' l='3952' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4260' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/auths/spa.c' l='115' u='w' c='auth_spa_init'/>
+<use f='exim/src/auths/plaintext.c' l='64' u='w' c='auth_plaintext_init'/>
+<use f='exim/src/auths/cram_md5.c' l='74' u='w' c='auth_cram_md5_init'/>

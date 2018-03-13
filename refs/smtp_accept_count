@@ -1,2 +1,24 @@
 <dec f='exim/src/globals.h' l='808' type='int'/>
 <doc f='exim/src/globals.h' l='808'>/* Count of connections */</doc>
+<def f='exim/src/globals.c' l='1304' type='int'/>
+<use f='exim/src/smtp_in.c' l='2742' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2749' u='r' c='smtp_start_session'/>
+<use f='exim/src/expand.c' l='684' u='a'/>
+<use f='exim/src/expand.c' l='684' u='a'/>
+<use f='exim/src/expand.c' l='684' u='a'/>
+<use f='exim/src/expand.c' l='684' u='a'/>
+<use f='exim/src/daemon.c' l='217' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='220' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='283' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='302' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='341' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='364' u='w' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='465' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='619' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='709' u='w' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='713' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='713' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='868' u='w' c='handle_ending_processes'/>
+<use f='exim/src/daemon.c' l='868' u='w' c='handle_ending_processes'/>
+<use f='exim/src/daemon.c' l='870' u='r' c='handle_ending_processes'/>
+<use f='exim/src/daemon.c' l='870' u='r' c='handle_ending_processes'/>

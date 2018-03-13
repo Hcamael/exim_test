@@ -1,0 +1,4 @@
+<dec f='include/openssl/x509v3.h' l='692'/>
+<use f='exim/src/tls-openssl.c' l='440' u='a'/>
+<use f='exim/src/tls-openssl.c' l='450' u='c'/>
+<doc f='include/openssl/x509v3.h' l='691'>/* Constraint verifier subdomain patterns to match a single labels. */</doc>

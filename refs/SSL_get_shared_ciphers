@@ -1,1 +1,2 @@
 <dec f='include/openssl/ssl.h' l='1346' type='char * SSL_get_shared_ciphers(const SSL * s, char * buf, int len)'/>
+<use f='exim/src/tls-openssl.c' l='2083' u='c' c='tls_server_start'/>

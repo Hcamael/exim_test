@@ -1,1 +1,9 @@
 <dec f='exim/src/functions.h' l='56' type='int tls_feof()'/>
+<use f='exim/src/tls-openssl.c' l='2106' u='r' c='tls_server_start'/>
+<def f='exim/src/tls.c' l='162' ll='166' type='int tls_feof()'/>
+<doc f='exim/src/tls.c' l='155'>/* Tests for a previous EOF
+Only used by the server-side TLS.
+
+Arguments:     none
+Returns:       non-zero if the eof flag is set
+*/</doc>

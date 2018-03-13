@@ -1,0 +1,5 @@
+<def f='exim/src/acl.c' l='383' ll='387'/>
+<size>16</size>
+<doc f='exim/src/acl.c' l='379'>/* Structure listing various control arguments, with their characteristics.
+For each control, there&apos;s a bitmap of dis-allowed times. For some, it is easier
+to specify the negation of a small number of allowed times. */</doc>

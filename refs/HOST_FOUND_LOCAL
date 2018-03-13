@@ -1,2 +1,11 @@
 <dec f='exim/src/macros.h' l='821' type='4'/>
 <doc f='exim/src/macros.h' l='821'>/* found, but MX points to local host */</doc>
+<use f='exim/src/verify.c' l='3019' u='r' c='check_host'/>
+<use f='exim/src/smtp_in.c' l='3527' u='r' c='smtp_verify_helo'/>
+<use f='exim/src/routers/dnslookup.c' l='310' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/dnslookup.c' l='440' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='232' u='r' c='rf_lookup_hostlist'/>
+<use f='exim/src/match.c' l='234' u='r' c='check_string'/>
+<use f='exim/src/host.c' l='1434' u='r' c='host_scan_for_local_hosts'/>
+<use f='exim/src/host.c' l='1846' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='3177' u='r' c='host_find_bydns'/>

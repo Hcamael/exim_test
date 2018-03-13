@@ -1,1 +1,26 @@
 <dec f='exim/src/functions.h' l='229' type='int host_nmtoa(int , int * , int , uschar * , int )'/>
+<use f='exim/src/verify.c' l='2966' u='c' c='check_host'/>
+<use f='exim/src/exim.c' l='5083' u='c' c='main'/>
+<use f='exim/src/expand.c' l='6713' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6744' u='c' c='expand_string_internal'/>
+<use f='exim/src/host.c' l='580' u='c' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='581' u='c' c='host_build_sender_fullhost'/>
+<def f='exim/src/host.c' l='1138' ll='1165' type='int host_nmtoa(int count, int * binary, int mask, uschar * buffer, int sep)'/>
+<doc f='exim/src/host.c' l='1119'>/* We can&apos;t use host_ntoa() because it assumes the binary values are in network
+byte order, and these are the result of host_aton(), which puts them in ints in
+host byte order. Also, we really want IPv6 addresses to be in a canonical
+format, so we output them with no abbreviation. In a number of cases we can&apos;t
+use the normal colon separator in them because it terminates keys in lsearch
+files, so we want to use dot instead. There&apos;s an argument that specifies what
+to use for IPv6 addresses.
+
+Arguments:
+  count       1 or 4 (number of ints)
+  binary      points to the ints
+  mask        mask value; if &lt; 0 don&apos;t add to result
+  buffer      big enough to hold the result
+  sep         component separator character for IPv6 addresses
+
+Returns:      the number of characters placed in buffer, not counting
+              the final nul.
+*/</doc>

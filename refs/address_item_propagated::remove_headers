@@ -1,3 +1,57 @@
 <dec f='exim/src/structs.h' l='495' type='uschar *'/>
 <offset>320</offset>
 <doc f='exim/src/structs.h' l='495'>/* list of those to remove */</doc>
+<use f='exim/src/deliver.c' l='2814' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2814' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='4378' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4378' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4379' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4380' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4381' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='6810' u='r' c='deliver_message'/>
+<use f='exim/src/globals.c' l='398' u='w'/>
+<use f='exim/src/globals.c' l='398' u='w'/>
+<use f='exim/src/routers/rf_get_munge_headers.c' l='86' u='r' c='rf_get_munge_headers'/>
+<use f='exim/src/routers/dnslookup.c' l='463' u='a' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/queryprogram.c' l='240' u='a' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='299' u='a' c='sort_errors_and_headers'/>
+<use f='exim/src/routers/redirect.c' l='564' u='w' c='redirect_router_entry'/>

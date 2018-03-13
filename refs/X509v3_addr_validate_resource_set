@@ -1,0 +1,1 @@
+<dec f='include/openssl/x509v3.h' l='859' type='int X509v3_addr_validate_resource_set(struct stack_st_X509 * chain, IPAddrBlocks * ext, int allow_inheritance)'/>

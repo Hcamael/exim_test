@@ -1,1 +1,4 @@
 <dec f='include/pcre.h' l='489' type='void *(*)(size_t)'/>
+<use f='exim/src/exim.c' l='103' u='w' c='regex_must_compile'/>
+<use f='exim/src/exim.c' l='108' u='w' c='regex_must_compile'/>
+<use f='exim/src/exim.c' l='1668' u='w' c='main'/>

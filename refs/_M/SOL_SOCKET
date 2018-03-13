@@ -1,2 +1,4 @@
 <dec f='include/asm-generic/socket.h' l='7'/>
 <doc f='include/asm-generic/socket.h' l='6'>/* For setsockopt(2) */</doc>
+<use f='exim/src/ip.c' l='514' u='c'/>
+<use f='exim/src/daemon.c' l='1406' u='c'/>

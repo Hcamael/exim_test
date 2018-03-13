@@ -1,2 +1,10 @@
 <dec f='exim/src/structs.h' l='45' type='uid_t'/>
 <offset>0</offset>
+<use f='exim/src/deliver.c' l='5838' u='w' c='deliver_message'/>
+<use f='exim/src/rda.c' l='629' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='635' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='635' u='r' c='rda_interpret'/>
+<use f='exim/src/routers/rf_set_ugid.c' l='31' u='r' c='rf_set_ugid'/>
+<use f='exim/src/routers/rf_get_ugid.c' l='34' u='w' c='rf_get_ugid'/>
+<use f='exim/src/routers/rf_get_ugid.c' l='46' u='a' c='rf_get_ugid'/>
+<use f='exim/src/routers/redirect.c' l='591' u='w' c='redirect_router_entry'/>

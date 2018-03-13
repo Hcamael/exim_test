@@ -1,1 +1,6 @@
 <dec f='include/x86_64-linux-gnu/bits/fcntl-linux.h' l='142'/>
+<use f='exim/src/transports/queuefile.c' l='185' u='a'/>
+<use f='exim/src/transports/queuefile.c' l='204' u='c'/>
+<use f='exim/src/transports/queuefile.c' l='206' u='c'/>
+<use f='exim/src/spool_out.c' l='370' u='a'/>
+<use f='exim/src/spool_out.c' l='374' u='c'/>

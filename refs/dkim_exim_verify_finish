@@ -1,1 +1,2 @@
 <dec f='exim/src/dkim.h' l='12' type='void dkim_exim_verify_finish()'/>
+<use f='exim/src/receive.c' l='3352' u='c' c='receive_msg'/>

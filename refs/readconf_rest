@@ -1,1 +1,2 @@
 <dec f='exim/src/functions.h' l='343' type='void readconf_rest()'/>
+<use f='exim/src/exim.c' l='4436' u='c' c='main'/>

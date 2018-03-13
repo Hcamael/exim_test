@@ -1,2 +1,6 @@
 <dec f='include/fcntl.h' l='80'/>
 <dec f='include/x86_64-linux-gnu/sys/stat.h' l='108'/>
+<use f='exim/src/tls-openssl.c' l='1812' u='c'/>
+<use f='exim/src/tls-openssl.c' l='1894' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='301' u='c'/>
+<use f='exim/src/expand.c' l='7361' u='c'/>

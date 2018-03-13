@@ -1,2 +1,4 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='42'/>
 <doc f='exim/build-Linux-x86_64/config.h' l='41'>/* AUTH_HEIMDAL_GSSAPI not set */</doc>
+<use f='exim/src/drtables.c' l='46' u='a'/>
+<use f='exim/src/drtables.c' l='132' u='a'/>

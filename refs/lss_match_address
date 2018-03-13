@@ -1,1 +1,10 @@
 <dec f='exim/src/local_scan.h' l='183' type='int lss_match_address(uschar * , uschar * , BOOL )'/>
+<def f='exim/src/lss.c' l='71' ll='75' type='int lss_match_address(uschar * address, uschar * list, BOOL caseless)'/>
+<doc f='exim/src/lss.c' l='62'>/*
+Arguments:
+  address        the address we are testing
+  list           the address list
+  caseless       TRUE for caseless matching
+
+Returns:         OK/FAIL/DEFER
+*/</doc>

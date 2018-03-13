@@ -1,2 +1,4 @@
 <dec f='include/x86_64-linux-gnu/bits/fcntl-linux.h' l='216'/>
 <doc f='include/x86_64-linux-gnu/bits/fcntl-linux.h' l='215'>/* For posix fcntl() and `l_type&apos; field of a `struct flock&apos; for lockf().  */</doc>
+<use f='exim/src/exim_dbutil.c' l='276' u='c'/>
+<use f='exim/src/dbfn.c' l='130' u='c'/>

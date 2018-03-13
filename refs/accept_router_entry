@@ -1,0 +1,7 @@
+<dec f='exim/src/routers/accept.h' l='25' type='int accept_router_entry(router_instance * , address_item * , struct passwd * , int , address_item ** , address_item ** , address_item ** , address_item ** )'/>
+<use f='exim/src/drtables.c' l='259'/>
+<use f='exim/src/drtables.c' l='259'/>
+<use f='exim/src/drtables.c' l='259'/>
+<use f='exim/src/drtables.c' l='259'/>
+<doc f='exim/src/routers/accept.h' l='23'>/* The main and initialization entry points for the router */</doc>
+<def f='exim/src/routers/accept.c' l='39' ll='42' type='int accept_router_entry(router_instance * rblock, address_item * addr, struct passwd * pw, int verify, address_item ** addr_local, address_item ** addr_remote, address_item ** addr_new, address_item ** addr_succeed)'/>

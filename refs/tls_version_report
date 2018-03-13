@@ -1,1 +1,17 @@
 <dec f='exim/src/functions.h' l='69' type='void tls_version_report(FILE * )'/>
+<def f='exim/src/tls-openssl.c' l='2821' ll='2832' type='void tls_version_report(FILE * f)'/>
+<doc f='exim/src/tls-openssl.c' l='2806'>/* There have historically been some issues with binary compatibility in
+OpenSSL libraries; if Exim (like many other applications) is built against
+one version of OpenSSL but the run-time linker picks up another version,
+it can result in serious failures, including crashing with a SIGSEGV.  So
+report the version found by the compiler and the run-time version.
+
+Note: some OS vendors backport security fixes without changing the version
+number/string, and the version date remains unchanged.  The _build_ date
+will change, so we can more usefully assist with version diagnosis by also
+reporting the build date.
+
+Arguments:   a FILE* to print the results to
+Returns:     nothing
+*/</doc>
+<use f='exim/src/exim.c' l='1002' u='c' c='show_whats_supported'/>

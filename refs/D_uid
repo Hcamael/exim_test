@@ -1,1 +1,2 @@
 <dec f='exim/src/macros.h' l='405' macro='1' type='536870912'/>
+<use f='exim/src/exim.c' l='623' u='r' c='exim_setugid'/>

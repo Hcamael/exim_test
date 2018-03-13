@@ -1,1 +1,27 @@
 <dec f='include/string.h' l='337' type='char * strstr(const char * __haystack, const char * __needle)'/>
+<use f='exim/src/deliver.c' l='5395' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='5951' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='8048' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='8330' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='1099' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='1100' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='1101' macro='1' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='902' macro='1' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='914' macro='1' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='1055' macro='1' u='c'/>
+<use f='exim/src/filter.c' l='1567' macro='1' u='c'/>
+<use f='exim/src/rda.c' l='592' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='7804' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='7805' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='7807' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='7808' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='7809' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='7810' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='7811' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='7812' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='7813' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='7814' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='7815' macro='1' u='c'/>
+<use f='exim/src/rfc2047.c' l='106' macro='1' u='c'/>
+<use f='exim/src/rfc2047.c' l='109' macro='1' u='c'/>
+<use f='exim/src/host.c' l='591' macro='1' u='c'/>

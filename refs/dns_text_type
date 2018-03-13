@@ -1,1 +1,22 @@
 <dec f='exim/src/functions.h' l='174' type='uschar * dns_text_type(int )'/>
+<use f='exim/src/lookups/dnsdb.c' l='516' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='533' u='c' c='dnsdb_find'/>
+<use f='exim/src/dns.c' l='65' u='c' c='fakens_search'/>
+<use f='exim/src/dns.c' l='70' u='c' c='fakens_search'/>
+<def f='exim/src/dns.c' l='572' ll='591' type='uschar * dns_text_type(int t)'/>
+<use f='exim/src/dns.c' l='603' u='c' c='dns_fail_tag'/>
+<use f='exim/src/dns.c' l='676' u='c' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='740' u='c' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='772' u='c' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='780' u='c' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='785' u='c' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='809' u='c' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='814' u='c' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='819' u='c' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='824' u='c' c='dns_basic_lookup'/>
+<doc f='exim/src/dns.c' l='565'>/* Turn the coded record type into a string for printing. All those that Exim
+uses should be included here.
+
+Argument:   record type
+Returns:    pointer to string
+*/</doc>

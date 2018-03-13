@@ -1,3 +1,15 @@
 <dec f='exim/src/structs.h' l='363' type='int'/>
 <offset>512</offset>
 <doc f='exim/src/structs.h' l='363'>/* Descriptive flags */</doc>
+<use f='exim/src/drtables.c' l='261' u='w'/>
+<use f='exim/src/drtables.c' l='274' u='w'/>
+<use f='exim/src/drtables.c' l='287' u='w'/>
+<use f='exim/src/drtables.c' l='313' u='w'/>
+<use f='exim/src/drtables.c' l='326' u='w'/>
+<use f='exim/src/drtables.c' l='339' u='w'/>
+<use f='exim/src/drtables.c' l='261' u='w'/>
+<use f='exim/src/drtables.c' l='274' u='w'/>
+<use f='exim/src/drtables.c' l='287' u='w'/>
+<use f='exim/src/drtables.c' l='313' u='w'/>
+<use f='exim/src/drtables.c' l='326' u='w'/>
+<use f='exim/src/drtables.c' l='339' u='w'/>

@@ -1,1 +1,2 @@
 <dec f='exim/src/macros.h' l='762' type='1'/>
+<use f='exim/src/routers/rf_self_action.c' l='96' c='rf_self_action'/>

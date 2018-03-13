@@ -2,3 +2,5 @@
 <offset>24</offset>
 <doc f='include/arpa/nameser_compat.h' l='71'>/* fields in fourth byte */</doc>
 <doc f='include/arpa/nameser_compat.h' l='72'>/*%&lt; response code */</doc>
+<use f='exim/src/dns.c' l='1094' u='r' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1094' u='r' c='dns_special_lookup'/>

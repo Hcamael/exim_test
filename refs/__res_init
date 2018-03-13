@@ -1,1 +1,2 @@
 <dec f='include/resolv.h' l='259' type='int __res_init()'/>
+<use f='exim/src/dns.c' l='148' macro='1' u='c'/>

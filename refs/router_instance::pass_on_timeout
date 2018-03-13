@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='313' type='BOOL'/>
 <offset>2400</offset>
 <doc f='exim/src/structs.h' l='313'>/* Treat timeout DEFERs as fails */</doc>
+<use f='exim/src/globals.c' l='1220' u='w'/>
+<use f='exim/src/routers/dnslookup.c' l='336' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='170' u='r' c='rf_lookup_hostlist'/>

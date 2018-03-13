@@ -1,2 +1,18 @@
 <dec f='include/string.h' l='133' type='char * strcat(char *restrict __dest, const char *restrict __src)'/>
 <doc f='include/string.h' l='132'>/* Append SRC onto DEST.  */</doc>
+<use f='exim/src/exim_dbmbuild.c' l='208' macro='1' u='c'/>
+<use f='exim/src/version.c' l='63' macro='1' u='c'/>
+<use f='exim/src/version.c' l='64' macro='1' u='c'/>
+<use f='exim/src/filter.c' l='984' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='2620' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='5452' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='5456' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='5458' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='5459' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='5460' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='5461' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='5462' macro='1' u='c'/>
+<use f='exim/src/log.c' l='874' macro='1' u='c'/>
+<use f='exim/src/rewrite.c' l='618' macro='1' u='c'/>
+<use f='exim/src/rewrite.c' l='640' macro='1' u='c'/>
+<use f='exim/src/rewrite.c' l='647' macro='1' u='c'/>

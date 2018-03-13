@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='522' type='BOOL'/>
 <doc f='exim/src/globals.h' l='522'>/* Whether running in inetd wait mode */</doc>
+<def f='exim/src/globals.c' l='820' type='BOOL'/>
+<use f='exim/src/exim.c' l='2243' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3519' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4798' u='r' c='main'/>
+<use f='exim/src/daemon.c' l='935' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='974' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1056' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1318' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1350' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1599' u='r' c='daemon_go'/>

@@ -1,1 +1,3 @@
 <dec f='exim/src/structs.h' l='52' type='-1'/>
+<use f='exim/src/globals.c' l='509'/>
+<use f='exim/src/smtp_in.c' l='3792' u='r' c='smtp_setup_msg'/>

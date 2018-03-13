@@ -1,1 +1,6 @@
 <dec f='exim/src/macros.h' l='916' type='3'/>
+<use f='exim/src/match.c' l='381' c='get_check_key'/>
+<use f='exim/src/match.c' l='525' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='616' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='812' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='1319' u='r' c='match_address_list'/>

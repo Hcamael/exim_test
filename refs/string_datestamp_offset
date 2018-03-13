@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='897' type='int'/>
 <doc f='exim/src/globals.h' l='897'>/* After insertion by string_format */</doc>
+<use f='exim/src/string.c' l='1258' u='w' c='string_vformat'/>
+<use f='exim/src/string.c' l='1427' u='w' c='string_vformat'/>
+<use f='exim/src/string.c' l='1435' u='w' c='string_vformat'/>
+<def f='exim/src/globals.c' l='1399' type='int'/>
+<use f='exim/src/log.c' l='394' u='r' c='open_log'/>
+<use f='exim/src/log.c' l='397' u='r' c='open_log'/>
+<use f='exim/src/log.c' l='402' u='r' c='open_log'/>
+<use f='exim/src/log.c' l='405' u='r' c='open_log'/>
+<use f='exim/src/log.c' l='428' u='r' c='open_log'/>
+<use f='exim/src/log.c' l='430' u='r' c='open_log'/>

@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='720' type='int'/>
 <doc f='exim/src/globals.h' l='720'>/* For non-SMTP acceptance */</doc>
+<def f='exim/src/globals.c' l='1098' type='int'/>
+<use f='exim/src/exim.c' l='4314' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5554' u='r' c='main'/>
+<use f='exim/src/readconf.c' l='257' u='a'/>
+<use f='exim/src/readconf.c' l='257' u='a'/>
+<use f='exim/src/readconf.c' l='257' u='a'/>
+<use f='exim/src/readconf.c' l='257' u='a'/>
+<use f='exim/src/receive.c' l='1757' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1760' u='r' c='receive_msg'/>

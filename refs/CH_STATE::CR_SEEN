@@ -1,0 +1,3 @@
+<dec f='exim/src/receive.c' l='28' type='2'/>
+<use f='exim/src/receive.c' l='975' u='r' c='read_message_bdat_smtp'/>
+<use f='exim/src/receive.c' l='981' c='read_message_bdat_smtp'/>

@@ -1,2 +1,5 @@
 <dec f='include/unistd.h' l='684' type='__gid_t getgid()'/>
 <doc f='include/unistd.h' l='683'>/* Get the real group ID of the calling process.  */</doc>
+<use f='exim/src/debug.c' l='128' u='c' c='debug_print_ids'/>
+<use f='exim/src/exim.c' l='1836' u='c' c='main'/>
+<use f='exim/src/routers/queryprogram.c' l='219' u='c' c='queryprogram_router_entry'/>

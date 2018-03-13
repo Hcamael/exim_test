@@ -1,2 +1,27 @@
 <dec f='exim/src/macros.h' l='932' type='3'/>
 <doc f='exim/src/macros.h' l='932'>/* ) implemented by &lt;= WHERE_NOTSMTP           */</doc>
+<use f='exim/src/acl.c' l='145' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='145' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='280' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='280' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='145' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='145' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='280' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='280' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='452' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='452' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='462' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='462' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='470' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='470' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='511' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='511' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='452' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='452' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='462' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='462' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='470' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='470' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='511' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='511' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='1183' c='add_acl_headers'/>

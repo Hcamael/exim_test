@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='962' type='gid_t *'/>
 <doc f='exim/src/globals.h' l='962'>/* List of trusted groups */</doc>
+<def f='exim/src/globals.c' l='1517' type='gid_t *'/>
+<use f='exim/src/exim.c' l='3846' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3847' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3848' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3851' u='r' c='main'/>
+<use f='exim/src/readconf.c' l='364' u='a'/>
+<use f='exim/src/readconf.c' l='364' u='a'/>
+<use f='exim/src/readconf.c' l='364' u='a'/>
+<use f='exim/src/readconf.c' l='364' u='a'/>

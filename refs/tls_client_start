@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='47' type='int tls_client_start(int , host_item * , address_item * , transport_instance * , uschar ** )'/>
+<def f='exim/src/tls-openssl.c' l='2236' ll='2434' type='int tls_client_start(int fd, host_item * host, address_item * addr, transport_instance * tb, uschar ** errstr)'/>
+<doc f='exim/src/tls-openssl.c' l='2221'>/* Called from the smtp transport after STARTTLS has been accepted.
+
+Argument:
+  fd               the fd of the connection
+  host             connected host (for messages)
+  addr             the first address
+  tb               transport (always smtp)
+  tlsa_dnsa        tlsa lookup, if DANE, else null
+  errstr	   error string pointer
+
+Returns:           OK on success
+                   FAIL otherwise - note that tls_error() will not give DEFER
+                     because this is not a server
+*/</doc>

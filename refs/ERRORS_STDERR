@@ -1,2 +1,8 @@
 <dec f='exim/src/macros.h' l='258' type='1'/>
 <doc f='exim/src/macros.h' l='258'>/* Write on stderr */</doc>
+<use f='exim/src/exim.c' l='2507' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2508' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5175' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5464' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5497' u='r' c='main'/>
+<use f='exim/src/receive.c' l='3283' u='r' c='receive_msg'/>

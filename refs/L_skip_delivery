@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='451' macro='1' type='2048'/>
+<use f='exim/src/deliver.c' l='5756' u='r' c='deliver_message'/>
+<use f='exim/src/queue.c' l='543' u='r' c='queue_run'/>
+<use f='exim/src/spool_in.c' l='101' u='r' c='spool_open_datafile'/>

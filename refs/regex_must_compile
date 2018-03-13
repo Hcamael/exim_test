@@ -1,1 +1,33 @@
 <dec f='exim/src/functions.h' l='357' type='const pcre * regex_must_compile(const uschar * , BOOL , BOOL )'/>
+<use f='exim/src/deliver.c' l='7060' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8442' u='c' c='deliver_init'/>
+<use f='exim/src/deliver.c' l='8445' u='c' c='deliver_init'/>
+<use f='exim/src/deliver.c' l='8448' u='c' c='deliver_init'/>
+<use f='exim/src/deliver.c' l='8453' u='c' c='deliver_init'/>
+<use f='exim/src/deliver.c' l='8457' u='c' c='deliver_init'/>
+<use f='exim/src/deliver.c' l='8461' u='c' c='deliver_init'/>
+<use f='exim/src/deliver.c' l='8470' u='c' c='deliver_init'/>
+<use f='exim/src/deliver.c' l='8473' u='c' c='deliver_init'/>
+<use f='exim/src/header.c' l='368' u='c' c='one_pattern_match'/>
+<def f='exim/src/exim.c' l='94' ll='114' type='const pcre * regex_must_compile(const uschar * pattern, BOOL caseless, BOOL use_malloc)'/>
+<use f='exim/src/exim.c' l='1747' u='c' c='main'/>
+<use f='exim/src/exim.c' l='1754' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4723' u='c' c='main'/>
+<doc f='exim/src/exim.c' l='80'>/* This function is called when failure to compile a regular expression leads
+to a panic exit. In other cases, pcre_compile() is called directly. In many
+cases where this function is used, the results of the compilation are to be
+placed in long-lived store, so we temporarily reset the store management
+functions that PCRE uses if the use_malloc flag is set.
+
+Argument:
+  pattern     the pattern to compile
+  caseless    TRUE if caseless matching is required
+  use_malloc  TRUE if compile into malloc store
+
+Returns:      pointer to the compiled pattern
+*/</doc>
+<use f='exim/src/queue.c' l='437' u='c' c='queue_run'/>
+<use f='exim/src/queue.c' l='441' u='c' c='queue_run'/>
+<use f='exim/src/match.c' l='132' u='c' c='check_string'/>
+<use f='exim/src/expand.c' l='4570' u='c' c='expand_string_internal'/>
+<use f='exim/src/dns.c' l='1228' u='c' c='dns_pattern_init'/>

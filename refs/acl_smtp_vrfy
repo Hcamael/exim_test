@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='195' type='uschar *'/>
 <doc f='exim/src/globals.h' l='195'>/* ACL run for VRFY */</doc>
+<def f='exim/src/globals.c' l='263' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='4214' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5210' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5462' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/readconf.c' l='63' u='a'/>
+<use f='exim/src/readconf.c' l='63' u='a'/>
+<use f='exim/src/readconf.c' l='63' u='a'/>
+<use f='exim/src/readconf.c' l='63' u='a'/>

@@ -1,2 +1,4 @@
 <dec f='include/netinet/in.h' l='42' type='0'/>
 <doc f='include/netinet/in.h' l='42'>/* Dummy protocol for TCP.  */</doc>
+<use f='exim/src/smtp_in.c' l='2530' macro='1' u='r'/>
+<use f='exim/src/ip.c' l='729' macro='1' u='r'/>

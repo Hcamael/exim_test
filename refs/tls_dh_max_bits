@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='116' type='int'/>
 <doc f='exim/src/globals.h' l='116'>/* don&apos;t accept higher lib suggestions */</doc>
+<use f='exim/src/tls-openssl.c' l='677' u='r' c='init_dh'/>
+<use f='exim/src/tls-openssl.c' l='681' u='r' c='init_dh'/>
+<def f='exim/src/globals.c' l='154' type='int'/>
+<doc f='exim/src/globals.c' l='151'>/* This default matches NSS DH_MAX_P_BITS value at current time (2012), because
+that&apos;s the interop problem which has been observed: GnuTLS suggesting a higher
+bit-count as &quot;NORMAL&quot; (2432) and Thunderbird dropping connection. */</doc>
+<use f='exim/src/readconf.c' l='350' u='a'/>
+<use f='exim/src/readconf.c' l='350' u='a'/>
+<use f='exim/src/readconf.c' l='350' u='a'/>
+<use f='exim/src/readconf.c' l='350' u='a'/>

@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='797' type='uschar *'/>
 <doc f='exim/src/globals.h' l='797'>/* Host data for Received: */</doc>
+<def f='exim/src/globals.c' l='1291' type='uschar *'/>
+<use f='exim/src/queue.c' l='965' u='w' c='queue_list'/>
+<use f='exim/src/expand.c' l='676' u='a'/>
+<use f='exim/src/expand.c' l='676' u='a'/>
+<use f='exim/src/expand.c' l='676' u='a'/>
+<use f='exim/src/expand.c' l='676' u='a'/>
+<use f='exim/src/host.c' l='622' u='w' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='627' u='r' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='642' u='w' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='651' u='w' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='661' u='r' c='host_build_sender_fullhost'/>

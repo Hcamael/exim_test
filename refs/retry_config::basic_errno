@@ -1,2 +1,17 @@
 <dec f='exim/src/structs.h' l='677' type='int'/>
 <offset>128</offset>
+<use f='exim/src/exim.c' l='4519' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4525' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4532' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4541' u='r' c='main'/>
+<use f='exim/src/retry.c' l='390' u='r' c='retry_find_config'/>
+<use f='exim/src/retry.c' l='397' u='r' c='retry_find_config'/>
+<use f='exim/src/retry.c' l='408' u='r' c='retry_find_config'/>
+<use f='exim/src/retry.c' l='424' u='r' c='retry_find_config'/>
+<use f='exim/src/retry.c' l='425' u='r' c='retry_find_config'/>
+<use f='exim/src/retry.c' l='426' u='r' c='retry_find_config'/>
+<use f='exim/src/retry.c' l='429' u='r' c='retry_find_config'/>
+<use f='exim/src/retry.c' l='444' u='r' c='retry_find_config'/>
+<use f='exim/src/retry.c' l='466' u='r' c='retry_find_config'/>
+<use f='exim/src/retry.c' l='644' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='648' u='r' c='retry_update'/>

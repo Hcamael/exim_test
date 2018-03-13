@@ -1,0 +1,8 @@
+<dec f='exim/src/expand.c' l='399' type='8'/>
+<use f='exim/src/expand.c' l='574'/>
+<use f='exim/src/expand.c' l='574'/>
+<use f='exim/src/expand.c' l='574'/>
+<use f='exim/src/expand.c' l='574'/>
+<use f='exim/src/expand.c' l='1830' c='find_variable'/>
+<use f='exim/src/expand.c' l='1840' u='r' c='find_variable'/>
+<doc f='exim/src/expand.c' l='399'>/* ditto, the end of the message */</doc>

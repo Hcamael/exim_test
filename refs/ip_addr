@@ -1,1 +1,6 @@
 <dec f='exim/src/functions.h' l='237' type='int ip_addr(void * , int , const uschar * , int )'/>
+<def f='exim/src/ip.c' l='100' ll='137' type='int ip_addr(void * sin_, int af, const uschar * address, int port)'/>
+<use f='exim/src/ip.c' l='157' u='c' c='ip_bind'/>
+<doc f='exim/src/ip.c' l='96'>/*************************************************
+*         Bind socket to interface and port      *
+*************************************************/</doc>

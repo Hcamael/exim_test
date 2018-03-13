@@ -3,3 +3,6 @@
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */</doc>
+<use f='exim/src/smtp_in.c' l='4348' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/receive.c' l='1038' u='c' c='read_message_bdat_smtp_wire'/>
+<use f='exim/src/receive.c' l='3074' u='c' c='receive_msg'/>

@@ -1,0 +1,1185 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pipe.c source code [exim/src/transports/pipe.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/transports/pipe.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>transports</a>/<a href='pipe.c.html'>pipe.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><u>#include <a href="../exim.h.html">"../exim.h"</a></u></td></tr>
+<tr><th id="10">10</th><td><u>#include <a href="pipe.h.html">"pipe.h"</a></u></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td><u>#<span data-ppcond="12">ifdef</span> <span class="macro" data-ref="_M/HAVE_SETCLASSRESOURCES">HAVE_SETCLASSRESOURCES</span></u></td></tr>
+<tr><th id="13">13</th><td><u>#include &lt;login_cap.h&gt;</u></td></tr>
+<tr><th id="14">14</th><td><u>#<span data-ppcond="12">endif</span></u></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><i>/* Options specific to the pipe transport. They must be in alphabetic</i></td></tr>
+<tr><th id="19">19</th><td><i>order (note that "_" comes before the lower case letters). Those starting</i></td></tr>
+<tr><th id="20">20</th><td><i>with "*" are not settable by the user but are used by the option-reading</i></td></tr>
+<tr><th id="21">21</th><td><i>software for alternative value types. Some options are stored in the transport</i></td></tr>
+<tr><th id="22">22</th><td><i>instance block so as to be publicly visible; these are flagged with opt_public.</i></td></tr>
+<tr><th id="23">23</th><td><i>*/</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a> <dfn class="decl def" id="pipe_transport_options" title='pipe_transport_options' data-ref="pipe_transport_options">pipe_transport_options</dfn>[] = {</td></tr>
+<tr><th id="26">26</th><td>  { <q>"allow_commands"</q>,    <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="27">27</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, allow_commands)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, allow_commands) },</td></tr>
+<tr><th id="28">28</th><td>  { <q>"batch_id"</q>,          <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a> | <a class="macro" href="../macros.h.html#702" title="0x200" data-ref="_M/opt_public">opt_public</a>,</td></tr>
+<tr><th id="29">29</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(transport_instance, batch_id)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="../structs.h.html#transport_instance" title='transport_instance' data-type='struct transport_instance' data-ref="transport_instance">transport_instance</a>, batch_id) },</td></tr>
+<tr><th id="30">30</th><td>  { <q>"batch_max"</q>,         <a class="enum" href="../local_scan.h.html#opt_int" title='opt_int' data-ref="opt_int">opt_int</a> | <a class="macro" href="../macros.h.html#702" title="0x200" data-ref="_M/opt_public">opt_public</a>,</td></tr>
+<tr><th id="31">31</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(transport_instance, batch_max)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="../structs.h.html#transport_instance" title='transport_instance' data-type='struct transport_instance' data-ref="transport_instance">transport_instance</a>, batch_max) },</td></tr>
+<tr><th id="32">32</th><td>  { <q>"check_string"</q>,      <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="33">33</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, check_string)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, check_string) },</td></tr>
+<tr><th id="34">34</th><td>  { <q>"command"</q>,           <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="35">35</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, cmd)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, cmd) },</td></tr>
+<tr><th id="36">36</th><td>  { <q>"environment"</q>,       <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="37">37</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, environment)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, environment) },</td></tr>
+<tr><th id="38">38</th><td>  { <q>"escape_string"</q>,     <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="39">39</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, escape_string)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, escape_string) },</td></tr>
+<tr><th id="40">40</th><td>  { <q>"force_command"</q>,         <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="41">41</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, force_command)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, force_command) },</td></tr>
+<tr><th id="42">42</th><td>  { <q>"freeze_exec_fail"</q>,  <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="43">43</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, freeze_exec_fail)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, freeze_exec_fail) },</td></tr>
+<tr><th id="44">44</th><td>  { <q>"freeze_signal"</q>,     <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="45">45</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, freeze_signal)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, freeze_signal) },</td></tr>
+<tr><th id="46">46</th><td>  { <q>"ignore_status"</q>,     <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="47">47</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, ignore_status)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, ignore_status) },</td></tr>
+<tr><th id="48">48</th><td>  { <q>"log_defer_output"</q>,  <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a> | <a class="macro" href="../macros.h.html#702" title="0x200" data-ref="_M/opt_public">opt_public</a>,</td></tr>
+<tr><th id="49">49</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(transport_instance, log_defer_output)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="../structs.h.html#transport_instance" title='transport_instance' data-type='struct transport_instance' data-ref="transport_instance">transport_instance</a>, log_defer_output) },</td></tr>
+<tr><th id="50">50</th><td>  { <q>"log_fail_output"</q>,   <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a> | <a class="macro" href="../macros.h.html#702" title="0x200" data-ref="_M/opt_public">opt_public</a>,</td></tr>
+<tr><th id="51">51</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(transport_instance, log_fail_output)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="../structs.h.html#transport_instance" title='transport_instance' data-type='struct transport_instance' data-ref="transport_instance">transport_instance</a>, log_fail_output) },</td></tr>
+<tr><th id="52">52</th><td>  { <q>"log_output"</q>,        <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a> | <a class="macro" href="../macros.h.html#702" title="0x200" data-ref="_M/opt_public">opt_public</a>,</td></tr>
+<tr><th id="53">53</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(transport_instance, log_output)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="../structs.h.html#transport_instance" title='transport_instance' data-type='struct transport_instance' data-ref="transport_instance">transport_instance</a>, log_output) },</td></tr>
+<tr><th id="54">54</th><td>  { <q>"max_output"</q>,        <a class="enum" href="../local_scan.h.html#opt_mkint" title='opt_mkint' data-ref="opt_mkint">opt_mkint</a>,</td></tr>
+<tr><th id="55">55</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, max_output)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, max_output) },</td></tr>
+<tr><th id="56">56</th><td>  { <q>"message_prefix"</q>,    <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="57">57</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, message_prefix)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, message_prefix) },</td></tr>
+<tr><th id="58">58</th><td>  { <q>"message_suffix"</q>,    <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="59">59</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, message_suffix)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, message_suffix) },</td></tr>
+<tr><th id="60">60</th><td>  { <q>"path"</q>,              <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="61">61</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, path)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, path) },</td></tr>
+<tr><th id="62">62</th><td>  { <q>"permit_coredump"</q>,   <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="63">63</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, permit_coredump)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, permit_coredump) },</td></tr>
+<tr><th id="64">64</th><td>  { <q>"pipe_as_creator"</q>,   <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a> | <a class="macro" href="../macros.h.html#702" title="0x200" data-ref="_M/opt_public">opt_public</a>,</td></tr>
+<tr><th id="65">65</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(transport_instance, deliver_as_creator)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="../structs.h.html#transport_instance" title='transport_instance' data-type='struct transport_instance' data-ref="transport_instance">transport_instance</a>, deliver_as_creator) },</td></tr>
+<tr><th id="66">66</th><td>  { <q>"restrict_to_path"</q>,  <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="67">67</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, restrict_to_path)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, restrict_to_path) },</td></tr>
+<tr><th id="68">68</th><td>  { <q>"return_fail_output"</q>,<a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a> | <a class="macro" href="../macros.h.html#702" title="0x200" data-ref="_M/opt_public">opt_public</a>,</td></tr>
+<tr><th id="69">69</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(transport_instance, return_fail_output)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="../structs.h.html#transport_instance" title='transport_instance' data-type='struct transport_instance' data-ref="transport_instance">transport_instance</a>, return_fail_output) },</td></tr>
+<tr><th id="70">70</th><td>  { <q>"return_output"</q>,     <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a> | <a class="macro" href="../macros.h.html#702" title="0x200" data-ref="_M/opt_public">opt_public</a>,</td></tr>
+<tr><th id="71">71</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(transport_instance, return_output)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="../structs.h.html#transport_instance" title='transport_instance' data-type='struct transport_instance' data-ref="transport_instance">transport_instance</a>, return_output) },</td></tr>
+<tr><th id="72">72</th><td>  { <q>"temp_errors"</q>,       <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="73">73</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, temp_errors)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, temp_errors) },</td></tr>
+<tr><th id="74">74</th><td>  { <q>"timeout"</q>,           <a class="enum" href="../local_scan.h.html#opt_time" title='opt_time' data-ref="opt_time">opt_time</a>,</td></tr>
+<tr><th id="75">75</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, timeout)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, timeout) },</td></tr>
+<tr><th id="76">76</th><td>  { <q>"timeout_defer"</q>,     <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="77">77</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, timeout_defer)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, timeout_defer) },</td></tr>
+<tr><th id="78">78</th><td>  { <q>"umask"</q>,             <a class="enum" href="../local_scan.h.html#opt_octint" title='opt_octint' data-ref="opt_octint">opt_octint</a>,</td></tr>
+<tr><th id="79">79</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, umask)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, umask) },</td></tr>
+<tr><th id="80">80</th><td>  { <q>"use_bsmtp"</q>,         <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="81">81</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, use_bsmtp)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, use_bsmtp) },</td></tr>
+<tr><th id="82">82</th><td>  <u>#<span data-ppcond="82">ifdef</span> <span class="macro" data-ref="_M/HAVE_SETCLASSRESOURCES">HAVE_SETCLASSRESOURCES</span></u></td></tr>
+<tr><th id="83">83</th><td>  { <q>"use_classresources"</q>, opt_bool,</td></tr>
+<tr><th id="84">84</th><td>      (<em>void</em> *)offsetof(pipe_transport_options_block, use_classresources) },</td></tr>
+<tr><th id="85">85</th><td>  <u>#<span data-ppcond="82">endif</span></u></td></tr>
+<tr><th id="86">86</th><td>  { <q>"use_crlf"</q>,          <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="87">87</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, use_crlf)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, use_crlf) },</td></tr>
+<tr><th id="88">88</th><td>  { <q>"use_shell"</q>,         <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="89">89</th><td>      (<em>void</em> *)<span class="macro" title="__builtin_offsetof(pipe_transport_options_block, use_shell)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a>, use_shell) },</td></tr>
+<tr><th id="90">90</th><td>};</td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td><i>/* Size of the options list. An extern variable has to be used so that its</i></td></tr>
+<tr><th id="93">93</th><td><i>address can appear in the tables drtables.c. */</i></td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td><em>int</em> <dfn class="decl def" id="pipe_transport_options_count" title='pipe_transport_options_count' data-ref="pipe_transport_options_count">pipe_transport_options_count</dfn> =</td></tr>
+<tr><th id="96">96</th><td>  <b>sizeof</b>(<a class="ref" href="pipe.h.html#pipe_transport_options" title='pipe_transport_options' data-ref="pipe_transport_options">pipe_transport_options</a>)/<b>sizeof</b>(<a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a>);</td></tr>
+<tr><th id="97">97</th><td></td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td><u>#<span data-ppcond="99">ifdef</span> <span class="macro" data-ref="_M/MACRO_PREDEF">MACRO_PREDEF</span></u></td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td><i>/* Dummy values */</i></td></tr>
+<tr><th id="102">102</th><td><a class="typedef" href="pipe.h.html#pipe_transport_options_block" title='pipe_transport_options_block' data-type='struct pipe_transport_options_block' data-ref="pipe_transport_options_block">pipe_transport_options_block</a> <dfn class="decl def" id="pipe_transport_option_defaults" title='pipe_transport_option_defaults' data-ref="pipe_transport_option_defaults">pipe_transport_option_defaults</dfn> = {<var>0</var>};</td></tr>
+<tr><th id="103">103</th><td><em>void</em> <dfn class="decl def fn" id="pipe_transport_init" title='pipe_transport_init' data-ref="pipe_transport_init">pipe_transport_init</dfn>(<a class="typedef" href="../structs.h.html#transport_instance" title='transport_instance' data-type='struct transport_instance' data-ref="transport_instance">transport_instance</a> *<dfn class="local col1 decl" id="1tblock" title='tblock' data-type='transport_instance *' data-ref="1tblock">tblock</dfn>) {}</td></tr>
+<tr><th id="104">104</th><td><a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="decl def fn" id="pipe_transport_entry" title='pipe_transport_entry' data-ref="pipe_transport_entry">pipe_transport_entry</dfn>(<a class="typedef" href="../structs.h.html#transport_instance" title='transport_instance' data-type='struct transport_instance' data-ref="transport_instance">transport_instance</a> *<dfn class="local col2 decl" id="2tblock" title='tblock' data-type='transport_instance *' data-ref="2tblock">tblock</dfn>, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *<dfn class="local col3 decl" id="3addr" title='addr' data-type='address_item *' data-ref="3addr">addr</dfn>) {<b>return</b> <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;}</td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td><u>#<span data-ppcond="99">else</span>   /*!MACRO_PREDEF*/</u></td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td></td></tr>
+<tr><th id="109">109</th><td><i>/* Default private options block for the pipe transport. */</i></td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td>pipe_transport_options_block pipe_transport_option_defaults = {</td></tr>
+<tr><th id="112">112</th><td>  NULL,           <i>/* cmd */</i></td></tr>
+<tr><th id="113">113</th><td>  NULL,           <i>/* allow_commands */</i></td></tr>
+<tr><th id="114">114</th><td>  NULL,           <i>/* environment */</i></td></tr>
+<tr><th id="115">115</th><td>  US<q>"/bin:/usr/bin"</q>,  <i>/* path */</i></td></tr>
+<tr><th id="116">116</th><td>  NULL,           <i>/* message_prefix (reset in init if not bsmtp) */</i></td></tr>
+<tr><th id="117">117</th><td>  NULL,           <i>/* message_suffix (ditto) */</i></td></tr>
+<tr><th id="118">118</th><td>  US mac_expanded_string(EX_TEMPFAIL) <q>":"</q>    <i>/* temp_errors */</i></td></tr>
+<tr><th id="119">119</th><td>     mac_expanded_string(EX_CANTCREAT),</td></tr>
+<tr><th id="120">120</th><td>  NULL,           <i>/* check_string */</i></td></tr>
+<tr><th id="121">121</th><td>  NULL,           <i>/* escape_string */</i></td></tr>
+<tr><th id="122">122</th><td>  <var>022</var>,            <i>/* umask */</i></td></tr>
+<tr><th id="123">123</th><td>  <var>20480</var>,          <i>/* max_output */</i></td></tr>
+<tr><th id="124">124</th><td>  <var>60</var>*<var>60</var>,          <i>/* timeout */</i></td></tr>
+<tr><th id="125">125</th><td>  <var>0</var>,              <i>/* options */</i></td></tr>
+<tr><th id="126">126</th><td>  FALSE,          <i>/* force_command */</i></td></tr>
+<tr><th id="127">127</th><td>  FALSE,          <i>/* freeze_exec_fail */</i></td></tr>
+<tr><th id="128">128</th><td>  FALSE,          <i>/* freeze_signal */</i></td></tr>
+<tr><th id="129">129</th><td>  FALSE,          <i>/* ignore_status */</i></td></tr>
+<tr><th id="130">130</th><td>  FALSE,          <i>/* permit_coredump */</i></td></tr>
+<tr><th id="131">131</th><td>  FALSE,          <i>/* restrict_to_path */</i></td></tr>
+<tr><th id="132">132</th><td>  FALSE,          <i>/* timeout_defer */</i></td></tr>
+<tr><th id="133">133</th><td>  FALSE,          <i>/* use_shell */</i></td></tr>
+<tr><th id="134">134</th><td>  FALSE,          <i>/* use_bsmtp */</i></td></tr>
+<tr><th id="135">135</th><td>  FALSE,          <i>/* use_classresources */</i></td></tr>
+<tr><th id="136">136</th><td>  FALSE           <i>/* use_crlf */</i></td></tr>
+<tr><th id="137">137</th><td>};</td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td></td></tr>
+<tr><th id="140">140</th><td></td></tr>
+<tr><th id="141">141</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="142">142</th><td><i>*              Setup entry point                 *</i></td></tr>
+<tr><th id="143">143</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td><i>/* Called for each delivery in the privileged state, just before the uid/gid</i></td></tr>
+<tr><th id="146">146</th><td><i>are changed and the main entry point is called. In a system that supports the</i></td></tr>
+<tr><th id="147">147</th><td><i>login_cap facilities, this function is used to set the class resource limits</i></td></tr>
+<tr><th id="148">148</th><td><i>for the user.  It may also re-enable coredumps.</i></td></tr>
+<tr><th id="149">149</th><td><i></i></td></tr>
+<tr><th id="150">150</th><td><i>Arguments:</i></td></tr>
+<tr><th id="151">151</th><td><i>  tblock     points to the transport instance</i></td></tr>
+<tr><th id="152">152</th><td><i>  addrlist   addresses about to be delivered (not used)</i></td></tr>
+<tr><th id="153">153</th><td><i>  dummy      not used (doesn't pass back data)</i></td></tr>
+<tr><th id="154">154</th><td><i>  uid        the uid that will be set (not used)</i></td></tr>
+<tr><th id="155">155</th><td><i>  gid        the gid that will be set (not used)</i></td></tr>
+<tr><th id="156">156</th><td><i>  errmsg     where to put an error message</i></td></tr>
+<tr><th id="157">157</th><td><i></i></td></tr>
+<tr><th id="158">158</th><td><i>Returns:     OK, FAIL, or DEFER</i></td></tr>
+<tr><th id="159">159</th><td><i>*/</i></td></tr>
+<tr><th id="160">160</th><td></td></tr>
+<tr><th id="161">161</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="162">162</th><td>pipe_transport_setup(transport_instance *tblock, address_item *addrlist,</td></tr>
+<tr><th id="163">163</th><td>  transport_feedback *dummy, uid_t uid, gid_t gid, uschar **errmsg)</td></tr>
+<tr><th id="164">164</th><td>{</td></tr>
+<tr><th id="165">165</th><td>pipe_transport_options_block *ob =</td></tr>
+<tr><th id="166">166</th><td>  (pipe_transport_options_block *)(tblock-&gt;options_block);</td></tr>
+<tr><th id="167">167</th><td></td></tr>
+<tr><th id="168">168</th><td>addrlist = addrlist;  <i>/* Keep compiler happy */</i></td></tr>
+<tr><th id="169">169</th><td>dummy = dummy;</td></tr>
+<tr><th id="170">170</th><td>uid = uid;</td></tr>
+<tr><th id="171">171</th><td>gid = gid;</td></tr>
+<tr><th id="172">172</th><td>errmsg = errmsg;</td></tr>
+<tr><th id="173">173</th><td>ob = ob;</td></tr>
+<tr><th id="174">174</th><td></td></tr>
+<tr><th id="175">175</th><td><u>#ifdef HAVE_SETCLASSRESOURCES</u></td></tr>
+<tr><th id="176">176</th><td><b>if</b> (ob-&gt;use_classresources)</td></tr>
+<tr><th id="177">177</th><td>  {</td></tr>
+<tr><th id="178">178</th><td>  <b>struct</b> passwd *pw = getpwuid(uid);</td></tr>
+<tr><th id="179">179</th><td>  <b>if</b> (pw != NULL)</td></tr>
+<tr><th id="180">180</th><td>    {</td></tr>
+<tr><th id="181">181</th><td>    login_cap_t *lc = login_getpwclass(pw);</td></tr>
+<tr><th id="182">182</th><td>    <b>if</b> (lc != NULL)</td></tr>
+<tr><th id="183">183</th><td>      {</td></tr>
+<tr><th id="184">184</th><td>      setclassresources(lc);</td></tr>
+<tr><th id="185">185</th><td>      login_close(lc);</td></tr>
+<tr><th id="186">186</th><td>      }</td></tr>
+<tr><th id="187">187</th><td>    }</td></tr>
+<tr><th id="188">188</th><td>  }</td></tr>
+<tr><th id="189">189</th><td><u>#endif</u></td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td><u>#ifdef RLIMIT_CORE</u></td></tr>
+<tr><th id="192">192</th><td><b>if</b> (ob-&gt;permit_coredump)</td></tr>
+<tr><th id="193">193</th><td>  {</td></tr>
+<tr><th id="194">194</th><td>  <b>struct</b> rlimit rl;</td></tr>
+<tr><th id="195">195</th><td>  rl.rlim_cur = RLIM_INFINITY;</td></tr>
+<tr><th id="196">196</th><td>  rl.rlim_max = RLIM_INFINITY;</td></tr>
+<tr><th id="197">197</th><td>  <b>if</b> (setrlimit(RLIMIT_CORE, &amp;rl) &lt; <var>0</var>)</td></tr>
+<tr><th id="198">198</th><td>    {</td></tr>
+<tr><th id="199">199</th><td><u>#ifdef SETRLIMIT_NOT_SUPPORTED</u></td></tr>
+<tr><th id="200">200</th><td>    <b>if</b> (errno != ENOSYS &amp;&amp; errno != ENOTSUP)</td></tr>
+<tr><th id="201">201</th><td><u>#endif</u></td></tr>
+<tr><th id="202">202</th><td>      log_write(<var>0</var>, LOG_MAIN,</td></tr>
+<tr><th id="203">203</th><td>          <q>"delivery setrlimit(RLIMIT_CORE, RLIM_INFINITY) failed: %s"</q>,</td></tr>
+<tr><th id="204">204</th><td>          strerror(errno));</td></tr>
+<tr><th id="205">205</th><td>    }</td></tr>
+<tr><th id="206">206</th><td>  }</td></tr>
+<tr><th id="207">207</th><td><u>#endif</u></td></tr>
+<tr><th id="208">208</th><td></td></tr>
+<tr><th id="209">209</th><td><b>return</b> OK;</td></tr>
+<tr><th id="210">210</th><td>}</td></tr>
+<tr><th id="211">211</th><td></td></tr>
+<tr><th id="212">212</th><td></td></tr>
+<tr><th id="213">213</th><td></td></tr>
+<tr><th id="214">214</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="215">215</th><td><i>*          Initialization entry point            *</i></td></tr>
+<tr><th id="216">216</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="217">217</th><td></td></tr>
+<tr><th id="218">218</th><td><i>/* Called for each instance, after its options have been read, to</i></td></tr>
+<tr><th id="219">219</th><td><i>enable consistency checks to be done, or anything else that needs</i></td></tr>
+<tr><th id="220">220</th><td><i>to be set up. */</i></td></tr>
+<tr><th id="221">221</th><td></td></tr>
+<tr><th id="222">222</th><td><em>void</em></td></tr>
+<tr><th id="223">223</th><td>pipe_transport_init(transport_instance *tblock)</td></tr>
+<tr><th id="224">224</th><td>{</td></tr>
+<tr><th id="225">225</th><td>pipe_transport_options_block *ob =</td></tr>
+<tr><th id="226">226</th><td>  (pipe_transport_options_block *)(tblock-&gt;options_block);</td></tr>
+<tr><th id="227">227</th><td></td></tr>
+<tr><th id="228">228</th><td><i>/* Set up the setup entry point, to be called in the privileged state */</i></td></tr>
+<tr><th id="229">229</th><td></td></tr>
+<tr><th id="230">230</th><td>tblock-&gt;setup = pipe_transport_setup;</td></tr>
+<tr><th id="231">231</th><td></td></tr>
+<tr><th id="232">232</th><td><i>/* If pipe_as_creator is set, then uid/gid should not be set. */</i></td></tr>
+<tr><th id="233">233</th><td></td></tr>
+<tr><th id="234">234</th><td><b>if</b> (tblock-&gt;deliver_as_creator &amp;&amp; (tblock-&gt;uid_set || tblock-&gt;gid_set ||</td></tr>
+<tr><th id="235">235</th><td>  tblock-&gt;expand_uid != NULL || tblock-&gt;expand_gid != NULL))</td></tr>
+<tr><th id="236">236</th><td>    log_write(<var>0</var>, LOG_PANIC_DIE|LOG_CONFIG,</td></tr>
+<tr><th id="237">237</th><td>      <q>"both pipe_as_creator and an explicit uid/gid are set for the %s "</q></td></tr>
+<tr><th id="238">238</th><td>        <q>"transport"</q>, tblock-&gt;name);</td></tr>
+<tr><th id="239">239</th><td></td></tr>
+<tr><th id="240">240</th><td><i>/* If a fixed uid field is set, then a gid field must also be set. */</i></td></tr>
+<tr><th id="241">241</th><td></td></tr>
+<tr><th id="242">242</th><td><b>if</b> (tblock-&gt;uid_set &amp;&amp; !tblock-&gt;gid_set &amp;&amp; tblock-&gt;expand_gid == NULL)</td></tr>
+<tr><th id="243">243</th><td>  log_write(<var>0</var>, LOG_PANIC_DIE|LOG_CONFIG,</td></tr>
+<tr><th id="244">244</th><td>    <q>"user set without group for the %s transport"</q>, tblock-&gt;name);</td></tr>
+<tr><th id="245">245</th><td></td></tr>
+<tr><th id="246">246</th><td><i>/* Temp_errors must consist only of digits and colons, but there can be</i></td></tr>
+<tr><th id="247">247</th><td><i>spaces round the colons, so allow them too. */</i></td></tr>
+<tr><th id="248">248</th><td></td></tr>
+<tr><th id="249">249</th><td><b>if</b> (ob-&gt;temp_errors != NULL &amp;&amp; Ustrcmp(ob-&gt;temp_errors, <q>"*"</q>) != <var>0</var>)</td></tr>
+<tr><th id="250">250</th><td>  {</td></tr>
+<tr><th id="251">251</th><td>  size_t p = Ustrspn(ob-&gt;temp_errors, <q>"0123456789: "</q>);</td></tr>
+<tr><th id="252">252</th><td>  <b>if</b> (ob-&gt;temp_errors[p] != <var>0</var>)</td></tr>
+<tr><th id="253">253</th><td>    log_write(<var>0</var>, LOG_PANIC_DIE|LOG_CONFIG,</td></tr>
+<tr><th id="254">254</th><td>      <q>"temp_errors must be a list of numbers or an asterisk for the %s "</q></td></tr>
+<tr><th id="255">255</th><td>      <q>"transport"</q>, tblock-&gt;name);</td></tr>
+<tr><th id="256">256</th><td>  }</td></tr>
+<tr><th id="257">257</th><td></td></tr>
+<tr><th id="258">258</th><td><i>/* Only one of return_output/return_fail_output or log_output/log_fail_output</i></td></tr>
+<tr><th id="259">259</th><td><i>should be set. */</i></td></tr>
+<tr><th id="260">260</th><td></td></tr>
+<tr><th id="261">261</th><td><b>if</b> (tblock-&gt;return_output &amp;&amp; tblock-&gt;return_fail_output)</td></tr>
+<tr><th id="262">262</th><td>  log_write(<var>0</var>, LOG_PANIC_DIE|LOG_CONFIG,</td></tr>
+<tr><th id="263">263</th><td>    <q>"both return_output and return_fail_output set for %s transport"</q>,</td></tr>
+<tr><th id="264">264</th><td>    tblock-&gt;name);</td></tr>
+<tr><th id="265">265</th><td></td></tr>
+<tr><th id="266">266</th><td><b>if</b> (tblock-&gt;log_output &amp;&amp; tblock-&gt;log_fail_output)</td></tr>
+<tr><th id="267">267</th><td>  log_write(<var>0</var>, LOG_PANIC_DIE|LOG_CONFIG,</td></tr>
+<tr><th id="268">268</th><td>    <q>"both log_output and log_fail_output set for the %s transport"</q>,</td></tr>
+<tr><th id="269">269</th><td>    tblock-&gt;name);</td></tr>
+<tr><th id="270">270</th><td></td></tr>
+<tr><th id="271">271</th><td><i>/* If batch SMTP is set, force the check and escape strings, and arrange that</i></td></tr>
+<tr><th id="272">272</th><td><i>headers are also escaped. */</i></td></tr>
+<tr><th id="273">273</th><td></td></tr>
+<tr><th id="274">274</th><td><b>if</b> (ob-&gt;use_bsmtp)</td></tr>
+<tr><th id="275">275</th><td>  {</td></tr>
+<tr><th id="276">276</th><td>  ob-&gt;check_string = US<q>"."</q>;</td></tr>
+<tr><th id="277">277</th><td>  ob-&gt;escape_string = US<q>".."</q>;</td></tr>
+<tr><th id="278">278</th><td>  ob-&gt;options |= topt_escape_headers;</td></tr>
+<tr><th id="279">279</th><td>  }</td></tr>
+<tr><th id="280">280</th><td></td></tr>
+<tr><th id="281">281</th><td><i>/* If not batch SMTP, and message_prefix or message_suffix are unset, insert</i></td></tr>
+<tr><th id="282">282</th><td><i>default values for them. */</i></td></tr>
+<tr><th id="283">283</th><td></td></tr>
+<tr><th id="284">284</th><td><b>else</b></td></tr>
+<tr><th id="285">285</th><td>  {</td></tr>
+<tr><th id="286">286</th><td>  <b>if</b> (ob-&gt;message_prefix == NULL) ob-&gt;message_prefix =</td></tr>
+<tr><th id="287">287</th><td>    US<q>"From ${if def:return_path{$return_path}{MAILER-DAEMON}} ${tod_bsdinbox}\n"</q>;</td></tr>
+<tr><th id="288">288</th><td>  <b>if</b> (ob-&gt;message_suffix == NULL) ob-&gt;message_suffix = US<q>"\n"</q>;</td></tr>
+<tr><th id="289">289</th><td>  }</td></tr>
+<tr><th id="290">290</th><td></td></tr>
+<tr><th id="291">291</th><td><i>/* The restrict_to_path  and use_shell options are incompatible */</i></td></tr>
+<tr><th id="292">292</th><td></td></tr>
+<tr><th id="293">293</th><td><b>if</b> (ob-&gt;restrict_to_path &amp;&amp; ob-&gt;use_shell)</td></tr>
+<tr><th id="294">294</th><td>  log_write(<var>0</var>, LOG_PANIC_DIE|LOG_CONFIG,</td></tr>
+<tr><th id="295">295</th><td>    <q>"both restrict_to_path and use_shell set for %s transport"</q>,</td></tr>
+<tr><th id="296">296</th><td>    tblock-&gt;name);</td></tr>
+<tr><th id="297">297</th><td></td></tr>
+<tr><th id="298">298</th><td><i>/* The allow_commands and use_shell options are incompatible */</i></td></tr>
+<tr><th id="299">299</th><td></td></tr>
+<tr><th id="300">300</th><td><b>if</b> (ob-&gt;allow_commands &amp;&amp; ob-&gt;use_shell)</td></tr>
+<tr><th id="301">301</th><td>  log_write(<var>0</var>, LOG_PANIC_DIE|LOG_CONFIG,</td></tr>
+<tr><th id="302">302</th><td>    <q>"both allow_commands and use_shell set for %s transport"</q>,</td></tr>
+<tr><th id="303">303</th><td>    tblock-&gt;name);</td></tr>
+<tr><th id="304">304</th><td></td></tr>
+<tr><th id="305">305</th><td><i>/* Set up the bitwise options for transport_write_message from the various</i></td></tr>
+<tr><th id="306">306</th><td><i>driver options. Only one of body_only and headers_only can be set. */</i></td></tr>
+<tr><th id="307">307</th><td></td></tr>
+<tr><th id="308">308</th><td>ob-&gt;options |=</td></tr>
+<tr><th id="309">309</th><td>  (tblock-&gt;body_only? topt_no_headers : <var>0</var>) |</td></tr>
+<tr><th id="310">310</th><td>  (tblock-&gt;headers_only? topt_no_body : <var>0</var>) |</td></tr>
+<tr><th id="311">311</th><td>  (tblock-&gt;return_path_add? topt_add_return_path : <var>0</var>) |</td></tr>
+<tr><th id="312">312</th><td>  (tblock-&gt;delivery_date_add? topt_add_delivery_date : <var>0</var>) |</td></tr>
+<tr><th id="313">313</th><td>  (tblock-&gt;envelope_to_add? topt_add_envelope_to : <var>0</var>) |</td></tr>
+<tr><th id="314">314</th><td>  (ob-&gt;use_crlf? topt_use_crlf : <var>0</var>);</td></tr>
+<tr><th id="315">315</th><td>}</td></tr>
+<tr><th id="316">316</th><td></td></tr>
+<tr><th id="317">317</th><td></td></tr>
+<tr><th id="318">318</th><td></td></tr>
+<tr><th id="319">319</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="320">320</th><td><i>*          Set up direct (non-shell) command     *</i></td></tr>
+<tr><th id="321">321</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="322">322</th><td></td></tr>
+<tr><th id="323">323</th><td><i>/* This function is called when a command line is to be parsed by the transport</i></td></tr>
+<tr><th id="324">324</th><td><i>and executed directly, without the use of /bin/sh.</i></td></tr>
+<tr><th id="325">325</th><td><i></i></td></tr>
+<tr><th id="326">326</th><td><i>Arguments:</i></td></tr>
+<tr><th id="327">327</th><td><i>  argvptr            pointer to anchor for argv vector</i></td></tr>
+<tr><th id="328">328</th><td><i>  cmd                points to the command string</i></td></tr>
+<tr><th id="329">329</th><td><i>  expand_arguments   true if expansion is to occur</i></td></tr>
+<tr><th id="330">330</th><td><i>  expand_fail        error if expansion fails</i></td></tr>
+<tr><th id="331">331</th><td><i>  addr               chain of addresses</i></td></tr>
+<tr><th id="332">332</th><td><i>  tname              the transport name</i></td></tr>
+<tr><th id="333">333</th><td><i>  ob                 the transport options block</i></td></tr>
+<tr><th id="334">334</th><td><i></i></td></tr>
+<tr><th id="335">335</th><td><i>Returns:             TRUE if all went well; otherwise an error will be</i></td></tr>
+<tr><th id="336">336</th><td><i>                     set in the first address and FALSE returned</i></td></tr>
+<tr><th id="337">337</th><td><i>*/</i></td></tr>
+<tr><th id="338">338</th><td></td></tr>
+<tr><th id="339">339</th><td><em>static</em> BOOL</td></tr>
+<tr><th id="340">340</th><td>set_up_direct_command(<em>const</em> uschar ***argvptr, uschar *cmd,</td></tr>
+<tr><th id="341">341</th><td>  BOOL expand_arguments, <em>int</em> expand_fail, address_item *addr, uschar *tname,</td></tr>
+<tr><th id="342">342</th><td>  pipe_transport_options_block *ob)</td></tr>
+<tr><th id="343">343</th><td>{</td></tr>
+<tr><th id="344">344</th><td>BOOL permitted = FALSE;</td></tr>
+<tr><th id="345">345</th><td><em>const</em> uschar **argv;</td></tr>
+<tr><th id="346">346</th><td></td></tr>
+<tr><th id="347">347</th><td><i>/* Set up "transport &lt;name&gt;" to be put in any error messages, and then</i></td></tr>
+<tr><th id="348">348</th><td><i>call the common function for creating an argument list and expanding</i></td></tr>
+<tr><th id="349">349</th><td><i>the items if necessary. If it fails, this function fails (error information</i></td></tr>
+<tr><th id="350">350</th><td><i>is in the addresses). */</i></td></tr>
+<tr><th id="351">351</th><td></td></tr>
+<tr><th id="352">352</th><td><b>if</b> (!transport_set_up_command(argvptr, cmd, expand_arguments, expand_fail,</td></tr>
+<tr><th id="353">353</th><td>      addr, string_sprintf(<q>"%.50s transport"</q>, tname), NULL))</td></tr>
+<tr><th id="354">354</th><td>  <b>return</b> FALSE;</td></tr>
+<tr><th id="355">355</th><td></td></tr>
+<tr><th id="356">356</th><td><i>/* Point to the set-up arguments. */</i></td></tr>
+<tr><th id="357">357</th><td></td></tr>
+<tr><th id="358">358</th><td>argv = *argvptr;</td></tr>
+<tr><th id="359">359</th><td></td></tr>
+<tr><th id="360">360</th><td><i>/* If allow_commands is set, see if the command is in the permitted list. */</i></td></tr>
+<tr><th id="361">361</th><td></td></tr>
+<tr><th id="362">362</th><td><b>if</b> (ob-&gt;allow_commands)</td></tr>
+<tr><th id="363">363</th><td>  {</td></tr>
+<tr><th id="364">364</th><td>  <em>int</em> sep = <var>0</var>;</td></tr>
+<tr><th id="365">365</th><td>  <em>const</em> uschar *s;</td></tr>
+<tr><th id="366">366</th><td>  uschar *p;</td></tr>
+<tr><th id="367">367</th><td></td></tr>
+<tr><th id="368">368</th><td>  <b>if</b> (!(s = expand_string(ob-&gt;allow_commands)))</td></tr>
+<tr><th id="369">369</th><td>    {</td></tr>
+<tr><th id="370">370</th><td>    addr-&gt;transport_return = DEFER;</td></tr>
+<tr><th id="371">371</th><td>    addr-&gt;message = string_sprintf(<q>"failed to expand string \"%s\" "</q></td></tr>
+<tr><th id="372">372</th><td>      <q>"for %s transport: %s"</q>, ob-&gt;allow_commands, tname, expand_string_message);</td></tr>
+<tr><th id="373">373</th><td>    <b>return</b> FALSE;</td></tr>
+<tr><th id="374">374</th><td>    }</td></tr>
+<tr><th id="375">375</th><td></td></tr>
+<tr><th id="376">376</th><td>  <b>while</b> ((p = string_nextinlist(&amp;s, &amp;sep, NULL, <var>0</var>)))</td></tr>
+<tr><th id="377">377</th><td>    <b>if</b> (Ustrcmp(p, argv[<var>0</var>]) == <var>0</var>) { permitted = TRUE; <b>break</b>; }</td></tr>
+<tr><th id="378">378</th><td>  }</td></tr>
+<tr><th id="379">379</th><td></td></tr>
+<tr><th id="380">380</th><td><i>/* If permitted is TRUE it means the command was found in the allowed list, and</i></td></tr>
+<tr><th id="381">381</th><td><i>no further checks are done. If permitted = FALSE, it either means</i></td></tr>
+<tr><th id="382">382</th><td><i>allow_commands wasn't set, or that the command didn't match anything in the</i></td></tr>
+<tr><th id="383">383</th><td><i>list. In both cases, if restrict_to_path is set, we fail if the command</i></td></tr>
+<tr><th id="384">384</th><td><i>contains any slashes, but if restrict_to_path is not set, we must fail the</i></td></tr>
+<tr><th id="385">385</th><td><i>command only if allow_commands is set. */</i></td></tr>
+<tr><th id="386">386</th><td></td></tr>
+<tr><th id="387">387</th><td><b>if</b> (!permitted)</td></tr>
+<tr><th id="388">388</th><td>  {</td></tr>
+<tr><th id="389">389</th><td>  <b>if</b> (ob-&gt;restrict_to_path)</td></tr>
+<tr><th id="390">390</th><td>    {</td></tr>
+<tr><th id="391">391</th><td>    <b>if</b> (Ustrchr(argv[<var>0</var>], <kbd>'/'</kbd>) != NULL)</td></tr>
+<tr><th id="392">392</th><td>      {</td></tr>
+<tr><th id="393">393</th><td>      addr-&gt;transport_return = FAIL;</td></tr>
+<tr><th id="394">394</th><td>      addr-&gt;message = string_sprintf(<q>"\"/\" found in \"%s\" (command for %s "</q></td></tr>
+<tr><th id="395">395</th><td>        <q>"transport) - failed for security reasons"</q>, cmd, tname);</td></tr>
+<tr><th id="396">396</th><td>      <b>return</b> FALSE;</td></tr>
+<tr><th id="397">397</th><td>      }</td></tr>
+<tr><th id="398">398</th><td>    }</td></tr>
+<tr><th id="399">399</th><td></td></tr>
+<tr><th id="400">400</th><td>  <b>else</b> <b>if</b> (ob-&gt;allow_commands)</td></tr>
+<tr><th id="401">401</th><td>    {</td></tr>
+<tr><th id="402">402</th><td>    addr-&gt;transport_return = FAIL;</td></tr>
+<tr><th id="403">403</th><td>    addr-&gt;message = string_sprintf(<q>"\"%s\" command not permitted by %s "</q></td></tr>
+<tr><th id="404">404</th><td>      <q>"transport"</q>, argv[<var>0</var>], tname);</td></tr>
+<tr><th id="405">405</th><td>    <b>return</b> FALSE;</td></tr>
+<tr><th id="406">406</th><td>    }</td></tr>
+<tr><th id="407">407</th><td>  }</td></tr>
+<tr><th id="408">408</th><td></td></tr>
+<tr><th id="409">409</th><td><i>/* If the command is not an absolute path, search the PATH directories</i></td></tr>
+<tr><th id="410">410</th><td><i>for it. */</i></td></tr>
+<tr><th id="411">411</th><td></td></tr>
+<tr><th id="412">412</th><td><b>if</b> (argv[<var>0</var>][<var>0</var>] != <kbd>'/'</kbd>)</td></tr>
+<tr><th id="413">413</th><td>  {</td></tr>
+<tr><th id="414">414</th><td>  <em>int</em> sep = <var>0</var>;</td></tr>
+<tr><th id="415">415</th><td>  uschar *p;</td></tr>
+<tr><th id="416">416</th><td>  <em>const</em> uschar *listptr = expand_string(ob-&gt;path);</td></tr>
+<tr><th id="417">417</th><td></td></tr>
+<tr><th id="418">418</th><td>  <b>while</b> ((p = string_nextinlist(&amp;listptr, &amp;sep, NULL, <var>0</var>)))</td></tr>
+<tr><th id="419">419</th><td>    {</td></tr>
+<tr><th id="420">420</th><td>    <b>struct</b> stat statbuf;</td></tr>
+<tr><th id="421">421</th><td>    sprintf(CS big_buffer, <q>"%.256s/%.256s"</q>, p, argv[<var>0</var>]);</td></tr>
+<tr><th id="422">422</th><td>    <b>if</b> (Ustat(big_buffer, &amp;statbuf) == <var>0</var>)</td></tr>
+<tr><th id="423">423</th><td>      {</td></tr>
+<tr><th id="424">424</th><td>      argv[<var>0</var>] = string_copy(big_buffer);</td></tr>
+<tr><th id="425">425</th><td>      <b>break</b>;</td></tr>
+<tr><th id="426">426</th><td>      }</td></tr>
+<tr><th id="427">427</th><td>    }</td></tr>
+<tr><th id="428">428</th><td>  <b>if</b> (!p)</td></tr>
+<tr><th id="429">429</th><td>    {</td></tr>
+<tr><th id="430">430</th><td>    addr-&gt;transport_return = FAIL;</td></tr>
+<tr><th id="431">431</th><td>    addr-&gt;message = string_sprintf(<q>"\"%s\" command not found for %s transport"</q>,</td></tr>
+<tr><th id="432">432</th><td>      argv[<var>0</var>], tname);</td></tr>
+<tr><th id="433">433</th><td>    <b>return</b> FALSE;</td></tr>
+<tr><th id="434">434</th><td>    }</td></tr>
+<tr><th id="435">435</th><td>  }</td></tr>
+<tr><th id="436">436</th><td></td></tr>
+<tr><th id="437">437</th><td><b>return</b> TRUE;</td></tr>
+<tr><th id="438">438</th><td>}</td></tr>
+<tr><th id="439">439</th><td></td></tr>
+<tr><th id="440">440</th><td></td></tr>
+<tr><th id="441">441</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="442">442</th><td><i>*               Set up shell command             *</i></td></tr>
+<tr><th id="443">443</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="444">444</th><td></td></tr>
+<tr><th id="445">445</th><td><i>/* This function is called when a command line is to be passed to /bin/sh</i></td></tr>
+<tr><th id="446">446</th><td><i>without parsing inside the transport.</i></td></tr>
+<tr><th id="447">447</th><td><i></i></td></tr>
+<tr><th id="448">448</th><td><i>Arguments:</i></td></tr>
+<tr><th id="449">449</th><td><i>  argvptr            pointer to anchor for argv vector</i></td></tr>
+<tr><th id="450">450</th><td><i>  cmd                points to the command string</i></td></tr>
+<tr><th id="451">451</th><td><i>  expand_arguments   true if expansion is to occur</i></td></tr>
+<tr><th id="452">452</th><td><i>  expand_fail        error if expansion fails</i></td></tr>
+<tr><th id="453">453</th><td><i>  addr               chain of addresses</i></td></tr>
+<tr><th id="454">454</th><td><i>  tname              the transport name</i></td></tr>
+<tr><th id="455">455</th><td><i></i></td></tr>
+<tr><th id="456">456</th><td><i>Returns:             TRUE if all went well; otherwise an error will be</i></td></tr>
+<tr><th id="457">457</th><td><i>                     set in the first address and FALSE returned</i></td></tr>
+<tr><th id="458">458</th><td><i>*/</i></td></tr>
+<tr><th id="459">459</th><td></td></tr>
+<tr><th id="460">460</th><td><em>static</em> BOOL</td></tr>
+<tr><th id="461">461</th><td>set_up_shell_command(<em>const</em> uschar ***argvptr, uschar *cmd,</td></tr>
+<tr><th id="462">462</th><td>  BOOL expand_arguments, <em>int</em> expand_fail, address_item *addr, uschar *tname)</td></tr>
+<tr><th id="463">463</th><td>{</td></tr>
+<tr><th id="464">464</th><td><em>const</em> uschar **argv;</td></tr>
+<tr><th id="465">465</th><td></td></tr>
+<tr><th id="466">466</th><td>*argvptr = argv = store_get((<var>4</var>)*<b>sizeof</b>(uschar *));</td></tr>
+<tr><th id="467">467</th><td></td></tr>
+<tr><th id="468">468</th><td>argv[<var>0</var>] = US<q>"/bin/sh"</q>;</td></tr>
+<tr><th id="469">469</th><td>argv[<var>1</var>] = US<q>"-c"</q>;</td></tr>
+<tr><th id="470">470</th><td></td></tr>
+<tr><th id="471">471</th><td><i>/* We have to take special action to handle the special "variable" called</i></td></tr>
+<tr><th id="472">472</th><td><i>$pipe_addresses, which is not recognized by the normal expansion function. */</i></td></tr>
+<tr><th id="473">473</th><td></td></tr>
+<tr><th id="474">474</th><td><b>if</b> (expand_arguments)</td></tr>
+<tr><th id="475">475</th><td>  {</td></tr>
+<tr><th id="476">476</th><td>  uschar * p = Ustrstr(cmd, <q>"pipe_addresses"</q>);</td></tr>
+<tr><th id="477">477</th><td>  gstring * g = NULL;</td></tr>
+<tr><th id="478">478</th><td></td></tr>
+<tr><th id="479">479</th><td>  DEBUG(D_transport)</td></tr>
+<tr><th id="480">480</th><td>    debug_printf(<q>"shell pipe command before expansion:\n  %s\n"</q>, cmd);</td></tr>
+<tr><th id="481">481</th><td></td></tr>
+<tr><th id="482">482</th><td>  <i>/* Allow $recipients in the expansion iff it comes from a system filter */</i></td></tr>
+<tr><th id="483">483</th><td></td></tr>
+<tr><th id="484">484</th><td>  enable_dollar_recipients = addr &amp;&amp; addr-&gt;parent &amp;&amp;</td></tr>
+<tr><th id="485">485</th><td>    Ustrcmp(addr-&gt;parent-&gt;address, <q>"system-filter"</q>) == <var>0</var>;</td></tr>
+<tr><th id="486">486</th><td></td></tr>
+<tr><th id="487">487</th><td>  <b>if</b> (p != NULL &amp;&amp; (</td></tr>
+<tr><th id="488">488</th><td>         (p &gt; cmd &amp;&amp; p[-<var>1</var>] == <kbd>'$'</kbd>) ||</td></tr>
+<tr><th id="489">489</th><td>         (p &gt; cmd + <var>1</var> &amp;&amp; p[-<var>2</var>] == <kbd>'$'</kbd> &amp;&amp; p[-<var>1</var>] == <kbd>'{'</kbd> &amp;&amp; p[<var>14</var>] == <kbd>'}'</kbd>)))</td></tr>
+<tr><th id="490">490</th><td>    {</td></tr>
+<tr><th id="491">491</th><td>    address_item *ad;</td></tr>
+<tr><th id="492">492</th><td>    uschar *q = p + <var>14</var>;</td></tr>
+<tr><th id="493">493</th><td></td></tr>
+<tr><th id="494">494</th><td>    <b>if</b> (p[-<var>1</var>] == <kbd>'{'</kbd>) { q++; p--; }</td></tr>
+<tr><th id="495">495</th><td></td></tr>
+<tr><th id="496">496</th><td>    g = string_get(Ustrlen(cmd) + <var>64</var>);</td></tr>
+<tr><th id="497">497</th><td>    g = string_catn(g, cmd, p - cmd - <var>1</var>);</td></tr>
+<tr><th id="498">498</th><td></td></tr>
+<tr><th id="499">499</th><td>    <b>for</b> (ad = addr; ad; ad = ad-&gt;next)</td></tr>
+<tr><th id="500">500</th><td>      {</td></tr>
+<tr><th id="501">501</th><td>      <i>/*XXX string_append_listele() ? */</i></td></tr>
+<tr><th id="502">502</th><td>      <b>if</b> (ad != addr) g = string_catn(g, US<q>" "</q>, <var>1</var>);</td></tr>
+<tr><th id="503">503</th><td>      g = string_cat(g, ad-&gt;address);</td></tr>
+<tr><th id="504">504</th><td>      }</td></tr>
+<tr><th id="505">505</th><td></td></tr>
+<tr><th id="506">506</th><td>    g = string_cat(g, q);</td></tr>
+<tr><th id="507">507</th><td>    argv[<var>2</var>] = (cmd = string_from_gstring(g)) ? expand_string(cmd) : NULL;</td></tr>
+<tr><th id="508">508</th><td>    }</td></tr>
+<tr><th id="509">509</th><td>  <b>else</b></td></tr>
+<tr><th id="510">510</th><td>    argv[<var>2</var>] = expand_string(cmd);</td></tr>
+<tr><th id="511">511</th><td></td></tr>
+<tr><th id="512">512</th><td>  enable_dollar_recipients = FALSE;</td></tr>
+<tr><th id="513">513</th><td></td></tr>
+<tr><th id="514">514</th><td>  <b>if</b> (!argv[<var>2</var>])</td></tr>
+<tr><th id="515">515</th><td>    {</td></tr>
+<tr><th id="516">516</th><td>    addr-&gt;transport_return = search_find_defer ? DEFER : expand_fail;</td></tr>
+<tr><th id="517">517</th><td>    addr-&gt;message = string_sprintf(<q>"Expansion of command \"%s\" "</q></td></tr>
+<tr><th id="518">518</th><td>      <q>"in %s transport failed: %s"</q>,</td></tr>
+<tr><th id="519">519</th><td>      cmd, tname, expand_string_message);</td></tr>
+<tr><th id="520">520</th><td>    <b>return</b> FALSE;</td></tr>
+<tr><th id="521">521</th><td>    }</td></tr>
+<tr><th id="522">522</th><td></td></tr>
+<tr><th id="523">523</th><td>  DEBUG(D_transport)</td></tr>
+<tr><th id="524">524</th><td>    debug_printf(<q>"shell pipe command after expansion:\n  %s\n"</q>, argv[<var>2</var>]);</td></tr>
+<tr><th id="525">525</th><td>  }</td></tr>
+<tr><th id="526">526</th><td><b>else</b></td></tr>
+<tr><th id="527">527</th><td>  {</td></tr>
+<tr><th id="528">528</th><td>  DEBUG(D_transport)</td></tr>
+<tr><th id="529">529</th><td>    debug_printf(<q>"shell pipe command (no expansion):\n  %s\n"</q>, cmd);</td></tr>
+<tr><th id="530">530</th><td>  argv[<var>2</var>] = cmd;</td></tr>
+<tr><th id="531">531</th><td>  }</td></tr>
+<tr><th id="532">532</th><td></td></tr>
+<tr><th id="533">533</th><td>argv[<var>3</var>] = US <var>0</var>;</td></tr>
+<tr><th id="534">534</th><td><b>return</b> TRUE;</td></tr>
+<tr><th id="535">535</th><td>}</td></tr>
+<tr><th id="536">536</th><td></td></tr>
+<tr><th id="537">537</th><td></td></tr>
+<tr><th id="538">538</th><td></td></tr>
+<tr><th id="539">539</th><td></td></tr>
+<tr><th id="540">540</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="541">541</th><td><i>*              Main entry point                  *</i></td></tr>
+<tr><th id="542">542</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="543">543</th><td></td></tr>
+<tr><th id="544">544</th><td><i>/* See local README for interface details. This transport always returns FALSE,</i></td></tr>
+<tr><th id="545">545</th><td><i>indicating that the status in the first address is the status for all addresses</i></td></tr>
+<tr><th id="546">546</th><td><i>in a batch. */</i></td></tr>
+<tr><th id="547">547</th><td></td></tr>
+<tr><th id="548">548</th><td>BOOL</td></tr>
+<tr><th id="549">549</th><td>pipe_transport_entry(</td></tr>
+<tr><th id="550">550</th><td>  transport_instance *tblock,      <i>/* data for this instantiation */</i></td></tr>
+<tr><th id="551">551</th><td>  address_item *addr)              <i>/* address(es) we are working on */</i></td></tr>
+<tr><th id="552">552</th><td>{</td></tr>
+<tr><th id="553">553</th><td>pid_t pid, outpid;</td></tr>
+<tr><th id="554">554</th><td><em>int</em> fd_in, fd_out, rc;</td></tr>
+<tr><th id="555">555</th><td><em>int</em> envcount = <var>0</var>;</td></tr>
+<tr><th id="556">556</th><td><em>int</em> envsep = <var>0</var>;</td></tr>
+<tr><th id="557">557</th><td><em>int</em> expand_fail;</td></tr>
+<tr><th id="558">558</th><td>pipe_transport_options_block *ob =</td></tr>
+<tr><th id="559">559</th><td>  (pipe_transport_options_block *)(tblock-&gt;options_block);</td></tr>
+<tr><th id="560">560</th><td><em>int</em> timeout = ob-&gt;timeout;</td></tr>
+<tr><th id="561">561</th><td>BOOL written_ok = FALSE;</td></tr>
+<tr><th id="562">562</th><td>BOOL expand_arguments;</td></tr>
+<tr><th id="563">563</th><td><em>const</em> uschar **argv;</td></tr>
+<tr><th id="564">564</th><td>uschar *envp[<var>50</var>];</td></tr>
+<tr><th id="565">565</th><td><em>const</em> uschar *envlist = ob-&gt;environment;</td></tr>
+<tr><th id="566">566</th><td>uschar *cmd, *ss;</td></tr>
+<tr><th id="567">567</th><td>uschar *eol = ob-&gt;use_crlf ? US<q>"\r\n"</q> : US<q>"\n"</q>;</td></tr>
+<tr><th id="568">568</th><td>transport_ctx tctx = {</td></tr>
+<tr><th id="569">569</th><td>  {<var>0</var>},</td></tr>
+<tr><th id="570">570</th><td>  tblock,</td></tr>
+<tr><th id="571">571</th><td>  addr,</td></tr>
+<tr><th id="572">572</th><td>  ob-&gt;check_string,</td></tr>
+<tr><th id="573">573</th><td>  ob-&gt;escape_string,</td></tr>
+<tr><th id="574">574</th><td>  ob-&gt;options <i>/* set at initialization time */</i></td></tr>
+<tr><th id="575">575</th><td>};</td></tr>
+<tr><th id="576">576</th><td></td></tr>
+<tr><th id="577">577</th><td>DEBUG(D_transport) debug_printf(<q>"%s transport entered\n"</q>, tblock-&gt;name);</td></tr>
+<tr><th id="578">578</th><td></td></tr>
+<tr><th id="579">579</th><td><i>/* Set up for the good case */</i></td></tr>
+<tr><th id="580">580</th><td></td></tr>
+<tr><th id="581">581</th><td>addr-&gt;transport_return = OK;</td></tr>
+<tr><th id="582">582</th><td>addr-&gt;basic_errno = <var>0</var>;</td></tr>
+<tr><th id="583">583</th><td></td></tr>
+<tr><th id="584">584</th><td><i>/* Pipes are not accepted as general addresses, but they can be generated from</i></td></tr>
+<tr><th id="585">585</th><td><i>.forward files or alias files. In those cases, the pfr flag is set, and the</i></td></tr>
+<tr><th id="586">586</th><td><i>command to be obeyed is pointed to by addr-&gt;local_part; it starts with the pipe</i></td></tr>
+<tr><th id="587">587</th><td><i>symbol. In other cases, the command is supplied as one of the pipe transport's</i></td></tr>
+<tr><th id="588">588</th><td><i>options. */</i></td></tr>
+<tr><th id="589">589</th><td></td></tr>
+<tr><th id="590">590</th><td><b>if</b> (testflag(addr, af_pfr) &amp;&amp; addr-&gt;local_part[<var>0</var>] == <kbd>'|'</kbd>)</td></tr>
+<tr><th id="591">591</th><td>  {</td></tr>
+<tr><th id="592">592</th><td>  <b>if</b> (ob-&gt;force_command)</td></tr>
+<tr><th id="593">593</th><td>    {</td></tr>
+<tr><th id="594">594</th><td>    <i>/* Enables expansion of $address_pipe into separate arguments */</i></td></tr>
+<tr><th id="595">595</th><td>    setflag(addr, af_force_command);</td></tr>
+<tr><th id="596">596</th><td>    cmd = ob-&gt;cmd;</td></tr>
+<tr><th id="597">597</th><td>    expand_arguments = TRUE;</td></tr>
+<tr><th id="598">598</th><td>    expand_fail = PANIC;</td></tr>
+<tr><th id="599">599</th><td>    }</td></tr>
+<tr><th id="600">600</th><td>  <b>else</b></td></tr>
+<tr><th id="601">601</th><td>    {</td></tr>
+<tr><th id="602">602</th><td>    cmd = addr-&gt;local_part + <var>1</var>;</td></tr>
+<tr><th id="603">603</th><td>    <b>while</b> (isspace(*cmd)) cmd++;</td></tr>
+<tr><th id="604">604</th><td>    expand_arguments = testflag(addr, af_expand_pipe);</td></tr>
+<tr><th id="605">605</th><td>    expand_fail = FAIL;</td></tr>
+<tr><th id="606">606</th><td>    }</td></tr>
+<tr><th id="607">607</th><td>  }</td></tr>
+<tr><th id="608">608</th><td><b>else</b></td></tr>
+<tr><th id="609">609</th><td>  {</td></tr>
+<tr><th id="610">610</th><td>  cmd = ob-&gt;cmd;</td></tr>
+<tr><th id="611">611</th><td>  expand_arguments = TRUE;</td></tr>
+<tr><th id="612">612</th><td>  expand_fail = PANIC;</td></tr>
+<tr><th id="613">613</th><td>  }</td></tr>
+<tr><th id="614">614</th><td></td></tr>
+<tr><th id="615">615</th><td><i>/* If no command has been supplied, we are in trouble.</i></td></tr>
+<tr><th id="616">616</th><td><i> * We also check for an empty string since it may be</i></td></tr>
+<tr><th id="617">617</th><td><i> * coming from addr-&gt;local_part[0] == '|'</i></td></tr>
+<tr><th id="618">618</th><td><i> */</i></td></tr>
+<tr><th id="619">619</th><td></td></tr>
+<tr><th id="620">620</th><td><b>if</b> (cmd == NULL || *cmd == <kbd>'\0'</kbd>)</td></tr>
+<tr><th id="621">621</th><td>  {</td></tr>
+<tr><th id="622">622</th><td>  addr-&gt;transport_return = DEFER;</td></tr>
+<tr><th id="623">623</th><td>  addr-&gt;message = string_sprintf(<q>"no command specified for %s transport"</q>,</td></tr>
+<tr><th id="624">624</th><td>    tblock-&gt;name);</td></tr>
+<tr><th id="625">625</th><td>  <b>return</b> FALSE;</td></tr>
+<tr><th id="626">626</th><td>  }</td></tr>
+<tr><th id="627">627</th><td></td></tr>
+<tr><th id="628">628</th><td><i>/* When a pipe is set up by a filter file, there may be values for $thisaddress</i></td></tr>
+<tr><th id="629">629</th><td><i>and numerical the variables in existence. These are passed in</i></td></tr>
+<tr><th id="630">630</th><td><i>addr-&gt;pipe_expandn for use here. */</i></td></tr>
+<tr><th id="631">631</th><td></td></tr>
+<tr><th id="632">632</th><td><b>if</b> (expand_arguments &amp;&amp; addr-&gt;pipe_expandn)</td></tr>
+<tr><th id="633">633</th><td>  {</td></tr>
+<tr><th id="634">634</th><td>  uschar **ss = addr-&gt;pipe_expandn;</td></tr>
+<tr><th id="635">635</th><td>  expand_nmax = -<var>1</var>;</td></tr>
+<tr><th id="636">636</th><td>  <b>if</b> (*ss != NULL) filter_thisaddress = *ss++;</td></tr>
+<tr><th id="637">637</th><td>  <b>while</b> (*ss != NULL)</td></tr>
+<tr><th id="638">638</th><td>    {</td></tr>
+<tr><th id="639">639</th><td>    expand_nstring[++expand_nmax] = *ss;</td></tr>
+<tr><th id="640">640</th><td>    expand_nlength[expand_nmax] = Ustrlen(*ss++);</td></tr>
+<tr><th id="641">641</th><td>    }</td></tr>
+<tr><th id="642">642</th><td>  }</td></tr>
+<tr><th id="643">643</th><td></td></tr>
+<tr><th id="644">644</th><td><i>/* The default way of processing the command is to split it up into arguments</i></td></tr>
+<tr><th id="645">645</th><td><i>here, and run it directly. This offers some security advantages. However, there</i></td></tr>
+<tr><th id="646">646</th><td><i>are installations that want by default to run commands under /bin/sh always, so</i></td></tr>
+<tr><th id="647">647</th><td><i>there is an option to do that. */</i></td></tr>
+<tr><th id="648">648</th><td></td></tr>
+<tr><th id="649">649</th><td><b>if</b> (ob-&gt;use_shell)</td></tr>
+<tr><th id="650">650</th><td>  {</td></tr>
+<tr><th id="651">651</th><td>  <b>if</b> (!set_up_shell_command(&amp;argv, cmd, expand_arguments, expand_fail, addr,</td></tr>
+<tr><th id="652">652</th><td>    tblock-&gt;name)) <b>return</b> FALSE;</td></tr>
+<tr><th id="653">653</th><td>  }</td></tr>
+<tr><th id="654">654</th><td><b>else</b> <b>if</b> (!set_up_direct_command(&amp;argv, cmd, expand_arguments, expand_fail, addr,</td></tr>
+<tr><th id="655">655</th><td>  tblock-&gt;name, ob)) <b>return</b> FALSE;</td></tr>
+<tr><th id="656">656</th><td></td></tr>
+<tr><th id="657">657</th><td>expand_nmax = -<var>1</var>;           <i>/* Reset */</i></td></tr>
+<tr><th id="658">658</th><td>filter_thisaddress = NULL;</td></tr>
+<tr><th id="659">659</th><td></td></tr>
+<tr><th id="660">660</th><td><i>/* Set up the environment for the command. */</i></td></tr>
+<tr><th id="661">661</th><td></td></tr>
+<tr><th id="662">662</th><td>envp[envcount++] = string_sprintf(<q>"LOCAL_PART=%s"</q>, deliver_localpart);</td></tr>
+<tr><th id="663">663</th><td>envp[envcount++] = string_sprintf(<q>"LOGNAME=%s"</q>, deliver_localpart);</td></tr>
+<tr><th id="664">664</th><td>envp[envcount++] = string_sprintf(<q>"USER=%s"</q>, deliver_localpart);</td></tr>
+<tr><th id="665">665</th><td>envp[envcount++] = string_sprintf(<q>"LOCAL_PART_PREFIX=%#s"</q>,</td></tr>
+<tr><th id="666">666</th><td>  deliver_localpart_prefix);</td></tr>
+<tr><th id="667">667</th><td>envp[envcount++] = string_sprintf(<q>"LOCAL_PART_SUFFIX=%#s"</q>,</td></tr>
+<tr><th id="668">668</th><td>  deliver_localpart_suffix);</td></tr>
+<tr><th id="669">669</th><td>envp[envcount++] = string_sprintf(<q>"DOMAIN=%s"</q>, deliver_domain);</td></tr>
+<tr><th id="670">670</th><td>envp[envcount++] = string_sprintf(<q>"HOME=%#s"</q>, deliver_home);</td></tr>
+<tr><th id="671">671</th><td>envp[envcount++] = string_sprintf(<q>"MESSAGE_ID=%s"</q>, message_id);</td></tr>
+<tr><th id="672">672</th><td>envp[envcount++] = string_sprintf(<q>"PATH=%s"</q>, expand_string(ob-&gt;path));</td></tr>
+<tr><th id="673">673</th><td>envp[envcount++] = string_sprintf(<q>"RECIPIENT=%#s%#s%#s@%#s"</q>,</td></tr>
+<tr><th id="674">674</th><td>  deliver_localpart_prefix, deliver_localpart, deliver_localpart_suffix,</td></tr>
+<tr><th id="675">675</th><td>  deliver_domain);</td></tr>
+<tr><th id="676">676</th><td>envp[envcount++] = string_sprintf(<q>"QUALIFY_DOMAIN=%s"</q>, qualify_domain_sender);</td></tr>
+<tr><th id="677">677</th><td>envp[envcount++] = string_sprintf(<q>"SENDER=%s"</q>, sender_address);</td></tr>
+<tr><th id="678">678</th><td>envp[envcount++] = US<q>"SHELL=/bin/sh"</q>;</td></tr>
+<tr><th id="679">679</th><td></td></tr>
+<tr><th id="680">680</th><td><b>if</b> (addr-&gt;host_list != NULL)</td></tr>
+<tr><th id="681">681</th><td>  envp[envcount++] = string_sprintf(<q>"HOST=%s"</q>, addr-&gt;host_list-&gt;name);</td></tr>
+<tr><th id="682">682</th><td></td></tr>
+<tr><th id="683">683</th><td><b>if</b> (timestamps_utc) envp[envcount++] = US<q>"TZ=UTC"</q>;</td></tr>
+<tr><th id="684">684</th><td><b>else</b> <b>if</b> (timezone_string != NULL &amp;&amp; timezone_string[<var>0</var>] != <var>0</var>)</td></tr>
+<tr><th id="685">685</th><td>  envp[envcount++] = string_sprintf(<q>"TZ=%s"</q>, timezone_string);</td></tr>
+<tr><th id="686">686</th><td></td></tr>
+<tr><th id="687">687</th><td><i>/* Add any requested items */</i></td></tr>
+<tr><th id="688">688</th><td></td></tr>
+<tr><th id="689">689</th><td><b>if</b> (envlist)</td></tr>
+<tr><th id="690">690</th><td>  {</td></tr>
+<tr><th id="691">691</th><td>  envlist = expand_cstring(envlist);</td></tr>
+<tr><th id="692">692</th><td>  <b>if</b> (envlist == NULL)</td></tr>
+<tr><th id="693">693</th><td>    {</td></tr>
+<tr><th id="694">694</th><td>    addr-&gt;transport_return = DEFER;</td></tr>
+<tr><th id="695">695</th><td>    addr-&gt;message = string_sprintf(<q>"failed to expand string \"%s\" "</q></td></tr>
+<tr><th id="696">696</th><td>      <q>"for %s transport: %s"</q>, ob-&gt;environment, tblock-&gt;name,</td></tr>
+<tr><th id="697">697</th><td>      expand_string_message);</td></tr>
+<tr><th id="698">698</th><td>    <b>return</b> FALSE;</td></tr>
+<tr><th id="699">699</th><td>    }</td></tr>
+<tr><th id="700">700</th><td>  }</td></tr>
+<tr><th id="701">701</th><td></td></tr>
+<tr><th id="702">702</th><td><b>while</b> ((ss = string_nextinlist(&amp;envlist, &amp;envsep, big_buffer, big_buffer_size)))</td></tr>
+<tr><th id="703">703</th><td>   {</td></tr>
+<tr><th id="704">704</th><td>   <b>if</b> (envcount &gt; nelem(envp) - <var>2</var>)</td></tr>
+<tr><th id="705">705</th><td>     {</td></tr>
+<tr><th id="706">706</th><td>     addr-&gt;transport_return = DEFER;</td></tr>
+<tr><th id="707">707</th><td>     addr-&gt;message = string_sprintf(<q>"too many environment settings for "</q></td></tr>
+<tr><th id="708">708</th><td>       <q>"%s transport"</q>, tblock-&gt;name);</td></tr>
+<tr><th id="709">709</th><td>     <b>return</b> FALSE;</td></tr>
+<tr><th id="710">710</th><td>     }</td></tr>
+<tr><th id="711">711</th><td>   envp[envcount++] = string_copy(ss);</td></tr>
+<tr><th id="712">712</th><td>   }</td></tr>
+<tr><th id="713">713</th><td></td></tr>
+<tr><th id="714">714</th><td>envp[envcount] = NULL;</td></tr>
+<tr><th id="715">715</th><td></td></tr>
+<tr><th id="716">716</th><td><i>/* If the -N option is set, can't do any more. */</i></td></tr>
+<tr><th id="717">717</th><td></td></tr>
+<tr><th id="718">718</th><td><b>if</b> (dont_deliver)</td></tr>
+<tr><th id="719">719</th><td>  {</td></tr>
+<tr><th id="720">720</th><td>  DEBUG(D_transport)</td></tr>
+<tr><th id="721">721</th><td>    debug_printf(<q>"*** delivery by %s transport bypassed by -N option"</q>,</td></tr>
+<tr><th id="722">722</th><td>      tblock-&gt;name);</td></tr>
+<tr><th id="723">723</th><td>  <b>return</b> FALSE;</td></tr>
+<tr><th id="724">724</th><td>  }</td></tr>
+<tr><th id="725">725</th><td></td></tr>
+<tr><th id="726">726</th><td></td></tr>
+<tr><th id="727">727</th><td><i>/* Handling the output from the pipe is tricky. If a file for catching this</i></td></tr>
+<tr><th id="728">728</th><td><i>output is provided, we could in theory just hand that fd over to the process,</i></td></tr>
+<tr><th id="729">729</th><td><i>but this isn't very safe because it might loop and carry on writing for</i></td></tr>
+<tr><th id="730">730</th><td><i>ever (which is exactly what happened in early versions of Exim). Therefore we</i></td></tr>
+<tr><th id="731">731</th><td><i>use the standard child_open() function, which creates pipes. We can then read</i></td></tr>
+<tr><th id="732">732</th><td><i>our end of the output pipe and count the number of bytes that come through,</i></td></tr>
+<tr><th id="733">733</th><td><i>chopping the sub-process if it exceeds some limit.</i></td></tr>
+<tr><th id="734">734</th><td><i></i></td></tr>
+<tr><th id="735">735</th><td><i>However, this means we want to run a sub-process with both its input and output</i></td></tr>
+<tr><th id="736">736</th><td><i>attached to pipes. We can't handle that easily from a single parent process</i></td></tr>
+<tr><th id="737">737</th><td><i>using straightforward code such as the transport_write_message() function</i></td></tr>
+<tr><th id="738">738</th><td><i>because the subprocess might not be reading its input because it is trying to</i></td></tr>
+<tr><th id="739">739</th><td><i>write to a full output pipe. The complication of redesigning the world to</i></td></tr>
+<tr><th id="740">740</th><td><i>handle this is too great - simpler just to run another process to do the</i></td></tr>
+<tr><th id="741">741</th><td><i>reading of the output pipe. */</i></td></tr>
+<tr><th id="742">742</th><td></td></tr>
+<tr><th id="743">743</th><td></td></tr>
+<tr><th id="744">744</th><td><i>/* As this is a local transport, we are already running with the required</i></td></tr>
+<tr><th id="745">745</th><td><i>uid/gid and current directory. Request that the new process be a process group</i></td></tr>
+<tr><th id="746">746</th><td><i>leader, so we can kill it and all its children on a timeout. */</i></td></tr>
+<tr><th id="747">747</th><td></td></tr>
+<tr><th id="748">748</th><td><b>if</b> ((pid = child_open(USS argv, envp, ob-&gt;umask, &amp;fd_in, &amp;fd_out, TRUE)) &lt; <var>0</var>)</td></tr>
+<tr><th id="749">749</th><td>  {</td></tr>
+<tr><th id="750">750</th><td>  addr-&gt;transport_return = DEFER;</td></tr>
+<tr><th id="751">751</th><td>  addr-&gt;message = string_sprintf(</td></tr>
+<tr><th id="752">752</th><td>    <q>"Failed to create child process for %s transport: %s"</q>, tblock-&gt;name,</td></tr>
+<tr><th id="753">753</th><td>      strerror(errno));</td></tr>
+<tr><th id="754">754</th><td>  <b>return</b> FALSE;</td></tr>
+<tr><th id="755">755</th><td>  }</td></tr>
+<tr><th id="756">756</th><td>tctx.u.fd = fd_in;</td></tr>
+<tr><th id="757">757</th><td></td></tr>
+<tr><th id="758">758</th><td><i>/* Now fork a process to handle the output that comes down the pipe. */</i></td></tr>
+<tr><th id="759">759</th><td></td></tr>
+<tr><th id="760">760</th><td><b>if</b> ((outpid = fork()) &lt; <var>0</var>)</td></tr>
+<tr><th id="761">761</th><td>  {</td></tr>
+<tr><th id="762">762</th><td>  addr-&gt;basic_errno = errno;</td></tr>
+<tr><th id="763">763</th><td>  addr-&gt;transport_return = DEFER;</td></tr>
+<tr><th id="764">764</th><td>  addr-&gt;message = string_sprintf(</td></tr>
+<tr><th id="765">765</th><td>    <q>"Failed to create process for handling output in %s transport"</q>,</td></tr>
+<tr><th id="766">766</th><td>      tblock-&gt;name);</td></tr>
+<tr><th id="767">767</th><td>  (<em>void</em>)close(fd_in);</td></tr>
+<tr><th id="768">768</th><td>  (<em>void</em>)close(fd_out);</td></tr>
+<tr><th id="769">769</th><td>  <b>return</b> FALSE;</td></tr>
+<tr><th id="770">770</th><td>  }</td></tr>
+<tr><th id="771">771</th><td></td></tr>
+<tr><th id="772">772</th><td><i>/* This is the code for the output-handling subprocess. Read from the pipe</i></td></tr>
+<tr><th id="773">773</th><td><i>in chunks, and write to the return file if one is provided. Keep track of</i></td></tr>
+<tr><th id="774">774</th><td><i>the number of bytes handled. If the limit is exceeded, try to kill the</i></td></tr>
+<tr><th id="775">775</th><td><i>subprocess group, and in any case close the pipe and exit, which should cause</i></td></tr>
+<tr><th id="776">776</th><td><i>the subprocess to fail. */</i></td></tr>
+<tr><th id="777">777</th><td></td></tr>
+<tr><th id="778">778</th><td><b>if</b> (outpid == <var>0</var>)</td></tr>
+<tr><th id="779">779</th><td>  {</td></tr>
+<tr><th id="780">780</th><td>  <em>int</em> count = <var>0</var>;</td></tr>
+<tr><th id="781">781</th><td>  (<em>void</em>)close(fd_in);</td></tr>
+<tr><th id="782">782</th><td>  set_process_info(<q>"reading output from |%s"</q>, cmd);</td></tr>
+<tr><th id="783">783</th><td>  <b>while</b> ((rc = read(fd_out, big_buffer, big_buffer_size)) &gt; <var>0</var>)</td></tr>
+<tr><th id="784">784</th><td>    {</td></tr>
+<tr><th id="785">785</th><td>    <b>if</b> (addr-&gt;return_file &gt;= <var>0</var>)</td></tr>
+<tr><th id="786">786</th><td>      <b>if</b>(write(addr-&gt;return_file, big_buffer, rc) != rc)</td></tr>
+<tr><th id="787">787</th><td>        DEBUG(D_transport) debug_printf(<q>"Problem writing to return_file\n"</q>);</td></tr>
+<tr><th id="788">788</th><td>    count += rc;</td></tr>
+<tr><th id="789">789</th><td>    <b>if</b> (count &gt; ob-&gt;max_output)</td></tr>
+<tr><th id="790">790</th><td>      {</td></tr>
+<tr><th id="791">791</th><td>      DEBUG(D_transport) debug_printf(<q>"Too much output from pipe - killed\n"</q>);</td></tr>
+<tr><th id="792">792</th><td>      <b>if</b> (addr-&gt;return_file &gt;= <var>0</var>)</td></tr>
+<tr><th id="793">793</th><td>	{</td></tr>
+<tr><th id="794">794</th><td>        uschar *message = US<q>"\n\n*** Too much output - remainder discarded ***\n"</q>;</td></tr>
+<tr><th id="795">795</th><td>        rc = Ustrlen(message);</td></tr>
+<tr><th id="796">796</th><td>        <b>if</b>(write(addr-&gt;return_file, message, rc) != rc)</td></tr>
+<tr><th id="797">797</th><td>          DEBUG(D_transport) debug_printf(<q>"Problem writing to return_file\n"</q>);</td></tr>
+<tr><th id="798">798</th><td>	}</td></tr>
+<tr><th id="799">799</th><td>      killpg(pid, SIGKILL);</td></tr>
+<tr><th id="800">800</th><td>      <b>break</b>;</td></tr>
+<tr><th id="801">801</th><td>      }</td></tr>
+<tr><th id="802">802</th><td>    }</td></tr>
+<tr><th id="803">803</th><td>  (<em>void</em>)close(fd_out);</td></tr>
+<tr><th id="804">804</th><td>  _exit(<var>0</var>);</td></tr>
+<tr><th id="805">805</th><td>  }</td></tr>
+<tr><th id="806">806</th><td></td></tr>
+<tr><th id="807">807</th><td>(<em>void</em>)close(fd_out);  <i>/* Not used in this process */</i></td></tr>
+<tr><th id="808">808</th><td></td></tr>
+<tr><th id="809">809</th><td></td></tr>
+<tr><th id="810">810</th><td><i>/* Carrying on now with the main parent process. Attempt to write the message</i></td></tr>
+<tr><th id="811">811</th><td><i>to it down the pipe. It is a fallacy to think that you can detect write errors</i></td></tr>
+<tr><th id="812">812</th><td><i>when the sub-process fails to read the pipe. The parent process may complete</i></td></tr>
+<tr><th id="813">813</th><td><i>writing and close the pipe before the sub-process completes. We could sleep a</i></td></tr>
+<tr><th id="814">814</th><td><i>bit here to let the sub-process get going, but it may still not complete. So we</i></td></tr>
+<tr><th id="815">815</th><td><i>ignore all writing errors. (When in the test harness, we do do a short sleep so</i></td></tr>
+<tr><th id="816">816</th><td><i>any debugging output is likely to be in the same order.) */</i></td></tr>
+<tr><th id="817">817</th><td></td></tr>
+<tr><th id="818">818</th><td><b>if</b> (running_in_test_harness) millisleep(<var>500</var>);</td></tr>
+<tr><th id="819">819</th><td></td></tr>
+<tr><th id="820">820</th><td>DEBUG(D_transport) debug_printf(<q>"Writing message to pipe\n"</q>);</td></tr>
+<tr><th id="821">821</th><td></td></tr>
+<tr><th id="822">822</th><td><i>/* Arrange to time out writes if there is a timeout set. */</i></td></tr>
+<tr><th id="823">823</th><td></td></tr>
+<tr><th id="824">824</th><td><b>if</b> (timeout &gt; <var>0</var>)</td></tr>
+<tr><th id="825">825</th><td>  {</td></tr>
+<tr><th id="826">826</th><td>  sigalrm_seen = FALSE;</td></tr>
+<tr><th id="827">827</th><td>  transport_write_timeout = timeout;</td></tr>
+<tr><th id="828">828</th><td>  }</td></tr>
+<tr><th id="829">829</th><td></td></tr>
+<tr><th id="830">830</th><td><i>/* Reset the counter of bytes written */</i></td></tr>
+<tr><th id="831">831</th><td></td></tr>
+<tr><th id="832">832</th><td>transport_count = <var>0</var>;</td></tr>
+<tr><th id="833">833</th><td></td></tr>
+<tr><th id="834">834</th><td><i>/* First write any configured prefix information */</i></td></tr>
+<tr><th id="835">835</th><td></td></tr>
+<tr><th id="836">836</th><td><b>if</b> (ob-&gt;message_prefix != NULL)</td></tr>
+<tr><th id="837">837</th><td>  {</td></tr>
+<tr><th id="838">838</th><td>  uschar *prefix = expand_string(ob-&gt;message_prefix);</td></tr>
+<tr><th id="839">839</th><td>  <b>if</b> (prefix == NULL)</td></tr>
+<tr><th id="840">840</th><td>    {</td></tr>
+<tr><th id="841">841</th><td>    addr-&gt;transport_return = search_find_defer? DEFER : PANIC;</td></tr>
+<tr><th id="842">842</th><td>    addr-&gt;message = string_sprintf(<q>"Expansion of \"%s\" (prefix for %s "</q></td></tr>
+<tr><th id="843">843</th><td>      <q>"transport) failed: %s"</q>, ob-&gt;message_prefix, tblock-&gt;name,</td></tr>
+<tr><th id="844">844</th><td>      expand_string_message);</td></tr>
+<tr><th id="845">845</th><td>    <b>return</b> FALSE;</td></tr>
+<tr><th id="846">846</th><td>    }</td></tr>
+<tr><th id="847">847</th><td>  <b>if</b> (!transport_write_block(&amp;tctx, prefix, Ustrlen(prefix), FALSE))</td></tr>
+<tr><th id="848">848</th><td>    <b>goto</b> END_WRITE;</td></tr>
+<tr><th id="849">849</th><td>  }</td></tr>
+<tr><th id="850">850</th><td></td></tr>
+<tr><th id="851">851</th><td><i>/* If the use_bsmtp option is set, we need to write SMTP prefix information.</i></td></tr>
+<tr><th id="852">852</th><td><i>The various different values for batching are handled outside; if there is more</i></td></tr>
+<tr><th id="853">853</th><td><i>than one address available here, all must be included. Force SMTP dot-handling.</i></td></tr>
+<tr><th id="854">854</th><td><i>*/</i></td></tr>
+<tr><th id="855">855</th><td></td></tr>
+<tr><th id="856">856</th><td><b>if</b> (ob-&gt;use_bsmtp)</td></tr>
+<tr><th id="857">857</th><td>  {</td></tr>
+<tr><th id="858">858</th><td>  address_item *a;</td></tr>
+<tr><th id="859">859</th><td></td></tr>
+<tr><th id="860">860</th><td>  <b>if</b> (!transport_write_string(fd_in, <q>"MAIL FROM:&lt;%s&gt;%s"</q>, return_path, eol))</td></tr>
+<tr><th id="861">861</th><td>    <b>goto</b> END_WRITE;</td></tr>
+<tr><th id="862">862</th><td></td></tr>
+<tr><th id="863">863</th><td>  <b>for</b> (a = addr; a; a = a-&gt;next)</td></tr>
+<tr><th id="864">864</th><td>    <b>if</b> (!transport_write_string(fd_in,</td></tr>
+<tr><th id="865">865</th><td>        <q>"RCPT TO:&lt;%s&gt;%s"</q>,</td></tr>
+<tr><th id="866">866</th><td>        transport_rcpt_address(a, tblock-&gt;rcpt_include_affixes),</td></tr>
+<tr><th id="867">867</th><td>        eol))</td></tr>
+<tr><th id="868">868</th><td>      <b>goto</b> END_WRITE;</td></tr>
+<tr><th id="869">869</th><td></td></tr>
+<tr><th id="870">870</th><td>  <b>if</b> (!transport_write_string(fd_in, <q>"DATA%s"</q>, eol)) <b>goto</b> END_WRITE;</td></tr>
+<tr><th id="871">871</th><td>  }</td></tr>
+<tr><th id="872">872</th><td></td></tr>
+<tr><th id="873">873</th><td><i>/* Now the actual message */</i></td></tr>
+<tr><th id="874">874</th><td></td></tr>
+<tr><th id="875">875</th><td><b>if</b> (!transport_write_message(&amp;tctx, <var>0</var>))</td></tr>
+<tr><th id="876">876</th><td>    <b>goto</b> END_WRITE;</td></tr>
+<tr><th id="877">877</th><td></td></tr>
+<tr><th id="878">878</th><td><i>/* Now any configured suffix */</i></td></tr>
+<tr><th id="879">879</th><td></td></tr>
+<tr><th id="880">880</th><td><b>if</b> (ob-&gt;message_suffix)</td></tr>
+<tr><th id="881">881</th><td>  {</td></tr>
+<tr><th id="882">882</th><td>  uschar *suffix = expand_string(ob-&gt;message_suffix);</td></tr>
+<tr><th id="883">883</th><td>  <b>if</b> (!suffix)</td></tr>
+<tr><th id="884">884</th><td>    {</td></tr>
+<tr><th id="885">885</th><td>    addr-&gt;transport_return = search_find_defer? DEFER : PANIC;</td></tr>
+<tr><th id="886">886</th><td>    addr-&gt;message = string_sprintf(<q>"Expansion of \"%s\" (suffix for %s "</q></td></tr>
+<tr><th id="887">887</th><td>      <q>"transport) failed: %s"</q>, ob-&gt;message_suffix, tblock-&gt;name,</td></tr>
+<tr><th id="888">888</th><td>      expand_string_message);</td></tr>
+<tr><th id="889">889</th><td>    <b>return</b> FALSE;</td></tr>
+<tr><th id="890">890</th><td>    }</td></tr>
+<tr><th id="891">891</th><td>  <b>if</b> (!transport_write_block(&amp;tctx, suffix, Ustrlen(suffix), FALSE))</td></tr>
+<tr><th id="892">892</th><td>    <b>goto</b> END_WRITE;</td></tr>
+<tr><th id="893">893</th><td>  }</td></tr>
+<tr><th id="894">894</th><td></td></tr>
+<tr><th id="895">895</th><td><i>/* If local_smtp, write the terminating dot. */</i></td></tr>
+<tr><th id="896">896</th><td></td></tr>
+<tr><th id="897">897</th><td><b>if</b> (ob-&gt;use_bsmtp &amp;&amp; !transport_write_string(fd_in, <q>".%s"</q>, eol))</td></tr>
+<tr><th id="898">898</th><td>  <b>goto</b> END_WRITE;</td></tr>
+<tr><th id="899">899</th><td></td></tr>
+<tr><th id="900">900</th><td><i>/* Flag all writing completed successfully. */</i></td></tr>
+<tr><th id="901">901</th><td></td></tr>
+<tr><th id="902">902</th><td>written_ok = TRUE;</td></tr>
+<tr><th id="903">903</th><td></td></tr>
+<tr><th id="904">904</th><td><i>/* Come here if there are errors during writing. */</i></td></tr>
+<tr><th id="905">905</th><td></td></tr>
+<tr><th id="906">906</th><td>END_WRITE:</td></tr>
+<tr><th id="907">907</th><td></td></tr>
+<tr><th id="908">908</th><td><i>/* OK, the writing is now all done. Close the pipe. */</i></td></tr>
+<tr><th id="909">909</th><td></td></tr>
+<tr><th id="910">910</th><td>(<em>void</em>) close(fd_in);</td></tr>
+<tr><th id="911">911</th><td></td></tr>
+<tr><th id="912">912</th><td><i>/* Handle errors during writing. For timeouts, set the timeout for waiting for</i></td></tr>
+<tr><th id="913">913</th><td><i>the child process to 1 second. If the process at the far end of the pipe died</i></td></tr>
+<tr><th id="914">914</th><td><i>without reading all of it, we expect an EPIPE error, which should be ignored.</i></td></tr>
+<tr><th id="915">915</th><td><i>We used also to ignore WRITEINCOMPLETE but the writing function is now cleverer</i></td></tr>
+<tr><th id="916">916</th><td><i>at handling OS where the death of a pipe doesn't give EPIPE immediately. See</i></td></tr>
+<tr><th id="917">917</th><td><i>comments therein. */</i></td></tr>
+<tr><th id="918">918</th><td></td></tr>
+<tr><th id="919">919</th><td><b>if</b> (!written_ok)</td></tr>
+<tr><th id="920">920</th><td>  {</td></tr>
+<tr><th id="921">921</th><td>  <b>if</b> (errno == ETIMEDOUT)</td></tr>
+<tr><th id="922">922</th><td>    {</td></tr>
+<tr><th id="923">923</th><td>    addr-&gt;message = string_sprintf(<q>"%stimeout while writing to pipe"</q>,</td></tr>
+<tr><th id="924">924</th><td>      transport_filter_timed_out? <q>"transport filter "</q> : <q>""</q>);</td></tr>
+<tr><th id="925">925</th><td>    addr-&gt;transport_return = ob-&gt;timeout_defer? DEFER : FAIL;</td></tr>
+<tr><th id="926">926</th><td>    timeout = <var>1</var>;</td></tr>
+<tr><th id="927">927</th><td>    }</td></tr>
+<tr><th id="928">928</th><td>  <b>else</b> <b>if</b> (errno == EPIPE)</td></tr>
+<tr><th id="929">929</th><td>    {</td></tr>
+<tr><th id="930">930</th><td>    debug_printf(<q>"transport error EPIPE ignored\n"</q>);</td></tr>
+<tr><th id="931">931</th><td>    }</td></tr>
+<tr><th id="932">932</th><td>  <b>else</b></td></tr>
+<tr><th id="933">933</th><td>    {</td></tr>
+<tr><th id="934">934</th><td>    addr-&gt;transport_return = PANIC;</td></tr>
+<tr><th id="935">935</th><td>    addr-&gt;basic_errno = errno;</td></tr>
+<tr><th id="936">936</th><td>    <b>if</b> (errno == ERRNO_CHHEADER_FAIL)</td></tr>
+<tr><th id="937">937</th><td>      addr-&gt;message =</td></tr>
+<tr><th id="938">938</th><td>        string_sprintf(<q>"Failed to expand headers_add or headers_remove: %s"</q>,</td></tr>
+<tr><th id="939">939</th><td>          expand_string_message);</td></tr>
+<tr><th id="940">940</th><td>    <b>else</b> <b>if</b> (errno == ERRNO_FILTER_FAIL)</td></tr>
+<tr><th id="941">941</th><td>      addr-&gt;message = string_sprintf(<q>"Transport filter process failed (%d)%s"</q>,</td></tr>
+<tr><th id="942">942</th><td>      addr-&gt;more_errno,</td></tr>
+<tr><th id="943">943</th><td>      (addr-&gt;more_errno == EX_EXECFAILED)? <q>": unable to execute command"</q> : <q>""</q>);</td></tr>
+<tr><th id="944">944</th><td>    <b>else</b> <b>if</b> (errno == ERRNO_WRITEINCOMPLETE)</td></tr>
+<tr><th id="945">945</th><td>      addr-&gt;message = string_sprintf(<q>"Failed repeatedly to write data"</q>);</td></tr>
+<tr><th id="946">946</th><td>    <b>else</b></td></tr>
+<tr><th id="947">947</th><td>      addr-&gt;message = string_sprintf(<q>"Error %d"</q>, errno);</td></tr>
+<tr><th id="948">948</th><td>    <b>return</b> FALSE;</td></tr>
+<tr><th id="949">949</th><td>    }</td></tr>
+<tr><th id="950">950</th><td>  }</td></tr>
+<tr><th id="951">951</th><td></td></tr>
+<tr><th id="952">952</th><td><i>/* Wait for the child process to complete and take action if the returned</i></td></tr>
+<tr><th id="953">953</th><td><i>status is nonzero. The timeout will be just 1 second if any of the writes</i></td></tr>
+<tr><th id="954">954</th><td><i>above timed out. */</i></td></tr>
+<tr><th id="955">955</th><td></td></tr>
+<tr><th id="956">956</th><td><b>if</b> ((rc = child_close(pid, timeout)) != <var>0</var>)</td></tr>
+<tr><th id="957">957</th><td>  {</td></tr>
+<tr><th id="958">958</th><td>  uschar *tmsg = (addr-&gt;message == NULL)? US<q>""</q> :</td></tr>
+<tr><th id="959">959</th><td>    string_sprintf(<q>" (preceded by %s)"</q>, addr-&gt;message);</td></tr>
+<tr><th id="960">960</th><td></td></tr>
+<tr><th id="961">961</th><td>  <i>/* The process did not complete in time; kill its process group and fail</i></td></tr>
+<tr><th id="962">962</th><td><i>  the delivery. It appears to be necessary to kill the output process too, as</i></td></tr>
+<tr><th id="963">963</th><td><i>  otherwise it hangs on for some time if the actual pipe process is sleeping.</i></td></tr>
+<tr><th id="964">964</th><td><i>  (At least, that's what I observed on Solaris 2.5.1.) Since we are failing</i></td></tr>
+<tr><th id="965">965</th><td><i>  the delivery, that shouldn't cause any problem. */</i></td></tr>
+<tr><th id="966">966</th><td></td></tr>
+<tr><th id="967">967</th><td>  <b>if</b> (rc == -<var>256</var>)</td></tr>
+<tr><th id="968">968</th><td>    {</td></tr>
+<tr><th id="969">969</th><td>    killpg(pid, SIGKILL);</td></tr>
+<tr><th id="970">970</th><td>    kill(outpid, SIGKILL);</td></tr>
+<tr><th id="971">971</th><td>    addr-&gt;transport_return = ob-&gt;timeout_defer? DEFER : FAIL;</td></tr>
+<tr><th id="972">972</th><td>    addr-&gt;message = string_sprintf(<q>"pipe delivery process timed out%s"</q>, tmsg);</td></tr>
+<tr><th id="973">973</th><td>    }</td></tr>
+<tr><th id="974">974</th><td></td></tr>
+<tr><th id="975">975</th><td>  <i>/* Wait() failed. */</i></td></tr>
+<tr><th id="976">976</th><td></td></tr>
+<tr><th id="977">977</th><td>  <b>else</b> <b>if</b> (rc == -<var>257</var>)</td></tr>
+<tr><th id="978">978</th><td>    {</td></tr>
+<tr><th id="979">979</th><td>    addr-&gt;transport_return = PANIC;</td></tr>
+<tr><th id="980">980</th><td>    addr-&gt;message = string_sprintf(<q>"Wait() failed for child process of %s "</q></td></tr>
+<tr><th id="981">981</th><td>      <q>"transport: %s%s"</q>, tblock-&gt;name, strerror(errno), tmsg);</td></tr>
+<tr><th id="982">982</th><td>    }</td></tr>
+<tr><th id="983">983</th><td></td></tr>
+<tr><th id="984">984</th><td>  <i>/* Since the transport_filter timed out we assume it has sent the child process</i></td></tr>
+<tr><th id="985">985</th><td><i>  a malformed or incomplete data stream.  Kill off the child process</i></td></tr>
+<tr><th id="986">986</th><td><i>  and prevent checking its exit status as it will has probably exited in error.</i></td></tr>
+<tr><th id="987">987</th><td><i>  This prevents the transport_filter timeout message from getting overwritten</i></td></tr>
+<tr><th id="988">988</th><td><i>  by the exit error which is not the cause of the problem. */</i></td></tr>
+<tr><th id="989">989</th><td></td></tr>
+<tr><th id="990">990</th><td>  <b>else</b> <b>if</b> (transport_filter_timed_out)</td></tr>
+<tr><th id="991">991</th><td>    {</td></tr>
+<tr><th id="992">992</th><td>    killpg(pid, SIGKILL);</td></tr>
+<tr><th id="993">993</th><td>    kill(outpid, SIGKILL);</td></tr>
+<tr><th id="994">994</th><td>    }</td></tr>
+<tr><th id="995">995</th><td></td></tr>
+<tr><th id="996">996</th><td>  <i>/* Either the process completed, but yielded a non-zero (necessarily</i></td></tr>
+<tr><th id="997">997</th><td><i>  positive) status, or the process was terminated by a signal (rc will contain</i></td></tr>
+<tr><th id="998">998</th><td><i>  the negation of the signal number). Treat killing by signal as failure unless</i></td></tr>
+<tr><th id="999">999</th><td><i>  status is being ignored. By default, the message is bounced back, unless</i></td></tr>
+<tr><th id="1000">1000</th><td><i>  freeze_signal is set, in which case it is frozen instead. */</i></td></tr>
+<tr><th id="1001">1001</th><td></td></tr>
+<tr><th id="1002">1002</th><td>  <b>else</b> <b>if</b> (rc &lt; <var>0</var>)</td></tr>
+<tr><th id="1003">1003</th><td>    {</td></tr>
+<tr><th id="1004">1004</th><td>    <b>if</b> (ob-&gt;freeze_signal)</td></tr>
+<tr><th id="1005">1005</th><td>      {</td></tr>
+<tr><th id="1006">1006</th><td>      addr-&gt;transport_return = DEFER;</td></tr>
+<tr><th id="1007">1007</th><td>      addr-&gt;special_action = SPECIAL_FREEZE;</td></tr>
+<tr><th id="1008">1008</th><td>      addr-&gt;message = string_sprintf(<q>"Child process of %s transport (running "</q></td></tr>
+<tr><th id="1009">1009</th><td>        <q>"command \"%s\") was terminated by signal %d (%s)%s"</q>, tblock-&gt;name, cmd,</td></tr>
+<tr><th id="1010">1010</th><td>        -rc, os_strsignal(-rc), tmsg);</td></tr>
+<tr><th id="1011">1011</th><td>      }</td></tr>
+<tr><th id="1012">1012</th><td>    <b>else</b> <b>if</b> (!ob-&gt;ignore_status)</td></tr>
+<tr><th id="1013">1013</th><td>      {</td></tr>
+<tr><th id="1014">1014</th><td>      addr-&gt;transport_return = FAIL;</td></tr>
+<tr><th id="1015">1015</th><td>      addr-&gt;message = string_sprintf(<q>"Child process of %s transport (running "</q></td></tr>
+<tr><th id="1016">1016</th><td>        <q>"command \"%s\") was terminated by signal %d (%s)%s"</q>, tblock-&gt;name, cmd,</td></tr>
+<tr><th id="1017">1017</th><td>        -rc, os_strsignal(-rc), tmsg);</td></tr>
+<tr><th id="1018">1018</th><td>      }</td></tr>
+<tr><th id="1019">1019</th><td>    }</td></tr>
+<tr><th id="1020">1020</th><td></td></tr>
+<tr><th id="1021">1021</th><td>  <i>/* For positive values (process terminated with non-zero status), we need a</i></td></tr>
+<tr><th id="1022">1022</th><td><i>  status code to request deferral. A number of systems contain the following</i></td></tr>
+<tr><th id="1023">1023</th><td><i>  line in sysexits.h:</i></td></tr>
+<tr><th id="1024">1024</th><td><i></i></td></tr>
+<tr><th id="1025">1025</th><td><i>      #define EX_TEMPFAIL 75</i></td></tr>
+<tr><th id="1026">1026</th><td><i></i></td></tr>
+<tr><th id="1027">1027</th><td><i>  with the description</i></td></tr>
+<tr><th id="1028">1028</th><td><i></i></td></tr>
+<tr><th id="1029">1029</th><td><i>      EX_TEMPFAIL -- temporary failure, indicating something that</i></td></tr>
+<tr><th id="1030">1030</th><td><i>         is not really an error.  In sendmail, this means</i></td></tr>
+<tr><th id="1031">1031</th><td><i>         that a mailer (e.g.) could not create a connection,</i></td></tr>
+<tr><th id="1032">1032</th><td><i>         and the request should be reattempted later.</i></td></tr>
+<tr><th id="1033">1033</th><td><i></i></td></tr>
+<tr><th id="1034">1034</th><td><i>  Based on this, we use exit code EX_TEMPFAIL as a default to mean "defer" when</i></td></tr>
+<tr><th id="1035">1035</th><td><i>  not ignoring the returned status. However, there is now an option that</i></td></tr>
+<tr><th id="1036">1036</th><td><i>  contains a list of temporary codes, with TEMPFAIL and CANTCREAT as defaults.</i></td></tr>
+<tr><th id="1037">1037</th><td><i></i></td></tr>
+<tr><th id="1038">1038</th><td><i>  Another case that needs special treatment is if execve() failed (typically</i></td></tr>
+<tr><th id="1039">1039</th><td><i>  the command that was given is a non-existent path). By default this is</i></td></tr>
+<tr><th id="1040">1040</th><td><i>  treated as just another failure, but if freeze_exec_fail is set, the reaction</i></td></tr>
+<tr><th id="1041">1041</th><td><i>  is to freeze the message rather than bounce the address. Exim used to signal</i></td></tr>
+<tr><th id="1042">1042</th><td><i>  this failure with EX_UNAVAILABLE, which is defined in many systems as</i></td></tr>
+<tr><th id="1043">1043</th><td><i></i></td></tr>
+<tr><th id="1044">1044</th><td><i>      #define EX_UNAVAILABLE  69</i></td></tr>
+<tr><th id="1045">1045</th><td><i></i></td></tr>
+<tr><th id="1046">1046</th><td><i>  with the description</i></td></tr>
+<tr><th id="1047">1047</th><td><i></i></td></tr>
+<tr><th id="1048">1048</th><td><i>      EX_UNAVAILABLE -- A service is unavailable.  This can occur</i></td></tr>
+<tr><th id="1049">1049</th><td><i>            if a support program or file does not exist.  This</i></td></tr>
+<tr><th id="1050">1050</th><td><i>            can also be used as a catchall message when something</i></td></tr>
+<tr><th id="1051">1051</th><td><i>            you wanted to do doesn't work, but you don't know why.</i></td></tr>
+<tr><th id="1052">1052</th><td><i></i></td></tr>
+<tr><th id="1053">1053</th><td><i>  However, this can be confused with a command that actually returns 69 because</i></td></tr>
+<tr><th id="1054">1054</th><td><i>  something *it* wanted is unavailable. At release 4.21, Exim was changed to</i></td></tr>
+<tr><th id="1055">1055</th><td><i>  use return code 127 instead, because this is what the shell returns when it</i></td></tr>
+<tr><th id="1056">1056</th><td><i>  is unable to exec a command. We define it as EX_EXECFAILED, and use it in</i></td></tr>
+<tr><th id="1057">1057</th><td><i>  child.c to signal execve() failure and other unexpected failures such as</i></td></tr>
+<tr><th id="1058">1058</th><td><i>  setuid() not working - though that won't be the case here because we aren't</i></td></tr>
+<tr><th id="1059">1059</th><td><i>  changing uid. */</i></td></tr>
+<tr><th id="1060">1060</th><td></td></tr>
+<tr><th id="1061">1061</th><td>  <b>else</b></td></tr>
+<tr><th id="1062">1062</th><td>    {</td></tr>
+<tr><th id="1063">1063</th><td>    <i>/* Always handle execve() failure specially if requested to */</i></td></tr>
+<tr><th id="1064">1064</th><td></td></tr>
+<tr><th id="1065">1065</th><td>    <b>if</b> (ob-&gt;freeze_exec_fail &amp;&amp; (rc == EX_EXECFAILED))</td></tr>
+<tr><th id="1066">1066</th><td>      {</td></tr>
+<tr><th id="1067">1067</th><td>      addr-&gt;transport_return = DEFER;</td></tr>
+<tr><th id="1068">1068</th><td>      addr-&gt;special_action = SPECIAL_FREEZE;</td></tr>
+<tr><th id="1069">1069</th><td>      addr-&gt;message = string_sprintf(<q>"pipe process failed to exec \"%s\"%s"</q>,</td></tr>
+<tr><th id="1070">1070</th><td>        cmd, tmsg);</td></tr>
+<tr><th id="1071">1071</th><td>      }</td></tr>
+<tr><th id="1072">1072</th><td></td></tr>
+<tr><th id="1073">1073</th><td>    <i>/* Otherwise take action only if not ignoring status */</i></td></tr>
+<tr><th id="1074">1074</th><td></td></tr>
+<tr><th id="1075">1075</th><td>    <b>else</b> <b>if</b> (!ob-&gt;ignore_status)</td></tr>
+<tr><th id="1076">1076</th><td>      {</td></tr>
+<tr><th id="1077">1077</th><td>      uschar *ss;</td></tr>
+<tr><th id="1078">1078</th><td>      gstring * g;</td></tr>
+<tr><th id="1079">1079</th><td>      <em>int</em> i;</td></tr>
+<tr><th id="1080">1080</th><td></td></tr>
+<tr><th id="1081">1081</th><td>      <i>/* If temp_errors is "*" all codes are temporary. Initialization checks</i></td></tr>
+<tr><th id="1082">1082</th><td><i>      that it's either "*" or a list of numbers. If not "*", scan the list of</i></td></tr>
+<tr><th id="1083">1083</th><td><i>      temporary failure codes; if any match, the result is DEFER. */</i></td></tr>
+<tr><th id="1084">1084</th><td></td></tr>
+<tr><th id="1085">1085</th><td>      <b>if</b> (ob-&gt;temp_errors[<var>0</var>] == <kbd>'*'</kbd>)</td></tr>
+<tr><th id="1086">1086</th><td>        addr-&gt;transport_return = DEFER;</td></tr>
+<tr><th id="1087">1087</th><td></td></tr>
+<tr><th id="1088">1088</th><td>      <b>else</b></td></tr>
+<tr><th id="1089">1089</th><td>        {</td></tr>
+<tr><th id="1090">1090</th><td>        <em>const</em> uschar *s = ob-&gt;temp_errors;</td></tr>
+<tr><th id="1091">1091</th><td>        uschar *p;</td></tr>
+<tr><th id="1092">1092</th><td>        <em>int</em> sep = <var>0</var>;</td></tr>
+<tr><th id="1093">1093</th><td></td></tr>
+<tr><th id="1094">1094</th><td>        addr-&gt;transport_return = FAIL;</td></tr>
+<tr><th id="1095">1095</th><td>        <b>while</b> ((p = string_nextinlist(&amp;s,&amp;sep,NULL,<var>0</var>)))</td></tr>
+<tr><th id="1096">1096</th><td>          <b>if</b> (rc == Uatoi(p)) { addr-&gt;transport_return = DEFER; <b>break</b>; }</td></tr>
+<tr><th id="1097">1097</th><td>        }</td></tr>
+<tr><th id="1098">1098</th><td></td></tr>
+<tr><th id="1099">1099</th><td>      <i>/* Ensure the message contains the expanded command and arguments. This</i></td></tr>
+<tr><th id="1100">1100</th><td><i>      doesn't have to be brilliantly efficient - it is an error situation. */</i></td></tr>
+<tr><th id="1101">1101</th><td></td></tr>
+<tr><th id="1102">1102</th><td>      addr-&gt;message = string_sprintf(<q>"Child process of %s transport returned "</q></td></tr>
+<tr><th id="1103">1103</th><td>        <q>"%d"</q>, tblock-&gt;name, rc);</td></tr>
+<tr><th id="1104">1104</th><td>      g = string_cat(NULL, addr-&gt;message);</td></tr>
+<tr><th id="1105">1105</th><td></td></tr>
+<tr><th id="1106">1106</th><td>      <i>/* If the return code is &gt; 128, it often means that a shell command</i></td></tr>
+<tr><th id="1107">1107</th><td><i>      was terminated by a signal. */</i></td></tr>
+<tr><th id="1108">1108</th><td></td></tr>
+<tr><th id="1109">1109</th><td>      ss = (rc &gt; <var>128</var>)?</td></tr>
+<tr><th id="1110">1110</th><td>        string_sprintf(<q>"(could mean shell command ended by signal %d (%s))"</q>,</td></tr>
+<tr><th id="1111">1111</th><td>          rc-<var>128</var>, os_strsignal(rc-<var>128</var>)) :</td></tr>
+<tr><th id="1112">1112</th><td>        US os_strexit(rc);</td></tr>
+<tr><th id="1113">1113</th><td></td></tr>
+<tr><th id="1114">1114</th><td>      <b>if</b> (*ss != <var>0</var>)</td></tr>
+<tr><th id="1115">1115</th><td>        {</td></tr>
+<tr><th id="1116">1116</th><td>        g = string_catn(g, US<q>" "</q>, <var>1</var>);</td></tr>
+<tr><th id="1117">1117</th><td>        g = string_cat (g, ss);</td></tr>
+<tr><th id="1118">1118</th><td>        }</td></tr>
+<tr><th id="1119">1119</th><td></td></tr>
+<tr><th id="1120">1120</th><td>      <i>/* Now add the command and arguments */</i></td></tr>
+<tr><th id="1121">1121</th><td></td></tr>
+<tr><th id="1122">1122</th><td>      g = string_catn(g, US<q>" from command:"</q>, <var>14</var>);</td></tr>
+<tr><th id="1123">1123</th><td></td></tr>
+<tr><th id="1124">1124</th><td>      <b>for</b> (i = <var>0</var>; i &lt; <b>sizeof</b>(argv)/<b>sizeof</b>(<em>int</em> *) &amp;&amp; argv[i] != NULL; i++)</td></tr>
+<tr><th id="1125">1125</th><td>        {</td></tr>
+<tr><th id="1126">1126</th><td>        BOOL quote = FALSE;</td></tr>
+<tr><th id="1127">1127</th><td>        g = string_catn(g, US<q>" "</q>, <var>1</var>);</td></tr>
+<tr><th id="1128">1128</th><td>        <b>if</b> (Ustrpbrk(argv[i], <q>" \t"</q>) != NULL)</td></tr>
+<tr><th id="1129">1129</th><td>          {</td></tr>
+<tr><th id="1130">1130</th><td>          quote = TRUE;</td></tr>
+<tr><th id="1131">1131</th><td>          g = string_catn(g, US<q>"\""</q>, <var>1</var>);</td></tr>
+<tr><th id="1132">1132</th><td>          }</td></tr>
+<tr><th id="1133">1133</th><td>        g = string_cat(g, argv[i]);</td></tr>
+<tr><th id="1134">1134</th><td>        <b>if</b> (quote)</td></tr>
+<tr><th id="1135">1135</th><td>          g = string_catn(g, US<q>"\""</q>, <var>1</var>);</td></tr>
+<tr><th id="1136">1136</th><td>        }</td></tr>
+<tr><th id="1137">1137</th><td></td></tr>
+<tr><th id="1138">1138</th><td>      <i>/* Add previous filter timeout message, if present. */</i></td></tr>
+<tr><th id="1139">1139</th><td></td></tr>
+<tr><th id="1140">1140</th><td>      <b>if</b> (*tmsg)</td></tr>
+<tr><th id="1141">1141</th><td>        g = string_cat(g, tmsg);</td></tr>
+<tr><th id="1142">1142</th><td></td></tr>
+<tr><th id="1143">1143</th><td>      addr-&gt;message = string_from_gstring(g);</td></tr>
+<tr><th id="1144">1144</th><td>      }</td></tr>
+<tr><th id="1145">1145</th><td>    }</td></tr>
+<tr><th id="1146">1146</th><td>  }</td></tr>
+<tr><th id="1147">1147</th><td></td></tr>
+<tr><th id="1148">1148</th><td><i>/* Ensure all subprocesses (in particular, the output handling process)</i></td></tr>
+<tr><th id="1149">1149</th><td><i>are complete before we pass this point. */</i></td></tr>
+<tr><th id="1150">1150</th><td></td></tr>
+<tr><th id="1151">1151</th><td><b>while</b> (wait(&amp;rc) &gt;= <var>0</var>);</td></tr>
+<tr><th id="1152">1152</th><td></td></tr>
+<tr><th id="1153">1153</th><td>DEBUG(D_transport) debug_printf(<q>"%s transport yielded %d\n"</q>, tblock-&gt;name,</td></tr>
+<tr><th id="1154">1154</th><td>  addr-&gt;transport_return);</td></tr>
+<tr><th id="1155">1155</th><td></td></tr>
+<tr><th id="1156">1156</th><td><i>/* If there has been a problem, the message in addr-&gt;message contains details</i></td></tr>
+<tr><th id="1157">1157</th><td><i>of the pipe command. We don't want to expose these to the world, so we set up</i></td></tr>
+<tr><th id="1158">1158</th><td><i>something bland to return to the sender. */</i></td></tr>
+<tr><th id="1159">1159</th><td></td></tr>
+<tr><th id="1160">1160</th><td><b>if</b> (addr-&gt;transport_return != OK)</td></tr>
+<tr><th id="1161">1161</th><td>  addr-&gt;user_message = US<q>"local delivery failed"</q>;</td></tr>
+<tr><th id="1162">1162</th><td></td></tr>
+<tr><th id="1163">1163</th><td><b>return</b> FALSE;</td></tr>
+<tr><th id="1164">1164</th><td>}</td></tr>
+<tr><th id="1165">1165</th><td></td></tr>
+<tr><th id="1166">1166</th><td><u>#<span data-ppcond="99">endif</span>	/*!MACRO_PREDEF*/</u></td></tr>
+<tr><th id="1167">1167</th><td><i>/* End of transport/pipe.c */</i></td></tr>
+<tr><th id="1168">1168</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

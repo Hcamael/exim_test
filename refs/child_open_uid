@@ -1,1 +1,29 @@
 <dec f='exim/src/functions.h' l='120' type='pid_t child_open_uid(const uschar ** , const uschar ** , int , uid_t * , gid_t * , int * , int * , uschar * , BOOL )'/>
+<use f='exim/src/routers/queryprogram.c' l='310' u='c' c='queryprogram_router_entry'/>
+<def f='exim/src/child.c' l='314' ll='428' type='pid_t child_open_uid(const uschar ** argv, const uschar ** envp, int newumask, uid_t * newuid, gid_t * newgid, int * infdptr, int * outfdptr, uschar * wd, BOOL make_leader)'/>
+<use f='exim/src/child.c' l='459' u='c' c='child_open'/>
+<doc f='exim/src/child.c' l='288'>/* This function creates a child process and runs the given command in it. It
+sets up pipes to the standard input and output of the new process, and returns
+them to the caller. The standard error is cloned to the output. If there are
+any file descriptors &quot;in the way&quot; in the new process, they are closed. A new
+umask is supplied for the process, and an optional new uid and gid are also
+available. These are used by the queryprogram router to set an unprivileged id.
+SIGUSR1 is always disabled in the new process, as it is not going to be running
+Exim (the function child_open_exim() is provided for that). This function
+returns the pid of the new process, or -1 if things go wrong.
+
+Arguments:
+  argv        the argv for exec in the new process
+  envp        the envp for exec in the new process
+  newumask    umask to set in the new process
+  newuid      point to uid for the new process or NULL for no change
+  newgid      point to gid for the new process or NULL for no change
+  infdptr     pointer to int into which the fd of the stdin of the new process
+                is placed
+  outfdptr    pointer to int into which the fd of the stdout/stderr of the new
+                process is placed
+  wd          if not NULL, a path to be handed to chdir() in the new process
+  make_leader if TRUE, make the new process a process group leader
+
+Returns:      the pid of the created process or -1 if anything has gone wrong
+*/</doc>

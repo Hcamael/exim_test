@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='477' type='time_t'/>
 <offset>768</offset>
 <doc f='exim/src/structs.h' l='477'>/* time to repeat &quot;once only&quot; */</doc>
+<use f='exim/src/filter.c' l='2314' u='w' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2318' u='w' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2321' u='r' c='interpret_commands'/>
+<use f='exim/src/rda.c' l='752' u='a' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='928' u='a' c='rda_interpret'/>
+<use f='exim/src/sieve.c' l='3374' u='w' c='parse_commands'/>

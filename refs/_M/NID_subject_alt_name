@@ -1,1 +1,2 @@
 <dec f='include/openssl/obj_mac.h' l='2342'/>
+<use f='exim/src/tlscert-openssl.c' l='350' u='c'/>

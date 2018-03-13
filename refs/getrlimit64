@@ -1,2 +1,4 @@
 <dec f='include/x86_64-linux-gnu/sys/resource.h' l='54' type='int getrlimit(__rlimit_resource_t __resource, struct rlimit * __rlimits)'/>
 <dec f='include/x86_64-linux-gnu/sys/resource.h' l='61' type='int getrlimit64(__rlimit_resource_t __resource, struct rlimit64 * __rlimits)'/>
+<use f='exim/src/exim.c' l='3587' u='c' c='main'/>
+<use f='exim/src/exim.c' l='3612' u='c' c='main'/>

@@ -2,3 +2,5 @@
 <offset>32</offset>
 <doc f='include/arpa/nameser_compat.h' l='78'>/* remaining bytes */</doc>
 <doc f='include/arpa/nameser_compat.h' l='79'>/*%&lt; number of question entries */</doc>
+<use f='exim/src/dns.c' l='349' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='1095' u='r' c='dns_special_lookup'/>

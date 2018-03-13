@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='364' type='uschar *'/>
 <doc f='exim/src/globals.h' l='364'>/* From local part lookup */</doc>
+<use f='exim/src/deliver.c' l='201' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/globals.c' l='210' u='a'/>
+<use f='exim/src/globals.c' l='210' u='a'/>
+<def f='exim/src/globals.c' l='639' type='uschar *'/>
+<use f='exim/src/routers/rf_queue_add.c' l='40' u='r' c='rf_queue_add'/>
+<use f='exim/src/routers/redirect.c' l='561' u='r' c='redirect_router_entry'/>
+<use f='exim/src/acl.c' l='3507' u='a' c='acl_check_condition'/>
+<use f='exim/src/expand.c' l='557' u='a'/>
+<use f='exim/src/expand.c' l='557' u='a'/>
+<use f='exim/src/expand.c' l='557' u='a'/>
+<use f='exim/src/expand.c' l='557' u='a'/>

@@ -1,0 +1,4 @@
+<dec f='include/openssl/x509v3.h' l='846' type='int X509v3_asid_inherits(ASIdentifiers * asid)'/>
+<doc f='include/openssl/x509v3.h' l='843'>/*
+ * Tests for inheritance and containment.
+ */</doc>

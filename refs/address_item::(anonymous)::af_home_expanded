@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='586' type='BOOL'/>
 <offset>7</offset>
 <doc f='exim/src/structs.h' l='586'>/* home_dir is already expanded */</doc>
+<use f='exim/src/deliver.c' l='2185' u='r' c='deliver_local'/>
+<use f='exim/src/routers/rf_queue_add.c' l='59' u='w' c='rf_queue_add'/>
+<use f='exim/src/routers/rf_queue_add.c' l='73' u='w' c='rf_queue_add'/>
+<use f='exim/src/routers/rf_queue_add.c' l='75' u='r' c='rf_queue_add'/>
+<use f='exim/src/routers/redirect.c' l='415' u='r' c='add_generated'/>
+<use f='exim/src/routers/redirect.c' l='418' u='w' c='add_generated'/>

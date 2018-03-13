@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='322' type='uschar *'/>
 <doc f='exim/src/globals.h' l='322'>/* Can be a list of ports */</doc>
+<def f='exim/src/globals.c' l='557' type='uschar *'/>
+<use f='exim/src/daemon.c' l='1104' u='w' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1106' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1122' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1127' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1207' u='r' c='daemon_go'/>
+<use f='exim/src/readconf.c' l='97' u='a'/>
+<use f='exim/src/readconf.c' l='97' u='a'/>
+<use f='exim/src/readconf.c' l='98' u='a'/>
+<use f='exim/src/readconf.c' l='98' u='a'/>
+<use f='exim/src/readconf.c' l='97' u='a'/>
+<use f='exim/src/readconf.c' l='97' u='a'/>
+<use f='exim/src/readconf.c' l='98' u='a'/>
+<use f='exim/src/readconf.c' l='98' u='a'/>

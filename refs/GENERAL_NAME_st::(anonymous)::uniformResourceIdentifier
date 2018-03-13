@@ -1,0 +1,6 @@
+<dec f='include/openssl/x509v3.h' l='141' type='ASN1_IA5STRING *'/>
+<use f='exim/src/tlscert-openssl.c' l='384' u='r' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='385' u='r' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='461' u='r' c='tls_cert_crl_uri'/>
+<use f='exim/src/tlscert-openssl.c' l='462' u='r' c='tls_cert_crl_uri'/>
+<offset>0</offset>

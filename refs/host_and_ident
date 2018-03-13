@@ -1,1 +1,56 @@
 <dec f='exim/src/functions.h' l='213' type='uschar * host_and_ident(BOOL )'/>
+<use f='exim/src/deliver.c' l='1142' u='c' c='delivery_log'/>
+<use f='exim/src/smtp_in.c' l='424' u='c' c='incomplete_transaction_log'/>
+<use f='exim/src/smtp_in.c' l='569' u='c' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='923' u='c' c='command_timeout_handler'/>
+<use f='exim/src/smtp_in.c' l='1787' u='c' c='smtp_log_no_mail'/>
+<use f='exim/src/smtp_in.c' l='2536' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2637' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2670' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2690' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2749' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2771' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2919' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2970' u='c' c='synprot_error'/>
+<use f='exim/src/smtp_in.c' l='2977' u='c' c='synprot_error'/>
+<use f='exim/src/smtp_in.c' l='3232' u='c' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3314' u='c' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3702' u='c' c='qualify_recipient'/>
+<use f='exim/src/smtp_in.c' l='3963' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4010' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4018' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4054' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4075' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4391' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4417' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4586' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4685' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4733' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4955' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4964' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5030' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5236' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5345' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5482' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5508' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5684' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5697' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5714' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5721' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/acl.c' l='1130' u='c' c='acl_warn'/>
+<use f='exim/src/acl.c' l='4202' u='c' c='acl_check_internal'/>
+<def f='exim/src/host.c' l='685' ll='707' type='uschar * host_and_ident(BOOL useflag)'/>
+<doc f='exim/src/host.c' l='670'>/* Used when logging rejections and various ACL and SMTP incidents. The text
+return depends on whether sender_fullhost and sender_ident are set or not:
+
+  no ident, no host   =&gt; U=unknown
+  no ident, host set  =&gt; H=sender_fullhost
+  ident set, no host  =&gt; U=ident
+  ident set, host set =&gt; H=sender_fullhost U=ident
+
+Arguments:
+  useflag   TRUE if first item to be flagged (H= or U=); if there are two
+              items, the second is always flagged
+
+Returns:    pointer to a string in big_buffer
+*/</doc>

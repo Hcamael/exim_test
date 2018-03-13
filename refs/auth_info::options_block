@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='402' type='void *'/>
 <offset>192</offset>
 <doc f='exim/src/structs.h' l='402'>/* Points to default private block */</doc>
+<use f='exim/src/drtables.c' l='67' u='w'/>
+<use f='exim/src/drtables.c' l='137' u='w'/>
+<use f='exim/src/drtables.c' l='165' u='w'/>
+<use f='exim/src/drtables.c' l='67' u='w'/>
+<use f='exim/src/drtables.c' l='137' u='w'/>
+<use f='exim/src/drtables.c' l='165' u='w'/>

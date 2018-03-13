@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='355' type='time_t'/>
 <doc f='exim/src/globals.h' l='355'>/* Time of freezing */</doc>
+<use f='exim/src/deliver.c' l='1663' u='w' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1707' u='w' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='5748' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5924' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7855' u='w' c='deliver_message'/>
+<def f='exim/src/globals.c' l='631' type='time_t'/>
+<use f='exim/src/queue.c' l='1161' u='w' c='queue_action'/>
+<use f='exim/src/spool_in.c' l='261' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='538' u='a' c='spool_read_header'/>
+<use f='exim/src/acl.c' l='3156' u='w' c='acl_check_condition'/>
+<use f='exim/src/receive.c' l='3688' u='w' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='218' u='r' c='spool_write_header'/>

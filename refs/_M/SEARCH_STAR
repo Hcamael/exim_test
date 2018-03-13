@@ -1,2 +1,5 @@
 <dec f='exim/src/macros.h' l='999'/>
 <doc f='exim/src/macros.h' l='997'>/* Flags for single-key search defaults */</doc>
+<use f='exim/src/search.c' l='180' u='c'/>
+<use f='exim/src/search.c' l='197' u='c'/>
+<use f='exim/src/search.c' l='793' u='c'/>

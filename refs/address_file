@@ -1,2 +1,15 @@
 <dec f='exim/src/globals.h' l='207' type='uschar *'/>
 <doc f='exim/src/globals.h' l='207'>/* Name of file when delivering to one */</doc>
+<use f='exim/src/deliver.c' l='259' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='290' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='6052' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6061' u='w' c='deliver_message'/>
+<use f='exim/src/globals.c' l='218' u='a'/>
+<use f='exim/src/globals.c' l='218' u='a'/>
+<def f='exim/src/globals.c' l='411' type='uschar *'/>
+<use f='exim/src/routers/redirect.c' l='449' u='w' c='add_generated'/>
+<use f='exim/src/routers/redirect.c' l='463' u='w' c='add_generated'/>
+<use f='exim/src/expand.c' l='460' u='a'/>
+<use f='exim/src/expand.c' l='460' u='a'/>
+<use f='exim/src/expand.c' l='460' u='a'/>
+<use f='exim/src/expand.c' l='460' u='a'/>

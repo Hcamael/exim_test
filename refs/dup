@@ -1,2 +1,6 @@
 <dec f='include/unistd.h' l='534' type='int dup(int __fd)'/>
 <doc f='include/unistd.h' l='533'>/* Duplicate FD, returning a new file descriptor on the same file.  */</doc>
+<use f='exim/src/deliver.c' l='5676' u='c' c='deliver_message'/>
+<use f='exim/src/exim.c' l='4976' u='c' c='main'/>
+<use f='exim/src/queue.c' l='630' u='c' c='queue_run'/>
+<use f='exim/src/daemon.c' l='168' u='c' c='handle_smtp_call'/>

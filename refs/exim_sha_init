@@ -1,1 +1,6 @@
 <dec f='exim/src/hash.h' l='77' type='BOOL exim_sha_init(hctx * , hashmethod )'/>
+<use f='exim/src/pdkim/pdkim.c' l='1448' u='c' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1892' u='c' c='pdkim_set_bodyhash'/>
+<use f='exim/src/expand.c' l='6455' u='c' c='expand_string_internal'/>
+<def f='exim/src/hash.c' l='33' ll='60' type='BOOL exim_sha_init(hctx * h, hashmethod m)'/>
+<use f='exim/src/hash.c' l='500' u='c' c='sha1_start'/>

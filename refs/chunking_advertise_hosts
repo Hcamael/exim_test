@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='274' type='uschar *'/>
 <doc f='exim/src/globals.h' l='274'>/* RFC 3030 CHUNKING */</doc>
+<def f='exim/src/globals.c' l='505' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='4292' u='a' c='smtp_setup_msg'/>
+<use f='exim/src/readconf.c' l='95' u='a'/>
+<use f='exim/src/readconf.c' l='95' u='a'/>
+<use f='exim/src/readconf.c' l='95' u='a'/>
+<use f='exim/src/readconf.c' l='95' u='a'/>

@@ -1,2 +1,54 @@
 <dec f='exim/src/globals.h' l='163' type='uschar *[9]'/>
 <doc f='exim/src/globals.h' l='163'>/* Argument to ACL call */</doc>
+<def f='exim/src/globals.c' l='229' ll='230' type='uschar *[9]'/>
+<use f='exim/src/acl.c' l='4266' u='r' c='acl_check_wargs'/>
+<use f='exim/src/acl.c' l='4267' u='w' c='acl_check_wargs'/>
+<use f='exim/src/acl.c' l='4271' u='r' c='acl_check_wargs'/>
+<use f='exim/src/acl.c' l='4272' u='w' c='acl_check_wargs'/>
+<use f='exim/src/acl.c' l='4280' u='w' c='acl_check_wargs'/>
+<use f='exim/src/expand.c' l='448' u='a'/>
+<use f='exim/src/expand.c' l='448' u='a'/>
+<use f='exim/src/expand.c' l='449' u='a'/>
+<use f='exim/src/expand.c' l='449' u='a'/>
+<use f='exim/src/expand.c' l='450' u='a'/>
+<use f='exim/src/expand.c' l='450' u='a'/>
+<use f='exim/src/expand.c' l='451' u='a'/>
+<use f='exim/src/expand.c' l='451' u='a'/>
+<use f='exim/src/expand.c' l='452' u='a'/>
+<use f='exim/src/expand.c' l='452' u='a'/>
+<use f='exim/src/expand.c' l='453' u='a'/>
+<use f='exim/src/expand.c' l='453' u='a'/>
+<use f='exim/src/expand.c' l='454' u='a'/>
+<use f='exim/src/expand.c' l='454' u='a'/>
+<use f='exim/src/expand.c' l='455' u='a'/>
+<use f='exim/src/expand.c' l='455' u='a'/>
+<use f='exim/src/expand.c' l='456' u='a'/>
+<use f='exim/src/expand.c' l='456' u='a'/>
+<use f='exim/src/expand.c' l='448' u='a'/>
+<use f='exim/src/expand.c' l='448' u='a'/>
+<use f='exim/src/expand.c' l='449' u='a'/>
+<use f='exim/src/expand.c' l='449' u='a'/>
+<use f='exim/src/expand.c' l='450' u='a'/>
+<use f='exim/src/expand.c' l='450' u='a'/>
+<use f='exim/src/expand.c' l='451' u='a'/>
+<use f='exim/src/expand.c' l='451' u='a'/>
+<use f='exim/src/expand.c' l='452' u='a'/>
+<use f='exim/src/expand.c' l='452' u='a'/>
+<use f='exim/src/expand.c' l='453' u='a'/>
+<use f='exim/src/expand.c' l='453' u='a'/>
+<use f='exim/src/expand.c' l='454' u='a'/>
+<use f='exim/src/expand.c' l='454' u='a'/>
+<use f='exim/src/expand.c' l='455' u='a'/>
+<use f='exim/src/expand.c' l='455' u='a'/>
+<use f='exim/src/expand.c' l='456' u='a'/>
+<use f='exim/src/expand.c' l='456' u='a'/>
+<use f='exim/src/expand.c' l='2078' u='r' c='eval_acl'/>
+<use f='exim/src/expand.c' l='2078' u='r' c='eval_acl'/>
+<use f='exim/src/expand.c' l='2078' u='r' c='eval_acl'/>
+<use f='exim/src/expand.c' l='2078' u='r' c='eval_acl'/>
+<use f='exim/src/expand.c' l='2081' u='r' c='eval_acl'/>
+<use f='exim/src/expand.c' l='2082' u='w' c='eval_acl'/>
+<use f='exim/src/expand.c' l='2088' u='r' c='eval_acl'/>
+<use f='exim/src/expand.c' l='2089' u='w' c='eval_acl'/>
+<use f='exim/src/expand.c' l='2095' u='r' c='eval_acl'/>
+<use f='exim/src/expand.c' l='2101' u='w' c='eval_acl'/>

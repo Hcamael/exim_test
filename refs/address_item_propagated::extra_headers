@@ -1,3 +1,15 @@
 <dec f='exim/src/structs.h' l='494' type='header_line *'/>
 <offset>256</offset>
 <doc f='exim/src/structs.h' l='494'>/* additional headers */</doc>
+<use f='exim/src/deliver.c' l='2813' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2813' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='4376' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4376' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='6809' u='r' c='deliver_message'/>
+<use f='exim/src/globals.c' l='397' u='w'/>
+<use f='exim/src/globals.c' l='397' u='w'/>
+<use f='exim/src/routers/rf_get_munge_headers.c' l='35' u='r' c='rf_get_munge_headers'/>
+<use f='exim/src/routers/dnslookup.c' l='462' u='a' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/queryprogram.c' l='239' u='a' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='298' u='a' c='sort_errors_and_headers'/>
+<use f='exim/src/routers/redirect.c' l='563' u='w' c='redirect_router_entry'/>

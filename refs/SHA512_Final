@@ -1,1 +1,2 @@
 <dec f='include/openssl/sha.h' l='111' type='int SHA512_Final(unsigned char * md, SHA512_CTX * c)'/>
+<use f='exim/src/hash.c' l='94' u='c' c='exim_sha_finish'/>

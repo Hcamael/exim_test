@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='736' type='void *'/>
 <offset>64</offset>
 <doc f='exim/src/structs.h' l='736'>/* pointer to data */</doc>
+<use f='exim/src/search.c' l='499' u='r' c='internal_search_find'/>
+<use f='exim/src/search.c' l='539' u='w' c='internal_search_find'/>
+<use f='exim/src/search.c' l='545' u='w' c='internal_search_find'/>

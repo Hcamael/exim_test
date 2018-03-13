@@ -1,1 +1,10 @@
 <dec f='exim/src/functions.h' l='168' type='BOOL dns_is_aa(const dns_answer * )'/>
+<use f='exim/src/host.c' l='2346' u='c' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2621' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2673' u='c' c='host_find_bydns'/>
+<def f='exim/src/dns.c' l='549' ll='557' type='BOOL dns_is_aa(const dns_answer * dnsa)'/>
+<doc f='exim/src/dns.c' l='543'>/************************************************
+ *	Check whether the AA bit is set		*
+ *	We need this to warn if we requested AD *
+ *	from an authoritative server		*
+ ************************************************/</doc>

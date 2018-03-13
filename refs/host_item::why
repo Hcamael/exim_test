@@ -1,3 +1,21 @@
 <dec f='exim/src/structs.h' l='71' type='int'/>
 <offset>320</offset>
 <doc f='exim/src/structs.h' l='71'>/* Why host is unusable */</doc>
+<use f='exim/src/deliver.c' l='3417' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4764' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/routers/dnslookup.c' l='287' u='w' c='dnslookup_router_entry'/>
+<use f='exim/src/host.c' l='343' u='w' c='host_build_hostlist'/>
+<use f='exim/src/host.c' l='2131' u='w' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2147' u='w' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2443' u='w' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2869' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2886' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3080' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3081' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3082' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3083' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3099' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3117' u='r' c='host_find_bydns'/>
+<use f='exim/src/retry.c' l='167' u='w' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='231' u='w' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='254' u='w' c='retry_check_address'/>

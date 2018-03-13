@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>tf_maildir.h source code [exim/src/transports/tf_maildir.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/transports/tf_maildir.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>transports</a>/<a href='tf_maildir.h.html'>tf_maildir.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2009 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Header file for the functions that are used to support the use of</i></td></tr>
+<tr><th id="9">9</th><td><i>maildirsize files for quota handling in maildir directories. */</i></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><b>extern</b> <a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#off_t" title='off_t' data-type='__off64_t' data-ref="off_t">off_t</a>  <a class="decl fn" href="tf_maildir.c.html#maildir_compute_size" title='maildir_compute_size' data-ref="maildir_compute_size" id="maildir_compute_size">maildir_compute_size</a>(<a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>int</em> *, <a class="typedef" href="../../../include/time.h.html#time_t" title='time_t' data-type='__time_t' data-ref="time_t">time_t</a> *, <em>const</em> <a class="typedef" href="../../../include/pcre.h.html#pcre" title='pcre' data-type='struct real_pcre' data-ref="pcre">pcre</a> *,</td></tr>
+<tr><th id="12">12</th><td>                <em>const</em> <a class="typedef" href="../../../include/pcre.h.html#pcre" title='pcre' data-type='struct real_pcre' data-ref="pcre">pcre</a> *, <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>);</td></tr>
+<tr><th id="13">13</th><td><b>extern</b> <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>   <a class="decl fn" href="tf_maildir.c.html#maildir_ensure_directories" title='maildir_ensure_directories' data-ref="maildir_ensure_directories" id="maildir_ensure_directories">maildir_ensure_directories</a>(<a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *, <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>, <em>int</em>,</td></tr>
+<tr><th id="14">14</th><td>                <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="15">15</th><td><b>extern</b> <em>int</em>    <a class="decl fn" href="tf_maildir.c.html#maildir_ensure_sizefile" title='maildir_ensure_sizefile' data-ref="maildir_ensure_sizefile" id="maildir_ensure_sizefile">maildir_ensure_sizefile</a>(<a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *,</td></tr>
+<tr><th id="16">16</th><td>                <a class="typedef" href="appendfile.h.html#appendfile_transport_options_block" title='appendfile_transport_options_block' data-type='struct appendfile_transport_options_block' data-ref="appendfile_transport_options_block">appendfile_transport_options_block</a> *, <em>const</em> <a class="typedef" href="../../../include/pcre.h.html#pcre" title='pcre' data-type='struct real_pcre' data-ref="pcre">pcre</a> *,</td></tr>
+<tr><th id="17">17</th><td>                <em>const</em> <a class="typedef" href="../../../include/pcre.h.html#pcre" title='pcre' data-type='struct real_pcre' data-ref="pcre">pcre</a> *, <a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#off_t" title='off_t' data-type='__off64_t' data-ref="off_t">off_t</a> *, <em>int</em> *);</td></tr>
+<tr><th id="18">18</th><td><b>extern</b> <em>void</em>   <a class="decl fn" href="tf_maildir.c.html#maildir_record_length" title='maildir_record_length' data-ref="maildir_record_length" id="maildir_record_length">maildir_record_length</a>(<em>int</em>, <em>int</em>);</td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><i>/* End of tf_maildir.h */</i></td></tr>
+<tr><th id="21">21</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='tf_maildir.c.html'>exim/src/transports/tf_maildir.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,5 @@
+<dec f='exim/src/pdkim/pdkim.h' l='332' type='uschar * dkim_sig_to_a_tag(const pdkim_signature * sig)'/>
+<def f='exim/src/pdkim/pdkim.c' l='117' ll='125' type='uschar * dkim_sig_to_a_tag(const pdkim_signature * sig)'/>
+<use f='exim/src/pdkim/pdkim.c' l='1223' u='c' c='pdkim_create_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1754' u='c' c='pdkim_feed_finish'/>
+<doc f='exim/src/pdkim/pdkim.c' l='116'>/* -------------------------------------------------------------------------- */</doc>

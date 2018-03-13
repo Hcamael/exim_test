@@ -1,1 +1,42 @@
 <dec f='exim/src/functions.h' l='219' type='int host_find_byname(host_item * , const uschar * , int , const uschar ** , BOOL )'/>
+<use f='exim/src/verify.c' l='1861' u='c' c='verify_address'/>
+<use f='exim/src/verify.c' l='3018' u='c' c='check_host'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='122' u='c' c='rf_lookup_hostlist'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='153' u='c' c='rf_lookup_hostlist'/>
+<use f='exim/src/acl.c' l='2777' u='c' c='acl_udpsend'/>
+<use f='exim/src/ip.c' l='393' u='c' c='ip_connectedsocket'/>
+<def f='exim/src/host.c' l='1965' ll='2231' type='int host_find_byname(host_item * host, const uschar * ignore_target_hosts, int flags, const uschar ** fully_qualified_name, BOOL local_host_check)'/>
+<doc f='exim/src/host.c' l='1930'>/* The input is a host_item structure with the name filled in and the address
+field set to NULL. We use gethostbyname() or getipnodebyname() or
+gethostbyname2(), as appropriate. Of course, these functions may use the DNS,
+but they do not do MX processing. It appears, however, that in some systems the
+current setting of resolver options is used when one of these functions calls
+the resolver. For this reason, we call dns_init() at the start, with arguments
+influenced by bits in &quot;flags&quot;, just as we do for host_find_bydns().
+
+The second argument provides a host list (usually an IP list) of hosts to
+ignore. This makes it possible to ignore IPv6 link-local addresses or loopback
+addresses in unreasonable places.
+
+The lookup may result in a change of name. For compatibility with the dns
+lookup, return this via fully_qualified_name as well as updating the host item.
+The lookup may also yield more than one IP address, in which case chain on
+subsequent host_item structures.
+
+Arguments:
+  host                   a host item with the name and MX filled in;
+                           the address is to be filled in;
+                           multiple IP addresses cause other host items to be
+                             chained on.
+  ignore_target_hosts    a list of hosts to ignore
+  flags                  HOST_FIND_QUALIFY_SINGLE   ) passed to
+                         HOST_FIND_SEARCH_PARENTS   )   dns_init()
+  fully_qualified_name   if not NULL, set to point to host name for
+                         compatibility with host_find_bydns
+  local_host_check       TRUE if a check for the local host is wanted
+
+Returns:                 HOST_FIND_FAILED  Failed to find the host or domain
+                         HOST_FIND_AGAIN   Try again later
+                         HOST_FOUND        Host found - data filled in
+                         HOST_FOUND_LOCAL  Host found and is the local host
+*/</doc>

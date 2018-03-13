@@ -1,1 +1,13 @@
 <dec f='exim/src/functions.h' l='142' type='void debug_print_string(uschar * )'/>
+<use f='exim/src/deliver.c' l='2392' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='4738' u='c' c='do_remote_deliveries'/>
+<def f='exim/src/debug.c' l='98' ll='111' type='void debug_print_string(uschar * debug_string)'/>
+<doc f='exim/src/debug.c' l='91'>/* The string is expanded and written as debugging output. If
+expansion fails, a message is written instead.
+
+Argument:    the string
+Returns:     nothing
+*/</doc>
+<use f='exim/src/auths/check_serv_cond.c' l='76' u='c' c='auth_check_some_cond'/>
+<use f='exim/src/auths/spa.c' l='220' u='c' c='auth_spa_server'/>
+<use f='exim/src/auths/cram_md5.c' l='207' u='c' c='auth_cram_md5_server'/>

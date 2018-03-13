@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='551' type='uschar *'/>
 <doc f='exim/src/globals.h' l='551'>/* If unset, use default */</doc>
+<def f='exim/src/globals.c' l='879' ll='880' type='uschar *'/>
+<use f='exim/src/exim.c' l='3904' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3923' u='r' c='main'/>
+<use f='exim/src/log.c' l='783' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='787' u='r' c='log_write'/>
+<use f='exim/src/readconf.c' l='201' u='a'/>
+<use f='exim/src/readconf.c' l='201' u='a'/>
+<use f='exim/src/readconf.c' l='201' u='a'/>
+<use f='exim/src/readconf.c' l='201' u='a'/>
+<use f='exim/src/receive.c' l='145' u='r' c='receive_statvfs'/>

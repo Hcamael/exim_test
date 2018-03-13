@@ -1,0 +1,2 @@
+<def f='include/openssl/x509v3.h' l='204' macro='1' type='DIST_POINT * sk_DIST_POINT_value(const struct stack_st_DIST_POINT * sk, int idx)'/>
+<use f='exim/src/tlscert-openssl.c' l='449' u='c' c='tls_cert_crl_uri'/>

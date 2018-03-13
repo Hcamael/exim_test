@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='264' type='uschar *'/>
 <offset>256</offset>
 <doc f='exim/src/structs.h' l='264'>/* Must be first */</doc>
+<use f='exim/src/globals.c' l='1171' u='w'/>

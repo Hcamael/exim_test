@@ -1,0 +1,4 @@
+<def f='exim/src/tls-openssl.c' l='148' type='BOOL'/>
+<use f='exim/src/tls-openssl.c' l='1103' u='w' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1205' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1212' u='r' c='tls_servername_cb'/>

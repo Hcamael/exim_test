@@ -1,1 +1,11 @@
 <dec f='exim/src/functions.h' l='108' type='int b64decode(const uschar * , uschar ** )'/>
+<use f='exim/src/pdkim/pdkim.c' l='414' u='c' c='pdkim_decode_base64'/>
+<use f='exim/src/auths/plaintext.c' l='114' u='c' c='auth_plaintext_server'/>
+<use f='exim/src/auths/plaintext.c' l='136' u='c' c='auth_plaintext_server'/>
+<use f='exim/src/auths/plaintext.c' l='278' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/auths/cram_md5.c' l='188' u='c' c='auth_cram_md5_server'/>
+<use f='exim/src/auths/cram_md5.c' l='302' u='c' c='auth_cram_md5_client'/>
+<use f='exim/src/expand.c' l='7221' u='c' c='expand_string_internal'/>
+<def f='exim/src/base64.c' l='152' ll='216' type='int b64decode(const uschar * code, uschar ** ptr)'/>
+<use f='exim/src/rfc2047.c' l='123' u='c' c='decode_mimeword'/>
+<use f='exim/src/lss.c' l='138' u='c' c='lss_b64decode'/>

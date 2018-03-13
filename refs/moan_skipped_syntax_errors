@@ -1,1 +1,19 @@
 <dec f='exim/src/functions.h' l='296' type='BOOL moan_skipped_syntax_errors(uschar * , error_block * , uschar * , BOOL , uschar * )'/>
+<def f='exim/src/moan.c' l='692' ll='771' type='BOOL moan_skipped_syntax_errors(uschar * rname, error_block * eblock, uschar * syntax_errors_to, BOOL some, uschar * custom)'/>
+<doc f='exim/src/moan.c' l='675'>/* This function is called by the redirect router when it has skipped over one
+or more syntax errors in the list of addresses. If there is an address to mail
+to, send a message, and always write the information to the log. In the case of
+a filter file, a &quot;syntax error&quot; might actually be something else, such as the
+inability to open a log file. Thus, the wording of the error message is
+general.
+
+Arguments:
+  rname             the router name
+  eblock            chain of error blocks
+  syntax_errors_to  address to send mail to, or NULL
+  some              TRUE if some addresses were generated; FALSE if none were
+  custom            custom message text
+
+Returns:            FALSE if string expansion failed; TRUE otherwise
+*/</doc>
+<use f='exim/src/routers/redirect.c' l='854' u='c' c='redirect_router_entry'/>

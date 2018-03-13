@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='340' type='uschar * readconf_printtime(int )'/>
+<use f='exim/src/deliver.c' l='1096' u='c' c='string_timediff'/>
+<use f='exim/src/deliver.c' l='2932' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2933' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2935' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='5633' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8111' u='c' c='deliver_message'/>
+<use f='exim/src/smtp_out.c' l='286' u='c' c='smtp_sock_connect'/>
+<use f='exim/src/exim.c' l='4523' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4547' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4548' u='c' c='main'/>
+<use f='exim/src/expand.c' l='7197' u='c' c='expand_string_internal'/>
+<use f='exim/src/daemon.c' l='1453' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1625' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1710' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1711' u='c' c='daemon_go'/>

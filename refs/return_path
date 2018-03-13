@@ -1,2 +1,33 @@
 <dec f='exim/src/globals.h' l='757' type='uschar *'/>
 <doc f='exim/src/globals.h' l='757'>/* Return path for a message */</doc>
+<use f='exim/src/deliver.c' l='2144' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2150' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2165' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2171' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='4436' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4442' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4448' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='5016' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='5847' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6735' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6736' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7350' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7809' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8282' u='w' c='deliver_message'/>
+<use f='exim/src/verify.c' l='1761' u='w' c='verify_address'/>
+<def f='exim/src/globals.c' l='1156' type='uschar *'/>
+<use f='exim/src/filter.c' l='2104' u='r' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2104' u='r' c='interpret_commands'/>
+<use f='exim/src/exim.c' l='5117' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5596' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5599' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5602' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5602' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5778' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='1981' u='w' c='smtp_reset'/>
+<use f='exim/src/expand.c' l='654' u='a'/>
+<use f='exim/src/expand.c' l='654' u='a'/>
+<use f='exim/src/expand.c' l='654' u='a'/>
+<use f='exim/src/expand.c' l='654' u='a'/>
+<use f='exim/src/daemon.c' l='566' u='w' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='2361' u='w' c='receive_msg'/>

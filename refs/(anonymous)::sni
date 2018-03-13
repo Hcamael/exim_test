@@ -1,3 +1,35 @@
 <dec f='exim/src/globals.h' l='96' type='uschar *'/>
 <offset>512</offset>
 <doc f='exim/src/globals.h' l='96'>/* Server Name Indication */</doc>
+<use f='exim/src/tls-openssl.c' l='1209' u='w' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='2344' u='a' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2346' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2350' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2351' u='w' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2355' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2356' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2477' u='w' c='tls_refill'/>
+<use f='exim/src/tls.c' l='219' u='a' c='tls_modify_variables'/>
+<use f='exim/src/globals.c' l='117' u='w'/>
+<use f='exim/src/globals.c' l='134' u='w'/>
+<use f='exim/src/smtp_in.c' l='1730' u='r' c='s_tlslog'/>
+<use f='exim/src/smtp_in.c' l='1731' u='r' c='s_tlslog'/>
+<use f='exim/src/smtp_in.c' l='2384' u='w' c='smtp_start_session'/>
+<use f='exim/src/spool_in.c' l='314' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='642' u='w' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='736' u='a'/>
+<use f='exim/src/expand.c' l='736' u='a'/>
+<use f='exim/src/expand.c' l='749' u='a'/>
+<use f='exim/src/expand.c' l='749' u='a'/>
+<use f='exim/src/expand.c' l='757' u='a'/>
+<use f='exim/src/expand.c' l='757' u='a'/>
+<use f='exim/src/expand.c' l='736' u='a'/>
+<use f='exim/src/expand.c' l='736' u='a'/>
+<use f='exim/src/expand.c' l='749' u='a'/>
+<use f='exim/src/expand.c' l='749' u='a'/>
+<use f='exim/src/expand.c' l='757' u='a'/>
+<use f='exim/src/expand.c' l='757' u='a'/>
+<use f='exim/src/receive.c' l='3920' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3921' u='r' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='246' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='246' u='r' c='spool_write_header'/>

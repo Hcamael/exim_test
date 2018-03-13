@@ -1,2 +1,3 @@
 <dec f='exim/src/macros.h' l='572' type='3'/>
 <doc f='exim/src/macros.h' l='572'>/* Send a warning message */</doc>
+<use f='exim/src/deliver.c' l='2606' u='r' c='deliver_local'/>

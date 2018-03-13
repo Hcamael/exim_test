@@ -1,2 +1,4 @@
 <dec f='include/openssl/ssl.h' l='362'/>
 <doc f='include/openssl/ssl.h' l='361'>/* Ancient SSLeay version. */</doc>
+<use f='exim/src/tls-openssl.c' l='3029' u='a'/>
+<use f='exim/src/tls-openssl.c' l='3030' u='c'/>

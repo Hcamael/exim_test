@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='469' type='int'/>
 <doc f='exim/src/globals.h' l='469'>/* Fake FAIL or DEFER response to data */</doc>
+<def f='exim/src/globals.c' l='742' type='int'/>
+<use f='exim/src/smtp_in.c' l='1972' u='w' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='3139' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3271' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='4502' u='r' c='acl_check'/>
+<use f='exim/src/receive.c' l='3906' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4243' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4244' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4276' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4277' u='r' c='receive_msg'/>

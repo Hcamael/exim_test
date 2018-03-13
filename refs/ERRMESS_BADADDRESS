@@ -1,2 +1,6 @@
 <dec f='exim/src/macros.h' l='237' type='1'/>
 <doc f='exim/src/macros.h' l='237'>/* Bad address read via -t */</doc>
+<use f='exim/src/moan.c' l='112' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='129' u='r' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='407' c='moan_to_sender'/>
+<use f='exim/src/receive.c' l='3257' u='r' c='receive_msg'/>

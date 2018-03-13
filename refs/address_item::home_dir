@@ -1,3 +1,13 @@
 <dec f='exim/src/structs.h' l='543' type='uschar *'/>
 <offset>1472</offset>
 <doc f='exim/src/structs.h' l='543'>/* home directory for transporting */</doc>
+<use f='exim/src/deliver.c' l='2184' u='r' c='deliver_local'/>
+<use f='exim/src/globals.c' l='354' u='w'/>
+<use f='exim/src/routers/rf_queue_add.c' l='60' u='w' c='rf_queue_add'/>
+<use f='exim/src/routers/rf_queue_add.c' l='72' u='w' c='rf_queue_add'/>
+<use f='exim/src/routers/rf_queue_add.c' l='75' u='r' c='rf_queue_add'/>
+<use f='exim/src/routers/rf_queue_add.c' l='76' u='w' c='rf_queue_add'/>
+<use f='exim/src/routers/redirect.c' l='411' u='w' c='add_generated'/>
+<use f='exim/src/routers/redirect.c' l='413' u='w' c='add_generated'/>
+<use f='exim/src/routers/redirect.c' l='417' u='w' c='add_generated'/>
+<use f='exim/src/routers/redirect.c' l='495' u='r' c='add_generated'/>

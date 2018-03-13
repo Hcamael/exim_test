@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='503' type='BOOL'/>
 <doc f='exim/src/globals.h' l='503'>/* DNS syntax check failure */</doc>
+<def f='exim/src/globals.c' l='803' type='BOOL'/>
+<use f='exim/src/routers/dnslookup.c' l='400' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='200' u='r' c='rf_lookup_hostlist'/>
+<use f='exim/src/host.c' l='2013' u='w' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2594' u='w' c='host_find_bydns'/>
+<use f='exim/src/dns.c' l='741' u='w' c='dns_basic_lookup'/>

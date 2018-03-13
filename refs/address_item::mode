@@ -1,3 +1,12 @@
 <dec f='exim/src/structs.h' l='622' type='int'/>
 <offset>2784</offset>
 <doc f='exim/src/structs.h' l='622'>/* mode for local transporting to a file */</doc>
+<use f='exim/src/globals.c' l='384' u='w'/>
+<use f='exim/src/filter.c' l='1861' u='w' c='interpret_commands'/>
+<use f='exim/src/rda.c' l='723' u='a' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='723' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='723' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='890' u='a' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='890' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='890' u='r' c='rda_interpret'/>
+<use f='exim/src/sieve.c' l='1073' u='w' c='add_addr'/>

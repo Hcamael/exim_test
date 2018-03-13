@@ -1,0 +1,1 @@
+<dec f='include/openssl/ocsp.h' l='262' type='int OCSP_RESPID_set_by_name(OCSP_RESPID * respid, X509 * cert)'/>

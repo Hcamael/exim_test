@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='756' type='int'/>
 <doc f='exim/src/globals.h' l='756'>/* The maximum timeout */</doc>
+<use f='exim/src/deliver.c' l='7851' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1154' type='int'/>
+<doc f='exim/src/globals.c' l='1154'>/* set from retry config */</doc>

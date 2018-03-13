@@ -1,0 +1,12 @@
+<dec f='exim/src/acl.c' l='588' type='0'/>
+<use f='exim/src/acl.c' l='596'/>
+<use f='exim/src/acl.c' l='2215' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='593' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='593' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='593' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='593' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='593' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='593' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='593' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='593' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2346' u='r' c='acl_ratelimit'/>

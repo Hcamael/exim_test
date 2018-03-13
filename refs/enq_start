@@ -1,1 +1,17 @@
 <dec f='exim/src/functions.h' l='179' type='BOOL enq_start(uschar * , unsigned int )'/>
+<use f='exim/src/deliver.c' l='2665' u='c' c='tpt_parallel_check'/>
+<use f='exim/src/smtp_in.c' l='5579' u='c' c='smtp_setup_msg'/>
+<def f='exim/src/enq.c' l='35' ll='78' type='BOOL enq_start(uschar * key, unsigned int lim)'/>
+<doc f='exim/src/enq.c' l='20'>/* This function is called when a host is listed for serialization of
+connections. It is also called when ETRN is listed for serialization. We open
+the misc database and look for a record, which implies an existing connection
+or ETRN run. If increasing the count would take us past the given limit
+value return FALSE.  If not, bump it and return TRUE.  If not found, create
+one with value 1 and return TRUE.
+
+Arguments:
+  key            string on which to serialize
+  lim            parallelism limit
+
+Returns:         TRUE if OK to proceed; FALSE otherwise
+*/</doc>

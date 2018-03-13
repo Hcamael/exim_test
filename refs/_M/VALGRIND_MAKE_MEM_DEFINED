@@ -1,0 +1,4 @@
+<dec f='exim/src/memcheck.h' l='123'/>
+<use f='exim/src/store.c' l='362' u='c'/>
+<doc f='exim/src/memcheck.h' l='121'>/* Similarly, mark memory at _qzz_addr as addressable and defined
+   for _qzz_len bytes. */</doc>

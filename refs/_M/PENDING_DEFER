@@ -1,0 +1,6 @@
+<dec f='exim/src/transports/smtp.h' l='11'/>
+<use f='exim/src/verify.c' l='682' u='c'/>
+<use f='exim/src/verify.c' l='701' u='c'/>
+<use f='exim/src/verify.c' l='834' u='c'/>
+<use f='exim/src/verify.c' l='846' u='c'/>
+<use f='exim/src/verify.c' l='922' u='c'/>

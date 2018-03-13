@@ -1,3 +1,11 @@
 <dec f='exim/src/dbstuff.h' l='684' type='time_t'/>
 <offset>128</offset>
 <doc f='exim/src/dbstuff.h' l='684'>/* Time of last try */</doc>
+<use f='exim/src/exim_dbutil.c' l='830' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='995' u='r' c='main'/>
+<use f='exim/src/retry.c' l='232' u='r' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='675' u='w' c='retry_update'/>
+<use f='exim/src/retry.c' l='789' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='790' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='824' u='w' c='retry_update'/>
+<use f='exim/src/retry.c' l='836' u='r' c='retry_update'/>

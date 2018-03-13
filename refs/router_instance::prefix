@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='286' type='uschar *'/>
 <offset>1408</offset>
 <doc f='exim/src/structs.h' l='286'>/* Address prefix */</doc>
+<use f='exim/src/globals.c' l='1193' u='w'/>

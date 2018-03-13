@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='820' type='uschar *'/>
 <doc f='exim/src/globals.h' l='820'>/* Banner string (to be expanded) */</doc>
+<def f='exim/src/globals.c' l='1316' ll='1318' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='2852' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2854' u='r' c='smtp_start_session'/>
+<use f='exim/src/readconf.c' l='286' u='a'/>
+<use f='exim/src/readconf.c' l='286' u='a'/>
+<use f='exim/src/readconf.c' l='286' u='a'/>
+<use f='exim/src/readconf.c' l='286' u='a'/>

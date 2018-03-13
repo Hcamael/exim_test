@@ -1,1 +1,52 @@
 <dec f='exim/src/store.h' l='51' type='void store_reset_3(void * , const char * , int )'/>
+<use f='exim/src/environment.c' l='58' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='1289' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='1371' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='1435' macro='1' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='80' macro='1' u='c'/>
+<use f='exim/src/parse.c' l='1758' macro='1' u='c'/>
+<use f='exim/src/parse.c' l='1765' macro='1' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='745' macro='1' u='c'/>
+<use f='exim/src/filter.c' l='2480' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='5112' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='5792' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='841' macro='1' u='c'/>
+<use f='exim/src/smtp_in.c' l='2055' macro='1' u='c'/>
+<use f='exim/src/queue.c' l='607' macro='1' u='c'/>
+<use f='exim/src/queue.c' l='703' macro='1' u='c'/>
+<use f='exim/src/queue.c' l='970' macro='1' u='c'/>
+<use f='exim/src/lookups/lsearch.c' l='244' macro='1' u='c'/>
+<use f='exim/src/lookups/lsearch.c' l='297' macro='1' u='c'/>
+<use f='exim/src/lookups/lsearch.c' l='306' macro='1' u='c'/>
+<use f='exim/src/lookups/dnsdb.c' l='556' macro='1' u='c'/>
+<use f='exim/src/search.c' l='273' macro='1' u='c'/>
+<def f='exim/src/store.c' l='325' ll='421' type='void store_reset_3(void * ptr, const char * filename, int linenumber)'/>
+<doc f='exim/src/store.c' l='311'>/* This function resets the next pointer, freeing any subsequent whole blocks
+that are now unused. Normally it is given a pointer that was the yield of a
+call to store_get, and is therefore aligned, but it may be given an offset
+after such a pointer in order to release the end of a block and anything that
+follows.
+
+Arguments:
+  ptr         place to back up to
+  filename    source file from which called
+  linenumber  line number in source file
+
+Returns:      nothing
+*/</doc>
+<use f='exim/src/rewrite.c' l='503' macro='1' u='c'/>
+<use f='exim/src/rewrite.c' l='550' macro='1' u='c'/>
+<use f='exim/src/rewrite.c' l='582' macro='1' u='c'/>
+<use f='exim/src/rewrite.c' l='662' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='3947' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='7448' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='7505' macro='1' u='c'/>
+<use f='exim/src/daemon.c' l='577' macro='1' u='c'/>
+<use f='exim/src/daemon.c' l='752' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='1872' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='1977' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='2005' macro='1' u='c'/>
+<use f='exim/src/receive.c' l='4189' macro='1' u='c'/>
+<use f='exim/src/host.c' l='627' macro='1' u='c'/>
+<use f='exim/src/host.c' l='867' macro='1' u='c'/>
+<use f='exim/src/host.c' l='1748' macro='1' u='c'/>

@@ -1,3 +1,26 @@
 <dec f='exim/src/structs.h' l='170' type='uschar *'/>
 <offset>1280</offset>
 <doc f='exim/src/structs.h' l='170'>/* Name of shadow transport */</doc>
+<use f='exim/src/deliver.c' l='3025' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3035' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3039' u='r' c='do_local_deliveries'/>
+<use f='exim/src/globals.c' l='1471' u='w'/>

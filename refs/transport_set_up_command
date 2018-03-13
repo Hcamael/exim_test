@@ -1,1 +1,5 @@
 <dec f='exim/src/functions.h' l='504' type='BOOL transport_set_up_command(const uschar *** , uschar * , BOOL , int , address_item * , uschar * , uschar ** )'/>
+<use f='exim/src/deliver.c' l='2383' u='c' c='deliver_local'/>
+<use f='exim/src/smtp_in.c' l='5532' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/routers/queryprogram.c' l='297' u='c' c='queryprogram_router_entry'/>
+<use f='exim/src/expand.c' l='4995' u='c' c='expand_string_internal'/>

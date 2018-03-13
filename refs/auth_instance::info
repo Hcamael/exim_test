@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='378' type='struct auth_info *'/>
 <offset>128</offset>
 <doc f='exim/src/structs.h' l='378'>/* Pointer to driver info block */</doc>
+<use f='exim/src/globals.c' l='433' u='w'/>
+<use f='exim/src/smtp_in.c' l='3599' u='r' c='smtp_in_auth'/>

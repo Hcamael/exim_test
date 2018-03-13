@@ -1,1 +1,20 @@
 <dec f='exim/src/functions.h' l='285' type='void millisleep(int )'/>
+<use f='exim/src/deliver.c' l='2556' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='5035' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='7837' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8553' u='c' c='delivery_re_exec'/>
+<def f='exim/src/exim.c' l='322' ll='331' type='void millisleep(int msec)'/>
+<use f='exim/src/exim.c' l='2702' u='c' c='main'/>
+<use f='exim/src/exim.c' l='3561' u='c' c='main'/>
+<doc f='exim/src/exim.c' l='314'>/* The basic sleep() function has a granularity of 1 second, which is too rough
+in some cases - for example, when using an increasing delay to slow down
+spammers.
+
+Argument:    number of millseconds
+Returns:     nothing
+*/</doc>
+<use f='exim/src/smtp_in.c' l='4648' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4979' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/queue.c' l='652' u='c' c='queue_run'/>
+<use f='exim/src/expand.c' l='4868' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='4892' u='c' c='expand_string_internal'/>

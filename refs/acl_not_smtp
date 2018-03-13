@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='166' type='uschar *'/>
 <doc f='exim/src/globals.h' l='166'>/* ACL run for non-SMTP messages */</doc>
+<def f='exim/src/globals.c' l='235' type='uschar *'/>
+<use f='exim/src/readconf.c' l='34' u='a'/>
+<use f='exim/src/readconf.c' l='34' u='a'/>
+<use f='exim/src/readconf.c' l='34' u='a'/>
+<use f='exim/src/readconf.c' l='34' u='a'/>
+<use f='exim/src/receive.c' l='3575' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3578' u='r' c='receive_msg'/>

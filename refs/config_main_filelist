@@ -1,2 +1,24 @@
 <dec f='exim/src/globals.h' l='291' type='uschar *'/>
 <doc f='exim/src/globals.h' l='291'>/* List of possible config files */</doc>
+<def f='exim/src/globals.c' l='527' ll='528' type='uschar *'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2270' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2388' u='w' c='main'/>

@@ -1,1 +1,9 @@
 <dec f='exim/src/hash.h' l='78' type='void exim_sha_update(hctx * , const uschar * a, int )'/>
+<use f='exim/src/pdkim/pdkim.c' l='757' u='c' c='pdkim_update_ctx_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='1504' u='c' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1566' u='c' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1607' u='c' c='pdkim_feed_finish'/>
+<use f='exim/src/expand.c' l='6460' u='c' c='expand_string_internal'/>
+<def f='exim/src/hash.c' l='63' ll='82' type='void exim_sha_update(hctx * h, const uschar * data, int len)'/>
+<use f='exim/src/hash.c' l='506' u='c' c='sha1_mid'/>
+<use f='exim/src/hash.c' l='513' u='c' c='sha1_end'/>

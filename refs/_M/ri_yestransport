@@ -1,2 +1,5 @@
 <dec f='exim/src/macros.h' l='908'/>
 <doc f='exim/src/macros.h' l='906'>/* Router information flags */</doc>
+<use f='exim/src/drtables.c' l='261' u='c'/>
+<use f='exim/src/drtables.c' l='274' u='c'/>
+<use f='exim/src/drtables.c' l='287' u='c'/>

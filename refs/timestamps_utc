@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='939' type='BOOL'/>
 <doc f='exim/src/globals.h' l='939'>/* Use UTC for all times */</doc>
+<use f='exim/src/tod.c' l='87' u='r' c='tod_stamp'/>
+<use f='exim/src/tod.c' l='151' u='r' c='tod_stamp'/>
+<use f='exim/src/tlscert-openssl.c' l='159' u='r' c='asn1_time_copy'/>
+<def f='exim/src/globals.c' l='1441' type='BOOL'/>
+<use f='exim/src/debug.c' l='191' u='r' c='debug_vprintf'/>
+<use f='exim/src/exim.c' l='3985' u='w' c='main'/>

@@ -1,2 +1,4 @@
 <dec f='include/netinet/tcp.h' l='225' type='u_int32_t'/>
 <offset>192</offset>
+<use f='exim/src/smtp_out.c' l='167' u='r' c='tfo_out_check'/>
+<use f='exim/src/smtp_out.c' l='170' u='r' c='tfo_out_check'/>

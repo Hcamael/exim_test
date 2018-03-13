@@ -1,0 +1,3 @@
+<dec f='exim/src/routers/queryprogram.h' l='15' type='gid_t'/>
+<offset>128</offset>
+<use f='exim/src/routers/queryprogram.c' l='221' u='r' c='queryprogram_router_entry'/>

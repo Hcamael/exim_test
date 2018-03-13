@@ -1,1 +1,7 @@
 <dec f='exim/src/local_scan.h' l='190' type='void smtp_vprintf(const char * , BOOL , struct __va_list_tag * )'/>
+<use f='exim/src/verify.c' l='1534' u='c' c='respond_printf'/>
+<use f='exim/src/smtp_in.c' l='817' u='c' c='smtp_printf'/>
+<def f='exim/src/smtp_in.c' l='825' ll='879' type='void smtp_vprintf(const char * format, BOOL more, struct __va_list_tag * ap)'/>
+<doc f='exim/src/smtp_in.c' l='821'>/* This is split off so that verify.c:respond_printf() can, in effect, call
+smtp_printf(), bearing in mind that in C a vararg function can&apos;t directly
+call another vararg function, only a function which accepts a va_list. */</doc>

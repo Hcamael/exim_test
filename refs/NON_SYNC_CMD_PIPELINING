@@ -1,0 +1,3 @@
+<dec f='exim/src/smtp_in.c' l='79' type='9'/>
+<use f='exim/src/smtp_in.c' l='4233' u='r' c='smtp_setup_msg'/>
+<doc f='exim/src/smtp_in.c' l='77'>/* This is a dummy to identify the non-sync commands when pipelining */</doc>

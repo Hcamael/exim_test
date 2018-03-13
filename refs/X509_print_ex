@@ -1,1 +1,3 @@
 <dec f='include/openssl/x509.h' l='772' type='int X509_print_ex(BIO * bp, X509 * x, unsigned long nmflag, unsigned long cflag)'/>
+<use f='exim/src/tlscert-openssl.c' l='250' u='c' c='tls_cert_signature'/>
+<use f='exim/src/tlscert-openssl.c' l='276' u='c' c='tls_cert_signature_algorithm'/>

@@ -1,0 +1,9 @@
+<dec f='exim/src/pdkim/pdkim.h' l='130' type='blob'/>
+<use f='exim/src/pdkim/pdkim.c' l='775' u='a' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='788' u='m' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='788' u='m' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='805' u='m' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='805' u='m' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='1255' u='a' c='pdkim_create_header'/>
+<offset>2112</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='130'>/* completed hash */</doc>

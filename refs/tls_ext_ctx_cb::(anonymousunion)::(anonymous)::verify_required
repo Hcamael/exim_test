@@ -1,0 +1,6 @@
+<dec f='exim/src/tls-openssl.c' l='165' type='BOOL'/>
+<use f='exim/src/tls-openssl.c' l='1340' u='r' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1344' u='r' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1464' u='r' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='2393' u='w' c='tls_client_start'/>
+<offset>64</offset>

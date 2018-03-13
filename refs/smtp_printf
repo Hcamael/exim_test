@@ -1,1 +1,85 @@
 <dec f='exim/src/local_scan.h' l='189' type='void smtp_printf(const char * , BOOL )'/>
+<use f='exim/src/tls-openssl.c' l='1962' u='c' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2046' u='c' c='tls_server_start'/>
+<use f='exim/src/smtp_in.c' l='588' u='c' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='626' u='c' c='bdat_getc'/>
+<def f='exim/src/smtp_in.c' l='811' ll='819' type='void smtp_printf(const char * format, BOOL more)'/>
+<use f='exim/src/smtp_in.c' l='1651' u='c' c='smtp_closedown'/>
+<use f='exim/src/smtp_in.c' l='1659' u='c' c='smtp_closedown'/>
+<use f='exim/src/smtp_in.c' l='1664' u='c' c='smtp_closedown'/>
+<use f='exim/src/smtp_in.c' l='1668' u='c' c='smtp_closedown'/>
+<use f='exim/src/smtp_in.c' l='2537' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2639' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2691' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2751' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2773' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2921' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2927' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2982' u='c' c='synprot_error'/>
+<use f='exim/src/smtp_in.c' l='2985' u='c' c='synprot_error'/>
+<use f='exim/src/smtp_in.c' l='3050' u='c' c='smtp_respond'/>
+<use f='exim/src/smtp_in.c' l='3055' u='c' c='smtp_respond'/>
+<use f='exim/src/smtp_in.c' l='3061' u='c' c='smtp_respond'/>
+<use f='exim/src/smtp_in.c' l='3406' u='c' c='smtp_notquit_exit'/>
+<use f='exim/src/smtp_in.c' l='3698' u='c' c='qualify_recipient'/>
+<use f='exim/src/smtp_in.c' l='3724' u='c' c='smtp_quit_handler'/>
+<use f='exim/src/smtp_in.c' l='3740' u='c' c='smtp_rset_handler'/>
+<use f='exim/src/smtp_in.c' l='3960' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4007' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4071' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4389' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4415' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4680' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4705' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4727' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4758' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4804' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4952' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4960' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5007' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5026' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5126' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5143' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5177' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5201' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5240' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5369' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5402' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5409' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5437' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5448' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5463' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5539' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5570' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5581' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5644' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5649' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5668' u='c' c='smtp_setup_msg'/>
+<doc f='exim/src/smtp_in.c' l='795'>/* This is a separate function so that we don&apos;t have to repeat everything for
+TLS support or debugging. It is global so that the daemon and the
+authentication functions can use it. It does not return any error indication,
+because major problems such as dropped connections won&apos;t show up till an output
+flush for non-TLS connections. The smtp_fflush() function is available for
+checking that: for convenience, TLS output errors are remembered here so that
+they are also picked up later by smtp_fflush().
+
+Arguments:
+  format      format string
+  more	      further data expected
+  ...         optional arguments
+
+Returns:      nothing
+*/</doc>
+<use f='exim/src/auths/get_no64_data.c' l='34' u='c' c='auth_get_no64_data'/>
+<use f='exim/src/auths/get_data.c' l='33' u='c' c='auth_get_data'/>
+<use f='exim/src/daemon.c' l='112' u='c' c='never_error'/>
+<use f='exim/src/daemon.c' l='190' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='221' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='241' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='311' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='395' u='c' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='2187' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3463' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4261' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4266' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4280' u='c' c='receive_msg'/>

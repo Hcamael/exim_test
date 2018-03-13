@@ -1,2 +1,4 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='125'/>
 <doc f='exim/build-Linux-x86_64/config.h' l='124'>/* ROUTER_IPLOOKUP not set */</doc>
+<use f='exim/src/drtables.c' l='203' u='a'/>
+<use f='exim/src/drtables.c' l='303' u='a'/>

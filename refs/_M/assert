@@ -1,0 +1,8 @@
+<dec f='include/assert.h' l='88'/>
+<use f='exim/src/deliver.c' l='8514' u='c'/>
+<use f='exim/src/smtp_in.c' l='4633' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1291' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1310' u='c'/>
+<use f='exim/src/auths/auth-spa.c' l='1326' u='c'/>
+<use f='exim/src/hash.c' l='80' u='c'/>
+<use f='exim/src/hash.c' l='101' u='c'/>

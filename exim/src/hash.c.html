@@ -1,0 +1,866 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>hash.c source code [exim/src/hash.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/hash.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='hash.c.html'>hash.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*</i></td></tr>
+<tr><th id="2">2</th><td><i> *  Exim - an Internet mail transport agent</i></td></tr>
+<tr><th id="3">3</th><td><i> *</i></td></tr>
+<tr><th id="4">4</th><td><i> *  Copyright (C) 2017  Exim maintainers</i></td></tr>
+<tr><th id="5">5</th><td><i> *  Copyright (c) University of Cambridge 1995 - 2017</i></td></tr>
+<tr><th id="6">6</th><td><i> *</i></td></tr>
+<tr><th id="7">7</th><td><i> *  Hash interface functions</i></td></tr>
+<tr><th id="8">8</th><td><i> */</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><u>#<span data-ppcond="10">ifndef</span> <span class="macro" data-ref="_M/STAND_ALONE">STAND_ALONE</span></u></td></tr>
+<tr><th id="11">11</th><td><u># include <a href="exim.h.html">"exim.h"</a></u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><u>#<span data-ppcond="10">else</span></u></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><i>/* For stand-alone testing, we need to have the structure defined, and</i></td></tr>
+<tr><th id="16">16</th><td><i>to be able to do I/O */</i></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><u># include &lt;stdio.h&gt;</u></td></tr>
+<tr><th id="19">19</th><td><u># include &lt;stdlib.h&gt;</u></td></tr>
+<tr><th id="20">20</th><td><b>typedef</b> <em>unsigned</em> <em>char</em> uschar;</td></tr>
+<tr><th id="21">21</th><td><b>typedef</b> <b>struct</b> sha1 {</td></tr>
+<tr><th id="22">22</th><td>  <em>unsigned</em> <em>int</em> H[<var>5</var>];</td></tr>
+<tr><th id="23">23</th><td>  <em>unsigned</em> <em>int</em> length;</td></tr>
+<tr><th id="24">24</th><td>  }</td></tr>
+<tr><th id="25">25</th><td>sha1;</td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="10">endif</span>	/*STAND_ALONE*/</u></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><u>#include <a href="../../include/assert.h.html">&lt;assert.h&gt;</a></u></td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><i>/******************************************************************************/</i></td></tr>
+<tr><th id="31">31</th><td><u>#<span data-ppcond="31">ifdef</span> <a class="macro" href="sha_ver.h.html#36" data-ref="_M/SHA_OPENSSL">SHA_OPENSSL</a></u></td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a></td></tr>
+<tr><th id="34">34</th><td><dfn class="decl def fn" id="exim_sha_init" title='exim_sha_init' data-ref="exim_sha_init">exim_sha_init</dfn>(<a class="typedef" href="hash.h.html#hctx" title='hctx' data-type='struct hctx' data-ref="hctx">hctx</a> * <dfn class="local col1 decl" id="1h" title='h' data-type='hctx *' data-ref="1h">h</dfn>, <a class="typedef" href="hash.h.html#hashmethod" title='hashmethod' data-type='enum hashmethod' data-ref="hashmethod">hashmethod</a> <dfn class="local col2 decl" id="2m" title='m' data-type='hashmethod' data-ref="2m">m</dfn>)</td></tr>
+<tr><th id="35">35</th><td>{</td></tr>
+<tr><th id="36">36</th><td><i>/*XXX extend for sha512 */</i></td></tr>
+<tr><th id="37">37</th><td><b>switch</b> (<a class="local col1 ref" href="#1h" title='h' data-ref="1h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::method" title='(anonymous struct)::method' data-ref="(anonymous)::method">method</a> = <a class="local col2 ref" href="#2m" title='m' data-ref="2m">m</a>)</td></tr>
+<tr><th id="38">38</th><td>  {</td></tr>
+<tr><th id="39">39</th><td>  <b>case</b> <a class="enum" href="hash.h.html#hashmethod::HASH_SHA1" title='hashmethod::HASH_SHA1' data-ref="hashmethod::HASH_SHA1">HASH_SHA1</a>:     <a class="local col1 ref" href="#1h" title='h' data-ref="1h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::hashlen" title='(anonymous struct)::hashlen' data-ref="(anonymous)::hashlen">hashlen</a> = <var>20</var>; <a class="ref fn" href="../../include/openssl/sha.h.html#SHA1_Init" title='SHA1_Init' data-ref="SHA1_Init">SHA1_Init</a>  (&amp;<a class="local col1 ref" href="#1h" title='h' data-ref="1h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::u" title='(anonymous struct)::u' data-ref="(anonymous)::u">u</a>.<a class="ref field" href="hash.h.html#(anonymousstruct)::(anonymous)::sha1" title='(anonymous struct)::(anonymous union)::sha1' data-ref="(anonymousstruct)::(anonymous)::sha1">sha1</a>);     <b>break</b>;</td></tr>
+<tr><th id="40">40</th><td>  <b>case</b> <a class="enum" href="hash.h.html#hashmethod::HASH_SHA2_256" title='hashmethod::HASH_SHA2_256' data-ref="hashmethod::HASH_SHA2_256">HASH_SHA2_256</a>: <a class="local col1 ref" href="#1h" title='h' data-ref="1h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::hashlen" title='(anonymous struct)::hashlen' data-ref="(anonymous)::hashlen">hashlen</a> = <var>32</var>; <a class="ref fn" href="../../include/openssl/sha.h.html#SHA256_Init" title='SHA256_Init' data-ref="SHA256_Init">SHA256_Init</a>(&amp;<a class="local col1 ref" href="#1h" title='h' data-ref="1h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::u" title='(anonymous struct)::u' data-ref="(anonymous)::u">u</a>.<a class="ref field" href="hash.h.html#(anonymousstruct)::(anonymous)::sha2_256" title='(anonymous struct)::(anonymous union)::sha2_256' data-ref="(anonymousstruct)::(anonymous)::sha2_256">sha2_256</a>); <b>break</b>;</td></tr>
+<tr><th id="41">41</th><td>  <b>case</b> <a class="enum" href="hash.h.html#hashmethod::HASH_SHA2_384" title='hashmethod::HASH_SHA2_384' data-ref="hashmethod::HASH_SHA2_384">HASH_SHA2_384</a>: <a class="local col1 ref" href="#1h" title='h' data-ref="1h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::hashlen" title='(anonymous struct)::hashlen' data-ref="(anonymous)::hashlen">hashlen</a> = <var>48</var>; <a class="ref fn" href="../../include/openssl/sha.h.html#SHA384_Init" title='SHA384_Init' data-ref="SHA384_Init">SHA384_Init</a>(&amp;<a class="local col1 ref" href="#1h" title='h' data-ref="1h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::u" title='(anonymous struct)::u' data-ref="(anonymous)::u">u</a>.<a class="ref field" href="hash.h.html#(anonymousstruct)::(anonymous)::sha2_512" title='(anonymous struct)::(anonymous union)::sha2_512' data-ref="(anonymousstruct)::(anonymous)::sha2_512">sha2_512</a>); <b>break</b>;</td></tr>
+<tr><th id="42">42</th><td>  <b>case</b> <a class="enum" href="hash.h.html#hashmethod::HASH_SHA2_512" title='hashmethod::HASH_SHA2_512' data-ref="hashmethod::HASH_SHA2_512">HASH_SHA2_512</a>: <a class="local col1 ref" href="#1h" title='h' data-ref="1h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::hashlen" title='(anonymous struct)::hashlen' data-ref="(anonymous)::hashlen">hashlen</a> = <var>64</var>; <a class="ref fn" href="../../include/openssl/sha.h.html#SHA512_Init" title='SHA512_Init' data-ref="SHA512_Init">SHA512_Init</a>(&amp;<a class="local col1 ref" href="#1h" title='h' data-ref="1h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::u" title='(anonymous struct)::u' data-ref="(anonymous)::u">u</a>.<a class="ref field" href="hash.h.html#(anonymousstruct)::(anonymous)::sha2_512" title='(anonymous struct)::(anonymous union)::sha2_512' data-ref="(anonymousstruct)::(anonymous)::sha2_512">sha2_512</a>); <b>break</b>;</td></tr>
+<tr><th id="43">43</th><td><u>#<span data-ppcond="43">ifdef</span> <span class="macro" data-ref="_M/EXIM_HAVE_SHA3">EXIM_HAVE_SHA3</span></u></td></tr>
+<tr><th id="44">44</th><td>  <b>case</b> HASH_SHA3_224: h-&gt;hashlen = <var>28</var>;</td></tr>
+<tr><th id="45">45</th><td>		      EVP_DigestInit(h-&gt;u.mctx = EVP_MD_CTX_new(), EVP_sha3_224());</td></tr>
+<tr><th id="46">46</th><td>		      <b>break</b>;</td></tr>
+<tr><th id="47">47</th><td>  <b>case</b> HASH_SHA3_256: h-&gt;hashlen = <var>32</var>;</td></tr>
+<tr><th id="48">48</th><td>		      EVP_DigestInit(h-&gt;u.mctx = EVP_MD_CTX_new(), EVP_sha3_256());</td></tr>
+<tr><th id="49">49</th><td>		      <b>break</b>;</td></tr>
+<tr><th id="50">50</th><td>  <b>case</b> HASH_SHA3_384: h-&gt;hashlen = <var>48</var>;</td></tr>
+<tr><th id="51">51</th><td>		      EVP_DigestInit(h-&gt;u.mctx = EVP_MD_CTX_new(), EVP_sha3_384());</td></tr>
+<tr><th id="52">52</th><td>		      <b>break</b>;</td></tr>
+<tr><th id="53">53</th><td>  <b>case</b> HASH_SHA3_512: h-&gt;hashlen = <var>64</var>;</td></tr>
+<tr><th id="54">54</th><td>		      EVP_DigestInit(h-&gt;u.mctx = EVP_MD_CTX_new(), EVP_sha3_512());</td></tr>
+<tr><th id="55">55</th><td>		      <b>break</b>;</td></tr>
+<tr><th id="56">56</th><td><u>#<span data-ppcond="43">endif</span></u></td></tr>
+<tr><th id="57">57</th><td>  <b>default</b>:	      <a class="local col1 ref" href="#1h" title='h' data-ref="1h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::hashlen" title='(anonymous struct)::hashlen' data-ref="(anonymous)::hashlen">hashlen</a> = <var>0</var>; <b>return</b> <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="58">58</th><td>  }</td></tr>
+<tr><th id="59">59</th><td><b>return</b> <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="60">60</th><td>}</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td><em>void</em></td></tr>
+<tr><th id="64">64</th><td><dfn class="decl def fn" id="exim_sha_update" title='exim_sha_update' data-ref="exim_sha_update">exim_sha_update</dfn>(<a class="typedef" href="hash.h.html#hctx" title='hctx' data-type='struct hctx' data-ref="hctx">hctx</a> * <dfn class="local col3 decl" id="3h" title='h' data-type='hctx *' data-ref="3h">h</dfn>, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="local col4 decl" id="4data" title='data' data-type='const uschar *' data-ref="4data">data</dfn>, <em>int</em> <dfn class="local col5 decl" id="5len" title='len' data-type='int' data-ref="5len">len</dfn>)</td></tr>
+<tr><th id="65">65</th><td>{</td></tr>
+<tr><th id="66">66</th><td><b>switch</b> (<a class="local col3 ref" href="#3h" title='h' data-ref="3h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::method" title='(anonymous struct)::method' data-ref="(anonymous)::method">method</a>)</td></tr>
+<tr><th id="67">67</th><td>  {</td></tr>
+<tr><th id="68">68</th><td>  <b>case</b> <a class="enum" href="hash.h.html#hashmethod::HASH_SHA1" title='hashmethod::HASH_SHA1' data-ref="hashmethod::HASH_SHA1">HASH_SHA1</a>:     <a class="ref fn" href="../../include/openssl/sha.h.html#SHA1_Update" title='SHA1_Update' data-ref="SHA1_Update">SHA1_Update</a>  (&amp;<a class="local col3 ref" href="#3h" title='h' data-ref="3h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::u" title='(anonymous struct)::u' data-ref="(anonymous)::u">u</a>.<a class="ref field" href="hash.h.html#(anonymousstruct)::(anonymous)::sha1" title='(anonymous struct)::(anonymous union)::sha1' data-ref="(anonymousstruct)::(anonymous)::sha1">sha1</a>,     <a class="local col4 ref" href="#4data" title='data' data-ref="4data">data</a>, <a class="local col5 ref" href="#5len" title='len' data-ref="5len">len</a>); <b>break</b>;</td></tr>
+<tr><th id="69">69</th><td>  <b>case</b> <a class="enum" href="hash.h.html#hashmethod::HASH_SHA2_256" title='hashmethod::HASH_SHA2_256' data-ref="hashmethod::HASH_SHA2_256">HASH_SHA2_256</a>: <a class="ref fn" href="../../include/openssl/sha.h.html#SHA256_Update" title='SHA256_Update' data-ref="SHA256_Update">SHA256_Update</a>(&amp;<a class="local col3 ref" href="#3h" title='h' data-ref="3h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::u" title='(anonymous struct)::u' data-ref="(anonymous)::u">u</a>.<a class="ref field" href="hash.h.html#(anonymousstruct)::(anonymous)::sha2_256" title='(anonymous struct)::(anonymous union)::sha2_256' data-ref="(anonymousstruct)::(anonymous)::sha2_256">sha2_256</a>, <a class="local col4 ref" href="#4data" title='data' data-ref="4data">data</a>, <a class="local col5 ref" href="#5len" title='len' data-ref="5len">len</a>); <b>break</b>;</td></tr>
+<tr><th id="70">70</th><td>  <b>case</b> <a class="enum" href="hash.h.html#hashmethod::HASH_SHA2_384" title='hashmethod::HASH_SHA2_384' data-ref="hashmethod::HASH_SHA2_384">HASH_SHA2_384</a>: <a class="ref fn" href="../../include/openssl/sha.h.html#SHA384_Update" title='SHA384_Update' data-ref="SHA384_Update">SHA384_Update</a>(&amp;<a class="local col3 ref" href="#3h" title='h' data-ref="3h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::u" title='(anonymous struct)::u' data-ref="(anonymous)::u">u</a>.<a class="ref field" href="hash.h.html#(anonymousstruct)::(anonymous)::sha2_512" title='(anonymous struct)::(anonymous union)::sha2_512' data-ref="(anonymousstruct)::(anonymous)::sha2_512">sha2_512</a>, <a class="local col4 ref" href="#4data" title='data' data-ref="4data">data</a>, <a class="local col5 ref" href="#5len" title='len' data-ref="5len">len</a>); <b>break</b>;</td></tr>
+<tr><th id="71">71</th><td>  <b>case</b> <a class="enum" href="hash.h.html#hashmethod::HASH_SHA2_512" title='hashmethod::HASH_SHA2_512' data-ref="hashmethod::HASH_SHA2_512">HASH_SHA2_512</a>: <a class="ref fn" href="../../include/openssl/sha.h.html#SHA512_Update" title='SHA512_Update' data-ref="SHA512_Update">SHA512_Update</a>(&amp;<a class="local col3 ref" href="#3h" title='h' data-ref="3h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::u" title='(anonymous struct)::u' data-ref="(anonymous)::u">u</a>.<a class="ref field" href="hash.h.html#(anonymousstruct)::(anonymous)::sha2_512" title='(anonymous struct)::(anonymous union)::sha2_512' data-ref="(anonymousstruct)::(anonymous)::sha2_512">sha2_512</a>, <a class="local col4 ref" href="#4data" title='data' data-ref="4data">data</a>, <a class="local col5 ref" href="#5len" title='len' data-ref="5len">len</a>); <b>break</b>;</td></tr>
+<tr><th id="72">72</th><td><u>#<span data-ppcond="72">ifdef</span> <span class="macro" data-ref="_M/EXIM_HAVE_SHA3">EXIM_HAVE_SHA3</span></u></td></tr>
+<tr><th id="73">73</th><td>  <b>case</b> HASH_SHA3_224:</td></tr>
+<tr><th id="74">74</th><td>  <b>case</b> HASH_SHA3_256:</td></tr>
+<tr><th id="75">75</th><td>  <b>case</b> HASH_SHA3_384:</td></tr>
+<tr><th id="76">76</th><td>  <b>case</b> HASH_SHA3_512: EVP_DigestUpdate(h-&gt;u.mctx, data, len); <b>break</b>;</td></tr>
+<tr><th id="77">77</th><td><u>#<span data-ppcond="72">endif</span></u></td></tr>
+<tr><th id="78">78</th><td>  <i>/* should be blocked by init not handling these, but be explicit to</i></td></tr>
+<tr><th id="79">79</th><td><i>  guard against accidents later (and hush up clang -Wswitch) */</i></td></tr>
+<tr><th id="80">80</th><td>  <b>default</b>: <a class="macro" href="../../include/assert.h.html#88" title="((0) ? (void) (0) : __assert_fail (&quot;0&quot;, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/hash.c&quot;, 80, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a>(<var>0</var>);</td></tr>
+<tr><th id="81">81</th><td>  }</td></tr>
+<tr><th id="82">82</th><td>}</td></tr>
+<tr><th id="83">83</th><td></td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td><em>void</em></td></tr>
+<tr><th id="86">86</th><td><dfn class="decl def fn" id="exim_sha_finish" title='exim_sha_finish' data-ref="exim_sha_finish">exim_sha_finish</dfn>(<a class="typedef" href="hash.h.html#hctx" title='hctx' data-type='struct hctx' data-ref="hctx">hctx</a> * <dfn class="local col6 decl" id="6h" title='h' data-type='hctx *' data-ref="6h">h</dfn>, <a class="typedef" href="blob.h.html#blob" title='blob' data-type='struct blob' data-ref="blob">blob</a> * <dfn class="local col7 decl" id="7b" title='b' data-type='blob *' data-ref="7b">b</dfn>)</td></tr>
+<tr><th id="87">87</th><td>{</td></tr>
+<tr><th id="88">88</th><td><a class="local col7 ref" href="#7b" title='b' data-ref="7b">b</a>-&gt;<a class="ref field" href="blob.h.html#(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</a> = <a class="macro" href="store.h.html#34" title="store_get_3(b-&gt;len = h-&gt;hashlen, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/hash.c&quot;, 88)" data-ref="_M/store_get">store_get</a>(<a class="local col7 ref" href="#7b" title='b' data-ref="7b">b</a>-&gt;<a class="ref field" href="blob.h.html#(anonymous)::len" title='(anonymous struct)::len' data-ref="(anonymous)::len">len</a> = <a class="local col6 ref" href="#6h" title='h' data-ref="6h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::hashlen" title='(anonymous struct)::hashlen' data-ref="(anonymous)::hashlen">hashlen</a>);</td></tr>
+<tr><th id="89">89</th><td><b>switch</b> (<a class="local col6 ref" href="#6h" title='h' data-ref="6h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::method" title='(anonymous struct)::method' data-ref="(anonymous)::method">method</a>)</td></tr>
+<tr><th id="90">90</th><td>  {</td></tr>
+<tr><th id="91">91</th><td>  <b>case</b> <a class="enum" href="hash.h.html#hashmethod::HASH_SHA1" title='hashmethod::HASH_SHA1' data-ref="hashmethod::HASH_SHA1">HASH_SHA1</a>:     <a class="ref fn" href="../../include/openssl/sha.h.html#SHA1_Final" title='SHA1_Final' data-ref="SHA1_Final">SHA1_Final</a>  (<a class="local col7 ref" href="#7b" title='b' data-ref="7b">b</a>-&gt;<a class="ref field" href="blob.h.html#(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</a>, &amp;<a class="local col6 ref" href="#6h" title='h' data-ref="6h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::u" title='(anonymous struct)::u' data-ref="(anonymous)::u">u</a>.<a class="ref field" href="hash.h.html#(anonymousstruct)::(anonymous)::sha1" title='(anonymous struct)::(anonymous union)::sha1' data-ref="(anonymousstruct)::(anonymous)::sha1">sha1</a>);     <b>break</b>;</td></tr>
+<tr><th id="92">92</th><td>  <b>case</b> <a class="enum" href="hash.h.html#hashmethod::HASH_SHA2_256" title='hashmethod::HASH_SHA2_256' data-ref="hashmethod::HASH_SHA2_256">HASH_SHA2_256</a>: <a class="ref fn" href="../../include/openssl/sha.h.html#SHA256_Final" title='SHA256_Final' data-ref="SHA256_Final">SHA256_Final</a>(<a class="local col7 ref" href="#7b" title='b' data-ref="7b">b</a>-&gt;<a class="ref field" href="blob.h.html#(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</a>, &amp;<a class="local col6 ref" href="#6h" title='h' data-ref="6h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::u" title='(anonymous struct)::u' data-ref="(anonymous)::u">u</a>.<a class="ref field" href="hash.h.html#(anonymousstruct)::(anonymous)::sha2_256" title='(anonymous struct)::(anonymous union)::sha2_256' data-ref="(anonymousstruct)::(anonymous)::sha2_256">sha2_256</a>); <b>break</b>;</td></tr>
+<tr><th id="93">93</th><td>  <b>case</b> <a class="enum" href="hash.h.html#hashmethod::HASH_SHA2_384" title='hashmethod::HASH_SHA2_384' data-ref="hashmethod::HASH_SHA2_384">HASH_SHA2_384</a>: <a class="ref fn" href="../../include/openssl/sha.h.html#SHA384_Final" title='SHA384_Final' data-ref="SHA384_Final">SHA384_Final</a>(<a class="local col7 ref" href="#7b" title='b' data-ref="7b">b</a>-&gt;<a class="ref field" href="blob.h.html#(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</a>, &amp;<a class="local col6 ref" href="#6h" title='h' data-ref="6h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::u" title='(anonymous struct)::u' data-ref="(anonymous)::u">u</a>.<a class="ref field" href="hash.h.html#(anonymousstruct)::(anonymous)::sha2_512" title='(anonymous struct)::(anonymous union)::sha2_512' data-ref="(anonymousstruct)::(anonymous)::sha2_512">sha2_512</a>); <b>break</b>;</td></tr>
+<tr><th id="94">94</th><td>  <b>case</b> <a class="enum" href="hash.h.html#hashmethod::HASH_SHA2_512" title='hashmethod::HASH_SHA2_512' data-ref="hashmethod::HASH_SHA2_512">HASH_SHA2_512</a>: <a class="ref fn" href="../../include/openssl/sha.h.html#SHA512_Final" title='SHA512_Final' data-ref="SHA512_Final">SHA512_Final</a>(<a class="local col7 ref" href="#7b" title='b' data-ref="7b">b</a>-&gt;<a class="ref field" href="blob.h.html#(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</a>, &amp;<a class="local col6 ref" href="#6h" title='h' data-ref="6h">h</a>-&gt;<a class="ref field" href="hash.h.html#(anonymous)::u" title='(anonymous struct)::u' data-ref="(anonymous)::u">u</a>.<a class="ref field" href="hash.h.html#(anonymousstruct)::(anonymous)::sha2_512" title='(anonymous struct)::(anonymous union)::sha2_512' data-ref="(anonymousstruct)::(anonymous)::sha2_512">sha2_512</a>); <b>break</b>;</td></tr>
+<tr><th id="95">95</th><td><u>#<span data-ppcond="95">ifdef</span> <span class="macro" data-ref="_M/EXIM_HAVE_SHA3">EXIM_HAVE_SHA3</span></u></td></tr>
+<tr><th id="96">96</th><td>  <b>case</b> HASH_SHA3_224:</td></tr>
+<tr><th id="97">97</th><td>  <b>case</b> HASH_SHA3_256:</td></tr>
+<tr><th id="98">98</th><td>  <b>case</b> HASH_SHA3_384:</td></tr>
+<tr><th id="99">99</th><td>  <b>case</b> HASH_SHA3_512: EVP_DigestFinal(h-&gt;u.mctx, b-&gt;data, NULL); <b>break</b>;</td></tr>
+<tr><th id="100">100</th><td><u>#<span data-ppcond="95">endif</span></u></td></tr>
+<tr><th id="101">101</th><td>  <b>default</b>: <a class="macro" href="../../include/assert.h.html#88" title="((0) ? (void) (0) : __assert_fail (&quot;0&quot;, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/hash.c&quot;, 101, __PRETTY_FUNCTION__))" data-ref="_M/assert">assert</a>(<var>0</var>);</td></tr>
+<tr><th id="102">102</th><td>  }</td></tr>
+<tr><th id="103">103</th><td>}</td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td></td></tr>
+<tr><th id="107">107</th><td><u>#<span data-ppcond="31">elif</span> defined(SHA_GNUTLS)</u></td></tr>
+<tr><th id="108">108</th><td><i>/******************************************************************************/</i></td></tr>
+<tr><th id="109">109</th><td></td></tr>
+<tr><th id="110">110</th><td>BOOL</td></tr>
+<tr><th id="111">111</th><td>exim_sha_init(hctx * h, hashmethod m)</td></tr>
+<tr><th id="112">112</th><td>{</td></tr>
+<tr><th id="113">113</th><td><i>/*XXX extend for sha512 */</i></td></tr>
+<tr><th id="114">114</th><td><b>switch</b> (h-&gt;method = m)</td></tr>
+<tr><th id="115">115</th><td>  {</td></tr>
+<tr><th id="116">116</th><td>  <b>case</b> HASH_SHA1:     h-&gt;hashlen = <var>20</var>; gnutls_hash_init(&amp;h-&gt;sha, GNUTLS_DIG_SHA1);   <b>break</b>;</td></tr>
+<tr><th id="117">117</th><td>  <b>case</b> HASH_SHA2_256: h-&gt;hashlen = <var>32</var>; gnutls_hash_init(&amp;h-&gt;sha, GNUTLS_DIG_SHA256); <b>break</b>;</td></tr>
+<tr><th id="118">118</th><td>  <b>case</b> HASH_SHA2_384: h-&gt;hashlen = <var>48</var>; gnutls_hash_init(&amp;h-&gt;sha, GNUTLS_DIG_SHA384); <b>break</b>;</td></tr>
+<tr><th id="119">119</th><td>  <b>case</b> HASH_SHA2_512: h-&gt;hashlen = <var>64</var>; gnutls_hash_init(&amp;h-&gt;sha, GNUTLS_DIG_SHA512); <b>break</b>;</td></tr>
+<tr><th id="120">120</th><td><u>#ifdef EXIM_HAVE_SHA3</u></td></tr>
+<tr><th id="121">121</th><td>  <b>case</b> HASH_SHA3_224: h-&gt;hashlen = <var>28</var>; gnutls_hash_init(&amp;h-&gt;sha, GNUTLS_DIG_SHA3_224); <b>break</b>;</td></tr>
+<tr><th id="122">122</th><td>  <b>case</b> HASH_SHA3_256: h-&gt;hashlen = <var>32</var>; gnutls_hash_init(&amp;h-&gt;sha, GNUTLS_DIG_SHA3_256); <b>break</b>;</td></tr>
+<tr><th id="123">123</th><td>  <b>case</b> HASH_SHA3_384: h-&gt;hashlen = <var>48</var>; gnutls_hash_init(&amp;h-&gt;sha, GNUTLS_DIG_SHA3_384); <b>break</b>;</td></tr>
+<tr><th id="124">124</th><td>  <b>case</b> HASH_SHA3_512: h-&gt;hashlen = <var>64</var>; gnutls_hash_init(&amp;h-&gt;sha, GNUTLS_DIG_SHA3_512); <b>break</b>;</td></tr>
+<tr><th id="125">125</th><td><u>#endif</u></td></tr>
+<tr><th id="126">126</th><td>  <b>default</b>: h-&gt;hashlen = <var>0</var>; <b>return</b> FALSE;</td></tr>
+<tr><th id="127">127</th><td>  }</td></tr>
+<tr><th id="128">128</th><td><b>return</b> TRUE;</td></tr>
+<tr><th id="129">129</th><td>}</td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td><em>void</em></td></tr>
+<tr><th id="133">133</th><td>exim_sha_update(hctx * h, <em>const</em> uschar * data, <em>int</em> len)</td></tr>
+<tr><th id="134">134</th><td>{</td></tr>
+<tr><th id="135">135</th><td>gnutls_hash(h-&gt;sha, data, len);</td></tr>
+<tr><th id="136">136</th><td>}</td></tr>
+<tr><th id="137">137</th><td></td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td><em>void</em></td></tr>
+<tr><th id="140">140</th><td>exim_sha_finish(hctx * h, blob * b)</td></tr>
+<tr><th id="141">141</th><td>{</td></tr>
+<tr><th id="142">142</th><td>b-&gt;data = store_get(b-&gt;len = h-&gt;hashlen);</td></tr>
+<tr><th id="143">143</th><td>gnutls_hash_output(h-&gt;sha, b-&gt;data);</td></tr>
+<tr><th id="144">144</th><td>}</td></tr>
+<tr><th id="145">145</th><td></td></tr>
+<tr><th id="146">146</th><td></td></tr>
+<tr><th id="147">147</th><td></td></tr>
+<tr><th id="148">148</th><td><u>#elif defined(SHA_GCRYPT)</u></td></tr>
+<tr><th id="149">149</th><td><i>/******************************************************************************/</i></td></tr>
+<tr><th id="150">150</th><td></td></tr>
+<tr><th id="151">151</th><td>BOOL</td></tr>
+<tr><th id="152">152</th><td>exim_sha_init(hctx * h, hashmethod m)</td></tr>
+<tr><th id="153">153</th><td>{</td></tr>
+<tr><th id="154">154</th><td><i>/*XXX extend for sha512 */</i></td></tr>
+<tr><th id="155">155</th><td><b>switch</b> (h-&gt;method = m)</td></tr>
+<tr><th id="156">156</th><td>  {</td></tr>
+<tr><th id="157">157</th><td>  <b>case</b> HASH_SHA1:     h-&gt;hashlen = <var>20</var>; gcry_md_open(&amp;h-&gt;sha, GCRY_MD_SHA1, <var>0</var>);   <b>break</b>;</td></tr>
+<tr><th id="158">158</th><td>  <b>case</b> HASH_SHA2_256: h-&gt;hashlen = <var>32</var>; gcry_md_open(&amp;h-&gt;sha, GCRY_MD_SHA256, <var>0</var>); <b>break</b>;</td></tr>
+<tr><th id="159">159</th><td>  <b>case</b> HASH_SHA2_384: h-&gt;hashlen = <var>48</var>; gcry_md_open(&amp;h-&gt;sha, GCRY_MD_SHA384, <var>0</var>); <b>break</b>;</td></tr>
+<tr><th id="160">160</th><td>  <b>case</b> HASH_SHA2_512: h-&gt;hashlen = <var>64</var>; gcry_md_open(&amp;h-&gt;sha, GCRY_MD_SHA512, <var>0</var>); <b>break</b>;</td></tr>
+<tr><th id="161">161</th><td>  <b>case</b> HASH_SHA3_256: h-&gt;hashlen = <var>32</var>; gcry_md_open(&amp;h-&gt;sha, GCRY_MD_SHA3_256, <var>0</var>); <b>break</b>;</td></tr>
+<tr><th id="162">162</th><td>  <b>case</b> HASH_SHA3_384: h-&gt;hashlen = <var>48</var>; gcry_md_open(&amp;h-&gt;sha, GCRY_MD_SHA3_384, <var>0</var>); <b>break</b>;</td></tr>
+<tr><th id="163">163</th><td>  <b>case</b> HASH_SHA3_512: h-&gt;hashlen = <var>64</var>; gcry_md_open(&amp;h-&gt;sha, GCRY_MD_SHA3_512, <var>0</var>); <b>break</b>;</td></tr>
+<tr><th id="164">164</th><td>  <b>default</b>:	    h-&gt;hashlen = <var>0</var>; <b>return</b> FALSE;</td></tr>
+<tr><th id="165">165</th><td>  }</td></tr>
+<tr><th id="166">166</th><td><b>return</b> TRUE;</td></tr>
+<tr><th id="167">167</th><td>}</td></tr>
+<tr><th id="168">168</th><td></td></tr>
+<tr><th id="169">169</th><td></td></tr>
+<tr><th id="170">170</th><td><em>void</em></td></tr>
+<tr><th id="171">171</th><td>exim_sha_update(hctx * h, <em>const</em> uschar * data, <em>int</em> len)</td></tr>
+<tr><th id="172">172</th><td>{</td></tr>
+<tr><th id="173">173</th><td>gcry_md_write(h-&gt;sha, data, len);</td></tr>
+<tr><th id="174">174</th><td>}</td></tr>
+<tr><th id="175">175</th><td></td></tr>
+<tr><th id="176">176</th><td></td></tr>
+<tr><th id="177">177</th><td><em>void</em></td></tr>
+<tr><th id="178">178</th><td>exim_sha_finish(hctx * h, blob * b)</td></tr>
+<tr><th id="179">179</th><td>{</td></tr>
+<tr><th id="180">180</th><td>b-&gt;data = store_get(b-&gt;len = h-&gt;hashlen);</td></tr>
+<tr><th id="181">181</th><td>memcpy(b-&gt;data, gcry_md_read(h-&gt;sha, <var>0</var>), h-&gt;hashlen);</td></tr>
+<tr><th id="182">182</th><td>}</td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td></td></tr>
+<tr><th id="185">185</th><td></td></tr>
+<tr><th id="186">186</th><td></td></tr>
+<tr><th id="187">187</th><td><u>#elif defined(SHA_POLARSSL)</u></td></tr>
+<tr><th id="188">188</th><td><i>/******************************************************************************/</i></td></tr>
+<tr><th id="189">189</th><td></td></tr>
+<tr><th id="190">190</th><td>BOOL</td></tr>
+<tr><th id="191">191</th><td>exim_sha_init(hctx * h, hashmethod m)</td></tr>
+<tr><th id="192">192</th><td>{</td></tr>
+<tr><th id="193">193</th><td><i>/*XXX extend for sha512 */</i></td></tr>
+<tr><th id="194">194</th><td><b>switch</b> (h-&gt;method = m)</td></tr>
+<tr><th id="195">195</th><td>  {</td></tr>
+<tr><th id="196">196</th><td>  <b>case</b> HASH_SHA1:   h-&gt;hashlen = <var>20</var>; sha1_starts(&amp;h-&gt;u.sha1);    <b>break</b>;</td></tr>
+<tr><th id="197">197</th><td>  <b>case</b> HASH_SHA2_256: h-&gt;hashlen = <var>32</var>; sha2_starts(&amp;h-&gt;u.sha2, <var>0</var>); <b>break</b>;</td></tr>
+<tr><th id="198">198</th><td>  <b>default</b>:	    h-&gt;hashlen = <var>0</var>; <b>return</b> FALSE;</td></tr>
+<tr><th id="199">199</th><td>  }</td></tr>
+<tr><th id="200">200</th><td><b>return</b> TRUE;</td></tr>
+<tr><th id="201">201</th><td>}</td></tr>
+<tr><th id="202">202</th><td></td></tr>
+<tr><th id="203">203</th><td></td></tr>
+<tr><th id="204">204</th><td><em>void</em></td></tr>
+<tr><th id="205">205</th><td>exim_sha_update(hctx * h, <em>const</em> uschar * data, <em>int</em> len)</td></tr>
+<tr><th id="206">206</th><td>{</td></tr>
+<tr><th id="207">207</th><td><b>switch</b> (h-&gt;method)</td></tr>
+<tr><th id="208">208</th><td>  {</td></tr>
+<tr><th id="209">209</th><td>  <b>case</b> HASH_SHA1:   sha1_update(h-&gt;u.sha1, US data, len); <b>break</b>;</td></tr>
+<tr><th id="210">210</th><td>  <b>case</b> HASH_SHA2_256: sha2_update(h-&gt;u.sha2, US data, len); <b>break</b>;</td></tr>
+<tr><th id="211">211</th><td>  }</td></tr>
+<tr><th id="212">212</th><td>}</td></tr>
+<tr><th id="213">213</th><td></td></tr>
+<tr><th id="214">214</th><td></td></tr>
+<tr><th id="215">215</th><td><em>void</em></td></tr>
+<tr><th id="216">216</th><td>exim_sha_finish(hctx * h, blob * b)</td></tr>
+<tr><th id="217">217</th><td>{</td></tr>
+<tr><th id="218">218</th><td>b-&gt;data = store_get(b-&gt;len = h-&gt;hashlen);</td></tr>
+<tr><th id="219">219</th><td><b>switch</b> (h-&gt;method)</td></tr>
+<tr><th id="220">220</th><td>  {</td></tr>
+<tr><th id="221">221</th><td>  <b>case</b> HASH_SHA1:   sha1_finish(h-&gt;u.sha1, b-&gt;data); <b>break</b>;</td></tr>
+<tr><th id="222">222</th><td>  <b>case</b> HASH_SHA2_256: sha2_finish(h-&gt;u.sha2, b-&gt;data); <b>break</b>;</td></tr>
+<tr><th id="223">223</th><td>  }</td></tr>
+<tr><th id="224">224</th><td>}</td></tr>
+<tr><th id="225">225</th><td></td></tr>
+<tr><th id="226">226</th><td></td></tr>
+<tr><th id="227">227</th><td></td></tr>
+<tr><th id="228">228</th><td></td></tr>
+<tr><th id="229">229</th><td><u>#elif defined(SHA_NATIVE)</u></td></tr>
+<tr><th id="230">230</th><td><i>/******************************************************************************/</i></td></tr>
+<tr><th id="231">231</th><td><i>/* Only sha-1 supported */</i></td></tr>
+<tr><th id="232">232</th><td></td></tr>
+<tr><th id="233">233</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="234">234</th><td><i>*        Start off a new SHA-1 computation.      *</i></td></tr>
+<tr><th id="235">235</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="236">236</th><td></td></tr>
+<tr><th id="237">237</th><td><i>/*</i></td></tr>
+<tr><th id="238">238</th><td><i>Argument:  pointer to sha1 storage structure</i></td></tr>
+<tr><th id="239">239</th><td><i>Returns:   nothing</i></td></tr>
+<tr><th id="240">240</th><td><i>*/</i></td></tr>
+<tr><th id="241">241</th><td></td></tr>
+<tr><th id="242">242</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="243">243</th><td>native_sha1_start(sha1 *base)</td></tr>
+<tr><th id="244">244</th><td>{</td></tr>
+<tr><th id="245">245</th><td>base-&gt;H[<var>0</var>] = <var>0x67452301</var>;</td></tr>
+<tr><th id="246">246</th><td>base-&gt;H[<var>1</var>] = <var>0xefcdab89</var>;</td></tr>
+<tr><th id="247">247</th><td>base-&gt;H[<var>2</var>] = <var>0x98badcfe</var>;</td></tr>
+<tr><th id="248">248</th><td>base-&gt;H[<var>3</var>] = <var>0x10325476</var>;</td></tr>
+<tr><th id="249">249</th><td>base-&gt;H[<var>4</var>] = <var>0xc3d2e1f0</var>;</td></tr>
+<tr><th id="250">250</th><td>base-&gt;length = <var>0</var>;</td></tr>
+<tr><th id="251">251</th><td>}</td></tr>
+<tr><th id="252">252</th><td></td></tr>
+<tr><th id="253">253</th><td></td></tr>
+<tr><th id="254">254</th><td></td></tr>
+<tr><th id="255">255</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="256">256</th><td><i>*       Process another 64-byte block            *</i></td></tr>
+<tr><th id="257">257</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="258">258</th><td></td></tr>
+<tr><th id="259">259</th><td><i>/* This function implements central part of the algorithm</i></td></tr>
+<tr><th id="260">260</th><td><i></i></td></tr>
+<tr><th id="261">261</th><td><i>Arguments:</i></td></tr>
+<tr><th id="262">262</th><td><i>  base       pointer to sha1 storage structure</i></td></tr>
+<tr><th id="263">263</th><td><i>  text       pointer to next 64 bytes of subject text</i></td></tr>
+<tr><th id="264">264</th><td><i></i></td></tr>
+<tr><th id="265">265</th><td><i>Returns:     nothing</i></td></tr>
+<tr><th id="266">266</th><td><i>*/</i></td></tr>
+<tr><th id="267">267</th><td></td></tr>
+<tr><th id="268">268</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="269">269</th><td>native_sha1_mid(sha1 *base, <em>const</em> uschar *text)</td></tr>
+<tr><th id="270">270</th><td>{</td></tr>
+<tr><th id="271">271</th><td><em>int</em> i;</td></tr>
+<tr><th id="272">272</th><td>uint A, B, C, D, E;</td></tr>
+<tr><th id="273">273</th><td>uint W[<var>80</var>];</td></tr>
+<tr><th id="274">274</th><td></td></tr>
+<tr><th id="275">275</th><td>base-&gt;length += <var>64</var>;</td></tr>
+<tr><th id="276">276</th><td></td></tr>
+<tr><th id="277">277</th><td><b>for</b> (i = <var>0</var>; i &lt; <var>16</var>; i++)</td></tr>
+<tr><th id="278">278</th><td>  {</td></tr>
+<tr><th id="279">279</th><td>  W[i] = ((uint)text[<var>0</var>] &lt;&lt; <var>24</var>) | (text[<var>1</var>] &lt;&lt; <var>16</var>) | (text[<var>2</var>] &lt;&lt; <var>8</var>) | text[<var>3</var>];</td></tr>
+<tr><th id="280">280</th><td>  text += <var>4</var>;</td></tr>
+<tr><th id="281">281</th><td>  }</td></tr>
+<tr><th id="282">282</th><td></td></tr>
+<tr><th id="283">283</th><td><b>for</b> (i = <var>16</var>; i &lt; <var>80</var>; i++)</td></tr>
+<tr><th id="284">284</th><td>  {</td></tr>
+<tr><th id="285">285</th><td>  <em>register</em> <em>unsigned</em> <em>int</em> x = W[i-<var>3</var>] ^ W[i-<var>8</var>] ^ W[i-<var>14</var>] ^ W[i-<var>16</var>];</td></tr>
+<tr><th id="286">286</th><td>  W[i] = (x &lt;&lt; <var>1</var>) | (x &gt;&gt; <var>31</var>);</td></tr>
+<tr><th id="287">287</th><td>  }</td></tr>
+<tr><th id="288">288</th><td></td></tr>
+<tr><th id="289">289</th><td>A = base-&gt;H[<var>0</var>];</td></tr>
+<tr><th id="290">290</th><td>B = base-&gt;H[<var>1</var>];</td></tr>
+<tr><th id="291">291</th><td>C = base-&gt;H[<var>2</var>];</td></tr>
+<tr><th id="292">292</th><td>D = base-&gt;H[<var>3</var>];</td></tr>
+<tr><th id="293">293</th><td>E = base-&gt;H[<var>4</var>];</td></tr>
+<tr><th id="294">294</th><td></td></tr>
+<tr><th id="295">295</th><td><b>for</b> (i = <var>0</var>; i &lt; <var>20</var>; i++)</td></tr>
+<tr><th id="296">296</th><td>  {</td></tr>
+<tr><th id="297">297</th><td>  <em>unsigned</em> <em>int</em> T;</td></tr>
+<tr><th id="298">298</th><td>  T = ((A &lt;&lt; <var>5</var>) | (A &gt;&gt; <var>27</var>)) + ((B &amp; C) | ((~B) &amp; D)) + E + W[i] + <var>0x5a827999</var>;</td></tr>
+<tr><th id="299">299</th><td>  E = D;</td></tr>
+<tr><th id="300">300</th><td>  D = C;</td></tr>
+<tr><th id="301">301</th><td>  C = (B &lt;&lt; <var>30</var>) | (B &gt;&gt; <var>2</var>);</td></tr>
+<tr><th id="302">302</th><td>  B = A;</td></tr>
+<tr><th id="303">303</th><td>  A = T;</td></tr>
+<tr><th id="304">304</th><td>  }</td></tr>
+<tr><th id="305">305</th><td></td></tr>
+<tr><th id="306">306</th><td><b>for</b> (i = <var>20</var>; i &lt; <var>40</var>; i++)</td></tr>
+<tr><th id="307">307</th><td>  {</td></tr>
+<tr><th id="308">308</th><td>  <em>unsigned</em> <em>int</em> T;</td></tr>
+<tr><th id="309">309</th><td>  T = ((A &lt;&lt; <var>5</var>) | (A &gt;&gt; <var>27</var>)) + (B ^ C ^ D) + E + W[i] + <var>0x6ed9eba1</var>;</td></tr>
+<tr><th id="310">310</th><td>  E = D;</td></tr>
+<tr><th id="311">311</th><td>  D = C;</td></tr>
+<tr><th id="312">312</th><td>  C = (B &lt;&lt; <var>30</var>) | (B &gt;&gt; <var>2</var>);</td></tr>
+<tr><th id="313">313</th><td>  B = A;</td></tr>
+<tr><th id="314">314</th><td>  A = T;</td></tr>
+<tr><th id="315">315</th><td>  }</td></tr>
+<tr><th id="316">316</th><td></td></tr>
+<tr><th id="317">317</th><td><b>for</b> (i = <var>40</var>; i &lt; <var>60</var>; i++)</td></tr>
+<tr><th id="318">318</th><td>  {</td></tr>
+<tr><th id="319">319</th><td>  <em>unsigned</em> <em>int</em> T;</td></tr>
+<tr><th id="320">320</th><td>  T = ((A &lt;&lt; <var>5</var>) | (A &gt;&gt; <var>27</var>)) + ((B &amp; C) | (B &amp; D) | (C &amp; D)) + E + W[i] +</td></tr>
+<tr><th id="321">321</th><td>    <var>0x8f1bbcdc</var>;</td></tr>
+<tr><th id="322">322</th><td>  E = D;</td></tr>
+<tr><th id="323">323</th><td>  D = C;</td></tr>
+<tr><th id="324">324</th><td>  C = (B &lt;&lt; <var>30</var>) | (B &gt;&gt; <var>2</var>);</td></tr>
+<tr><th id="325">325</th><td>  B = A;</td></tr>
+<tr><th id="326">326</th><td>  A = T;</td></tr>
+<tr><th id="327">327</th><td>  }</td></tr>
+<tr><th id="328">328</th><td></td></tr>
+<tr><th id="329">329</th><td><b>for</b> (i = <var>60</var>; i &lt; <var>80</var>; i++)</td></tr>
+<tr><th id="330">330</th><td>  {</td></tr>
+<tr><th id="331">331</th><td>  <em>unsigned</em> <em>int</em> T;</td></tr>
+<tr><th id="332">332</th><td>  T = ((A &lt;&lt; <var>5</var>) | (A &gt;&gt; <var>27</var>)) + (B ^ C ^ D) + E + W[i] + <var>0xca62c1d6</var>;</td></tr>
+<tr><th id="333">333</th><td>  E = D;</td></tr>
+<tr><th id="334">334</th><td>  D = C;</td></tr>
+<tr><th id="335">335</th><td>  C = (B &lt;&lt; <var>30</var>) | (B &gt;&gt; <var>2</var>);</td></tr>
+<tr><th id="336">336</th><td>  B = A;</td></tr>
+<tr><th id="337">337</th><td>  A = T;</td></tr>
+<tr><th id="338">338</th><td>  }</td></tr>
+<tr><th id="339">339</th><td></td></tr>
+<tr><th id="340">340</th><td>base-&gt;H[<var>0</var>] += A;</td></tr>
+<tr><th id="341">341</th><td>base-&gt;H[<var>1</var>] += B;</td></tr>
+<tr><th id="342">342</th><td>base-&gt;H[<var>2</var>] += C;</td></tr>
+<tr><th id="343">343</th><td>base-&gt;H[<var>3</var>] += D;</td></tr>
+<tr><th id="344">344</th><td>base-&gt;H[<var>4</var>] += E;</td></tr>
+<tr><th id="345">345</th><td>}</td></tr>
+<tr><th id="346">346</th><td></td></tr>
+<tr><th id="347">347</th><td></td></tr>
+<tr><th id="348">348</th><td></td></tr>
+<tr><th id="349">349</th><td></td></tr>
+<tr><th id="350">350</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="351">351</th><td><i>*     Process the final text string              *</i></td></tr>
+<tr><th id="352">352</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="353">353</th><td></td></tr>
+<tr><th id="354">354</th><td><i>/* The string may be of any length. It is padded out according to the rules</i></td></tr>
+<tr><th id="355">355</th><td><i>for computing SHA-1 digests. The final result is then converted to text form</i></td></tr>
+<tr><th id="356">356</th><td><i>and returned.</i></td></tr>
+<tr><th id="357">357</th><td><i></i></td></tr>
+<tr><th id="358">358</th><td><i>Arguments:</i></td></tr>
+<tr><th id="359">359</th><td><i>  base      pointer to the sha1 storage structure</i></td></tr>
+<tr><th id="360">360</th><td><i>  text      pointer to the final text vector</i></td></tr>
+<tr><th id="361">361</th><td><i>  length    length of the final text vector</i></td></tr>
+<tr><th id="362">362</th><td><i>  digest    points to 16 bytes in which to place the result</i></td></tr>
+<tr><th id="363">363</th><td><i></i></td></tr>
+<tr><th id="364">364</th><td><i>Returns:    nothing</i></td></tr>
+<tr><th id="365">365</th><td><i>*/</i></td></tr>
+<tr><th id="366">366</th><td></td></tr>
+<tr><th id="367">367</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="368">368</th><td>native_sha1_end(sha1 *base, <em>const</em> uschar *text, <em>int</em> length, uschar *digest)</td></tr>
+<tr><th id="369">369</th><td>{</td></tr>
+<tr><th id="370">370</th><td><em>int</em> i;</td></tr>
+<tr><th id="371">371</th><td>uschar work[<var>64</var>];</td></tr>
+<tr><th id="372">372</th><td></td></tr>
+<tr><th id="373">373</th><td><i>/* Process in chunks of 64 until we have less than 64 bytes left. */</i></td></tr>
+<tr><th id="374">374</th><td></td></tr>
+<tr><th id="375">375</th><td><b>while</b> (length &gt;= <var>64</var>)</td></tr>
+<tr><th id="376">376</th><td>  {</td></tr>
+<tr><th id="377">377</th><td>  native_sha1_mid(base, text);</td></tr>
+<tr><th id="378">378</th><td>  text += <var>64</var>;</td></tr>
+<tr><th id="379">379</th><td>  length -= <var>64</var>;</td></tr>
+<tr><th id="380">380</th><td>  }</td></tr>
+<tr><th id="381">381</th><td></td></tr>
+<tr><th id="382">382</th><td><i>/* If the remaining string contains more than 55 bytes, we must pad it</i></td></tr>
+<tr><th id="383">383</th><td><i>out to 64, process it, and then set up the final chunk as 56 bytes of</i></td></tr>
+<tr><th id="384">384</th><td><i>padding. If it has less than 56 bytes, we pad it out to 56 bytes as the</i></td></tr>
+<tr><th id="385">385</th><td><i>final chunk. */</i></td></tr>
+<tr><th id="386">386</th><td></td></tr>
+<tr><th id="387">387</th><td>memcpy(work, text, length);</td></tr>
+<tr><th id="388">388</th><td>work[length] = <var>0x80</var>;</td></tr>
+<tr><th id="389">389</th><td></td></tr>
+<tr><th id="390">390</th><td><b>if</b> (length &gt; <var>55</var>)</td></tr>
+<tr><th id="391">391</th><td>  {</td></tr>
+<tr><th id="392">392</th><td>  memset(work+length+<var>1</var>, <var>0</var>, <var>63</var>-length);</td></tr>
+<tr><th id="393">393</th><td>  native_sha1_mid(base, work);</td></tr>
+<tr><th id="394">394</th><td>  base-&gt;length -= <var>64</var>;</td></tr>
+<tr><th id="395">395</th><td>  memset(work, <var>0</var>, <var>56</var>);</td></tr>
+<tr><th id="396">396</th><td>  }</td></tr>
+<tr><th id="397">397</th><td><b>else</b></td></tr>
+<tr><th id="398">398</th><td>  {</td></tr>
+<tr><th id="399">399</th><td>  memset(work+length+<var>1</var>, <var>0</var>, <var>55</var>-length);</td></tr>
+<tr><th id="400">400</th><td>  }</td></tr>
+<tr><th id="401">401</th><td></td></tr>
+<tr><th id="402">402</th><td><i>/* The final 8 bytes of the final chunk are a 64-bit representation of the</i></td></tr>
+<tr><th id="403">403</th><td><i>length of the input string *bits*, before padding, high order word first, and</i></td></tr>
+<tr><th id="404">404</th><td><i>high order bytes first in each word. This implementation is designed for short</i></td></tr>
+<tr><th id="405">405</th><td><i>strings, and so operates with a single int counter only. */</i></td></tr>
+<tr><th id="406">406</th><td></td></tr>
+<tr><th id="407">407</th><td>length += base-&gt;length;   <i>/* Total length in bytes */</i></td></tr>
+<tr><th id="408">408</th><td>length &lt;&lt;= <var>3</var>;             <i>/* Total length in bits */</i></td></tr>
+<tr><th id="409">409</th><td></td></tr>
+<tr><th id="410">410</th><td>work[<var>63</var>] = length         &amp; <var>0xff</var>;</td></tr>
+<tr><th id="411">411</th><td>work[<var>62</var>] = (length &gt;&gt;  <var>8</var>) &amp; <var>0xff</var>;</td></tr>
+<tr><th id="412">412</th><td>work[<var>61</var>] = (length &gt;&gt; <var>16</var>) &amp; <var>0xff</var>;</td></tr>
+<tr><th id="413">413</th><td>work[<var>60</var>] = (length &gt;&gt; <var>24</var>) &amp; <var>0xff</var>;</td></tr>
+<tr><th id="414">414</th><td></td></tr>
+<tr><th id="415">415</th><td>memset(work+<var>56</var>, <var>0</var>, <var>4</var>);</td></tr>
+<tr><th id="416">416</th><td></td></tr>
+<tr><th id="417">417</th><td><i>/* Process the final 64-byte chunk */</i></td></tr>
+<tr><th id="418">418</th><td></td></tr>
+<tr><th id="419">419</th><td>native_sha1_mid(base, work);</td></tr>
+<tr><th id="420">420</th><td></td></tr>
+<tr><th id="421">421</th><td><i>/* Pass back the result, high-order byte first in each word. */</i></td></tr>
+<tr><th id="422">422</th><td></td></tr>
+<tr><th id="423">423</th><td><b>for</b> (i = <var>0</var>; i &lt; <var>5</var>; i++)</td></tr>
+<tr><th id="424">424</th><td>  {</td></tr>
+<tr><th id="425">425</th><td>  <em>register</em> <em>int</em> x = base-&gt;H[i];</td></tr>
+<tr><th id="426">426</th><td>  *digest++ = (x &gt;&gt; <var>24</var>) &amp; <var>0xff</var>;</td></tr>
+<tr><th id="427">427</th><td>  *digest++ = (x &gt;&gt; <var>16</var>) &amp; <var>0xff</var>;</td></tr>
+<tr><th id="428">428</th><td>  *digest++ = (x &gt;&gt;  <var>8</var>) &amp; <var>0xff</var>;</td></tr>
+<tr><th id="429">429</th><td>  *digest++ =  x        &amp; <var>0xff</var>;</td></tr>
+<tr><th id="430">430</th><td>  }</td></tr>
+<tr><th id="431">431</th><td>}</td></tr>
+<tr><th id="432">432</th><td></td></tr>
+<tr><th id="433">433</th><td></td></tr>
+<tr><th id="434">434</th><td></td></tr>
+<tr><th id="435">435</th><td></td></tr>
+<tr><th id="436">436</th><td></td></tr>
+<tr><th id="437">437</th><td></td></tr>
+<tr><th id="438">438</th><td><u># ifdef notdef</u></td></tr>
+<tr><th id="439">439</th><td>BOOL</td></tr>
+<tr><th id="440">440</th><td>exim_sha_init(hctx * h, hashmethod m)</td></tr>
+<tr><th id="441">441</th><td>{</td></tr>
+<tr><th id="442">442</th><td>h-&gt;hashlen = <var>20</var>;</td></tr>
+<tr><th id="443">443</th><td>native_sha1_start(&amp;h-&gt;sha1);</td></tr>
+<tr><th id="444">444</th><td><b>return</b> TRUE;</td></tr>
+<tr><th id="445">445</th><td>}</td></tr>
+<tr><th id="446">446</th><td></td></tr>
+<tr><th id="447">447</th><td></td></tr>
+<tr><th id="448">448</th><td><em>void</em></td></tr>
+<tr><th id="449">449</th><td>exim_sha_update(hctx * h, <em>const</em> uschar * data, <em>int</em> len)</td></tr>
+<tr><th id="450">450</th><td>{</td></tr>
+<tr><th id="451">451</th><td>native_sha1_mid(&amp;h-&gt;sha1, US data);	<i>/* implicit size always 64 */</i></td></tr>
+<tr><th id="452">452</th><td>}</td></tr>
+<tr><th id="453">453</th><td></td></tr>
+<tr><th id="454">454</th><td></td></tr>
+<tr><th id="455">455</th><td><em>void</em></td></tr>
+<tr><th id="456">456</th><td>exim_sha_finish(hctx * h, blob * b)</td></tr>
+<tr><th id="457">457</th><td>{</td></tr>
+<tr><th id="458">458</th><td>b-&gt;data = store_get(b-&gt;len = h-&gt;hashlen);</td></tr>
+<tr><th id="459">459</th><td></td></tr>
+<tr><th id="460">460</th><td>native_sha1_end(&amp;h-&gt;sha1, NULL, <var>0</var>, b-&gt;data);</td></tr>
+<tr><th id="461">461</th><td>}</td></tr>
+<tr><th id="462">462</th><td><u># endif</u></td></tr>
+<tr><th id="463">463</th><td></td></tr>
+<tr><th id="464">464</th><td></td></tr>
+<tr><th id="465">465</th><td><u>#<span data-ppcond="31">endif</span></u></td></tr>
+<tr><th id="466">466</th><td></td></tr>
+<tr><th id="467">467</th><td></td></tr>
+<tr><th id="468">468</th><td><i>/******************************************************************************/</i></td></tr>
+<tr><th id="469">469</th><td><i>/******************************************************************************/</i></td></tr>
+<tr><th id="470">470</th><td><i>/******************************************************************************/</i></td></tr>
+<tr><th id="471">471</th><td><i>/******************************************************************************/</i></td></tr>
+<tr><th id="472">472</th><td><i>/* Original sha-1 interface used by crypteq{shal1},</i></td></tr>
+<tr><th id="473">473</th><td><i>${sha1:} ${hmac:} and ${prvs:} */</i></td></tr>
+<tr><th id="474">474</th><td></td></tr>
+<tr><th id="475">475</th><td><u>#<span data-ppcond="475">ifdef</span> <span class="macro" data-ref="_M/SHA_NATIVE">SHA_NATIVE</span></u></td></tr>
+<tr><th id="476">476</th><td></td></tr>
+<tr><th id="477">477</th><td><em>void</em></td></tr>
+<tr><th id="478">478</th><td>sha1_start(hctx * h)</td></tr>
+<tr><th id="479">479</th><td>{</td></tr>
+<tr><th id="480">480</th><td>native_sha1_start(&amp;h-&gt;sha1);</td></tr>
+<tr><th id="481">481</th><td>}</td></tr>
+<tr><th id="482">482</th><td></td></tr>
+<tr><th id="483">483</th><td><em>void</em></td></tr>
+<tr><th id="484">484</th><td>sha1_mid(hctx * h, <em>const</em> uschar * data)</td></tr>
+<tr><th id="485">485</th><td>{</td></tr>
+<tr><th id="486">486</th><td>native_sha1_mid(&amp;h-&gt;sha1, data);</td></tr>
+<tr><th id="487">487</th><td>}</td></tr>
+<tr><th id="488">488</th><td></td></tr>
+<tr><th id="489">489</th><td><em>void</em></td></tr>
+<tr><th id="490">490</th><td>sha1_end(hctx * h, <em>const</em> uschar * data, <em>int</em> len, uschar *digest)</td></tr>
+<tr><th id="491">491</th><td>{</td></tr>
+<tr><th id="492">492</th><td>native_sha1_end(&amp;h-&gt;sha1, data, len, digest);</td></tr>
+<tr><th id="493">493</th><td>}</td></tr>
+<tr><th id="494">494</th><td></td></tr>
+<tr><th id="495">495</th><td><u>#<span data-ppcond="475">else</span></u></td></tr>
+<tr><th id="496">496</th><td></td></tr>
+<tr><th id="497">497</th><td><em>void</em></td></tr>
+<tr><th id="498">498</th><td><dfn class="decl def fn" id="sha1_start" title='sha1_start' data-ref="sha1_start">sha1_start</dfn>(<a class="typedef" href="hash.h.html#hctx" title='hctx' data-type='struct hctx' data-ref="hctx">hctx</a> * <dfn class="local col8 decl" id="8h" title='h' data-type='hctx *' data-ref="8h">h</dfn>)</td></tr>
+<tr><th id="499">499</th><td>{</td></tr>
+<tr><th id="500">500</th><td>(<em>void</em>) <a class="ref fn" href="#exim_sha_init" title='exim_sha_init' data-ref="exim_sha_init">exim_sha_init</a>(<a class="local col8 ref" href="#8h" title='h' data-ref="8h">h</a>, <a class="enum" href="hash.h.html#hashmethod::HASH_SHA1" title='hashmethod::HASH_SHA1' data-ref="hashmethod::HASH_SHA1">HASH_SHA1</a>);</td></tr>
+<tr><th id="501">501</th><td>}</td></tr>
+<tr><th id="502">502</th><td></td></tr>
+<tr><th id="503">503</th><td><em>void</em></td></tr>
+<tr><th id="504">504</th><td><dfn class="decl def fn" id="sha1_mid" title='sha1_mid' data-ref="sha1_mid">sha1_mid</dfn>(<a class="typedef" href="hash.h.html#hctx" title='hctx' data-type='struct hctx' data-ref="hctx">hctx</a> * <dfn class="local col9 decl" id="9h" title='h' data-type='hctx *' data-ref="9h">h</dfn>, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="local col0 decl" id="10data" title='data' data-type='const uschar *' data-ref="10data">data</dfn>)</td></tr>
+<tr><th id="505">505</th><td>{</td></tr>
+<tr><th id="506">506</th><td><a class="ref fn" href="#exim_sha_update" title='exim_sha_update' data-ref="exim_sha_update">exim_sha_update</a>(<a class="local col9 ref" href="#9h" title='h' data-ref="9h">h</a>, <a class="local col0 ref" href="#10data" title='data' data-ref="10data">data</a>, <var>64</var>);</td></tr>
+<tr><th id="507">507</th><td>}</td></tr>
+<tr><th id="508">508</th><td></td></tr>
+<tr><th id="509">509</th><td><em>void</em></td></tr>
+<tr><th id="510">510</th><td><dfn class="decl def fn" id="sha1_end" title='sha1_end' data-ref="sha1_end">sha1_end</dfn>(<a class="typedef" href="hash.h.html#hctx" title='hctx' data-type='struct hctx' data-ref="hctx">hctx</a> * <dfn class="local col1 decl" id="11h" title='h' data-type='hctx *' data-ref="11h">h</dfn>, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="local col2 decl" id="12data" title='data' data-type='const uschar *' data-ref="12data">data</dfn>, <em>int</em> <dfn class="local col3 decl" id="13len" title='len' data-type='int' data-ref="13len">len</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="14digest" title='digest' data-type='uschar *' data-ref="14digest">digest</dfn>)</td></tr>
+<tr><th id="511">511</th><td>{</td></tr>
+<tr><th id="512">512</th><td><a class="typedef" href="blob.h.html#blob" title='blob' data-type='struct blob' data-ref="blob">blob</a> <dfn class="local col5 decl" id="15b" title='b' data-type='blob' data-ref="15b">b</dfn>;</td></tr>
+<tr><th id="513">513</th><td><a class="ref fn" href="#exim_sha_update" title='exim_sha_update' data-ref="exim_sha_update">exim_sha_update</a>(<a class="local col1 ref" href="#11h" title='h' data-ref="11h">h</a>, <a class="local col2 ref" href="#12data" title='data' data-ref="12data">data</a>, <a class="local col3 ref" href="#13len" title='len' data-ref="13len">len</a>);</td></tr>
+<tr><th id="514">514</th><td><a class="ref fn" href="#exim_sha_finish" title='exim_sha_finish' data-ref="exim_sha_finish">exim_sha_finish</a>(<a class="local col1 ref" href="#11h" title='h' data-ref="11h">h</a>, &amp;<a class="local col5 ref" href="#15b" title='b' data-ref="15b">b</a>);</td></tr>
+<tr><th id="515">515</th><td><a class="ref fn" href="../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a>(<a class="local col4 ref" href="#14digest" title='digest' data-ref="14digest">digest</a>, <a class="local col5 ref" href="#15b" title='b' data-ref="15b">b</a>.<a class="ref field" href="blob.h.html#(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</a>, <var>20</var>);</td></tr>
+<tr><th id="516">516</th><td>}</td></tr>
+<tr><th id="517">517</th><td></td></tr>
+<tr><th id="518">518</th><td><u>#<span data-ppcond="475">endif</span></u></td></tr>
+<tr><th id="519">519</th><td></td></tr>
+<tr><th id="520">520</th><td></td></tr>
+<tr><th id="521">521</th><td></td></tr>
+<tr><th id="522">522</th><td></td></tr>
+<tr><th id="523">523</th><td></td></tr>
+<tr><th id="524">524</th><td></td></tr>
+<tr><th id="525">525</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="526">526</th><td><i>**************************************************</i></td></tr>
+<tr><th id="527">527</th><td><i>*             Stand-alone test program           *</i></td></tr>
+<tr><th id="528">528</th><td><i>**************************************************</i></td></tr>
+<tr><th id="529">529</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="530">530</th><td></td></tr>
+<tr><th id="531">531</th><td><u># <span data-ppcond="531">ifdef</span> <span class="macro" data-ref="_M/STAND_ALONE">STAND_ALONE</span></u></td></tr>
+<tr><th id="532">532</th><td></td></tr>
+<tr><th id="533">533</th><td><i>/* Test values. The first 128 may contain binary zeros and have increasing</i></td></tr>
+<tr><th id="534">534</th><td><i>length. */</i></td></tr>
+<tr><th id="535">535</th><td></td></tr>
+<tr><th id="536">536</th><td><em>static</em> uschar *tests[] = {</td></tr>
+<tr><th id="537">537</th><td>  <q>""</q>,</td></tr>
+<tr><th id="538">538</th><td>  <q>"\x24"</q>,</td></tr>
+<tr><th id="539">539</th><td>  <q>"\x70\xf0"</q>,</td></tr>
+<tr><th id="540">540</th><td>  <q>"\x0e\x1e\xf0"</q>,</td></tr>
+<tr><th id="541">541</th><td>  <q>"\x08\x38\x78\x8f"</q>,</td></tr>
+<tr><th id="542">542</th><td>  <q>"\x10\x3e\x08\xfc\x0f"</q>,</td></tr>
+<tr><th id="543">543</th><td>  <q>"\xe7\xc7\x1e\x07\xef\x03"</q>,</td></tr>
+<tr><th id="544">544</th><td>  <q>"\xe0\xfb\x71\xf8\xf9\xc1\xfc"</q>,</td></tr>
+<tr><th id="545">545</th><td>  <q>"\xff\x7c\x60\x3c\x1f\x80\xe2\x07"</q>,</td></tr>
+<tr><th id="546">546</th><td>  <q>"\xf0\x3f\xc8\x60\x81\xfe\x01\xf8\x7f"</q>,</td></tr>
+<tr><th id="547">547</th><td>  <q>"\x9f\xc7\xf8\x1f\xc1\xe3\xc7\xc7\x3f\x00"</q>,</td></tr>
+<tr><th id="548">548</th><td>  <q>"\x00\x7f\xbf\xdf\xc0\xfe\x02\x7e\x00\xf8\x7f"</q>,</td></tr>
+<tr><th id="549">549</th><td>  <q>"\x01\x01\xc0\x1e\x03\xf8\x30\x08\x0f\xf3\xf9\xff"</q>,</td></tr>
+<tr><th id="550">550</th><td>  <q>"\xc4\x03\xfc\x0f\xf8\x01\xc0\x0f\xf0\x06\x10\x41\xff"</q>,</td></tr>
+<tr><th id="551">551</th><td>  <q>"\xff\x07\x80\x47\xfc\x1f\xc0\x60\x30\x1f\xe0\x3c\x03\xff"</q>,</td></tr>
+<tr><th id="552">552</th><td>  <q>"\x80\x3f\x84\x3e\xff\xc0\x3f\x0f\x00\x7f\xc0\x1f\xe7\xfc\x00"</q>,</td></tr>
+<tr><th id="553">553</th><td>  <q>"\xff\xe0\x7f\x01\x81\x81\xff\x81\xff\x00\x3e\x00\x20\x7f\x80\x0f"</q>,</td></tr>
+<tr><th id="554">554</th><td>  <q>"\x00\x3e\x00\x70\x1f\xe0\x0f\xfa\xff\xc8\x3f\xf3\xfe\x00\xff\x80\xff"</q>,</td></tr>
+<tr><th id="555">555</th><td>  <q>"\x7f\xef\xc0\x1e\x7c\xff\xe0\x1f\xfe\x00\x1f\xf0\x08\xff\xc0\x7f\xf0\x00"</q>,</td></tr>
+<tr><th id="556">556</th><td>  <q>"\xe0\x0f\x80\x07\x0c\x01\xff\xe0\x03\xf0\x2f\xf8\x3f\xef\x00\x78\x01\xfe\x00"</q>,</td></tr>
+<tr><th id="557">557</th><td>  <q>"\xe7\x00\x10\x00\xf8\x18\x0f\xf0\xff\x00\xff\x80\x3f\xc3\xfe\xf0\x0f\xfc\x01\xff"</q>,</td></tr>
+<tr><th id="558">558</th><td>  <q>"\x00\x1f\xf8\x0f\xfc\x00\xfc\x00\xff\x87\xc0\x0f\x80\x7b\xff\x00\x0f\x02\x01\xff\xc0"</q>,</td></tr>
+<tr><th id="559">559</th><td>  <q>"\x00\x0f\xf0\x03\xc7\xf8\x3e\x03\xff\x80\x03\xff\x80\x07\xff\x0f\xff\x1f\x83\xff\x80\x1f"</q>,</td></tr>
+<tr><th id="560">560</th><td>  <q>"\xff\xc0\x1f\x80\x3f\x9f\xf8\x78\x3e\x7f\xf8\x00\x3e\x20\x04\x3f\x80\x7f\xfc\x00\x1f\xfe\x00"</q>,</td></tr>
+<tr><th id="561">561</th><td>  <q>"\x3f\x07\x80\xe0\x07\xe0\x00\xfc\x7f\xc0\xc0\x0f\x8f\xf0\x80\x0e\x0e\x03\xff\xbf\xfc\x01\xff\xe0"</q>,</td></tr>
+<tr><th id="562">562</th><td>  <q>"\xff\xfc\x11\xfc\xe0\x0e\x1f\xff\x87\x80\x1f\xe0\xff\xfd\xff\xc0\x03\xff\xc0\x0f\x00\x07\xf0\x01\xff"</q>,</td></tr>
+<tr><th id="563">563</th><td>  <q>"\xf0\x07\xc1\xfe\x00\xf8\x01\xe7\x80\xff\x80\x3f\x1f\x7f\x8c\x00\x1c\x00\x0f\xf8\x07\xfc\x00\xff\xfc\x00"</q>,</td></tr>
+<tr><th id="564">564</th><td>  <q>"\x00\x0f\xf8\x3f\xc0\x60\x00\x7f\xf8\xff\x00\x03\xf0\x3c\x07\xc0\x7f\xe0\x3f\xf8\x01\x00\x7e\x03\xff\xc0\x00"</q>,</td></tr>
+<tr><th id="565">565</th><td>  <q>"\x00\x0f\xf8\x03\x00\x1f\xff\x00\x0f\xfe\x00\x3f\x00\x03\xff\xe0\x07\xc0\xff\x00\x3c\x7f\xf0\x01\xff\xf8\x3f\xff"</q>,</td></tr>
+<tr><th id="566">566</th><td>  <q>"\x00\x01\xe0\xe0\x1f\xfe\x00\x03\xfc\x00\x0f\xff\xe0\x0f\xff\x00\x0e\x00\x7f\xfc\x0f\xfe\x00\x78\x00\x3f\xff\x00\xff"</q>,</td></tr>
+<tr><th id="567">567</th><td>  <q>"\x80\x41\xff\xc3\xfe\x00\x1e\x00\x0f\xff\xe0\xff\x80\x0f\xe0\x00\x7f\xf7\xff\x01\xfe\x01\xff\xdf\xff\x00\x01\xff\xe0\x00"</q>,</td></tr>
+<tr><th id="568">568</th><td>  <q>"\xf8\x07\x00\xff\xc0\x7f\xbe\x00\x0f\xff\x00\x03\xe3\xf0\xff\xf0\x00\x1f\x81\xff\x80\x0f\xff\x80\x20\x03\xf0\x03\x80\xff\xfc"</q>,</td></tr>
+<tr><th id="569">569</th><td>  <q>"\x00\x38\x20\x00\x7f\xf0\x01\xff\xfe\xcf\xfe\x07\xff\xc0\x00\x7f\xf8\x1f\x00\x00\xc0\x00\xc0\x0f\xff\x3e\x0f\xc0\x0f\xff\x80\x00"</q>,</td></tr>
+<tr><th id="570">570</th><td>  <q>"\x1f\xf8\x07\xff\xf8\x03\xe0\x01\xff\xfc\x3f\xf8\x00\x38\x1f\x00\x3f\xdc\x01\xc0\x04\xff\xff\x00\x0f\xfc\x08\x02\x00\x01\xf0\x3f\xff"</q>,</td></tr>
+<tr><th id="571">571</th><td>  <q>"\x80\x07\x86\x00\x03\xff\xe0\x00\x3f\xf8\x00\x0f\x80\x0f\xf8\x0f\xff\xe0\x00\x1f\x80\x00\x7f\xf8\xc0\x0f\xff\xf0\x7c\x04\x07\xff\x00\x00"</q>,</td></tr>
+<tr><th id="572">572</th><td>  <q>"\x01\xff\x00\x18\x3e\x0f\x00\x07\xff\xc0\x00\xf0\x1f\xfe\x07\x80\x60\x0f\xf8\x00\x3f\xfe\x38\x1f\xc0\x00\x3f\x81\xff\xfc\x1f\xe0\x00\x3f\xff"</q>,</td></tr>
+<tr><th id="573">573</th><td>  <q>"\xf0\x3f\xff\xc0\x00\x7f\xf0\x00\x3f\xff\x0f\xe0\x07\x0f\xfc\x7e\x03\xff\xf0\xfc\x0f\x9f\xc0\x3f\xff\xcf\xff\x00\x00\xff\xc0\x00\xe7\x01\xff\xf8"</q>,</td></tr>
+<tr><th id="574">574</th><td>  <q>"\x00\x01\xff\x80\x20\x00\x7f\xe0\x00\x7e\x07\xff\xf8\xc7\xf8\xff\xf0\x0f\xfe\x00\x00\xe0\x0f\xe0\x00\x1f\xff\x87\xff\x00\x01\xf0\x00\x7f\xc1\xff\xff"</q>,</td></tr>
+<tr><th id="575">575</th><td>  <q>"\x00\x00\x7f\xff\xc0\x01\xfe\x7e\x01\xff\xfe\xff\xf0\x7f\xff\xcf\xf8\x07\xfe\x00\x0f\xff\xc0\x07\xff\xfc\x00\x3e\x00\x07\xfc\x00\x7f\xc0\x07\x80\x0f\xff"</q>,</td></tr>
+<tr><th id="576">576</th><td>  <q>"\xff\xff\x03\xff\x07\xf8\xff\xff\x80\x00\x7f\xfe\xff\xfe\x00\x03\xff\xf8\x1f\xff\x3f\xf8\x1f\xff\x00\x1f\xff\x0f\xc0\x7f\xf0\x01\xff\xe0\x00\x1f\xff\x00\x00"</q>,</td></tr>
+<tr><th id="577">577</th><td>  <q>"\xff\xff\x00\x00\xff\xfc\x00\x03\x0f\xff\xf0\x01\xf8\x00\x0f\xe1\xff\xff\x03\xe0\x3f\x1f\xff\x80\x00\x7c\x00\x01\xff\xc0\x01\x7f\xfe\x00\x0e\x07\xff\xe0\xff\xff"</q>,</td></tr>
+<tr><th id="578">578</th><td>  <q>"\xc0\x00\x3f\xfe\x03\xfc\x0c\x00\x04\x01\xff\xe1\xe0\x03\xff\xe0\x30\x01\xff\x00\x00\x3c\x1e\x01\x80\x01\xff\x00\x40\x3f\xfe\x00\x3f\xff\x80\x7c\x01\xff\x80\x00\x7f"</q>,</td></tr>
+<tr><th id="579">579</th><td>  <q>"\x3f\xa0\x00\x0f\xff\x81\xff\xc0\x0f\xf0\x7f\xf8\x00\x0f\xc0\x00\x7f\xe0\x01\xe0\x00\x04\xff\x00\x1f\xfe\x00\x01\xff\x80\x07\xff\xfe\x00\x3f\xff\xc0\x03\xff\x80\x00\x3f"</q>,</td></tr>
+<tr><th id="580">580</th><td>  <q>"\xf0\x1f\xff\x01\xff\x80\xff\xc0\x80\x07\xf0\x00\x03\xff\x80\x00\x18\x01\xff\xfc\x00\xff\xfc\x03\xff\xff\x00\x7f\xc0\x03\xff\xc7\xff\xc0\x03\xf0\xff\x80\x00\x3f\xfe\x00\x00"</q>,</td></tr>
+<tr><th id="581">581</th><td>  <q>"\x07\xf1\xbf\xff\xe0\x00\x78\x00\x07\xe0\x00\x80\x03\xf0\x3f\xf7\x00\x00\x38\x00\xfe\x00\xf8\x0f\xfe\x00\x00\x80\x3f\xff\xc1\xff\xfc\x00\xff\xff\x8f\xf0\x00\x1f\xff\xf0\x0f\xff"</q>,</td></tr>
+<tr><th id="582">582</th><td>  <q>"\x00\x1c\x00\x07\xff\xfc\x00\x5e\x3f\xff\x00\x00\x3c\xff\xff\xc0\x3f\xff\x81\xe0\x70\x00\x1f\xfc\x00\x03\xff\x00\x00\x7f\xff\xc0\x1f\x8c\x0f\xff\xf0\xff\x80\x07\xe0\x10\x01\xff\xff"</q>,</td></tr>
+<tr><th id="583">583</th><td>  <q>"\xc0\x00\x07\xff\x80\x7f\xff\x80\x01\x80\x3f\xff\xcf\xc0\xfe\x00\xff\xc0\x1f\xfc\x01\xff\xf8\x00\xff\xfe\x0f\xff\xf0\x06\x00\x00\xc0\x3f\xff\x80\x78\xff\xfc\x00\x0f\xff\xf0\x00\x0f\xff"</q>,</td></tr>
+<tr><th id="584">584</th><td>  <q>"\xff\xe0\x07\xff\xf8\x00\x7f\xf0\x1f\xff\x80\x01\xff\xf8\x1f\xf8\x01\x03\xff\xe0\x00\x03\xe0\x78\x0f\xff\x00\x0f\xfc\x1f\xf8\x00\x0f\xff\xe0\x1f\x00\x07\xff\xfc\x00\x1f\x03\xff\xf7\xff\xff"</q>,</td></tr>
+<tr><th id="585">585</th><td>  <q>"\xc0\xf8\x00\x03\xfe\x00\x3f\xff\xf0\x00\x03\xfc\x0f\xff\x80\x00\xe3\xff\xf8\x3f\xfe\x00\x00\x73\xe0\xff\xfc\x07\xff\xc3\xff\xfe\x03\x00\x00\x70\x00\x03\xff\xf8\x0f\xff\xe0\x00\x1f\xff\xf8\x00"</q>,</td></tr>
+<tr><th id="586">586</th><td>  <q>"\xff\xf0\x0f\xc7\xff\xfc\x00\x3f\xfe\x00\x00\x3f\xff\x80\x3f\x80\x00\x3f\xff\xc0\x00\x70\x01\xff\xc1\x80\x03\xff\xff\x80\x00\x61\xff\xfe\x03\xfd\x80\x3f\xff\xe0\x01\xc1\xff\xff\x80\x00\x0f\xfe\x00"</q>,</td></tr>
+<tr><th id="587">587</th><td>  <q>"\xff\xfc\x00\x03\xff\xf0\x0f\xf8\x00\x07\xdf\x8f\xff\xf8\x00\x01\xff\xfe\x00\x80\x00\xff\x80\x1f\xf0\x00\x01\x1c\x00\x00\x3f\xf8\x00\x3f\xff\xef\xff\xfe\x01\xc3\x80\x80\x01\xff\xff\xc0\x00\x07\xff\xff"</q>,</td></tr>
+<tr><th id="588">588</th><td>  <q>"\xff\xff\xc0\x01\xff\xc1\xff\xff\x87\xff\xff\x00\x3f\x00\x00\x1f\xfc\x00\x01\xff\x80\x1f\xc0\x1f\xff\x00\x00\xff\x80\x1f\xff\xf8\x7f\xf8\x3f\xff\xc1\xff\xff\xe0\x01\xc0\x3f\xf7\xff\xfe\xfc\x00\x00\x3f\xff"</q>,</td></tr>
+<tr><th id="589">589</th><td>  <q>"\x00\xff\x81\xff\xe0\x03\xf8\x0e\x00\x00\xff\xf8\x1f\xff\xfe\x00\x00\xff\x80\x00\x07\xff\xf8\x01\xff\xe0\x00\x0f\xf0\x01\xfe\x00\x3f\xf0\x7f\xe0\x00\x7f\xff\xe0\x1f\xff\xfc\x01\xff\xe0\x01\x80\x00\x07\xff\xff"</q>,</td></tr>
+<tr><th id="590">590</th><td>  <q>"\x00\x0f\xff\xf0\x00\x00\xe0\x0f\xf8\x00\x00\xff\xff\x80\x03\xff\xe1\xff\xff\x3f\xf8\x0f\xff\xc7\xe0\x00\x1f\xff\x00\x3f\xfe\x0f\xff\xf0\x03\x00\xc0\x00\x1f\xff\xfc\x3f\xff\xe0\x3f\xff\xf8\x1f\xf0\x00\x1f\xff\xc0"</q>,</td></tr>
+<tr><th id="591">591</th><td>  <q>"\x01\x80\x00\x1f\x01\xff\xff\x83\x00\x01\xfc\x00\x7f\xe0\x0e\x7f\xfe\x00\x00\x38\x00\xff\x00\x00\x3f\xff\x83\x83\xff\xc0\x00\x7f\xff\x80\x1f\xff\xf0\x1f\xff\xfc\x00\x03\x7f\xff\x81\xc0\x00\x07\xff\x83\xff\xff\x00\x00"</q>,</td></tr>
+<tr><th id="592">592</th><td>  <q>"\xff\x80\x0d\xff\xe0\x03\xff\xf0\x00\xff\xfc\x00\xf0\x01\xf8\x07\xff\xf8\x0f\x80\x0f\xff\xff\x00\xff\xff\x87\xff\xe1\xff\xfc\x67\x8c\x7f\xfe\x00\x03\xff\x3f\xfc\x07\x01\xff\xff\xe0\x00\x01\xff\xff\xc0\x0c\x40\x0f\xff\xff"</q>,</td></tr>
+<tr><th id="593">593</th><td>  <q>"\x00\x00\x1f\xff\xfe\x00\x1f\x00\x00\x1f\xff\xff\x07\xff\xff\xc0\x07\xff\xe0\x00\x02\x00\x00\xff\x00\x78\x00\x00\xe0\x00\x08\x00\x1f\xff\xff\x00\x03\xf8\x1f\x00\x00\x0f\xff\xc0\x00\x01\xff\xff\xe1\xf8\x00\x00\x3f\x80\x0f\xff"</q>,</td></tr>
+<tr><th id="594">594</th><td>  <q>"\x00\x0f\xf8\x00\xfc\x00\x03\xff\xff\x00\x00\x3f\xf0\x01\xff\xff\xe0\x7f\xf8\x00\xf8\x0f\xff\xff\x80\x00\x0f\xff\xfc\x0f\xff\xe0\x00\x00\xff\xc3\xff\xf0\x07\xff\xff\x00\x38\xf8\x00\x20\x1f\xfe\x3f\xfe\x00\xfe\x00\x7f\xff\xc0\x00"</q>,</td></tr>
+<tr><th id="595">595</th><td>  <q>"\x00\x3f\x00\xe0\x00\x0f\xff\xfc\x7f\xff\xfc\x00\x00\x7e\x00\x00\xff\xfe\x1f\xf0\x00\x1f\xf0\x00\x1f\xff\x87\xf0\x00\x3f\xc0\x0f\xff\x87\xff\x00\x3f\x81\xff\xff\xf7\xff\xe0\xff\xe0\x3f\x9f\xff\x00\x07\x00\x7f\xfc\x03\xff\xf0\x00\x00"</q>,</td></tr>
+<tr><th id="596">596</th><td>  <q>"\xe0\x3f\xff\xf0\xff\x80\x3e\x00\x03\xff\xe0\x00\x0f\xfc\x00\x07\xff\xf8\x00\x00\x7f\x80\x00\x0f\xf8\x01\xff\x7f\xff\xf0\x00\x3f\xff\xfe\x7f\xff\xe0\x00\xff\xc3\xff\xff\x00\x00\xf0\x00\x00\x7f\xff\x00\x3f\xff\xf0\x00\x01\xc0\x03\xff\xff"</q>,</td></tr>
+<tr><th id="597">597</th><td>  <q>"\x00\x03\xc0\x01\xff\xdf\xfd\xff\x9f\xfe\x1f\xff\xff\x00\x3f\xff\xfe\x00\x00\x7f\xcf\xff\xf0\x1f\xff\xfe\x07\xf0\x00\xff\xff\xe0\x00\x01\x00\x07\xff\x80\x1f\xe0\x00\x00\xff\xfe\x03\xff\xff\x80\x03\xf0\x0f\xff\xfe\x00\x00\x1f\xff\xf8\x00\x00"</q>,</td></tr>
+<tr><th id="598">598</th><td>  <q>"\x00\x1f\xff\xfb\xff\xfe\x00\x07\xff\xf0\x00\x00\xff\xff\x00\x00\x0f\xf3\xff\xfe\x00\x78\x00\x00\x3e\x00\x00\x3f\xff\xf8\x00\x1f\xff\xff\x80\x00\x03\xff\xff\x00\x07\xff\xee\x00\x1f\xfc\x00\x78\x00\x00\x1f\xff\x07\xff\xfe\x03\xff\xff\xe0\x00\x00"</q>,</td></tr>
+<tr><th id="599">599</th><td>  <q>"\x00\x7f\xff\xfe\x00\x00\x3f\xfc\x03\xff\xfc\x1f\xff\xf0\x7f\xd8\x03\xf0\x00\xfd\xfc\x38\x00\x08\x00\x10\x00\xe0\x06\x00\x7f\xfe\x00\x00\x0f\xff\x80\x00\x3f\x03\xff\xfe\xff\xff\xf9\xff\xf8\x00\x07\xff\xfc\x01\xff\xc0\x00\x03\xff\xff\xe0\x03\xff\xff"</q>,</td></tr>
+<tr><th id="600">600</th><td>  <q>"\xff\xf0\x0f\xff\xff\x00\x06\x00\xff\xff\xf0\x07\xff\xe0\x04\x00\x03\x00\x00\x03\xf0\xff\xff\x00\x03\xff\xfb\xff\xc3\xff\xf0\x07\xff\xff\xc7\x00\x7f\x80\x00\x03\xff\xf8\x00\x1f\xe1\xff\xf8\x63\xfc\x00\x3f\xc0\x9f\xff\xf8\x00\x00\x7f\xff\x1f\xff\xfc\x00"</q>,</td></tr>
+<tr><th id="601">601</th><td>  <q>"\x00\x3f\xff\xfc\x00\x0f\xc7\x80\x00\x02\x00\x1e\x00\x00\x60\x7f\x03\xfe\x00\x00\x1f\xff\x80\x1f\xf8\x00\x00\xff\xff\x80\x00\x03\xff\xc0\x00\x7f\xff\xc0\x7f\xe0\x03\xfc\x00\xff\xf7\xff\xff\x00\x00\x1f\xf0\x00\x03\xff\xff\xe1\xff\xff\x80\x0f\xf8\x00\x00\x1f"</q>,</td></tr>
+<tr><th id="602">602</th><td>  <q>"\x00\x01\xfe\x00\x03\x83\xf3\xff\xff\x80\x07\xff\xfc\x3f\xff\xfc\x03\xff\x80\x00\x06\x00\x00\x78\x00\x07\xff\xff\x80\x07\xfc\x01\xf8\x00\x07\xff\xff\xc0\x00\x38\x00\x07\xff\xfe\x3f\xff\xf8\x3f\xff\xcf\x3f\xfc\x00\x7f\xff\x00\x1f\xff\x80\x00\x30\x03\xff\xff\x00"</q>,</td></tr>
+<tr><th id="603">603</th><td>  <q>"\xf8\x00\x38\x00\x00\x3e\x3f\x00\x00\x3f\xff\xf0\x02\x00\x00\x0f\xff\xff\x80\x80\x03\xff\xc0\x00\x04\x00\x0f\xc0\x3f\xff\xfe\x00\x00\x3f\xff\xfe\x00\x3f\xff\xf8\x00\x30\x00\x7b\xff\x00\x00\x03\xff\xfc\x3f\xe1\xff\x80\x00\x70\x1f\xff\xc0\x07\xfc\x00\x1f\xff\xf0\x00"</q>,</td></tr>
+<tr><th id="604">604</th><td>  <q>"\x00\x03\xf8\x18\x00\x00\x70\x3f\xff\xf8\x00\x00\xff\xcf\xff\xff\xc0\x03\xff\xfe\x00\x10\x00\x00\xfe\x03\xff\xf8\x00\x00\x7e\x00\x00\x7f\x8f\xff\xc0\x00\x00\x7f\xff\xe0\x00\x3c\x07\xc0\x00\x00\x7f\xff\x01\xff\xf8\x01\xff\x80\x00\x0f\xff\xf9\xe0\x00\x3f\xff\xe0\x00\x00"</q>,</td></tr>
+<tr><th id="605">605</th><td>  <q>"\xff\xfe\x00\x3f\xc0\x1f\xff\xf0\x7f\xf8\x00\x01\xff\xf8\x1f\xff\xfe\x00\x00\xff\xff\xf8\x00\x7f\xff\x80\x3f\xff\xff\x00\x7f\xff\xf8\x00\x0c\x00\x00\x0f\xfe\x7e\x00\x3f\xe0\x18\x7f\xfe\x00\x00\x38\x00\x00\x3f\xff\xfe\x00\x00\x03\xfc\xff\xe1\xfe\x1f\xff\xfe\x00\x00\x07\xff"</q>,</td></tr>
+<tr><th id="606">606</th><td>  <q>"\x00\x00\x07\xff\xfe\x00\x00\x07\xfe\x00\x00\x3f\xe0\x00\x7f\xff\xc0\x00\x00\x7f\xff\xfc\x00\xfe\x00\x03\xff\xe0\x00\x1f\x0f\xfc\x00\x1f\xff\x80\x00\x07\xff\xff\xf0\x00\xff\xff\xf0\x00\x00\x1f\xff\xf8\x01\xff\xe0\x1f\xff\xff\x00\x1f\x80\x07\xf0\x00\x01\xff\xf8\x00\x01\xff\xff"</q>,</td></tr>
+<tr><th id="607">607</th><td>  <q>"\x00\x00\x3f\xff\xff\x03\xfe\x00\x00\x07\xc0\x00\x00\x7f\xfc\x0f\xf0\x00\x00\x1f\xff\xfe\x00\x00\x07\xc0\x00\x00\xff\xfe\x00\x00\x3f\xff\xfc\x01\xff\x7f\xfc\x00\x1f\xf8\x00\x1f\xff\x07\xff\xff\xe0\x00\x7f\xff\xfc\x01\xff\xff\xf0\x00\x01\xff\xf8\x00\x1e\x00\x00\x7f\xfc\x00\x3f\xff"</q>,</td></tr>
+<tr><th id="608">608</th><td>  <q>"\xfe\x3f\xff\x83\xff\xfe\x00\x07\xff\xff\xf0\x00\x3e\x00\x00\xff\xff\xfc\x00\x40\x3f\xfe\x00\x00\x03\xf0\x00\x00\x70\x3f\xf8\x0f\xff\xff\xe0\x1f\x80\x00\x03\xc3\xff\xff\xf0\x00\x01\xff\xf0\x0f\x80\x00\x0f\xe0\xff\xff\xfe\xf0\x00\x01\xff\xc0\x00\x00\x7f\xf0\x00\x00\x7f\xfe\xe0\x00\x00"</q>,</td></tr>
+<tr><th id="609">609</th><td>  <q>"\x00\x00\x03\xff\xf0\x01\xfc\x00\x00\xff\xff\x00\x00\x7f\xff\xff\x80\x07\xff\x8f\xff\x80\x00\x0f\xff\xf0\x00\x00\x3c\x00\x03\xc0\xff\xff\xfe\x01\xff\xff\x80\x0c\x7f\xff\xf8\x00\x00\x1f\xf0\x00\x00\x7f\x80\x00\x00\x80\x00\x00\xff\xff\xf0\x1f\xff\xe0\x00\xff\xff\xfe\x1f\xff\x1f\xc0\x00\x00"</q>,</td></tr>
+<tr><th id="610">610</th><td>  <q>"\xff\xff\xfe\x07\xff\xc0\x00\x06\x3f\x9f\xf0\x07\xff\xf0\x3f\xfe\x1f\xff\xff\x81\xff\xff\xc0\x00\x02\x00\xfe\x00\x04\x00\x07\x00\x00\x01\xff\xff\xfe\x00\x00\x07\xff\xfe\x00\x1f\xfe\x00\x00\xff\xff\xe0\x07\xf8\x00\xff\xff\xfc\x00\x3f\xf3\xff\xff\xc0\x00\x7f\xff\xe0\x00\x0f\xff\xfc\x07\xff\xff"</q>,</td></tr>
+<tr><th id="611">611</th><td>  <q>"\xff\xf0\x00\x00\x7e\x00\x1e\x03\xff\xff\x00\x00\x73\xff\xf0\x00\x00\x0f\xff\xdf\xff\xff\xdf\xfc\x00\x07\xfe\x07\xff\xfe\x00\x00\x1f\xdf\xef\xff\xf0\x3f\xff\xfc\x00\x00\x07\xff\xff\xf0\x00\x00\x7f\xe0\x07\xff\x80\x00\x00\x7f\xe0\x03\xff\xff\xf9\xff\xe0\x00\x00\x3f\xe3\xff\xff\xfc\x00\x00\x03\xff"</q>,</td></tr>
+<tr><th id="612">612</th><td>  <q>"\x00\x03\xff\x00\x00\x3f\xff\x80\x01\xf0\x00\x0f\xfe\x00\x00\x06\x00\x03\xff\xff\xfc\x03\xff\xff\xf7\x80\x00\x00\x7f\xc0\x0f\xff\xe3\xfe\x0f\x00\x00\x7f\xff\x00\x7f\xf8\x00\x00\xff\xff\xee\x00\x7e\x01\xc0\x00\x1f\xe0\x00\x07\xff\xff\xf8\x00\x00\xe1\xff\xfc\x3f\xe7\xff\xff\xf8\x3f\xff\xfc\x00\x1f\xff"</q>,</td></tr>
+<tr><th id="613">613</th><td>  <q>"\x00\x00\x0f\xff\xf8\x00\x00\xff\xff\xfc\x00\x1f\xe0\x07\xff\xff\x00\x01\xff\xdf\xff\x80\x00\x3f\xff\xfc\x00\x00\x0f\xfc\x07\xff\x00\x00\xff\x80\x00\x03\xff\xff\xf0\x00\x07\xff\xff\xf0\x00\xff\xfe\x1f\xff\xff\xe0\x3f\xff\xfe\x00\x00\x60\x00\x00\xff\xff\x7f\xff\xf0\x00\x03\xff\xff\xc0\x07\x00\x01\xff\xff"</q>,</td></tr>
+<tr><th id="614">614</th><td>  <q>"\x00\x00\x20\x7f\xfe\x0f\x83\xff\xff\x80\x03\xff\x00\x00\x00\xff\xff\xe0\x00\x1f\xff\xff\xe0\x00\x3f\xfe\x7f\xff\xf0\x00\x1f\xff\xff\xe0\x00\x00\xff\xff\x87\xff\xc0\x00\x17\xfd\xff\x9f\xff\xfb\xff\xff\xe0\x00\x03\xe0\x00\x07\xff\x9f\xff\xff\x80\x00\x7f\xff\xff\x00\x01\xff\xff\xc0\xff\xff\xc0\x10\x00\x00\x1f"</q>,</td></tr>
+<tr><th id="615">615</th><td>  <q>"\x00\x00\x07\xff\xc0\x00\xff\xe0\x00\x07\xff\x80\x03\x80\x00\x0f\xf8\x00\x00\x7f\xff\xfe\x00\x00\x18\x00\xff\xf0\x20\x01\xff\xfe\x00\x00\x60\x0f\xf0\xe0\x03\xff\xfe\x00\x3e\x1f\xff\xfc\x00\x03\xff\x80\x00\x00\xff\xf8\x00\x01\x00\x00\x0f\xf3\xff\xfc\x00\x03\xff\xff\xe1\xff\xff\xc1\xf0\x00\x00\xff\xff\xff\x00\x00"</q>,</td></tr>
+<tr><th id="616">616</th><td>  <q>"\xff\xff\xf0\x00\x00\x07\xff\xfc\x00\x7f\x87\xff\xff\x00\x00\x00\x7f\xff\xc0\x7f\xff\x80\x00\x03\xf0\xff\x3f\xff\x80\x30\x07\xff\xff\x1f\x8e\x00\x7f\xff\xff\xc0\x01\xff\xfc\x07\xf8\x00\x00\x7f\xff\xfc\x00\x3f\xf0\x00\xf8\x00\x00\x07\xff\x00\x00\x0e\x00\x0f\xff\x80\x00\x7f\xc0\x01\xff\x8f\xf8\x00\x07\x01\xff\xff\xff"</q>,</td></tr>
+<tr><th id="617">617</th><td>  <q>"\xff\x80\x3f\xff\x3f\xfe\x00\x00\xff\xff\xff\x9f\xff\xf8\x3f\xff\xf8\x00\x00\x0f\xf8\x00\x00\x03\xfe\x00\x7f\xff\xff\x00\x0f\xff\x01\xff\xf0\x0f\xff\xe0\x20\x7f\xff\xfc\xff\x01\xf8\x00\x07\xff\xe0\x00\x7f\xf8\x00\x0f\xff\x80\x00\x00\x7f\xe0\x00\x3f\xf8\x01\xfe\x00\x07\xff\xf0\x00\x00\x7f\xff\xff\xc0\x00\x01\xff\xff\xff"</q>,</td></tr>
+<tr><th id="618">618</th><td>  <q>"\x00\x7f\xff\xe0\x00\x01\xff\xff\xf8\x00\x00\x3f\xff\xfc\x00\x7f\xfe\x00\x00\x03\xff\xff\xf0\x03\xff\xe0\x00\x7f\x80\x00\x0f\xff\x3f\xf8\x00\x00\x7f\xff\xff\x00\x07\x80\x1f\x83\xf8\x00\x00\x0f\xfe\x3f\xff\xc0\x3f\xff\xfe\x1f\xe0\x00\x07\xc0\x03\xff\xf0\x0f\xc0\x00\x03\xff\xff\x80\x00\x00\x7f\x80\x00\x00\xff\xff\x80\x00\x00"</q>,</td></tr>
+<tr><th id="619">619</th><td>  <q>"\xfe\x00\x00\x20\x00\x04\x00\x0f\xff\xff\xc0\x01\xff\xf8\x3f\xc0\x00\x00\xff\xff\xc0\x00\xff\xff\xff\x80\x00\x3f\xf8\x00\x7f\xff\xfe\x7f\xf8\x00\x7f\xff\x80\x07\xff\xc0\x00\x0f\xff\xf8\x00\x7f\xff\xc0\x00\xff\xff\xc0\x3f\xff\xff\xe0\x0f\xff\xff\xe0\xe0\x1f\xff\x80\x00\x00\x7f\xff\xc0\x71\xff\xff\xfc\x00\x01\xff\xff\xf8\x00\x00"</q>,</td></tr>
+<tr><th id="620">620</th><td>  <q>"\xff\xff\xe0\x00\x0f\xff\xf0\x00\x00\x3f\xff\xff\xc0\x00\xff\xff\x00\x00\x0f\xff\xff\xe0\x00\x01\xff\x00\x00\x1f\xff\xe0\x3f\xfc\x00\x03\xe0\x1f\xf0\x1f\xf8\x00\x00\x3f\xff\xff\xc0\x0f\xfe\x00\x00\x20\x00\x00\xff\xfc\x00\x0f\xff\xfe\x3f\xff\xff\x00\xff\xf0\x00\x00\x80\x00\x1f\x03\xe0\x01\xff\xfa\x00\x3f\xe0\x00\x00\x70\x00\x00\x0f"</q>,</td></tr>
+<tr><th id="621">621</th><td>  <q>"\xfd\xff\xc0\x00\x20\x01\xfe\x00\x3f\xf8\x00\x03\xff\x00\x00\x03\xf8\xff\xcf\xc3\xff\xff\xfc\x00\x03\xff\xff\xfc\x00\x00\x78\x3f\xff\xf0\x01\xff\xe0\x0f\xff\xff\x00\x00\x07\xff\xff\xfc\xff\xff\xf8\x00\x01\xff\x80\x00\x07\xff\xff\xfc\x00\x00\x1c\x00\x01\xff\xff\x07\xf8\x00\x00\x1f\xff\xff\xf0\x00\x01\xfe\x00\x7f\xff\xf0\x1f\xfc\x00\x00"</q>,</td></tr>
+<tr><th id="622">622</th><td>  <q>"\x00\x00\x00\x3f\xff\x00\x00\x07\xff\xff\xfc\x00\x00\x01\xe0\x0f\xff\x83\xfc\x01\xff\xff\xf0\x0f\xff\x00\x00\x00\x3f\xff\xff\xc0\x1f\xff\xff\xe0\x00\x20\x00\x00\x3f\xff\xff\x00\x00\xff\xfc\x03\xff\xff\xf0\x00\x1f\xff\xfc\x00\x00\x03\xff\xff\xc0\x7f\x80\x00\xff\xff\xff\x00\x0f\x0f\xff\xff\xe0\x00\x00\xff\xf8\x00\x00\xff\xfe\x00\x00\x0f\xff"</q>,</td></tr>
+<tr><th id="623">623</th><td>  <q>"\xff\xfe\x03\x80\x00\x03\xff\xff\xc0\x3f\xff\xff\x00\x03\xff\xff\xf8\x00\x00\x01\xff\xff\xcf\xfc\x00\x00\xe0\xef\xf8\x00\x0f\xff\xe3\xf8\x00\x3f\xff\xff\x80\x3f\xbf\xfe\x00\x00\xff\xfc\x00\x00\x01\xff\x00\x00\xcf\xc0\x01\xfc\x00\x00\x7f\xff\xff\xc0\x00\x10\x7f\xff\xfc\xfe\x00\x00\x07\xc0\xff\xff\xff\x8f\xff\x00\x00\x1f\x9e\x00\x00\x01\xff\xff"</q>,</td></tr>
+<tr><th id="624">624</th><td>  <q>"\x00\x7f\xff\xe0\x00\x01\xff\xff\xc3\xff\x80\x01\x03\xfc\x00\x00\x00\xfc\x01\xff\xff\xf8\x7f\xe7\xf0\x00\x00\x7f\xc0\x3f\xff\xff\xc0\x00\x00\x1f\xff\x80\x00\x01\xff\xe0\x00\x00\x70\x00\x00\x1c\x7f\xff\xf8\x1f\xfc\x00\x00\x07\xef\xe0\xff\xff\xc1\xff\xfc\x00\x00\x01\xff\xff\xff\xa0\x07\xff\x00\x1e\x00\x1f\xfc\x00\x00\x38\x00\x18\xc0\x00\x00\x7f\xff"</q>,</td></tr>
+<tr><th id="625">625</th><td>  <q>"\x00\x0f\xff\xf8\x00\x00\x07\xff\x00\xfc\x00\x00\x03\xff\xfc\x00\x07\xff\xff\xe0\x00\x00\xff\xfc\x0f\xff\x00\x00\x0f\xff\xfe\x0f\x80\x07\xff\x03\xff\xff\xf9\xff\xfe\x00\x00\x03\xf8\x00\x00\x07\xe0\x00\x00\xc0\x00\x1f\xff\xf0\x7f\xff\xff\xc0\x07\xff\xff\xfc\x00\x00\x3f\xff\xff\xe0\x00\x00\x1f\xff\xf8\x1f\xfe\x00\x00\x3f\xff\xff\xe0\x3f\x06\x00\x00\x00"</q>,</td></tr>
+<tr><th id="626">626</th><td>  <q>"\xff\xf0\x00\x08\x00\x0f\xef\xff\xff\xfc\x00\x00\x7f\xff\xf0\x00\x7f\xff\xf8\x00\xff\xff\x81\xff\xff\xe0\xff\xff\xff\x00\x00\x00\x80\x00\x03\xff\x80\x3f\xff\xfc\x00\x00\x1f\xff\xc0\x0f\xff\xfe\x00\x00\x00\x73\xf0\x1f\xfe\x00\xff\xc0\x3f\xff\x00\x3f\xff\x83\xff\xfe\x01\xff\xff\xf7\xff\xff\x80\x00\x00\x3f\x00\x00\x1f\xe3\xff\xff\xf0\x00\x0f\xff\xf0\x00\x00"</q>,</td></tr>
+<tr><th id="627">627</th><td>  <q>"\x00\x00\x7f\xfc\x00\x7f\xe0\x00\x0f\xff\xe0\x01\xf8\x00\x3f\xff\x00\x00\x78\x00\x7f\xe0\x00\x00\x1f\x00\x07\xff\xff\xf8\xf9\xf0\x01\xff\xf8\x07\xc0\x0f\xff\xf8\x00\x07\xf8\x7f\xfe\x00\x00\x0f\xff\xe3\xf0\x00\x07\xff\xff\xfc\x03\x1c\x00\x00\x7f\xe0\x00\xff\xff\xfc\x00\x00\x0f\xf3\xff\xe0\x00\x00\x0f\xff\xf9\x00\x00\x10\x00\x3f\xff\xfc\xf8\x7f\xff\x00\x00\x00"</q>,</td></tr>
+<tr><th id="628">628</th><td>  <q>"\x00\x03\xff\xff\xc0\x7f\xff\xff\xc0\x00\x03\xff\xff\xff\x00\x00\x0f\xff\xf0\x1f\xff\xf0\x00\x07\xff\xff\xef\xff\x81\xf7\xff\xfe\x00\x07\xff\xf0\x00\x00\x1f\xff\xc0\x0f\x80\x00\x0f\xff\xfc\x00\x00\xff\xff\xff\xc0\x03\xff\xe3\xff\xff\xfe\x00\x1f\xff\xff\x00\x00\xff\xff\xff\x0f\xff\xf1\xf8\x00\x00\x01\xff\xff\xff\x80\x1f\xff\xfe\x00\x08\x00\x00\x7f\xff\xff\x80\x00"</q>,</td></tr>
+<tr><th id="629">629</th><td>  <q>"\x1f\xe0\x00\x7c\x1f\xc0\x07\xff\xc0\x07\xff\xff\xfe\x00\x3c\x00\x00\x00\xff\xff\x80\x00\x07\xff\xff\x00\x1f\xf8\xff\xc0\x00\xff\x81\xff\x01\xff\xfe\x00\x78\x7f\xff\xf0\x00\x01\x80\x00\x00\x1f\xff\x00\x00\x1f\xff\xf0\x00\x1f\xff\xff\xe0\x00\x3c\x00\x00\x1f\xff\xff\x80\x03\xff\xe0\x01\xff\xff\xf9\xff\xf8\x00\x00\x7c\x00\x00\xfe\x00\x00\xff\xff\xff\x00\x00\x0f\xff\xff"</q>,</td></tr>
+<tr><th id="630">630</th><td>  <q>"\xfc\x00\x01\xff\x00\x00\x0c\x00\xff\xff\xe3\xff\xff\xf0\x80\x0e\x0e\x00\x00\x0f\xfe\x00\x03\xff\xc0\x00\x00\x7f\xff\xff\xe0\xc0\x00\x00\x07\xe0\xff\xff\x03\x9f\xff\xff\xc1\xc0\x00\x03\xff\xff\xc3\xff\xff\xfc\xff\xff\xc0\x00\x01\xfc\x00\x0f\xfc\x00\x00\x00\x7f\xff\xff\x03\xff\xff\xfc\x0f\xff\xfe\x00\x00\x03\x80\x3f\xff\xff\x00\x00\xff\xff\xf8\x00\x03\xff\xff\x80\x00\x00"</q>,</td></tr>
+<tr><th id="631">631</th><td>  <q>"\xff\xff\x80\xff\xff\xf8\x00\x00\xfc\x00\x03\xff\xf8\x00\x0f\xff\xff\x00\x03\x00\x00\x00\x7f\xff\xf0\x00\x3f\xff\xf0\x00\x01\xfc\x01\x00\x03\xff\x80\x1f\xff\xe3\xff\xff\xf8\x00\x1f\xff\xff\xf8\x01\xff\xdf\xff\xfb\xff\xc0\x00\x00\x3f\xff\xf8\x00\x00\x80\xc7\xff\xff\xf8\x0f\xff\x00\x60\x1f\xff\xe0\x00\x01\xff\xff\xfe\x0f\xff\xff\xfc\x00\x00\x00\xf0\x06\x03\xff\xff\xfe\x00\x00"</q>,</td></tr>
+<tr><th id="632">632</th><td>  <q>"\xff\x00\x0f\xff\xfc\x00\x0f\xff\xff\xfc\x07\xff\xfc\x00\x00\xf0\x00\x00\x80\x00\x7f\xfe\x00\x00\x0f\xff\xff\xfc\x3f\x00\xff\xff\xff\x00\x1f\xff\xff\xf0\x00\x1f\xff\xff\xe0\x00\x1f\xff\xff\xc3\xff\x00\x00\x01\xff\xff\xf0\x00\x00\x0f\xff\xe0\x07\xfc\x00\x00\x00\xfe\x00\x07\xff\xff\xf8\x00\x00\x3f\x00\x00\x0f\x80\x00\x3f\xff\xc0\x00\x11\xff\xef\x00\x07\x00\x7f\xff\xfc\x00\x00\x00"</q>,</td></tr>
+<tr><th id="633">633</th><td>  <q>"\xfe\x00\x00\x7f\xf7\xff\xff\x00\x00\x0f\xff\xff\xe0\x01\xff\xe0\x00\x00\x03\xff\xe0\x00\xff\xfe\x00\x01\xff\xf7\xff\xf8\x00\x0f\xff\x00\x00\x00\x38\x00\x07\xff\xf8\x07\xff\xfc\x00\x1f\xff\xff\x0f\xc1\xff\xff\xc0\x00\xff\xff\x0f\xff\xf0\x01\xff\xf8\x00\x01\xff\xff\x80\x00\x00\x0f\xf8\x00\x3f\xff\xfe\x3f\xff\xff\xf0\x00\x00\x38\x0f\xc3\xff\xff\xff\x1f\xff\xc0\x3f\xff\xff\xe0\x00\x00"</q>,</td></tr>
+<tr><th id="634">634</th><td>  <q>"\xff\xff\xf0\x00\x7f\xc0\x07\xff\xff\x81\xff\xc0\x00\x01\xff\xff\xff\xc0\x00\x00\x1f\xff\xfe\x03\xc0\x00\x0f\xff\xff\xfc\x00\x03\xff\xff\xff\x83\xff\xc0\x00\x07\xf0\x00\x00\x1f\x80\x00\x00\x3f\xff\xff\xe7\xff\x00\x07\xff\xff\xfc\x00\x00\x1f\xff\xf8\x00\x03\xf0\x00\xff\xfc\x00\x1f\xff\xff\xe0\x03\xff\xf0\x00\x01\xff\xff\xff\x80\x00\x00\x0f\xff\xff\xf8\x10\x00\x1e\x03\xff\xff\xff\x80\x00"</q>,</td></tr>
+<tr><th id="635">635</th><td>  <q>"\x00\x01\xff\xfe\x00\x00\x00\x7f\xff\xff\xf0\x00\x00\x1f\xff\x80\x07\xff\xff\xff\x80\x00\x01\xff\xfc\x03\xff\xff\x9f\xff\xfe\x00\x08\x00\x00\x06\x00\x00\x00\x81\xff\xff\xc0\x00\x07\xf8\x00\xff\xff\xff\x00\x00\x00\xff\xff\xf8\x00\x3f\xff\xff\xf8\x3f\xf8\x00\x00\x00\x7f\xff\xc0\x7f\xff\xff\xc0\xff\xff\xfe\x00\x00\x01\xff\xf8\x00\x00\x03\xff\xc1\xff\xf0\x00\x00\x03\x07\xf8\x01\xff\xfe\x00\x00"</q>,</td></tr>
+<tr><th id="636">636</th><td>  <q>"\xf8\x00\x00\x01\xff\xff\x80\x00\x0f\xff\xff\x8f\xff\x00\x1f\xff\x0f\xff\xc0\x00\x00\xff\xff\xfc\x00\x0f\xff\xf0\x00\x70\x00\x00\x3f\xff\xc0\x00\x00\x7c\x00\x00\x7e\x00\x0f\xfc\x00\x00\x00\xff\xff\x80\x00\x00\x0f\xff\xff\xfc\x38\x00\x00\x03\xf0\x00\x31\xf0\x1f\xff\xff\xc0\x07\xff\xff\xe0\x1f\xff\xff\xf3\xfe\x00\x00\x00\xff\xff\xc0\x00\x1f\xe7\xff\xe1\xff\xff\xdf\x00\x00\x00\x1f\xff\x00\x00\x00"</q>,</td></tr>
+<tr><th id="637">637</th><td>  <q>"\x3f\xff\xff\xf8\x00\x00\x00\x60\x00\x0f\xff\xff\xe0\x07\xff\xff\xff\x00\x00\x3f\xff\xff\xf0\x1f\xff\xff\x80\x00\x70\x00\x00\x01\x00\x00\x00\x3f\xff\xfe\x00\x00\x00\x1f\xf8\xfc\xc0\x0f\xff\xf8\x00\x3f\xff\xc0\xff\xff\x80\x00\x03\xff\xff\xf8\x00\x3f\xff\xfc\x00\x00\x0f\x81\xff\xc0\x03\xff\xc0\x3f\xff\xff\x80\x03\xff\xfe\x00\xff\xff\xfe\x00\x00\x1c\x00\x00\x00\x3f\xff\xff\xf8\x00\x7f\xff\xc0\x00\x00"</q>,</td></tr>
+<tr><th id="638">638</th><td>  <q>"\x00\x00\x00\x0f\xff\xfe\x0f\xff\xff\x87\xff\xff\xff\x00\x80\x00\x0f\xff\xc0\x00\x03\xf0\x1f\xf7\xe0\x00\x00\x70\x00\x01\xff\xff\xff\x80\x01\xfe\x07\xf0\x00\x01\xff\xfc\x00\x00\x04\x00\x01\xff\xfe\x07\xff\xff\xfe\x00\x07\xc0\x00\x00\xff\xff\xff\x87\xf0\x03\xff\xfc\x00\x00\x1f\xf8\x00\x01\xff\xff\xc0\x00\x00\x3f\xff\xc0\x00\x00\x7f\x8f\xff\xf8\x00\x00\x00\x7f\xff\xe0\x06\x0e\x00\x00\x0f\xff\xff\x80\x00"</q>,</td></tr>
+<tr><th id="639">639</th><td>  <q>"\x03\xff\xff\xfd\xe0\x00\x00\x1f\xff\xf8\x01\xff\xff\xfb\xff\xff\xe0\x01\xf0\xf0\x00\x00\xff\xff\xff\x80\x00\x00\x7f\xff\xff\xe0\x1f\xff\xff\xf0\x01\x80\xff\xff\xff\xe0\x00\x00\x7f\xff\xf0\xff\xff\xc0\x00\x00\x07\xfe\x00\x00\x00\x1e\x00\x1f\xff\xff\xe0\x1f\xff\xe0\x01\xff\xc0\x00\x3f\xff\xe0\x00\x00\x0f\xf0\x00\xff\xff\x7f\xc0\x1f\xf8\x3f\xff\xff\xc0\x00\x00\x7f\xff\xe0\xff\xfc\x00\x00\xff\x0f\xff\xff\xff"</q>,</td></tr>
+<tr><th id="640">640</th><td>  <q>"\x07\xff\xfc\x03\xff\xff\xff\xdf\xff\xff\x87\xff\x18\x00\x03\x80\x01\xff\x00\x00\x00\x1f\xff\x00\x00\x3f\xff\xff\xc0\x1f\xe0\x3f\xff\xff\xfc\x00\x00\x01\xff\xf8\x00\x00\x3f\xff\xff\xf8\x00\x00\x07\xe0\x00\x07\xff\xf9\xff\xe0\x00\x3f\xe0\x00\x7f\xef\xf0\x00\x07\x81\xff\xfc\x00\x00\x00\xff\xe0\x00\x30\x00\x00\x00\xff\xff\xf0\x00\x00\x03\xff\xfc\x7f\x07\xf8\x03\xff\xff\xff\x00\x3f\xfc\x00\x00\x01\xff\xc0\x00\x00"</q>,</td></tr>
+<tr><th id="641">641</th><td>  <q>"\x00\x7f\xfc\x00\x00\x03\xff\xf8\x00\x00\x61\xfe\x7f\xff\xfe\x00\x00\x1f\xff\xfc\x3f\xff\x80\x01\xff\xff\xff\xe0\x00\xff\xff\xff\x80\x1f\xf8\x00\x7f\xff\xff\xf8\x00\x00\x07\xff\xff\xe0\x00\x00\x07\xff\xff\xff\x80\x00\xff\x80\x0f\xff\xff\xfc\x00\x00\x7f\xff\xfe\x00\x00\x00\x30\x00\x00\x7f\x80\x00\x07\xff\xff\xf0\x00\x00\x03\xff\xc0\x0f\xff\xff\x80\x3f\xff\x80\x03\xff\xff\xfe\x03\xff\xff\xff\x7f\xfc\x1f\xf0\x00\x00"</q>,</td></tr>
+<tr><th id="642">642</th><td>  <q>"\x1f\xf0\x00\x00\x7f\xff\xfe\x02\x00\x00\x03\xff\xff\xff\xd8\x07\xff\xff\xe0\x01\xff\xff\x80\x00\x00\x07\xc0\x00\x0f\xff\xc0\x7f\xf0\x00\x07\xff\xff\x80\x00\x07\xf0\x00\x00\x7f\xfc\x03\xff\xff\xff\xc0\x00\x01\xff\xff\xf9\xff\xfe\x00\x00\x1f\xff\xc0\x00\x00\x03\xfe\x3f\xff\xff\x00\x07\xfe\x00\x00\x03\xc0\x00\x3f\xf8\x00\x10\x03\xfc\x00\x0f\xff\xc0\x00\x7f\xff\xe0\x00\xff\xf0\x00\x00\x7f\xff\xe0\x00\x00\x0f\xff\xff\xff"</q>,</td></tr>
+<tr><th id="643">643</th><td>  <q>"\xff\xff\xff\xf8\x00\x00\x60\x00\x00\x00\xff\xff\xfc\x03\xff\xfc\x00\x00\x3c\x00\x3f\xe0\x7f\xf8\x00\x07\xff\xf8\x0f\xf8\x00\x00\x7f\xff\xff\xfc\x00\x7f\xc2\x00\x03\xff\xff\xfe\x00\x01\xff\xff\xff\xf0\x03\xff\xff\xf0\x18\x07\xc0\x00\x0f\xff\xc0\x00\x00\x7f\xff\xff\x87\xe0\x00\x00\x07\x00\x1f\x80\x04\x07\xff\xe0\x00\x00\x1f\xff\x81\xff\x80\x00\x03\xff\xfc\x00\x00\x07\xff\xff\xff\xc0\x00\x00\x1f\x80\x01\xff\xff\x00\x00\x00"</q>,</td></tr>
+<tr><th id="644">644</th><td>  <q>"\x00\x0f\xfc\x1f\xf8\x00\x0f\xff\xff\xf8\x07\xff\xf1\xfc\x00\x1f\xff\xff\xf0\x00\x0f\xff\xdf\xff\xff\xff\x00\x00\x03\xff\xff\xff\x00\x01\xff\xff\xff\xc0\x10\x0f\xf0\x00\x00\x00\xfc\x00\x1f\x00\x07\x00\x01\xf0\x00\x00\x1f\xe0\x00\x00\x30\x7c\x3f\xff\xe0\x00\xff\xfc\x07\xff\xfc\x00\x3f\xff\xff\xf8\xff\xff\xc1\xfc\x1f\xff\xff\xf8\x00\x01\xff\xfc\x00\x00\x0f\xff\xff\xff\x00\x00\xff\xf8\x0c\x00\x00\x07\xff\xff\x00\x00\x00\x7f\xff"</q>,</td></tr>
+<tr><th id="645">645</th><td>  <q>"\xff\xff\x80\xff\xff\x00\x00\x00\x7f\xff\xff\x00\x1f\xfc\x00\x06\x00\x0f\xf8\x00\x00\x01\x80\x00\x00\x7f\xff\xff\xe0\x3f\xff\xff\xfc\x00\x60\x00\x00\x00\xfe\x00\x00\x07\xff\xff\xf0\x7f\xff\xff\xf8\x00\x00\x80\x00\x00\x0f\xff\xff\xff\xbf\xff\xff\xc0\x07\xff\xfe\x00\x00\x1c\x00\x1f\xfc\x07\x00\x01\xff\xff\x00\x00\x00\x80\x00\x1f\xff\x03\x80\x00\x00\x3f\xff\xff\xf8\x00\x07\xff\xff\xff\x80\x00\x1f\xff\xff\xe0\x1f\xff\xff\xc0\x00\x00"</q>,</td></tr>
+<tr><th id="646">646</th><td>  <q>"\xff\xff\xff\xf8\x00\x00\x00\x7e\x00\x00\x00\x1f\xff\x80\x07\xff\xff\xff\x80\x00\x00\x0f\xff\xff\xc3\xff\xf0\x00\x00\x04\x7f\xc0\x7f\xf0\x00\x3f\xff\x80\x00\x7f\xe0\x00\x03\xff\xc0\x00\x07\xff\x00\x00\x0f\xff\x80\x00\x00\x07\x80\x00\x00\x0f\xff\xff\xff\x01\xff\xff\xff\xc0\x03\xc0\x00\x00\x03\xff\xff\xe0\x00\x0f\xff\xff\xc0\x00\x03\xff\xfe\x00\x03\xff\xf8\x00\x00\x0f\xff\xff\xc0\x01\xff\xe0\x00\x00\xff\xff\xfc\x00\x00\x1f\xff\xff\xff"</q>,</td></tr>
+<tr><th id="647">647</th><td>  <q>"\xff\xf0\x00\x3f\xfc\x00\x00\xff\xff\xff\xe0\x1f\xc3\xfe\x00\x07\xff\xf8\x00\x0f\xf0\x01\xff\xff\xf0\x00\x00\xff\xc0\x0f\xff\xff\x80\x00\x00\xff\xff\xf3\xff\x80\x00\x00\x80\x08\x38\x00\x00\x0f\xff\xf0\x00\x1f\xff\xff\xfc\x00\x0f\x80\x00\x70\x00\x00\x31\xff\xff\xfe\x3f\xff\xf8\x00\x00\x00\x3c\x3f\xf0\x0f\xff\xff\x00\x03\xff\xfb\xff\xff\xff\x00\x0f\xff\xff\xfe\x00\x00\x00\xf0\x00\x00\x00\xff\xff\xfc\x00\x7f\xff\xf0\x00\x01\xff\xff\xfe\x00"</q>,</td></tr>
+<tr><th id="648">648</th><td>  <q>"\xff\xff\xf0\x0f\xf8\x3f\xff\xff\xe0\x00\x03\xff\xfe\x00\x00\x3f\xff\x80\xff\xff\xff\x00\x00\x00\xff\xff\xf8\xff\xff\xf0\x00\x0f\xf1\xff\xff\x00\x00\x00\x0f\xff\xfc\x00\x00\x00\x1f\xf0\x00\x00\x1f\xf0\x03\xff\xff\xff\xe1\xff\xe0\x00\x00\x1f\xff\xc1\xfe\x00\x00\x07\xff\xfc\x00\x00\x00\x1f\xfe\x3f\xc0\x00\x00\x01\xff\xfc\x00\x00\x1f\xff\xff\x0f\xe0\x00\x01\xfc\x00\xfe\x00\x00\x00\x7f\xe0\x00\x1f\xff\xff\xe0\x7f\x00\x0f\xf0\x00\xff\xfe\x00\x00"</q>,</td></tr>
+<tr><th id="649">649</th><td>  <q>"\x00\x7f\xff\xc0\x07\xff\xff\xff\x80\x07\xff\xff\xfe\x00\x00\x00\x7e\x00\x00\x00\x0f\xff\x80\x1f\xff\xfe\x07\xff\xff\xf0\x03\xc7\xff\xff\xfe\x00\x00\x00\x7f\xfe\x00\x00\x1f\xff\xfe\x00\x00\x00\xff\xfc\x00\x1f\xff\xc0\x00\x00\x3f\xff\x00\x1e\x00\x00\x03\xff\xff\xff\x80\x00\x00\x7f\xff\xf8\x03\xff\xfc\x00\x01\xff\xff\xfe\x00\x0f\xff\x02\x00\x07\xff\xff\xfe\x00\x00\x00\xfe\x01\xff\xff\xf7\xff\xff\x19\xff\xff\x00\x00\x07\xff\xc1\xff\x00\x00\x07\xff"</q>,</td></tr>
+<tr><th id="650">650</th><td>  <q>"\x00\x00\x00\x40\x00\x00\x07\xff\xff\xf8\x1f\xff\xff\xc0\x00\x3e\xff\xff\xf0\x00\x00\x00\x7f\xff\xfe\x00\x00\x00\xff\x80\x00\x00\x3f\xf1\xff\xff\xff\xe0\x00\x00\x01\xff\xff\xff\x00\x00\x1f\xff\xf8\x00\x07\xff\xff\xf8\x00\x1f\xff\xc1\xff\xff\xff\xe0\x01\xff\xff\xff\xe0\x00\x00\x07\xff\xff\xff\xcf\xff\xe0\x00\x3f\xe0\xff\xff\xc0\x00\x07\xff\xff\xe0\x01\xff\xfc\x3f\x00\x01\xff\xff\xfe\x00\x01\xff\x0f\xff\xff\xfc\x00\x00\x01\xff\xff\x80\x00\x00\x0f\xff"</q>,</td></tr>
+<tr><th id="651">651</th><td>  <q>"\xff\xff\xf0\xff\xff\xff\xc0\x03\x80\x00\x01\x00\x00\x03\xff\xff\xff\xf1\xff\xff\xff\xe0\x07\xfc\x00\x00\x03\xff\xf0\x00\x00\x00\x7e\x00\x00\x00\x07\x00\x3f\xff\xfc\x00\x0f\xc7\xff\xff\x00\x00\x07\xff\xff\xc0\x00\x00\x03\xff\xfc\x00\x00\xff\xe0\x00\x00\x00\x7f\xf0\x00\x00\xff\xff\xff\xfd\xff\x00\xff\xe0\xff\xff\xe0\x07\xff\xff\xf8\x7f\xff\xfe\x18\x00\x00\x01\xf0\x00\x1f\xff\xfe\x01\xc0\x01\xff\xff\xff\xf8\x00\x01\xfe\xff\xff\xff\x80\x00\x00\x07\xff\xff"</q>,</td></tr>
+<tr><th id="652">652</th><td>  <q>"\xff\xff\xf0\x00\x1f\xff\xff\x00\x00\x3f\xff\xf0\x00\xff\xff\x00\x07\xff\xff\xf8\x03\xff\xff\xe7\xff\xff\xff\x81\x00\x00\x01\xff\x00\x00\x3f\xff\xff\xf8\x00\x00\x00\xf0\x07\xff\xc0\x0f\xf0\x00\x3f\xff\xc0\x00\x7f\xf8\x00\xff\xfc\x00\x00\x1f\xff\x80\x1f\xfc\x00\x00\x01\xff\xff\x00\x00\x7f\xff\xff\xfe\x00\x00\x0f\xff\x80\x00\x00\x0f\xff\xff\xfc\x00\x00\x00\xff\xff\xfc\x00\x0f\xff\x80\x00\x3f\xff\xfe\x00\x00\x3f\xe0\x0f\xff\xff\x00\x00\x01\xff\xf0\x00\x00\x00"</q>,</td></tr>
+<tr><th id="653">653</th><td>  <q>"\xff\xc0\x00\x00\x03\xff\xff\xfc\x00\xff\xff\xfc\x00\x00\x00\x7f\xff\xff\x00\x00\x00\x1f\xe0\x00\x0f\xff\xc0\xf0\x00\x00\x7f\xff\xff\xe0\x00\x20\x1f\xff\xff\xff\x00\x00\x00\x1f\x80\x00\x00\x07\xff\xf1\xff\xff\xff\xc0\x00\x00\x1f\xff\xff\xf0\x00\x3f\xff\xf8\x00\x3f\xff\xff\xfe\x01\xff\xff\xfe\x7f\x9e\x00\x1f\xff\xfc\x00\x7f\xe0\x7f\xff\xff\xe0\x00\x7f\xff\xfe\x00\x00\x01\xff\xff\xff\xf8\x01\xff\xc0\x03\x00\x0f\xff\xf8\x00\x00\x0f\xf0\x0f\xff\x00\x00\x00\x0f\xff"</q>,</td></tr>
+<tr><th id="654">654</th><td>  <q>"\x00\x03\xff\xff\xff\xcf\xff\xf8\x7f\x8f\xff\xff\xfc\x01\xff\xff\xfc\x00\x00\x1f\xff\xff\xff\x80\x00\x00\x01\xff\xff\xe1\xff\xf0\x00\x00\x00\xff\xff\xff\xf8\x03\x80\x00\x3f\x80\x00\x0f\xff\xff\xff\xc0\x00\x00\x02\x7f\xff\xf8\x03\xff\xc0\x00\x00\x3f\xff\x80\x00\x00\x01\xff\xff\xe0\x00\x00\x03\x80\x00\x00\xff\xe0\x7f\xff\xff\xfc\x00\x00\x01\xff\xff\xfc\x00\x00\x00\xff\xff\x80\x00\x07\xfe\x00\x00\x07\xff\xf0\x00\x00\x1f\x80\x00\x00\x3e\x1f\xff\xff\xff\x9f\xff\xff\xff"</q>,</td></tr>
+<tr><th id="655">655</th><td>  <q>"\xff\xff\xfe\x00\x03\xff\xff\xff\x80\x01\xff\xff\xff\xa0\x3f\xff\xf8\x00\x7f\x03\xff\xff\xc0\x00\x0f\xff\xc3\xff\xf8\x00\x03\xff\xff\xff\xc0\x7f\xf0\x1f\xe0\x0f\xff\xff\xc0\x00\x1f\xfe\x0f\xff\xff\xe0\x00\x07\xff\xff\xfc\x00\x00\xfc\x00\x3f\xff\xff\xf0\x00\x00\x00\x3f\xfc\x00\x00\x00\x0f\xff\xc4\x00\x00\xff\xc0\x00\x03\xff\xff\xff\x80\x00\x03\xfc\x0f\xff\xff\xf0\x00\x00\x03\xff\xff\xc0\x07\xff\xff\xf8\x0c\x3f\xff\xf0\x00\x1f\xff\x80\x00\x00\x01\xff\xfe\x00\x00\x3f\xff"</q>,</td></tr>
+<tr><th id="656">656</th><td>  <q>"\x00\x00\x00\x1f\xff\xc3\xff\xff\x80\x00\x00\x3f\xff\xff\xfe\x00\x00\x00\x0f\xe0\x00\x7f\xff\xe0\x0f\xfe\x00\xff\xff\xff\xe0\x03\xff\xf8\x00\x00\x00\x3f\xe0\x00\x00\x01\xff\xff\xe7\xff\xff\xff\xe0\x00\x00\x07\xff\xff\xc0\x00\x1f\xe0\x00\x00\x01\xff\xff\x00\x00\x03\xff\xff\xff\xe0\x00\x00\x1f\xe0\x03\xff\xff\x00\x00\x00\x07\xff\xf0\x3f\x80\x00\x00\x0f\xff\xff\xfe\x00\x00\xff\xff\xff\x00\x00\x3f\xff\xff\x80\x0f\xff\xfe\x01\xff\xff\xff\xf8\x3f\xff\xff\xc0\x00\x00\xff\xff\xff"</q>,</td></tr>
+<tr><th id="657">657</th><td>  <q>"\xff\xff\xff\x80\x00\xff\xff\xff\xf0\x00\x00\x1f\x00\x3f\xff\xfe\x0f\xf0\x1c\x00\xff\xff\xe0\x00\x0f\xc0\x1f\xff\xc0\x00\x00\x01\xff\x80\xf7\xff\xf8\x00\x00\x3f\xff\xc0\x00\x00\x01\xff\xf0\x00\x03\xe3\xfc\x00\x07\xf8\x00\x00\x3f\xff\xff\xfe\x00\x00\x1f\x00\x00\x00\x18\x00\x3f\xff\xff\xf8\x0f\xe0\x00\x00\x00\x60\x00\x07\xff\xff\xfe\x00\x60\xff\xff\xff\xf8\x00\x00\x3f\xff\x80\x00\x00\x3f\xff\xff\xf0\x00\x00\x0f\xf0\x00\xff\xff\xf1\xff\x00\x3f\xff\xff\xff\x01\xff\xe0\x00\x00\x00"</q>,</td></tr>
+<tr><th id="658">658</th><td>  <q>"\xff\xff\xff\xfc\x00\x00\x00\xff\xff\xf0\x01\xff\xff\xf8\x00\x00\xff\xff\xff\xe7\xff\xf8\x01\xf8\x7f\xff\xff\x80\x00\x3f\xff\xfc\x00\x00\x01\xff\xff\xe0\x00\x3f\xc0\x00\x00\x7f\xff\xff\x00\x00\x0f\xff\xff\xff\xc0\x00\x0f\xff\xf1\xff\xff\xff\xf8\x00\x0f\xff\xff\xfc\x00\x00\x07\xff\xff\xff\x80\xff\xff\xf8\x07\xf0\x00\x00\x00\x1f\xff\xff\xff\xc0\x00\xff\xff\xff\xc0\x00\x0e\xff\xff\xff\xc0\x00\x00\x03\xff\xf8\x00\x00\x03\xff\x80\x00\x00\x00\xe0\x00\x00\x0f\xf8\x00\x00\x3f\xff\xff\xff"</q>,</td></tr>
+<tr><th id="659">659</th><td>  <q>"\x3f\x00\x03\xc0\x1f\x00\x00\x00\x0f\xf0\x00\x07\xff\xff\xef\x00\xfe\x00\x7f\xfe\x00\x00\x3f\xf0\x00\x3f\xc0\x00\x00\x07\xfc\x00\x00\x03\xff\xff\xff\x0f\xff\xff\xff\xc0\x07\xf8\x00\x00\xf8\x00\x00\x3f\x9f\xff\xff\xfc\x00\x00\x3f\xff\xc0\x00\x03\xff\xff\xc0\x00\x00\xff\xfc\x00\x1f\xff\xe0\x00\x00\x07\xff\xe0\x07\x00\x00\x00\x7f\xff\xfe\x00\x00\x00\xff\xff\xfe\x00\x00\x0f\xfc\x00\x07\xff\xf0\x00\x00\x00\x7f\x80\x03\xcf\xff\x80\x00\x01\xff\xff\xe0\x3c\x00\x00\x3f\xff\xff\xff\x80\x00\x00"</q>,</td></tr>
+<tr><th id="660">660</th><td>  <q>"\x30\x00\x00\x00\xff\xf8\x00\x00\xff\xfc\x00\x3f\xff\xff\x80\x00\x00\x0f\xcf\xff\xcf\xff\xff\xc0\xff\xff\xff\x80\x00\x00\x01\xff\xff\xff\xf0\x00\x00\x00\x1f\xff\x00\x03\xff\xfc\x00\x00\x00\x07\xff\x80\x00\x7f\xff\xff\xfe\x0f\xff\xc0\x00\x00\x00\x7f\xf0\xbf\xff\xff\xe0\x00\x00\xff\xf8\x00\x00\x01\xff\xff\xf8\x00\x00\x3e\x00\x00\x07\xff\xe0\x00\x00\x00\x80\x00\x03\x80\x01\xff\xff\xff\xf8\x60\x00\x00\x00\xff\xf0\x00\x1f\xff\xff\xc7\xff\xf0\x40\xff\xff\xfe\x00\x00\x07\xff\xdf\xff\x80\x00\x00"</q>,</td></tr>
+<tr><th id="661">661</th><td>  <q>"\xff\xff\xff\x83\xff\xf8\x1f\xff\x1f\xff\xff\x80\x0f\xff\xff\xe0\x00\x00\x00\x3f\xff\xff\xc0\xf8\x00\x00\x78\x00\x1c\x00\x00\x00\x1f\xe0\x00\x00\x00\xff\xff\xe0\x3f\xff\xff\xfe\x00\x00\x03\xff\xff\xfe\x00\x00\x00\x1f\xff\xfc\x00\x7f\xff\x00\x00\x00\x1f\xff\xff\x00\x02\x00\x00\x3f\xff\xfc\x00\x00\x00\xff\xf0\x1f\xfe\xff\xff\xc0\x01\xff\xff\xff\xf0\x00\x00\x00\xff\xff\xfe\x00\x00\x00\x0f\xff\xc0\x00\x00\x7f\x7f\xc0\x00\x00\x01\xff\xff\xfe\x0f\xff\xff\xff\xc0\x00\x0f\x80\x00\x00\x3f\xff\xff\xff"</q>,</td></tr>
+<tr><th id="662">662</th><td>  <q>"\xff\xff\xff\xfe\x00\x00\x00\xff\xf8\x0f\xff\xff\xf0\x00\x00\x07\xff\xff\xfb\xff\xc0\x00\x07\xfc\x07\xe0\x00\x00\x01\xff\xff\xe0\x00\x7f\xff\xff\xf8\x00\x00\x3f\xff\xf8\x00\x00\x00\x0f\xff\xff\x00\x00\x0f\xc0\x00\x00\x3f\xff\xf0\x00\x00\x01\xff\xff\xfe\x1f\xff\xf8\x00\x00\x20\x00\x00\x00\x3f\xff\xbf\xff\x9f\xff\xff\xfc\x3f\xff\xff\xf0\x00\x00\x07\x80\x00\x00\xff\xff\xe7\xff\xff\xff\xf0\x00\x00\x3f\xff\xff\xff\x00\x00\x07\xff\xff\xe0\xff\xff\xff\xe0\x01\xff\xff\xff\xf8\x00\x00\x00\x7f\xff\xff\xff"</q>,</td></tr>
+<tr><th id="663">663</th><td>  <q>"\x00\x00\x00\x1f\xff\xc0\x00\x0f\xff\xc0\x00\x00\x1f\xff\xc0\x00\x1f\xc0\x00\x00\x03\xff\x80\x00\x00\x07\xff\xff\xff\xc0\x00\x00\x00\x80\x00\x3f\xfc\x00\xc0\x00\x0f\xff\xff\x00\x00\x06\x00\x3f\xfc\x1e\x00\x1f\xff\xff\xf0\x00\x3e\x0f\xff\xff\xf0\x00\x00\x3f\xff\xf0\x00\x00\x00\x1f\xff\xc0\x00\x00\xff\xff\xff\xf8\x00\xe0\x00\x00\xff\xff\xff\xfe\x00\x00\x0f\xff\xff\xfe\x3f\xff\xff\xfc\x07\xfe\x00\x00\x00\xc0\x00\x7f\xff\xff\xfe\x00\xff\xff\xff\xfc\x07\xff\xff\xe0\x00\x3f\xe3\xff\xff\xc0\x00\x00\x3f\xff"</q>,</td></tr>
+<tr><th id="664">664</th><td>  <q>"\x00\x00\x00\x0f\xff\xc0\x00\x0f\xf8\x00\x00\x00\xff\xfc\x00\x00\x0f\xff\xff\xfe\x00\x00\x00\x03\xff\x00\xff\xfc\x07\xff\xf0\x1f\xff\xfe\x0f\xff\xff\xfd\xff\xff\xff\xf0\x1f\xff\xf0\x00\x07\xf8\xff\xf8\x00\x00\x00\xff\xff\xc0\x3f\xff\xff\xff\x80\x00\x00\x0f\xff\xff\xff\x00\x00\x03\xff\xff\xf0\x00\x07\xff\xff\x00\x00\x3f\xff\xf0\x01\xff\xff\xc0\x01\xff\xff\xff\x00\x3f\xff\xf8\x1f\xff\xff\xfe\x1f\xff\xff\xff\xc0\x00\x00\x7f\xe0\x00\x07\xff\xff\xfe\x00\x00\x00\x03\xe0\x07\xff\xc0\x03\xfc\x00\x07\xff\xff\xff"</q>,</td></tr>
+<tr><th id="665">665</th><td>  <q>"\xff\xff\xff\x00\x00\x03\xc0\x00\x00\x01\xff\xff\xf8\x00\x00\x00\x0f\xff\xff\xff\x00\x00\x0f\x00\x00\xff\xff\xf8\x80\x00\xf8\x00\x0f\xc0\x00\x00\x00\xe0\x00\x00\x00\xff\xff\xff\xf8\x0f\xff\xff\xfe\x00\x00\x18\x00\x00\x7f\xff\xff\xff\x00\x00\x03\xff\xff\xff\x00\x7f\xff\xff\xfc\x00\x03\xc0\x00\x00\x0f\xff\xff\xff\xf0\x00\x07\xff\xff\x80\x01\xff\xff\xff\xe0\x00\x0f\xff\xfe\x07\xff\xff\xf8\x00\xff\xff\xff\xc0\x00\x00\x03\xe0\x00\x07\xff\xf0\x0f\xff\xf0\x00\x00\xff\xff\xf8\x7f\xc0\x03\xc0\x3f\xff\xe0\x00\x00\x00"</q>,</td></tr>
+<tr><th id="666">666</th><td></td></tr>
+<tr><th id="667">667</th><td>  <i>/* These are zero-terminated strings */</i></td></tr>
+<tr><th id="668">668</th><td></td></tr>
+<tr><th id="669">669</th><td>  <q>"abc"</q>,</td></tr>
+<tr><th id="670">670</th><td>  <q>"abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq"</q></td></tr>
+<tr><th id="671">671</th><td>};</td></tr>
+<tr><th id="672">672</th><td></td></tr>
+<tr><th id="673">673</th><td><em>static</em> uschar *hashes[] = {</td></tr>
+<tr><th id="674">674</th><td>  <q>"DA39A3EE5E6B4B0D3255BFEF95601890AFD80709"</q>,</td></tr>
+<tr><th id="675">675</th><td>  <q>"3CDF2936DA2FC556BFA533AB1EB59CE710AC80E5"</q>,</td></tr>
+<tr><th id="676">676</th><td>  <q>"19C1E2048FA7393CFBF2D310AD8209EC11D996E5"</q>,</td></tr>
+<tr><th id="677">677</th><td>  <q>"CA775D8C80FAA6F87FA62BECA6CA6089D63B56E5"</q>,</td></tr>
+<tr><th id="678">678</th><td>  <q>"71AC973D0E4B50AE9E5043FF4D615381120A25A0"</q>,</td></tr>
+<tr><th id="679">679</th><td>  <q>"A6B5B9F854CFB76701C3BDDBF374B3094EA49CBA"</q>,</td></tr>
+<tr><th id="680">680</th><td>  <q>"D87A0EE74E4B9AD72E6847C87BDEEB3D07844380"</q>,</td></tr>
+<tr><th id="681">681</th><td>  <q>"1976B8DD509FE66BF09C9A8D33534D4EF4F63BFD"</q>,</td></tr>
+<tr><th id="682">682</th><td>  <q>"5A78F439B6DB845BB8A558E4CEB106CD7B7FF783"</q>,</td></tr>
+<tr><th id="683">683</th><td>  <q>"F871BCE62436C1E280357416695EE2EF9B83695C"</q>,</td></tr>
+<tr><th id="684">684</th><td>  <q>"62B243D1B780E1D31CF1BA2DE3F01C72AEEA0E47"</q>,</td></tr>
+<tr><th id="685">685</th><td>  <q>"1698994A273404848E56E7FDA4457B5900DE1342"</q>,</td></tr>
+<tr><th id="686">686</th><td>  <q>"056F4CDC02791DA7ED1EB2303314F7667518DEEF"</q>,</td></tr>
+<tr><th id="687">687</th><td>  <q>"9FE2DA967BD8441EEA1C32DF68DDAA9DC1FC8E4B"</q>,</td></tr>
+<tr><th id="688">688</th><td>  <q>"73A31777B4ACE9384EFA8BBEAD45C51A71ABA6DD"</q>,</td></tr>
+<tr><th id="689">689</th><td>  <q>"3F9D7C4E2384EDDABFF5DD8A31E23DE3D03F42AC"</q>,</td></tr>
+<tr><th id="690">690</th><td>  <q>"4814908F72B93FFD011135BEE347DE9A08DA838F"</q>,</td></tr>
+<tr><th id="691">691</th><td>  <q>"0978374B67A412A3102C5AA0B10E1A6596FC68EB"</q>,</td></tr>
+<tr><th id="692">692</th><td>  <q>"44AD6CB618BD935460D46D3F921D87B99AB91C1E"</q>,</td></tr>
+<tr><th id="693">693</th><td>  <q>"02DC989AF265B09CF8485640842128DCF95E9F39"</q>,</td></tr>
+<tr><th id="694">694</th><td>  <q>"67507B8D497B35D6E99FC01976D73F54AECA75CF"</q>,</td></tr>
+<tr><th id="695">695</th><td>  <q>"1EAE0373C1317CB60C36A42A867B716039D441F5"</q>,</td></tr>
+<tr><th id="696">696</th><td>  <q>"9C3834589E5BFFAC9F50950E0199B3EC2620BEC8"</q>,</td></tr>
+<tr><th id="697">697</th><td>  <q>"209F7ABC7F3B878EE46CDF3A1FBB9C21C3474F32"</q>,</td></tr>
+<tr><th id="698">698</th><td>  <q>"05FC054B00D97753A9B3E2DA8FBBA3EE808CEF22"</q>,</td></tr>
+<tr><th id="699">699</th><td>  <q>"0C4980EA3A46C757DFBFC5BAA38AC6C8E72DDCE7"</q>,</td></tr>
+<tr><th id="700">700</th><td>  <q>"96A460D2972D276928B69864445BEA353BDCFFD2"</q>,</td></tr>
+<tr><th id="701">701</th><td>  <q>"F3EF04D8FA8C6FA9850F394A4554C080956FA64B"</q>,</td></tr>
+<tr><th id="702">702</th><td>  <q>"F2A31D875D1D7B30874D416C4D2EA6BAF0FFBAFE"</q>,</td></tr>
+<tr><th id="703">703</th><td>  <q>"F4942D3B9E9588DCFDC6312A84DF75D05F111C20"</q>,</td></tr>
+<tr><th id="704">704</th><td>  <q>"310207DF35B014E4676D30806FA34424813734DD"</q>,</td></tr>
+<tr><th id="705">705</th><td>  <q>"4DA1955B2FA7C7E74E3F47D7360CE530BBF57CA3"</q>,</td></tr>
+<tr><th id="706">706</th><td>  <q>"74C4BC5B26FB4A08602D40CCEC6C6161B6C11478"</q>,</td></tr>
+<tr><th id="707">707</th><td>  <q>"0B103CE297338DFC7395F7715EE47539B556DDB6"</q>,</td></tr>
+<tr><th id="708">708</th><td>  <q>"EFC72D99E3D2311CE14190C0B726BDC68F4B0821"</q>,</td></tr>
+<tr><th id="709">709</th><td>  <q>"660EDAC0A8F4CE33DA0D8DBAE597650E97687250"</q>,</td></tr>
+<tr><th id="710">710</th><td>  <q>"FE0A55A988B3B93946A63EB36B23785A5E6EFC3E"</q>,</td></tr>
+<tr><th id="711">711</th><td>  <q>"0CBDF2A5781C59F907513147A0DE3CC774B54BF3"</q>,</td></tr>
+<tr><th id="712">712</th><td>  <q>"663E40FEE5A44BFCB1C99EA5935A6B5BC9F583B0"</q>,</td></tr>
+<tr><th id="713">713</th><td>  <q>"00162134256952DD9AE6B51EFB159B35C3C138C7"</q>,</td></tr>
+<tr><th id="714">714</th><td>  <q>"CEB88E4736E354416E2010FC1061B3B53B81664B"</q>,</td></tr>
+<tr><th id="715">715</th><td>  <q>"A6A2C4B6BCC41DDC67278F3DF4D8D0B9DD7784EF"</q>,</td></tr>
+<tr><th id="716">716</th><td>  <q>"C23D083CD8820B57800A869F5F261D45E02DC55D"</q>,</td></tr>
+<tr><th id="717">717</th><td>  <q>"E8AC31927B78DDEC41A31CA7A44EB7177165E7AB"</q>,</td></tr>
+<tr><th id="718">718</th><td>  <q>"E864EC5DBAB0F9FF6984AB6AD43A8C9B81CC9F9C"</q>,</td></tr>
+<tr><th id="719">719</th><td>  <q>"CFED6269069417A84D6DE2347220F4B858BCD530"</q>,</td></tr>
+<tr><th id="720">720</th><td>  <q>"D9217BFB46C96348722C3783D29D4B1A3FEDA38C"</q>,</td></tr>
+<tr><th id="721">721</th><td>  <q>"DEC24E5554F79697218D317315FA986229CE3350"</q>,</td></tr>
+<tr><th id="722">722</th><td>  <q>"83A099DF7071437BA5495A5B0BFBFEFE1C0EF7F3"</q>,</td></tr>
+<tr><th id="723">723</th><td>  <q>"AA3198E30891A83E33CE3BFA0587D86A197D4F80"</q>,</td></tr>
+<tr><th id="724">724</th><td>  <q>"9B6ACBEB4989CBEE7015C7D515A75672FFDE3442"</q>,</td></tr>
+<tr><th id="725">725</th><td>  <q>"B021EB08A436B02658EAA7BA3C88D49F1219C035"</q>,</td></tr>
+<tr><th id="726">726</th><td>  <q>"CAE36DAB8AEA29F62E0855D9CB3CD8E7D39094B1"</q>,</td></tr>
+<tr><th id="727">727</th><td>  <q>"02DE8BA699F3C1B0CB5AD89A01F2346E630459D7"</q>,</td></tr>
+<tr><th id="728">728</th><td>  <q>"88021458847DD39B4495368F7254941859FAD44B"</q>,</td></tr>
+<tr><th id="729">729</th><td>  <q>"91A165295C666FE85C2ADBC5A10329DAF0CB81A0"</q>,</td></tr>
+<tr><th id="730">730</th><td>  <q>"4B31312EAF8B506811151A9DBD162961F7548C4B"</q>,</td></tr>
+<tr><th id="731">731</th><td>  <q>"3FE70971B20558F7E9BAC303ED2BC14BDE659A62"</q>,</td></tr>
+<tr><th id="732">732</th><td>  <q>"93FB769D5BF49D6C563685954E2AECC024DC02D6"</q>,</td></tr>
+<tr><th id="733">733</th><td>  <q>"BC8827C3E614D515E83DEA503989DEA4FDA6EA13"</q>,</td></tr>
+<tr><th id="734">734</th><td>  <q>"E83868DBE4A389AB48E61CFC4ED894F32AE112AC"</q>,</td></tr>
+<tr><th id="735">735</th><td>  <q>"55C95459CDE4B33791B4B2BCAAF840930AF3F3BD"</q>,</td></tr>
+<tr><th id="736">736</th><td>  <q>"36BB0E2BA438A3E03214D9ED2B28A4D5C578FCAA"</q>,</td></tr>
+<tr><th id="737">737</th><td>  <q>"3ACBF874199763EBA20F3789DFC59572ACA4CF33"</q>,</td></tr>
+<tr><th id="738">738</th><td>  <q>"86BE037C4D509C9202020767D860DAB039CADACE"</q>,</td></tr>
+<tr><th id="739">739</th><td>  <q>"51B57D7080A87394EEC3EB2E0B242E553F2827C9"</q>,</td></tr>
+<tr><th id="740">740</th><td>  <q>"1EFBFA78866315CE6A71E457F3A750A38FACAB41"</q>,</td></tr>
+<tr><th id="741">741</th><td>  <q>"57D6CB41AEEC20236F365B3A490C61D0CFA39611"</q>,</td></tr>
+<tr><th id="742">742</th><td>  <q>"C532CB64B4BA826372BCCF2B4B5793D5B88BB715"</q>,</td></tr>
+<tr><th id="743">743</th><td>  <q>"15833B5631032663E783686A209C6A2B47A1080E"</q>,</td></tr>
+<tr><th id="744">744</th><td>  <q>"D04F2043C96E10CD83B574B1E1C217052CD4A6B2"</q>,</td></tr>
+<tr><th id="745">745</th><td>  <q>"E8882627C64DB743F7DB8B4413DD033FC63BEB20"</q>,</td></tr>
+<tr><th id="746">746</th><td>  <q>"CD2D32286B8867BC124A0AF2236FC74BE3622199"</q>,</td></tr>
+<tr><th id="747">747</th><td>  <q>"019B70D745375091ED5C7B218445EC986D0F5A82"</q>,</td></tr>
+<tr><th id="748">748</th><td>  <q>"E5FF5FEC1DADBAED02BF2DAD4026BE6A96B3F2AF"</q>,</td></tr>
+<tr><th id="749">749</th><td>  <q>"6F4E23B3F2E2C068D13921FE4E5E053FFED4E146"</q>,</td></tr>
+<tr><th id="750">750</th><td>  <q>"25E179602A575C915067566FBA6DA930E97F8678"</q>,</td></tr>
+<tr><th id="751">751</th><td>  <q>"67DED0E68E235C8A523E051E86108EEB757EFBFD"</q>,</td></tr>
+<tr><th id="752">752</th><td>  <q>"AF78536EA83C822796745556D62A3EE82C7BE098"</q>,</td></tr>
+<tr><th id="753">753</th><td>  <q>"64D7AC52E47834BE72455F6C64325F9C358B610D"</q>,</td></tr>
+<tr><th id="754">754</th><td>  <q>"9D4866BAA3639C13E541F250FFA3D8BC157A491F"</q>,</td></tr>
+<tr><th id="755">755</th><td>  <q>"2E258811961D3EB876F30E7019241A01F9517BEC"</q>,</td></tr>
+<tr><th id="756">756</th><td>  <q>"8E0EBC487146F83BC9077A1630E0FB3AB3C89E63"</q>,</td></tr>
+<tr><th id="757">757</th><td>  <q>"CE8953741FFF3425D2311FBBF4AB481B669DEF70"</q>,</td></tr>
+<tr><th id="758">758</th><td>  <q>"789D1D2DAB52086BD90C0E137E2515ED9C6B59B5"</q>,</td></tr>
+<tr><th id="759">759</th><td>  <q>"B76CE7472700DD68D6328B7AA8437FB051D15745"</q>,</td></tr>
+<tr><th id="760">760</th><td>  <q>"F218669B596C5FFB0B1C14BD03C467FC873230A0"</q>,</td></tr>
+<tr><th id="761">761</th><td>  <q>"1FF3BDBE0D504CB0CDFAB17E6C37ABA6B3CFFDED"</q>,</td></tr>
+<tr><th id="762">762</th><td>  <q>"2F3CBACBB14405A4652ED52793C1814FD8C4FCE0"</q>,</td></tr>
+<tr><th id="763">763</th><td>  <q>"982C8AB6CE164F481915AF59AAED9FFF2A391752"</q>,</td></tr>
+<tr><th id="764">764</th><td>  <q>"5CD92012D488A07ECE0E47901D0E083B6BD93E3F"</q>,</td></tr>
+<tr><th id="765">765</th><td>  <q>"69603FEC02920851D4B3B8782E07B92BB2963009"</q>,</td></tr>
+<tr><th id="766">766</th><td>  <q>"3E90F76437B1EA44CF98A08D83EA24CECF6E6191"</q>,</td></tr>
+<tr><th id="767">767</th><td>  <q>"34C09F107C42D990EB4881D4BF2DDDCAB01563AE"</q>,</td></tr>
+<tr><th id="768">768</th><td>  <q>"474BE0E5892EB2382109BFC5E3C8249A9283B03D"</q>,</td></tr>
+<tr><th id="769">769</th><td>  <q>"A04B4F75051786682483252438F6A75BF4705EC6"</q>,</td></tr>
+<tr><th id="770">770</th><td>  <q>"BE88A6716083EB50ED9416719D6A247661299383"</q>,</td></tr>
+<tr><th id="771">771</th><td>  <q>"C67E38717FEE1A5F65EC6C7C7C42AFC00CD37F04"</q>,</td></tr>
+<tr><th id="772">772</th><td>  <q>"959AC4082388E19E9BE5DE571C047EF10C174A8D"</q>,</td></tr>
+<tr><th id="773">773</th><td>  <q>"BAA7AA7B7753FA0ABDC4A541842B5D238D949F0A"</q>,</td></tr>
+<tr><th id="774">774</th><td>  <q>"351394DCEBC08155D100FCD488578E6AE71D0E9C"</q>,</td></tr>
+<tr><th id="775">775</th><td>  <q>"AB8BE94C5AF60D9477EF1252D604E58E27B2A9EE"</q>,</td></tr>
+<tr><th id="776">776</th><td>  <q>"3429EC74A695FDD3228F152564952308AFE0680A"</q>,</td></tr>
+<tr><th id="777">777</th><td>  <q>"907FA46C029BC67EAA8E4F46E3C2A232F85BD122"</q>,</td></tr>
+<tr><th id="778">778</th><td>  <q>"2644C87D1FBBBC0FC8D65F64BCA2492DA15BAAE4"</q>,</td></tr>
+<tr><th id="779">779</th><td>  <q>"110A3EEB408756E2E81ABAF4C5DCD4D4C6AFCF6D"</q>,</td></tr>
+<tr><th id="780">780</th><td>  <q>"CD4FDC35FAC7E1ADB5DE40F47F256EF74D584959"</q>,</td></tr>
+<tr><th id="781">781</th><td>  <q>"8E6E273208AC256F9ECCF296F3F5A37BC8A0F9F7"</q>,</td></tr>
+<tr><th id="782">782</th><td>  <q>"FE0606100BDBC268DB39B503E0FDFE3766185828"</q>,</td></tr>
+<tr><th id="783">783</th><td>  <q>"6C63C3E58047BCDB35A17F74EEBA4E9B14420809"</q>,</td></tr>
+<tr><th id="784">784</th><td>  <q>"BCC2BD305F0BCDA8CF2D478EF9FE080486CB265F"</q>,</td></tr>
+<tr><th id="785">785</th><td>  <q>"CE5223FD3DD920A3B666481D5625B16457DCB5E8"</q>,</td></tr>
+<tr><th id="786">786</th><td>  <q>"948886776E42E4F5FAE1B2D0C906AC3759E3F8B0"</q>,</td></tr>
+<tr><th id="787">787</th><td>  <q>"4C12A51FCFE242F832E3D7329304B11B75161EFB"</q>,</td></tr>
+<tr><th id="788">788</th><td>  <q>"C54BDD2050504D92F551D378AD5FC72C9ED03932"</q>,</td></tr>
+<tr><th id="789">789</th><td>  <q>"8F53E8FA79EA09FD1B682AF5ED1515ECA965604C"</q>,</td></tr>
+<tr><th id="790">790</th><td>  <q>"2D7E17F6294524CE78B33EAB72CDD08E5FF6E313"</q>,</td></tr>
+<tr><th id="791">791</th><td>  <q>"64582B4B57F782C9302BFE7D07F74AA176627A3A"</q>,</td></tr>
+<tr><th id="792">792</th><td>  <q>"6D88795B71D3E386BBD1EB830FB9F161BA98869F"</q>,</td></tr>
+<tr><th id="793">793</th><td>  <q>"86AD34A6463F12CEE6DE9596ABA72F0DF1397FD1"</q>,</td></tr>
+<tr><th id="794">794</th><td>  <q>"7EB46685A57C0D466152DC339C8122548C757ED1"</q>,</td></tr>
+<tr><th id="795">795</th><td>  <q>"E7A98FB0692684054407CC221ABC60C199D6F52A"</q>,</td></tr>
+<tr><th id="796">796</th><td>  <q>"34DF1306662206FD0A5FC2969A4BEEC4EB0197F7"</q>,</td></tr>
+<tr><th id="797">797</th><td>  <q>"56CF7EBF08D10F0CB9FE7EE3B63A5C3A02BCB450"</q>,</td></tr>
+<tr><th id="798">798</th><td>  <q>"3BAE5CB8226642088DA760A6F78B0CF8EDDEA9F1"</q>,</td></tr>
+<tr><th id="799">799</th><td>  <q>"6475DF681E061FA506672C27CBABFA9AA6DDFF62"</q>,</td></tr>
+<tr><th id="800">800</th><td>  <q>"79D81991FA4E4957C8062753439DBFD47BBB277D"</q>,</td></tr>
+<tr><th id="801">801</th><td>  <q>"BAE224477B20302E881F5249F52EC6C34DA8ECEF"</q>,</td></tr>
+<tr><th id="802">802</th><td>  <q>"EDE4DEB4293CFE4138C2C056B7C46FF821CC0ACC"</q>,</td></tr>
+<tr><th id="803">803</th><td></td></tr>
+<tr><th id="804">804</th><td>  <q>"A9993E364706816ABA3E25717850C26C9CD0D89D"</q>,</td></tr>
+<tr><th id="805">805</th><td>  <q>"84983E441C3BD26EBAAE4AA1F95129E5E54670F1"</q></td></tr>
+<tr><th id="806">806</th><td>};</td></tr>
+<tr><th id="807">807</th><td></td></tr>
+<tr><th id="808">808</th><td><em>static</em> uschar *atest = <q>"34AA973CD4C4DAA4F61EEB2BDBAD27316534016F"</q>;</td></tr>
+<tr><th id="809">809</th><td></td></tr>
+<tr><th id="810">810</th><td><em>int</em> main(<em>void</em>)</td></tr>
+<tr><th id="811">811</th><td>{</td></tr>
+<tr><th id="812">812</th><td>sha1 base;</td></tr>
+<tr><th id="813">813</th><td><em>int</em> j;</td></tr>
+<tr><th id="814">814</th><td><em>int</em> i = <var>0x01020304</var>;</td></tr>
+<tr><th id="815">815</th><td>uschar *ctest = US (&amp;i);</td></tr>
+<tr><th id="816">816</th><td>uschar buffer[<var>256</var>];</td></tr>
+<tr><th id="817">817</th><td>uschar digest[<var>20</var>];</td></tr>
+<tr><th id="818">818</th><td>uschar s[<var>41</var>];</td></tr>
+<tr><th id="819">819</th><td>printf(<q>"Checking sha1: %s-endian\n\n"</q>, (ctest[<var>0</var>] == <var>0x04</var>)? <q>"little"</q> : <q>"big"</q>);</td></tr>
+<tr><th id="820">820</th><td></td></tr>
+<tr><th id="821">821</th><td><b>for</b> (i = <var>0</var>; i &lt; <b>sizeof</b>(tests)/<b>sizeof</b>(uschar *); i ++)</td></tr>
+<tr><th id="822">822</th><td>  {</td></tr>
+<tr><th id="823">823</th><td>  printf(<q>"%d.\nShould be: %s\n"</q>, i, hashes[i]);</td></tr>
+<tr><th id="824">824</th><td>  native_sha1_start(&amp;base);</td></tr>
+<tr><th id="825">825</th><td>  native_sha1_end(&amp;base, tests[i], (i &lt;= <var>128</var>)? i : strlen(tests[i]), digest);</td></tr>
+<tr><th id="826">826</th><td>  <b>for</b> (j = <var>0</var>; j &lt; <var>20</var>; j++) sprintf(s+<var>2</var>*j, <q>"%02X"</q>, digest[j]);</td></tr>
+<tr><th id="827">827</th><td>  printf(<q>"Computed:  %s\n"</q>, s);</td></tr>
+<tr><th id="828">828</th><td>  <b>if</b> (strcmp(s, hashes[i]) != <var>0</var>) printf(<q>"*** No match ***\n"</q>);</td></tr>
+<tr><th id="829">829</th><td>  printf(<q>"\n"</q>);</td></tr>
+<tr><th id="830">830</th><td>  }</td></tr>
+<tr><th id="831">831</th><td></td></tr>
+<tr><th id="832">832</th><td><i>/* 1 000 000 repetitions of "a" */</i></td></tr>
+<tr><th id="833">833</th><td></td></tr>
+<tr><th id="834">834</th><td>ctest = malloc(<var>1000000</var>);</td></tr>
+<tr><th id="835">835</th><td>memset(ctest, <kbd>'a'</kbd>, <var>1000000</var>);</td></tr>
+<tr><th id="836">836</th><td></td></tr>
+<tr><th id="837">837</th><td>printf(<q>"1 000 000 repetitions of 'a'\n"</q>);</td></tr>
+<tr><th id="838">838</th><td>printf(<q>"Should be: %s\n"</q>, atest);</td></tr>
+<tr><th id="839">839</th><td>native_sha1_start(&amp;base);</td></tr>
+<tr><th id="840">840</th><td>native_sha1_end(&amp;base, ctest, <var>1000000</var>, digest);</td></tr>
+<tr><th id="841">841</th><td><b>for</b> (j = <var>0</var>; j &lt; <var>20</var>; j++) sprintf(s+<var>2</var>*j, <q>"%02X"</q>, digest[j]);</td></tr>
+<tr><th id="842">842</th><td>printf(<q>"Computed:  %s\n"</q>, s);</td></tr>
+<tr><th id="843">843</th><td><b>if</b> (strcmp(s, atest) != <var>0</var>) printf(<q>"*** No match ***\n"</q>);</td></tr>
+<tr><th id="844">844</th><td></td></tr>
+<tr><th id="845">845</th><td>}</td></tr>
+<tr><th id="846">846</th><td><u># <span data-ppcond="531">endif</span>	/*STAND_ALONE*/</u></td></tr>
+<tr><th id="847">847</th><td></td></tr>
+<tr><th id="848">848</th><td><i>/* End of File */</i></td></tr>
+<tr><th id="849">849</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

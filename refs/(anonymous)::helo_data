@@ -1,0 +1,4 @@
+<dec f='exim/src/transports/smtp.h' l='23' type='uschar *'/>
+<dec f='exim/src/transports/smtp.h' l='135' type='uschar *'/>
+<offset>512</offset>
+<use f='exim/src/verify.c' l='675' u='w' c='do_callout'/>

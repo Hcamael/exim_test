@@ -1,3 +1,10 @@
 <dec f='exim/src/structs.h' l='593' type='BOOL'/>
 <offset>14</offset>
 <doc f='exim/src/structs.h' l='593'>/* uid field is set */</doc>
+<use f='exim/src/deliver.c' l='601' u='r' c='same_ugid'/>
+<use f='exim/src/deliver.c' l='602' u='r' c='same_ugid'/>
+<use f='exim/src/deliver.c' l='1911' u='r' c='findugid'/>
+<use f='exim/src/deliver.c' l='6021' u='w' c='deliver_message'/>
+<use f='exim/src/routers/rf_set_ugid.c' l='32' u='w' c='rf_set_ugid'/>
+<use f='exim/src/routers/rf_queue_add.c' l='57' u='w' c='rf_queue_add'/>
+<use f='exim/src/routers/redirect.c' l='481' u='r' c='add_generated'/>

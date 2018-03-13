@@ -1,1 +1,5 @@
 <dec f='exim/src/macros.h' l='687' type='37'/>
+<use f='exim/src/transport.c' l='59' u='r'/>
+<use f='exim/src/transport.c' l='59' u='r'/>
+<use f='exim/src/transport.c' l='59' u='r'/>
+<use f='exim/src/transport.c' l='59' u='r'/>

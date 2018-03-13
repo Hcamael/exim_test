@@ -1,1 +1,77 @@
 <dec f='exim/src/functions.h' l='486' type='int strncmpic(const uschar * , const uschar * , int )'/>
+<use f='exim/src/deliver.c' l='2074' u='c' c='contains_header'/>
+<use f='exim/src/deliver.c' l='8192' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8194' u='c' c='deliver_message'/>
+<use f='exim/src/header.c' l='35' u='c' c='header_testname'/>
+<use f='exim/src/header.c' l='51' u='c' c='header_testname_incomplete'/>
+<use f='exim/src/header.c' l='311' u='c' c='header_checkname'/>
+<use f='exim/src/header.c' l='375' u='c' c='one_pattern_match'/>
+<def f='exim/src/string.c' l='745' ll='754' type='int strncmpic(const uschar * s, const uschar * t, int n)'/>
+<doc f='exim/src/string.c' l='736'>/*
+Arguments:
+  s         first string
+  t         second string
+  n         number of characters to compare
+
+Returns:    &lt; 0, = 0, or &gt; 0, according to the comparison
+*/</doc>
+<use f='exim/src/parse.c' l='255' u='c' c='read_domain'/>
+<use f='exim/src/parse.c' l='255' u='c' c='read_domain'/>
+<use f='exim/src/filter.c' l='1571' u='c' c='test_condition'/>
+<use f='exim/src/filter.c' l='2399' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2402' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2403' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2404' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2405' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2406' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2407' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2408' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2412' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2416' u='c' c='filter_personal'/>
+<use f='exim/src/smtp_in.c' l='1561' u='c' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='1860' u='c' c='check_helo'/>
+<use f='exim/src/smtp_in.c' l='1862' u='c' c='check_helo'/>
+<use f='exim/src/lookups/lsearch.c' l='171' u='c' c='internal_lsearch_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='187' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='190' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='192' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='194' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='202' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='205' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='207' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='209' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='217' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='228' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='264' u='c' c='dnsdb_find'/>
+<use f='exim/src/acl.c' l='980' u='c' c='setup_header'/>
+<use f='exim/src/acl.c' l='985' u='c' c='setup_header'/>
+<use f='exim/src/acl.c' l='990' u='c' c='setup_header'/>
+<use f='exim/src/acl.c' l='995' u='c' c='setup_header'/>
+<use f='exim/src/acl.c' l='1643' u='c' c='acl_verify'/>
+<use f='exim/src/acl.c' l='1791' u='c' c='acl_verify'/>
+<use f='exim/src/acl.c' l='1812' u='c' c='acl_verify'/>
+<use f='exim/src/acl.c' l='2309' u='c' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2317' u='c' c='acl_ratelimit'/>
+<use f='exim/src/match.c' l='152' u='c' c='check_string'/>
+<use f='exim/src/match.c' l='188' u='c' c='check_string'/>
+<use f='exim/src/match.c' l='198' u='c' c='check_string'/>
+<use f='exim/src/match.c' l='199' u='c' c='check_string'/>
+<use f='exim/src/match.c' l='204' u='c' c='check_string'/>
+<use f='exim/src/match.c' l='211' u='c' c='check_string'/>
+<use f='exim/src/match.c' l='1176' u='c' c='check_address'/>
+<use f='exim/src/match.c' l='1196' u='c' c='check_address'/>
+<use f='exim/src/expand.c' l='1138' u='c' c='expand_getkeyed'/>
+<use f='exim/src/expand.c' l='1558' u='c' c='find_header'/>
+<use f='exim/src/expand.c' l='2685' u='c' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2724' u='c' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2768' u='c' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2773' u='c' c='eval_condition'/>
+<use f='exim/src/receive.c' l='2171' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2246' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2295' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2463' u='c' c='receive_msg'/>
+<use f='exim/src/host.c' l='566' u='c' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='567' u='c' c='host_build_sender_fullhost'/>
+<use f='exim/src/sieve.c' l='1404' u='c' c='string_decode'/>
+<use f='exim/src/sieve.c' l='1413' u='c' c='string_decode'/>
+<use f='exim/src/sieve.c' l='1640' u='c' c='parse_identifier'/>

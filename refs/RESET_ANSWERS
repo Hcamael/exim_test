@@ -1,1 +1,14 @@
 <dec f='exim/src/macros.h' l='216' type='1'/>
+<use f='exim/src/verify.c' l='3407' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3570' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/lookups/dnsdb.c' l='381' u='r' c='dnsdb_find'/>
+<use f='exim/src/acl.c' l='1414' u='r' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1505' u='r' c='acl_verify_csa'/>
+<use f='exim/src/host.c' l='253' u='r' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='269' u='r' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='1716' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1729' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='2405' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2790' u='r' c='host_find_bydns'/>
+<use f='exim/src/dns.c' l='895' u='r' c='dns_lookup'/>
+<use f='exim/src/dns.c' l='1134' u='r' c='dns_special_lookup'/>

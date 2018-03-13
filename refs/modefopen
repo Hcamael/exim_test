@@ -1,1 +1,17 @@
 <dec f='exim/src/functions.h' l='303' type='FILE * modefopen(const uschar * , const char * , mode_t )'/>
+<def f='exim/src/exim.c' l='451' ll='459' type='FILE * modefopen(const uschar * filename, const char * options, mode_t mode)'/>
+<doc f='exim/src/exim.c' l='436'>/* Exim runs with umask(0) so that files created with open() have the mode that
+is specified in the open() call. However, there are some files, typically in
+the spool directory, that are created with fopen(). They end up world-writeable
+if no precautions are taken. Although the spool directory is not accessible to
+the world, this is an untidiness. So this is a wrapper function for fopen()
+that sorts out the mode of the created file.
+
+Arguments:
+   filename       the file name
+   options        the fopen() options
+   mode           the required mode
+
+Returns:          the fopened FILE or NULL
+*/</doc>
+<use f='exim/src/daemon.c' l='1543' u='c' c='daemon_go'/>

@@ -1,2 +1,9 @@
 <dec f='exim/src/macros.h' l='736'/>
 <doc f='exim/src/macros.h' l='734'>/* Options for lookup functions */</doc>
+<use f='exim/src/verify.c' l='2955' u='c'/>
+<use f='exim/src/verify.c' l='3063' u='c'/>
+<use f='exim/src/lookups/dnsdb.c' l='592' u='c'/>
+<use f='exim/src/search.c' l='189' u='c'/>
+<use f='exim/src/match.c' l='290' u='c'/>
+<use f='exim/src/expand.c' l='4270' u='c'/>
+<use f='exim/src/expand.c' l='4318' u='c'/>

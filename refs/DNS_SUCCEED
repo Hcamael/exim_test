@@ -1,1 +1,21 @@
 <dec f='exim/src/macros.h' l='312' type='0'/>
+<use f='exim/src/verify.c' l='3403' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3441' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3567' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/lookups/dnsdb.c' l='363' u='r' c='dnsdb_find'/>
+<use f='exim/src/acl.c' l='1408' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1504' c='acl_verify_csa'/>
+<use f='exim/src/host.c' l='245' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='1702' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='2355' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2638' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2663' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2692' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2722' u='r' c='host_find_bydns'/>
+<use f='exim/src/dns.c' l='826' u='r' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='885' u='r' c='dns_lookup'/>
+<use f='exim/src/dns.c' l='931' u='r' c='dns_lookup'/>
+<use f='exim/src/dns.c' l='1035' u='r' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1037' u='r' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1128' u='r' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1151' u='r' c='dns_special_lookup'/>

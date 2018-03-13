@@ -1,0 +1,11 @@
+<dec f='exim/src/transports/tf_maildir.h' l='18' type='void maildir_record_length(int , int )'/>
+<def f='exim/src/transports/tf_maildir.c' l='207' ll='220' type='void maildir_record_length(int fd, int size)'/>
+<doc f='exim/src/transports/tf_maildir.c' l='197'>/* This function is called to add a new line to the file, recording the length
+of the newly added message. There isn&apos;t much we can do on failure...
+
+Arguments:
+  fd           the open file descriptor
+  size         the size of the message
+
+Returns:       nothing
+*/</doc>

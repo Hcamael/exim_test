@@ -1,2 +1,11 @@
 <dec f='exim/src/dbstuff.h' l='126'/>
 <doc f='exim/src/dbstuff.h' l='125'>/* The datum type used for queries */</doc>
+<use f='exim/src/exim_dbmbuild.c' l='150' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='364' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='407' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='445' u='c'/>
+<use f='exim/src/lookups/dbmdb.c' l='97' u='c'/>
+<use f='exim/src/dbfn.c' l='297' u='c'/>
+<use f='exim/src/dbfn.c' l='340' u='c'/>
+<use f='exim/src/dbfn.c' l='380' u='c'/>
+<use f='exim/src/dbfn.c' l='408' u='c'/>

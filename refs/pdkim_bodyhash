@@ -1,0 +1,11 @@
+<def f='exim/src/pdkim/pdkim.h' l='120' ll='131'/>
+<size>280</size>
+<doc f='exim/src/pdkim/pdkim.h' l='119'>/* Body-hash to be calculated */</doc>
+<mbr r='pdkim_bodyhash::next' o='0' t='struct pdkim_bodyhash *'/>
+<mbr r='pdkim_bodyhash::hashtype' o='64' t='int'/>
+<mbr r='pdkim_bodyhash::canon_method' o='96' t='int'/>
+<mbr r='pdkim_bodyhash::bodylength' o='128' t='long'/>
+<mbr r='pdkim_bodyhash::body_hash_ctx' o='192' t='hctx'/>
+<mbr r='pdkim_bodyhash::signed_body_bytes' o='1984' t='unsigned long'/>
+<mbr r='pdkim_bodyhash::num_buffered_blanklines' o='2048' t='int'/>
+<mbr r='pdkim_bodyhash::bh' o='2112' t='blob'/>

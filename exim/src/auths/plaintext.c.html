@@ -1,0 +1,328 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>plaintext.c source code [exim/src/auths/plaintext.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/auths/plaintext.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>auths</a>/<a href='plaintext.c.html'>plaintext.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><u>#include <a href="../exim.h.html">"../exim.h"</a></u></td></tr>
+<tr><th id="9">9</th><td><u>#include <a href="plaintext.h.html">"plaintext.h"</a></u></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td><i>/* Options specific to the plaintext authentication mechanism. */</i></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a> <dfn class="decl def" id="auth_plaintext_options" title='auth_plaintext_options' data-ref="auth_plaintext_options">auth_plaintext_options</dfn>[] = {</td></tr>
+<tr><th id="15">15</th><td>  { <q>"client_ignore_invalid_base64"</q>, <a class="enum" href="../local_scan.h.html#opt_bool" title='opt_bool' data-ref="opt_bool">opt_bool</a>,</td></tr>
+<tr><th id="16">16</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(auth_plaintext_options_block, client_ignore_invalid_base64)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="plaintext.h.html#auth_plaintext_options_block" title='auth_plaintext_options_block' data-type='struct auth_plaintext_options_block' data-ref="auth_plaintext_options_block">auth_plaintext_options_block</a>, client_ignore_invalid_base64)) },</td></tr>
+<tr><th id="17">17</th><td>  { <q>"client_send"</q>,        <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="18">18</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(auth_plaintext_options_block, client_send)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="plaintext.h.html#auth_plaintext_options_block" title='auth_plaintext_options_block' data-type='struct auth_plaintext_options_block' data-ref="auth_plaintext_options_block">auth_plaintext_options_block</a>, client_send)) },</td></tr>
+<tr><th id="19">19</th><td>  { <q>"server_prompts"</q>,     <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="20">20</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(auth_plaintext_options_block, server_prompts)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="plaintext.h.html#auth_plaintext_options_block" title='auth_plaintext_options_block' data-type='struct auth_plaintext_options_block' data-ref="auth_plaintext_options_block">auth_plaintext_options_block</a>, server_prompts)) }</td></tr>
+<tr><th id="21">21</th><td>};</td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><i>/* Size of the options list. An extern variable has to be used so that its</i></td></tr>
+<tr><th id="24">24</th><td><i>address can appear in the tables drtables.c. */</i></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><em>int</em> <dfn class="decl def" id="auth_plaintext_options_count" title='auth_plaintext_options_count' data-ref="auth_plaintext_options_count">auth_plaintext_options_count</dfn> =</td></tr>
+<tr><th id="27">27</th><td>  <b>sizeof</b>(<a class="ref" href="plaintext.h.html#auth_plaintext_options" title='auth_plaintext_options' data-ref="auth_plaintext_options">auth_plaintext_options</a>)/<b>sizeof</b>(<a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a>);</td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><i>/* Default private options block for the plaintext authentication method. */</i></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><a class="typedef" href="plaintext.h.html#auth_plaintext_options_block" title='auth_plaintext_options_block' data-type='struct auth_plaintext_options_block' data-ref="auth_plaintext_options_block">auth_plaintext_options_block</a> <dfn class="decl def" id="auth_plaintext_option_defaults" title='auth_plaintext_option_defaults' data-ref="auth_plaintext_option_defaults">auth_plaintext_option_defaults</dfn> = {</td></tr>
+<tr><th id="32">32</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,              <i>/* server_prompts */</i></td></tr>
+<tr><th id="33">33</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,              <i>/* client_send */</i></td></tr>
+<tr><th id="34">34</th><td>  <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>              <i>/* client_ignore_invalid_base64 */</i></td></tr>
+<tr><th id="35">35</th><td>};</td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><u>#<span data-ppcond="38">ifdef</span> <span class="macro" data-ref="_M/MACRO_PREDEF">MACRO_PREDEF</span></u></td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><i>/* Dummy values */</i></td></tr>
+<tr><th id="41">41</th><td><em>void</em> auth_plaintext_init(auth_instance *ablock) {}</td></tr>
+<tr><th id="42">42</th><td><em>int</em> auth_plaintext_server(auth_instance *ablock, uschar *data) {<b>return</b> <var>0</var>;}</td></tr>
+<tr><th id="43">43</th><td><em>int</em> auth_plaintext_client(auth_instance *ablock, smtp_inblock *inblock,</td></tr>
+<tr><th id="44">44</th><td>  smtp_outblock *outblock, <em>int</em> timeout, uschar *buffer, <em>int</em> buffsize) {<b>return</b> <var>0</var>;}</td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td><u>#<span data-ppcond="38">else</span>   /*!MACRO_PREDEF*/</u></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="51">51</th><td><i>*          Initialization entry point            *</i></td></tr>
+<tr><th id="52">52</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><i>/* Called for each instance, after its options have been read, to</i></td></tr>
+<tr><th id="55">55</th><td><i>enable consistency checks to be done, or anything else that needs</i></td></tr>
+<tr><th id="56">56</th><td><i>to be set up. */</i></td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><em>void</em></td></tr>
+<tr><th id="59">59</th><td><dfn class="decl def fn" id="auth_plaintext_init" title='auth_plaintext_init' data-ref="auth_plaintext_init">auth_plaintext_init</dfn>(<a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *<dfn class="local col1 decl" id="1ablock" title='ablock' data-type='auth_instance *' data-ref="1ablock">ablock</dfn>)</td></tr>
+<tr><th id="60">60</th><td>{</td></tr>
+<tr><th id="61">61</th><td><a class="typedef" href="plaintext.h.html#auth_plaintext_options_block" title='auth_plaintext_options_block' data-type='struct auth_plaintext_options_block' data-ref="auth_plaintext_options_block">auth_plaintext_options_block</a> *<dfn class="local col2 decl" id="2ob" title='ob' data-type='auth_plaintext_options_block *' data-ref="2ob">ob</dfn> =</td></tr>
+<tr><th id="62">62</th><td>  (<a class="typedef" href="plaintext.h.html#auth_plaintext_options_block" title='auth_plaintext_options_block' data-type='struct auth_plaintext_options_block' data-ref="auth_plaintext_options_block">auth_plaintext_options_block</a> *)(<a class="local col1 ref" href="#1ablock" title='ablock' data-ref="1ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::options_block" title='auth_instance::options_block' data-ref="auth_instance::options_block">options_block</a>);</td></tr>
+<tr><th id="63">63</th><td><b>if</b> (<a class="local col1 ref" href="#1ablock" title='ablock' data-ref="1ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::public_name" title='auth_instance::public_name' data-ref="auth_instance::public_name">public_name</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="local col1 ref" href="#1ablock" title='ablock' data-ref="1ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::public_name" title='auth_instance::public_name' data-ref="auth_instance::public_name">public_name</a> = <a class="local col1 ref" href="#1ablock" title='ablock' data-ref="1ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::name" title='auth_instance::name' data-ref="auth_instance::name">name</a>;</td></tr>
+<tr><th id="64">64</th><td><b>if</b> (<a class="local col1 ref" href="#1ablock" title='ablock' data-ref="1ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::server_condition" title='auth_instance::server_condition' data-ref="auth_instance::server_condition">server_condition</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="local col1 ref" href="#1ablock" title='ablock' data-ref="1ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::server" title='auth_instance::server' data-ref="auth_instance::server">server</a> = <a class="macro" href="../mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="65">65</th><td><b>if</b> (<a class="local col2 ref" href="#2ob" title='ob' data-ref="2ob">ob</a>-&gt;<a class="ref field" href="plaintext.h.html#(anonymous)::client_send" title='(anonymous struct)::client_send' data-ref="(anonymous)::client_send">client_send</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="local col1 ref" href="#1ablock" title='ablock' data-ref="1ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::client" title='auth_instance::client' data-ref="auth_instance::client">client</a> = <a class="macro" href="../mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="66">66</th><td>}</td></tr>
+<tr><th id="67">67</th><td></td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td></td></tr>
+<tr><th id="70">70</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="71">71</th><td><i>*             Server entry point                 *</i></td></tr>
+<tr><th id="72">72</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td><i>/* For interface, see auths/README */</i></td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><em>int</em></td></tr>
+<tr><th id="77">77</th><td><dfn class="decl def fn" id="auth_plaintext_server" title='auth_plaintext_server' data-ref="auth_plaintext_server">auth_plaintext_server</dfn>(<a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *<dfn class="local col3 decl" id="3ablock" title='ablock' data-type='auth_instance *' data-ref="3ablock">ablock</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="4data" title='data' data-type='uschar *' data-ref="4data">data</dfn>)</td></tr>
+<tr><th id="78">78</th><td>{</td></tr>
+<tr><th id="79">79</th><td><a class="typedef" href="plaintext.h.html#auth_plaintext_options_block" title='auth_plaintext_options_block' data-type='struct auth_plaintext_options_block' data-ref="auth_plaintext_options_block">auth_plaintext_options_block</a> *<dfn class="local col5 decl" id="5ob" title='ob' data-type='auth_plaintext_options_block *' data-ref="5ob">ob</dfn> =</td></tr>
+<tr><th id="80">80</th><td>  (<a class="typedef" href="plaintext.h.html#auth_plaintext_options_block" title='auth_plaintext_options_block' data-type='struct auth_plaintext_options_block' data-ref="auth_plaintext_options_block">auth_plaintext_options_block</a> *)(<a class="local col3 ref" href="#3ablock" title='ablock' data-ref="3ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::options_block" title='auth_instance::options_block' data-ref="auth_instance::options_block">options_block</a>);</td></tr>
+<tr><th id="81">81</th><td><em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="6prompts" title='prompts' data-type='const uschar *' data-ref="6prompts">prompts</dfn> = <a class="local col5 ref" href="#5ob" title='ob' data-ref="5ob">ob</a>-&gt;<a class="ref field" href="plaintext.h.html#(anonymous)::server_prompts" title='(anonymous struct)::server_prompts' data-ref="(anonymous)::server_prompts">server_prompts</a>;</td></tr>
+<tr><th id="82">82</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col7 decl" id="7clear" title='clear' data-type='uschar *' data-ref="7clear">clear</dfn>, *<dfn class="local col8 decl" id="8end" title='end' data-type='uschar *' data-ref="8end">end</dfn>, *<dfn class="local col9 decl" id="9s" title='s' data-type='uschar *' data-ref="9s">s</dfn>;</td></tr>
+<tr><th id="83">83</th><td><em>int</em> <dfn class="local col0 decl" id="10number" title='number' data-type='int' data-ref="10number">number</dfn> = <var>1</var>;</td></tr>
+<tr><th id="84">84</th><td><em>int</em> <dfn class="local col1 decl" id="11len" title='len' data-type='int' data-ref="11len">len</dfn>, <dfn class="local col2 decl" id="12rc" title='rc' data-type='int' data-ref="12rc">rc</dfn>;</td></tr>
+<tr><th id="85">85</th><td><em>int</em> <dfn class="local col3 decl" id="13sep" title='sep' data-type='int' data-ref="13sep">sep</dfn> = <var>0</var>;</td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td><i>/* Expand a non-empty list of prompt strings */</i></td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td><b>if</b> (<a class="local col6 ref" href="#6prompts" title='prompts' data-ref="6prompts">prompts</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="90">90</th><td>  {</td></tr>
+<tr><th id="91">91</th><td>  <a class="local col6 ref" href="#6prompts" title='prompts' data-ref="6prompts">prompts</a> = <a class="ref fn" href="../functions.h.html#expand_cstring" title='expand_cstring' data-ref="expand_cstring">expand_cstring</a>(<a class="local col6 ref" href="#6prompts" title='prompts' data-ref="6prompts">prompts</a>);</td></tr>
+<tr><th id="92">92</th><td>  <b>if</b> (<a class="local col6 ref" href="#6prompts" title='prompts' data-ref="6prompts">prompts</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="93">93</th><td>    {</td></tr>
+<tr><th id="94">94</th><td>    <a class="ref" href="../globals.h.html#auth_defer_msg" title='auth_defer_msg' data-ref="auth_defer_msg">auth_defer_msg</a> = <a class="ref" href="../local_scan.h.html#expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</a>;</td></tr>
+<tr><th id="95">95</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="96">96</th><td>    }</td></tr>
+<tr><th id="97">97</th><td>  }</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td><i>/* If data was supplied on the AUTH command, decode it, and split it up into</i></td></tr>
+<tr><th id="100">100</th><td><i>multiple items at binary zeros. The strings are put into $auth1, $auth2, etc,</i></td></tr>
+<tr><th id="101">101</th><td><i>up to a maximum. To retain backwards compatibility, they are also put int $1,</i></td></tr>
+<tr><th id="102">102</th><td><i>$2, etc. If the data consists of the string "=" it indicates a single, empty</i></td></tr>
+<tr><th id="103">103</th><td><i>string. */</i></td></tr>
+<tr><th id="104">104</th><td></td></tr>
+<tr><th id="105">105</th><td><b>if</b> (*<a class="local col4 ref" href="#4data" title='data' data-ref="4data">data</a> != <var>0</var>)</td></tr>
+<tr><th id="106">106</th><td>  {</td></tr>
+<tr><th id="107">107</th><td>  <b>if</b> (<a class="macro" href="../mytypes.h.html#100" title="__extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p ((const char *)(data)) &amp;&amp; __builtin_constant_p ((const char *)(&quot;=&quot;)) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(data)), __s2_len = __builtin_strlen ((const char *)(&quot;=&quot;)), (!((size_t)(const void *)(((const char *)(data)) + 1) - (size_t)(const void *)((const char *)(data)) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)(((const char *)(&quot;=&quot;)) + 1) - (size_t)(const void *)((const char *)(&quot;=&quot;)) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp ((const char *)(data), (const char *)(&quot;=&quot;)) : (__builtin_constant_p ((const char *)(data)) &amp;&amp; ((size_t)(const void *)(((const char *)(data)) + 1) - (size_t)(const void *)((const char *)(data)) == 1) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(data)), __s1_len &lt; 4) ? (__builtin_constant_p ((const char *)(&quot;=&quot;)) &amp;&amp; ((size_t)(const void *)(((const char *)(&quot;=&quot;)) + 1) - (size_t)(const void *)((const char *)(&quot;=&quot;)) == 1) ? __builtin_strcmp ((const char *)(data), (const char *)(&quot;=&quot;)) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(&quot;=&quot;)); int __result = (((const unsigned char *) (const char *) ((const char *)(data)))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(data)))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(data)))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(data)))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p ((const char *)(&quot;=&quot;)) &amp;&amp; ((size_t)(const void *)(((const char *)(&quot;=&quot;)) + 1) - (size_t)(const void *)((const char *)(&quot;=&quot;)) == 1) &amp;&amp; (__s2_len = __builtin_strlen ((const char *)(&quot;=&quot;)), __s2_len &lt; 4) ? (__builtin_constant_p ((const char *)(data)) &amp;&amp; ((size_t)(const void *)(((const char *)(data)) + 1) - (size_t)(const void *)((const char *)(data)) == 1) ? __builtin_strcmp ((const char *)(data), (const char *)(&quot;=&quot;)) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(data)); int __result = (((const unsigned char *) (const char *) ((const char *)(&quot;=&quot;)))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(&quot;=&quot;)))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(&quot;=&quot;)))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(&quot;=&quot;)))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp ((const char *)(data), (const char *)(&quot;=&quot;))))); })" data-ref="_M/Ustrcmp">Ustrcmp</a>(<a class="local col4 ref" href="#4data" title='data' data-ref="4data">data</a>, <q>"="</q>) == <var>0</var>)</td></tr>
+<tr><th id="108">108</th><td>    {</td></tr>
+<tr><th id="109">109</th><td>    <a class="ref" href="../globals.h.html#auth_vars" title='auth_vars' data-ref="auth_vars">auth_vars</a>[<var>0</var>] = <a class="ref" href="../globals.h.html#expand_nstring" title='expand_nstring' data-ref="expand_nstring">expand_nstring</a>[++<a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a>] = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>""</q>;</td></tr>
+<tr><th id="110">110</th><td>    <a class="ref" href="../globals.h.html#expand_nlength" title='expand_nlength' data-ref="expand_nlength">expand_nlength</a>[<a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a>] = <var>0</var>;</td></tr>
+<tr><th id="111">111</th><td>    }</td></tr>
+<tr><th id="112">112</th><td>  <b>else</b></td></tr>
+<tr><th id="113">113</th><td>    {</td></tr>
+<tr><th id="114">114</th><td>    <b>if</b> ((<a class="local col1 ref" href="#11len" title='len' data-ref="11len">len</a> = <a class="ref fn" href="../functions.h.html#b64decode" title='b64decode' data-ref="b64decode">b64decode</a>(<a class="local col4 ref" href="#4data" title='data' data-ref="4data">data</a>, &amp;<a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a>)) &lt; <var>0</var>) <b>return</b> <a class="macro" href="../macros.h.html#297" title="11" data-ref="_M/BAD64">BAD64</a>;</td></tr>
+<tr><th id="115">115</th><td>    <a class="local col8 ref" href="#8end" title='end' data-ref="8end">end</a> = <a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a> + <a class="local col1 ref" href="#11len" title='len' data-ref="11len">len</a>;</td></tr>
+<tr><th id="116">116</th><td>    <b>while</b> (<a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a> &lt; <a class="local col8 ref" href="#8end" title='end' data-ref="8end">end</a> &amp;&amp; <a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a> &lt; <a class="macro" href="../../build-Linux-x86_64/config.h.html#192" title="20" data-ref="_M/EXPAND_MAXN">EXPAND_MAXN</a>)</td></tr>
+<tr><th id="117">117</th><td>      {</td></tr>
+<tr><th id="118">118</th><td>      <b>if</b> (<a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a> &lt; <a class="macro" href="../../build-Linux-x86_64/config.h.html#45" title="3" data-ref="_M/AUTH_VARS">AUTH_VARS</a>) <a class="ref" href="../globals.h.html#auth_vars" title='auth_vars' data-ref="auth_vars">auth_vars</a>[<a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a>] = <a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a>;</td></tr>
+<tr><th id="119">119</th><td>      <a class="ref" href="../globals.h.html#expand_nstring" title='expand_nstring' data-ref="expand_nstring">expand_nstring</a>[++<a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a>] = <a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a>;</td></tr>
+<tr><th id="120">120</th><td>      <b>while</b> (*<a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a> != <var>0</var>) <a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a>++;</td></tr>
+<tr><th id="121">121</th><td>      <a class="ref" href="../globals.h.html#expand_nlength" title='expand_nlength' data-ref="expand_nlength">expand_nlength</a>[<a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a>] = <a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a>++ - <a class="ref" href="../globals.h.html#expand_nstring" title='expand_nstring' data-ref="expand_nstring">expand_nstring</a>[<a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a>];</td></tr>
+<tr><th id="122">122</th><td>      }</td></tr>
+<tr><th id="123">123</th><td>    }</td></tr>
+<tr><th id="124">124</th><td>  }</td></tr>
+<tr><th id="125">125</th><td></td></tr>
+<tr><th id="126">126</th><td><i>/* Now go through the list of prompt strings. Skip over any whose data has</i></td></tr>
+<tr><th id="127">127</th><td><i>already been provided as part of the AUTH command. For the rest, send them</i></td></tr>
+<tr><th id="128">128</th><td><i>out as prompts, and get a data item back. If the data item is "*", abandon the</i></td></tr>
+<tr><th id="129">129</th><td><i>authentication attempt. Otherwise, split it into items as above. */</i></td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td><b>while</b> ((<a class="local col9 ref" href="#9s" title='s' data-ref="9s">s</a> = <a class="ref fn" href="../functions.h.html#string_nextinlist" title='string_nextinlist' data-ref="string_nextinlist">string_nextinlist</a>(&amp;<a class="local col6 ref" href="#6prompts" title='prompts' data-ref="6prompts">prompts</a>, &amp;<a class="local col3 ref" href="#13sep" title='sep' data-ref="13sep">sep</a>, <a class="ref" href="../globals.h.html#big_buffer" title='big_buffer' data-ref="big_buffer">big_buffer</a>, <a class="ref" href="../globals.h.html#big_buffer_size" title='big_buffer_size' data-ref="big_buffer_size">big_buffer_size</a>))</td></tr>
+<tr><th id="132">132</th><td>        != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> &amp;&amp; <a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a> &lt; <a class="macro" href="../../build-Linux-x86_64/config.h.html#192" title="20" data-ref="_M/EXPAND_MAXN">EXPAND_MAXN</a>)</td></tr>
+<tr><th id="133">133</th><td>  {</td></tr>
+<tr><th id="134">134</th><td>  <b>if</b> (<a class="local col0 ref" href="#10number" title='number' data-ref="10number">number</a>++ &lt;= <a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a>) <b>continue</b>;</td></tr>
+<tr><th id="135">135</th><td>  <b>if</b> ((<a class="local col2 ref" href="#12rc" title='rc' data-ref="12rc">rc</a> = <a class="ref fn" href="../functions.h.html#auth_get_data" title='auth_get_data' data-ref="auth_get_data">auth_get_data</a>(&amp;<a class="local col4 ref" href="#4data" title='data' data-ref="4data">data</a>, <a class="local col9 ref" href="#9s" title='s' data-ref="9s">s</a>, <a class="macro" href="../mytypes.h.html#104" title="(int)strlen((const char *)(s))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col9 ref" href="#9s" title='s' data-ref="9s">s</a>))) != <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>) <b>return</b> <a class="local col2 ref" href="#12rc" title='rc' data-ref="12rc">rc</a>;</td></tr>
+<tr><th id="136">136</th><td>  <b>if</b> ((<a class="local col1 ref" href="#11len" title='len' data-ref="11len">len</a> = <a class="ref fn" href="../functions.h.html#b64decode" title='b64decode' data-ref="b64decode">b64decode</a>(<a class="local col4 ref" href="#4data" title='data' data-ref="4data">data</a>, &amp;<a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a>)) &lt; <var>0</var>) <b>return</b> <a class="macro" href="../macros.h.html#297" title="11" data-ref="_M/BAD64">BAD64</a>;</td></tr>
+<tr><th id="137">137</th><td>  <a class="local col8 ref" href="#8end" title='end' data-ref="8end">end</a> = <a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a> + <a class="local col1 ref" href="#11len" title='len' data-ref="11len">len</a>;</td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td>  <i>/* This loop must run at least once, in case the length is zero */</i></td></tr>
+<tr><th id="140">140</th><td>  <b>do</b></td></tr>
+<tr><th id="141">141</th><td>    {</td></tr>
+<tr><th id="142">142</th><td>    <b>if</b> (<a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a> &lt; <a class="macro" href="../../build-Linux-x86_64/config.h.html#45" title="3" data-ref="_M/AUTH_VARS">AUTH_VARS</a>) <a class="ref" href="../globals.h.html#auth_vars" title='auth_vars' data-ref="auth_vars">auth_vars</a>[<a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a>] = <a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a>;</td></tr>
+<tr><th id="143">143</th><td>    <a class="ref" href="../globals.h.html#expand_nstring" title='expand_nstring' data-ref="expand_nstring">expand_nstring</a>[++<a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a>] = <a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a>;</td></tr>
+<tr><th id="144">144</th><td>    <b>while</b> (*<a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a> != <var>0</var>) <a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a>++;</td></tr>
+<tr><th id="145">145</th><td>    <a class="ref" href="../globals.h.html#expand_nlength" title='expand_nlength' data-ref="expand_nlength">expand_nlength</a>[<a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a>] = <a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a>++ - <a class="ref" href="../globals.h.html#expand_nstring" title='expand_nstring' data-ref="expand_nstring">expand_nstring</a>[<a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a>];</td></tr>
+<tr><th id="146">146</th><td>    }</td></tr>
+<tr><th id="147">147</th><td>  <b>while</b> (<a class="local col7 ref" href="#7clear" title='clear' data-ref="7clear">clear</a> &lt; <a class="local col8 ref" href="#8end" title='end' data-ref="8end">end</a> &amp;&amp; <a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a> &lt; <a class="macro" href="../../build-Linux-x86_64/config.h.html#192" title="20" data-ref="_M/EXPAND_MAXN">EXPAND_MAXN</a>);</td></tr>
+<tr><th id="148">148</th><td>  }</td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td><i>/* We now have a number of items of data in $auth1, $auth2, etc (and also, for</i></td></tr>
+<tr><th id="151">151</th><td><i>compatibility, in $1, $2, etc). Authentication and authorization are handled</i></td></tr>
+<tr><th id="152">152</th><td><i>together for this authenticator by expanding the server_condition option. Note</i></td></tr>
+<tr><th id="153">153</th><td><i>that ablock-&gt;server_condition is always non-NULL because that's what configures</i></td></tr>
+<tr><th id="154">154</th><td><i>this authenticator as a server. */</i></td></tr>
+<tr><th id="155">155</th><td></td></tr>
+<tr><th id="156">156</th><td><b>return</b> <a class="ref fn" href="../functions.h.html#auth_check_serv_cond" title='auth_check_serv_cond' data-ref="auth_check_serv_cond">auth_check_serv_cond</a>(<a class="local col3 ref" href="#3ablock" title='ablock' data-ref="3ablock">ablock</a>);</td></tr>
+<tr><th id="157">157</th><td>}</td></tr>
+<tr><th id="158">158</th><td></td></tr>
+<tr><th id="159">159</th><td></td></tr>
+<tr><th id="160">160</th><td></td></tr>
+<tr><th id="161">161</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="162">162</th><td><i>*              Client entry point                *</i></td></tr>
+<tr><th id="163">163</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="164">164</th><td></td></tr>
+<tr><th id="165">165</th><td><i>/* For interface, see auths/README */</i></td></tr>
+<tr><th id="166">166</th><td></td></tr>
+<tr><th id="167">167</th><td><em>int</em></td></tr>
+<tr><th id="168">168</th><td><dfn class="decl def fn" id="auth_plaintext_client" title='auth_plaintext_client' data-ref="auth_plaintext_client">auth_plaintext_client</dfn>(</td></tr>
+<tr><th id="169">169</th><td>  <a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *<dfn class="local col4 decl" id="14ablock" title='ablock' data-type='auth_instance *' data-ref="14ablock">ablock</dfn>,                 <i>/* authenticator block */</i></td></tr>
+<tr><th id="170">170</th><td>  <a class="typedef" href="../structs.h.html#smtp_inblock" title='smtp_inblock' data-type='struct smtp_inblock' data-ref="smtp_inblock">smtp_inblock</a> *<dfn class="local col5 decl" id="15inblock" title='inblock' data-type='smtp_inblock *' data-ref="15inblock">inblock</dfn>,                 <i>/* connection inblock */</i></td></tr>
+<tr><th id="171">171</th><td>  <a class="typedef" href="../structs.h.html#smtp_outblock" title='smtp_outblock' data-type='struct smtp_outblock' data-ref="smtp_outblock">smtp_outblock</a> *<dfn class="local col6 decl" id="16outblock" title='outblock' data-type='smtp_outblock *' data-ref="16outblock">outblock</dfn>,               <i>/* connection outblock */</i></td></tr>
+<tr><th id="172">172</th><td>  <em>int</em> <dfn class="local col7 decl" id="17timeout" title='timeout' data-type='int' data-ref="17timeout">timeout</dfn>,                           <i>/* command timeout */</i></td></tr>
+<tr><th id="173">173</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col8 decl" id="18buffer" title='buffer' data-type='uschar *' data-ref="18buffer">buffer</dfn>,                        <i>/* buffer for reading response */</i></td></tr>
+<tr><th id="174">174</th><td>  <em>int</em> <dfn class="local col9 decl" id="19buffsize" title='buffsize' data-type='int' data-ref="19buffsize">buffsize</dfn>)                          <i>/* size of buffer */</i></td></tr>
+<tr><th id="175">175</th><td>{</td></tr>
+<tr><th id="176">176</th><td><a class="typedef" href="plaintext.h.html#auth_plaintext_options_block" title='auth_plaintext_options_block' data-type='struct auth_plaintext_options_block' data-ref="auth_plaintext_options_block">auth_plaintext_options_block</a> *<dfn class="local col0 decl" id="20ob" title='ob' data-type='auth_plaintext_options_block *' data-ref="20ob">ob</dfn> =</td></tr>
+<tr><th id="177">177</th><td>  (<a class="typedef" href="plaintext.h.html#auth_plaintext_options_block" title='auth_plaintext_options_block' data-type='struct auth_plaintext_options_block' data-ref="auth_plaintext_options_block">auth_plaintext_options_block</a> *)(<a class="local col4 ref" href="#14ablock" title='ablock' data-ref="14ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::options_block" title='auth_instance::options_block' data-ref="auth_instance::options_block">options_block</a>);</td></tr>
+<tr><th id="178">178</th><td><em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="21text" title='text' data-type='const uschar *' data-ref="21text">text</dfn> = <a class="local col0 ref" href="#20ob" title='ob' data-ref="20ob">ob</a>-&gt;<a class="ref field" href="plaintext.h.html#(anonymous)::client_send" title='(anonymous struct)::client_send' data-ref="(anonymous)::client_send">client_send</a>;</td></tr>
+<tr><th id="179">179</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="22s" title='s' data-type='uschar *' data-ref="22s">s</dfn>;</td></tr>
+<tr><th id="180">180</th><td><a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col3 decl" id="23first" title='first' data-type='BOOL' data-ref="23first">first</dfn> = <a class="macro" href="../mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="181">181</th><td><em>int</em> <dfn class="local col4 decl" id="24sep" title='sep' data-type='int' data-ref="24sep">sep</dfn> = <var>0</var>;</td></tr>
+<tr><th id="182">182</th><td><em>int</em> <dfn class="local col5 decl" id="25auth_var_idx" title='auth_var_idx' data-type='int' data-ref="25auth_var_idx">auth_var_idx</dfn> = <var>0</var>;</td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td><i>/* The text is broken up into a number of different data items, which are</i></td></tr>
+<tr><th id="185">185</th><td><i>sent one by one. The first one is sent with the AUTH command; the remainder are</i></td></tr>
+<tr><th id="186">186</th><td><i>sent in response to subsequent prompts. Each is expanded before being sent. */</i></td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td><b>while</b> ((<a class="local col2 ref" href="#22s" title='s' data-ref="22s">s</a> = <a class="ref fn" href="../functions.h.html#string_nextinlist" title='string_nextinlist' data-ref="string_nextinlist">string_nextinlist</a>(&amp;<a class="local col1 ref" href="#21text" title='text' data-ref="21text">text</a>, &amp;<a class="local col4 ref" href="#24sep" title='sep' data-ref="24sep">sep</a>, <a class="ref" href="../globals.h.html#big_buffer" title='big_buffer' data-ref="big_buffer">big_buffer</a>, <a class="ref" href="../globals.h.html#big_buffer_size" title='big_buffer_size' data-ref="big_buffer_size">big_buffer_size</a>)))</td></tr>
+<tr><th id="189">189</th><td>  {</td></tr>
+<tr><th id="190">190</th><td>  <em>int</em> <dfn class="local col6 decl" id="26i" title='i' data-type='int' data-ref="26i">i</dfn>, <dfn class="local col7 decl" id="27len" title='len' data-type='int' data-ref="27len">len</dfn>, <dfn class="local col8 decl" id="28clear_len" title='clear_len' data-type='int' data-ref="28clear_len">clear_len</dfn>;</td></tr>
+<tr><th id="191">191</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col9 decl" id="29ss" title='ss' data-type='uschar *' data-ref="29ss">ss</dfn> = <a class="ref fn" href="../local_scan.h.html#expand_string" title='expand_string' data-ref="expand_string">expand_string</a>(<a class="local col2 ref" href="#22s" title='s' data-ref="22s">s</a>);</td></tr>
+<tr><th id="192">192</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col0 decl" id="30clear" title='clear' data-type='uschar *' data-ref="30clear">clear</dfn>;</td></tr>
+<tr><th id="193">193</th><td></td></tr>
+<tr><th id="194">194</th><td>  <i>/* Forced expansion failure is not an error; authentication is abandoned. On</i></td></tr>
+<tr><th id="195">195</th><td><i>  all but the first string, we have to abandon the authentication attempt by</i></td></tr>
+<tr><th id="196">196</th><td><i>  sending a line containing "*". Save the failed expansion string, because it</i></td></tr>
+<tr><th id="197">197</th><td><i>  is in big_buffer, and that gets used by the sending function. */</i></td></tr>
+<tr><th id="198">198</th><td></td></tr>
+<tr><th id="199">199</th><td>  <b>if</b> (!<a class="local col9 ref" href="#29ss" title='ss' data-ref="29ss">ss</a>)</td></tr>
+<tr><th id="200">200</th><td>    {</td></tr>
+<tr><th id="201">201</th><td>    <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="31ssave" title='ssave' data-type='uschar *' data-ref="31ssave">ssave</dfn> = <a class="ref fn" href="../local_scan.h.html#string_copy" title='string_copy' data-ref="string_copy">string_copy</a>(<a class="local col2 ref" href="#22s" title='s' data-ref="22s">s</a>);</td></tr>
+<tr><th id="202">202</th><td>    <b>if</b> (!<a class="local col3 ref" href="#23first" title='first' data-ref="23first">first</a>)</td></tr>
+<tr><th id="203">203</th><td>      {</td></tr>
+<tr><th id="204">204</th><td>      <b>if</b> (<a class="ref fn" href="../functions.h.html#smtp_write_command" title='smtp_write_command' data-ref="smtp_write_command">smtp_write_command</a>(<a class="local col6 ref" href="#16outblock" title='outblock' data-ref="16outblock">outblock</a>, <a class="enum" href="../macros.h.html#SCMD_FLUSH" title='SCMD_FLUSH' data-ref="SCMD_FLUSH">SCMD_FLUSH</a>, <q>"*\r\n"</q>) &gt;= <var>0</var>)</td></tr>
+<tr><th id="205">205</th><td>        (<em>void</em>) <a class="ref fn" href="../functions.h.html#smtp_read_response" title='smtp_read_response' data-ref="smtp_read_response">smtp_read_response</a>(<a class="local col5 ref" href="#15inblock" title='inblock' data-ref="15inblock">inblock</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="local col8 ref" href="#18buffer" title='buffer' data-ref="18buffer">buffer</a>, <a class="local col9 ref" href="#19buffsize" title='buffsize' data-ref="19buffsize">buffsize</a>, <kbd>'2'</kbd>, <a class="local col7 ref" href="#17timeout" title='timeout' data-ref="17timeout">timeout</a>);</td></tr>
+<tr><th id="206">206</th><td>      }</td></tr>
+<tr><th id="207">207</th><td>    <b>if</b> (<a class="ref" href="../globals.h.html#expand_string_forcedfail" title='expand_string_forcedfail' data-ref="expand_string_forcedfail">expand_string_forcedfail</a>)</td></tr>
+<tr><th id="208">208</th><td>      {</td></tr>
+<tr><th id="209">209</th><td>      *<a class="local col8 ref" href="#18buffer" title='buffer' data-ref="18buffer">buffer</a> = <var>0</var>;       <i>/* No message */</i></td></tr>
+<tr><th id="210">210</th><td>      <b>return</b> <a class="macro" href="../macros.h.html#299" title="13" data-ref="_M/CANCELLED">CANCELLED</a>;</td></tr>
+<tr><th id="211">211</th><td>      }</td></tr>
+<tr><th id="212">212</th><td>    <a class="ref fn" href="../functions.h.html#string_format" title='string_format' data-ref="string_format">string_format</a>(<a class="local col8 ref" href="#18buffer" title='buffer' data-ref="18buffer">buffer</a>, <a class="local col9 ref" href="#19buffsize" title='buffsize' data-ref="19buffsize">buffsize</a>, <q>"expansion of \"%s\" failed in %s "</q></td></tr>
+<tr><th id="213">213</th><td>      <q>"authenticator: %s"</q>, <a class="local col1 ref" href="#31ssave" title='ssave' data-ref="31ssave">ssave</a>, <a class="local col4 ref" href="#14ablock" title='ablock' data-ref="14ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::name" title='auth_instance::name' data-ref="auth_instance::name">name</a>, <a class="ref" href="../local_scan.h.html#expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</a>);</td></tr>
+<tr><th id="214">214</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#286" title="3" data-ref="_M/ERROR">ERROR</a>;</td></tr>
+<tr><th id="215">215</th><td>    }</td></tr>
+<tr><th id="216">216</th><td></td></tr>
+<tr><th id="217">217</th><td>  <a class="local col7 ref" href="#27len" title='len' data-ref="27len">len</a> = <a class="macro" href="../mytypes.h.html#104" title="(int)strlen((const char *)(ss))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col9 ref" href="#29ss" title='ss' data-ref="29ss">ss</a>);</td></tr>
+<tr><th id="218">218</th><td></td></tr>
+<tr><th id="219">219</th><td>  <i>/* The character ^ is used as an escape for a binary zero character, which is</i></td></tr>
+<tr><th id="220">220</th><td><i>  needed for the PLAIN mechanism. It must be doubled if really needed. */</i></td></tr>
+<tr><th id="221">221</th><td></td></tr>
+<tr><th id="222">222</th><td>  <b>for</b> (<a class="local col6 ref" href="#26i" title='i' data-ref="26i">i</a> = <var>0</var>; <a class="local col6 ref" href="#26i" title='i' data-ref="26i">i</a> &lt; <a class="local col7 ref" href="#27len" title='len' data-ref="27len">len</a>; <a class="local col6 ref" href="#26i" title='i' data-ref="26i">i</a>++)</td></tr>
+<tr><th id="223">223</th><td>    <b>if</b> (<a class="local col9 ref" href="#29ss" title='ss' data-ref="29ss">ss</a>[<a class="local col6 ref" href="#26i" title='i' data-ref="26i">i</a>] == <kbd>'^'</kbd>)</td></tr>
+<tr><th id="224">224</th><td>      <b>if</b> (<a class="local col9 ref" href="#29ss" title='ss' data-ref="29ss">ss</a>[<a class="local col6 ref" href="#26i" title='i' data-ref="26i">i</a>+<var>1</var>] != <kbd>'^'</kbd>)</td></tr>
+<tr><th id="225">225</th><td>	<a class="local col9 ref" href="#29ss" title='ss' data-ref="29ss">ss</a>[<a class="local col6 ref" href="#26i" title='i' data-ref="26i">i</a>] = <var>0</var>;</td></tr>
+<tr><th id="226">226</th><td>      <span class='warning' title="add explicit braces to avoid dangling else"><b>else</b></span></td></tr>
+<tr><th id="227">227</th><td>        {</td></tr>
+<tr><th id="228">228</th><td>        <a class="local col6 ref" href="#26i" title='i' data-ref="26i">i</a>++;</td></tr>
+<tr><th id="229">229</th><td>        <a class="local col7 ref" href="#27len" title='len' data-ref="27len">len</a>--;</td></tr>
+<tr><th id="230">230</th><td>        <a class="ref fn" href="../../../include/string.h.html#memmove" title='memmove' data-ref="memmove">memmove</a>(<a class="local col9 ref" href="#29ss" title='ss' data-ref="29ss">ss</a> + <a class="local col6 ref" href="#26i" title='i' data-ref="26i">i</a>, <a class="local col9 ref" href="#29ss" title='ss' data-ref="29ss">ss</a> + <a class="local col6 ref" href="#26i" title='i' data-ref="26i">i</a> + <var>1</var>, <a class="local col7 ref" href="#27len" title='len' data-ref="27len">len</a> - <a class="local col6 ref" href="#26i" title='i' data-ref="26i">i</a>);</td></tr>
+<tr><th id="231">231</th><td>        }</td></tr>
+<tr><th id="232">232</th><td></td></tr>
+<tr><th id="233">233</th><td>  <i>/* The first string is attached to the AUTH command; others are sent</i></td></tr>
+<tr><th id="234">234</th><td><i>  unembellished. */</i></td></tr>
+<tr><th id="235">235</th><td></td></tr>
+<tr><th id="236">236</th><td>  <b>if</b> (<a class="local col3 ref" href="#23first" title='first' data-ref="23first">first</a>)</td></tr>
+<tr><th id="237">237</th><td>    {</td></tr>
+<tr><th id="238">238</th><td>    <a class="local col3 ref" href="#23first" title='first' data-ref="23first">first</a> = <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="239">239</th><td>    <b>if</b> (<a class="ref fn" href="../functions.h.html#smtp_write_command" title='smtp_write_command' data-ref="smtp_write_command">smtp_write_command</a>(<a class="local col6 ref" href="#16outblock" title='outblock' data-ref="16outblock">outblock</a>, <a class="enum" href="../macros.h.html#SCMD_FLUSH" title='SCMD_FLUSH' data-ref="SCMD_FLUSH">SCMD_FLUSH</a>, <q>"AUTH %s%s%s\r\n"</q>,</td></tr>
+<tr><th id="240">240</th><td>         <a class="local col4 ref" href="#14ablock" title='ablock' data-ref="14ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::public_name" title='auth_instance::public_name' data-ref="auth_instance::public_name">public_name</a>, (<a class="local col7 ref" href="#27len" title='len' data-ref="27len">len</a> == <var>0</var>)? <q>""</q> : <q>" "</q>,</td></tr>
+<tr><th id="241">241</th><td>         <a class="ref fn" href="../functions.h.html#b64encode" title='b64encode' data-ref="b64encode">b64encode</a>(<a class="local col9 ref" href="#29ss" title='ss' data-ref="29ss">ss</a>, <a class="local col7 ref" href="#27len" title='len' data-ref="27len">len</a>)) &lt; <var>0</var>)</td></tr>
+<tr><th id="242">242</th><td>      <b>return</b> <a class="macro" href="../macros.h.html#300" title="14" data-ref="_M/FAIL_SEND">FAIL_SEND</a>;</td></tr>
+<tr><th id="243">243</th><td>    }</td></tr>
+<tr><th id="244">244</th><td>  <b>else</b></td></tr>
+<tr><th id="245">245</th><td>    {</td></tr>
+<tr><th id="246">246</th><td>    <b>if</b> (<a class="ref fn" href="../functions.h.html#smtp_write_command" title='smtp_write_command' data-ref="smtp_write_command">smtp_write_command</a>(<a class="local col6 ref" href="#16outblock" title='outblock' data-ref="16outblock">outblock</a>, <a class="enum" href="../macros.h.html#SCMD_FLUSH" title='SCMD_FLUSH' data-ref="SCMD_FLUSH">SCMD_FLUSH</a>, <q>"%s\r\n"</q>,</td></tr>
+<tr><th id="247">247</th><td>          <a class="ref fn" href="../functions.h.html#b64encode" title='b64encode' data-ref="b64encode">b64encode</a>(<a class="local col9 ref" href="#29ss" title='ss' data-ref="29ss">ss</a>, <a class="local col7 ref" href="#27len" title='len' data-ref="27len">len</a>)) &lt; <var>0</var>)</td></tr>
+<tr><th id="248">248</th><td>      <b>return</b> <a class="macro" href="../macros.h.html#300" title="14" data-ref="_M/FAIL_SEND">FAIL_SEND</a>;</td></tr>
+<tr><th id="249">249</th><td>    }</td></tr>
+<tr><th id="250">250</th><td></td></tr>
+<tr><th id="251">251</th><td>  <i>/* If we receive a success response from the server, authentication</i></td></tr>
+<tr><th id="252">252</th><td><i>  has succeeded. There may be more data to send, but is there any point</i></td></tr>
+<tr><th id="253">253</th><td><i>  in provoking an error here? */</i></td></tr>
+<tr><th id="254">254</th><td></td></tr>
+<tr><th id="255">255</th><td>  <b>if</b> (<a class="ref fn" href="../functions.h.html#smtp_read_response" title='smtp_read_response' data-ref="smtp_read_response">smtp_read_response</a>(<a class="local col5 ref" href="#15inblock" title='inblock' data-ref="15inblock">inblock</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="local col8 ref" href="#18buffer" title='buffer' data-ref="18buffer">buffer</a>, <a class="local col9 ref" href="#19buffsize" title='buffsize' data-ref="19buffsize">buffsize</a>, <kbd>'2'</kbd>, <a class="local col7 ref" href="#17timeout" title='timeout' data-ref="17timeout">timeout</a>)) <b>return</b> <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>;</td></tr>
+<tr><th id="256">256</th><td></td></tr>
+<tr><th id="257">257</th><td>  <i>/* Not a success response. If errno != 0 there is some kind of transmission</i></td></tr>
+<tr><th id="258">258</th><td><i>  error. Otherwise, check the response code in the buffer. If it starts with</i></td></tr>
+<tr><th id="259">259</th><td><i>  '3', more data is expected. */</i></td></tr>
+<tr><th id="260">260</th><td></td></tr>
+<tr><th id="261">261</th><td>  <b>if</b> (<a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a> != <var>0</var> || <a class="local col8 ref" href="#18buffer" title='buffer' data-ref="18buffer">buffer</a>[<var>0</var>] != <kbd>'3'</kbd>) <b>return</b> <a class="macro" href="../macros.h.html#285" title="2" data-ref="_M/FAIL">FAIL</a>;</td></tr>
+<tr><th id="262">262</th><td></td></tr>
+<tr><th id="263">263</th><td>  <i>/* If there is no more data to send, we have to cancel the authentication</i></td></tr>
+<tr><th id="264">264</th><td><i>  exchange and return ERROR. */</i></td></tr>
+<tr><th id="265">265</th><td></td></tr>
+<tr><th id="266">266</th><td>  <b>if</b> (<a class="local col1 ref" href="#21text" title='text' data-ref="21text">text</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="267">267</th><td>    {</td></tr>
+<tr><th id="268">268</th><td>    <b>if</b> (<a class="ref fn" href="../functions.h.html#smtp_write_command" title='smtp_write_command' data-ref="smtp_write_command">smtp_write_command</a>(<a class="local col6 ref" href="#16outblock" title='outblock' data-ref="16outblock">outblock</a>, <a class="enum" href="../macros.h.html#SCMD_FLUSH" title='SCMD_FLUSH' data-ref="SCMD_FLUSH">SCMD_FLUSH</a>, <q>"*\r\n"</q>) &gt;= <var>0</var>)</td></tr>
+<tr><th id="269">269</th><td>      (<em>void</em>)<a class="ref fn" href="../functions.h.html#smtp_read_response" title='smtp_read_response' data-ref="smtp_read_response">smtp_read_response</a>(<a class="local col5 ref" href="#15inblock" title='inblock' data-ref="15inblock">inblock</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="local col8 ref" href="#18buffer" title='buffer' data-ref="18buffer">buffer</a>, <a class="local col9 ref" href="#19buffsize" title='buffsize' data-ref="19buffsize">buffsize</a>, <kbd>'2'</kbd>, <a class="local col7 ref" href="#17timeout" title='timeout' data-ref="17timeout">timeout</a>);</td></tr>
+<tr><th id="270">270</th><td>    <a class="ref fn" href="../functions.h.html#string_format" title='string_format' data-ref="string_format">string_format</a>(<a class="local col8 ref" href="#18buffer" title='buffer' data-ref="18buffer">buffer</a>, <a class="local col9 ref" href="#19buffsize" title='buffsize' data-ref="19buffsize">buffsize</a>, <q>"Too few items in client_send in %s "</q></td></tr>
+<tr><th id="271">271</th><td>      <q>"authenticator"</q>, <a class="local col4 ref" href="#14ablock" title='ablock' data-ref="14ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::name" title='auth_instance::name' data-ref="auth_instance::name">name</a>);</td></tr>
+<tr><th id="272">272</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#286" title="3" data-ref="_M/ERROR">ERROR</a>;</td></tr>
+<tr><th id="273">273</th><td>    }</td></tr>
+<tr><th id="274">274</th><td></td></tr>
+<tr><th id="275">275</th><td>  <i>/* Now that we know we'll continue, we put the received data into $auth&lt;n&gt;,</i></td></tr>
+<tr><th id="276">276</th><td><i>  if possible. First, decode it: buffer+4 skips over the SMTP status code. */</i></td></tr>
+<tr><th id="277">277</th><td></td></tr>
+<tr><th id="278">278</th><td>  <a class="local col8 ref" href="#28clear_len" title='clear_len' data-ref="28clear_len">clear_len</a> = <a class="ref fn" href="../functions.h.html#b64decode" title='b64decode' data-ref="b64decode">b64decode</a>(<a class="local col8 ref" href="#18buffer" title='buffer' data-ref="18buffer">buffer</a>+<var>4</var>, &amp;<a class="local col0 ref" href="#30clear" title='clear' data-ref="30clear">clear</a>);</td></tr>
+<tr><th id="279">279</th><td></td></tr>
+<tr><th id="280">280</th><td>  <i>/* If decoding failed, the default is to terminate the authentication, and</i></td></tr>
+<tr><th id="281">281</th><td><i>  return FAIL, with the SMTP response still in the buffer. However, if client_</i></td></tr>
+<tr><th id="282">282</th><td><i>  ignore_invalid_base64 is set, we ignore the error, and put an empty string</i></td></tr>
+<tr><th id="283">283</th><td><i>  into $auth&lt;n&gt;. */</i></td></tr>
+<tr><th id="284">284</th><td></td></tr>
+<tr><th id="285">285</th><td>  <b>if</b> (<a class="local col8 ref" href="#28clear_len" title='clear_len' data-ref="28clear_len">clear_len</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="286">286</th><td>    {</td></tr>
+<tr><th id="287">287</th><td>    <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="32save_bad" title='save_bad' data-type='uschar *' data-ref="32save_bad">save_bad</dfn> = <a class="ref fn" href="../local_scan.h.html#string_copy" title='string_copy' data-ref="string_copy">string_copy</a>(<a class="local col8 ref" href="#18buffer" title='buffer' data-ref="18buffer">buffer</a>);</td></tr>
+<tr><th id="288">288</th><td>    <b>if</b> (!<a class="local col0 ref" href="#20ob" title='ob' data-ref="20ob">ob</a>-&gt;<a class="ref field" href="plaintext.h.html#(anonymous)::client_ignore_invalid_base64" title='(anonymous struct)::client_ignore_invalid_base64' data-ref="(anonymous)::client_ignore_invalid_base64">client_ignore_invalid_base64</a>)</td></tr>
+<tr><th id="289">289</th><td>      {</td></tr>
+<tr><th id="290">290</th><td>      <b>if</b> (<a class="ref fn" href="../functions.h.html#smtp_write_command" title='smtp_write_command' data-ref="smtp_write_command">smtp_write_command</a>(<a class="local col6 ref" href="#16outblock" title='outblock' data-ref="16outblock">outblock</a>, <a class="enum" href="../macros.h.html#SCMD_FLUSH" title='SCMD_FLUSH' data-ref="SCMD_FLUSH">SCMD_FLUSH</a>, <q>"*\r\n"</q>) &gt;= <var>0</var>)</td></tr>
+<tr><th id="291">291</th><td>        (<em>void</em>)<a class="ref fn" href="../functions.h.html#smtp_read_response" title='smtp_read_response' data-ref="smtp_read_response">smtp_read_response</a>(<a class="local col5 ref" href="#15inblock" title='inblock' data-ref="15inblock">inblock</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="local col8 ref" href="#18buffer" title='buffer' data-ref="18buffer">buffer</a>, <a class="local col9 ref" href="#19buffsize" title='buffsize' data-ref="19buffsize">buffsize</a>, <kbd>'2'</kbd>, <a class="local col7 ref" href="#17timeout" title='timeout' data-ref="17timeout">timeout</a>);</td></tr>
+<tr><th id="292">292</th><td>      <a class="ref fn" href="../functions.h.html#string_format" title='string_format' data-ref="string_format">string_format</a>(<a class="local col8 ref" href="#18buffer" title='buffer' data-ref="18buffer">buffer</a>, <a class="local col9 ref" href="#19buffsize" title='buffsize' data-ref="19buffsize">buffsize</a>, <q>"Invalid base64 string in server "</q></td></tr>
+<tr><th id="293">293</th><td>        <q>"response \"%s\""</q>, <a class="local col2 ref" href="#32save_bad" title='save_bad' data-ref="32save_bad">save_bad</a>);</td></tr>
+<tr><th id="294">294</th><td>      <b>return</b> <a class="macro" href="../macros.h.html#299" title="13" data-ref="_M/CANCELLED">CANCELLED</a>;</td></tr>
+<tr><th id="295">295</th><td>      }</td></tr>
+<tr><th id="296">296</th><td>    <a class="local col0 ref" href="#30clear" title='clear' data-ref="30clear">clear</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>""</q>;</td></tr>
+<tr><th id="297">297</th><td>    <a class="local col8 ref" href="#28clear_len" title='clear_len' data-ref="28clear_len">clear_len</a> = <var>0</var>;</td></tr>
+<tr><th id="298">298</th><td>    }</td></tr>
+<tr><th id="299">299</th><td></td></tr>
+<tr><th id="300">300</th><td>  <b>if</b> (<a class="local col5 ref" href="#25auth_var_idx" title='auth_var_idx' data-ref="25auth_var_idx">auth_var_idx</a> &lt; <a class="macro" href="../../build-Linux-x86_64/config.h.html#45" title="3" data-ref="_M/AUTH_VARS">AUTH_VARS</a>)</td></tr>
+<tr><th id="301">301</th><td>    <a class="ref" href="../globals.h.html#auth_vars" title='auth_vars' data-ref="auth_vars">auth_vars</a>[<a class="local col5 ref" href="#25auth_var_idx" title='auth_var_idx' data-ref="25auth_var_idx">auth_var_idx</a>++] = <a class="ref fn" href="../local_scan.h.html#string_copy" title='string_copy' data-ref="string_copy">string_copy</a>(<a class="local col0 ref" href="#30clear" title='clear' data-ref="30clear">clear</a>);</td></tr>
+<tr><th id="302">302</th><td>  }</td></tr>
+<tr><th id="303">303</th><td></td></tr>
+<tr><th id="304">304</th><td><i>/* Control should never actually get here. */</i></td></tr>
+<tr><th id="305">305</th><td></td></tr>
+<tr><th id="306">306</th><td><b>return</b> <a class="macro" href="../macros.h.html#285" title="2" data-ref="_M/FAIL">FAIL</a>;</td></tr>
+<tr><th id="307">307</th><td>}</td></tr>
+<tr><th id="308">308</th><td></td></tr>
+<tr><th id="309">309</th><td><u>#<span data-ppcond="38">endif</span>   /*!MACRO_PREDEF*/</u></td></tr>
+<tr><th id="310">310</th><td><i>/* End of plaintext.c */</i></td></tr>
+<tr><th id="311">311</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

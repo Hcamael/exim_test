@@ -1,0 +1,6 @@
+<dec f='exim/src/pdkim/pdkim.c' l='59' type='void *'/>
+<use f='exim/src/pdkim/pdkim.c' l='224' u='w' c='pdkim_prepend_stringlist'/>
+<use f='exim/src/pdkim/pdkim.c' l='1491' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1543' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1553' u='r' c='pdkim_feed_finish'/>
+<offset>128</offset>

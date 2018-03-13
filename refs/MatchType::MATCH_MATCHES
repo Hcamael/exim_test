@@ -1,0 +1,4 @@
+<dec f='exim/src/sieve.c' l='90' type='2'/>
+<use f='exim/src/sieve.c' l='839' c='compare'/>
+<use f='exim/src/sieve.c' l='905' c='compare'/>
+<use f='exim/src/sieve.c' l='1966' u='r' c='parse_matchtype'/>

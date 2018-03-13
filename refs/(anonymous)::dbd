@@ -1,2 +1,6 @@
 <dec f='exim/src/dbstuff.h' l='783' type='dbdata_ratelimit'/>
 <offset>0</offset>
+<use f='exim/src/acl.c' l='2430' u='a' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2486' u='w' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2487' u='a' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2583' u='a' c='acl_ratelimit'/>

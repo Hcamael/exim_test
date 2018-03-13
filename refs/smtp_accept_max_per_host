@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='814' type='uschar *'/>
 <doc f='exim/src/globals.h' l='814'>/* Max SMTP cons from one IP addr */</doc>
+<def f='exim/src/globals.c' l='1310' type='uschar *'/>
+<use f='exim/src/daemon.c' l='257' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='259' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='707' u='r' c='handle_smtp_call'/>
+<use f='exim/src/readconf.c' l='281' u='a'/>
+<use f='exim/src/readconf.c' l='281' u='a'/>
+<use f='exim/src/readconf.c' l='281' u='a'/>
+<use f='exim/src/readconf.c' l='281' u='a'/>

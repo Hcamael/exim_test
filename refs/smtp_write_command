@@ -1,1 +1,32 @@
 <dec f='exim/src/functions.h' l='432' type='int smtp_write_command(smtp_outblock * , int , const char * )'/>
+<use f='exim/src/verify.c' l='412' u='c' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='815' u='c' c='do_callout'/>
+<use f='exim/src/verify.c' l='912' u='c' c='do_callout'/>
+<use f='exim/src/verify.c' l='937' u='c' c='do_callout'/>
+<use f='exim/src/verify.c' l='1081' u='c' c='do_callout'/>
+<def f='exim/src/smtp_out.c' l='459' ll='519' type='int smtp_write_command(smtp_outblock * outblock, int mode, const char * format)'/>
+<doc f='exim/src/smtp_out.c' l='443'>/* The formatted command is left in big_buffer so that it can be reflected in
+any error message.
+
+Arguments:
+  outblock   contains buffer for pipelining, and socket
+  mode       buffer, write-with-more-likely, write
+  format     a format, starting with one of
+             of HELO, MAIL FROM, RCPT TO, DATA, &quot;.&quot;, or QUIT.
+	     If NULL, flush pipeline buffer only.
+  ...        data for the format
+
+Returns:     0 if command added to pipelining buffer, with nothing transmitted
+            +n if n commands transmitted (may still have buffered the new one)
+            -1 on error, with errno set
+*/</doc>
+<use f='exim/src/auths/spa.c' l='322' u='c' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='339' u='c' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='356' u='c' c='auth_spa_client'/>
+<use f='exim/src/auths/plaintext.c' l='204' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='239' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='246' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='268' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='290' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/auths/cram_md5.c' l='296' u='c' c='auth_cram_md5_client'/>
+<use f='exim/src/auths/cram_md5.c' l='327' u='c' c='auth_cram_md5_client'/>

@@ -1,1 +1,3 @@
 <dec f='exim/src/functions.h' l='175' type='void dscp_list_to_stream(FILE * )'/>
+<use f='exim/src/exim.c' l='1077' u='c' c='show_exim_information'/>
+<def f='exim/src/ip.c' l='795' ll='801' type='void dscp_list_to_stream(FILE * stream)'/>

@@ -1,1 +1,39 @@
 <dec f='exim/src/functions.h' l='170' type='int dns_lookup(dns_answer * , const uschar * , int , const uschar ** )'/>
+<use f='exim/src/acl.c' l='1495' u='c' c='acl_verify_csa'/>
+<use f='exim/src/host.c' l='136' u='c' c='dns_lookup_timerwrap'/>
+<use f='exim/src/host.c' l='139' u='c' c='dns_lookup_timerwrap'/>
+<def f='exim/src/dns.c' l='866' ll='959' type='int dns_lookup(dns_answer * dnsa, const uschar * name, int type, const uschar ** fully_qualified_name)'/>
+<use f='exim/src/dns.c' l='996' u='c' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1008' u='c' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1034' u='c' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1126' u='c' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1160' u='c' c='dns_special_lookup'/>
+<doc f='exim/src/dns.c' l='836'>/* Look up the given domain name, using the given type. Follow CNAMEs if
+necessary, but only so many times. There aren&apos;t supposed to be CNAME chains in
+the DNS, but you are supposed to cope with them if you find them.
+
+The assumption is made that if the resolver gives back records of the
+requested type *and* a CNAME, we don&apos;t need to make another call to look up
+the CNAME. I can&apos;t see how it could return only some of the right records. If
+it&apos;s done a CNAME lookup in the past, it will have all of them; if not, it
+won&apos;t return any.
+
+If fully_qualified_name is not NULL, set it to point to the full name
+returned by the resolver, if this is different to what it is given, unless
+the returned name starts with &quot;*&quot; as some nameservers seem to be returning
+wildcards in this form.  In international mode &quot;different&quot; means &quot;alabel
+forms are different&quot;.
+
+Arguments:
+  dnsa                  pointer to dns_answer structure
+  name                  domain name to look up
+  type                  DNS record type (T_A, T_MX, etc)
+  fully_qualified_name  if not NULL, return the returned name here if its
+                          contents are different (i.e. it must be preset)
+
+Returns:                DNS_SUCCEED   successful lookup
+                        DNS_NOMATCH   name not found
+                        DNS_NODATA    no data found
+                        DNS_AGAIN     soft failure, try again later
+                        DNS_FAIL      DNS failure
+*/</doc>

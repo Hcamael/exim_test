@@ -1,1 +1,6 @@
 <dec f='include/openssl/ssl.h' l='1588' type='long SSL_CTX_callback_ctrl(SSL_CTX * , int , void (*)(void) )'/>
+<use f='exim/src/tls-openssl.c' l='1233' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='1246' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='1641' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='1647' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='1659' macro='1' u='c'/>

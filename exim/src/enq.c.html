@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>enq.c source code [exim/src/enq.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/enq.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='enq.c.html'>enq.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2015 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Functions concerned with serialization. */</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><u>#include <a href="exim.h.html">"exim.h"</a></u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="17">17</th><td><i>*       Test for host or ETRN serialization      *</i></td></tr>
+<tr><th id="18">18</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><i>/* This function is called when a host is listed for serialization of</i></td></tr>
+<tr><th id="21">21</th><td><i>connections. It is also called when ETRN is listed for serialization. We open</i></td></tr>
+<tr><th id="22">22</th><td><i>the misc database and look for a record, which implies an existing connection</i></td></tr>
+<tr><th id="23">23</th><td><i>or ETRN run. If increasing the count would take us past the given limit</i></td></tr>
+<tr><th id="24">24</th><td><i>value return FALSE.  If not, bump it and return TRUE.  If not found, create</i></td></tr>
+<tr><th id="25">25</th><td><i>one with value 1 and return TRUE.</i></td></tr>
+<tr><th id="26">26</th><td><i></i></td></tr>
+<tr><th id="27">27</th><td><i>Arguments:</i></td></tr>
+<tr><th id="28">28</th><td><i>  key            string on which to serialize</i></td></tr>
+<tr><th id="29">29</th><td><i>  lim            parallelism limit</i></td></tr>
+<tr><th id="30">30</th><td><i></i></td></tr>
+<tr><th id="31">31</th><td><i>Returns:         TRUE if OK to proceed; FALSE otherwise</i></td></tr>
+<tr><th id="32">32</th><td><i>*/</i></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a></td></tr>
+<tr><th id="36">36</th><td><dfn class="decl def fn" id="enq_start" title='enq_start' data-ref="enq_start">enq_start</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="1key" title='key' data-type='uschar *' data-ref="1key">key</dfn>, <em>unsigned</em> <dfn class="local col2 decl" id="2lim" title='lim' data-type='unsigned int' data-ref="2lim">lim</dfn>)</td></tr>
+<tr><th id="37">37</th><td>{</td></tr>
+<tr><th id="38">38</th><td><a class="typedef" href="dbstuff.h.html#dbdata_serialize" title='dbdata_serialize' data-type='struct dbdata_serialize' data-ref="dbdata_serialize">dbdata_serialize</a> *<dfn class="local col3 decl" id="3serial_record" title='serial_record' data-type='dbdata_serialize *' data-ref="3serial_record">serial_record</dfn>;</td></tr>
+<tr><th id="39">39</th><td><a class="typedef" href="dbstuff.h.html#dbdata_serialize" title='dbdata_serialize' data-type='struct dbdata_serialize' data-ref="dbdata_serialize">dbdata_serialize</a> <dfn class="local col4 decl" id="4new_record" title='new_record' data-type='dbdata_serialize' data-ref="4new_record">new_record</dfn>;</td></tr>
+<tr><th id="40">40</th><td><a class="typedef" href="dbstuff.h.html#open_db" title='open_db' data-type='struct open_db' data-ref="open_db">open_db</a> <dfn class="local col5 decl" id="5dbblock" title='dbblock' data-type='open_db' data-ref="5dbblock">dbblock</dfn>;</td></tr>
+<tr><th id="41">41</th><td><a class="typedef" href="dbstuff.h.html#open_db" title='open_db' data-type='struct open_db' data-ref="open_db">open_db</a> *<dfn class="local col6 decl" id="6dbm_file" title='dbm_file' data-type='open_db *' data-ref="6dbm_file">dbm_file</dfn>;</td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"check serialized: %s\n"</q>, <a class="local col1 ref" href="#1key" title='key' data-ref="1key">key</a>);</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><i>/* Open and lock the waiting information database. The absence of O_CREAT is</i></td></tr>
+<tr><th id="46">46</th><td><i>deliberate; the dbfn_open() function - which is an Exim function - always tries</i></td></tr>
+<tr><th id="47">47</th><td><i>to create if it can't open a read/write file. It expects only O_RDWR or</i></td></tr>
+<tr><th id="48">48</th><td><i>O_RDONLY as its argument. */</i></td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><b>if</b> (!(<a class="local col6 ref" href="#6dbm_file" title='dbm_file' data-ref="6dbm_file">dbm_file</a> = <a class="ref fn" href="dbfunctions.h.html#dbfn_open" title='dbfn_open' data-ref="dbfn_open">dbfn_open</a>(<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"misc"</q>, <a class="macro" href="../../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#45" title="02" data-ref="_M/O_RDWR">O_RDWR</a>, &amp;<a class="local col5 ref" href="#5dbblock" title='dbblock' data-ref="5dbblock">dbblock</a>, <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>)))</td></tr>
+<tr><th id="51">51</th><td>  <b>return</b> <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td><i>/* See if there is a record for this host or queue run; if there is, we cannot</i></td></tr>
+<tr><th id="54">54</th><td><i>proceed with the connection unless the record is very old. */</i></td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td><a class="local col3 ref" href="#3serial_record" title='serial_record' data-ref="3serial_record">serial_record</a> = <a class="macro" href="dbfunctions.h.html#20" title="dbfn_read_with_length(dbm_file, key, ((void*)0))" data-ref="_M/dbfn_read">dbfn_read</a>(<a class="local col6 ref" href="#6dbm_file" title='dbm_file' data-ref="6dbm_file">dbm_file</a>, <a class="local col1 ref" href="#1key" title='key' data-ref="1key">key</a>);</td></tr>
+<tr><th id="57">57</th><td><b>if</b> (<a class="local col3 ref" href="#3serial_record" title='serial_record' data-ref="3serial_record">serial_record</a> &amp;&amp; <a class="ref fn" href="../../include/time.h.html#time" title='time' data-ref="time">time</a>(<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) - <a class="local col3 ref" href="#3serial_record" title='serial_record' data-ref="3serial_record">serial_record</a>-&gt;<a class="ref field" href="dbstuff.h.html#(anonymous)::time_stamp" title='(anonymous struct)::time_stamp' data-ref="(anonymous)::time_stamp">time_stamp</a> &lt; <var>6</var>*<var>60</var>*<var>60</var>)</td></tr>
+<tr><th id="58">58</th><td>  {</td></tr>
+<tr><th id="59">59</th><td>  <b>if</b> (<a class="local col3 ref" href="#3serial_record" title='serial_record' data-ref="3serial_record">serial_record</a>-&gt;<a class="ref field" href="dbstuff.h.html#(anonymous)::count" title='(anonymous struct)::count' data-ref="(anonymous)::count">count</a> &gt;= <a class="local col2 ref" href="#2lim" title='lim' data-ref="2lim">lim</a>)</td></tr>
+<tr><th id="60">60</th><td>    {</td></tr>
+<tr><th id="61">61</th><td>    <a class="ref fn" href="dbfunctions.h.html#dbfn_close" title='dbfn_close' data-ref="dbfn_close">dbfn_close</a>(<a class="local col6 ref" href="#6dbm_file" title='dbm_file' data-ref="6dbm_file">dbm_file</a>);</td></tr>
+<tr><th id="62">62</th><td>    <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"outstanding serialization record for %s\n"</q>,</td></tr>
+<tr><th id="63">63</th><td>      <a class="local col1 ref" href="#1key" title='key' data-ref="1key">key</a>);</td></tr>
+<tr><th id="64">64</th><td>    <b>return</b> <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="65">65</th><td>    }</td></tr>
+<tr><th id="66">66</th><td>  <a class="local col4 ref" href="#4new_record" title='new_record' data-ref="4new_record">new_record</a>.<a class="ref field" href="dbstuff.h.html#(anonymous)::count" title='(anonymous struct)::count' data-ref="(anonymous)::count">count</a> = <a class="local col3 ref" href="#3serial_record" title='serial_record' data-ref="3serial_record">serial_record</a>-&gt;<a class="ref field" href="dbstuff.h.html#(anonymous)::count" title='(anonymous struct)::count' data-ref="(anonymous)::count">count</a> + <var>1</var>;</td></tr>
+<tr><th id="67">67</th><td>  }</td></tr>
+<tr><th id="68">68</th><td><b>else</b></td></tr>
+<tr><th id="69">69</th><td>  <a class="local col4 ref" href="#4new_record" title='new_record' data-ref="4new_record">new_record</a>.<a class="ref field" href="dbstuff.h.html#(anonymous)::count" title='(anonymous struct)::count' data-ref="(anonymous)::count">count</a> = <var>1</var>;</td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td><i>/* We can proceed - insert a new record or update the old one. */</i></td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"write serialization record for %s val %d\n"</q>,</td></tr>
+<tr><th id="74">74</th><td>      <a class="local col1 ref" href="#1key" title='key' data-ref="1key">key</a>, <a class="local col4 ref" href="#4new_record" title='new_record' data-ref="4new_record">new_record</a>.<a class="ref field" href="dbstuff.h.html#(anonymous)::count" title='(anonymous struct)::count' data-ref="(anonymous)::count">count</a>);</td></tr>
+<tr><th id="75">75</th><td><a class="ref fn" href="dbfunctions.h.html#dbfn_write" title='dbfn_write' data-ref="dbfn_write">dbfn_write</a>(<a class="local col6 ref" href="#6dbm_file" title='dbm_file' data-ref="6dbm_file">dbm_file</a>, <a class="local col1 ref" href="#1key" title='key' data-ref="1key">key</a>, &amp;<a class="local col4 ref" href="#4new_record" title='new_record' data-ref="4new_record">new_record</a>, (<em>int</em>)<b>sizeof</b>(<a class="typedef" href="dbstuff.h.html#dbdata_serialize" title='dbdata_serialize' data-type='struct dbdata_serialize' data-ref="dbdata_serialize">dbdata_serialize</a>));</td></tr>
+<tr><th id="76">76</th><td><a class="ref fn" href="dbfunctions.h.html#dbfn_close" title='dbfn_close' data-ref="dbfn_close">dbfn_close</a>(<a class="local col6 ref" href="#6dbm_file" title='dbm_file' data-ref="6dbm_file">dbm_file</a>);</td></tr>
+<tr><th id="77">77</th><td><b>return</b> <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="78">78</th><td>}</td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="83">83</th><td><i>*              Release serialization             *</i></td></tr>
+<tr><th id="84">84</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><i>/* This function is called when a serialized host's connection or serialized</i></td></tr>
+<tr><th id="87">87</th><td><i>ETRN queue run ends. We open the relevant database and delete its record.</i></td></tr>
+<tr><th id="88">88</th><td><i></i></td></tr>
+<tr><th id="89">89</th><td><i>Arguments:</i></td></tr>
+<tr><th id="90">90</th><td><i>  key          the serialization key</i></td></tr>
+<tr><th id="91">91</th><td><i></i></td></tr>
+<tr><th id="92">92</th><td><i>Returns:       nothing</i></td></tr>
+<tr><th id="93">93</th><td><i>*/</i></td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td><em>void</em></td></tr>
+<tr><th id="96">96</th><td><dfn class="decl def fn" id="enq_end" title='enq_end' data-ref="enq_end">enq_end</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col7 decl" id="7key" title='key' data-type='uschar *' data-ref="7key">key</dfn>)</td></tr>
+<tr><th id="97">97</th><td>{</td></tr>
+<tr><th id="98">98</th><td><a class="typedef" href="dbstuff.h.html#open_db" title='open_db' data-type='struct open_db' data-ref="open_db">open_db</a> <dfn class="local col8 decl" id="8dbblock" title='dbblock' data-type='open_db' data-ref="8dbblock">dbblock</dfn>;</td></tr>
+<tr><th id="99">99</th><td><a class="typedef" href="dbstuff.h.html#open_db" title='open_db' data-type='struct open_db' data-ref="open_db">open_db</a> *<dfn class="local col9 decl" id="9dbm_file" title='dbm_file' data-type='open_db *' data-ref="9dbm_file">dbm_file</dfn>;</td></tr>
+<tr><th id="100">100</th><td><a class="typedef" href="dbstuff.h.html#dbdata_serialize" title='dbdata_serialize' data-type='struct dbdata_serialize' data-ref="dbdata_serialize">dbdata_serialize</a> *<dfn class="local col0 decl" id="10serial_record" title='serial_record' data-type='dbdata_serialize *' data-ref="10serial_record">serial_record</dfn>;</td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td><a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"end serialized: %s\n"</q>, <a class="local col7 ref" href="#7key" title='key' data-ref="7key">key</a>);</td></tr>
+<tr><th id="103">103</th><td></td></tr>
+<tr><th id="104">104</th><td><b>if</b> (  !(<a class="local col9 ref" href="#9dbm_file" title='dbm_file' data-ref="9dbm_file">dbm_file</a> = <a class="ref fn" href="dbfunctions.h.html#dbfn_open" title='dbfn_open' data-ref="dbfn_open">dbfn_open</a>(<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"misc"</q>, <a class="macro" href="../../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#45" title="02" data-ref="_M/O_RDWR">O_RDWR</a>, &amp;<a class="local col8 ref" href="#8dbblock" title='dbblock' data-ref="8dbblock">dbblock</a>, <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>))</td></tr>
+<tr><th id="105">105</th><td>   || !(<a class="local col0 ref" href="#10serial_record" title='serial_record' data-ref="10serial_record">serial_record</a> = <a class="macro" href="dbfunctions.h.html#20" title="dbfn_read_with_length(dbm_file, key, ((void*)0))" data-ref="_M/dbfn_read">dbfn_read</a>(<a class="local col9 ref" href="#9dbm_file" title='dbm_file' data-ref="9dbm_file">dbm_file</a>, <a class="local col7 ref" href="#7key" title='key' data-ref="7key">key</a>))</td></tr>
+<tr><th id="106">106</th><td>   )</td></tr>
+<tr><th id="107">107</th><td>  <b>return</b>;</td></tr>
+<tr><th id="108">108</th><td><b>if</b> (--<a class="local col0 ref" href="#10serial_record" title='serial_record' data-ref="10serial_record">serial_record</a>-&gt;<a class="ref field" href="dbstuff.h.html#(anonymous)::count" title='(anonymous struct)::count' data-ref="(anonymous)::count">count</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="109">109</th><td>  {</td></tr>
+<tr><th id="110">110</th><td>  <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"write serialization record for %s val %d\n"</q>,</td></tr>
+<tr><th id="111">111</th><td>      <a class="local col7 ref" href="#7key" title='key' data-ref="7key">key</a>, <a class="local col0 ref" href="#10serial_record" title='serial_record' data-ref="10serial_record">serial_record</a>-&gt;<a class="ref field" href="dbstuff.h.html#(anonymous)::count" title='(anonymous struct)::count' data-ref="(anonymous)::count">count</a>);</td></tr>
+<tr><th id="112">112</th><td>  <a class="ref fn" href="dbfunctions.h.html#dbfn_write" title='dbfn_write' data-ref="dbfn_write">dbfn_write</a>(<a class="local col9 ref" href="#9dbm_file" title='dbm_file' data-ref="9dbm_file">dbm_file</a>, <a class="local col7 ref" href="#7key" title='key' data-ref="7key">key</a>, <a class="local col0 ref" href="#10serial_record" title='serial_record' data-ref="10serial_record">serial_record</a>, (<em>int</em>)<b>sizeof</b>(<a class="typedef" href="dbstuff.h.html#dbdata_serialize" title='dbdata_serialize' data-type='struct dbdata_serialize' data-ref="dbdata_serialize">dbdata_serialize</a>));</td></tr>
+<tr><th id="113">113</th><td>  }</td></tr>
+<tr><th id="114">114</th><td><b>else</b></td></tr>
+<tr><th id="115">115</th><td>  {</td></tr>
+<tr><th id="116">116</th><td>  <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"remove serialization record for %s\n"</q>, <a class="local col7 ref" href="#7key" title='key' data-ref="7key">key</a>);</td></tr>
+<tr><th id="117">117</th><td>  <a class="ref fn" href="dbfunctions.h.html#dbfn_delete" title='dbfn_delete' data-ref="dbfn_delete">dbfn_delete</a>(<a class="local col9 ref" href="#9dbm_file" title='dbm_file' data-ref="9dbm_file">dbm_file</a>, <a class="local col7 ref" href="#7key" title='key' data-ref="7key">key</a>);</td></tr>
+<tr><th id="118">118</th><td>  }</td></tr>
+<tr><th id="119">119</th><td><a class="ref fn" href="dbfunctions.h.html#dbfn_close" title='dbfn_close' data-ref="dbfn_close">dbfn_close</a>(<a class="local col9 ref" href="#9dbm_file" title='dbm_file' data-ref="9dbm_file">dbm_file</a>);</td></tr>
+<tr><th id="120">120</th><td>}</td></tr>
+<tr><th id="121">121</th><td></td></tr>
+<tr><th id="122">122</th><td><i>/* End of enq.c */</i></td></tr>
+<tr><th id="123">123</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

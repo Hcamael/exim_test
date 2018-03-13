@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='551' type='uschar *'/>
 <offset>1920</offset>
 <doc f='exim/src/structs.h' l='551'>/* info about shadow transporting */</doc>
+<use f='exim/src/deliver.c' l='1196' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1197' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='3051' u='w' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3051' u='a' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3074' u='r' c='do_local_deliveries'/>
+<use f='exim/src/globals.c' l='361' u='w'/>

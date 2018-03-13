@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='467' type='uschar *'/>
 <offset>192</offset>
 <doc f='exim/src/structs.h' l='467'>/* ) specific header fields */</doc>
+<use f='exim/src/rda.c' l='755' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='931' u='a' c='rda_interpret'/>

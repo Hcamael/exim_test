@@ -1,1 +1,10 @@
 <dec f='exim/src/functions.h' l='196' type='uschar * expand_string_copy(const uschar * )'/>
+<use f='exim/src/moan.c' l='653' u='c' c='moan_check_errorcopy'/>
+<def f='exim/src/expand.c' l='7608' ll='7614' type='uschar * expand_string_copy(const uschar * string)'/>
+<doc f='exim/src/expand.c' l='7600'>/* Now and again we want to expand a string and be sure that the result is in a
+new bit of store. This function does that.
+Since we know it has been copied, the de-const cast is safe.
+
+Argument: the string to be expanded
+Returns:  the expanded string, always in a new bit of store, or NULL
+*/</doc>

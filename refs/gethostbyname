@@ -3,3 +3,4 @@
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */</doc>
+<use f='exim/src/host.c' l='2052' u='c' c='host_find_byname'/>

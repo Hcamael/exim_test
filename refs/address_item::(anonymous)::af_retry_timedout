@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='592' type='BOOL'/>
 <offset>13</offset>
 <doc f='exim/src/structs.h' l='592'>/* true if retry timed out */</doc>
+<use f='exim/src/deliver.c' l='7411' u='r' c='deliver_message'/>
+<use f='exim/src/retry.c' l='890' u='w' c='retry_update'/>

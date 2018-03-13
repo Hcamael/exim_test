@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='922' type='uid_t'/>
 <doc f='exim/src/globals.h' l='922'>/* Uid for running system filter */</doc>
+<use f='exim/src/deliver.c' l='5838' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5990' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1424' type='uid_t'/>
+<use f='exim/src/exim.c' l='1606' u='w' c='main'/>
+<use f='exim/src/readconf.c' l='339' u='a'/>
+<use f='exim/src/readconf.c' l='339' u='a'/>
+<use f='exim/src/readconf.c' l='339' u='a'/>
+<use f='exim/src/readconf.c' l='339' u='a'/>

@@ -1,1 +1,21 @@
 <dec f='exim/src/functions.h' l='324' type='void queue_list(int , uschar ** , int )'/>
+<use f='exim/src/exim.c' l='4396' u='c' c='main'/>
+<def f='exim/src/queue.c' l='818' ll='972' type='void queue_list(int option, uschar ** list, int count)'/>
+<doc f='exim/src/queue.c' l='799'>/* Or a given list of messages. In the &quot;all&quot; case, we get a list of file names
+as quickly as possible, then scan each one for information to output. If any
+disappear while we are processing, just leave them out, but give an error if an
+explicit list was given. This function is a top-level function that is obeyed
+as a result of the -bp argument. As there may be a lot of messages on the
+queue, we must tidy up the store after reading the headers for each one.
+
+Arguments:
+   option     0 =&gt; list top-level recipients, with &quot;D&quot; for those delivered
+              1 =&gt; list only undelivered top-level recipients
+              2 =&gt; as 0, plus any generated delivered recipients
+              If 8 is added to any of these values, the queue is listed in
+                random order.
+   list       =&gt; first of any message ids to list
+   count      count of message ids; 0 =&gt; all
+
+Returns:      nothing
+*/</doc>

@@ -1,1 +1,9 @@
 <dec f='exim/src/hash.h' l='35' type='2'/>
+<use f='exim/src/pdkim/pdkim.c' l='80'/>
+<use f='exim/src/pdkim/pdkim.c' l='80'/>
+<use f='exim/src/pdkim/pdkim.c' l='80'/>
+<use f='exim/src/pdkim/pdkim.c' l='80'/>
+<use f='exim/src/expand.c' l='6455' u='r' c='expand_string_internal'/>
+<use f='exim/src/hash.c' l='40' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='69' c='exim_sha_update'/>
+<use f='exim/src/hash.c' l='92' c='exim_sha_finish'/>

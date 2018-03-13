@@ -1,0 +1,6 @@
+<use f='exim/src/tod.c' l='137' macro='1' u='c'/>
+<use f='exim/src/tod.c' l='138' macro='1' u='c'/>
+<use f='exim/src/tod.c' l='209' macro='1' u='c'/>
+<use f='exim/src/tod.c' l='212' macro='1' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='170' u='c' c='asn1_time_copy'/>
+<use f='exim/src/exim_dbutil.c' l='166' macro='1' u='c'/>

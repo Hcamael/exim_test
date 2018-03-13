@@ -1,2 +1,19 @@
 <dec f='exim/src/globals.h' l='528' type='int'/>
 <doc f='exim/src/globals.h' l='528'>/* Fd for journal file */</doc>
+<use f='exim/src/deliver.c' l='2560' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2567' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='5655' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5663' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5664' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5676' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5677' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7005' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7009' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7024' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7025' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7041' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7043' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7044' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8392' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8392' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='828' type='int'/>

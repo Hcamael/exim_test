@@ -1,3 +1,29 @@
 <dec f='exim/src/globals.h' l='85' type='BOOL'/>
 <offset>64</offset>
 <doc f='exim/src/globals.h' l='85'>/* Client certificate verified */</doc>
+<use f='exim/src/deliver.c' l='4787' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/tls-openssl.c' l='493' u='w' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='1998' u='w' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2296' u='w' c='tls_client_start'/>
+<use f='exim/src/tls.c' l='215' u='a' c='tls_modify_variables'/>
+<use f='exim/src/globals.c' l='106' u='w'/>
+<use f='exim/src/globals.c' l='123' u='w'/>
+<use f='exim/src/smtp_in.c' l='1727' u='r' c='s_tlslog'/>
+<use f='exim/src/smtp_in.c' l='3839' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/spool_in.c' l='304' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='630' u='w' c='spool_read_header'/>
+<use f='exim/src/acl.c' l='1676' u='r' c='acl_verify'/>
+<use f='exim/src/expand.c' l='725' u='a'/>
+<use f='exim/src/expand.c' l='725' u='a'/>
+<use f='exim/src/expand.c' l='729' u='a'/>
+<use f='exim/src/expand.c' l='729' u='a'/>
+<use f='exim/src/expand.c' l='739' u='a'/>
+<use f='exim/src/expand.c' l='739' u='a'/>
+<use f='exim/src/expand.c' l='725' u='a'/>
+<use f='exim/src/expand.c' l='725' u='a'/>
+<use f='exim/src/expand.c' l='729' u='a'/>
+<use f='exim/src/expand.c' l='729' u='a'/>
+<use f='exim/src/expand.c' l='739' u='a'/>
+<use f='exim/src/expand.c' l='739' u='a'/>
+<use f='exim/src/receive.c' l='3917' u='r' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='238' u='r' c='spool_write_header'/>

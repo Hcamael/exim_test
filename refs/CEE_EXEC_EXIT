@@ -1,2 +1,9 @@
 <dec f='exim/src/macros.h' l='265' type='1'/>
 <doc f='exim/src/macros.h' l='265'>/* Just exit if exec fails */</doc>
+<use f='exim/src/deliver.c' l='8578' u='r' c='delivery_re_exec'/>
+<use f='exim/src/exim.c' l='5730' u='r' c='main'/>
+<use f='exim/src/child.c' l='154' u='r' c='child_exec_exim'/>
+<use f='exim/src/child.c' l='238' u='r' c='child_open_exim2'/>
+<use f='exim/src/child.c' l='242' u='r' c='child_open_exim2'/>
+<use f='exim/src/child.c' l='250' u='r' c='child_open_exim2'/>
+<use f='exim/src/child.c' l='254' u='r' c='child_open_exim2'/>

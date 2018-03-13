@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='281' type='uschar *'/>
 <offset>1088</offset>
 <doc f='exim/src/structs.h' l='281'>/* For remote transports (text list) */</doc>
+<use f='exim/src/globals.c' l='1188' u='w'/>

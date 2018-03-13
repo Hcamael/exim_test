@@ -1,1 +1,2 @@
 <dec f='include/openssl/x509_vfy.h' l='398' type='int X509_STORE_load_locations(X509_STORE * ctx, const char * file, const char * dir)'/>
+<use f='exim/src/tls-openssl.c' l='1906' u='c' c='setup_certs'/>

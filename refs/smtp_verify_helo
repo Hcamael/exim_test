@@ -1,1 +1,18 @@
 <dec f='exim/src/functions.h' l='431' type='BOOL smtp_verify_helo()'/>
+<def f='exim/src/smtp_in.c' l='3435' ll='3546' type='BOOL smtp_verify_helo()'/>
+<use f='exim/src/smtp_in.c' l='4066' u='c' c='smtp_setup_msg'/>
+<doc f='exim/src/smtp_in.c' l='3420'>/* This function is called if helo_verify_hosts or helo_try_verify_hosts is
+matched. It is also called from ACL processing if verify = helo is used and
+verification was not previously tried (i.e. helo_try_verify_hosts was not
+matched). The result of its processing is to set helo_verified and
+helo_verify_failed. These variables should both be FALSE for this function to
+be called.
+
+Note that EHLO/HELO is legitimately allowed to quote an address literal. Allow
+for IPv6 ::ffff: literals.
+
+Argument:   none
+Returns:    TRUE if testing was completed;
+            FALSE on a temporary failure
+*/</doc>
+<use f='exim/src/acl.c' l='1684' u='c' c='acl_verify'/>

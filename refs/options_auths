@@ -1,0 +1,3 @@
+<dec f='exim/src/macro_predef.h' l='20' type='void options_auths()'/>
+<use f='exim/src/macro_predef.c' l='272' u='c' c='options'/>
+<def f='exim/src/readconf.c' l='390' ll='404' type='void options_auths()'/>

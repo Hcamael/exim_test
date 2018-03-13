@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='288' type='const uschar *'/>
 <doc f='exim/src/globals.h' l='288'>/* Configuration file name */</doc>
+<def f='exim/src/globals.c' l='520' type='const uschar *'/>
+<use f='exim/src/log.c' l='560' u='r' c='log_config_info'/>

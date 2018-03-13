@@ -6,3 +6,38 @@
 
    These functions is a possible cancellation point and therefore not
    marked with __THROW.  */</doc>
+<use f='exim/src/deliver.c' l='5353' u='c' c='print_address_error'/>
+<use f='exim/src/deliver.c' l='5410' u='c' c='print_dsn_diagnostic_code'/>
+<use f='exim/src/deliver.c' l='5412' u='c' c='print_dsn_diagnostic_code'/>
+<use f='exim/src/deliver.c' l='7324' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7588' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7604' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7625' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7657' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7665' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7674' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7686' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7712' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7741' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8196' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8208' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8215' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8217' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8253' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8270' u='c' c='deliver_message'/>
+<use f='exim/src/verify.c' l='2149' u='c' c='verify_address'/>
+<use f='exim/src/moan.c' l='274' u='c' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='293' u='c' c='moan_send_message'/>
+<use f='exim/src/queue.c' l='913' u='c' c='queue_list'/>
+<use f='exim/src/receive.c' l='636' u='c' c='read_message_data'/>
+<use f='exim/src/receive.c' l='642' u='c' c='read_message_data'/>
+<use f='exim/src/receive.c' l='658' u='c' c='read_message_data'/>
+<use f='exim/src/receive.c' l='706' u='c' c='read_message_data'/>
+<use f='exim/src/receive.c' l='718' u='c' c='read_message_data'/>
+<use f='exim/src/receive.c' l='733' u='c' c='read_message_data'/>
+<use f='exim/src/receive.c' l='831' u='c' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='860' u='c' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='878' u='c' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='991' u='c' c='read_message_bdat_smtp'/>
+<use f='exim/src/receive.c' l='1005' u='c' c='read_message_bdat_smtp'/>
+<use f='exim/src/receive.c' l='1054' u='c' c='read_message_bdat_smtp_wire'/>

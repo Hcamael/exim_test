@@ -1,2 +1,4 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='54'/>
 <doc f='exim/build-Linux-x86_64/config.h' l='53'>/* CYRUS_SASLAUTHD_SOCKET not set */</doc>
+<use f='exim/src/expand.c' l='2787' u='c'/>
+<use f='exim/src/expand.c' l='2796' u='c'/>

@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='152' type='uschar *'/>
 <offset>576</offset>
 <doc f='exim/src/structs.h' l='152'>/* )                                  */</doc>
+<use f='exim/src/deliver.c' l='2212' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2212' u='r' c='deliver_local'/>
+<use f='exim/src/globals.c' l='1455' u='w'/>

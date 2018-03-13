@@ -1,0 +1,3 @@
+<def f='exim/src/tlscert-openssl.c' l='119' ll='179' type='uschar * asn1_time_copy(const ASN1_TIME * asntime, uschar * mod)'/>
+<use f='exim/src/tlscert-openssl.c' l='215' u='c' c='tls_cert_not_before'/>
+<use f='exim/src/tlscert-openssl.c' l='221' u='c' c='tls_cert_not_after'/>

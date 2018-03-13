@@ -1,1 +1,5 @@
 <dec f='include/openssl/x509.h' l='623' type='X509_NAME * X509_get_subject_name(const X509 * a)'/>
+<use f='exim/src/tls-openssl.c' l='384' u='c' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='1008' u='c' c='tls_install_selfsign'/>
+<use f='exim/src/tls-openssl.c' l='1733' u='c' c='peer_cert'/>
+<use f='exim/src/tlscert-openssl.c' l='299' u='c' c='tls_cert_subject'/>

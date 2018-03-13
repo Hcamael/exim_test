@@ -1,2 +1,17 @@
 <dec f='exim/src/globals.h' l='508' type='BOOL'/>
 <doc f='exim/src/globals.h' l='508'>/* TRUE if lookup failed */</doc>
+<use f='exim/src/verify.c' l='3083' u='r' c='check_host'/>
+<def f='exim/src/globals.c' l='806' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='3482' u='r' c='smtp_verify_helo'/>
+<use f='exim/src/spool_in.c' l='266' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='547' u='w' c='spool_read_header'/>
+<use f='exim/src/acl.c' l='1213' u='r' c='acl_verify_reverse'/>
+<use f='exim/src/expand.c' l='545' u='a'/>
+<use f='exim/src/expand.c' l='545' u='a'/>
+<use f='exim/src/expand.c' l='545' u='a'/>
+<use f='exim/src/expand.c' l='545' u='a'/>
+<use f='exim/src/expand.c' l='1801' u='r' c='find_variable'/>
+<use f='exim/src/host.c' l='1668' u='w' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1804' u='w' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1919' u='w' c='host_name_lookup'/>
+<use f='exim/src/spool_out.c' l='221' u='r' c='spool_write_header'/>

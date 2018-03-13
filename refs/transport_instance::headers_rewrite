@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='179' type='uschar *'/>
 <offset>1856</offset>
 <doc f='exim/src/structs.h' l='179'>/* Rules for rewriting headers */</doc>
+<use f='exim/src/globals.c' l='1480' u='w'/>

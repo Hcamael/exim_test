@@ -1,1 +1,8 @@
 <dec f='exim/src/functions.h' l='261' type='macro_item * macro_search_prefix(const uschar * )'/>
+<def f='exim/src/macro.c' l='77' ll='87' type='macro_item * macro_search_prefix(const uschar * s)'/>
+<use f='exim/src/macro.c' l='100' u='c' c='macro_search_largest_prefix'/>
+<doc f='exim/src/macro.c' l='71'>/* Search for a macro with a (possibly improper) leading substring
+matching the given name.  Return the node, or NULL for not-found.
+
+Arguments:	name	key to search on
+*/</doc>

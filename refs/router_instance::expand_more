@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='278' type='uschar *'/>
 <offset>896</offset>
 <doc f='exim/src/structs.h' l='278'>/* Expanded more string */</doc>
+<use f='exim/src/globals.c' l='1185' u='w'/>

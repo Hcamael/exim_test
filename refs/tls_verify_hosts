@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='127' type='uschar *'/>
 <doc f='exim/src/globals.h' l='127'>/* Mandatory client verification */</doc>
+<use f='exim/src/tls-openssl.c' l='2004' u='a' c='tls_server_start'/>
+<def f='exim/src/globals.c' l='165' type='uschar *'/>
+<use f='exim/src/readconf.c' l='362' u='a'/>
+<use f='exim/src/readconf.c' l='362' u='a'/>
+<use f='exim/src/readconf.c' l='362' u='a'/>
+<use f='exim/src/readconf.c' l='362' u='a'/>

@@ -1,2 +1,4 @@
 <dec f='include/unistd.h' l='838' type='int rmdir(const char * __path)'/>
 <doc f='include/unistd.h' l='837'>/* Remove the directory PATH.  */</doc>
+<use f='exim/src/queue.c' l='314' u='c' c='queue_get_spool_list'/>
+<use f='exim/src/queue.c' l='316' u='c' c='queue_get_spool_list'/>

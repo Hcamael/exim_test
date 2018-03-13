@@ -1,1 +1,4 @@
 <dec f='include/openssl/ssl.h' l='1590' type='int SSL_get_error(const SSL * s, int ret_code)'/>
+<use f='exim/src/tls-openssl.c' l='2452' u='c' c='tls_refill'/>
+<use f='exim/src/tls-openssl.c' l='2600' u='c' c='tls_read'/>
+<use f='exim/src/tls-openssl.c' l='2663' u='c' c='tls_write'/>

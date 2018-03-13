@@ -1,3 +1,6 @@
 <dec f='exim/src/globals.h' l='315' type='unsigned int'/>
 <offset>352</offset>
 <doc f='exim/src/globals.h' l='315'>/* smtp_peer_options */</doc>
+<use f='exim/src/deliver.c' l='4491' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='8533' u='r' c='delivery_re_exec'/>
+<use f='exim/src/verify.c' l='1052' u='w' c='do_callout'/>

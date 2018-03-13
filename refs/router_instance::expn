@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='303' type='BOOL'/>
 <offset>2080</offset>
 <doc f='exim/src/structs.h' l='303'>/* Use this router when processing EXPN */</doc>
+<use f='exim/src/globals.c' l='1210' u='w'/>

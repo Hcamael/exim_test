@@ -1,3 +1,26 @@
 <dec f='include/db.h' l='221' type='u_int32_t'/>
 <offset>64</offset>
 <doc f='include/db.h' l='221'>/* key/data length */</doc>
+<use f='exim/src/exim_dbmbuild.c' l='300' macro='1' u='w'/>
+<use f='exim/src/exim_dbmbuild.c' l='343' macro='1' u='w'/>
+<use f='exim/src/exim_dbmbuild.c' l='349' macro='1' u='w'/>
+<use f='exim/src/exim_dbmbuild.c' l='352' macro='1' u='r'/>
+<use f='exim/src/exim_dbmbuild.c' l='362' macro='1' u='r'/>
+<use f='exim/src/exim_dbmbuild.c' l='367' macro='1' u='r'/>
+<use f='exim/src/exim_dbmbuild.c' l='394' macro='1' u='w'/>
+<use f='exim/src/exim_dbutil.c' l='373' macro='1' u='w'/>
+<use f='exim/src/exim_dbutil.c' l='377' macro='1' u='r'/>
+<use f='exim/src/exim_dbutil.c' l='378' macro='1' u='r'/>
+<use f='exim/src/exim_dbutil.c' l='379' macro='1' u='r'/>
+<use f='exim/src/exim_dbutil.c' l='418' macro='1' u='w'/>
+<use f='exim/src/exim_dbutil.c' l='420' macro='1' u='w'/>
+<use f='exim/src/exim_dbutil.c' l='448' macro='1' u='w'/>
+<use f='exim/src/lookups/dbmdb.c' l='106' macro='1' u='w'/>
+<use f='exim/src/lookups/dbmdb.c' l='110' macro='1' u='r'/>
+<use f='exim/src/dbfn.c' l='308' macro='1' u='w'/>
+<use f='exim/src/dbfn.c' l='312' macro='1' u='r'/>
+<use f='exim/src/dbfn.c' l='313' macro='1' u='r'/>
+<use f='exim/src/dbfn.c' l='314' macro='1' u='r'/>
+<use f='exim/src/dbfn.c' l='353' macro='1' u='w'/>
+<use f='exim/src/dbfn.c' l='355' macro='1' u='w'/>
+<use f='exim/src/dbfn.c' l='383' macro='1' u='w'/>

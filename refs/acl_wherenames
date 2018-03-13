@@ -1,2 +1,17 @@
 <dec f='exim/src/globals.h' l='202' type='uschar *[]'/>
 <doc f='exim/src/globals.h' l='202'>/* Names for messages */</doc>
+<use f='exim/src/verify.c' l='3798' u='r' c='verify_check_dnsbl'/>
+<def f='exim/src/globals.c' l='274' ll='297' type='uschar *[21]'/>
+<doc f='exim/src/globals.c' l='271'>/* Names of SMTP places for use in ACL error messages, and corresponding SMTP
+error codes - keep in step with definitions of ACL_WHERE_xxxx in macros.h. */</doc>
+<use f='exim/src/smtp_in.c' l='3185' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3186' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/acl.c' l='1170' u='r' c='acl_warn'/>
+<use f='exim/src/acl.c' l='1658' u='r' c='acl_verify'/>
+<use f='exim/src/acl.c' l='2336' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2944' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3018' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3525' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3551' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='4483' u='r' c='acl_check'/>
+<use f='exim/src/acl.c' l='4494' u='r' c='acl_check'/>

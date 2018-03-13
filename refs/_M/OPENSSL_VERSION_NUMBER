@@ -25,3 +25,17 @@
  * (Prior to 0.9.5a beta1, a different scheme was used: MMNNFFRBB for
  *  major minor fix final patch/beta)
  */</doc>
+<use f='exim/src/tls-openssl.c' l='41' u='c'/>
+<use f='exim/src/tls-openssl.c' l='44' u='c'/>
+<use f='exim/src/tls-openssl.c' l='47' u='c'/>
+<use f='exim/src/tls-openssl.c' l='53' u='c'/>
+<use f='exim/src/tls-openssl.c' l='70' u='c'/>
+<use f='exim/src/tls-openssl.c' l='74' u='c'/>
+<use f='exim/src/tls-openssl.c' l='75' u='c'/>
+<use f='exim/src/tls-openssl.c' l='83' u='c'/>
+<use f='exim/src/tls-openssl.c' l='86' u='c'/>
+<use f='exim/src/tls-openssl.c' l='763' u='c'/>
+<use f='exim/src/tls-openssl.c' l='1867' u='c'/>
+<use f='exim/src/tls-openssl.c' l='2755' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='20' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='24' u='c'/>

@@ -1,3 +1,5 @@
 <dec f='include/openssl/lhash.h' l='91' type='void OPENSSL_LH_node_stats_bio(const OPENSSL_LHASH * lh, BIO * out)'/>
 <use f='include/openssl/lhash.h' l='156' u='c' c='lh_OPENSSL_STRING_node_stats_bio'/>
 <use f='include/openssl/lhash.h' l='156' u='c' c='lh_OPENSSL_CSTRING_node_stats_bio'/>
+<use f='include/openssl/err.h' l='206' macro='1' u='c'/>
+<use f='include/openssl/conf.h' l='32' macro='1' u='c'/>

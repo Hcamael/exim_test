@@ -1,1 +1,25 @@
 <dec f='include/unistd.h' l='548' type='char **'/>
+<dec f='exim/src/environment.c' l='12' type='char **'/>
+<use f='exim/src/environment.c' l='36' u='r' c='cleanup_environment'/>
+<use f='exim/src/environment.c' l='36' u='r' c='cleanup_environment'/>
+<use f='exim/src/environment.c' l='42' u='r' c='cleanup_environment'/>
+<use f='exim/src/environment.c' l='42' u='r' c='cleanup_environment'/>
+<use f='exim/src/environment.c' l='56' u='r' c='cleanup_environment'/>
+<dec f='exim/src/tls-openssl.c' l='959' type='char **'/>
+<use f='exim/src/tls-openssl.c' l='961' u='r' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='961' u='r' c='ocsp_load_response'/>
+<dec f='exim/src/parse.c' l='2054' type='char **'/>
+<use f='exim/src/parse.c' l='2071' u='r' c='parse_date_time'/>
+<use f='exim/src/parse.c' l='2072' u='w' c='parse_date_time'/>
+<use f='exim/src/parse.c' l='2074' u='w' c='parse_date_time'/>
+<dec f='exim/src/exim.c' l='1549' type='char **'/>
+<use f='exim/src/exim.c' l='3963' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3963' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3994' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3998' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4001' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4001' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4009' u='w' c='main'/>
+<doc f='exim/src/exim.c' l='1545'>/* Need to define this in case we need to change the environment in order
+to get rid of a bogus time zone. We have to make it char rather than uschar
+because some OS define it in /usr/include/unistd.h. */</doc>

@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='165' macro='1' type='GENERAL_NAME * sk_GENERAL_NAME_shift(struct stack_st_GENERAL_NAME * sk)'/>

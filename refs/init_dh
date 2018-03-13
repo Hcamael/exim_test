@@ -1,0 +1,13 @@
+<def f='exim/src/tls-openssl.c' l='613' ll='695' type='BOOL init_dh(SSL_CTX * sctx, uschar * dhparam, const host_item * host, uschar ** errstr)'/>
+<use f='exim/src/tls-openssl.c' l='1236' u='c' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1611' u='c' c='tls_init'/>
+<doc f='exim/src/tls-openssl.c' l='602'>/* If dhparam is set, expand it, and load up the parameters for DH encryption.
+
+Arguments:
+  sctx      The current SSL CTX (inbound or outbound)
+  dhparam   DH parameter file or fixed parameter identity string
+  host      connected host, if client; NULL if server
+  errstr    error string pointer
+
+Returns:    TRUE if OK (nothing to set up, or setup worked)
+*/</doc>

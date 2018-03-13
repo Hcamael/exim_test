@@ -1,3 +1,4 @@
 <dec f='include/arpa/nameser_compat.h' l='82' type='unsigned int'/>
 <offset>80</offset>
 <doc f='include/arpa/nameser_compat.h' l='82'>/*%&lt; number of resource entries */</doc>
+<use f='exim/src/dns.c' l='401' u='r' c='dns_next_rr'/>

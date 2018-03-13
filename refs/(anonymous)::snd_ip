@@ -1,3 +1,6 @@
 <dec f='exim/src/globals.h' l='313' type='uschar *'/>
 <offset>256</offset>
 <doc f='exim/src/globals.h' l='313'>/* sending_ip_address */</doc>
+<use f='exim/src/deliver.c' l='4489' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='8540' u='r' c='delivery_re_exec'/>
+<use f='exim/src/verify.c' l='1057' u='w' c='do_callout'/>

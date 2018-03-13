@@ -1,1 +1,2 @@
 <dec f='include/openssl/pem.h' l='331' macro='1' type='int PEM_write_bio_X509(BIO * bp, X509 * x)'/>
+<use f='exim/src/tlscert-openssl.c' l='37' u='c' c='tls_export_cert'/>

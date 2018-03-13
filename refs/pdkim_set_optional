@@ -1,0 +1,3 @@
+<dec f='exim/src/pdkim/pdkim.h' l='314' type='void pdkim_set_optional(pdkim_signature * , char * , char * , int , int , long , unsigned long , unsigned long )'/>
+<def f='exim/src/pdkim/pdkim.c' l='1843' ll='1866' type='void pdkim_set_optional(pdkim_signature * sig, char * sign_headers, char * identity, int canon_headers, int canon_body, long bodylength, unsigned long created, unsigned long expires)'/>
+<doc f='exim/src/pdkim/pdkim.c' l='1841'>/* -------------------------------------------------------------------------- */</doc>

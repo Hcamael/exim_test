@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='812' type='uschar *'/>
 <doc f='exim/src/globals.h' l='812'>/* Limit non-mail cmds from these hosts */</doc>
+<def f='exim/src/globals.c' l='1308' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='1597' u='a' c='smtp_read_command'/>
+<use f='exim/src/readconf.c' l='279' u='a'/>
+<use f='exim/src/readconf.c' l='279' u='a'/>
+<use f='exim/src/readconf.c' l='279' u='a'/>
+<use f='exim/src/readconf.c' l='279' u='a'/>

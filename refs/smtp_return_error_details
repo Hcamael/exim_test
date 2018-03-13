@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='847' type='BOOL'/>
 <doc f='exim/src/globals.h' l='847'>/* TRUE to return full info */</doc>
+<use f='exim/src/verify.c' l='1130' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='2598' u='r' c='verify_check_header_address'/>
+<def f='exim/src/globals.c' l='1347' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='3285' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/acl.c' l='1706' u='r' c='acl_verify'/>
+<use f='exim/src/acl.c' l='1717' u='r' c='acl_verify'/>
+<use f='exim/src/acl.c' l='1729' u='r' c='acl_verify'/>
+<use f='exim/src/acl.c' l='1896' u='r' c='acl_verify'/>
+<use f='exim/src/acl.c' l='2081' u='r' c='acl_verify'/>
+<use f='exim/src/acl.c' l='4090' u='r' c='acl_check_internal'/>
+<use f='exim/src/readconf.c' l='300' u='a'/>
+<use f='exim/src/readconf.c' l='300' u='a'/>
+<use f='exim/src/readconf.c' l='300' u='a'/>
+<use f='exim/src/readconf.c' l='300' u='a'/>

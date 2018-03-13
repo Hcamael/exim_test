@@ -1,0 +1,10 @@
+<dec f='exim/src/auths/cram_md5.h' l='27' type='void auth_cram_md5_init(auth_instance * )'/>
+<use f='exim/src/drtables.c' l='69'/>
+<use f='exim/src/drtables.c' l='69'/>
+<use f='exim/src/drtables.c' l='69'/>
+<use f='exim/src/drtables.c' l='69'/>
+<doc f='exim/src/auths/cram_md5.h' l='25'>/* The entry points for the mechanism */</doc>
+<def f='exim/src/auths/cram_md5.c' l='69' ll='80' type='void auth_cram_md5_init(auth_instance * ablock)'/>
+<doc f='exim/src/auths/cram_md5.c' l='65'>/* Called for each instance, after its options have been read, to
+enable consistency checks to be done, or anything else that needs
+to be set up. */</doc>

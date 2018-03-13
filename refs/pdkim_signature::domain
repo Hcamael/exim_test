@@ -1,0 +1,21 @@
+<dec f='exim/src/pdkim/pdkim.h' l='163' type='uschar *'/>
+<use f='exim/src/pdkim/pdkim.c' l='574' u='w' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='786' u='r' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='787' u='r' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='807' u='r' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='813' u='r' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='815' u='r' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='1226' u='r' c='pdkim_create_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1320' u='r' c='pdkim_key_from_dns'/>
+<use f='exim/src/pdkim/pdkim.c' l='1613' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1649' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1662' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1662' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1695' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1702' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1702' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1702' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1754' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1812' u='w' c='pdkim_init_sign'/>
+<offset>320</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='162'>/* (d=) The domain as given in the signature */</doc>

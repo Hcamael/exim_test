@@ -1,1 +1,6 @@
 <dec f='exim/src/globals.h' l='147' type='int (*)(void)'/>
+<use f='exim/src/tls-openssl.c' l='2107' u='w' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2468' u='w' c='tls_refill'/>
+<use f='exim/src/smtp_in.c' l='2432' u='w' c='smtp_start_session'/>
+<use f='exim/src/receive.c' l='3174' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3177' u='r' c='receive_msg'/>

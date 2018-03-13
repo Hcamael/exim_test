@@ -1,3 +1,18 @@
 <dec f='exim/src/macros.h' l='340'/>
 <doc f='exim/src/macros.h' l='338'>/* This macro is for single-word bit vectors: the debug selector,
 and the first word of the log selector. */</doc>
+<use f='exim/src/log.c' l='852' u='c'/>
+<use f='exim/src/acl.c' l='40' u='c'/>
+<use f='exim/src/acl.c' l='40' u='c'/>
+<use f='exim/src/acl.c' l='40' u='c'/>
+<use f='exim/src/acl.c' l='41' u='c'/>
+<use f='exim/src/acl.c' l='42' u='c'/>
+<use f='exim/src/acl.c' l='43' u='c'/>
+<use f='exim/src/acl.c' l='43' u='c'/>
+<use f='exim/src/acl.c' l='43' u='c'/>
+<use f='exim/src/acl.c' l='44' u='c'/>
+<use f='exim/src/acl.c' l='45' u='c'/>
+<use f='exim/src/acl.c' l='45' u='c'/>
+<use f='exim/src/acl.c' l='46' u='c'/>
+<use f='exim/src/acl.c' l='1655' u='c'/>
+<use f='exim/src/acl.c' l='3743' u='c'/>

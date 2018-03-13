@@ -1,0 +1,1 @@
+<def f='include/openssl/ocsp.h' l='76' macro='1' type='sk_OCSP_ONEREQ_compfunc sk_OCSP_ONEREQ_set_cmp_func(struct stack_st_OCSP_ONEREQ * sk, sk_OCSP_ONEREQ_compfunc compare)'/>

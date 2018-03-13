@@ -4,3 +4,16 @@
    Returns 0 on success, -1 on errors.
    NOTE: This form of timezone information is obsolete.
    Use the functions and variables declared in &lt;time.h&gt; instead.  */</doc>
+<use f='exim/src/deliver.c' l='1079' u='c' c='timesince'/>
+<use f='exim/src/deliver.c' l='3011' u='c' c='do_local_deliveries'/>
+<use f='exim/src/tod.c' l='58' u='c' c='tod_stamp'/>
+<use f='exim/src/tls-openssl.c' l='1562' u='c' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='2881' u='c' c='vaguely_random_number'/>
+<use f='exim/src/debug.c' l='189' u='c' c='debug_vprintf'/>
+<use f='exim/src/exim.c' l='390' u='c' c='exim_wait_tick'/>
+<use f='exim/src/smtp_in.c' l='2357' u='c' c='smtp_start_session'/>
+<use f='exim/src/acl.c' l='2424' u='c' c='acl_ratelimit'/>
+<use f='exim/src/transports/tf_maildir.c' l='558' u='c' c='maildir_ensure_sizefile'/>
+<use f='exim/src/expand.c' l='978' u='c' c='vaguely_random_number_fallback'/>
+<use f='exim/src/receive.c' l='1741' u='c' c='receive_msg'/>
+<use f='exim/src/host.c' l='121' u='c' c='get_time_in_ms'/>

@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='907' type='BOOL'/>
 <doc f='exim/src/globals.h' l='907'>/* TRUE if -odi is set */</doc>
+<def f='exim/src/globals.c' l='1409' type='BOOL'/>
+<use f='exim/src/exim.c' l='558' u='r' c='close_unwanted'/>
+<use f='exim/src/exim.c' l='2989' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3000' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3009' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5174' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5340' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5755' u='r' c='main'/>
+<use f='exim/src/child.c' l='113' u='r' c='child_exec_exim'/>

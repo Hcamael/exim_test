@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='257' type='int'/>
 <doc f='exim/src/globals.h' l='257'>/* Max line length in return */</doc>
+<use f='exim/src/deliver.c' l='7785' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='487' type='int'/>
+<use f='exim/src/moan.c' l='283' u='r' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='287' u='r' c='moan_send_message'/>
+<use f='exim/src/readconf.c' l='81' u='a'/>
+<use f='exim/src/readconf.c' l='81' u='a'/>
+<use f='exim/src/readconf.c' l='81' u='a'/>
+<use f='exim/src/readconf.c' l='81' u='a'/>

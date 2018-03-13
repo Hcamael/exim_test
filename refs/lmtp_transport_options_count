@@ -1,0 +1,4 @@
+<dec f='exim/src/transports/lmtp.h' l='21' type='int'/>
+<def f='exim/src/transports/lmtp.c' l='40' ll='41' type='int'/>
+<doc f='exim/src/transports/lmtp.c' l='37'>/* Size of the options list. An extern variable has to be used so that its
+address can appear in the tables drtables.c. */</doc>

@@ -1,1 +1,15 @@
 <dec f='exim/src/functions.h' l='164' type='dns_address * dns_address_from_rr(dns_answer * , dns_record * )'/>
+<use f='exim/src/verify.c' l='3413' u='c' c='one_check_dnsbl'/>
+<use f='exim/src/lookups/dnsdb.c' l='390' u='c' c='dnsdb_find'/>
+<use f='exim/src/acl.c' l='1292' u='c' c='acl_verify_csa_address'/>
+<use f='exim/src/host.c' l='277' u='c' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='2411' u='c' c='set_address_from_dns'/>
+<def f='exim/src/dns.c' l='1185' ll='1219' type='dns_address * dns_address_from_rr(dns_answer * dnsa, dns_record * rr)'/>
+<doc f='exim/src/dns.c' l='1176'>/* The record type is either T_A for an IPv4 address or T_AAAA for an IPv6 address.
+
+Argument:
+  dnsa       the DNS answer block
+  rr         the RR
+
+Returns:     pointer to a chain of dns_address items; NULL when the dnsa was overrun
+*/</doc>

@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='632' type='int'/>
 <doc f='exim/src/globals.h' l='632'>/* global so that readconf can */</doc>
+<def f='exim/src/globals.c' l='38' type='int'/>
+<use f='exim/src/readconf.c' l='396' u='r' c='options_auths'/>

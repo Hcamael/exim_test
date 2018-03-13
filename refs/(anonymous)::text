@@ -3,3 +3,12 @@
 <offset>128</offset>
 <doc f='exim/src/dbstuff.h' l='689'>/* Text message for last failure */</doc>
 <doc f='exim/src/dbstuff.h' l='748'>/* One long character string */</doc>
+<dec f='exim/src/transports/autoreply.h' l='18' type='uschar *'/>
+<offset>448</offset>
+<use f='exim/src/exim_dbutil.c' l='992' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1002' u='r' c='main'/>
+<use f='exim/src/retry.c' l='678' u='w' c='retry_update'/>
+<use f='exim/src/retry.c' l='680' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='828' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='829' u='w' c='retry_update'/>
+<use f='exim/src/retry.c' l='844' c='retry_update'/>

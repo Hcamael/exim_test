@@ -1,0 +1,5 @@
+<dec f='exim/src/tls-openssl.c' l='153' type='uschar *'/>
+<use f='exim/src/tls-openssl.c' l='1123' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1124' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1511' u='w' c='tls_init'/>
+<offset>64</offset>

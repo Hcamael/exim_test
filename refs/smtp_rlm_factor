@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='849' type='double'/>
 <doc f='exim/src/globals.h' l='849'>/* Factor for MAIL rate limit */</doc>
+<def f='exim/src/globals.c' l='1349' type='double'/>
+<use f='exim/src/smtp_in.c' l='4649' u='r' c='smtp_setup_msg'/>

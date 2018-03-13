@@ -1,2 +1,4 @@
 <dec f='exim/src/macros.h' l='889'/>
 <doc f='exim/src/macros.h' l='887'>/* DSN RET types */</doc>
+<use f='exim/src/deliver.c' l='7780' u='c'/>
+<use f='exim/src/smtp_in.c' l='4506' u='c'/>

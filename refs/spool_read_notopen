@@ -1,2 +1,4 @@
 <dec f='exim/src/macros.h' l='849' type='1'/>
 <doc f='exim/src/macros.h' l='849'>/* open failed */</doc>
+<use f='exim/src/queue.c' l='868' u='r' c='queue_list'/>
+<use f='exim/src/spool_in.c' l='344' u='r' c='spool_read_header'/>

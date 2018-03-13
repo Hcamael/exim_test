@@ -1,1 +1,17 @@
 <dec f='exim/src/functions.h' l='283' type='void md5_mid(md5 * , const uschar * )'/>
+<def f='exim/src/auths/md5.c' l='61' ll='209' type='void md5_mid(md5 * base, const uschar * text)'/>
+<use f='exim/src/auths/md5.c' l='241' u='c' c='md5_end'/>
+<use f='exim/src/auths/md5.c' l='257' u='c' c='md5_end'/>
+<use f='exim/src/auths/md5.c' l='283' u='c' c='md5_end'/>
+<doc f='exim/src/auths/md5.c' l='51'>/* This function implements central part of the algorithm which is described
+in RFC 1321.
+
+Arguments:
+  base       pointer to md5 storage structure
+  text       pointer to next 64 bytes of subject text
+
+Returns:     nothing
+*/</doc>
+<use f='exim/src/auths/cram_md5.c' l='145' u='c' c='compute_cram_md5'/>
+<use f='exim/src/auths/cram_md5.c' l='151' u='c' c='compute_cram_md5'/>
+<use f='exim/src/expand.c' l='3355' u='c' c='chash_mid'/>

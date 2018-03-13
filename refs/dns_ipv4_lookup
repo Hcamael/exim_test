@@ -1,2 +1,7 @@
 <dec f='exim/src/globals.h' l='416' type='uschar *'/>
 <doc f='exim/src/globals.h' l='416'>/* For these domains, don&apos;t look for AAAA (or A6) */</doc>
+<def f='exim/src/globals.c' l='694' type='uschar *'/>
+<use f='exim/src/readconf.c' l='129' u='a'/>
+<use f='exim/src/readconf.c' l='129' u='a'/>
+<use f='exim/src/readconf.c' l='129' u='a'/>
+<use f='exim/src/readconf.c' l='129' u='a'/>

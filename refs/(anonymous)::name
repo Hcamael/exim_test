@@ -5,3 +5,18 @@
 <dec f='exim/src/structs.h' l='756' type='uschar [1024]'/>
 <offset>0</offset>
 <doc f='exim/src/structs.h' l='756'>/* domain name */</doc>
+<use f='exim/src/header.c' l='311' u='r' c='header_checkname'/>
+<dec f='include/openssl/conf.h' l='27' type='char *'/>
+<offset>64</offset>
+<use f='exim/src/macro_predef.c' l='76' u='r' c='options_from_list'/>
+<use f='exim/src/acl.c' l='1285' u='r' c='acl_verify_csa_address'/>
+<use f='exim/src/host.c' l='2438' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2439' u='r' c='set_address_from_dns'/>
+<use f='exim/src/dns.c' l='359' u='a' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='390' u='a' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='420' u='a' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='477' u='r' c='dns_extract_auth_name'/>
+<use f='exim/src/dns.c' l='911' u='r' c='dns_lookup'/>
+<use f='exim/src/dns.c' l='911' u='r' c='dns_lookup'/>
+<use f='exim/src/dns.c' l='1103' u='r' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1104' u='r' c='dns_special_lookup'/>

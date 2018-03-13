@@ -1,2 +1,13 @@
 <dec f='exim/src/macros.h' l='631' type='1'/>
 <doc f='exim/src/macros.h' l='631'>/* Success, didn&apos;t take significant action */</doc>
+<use f='exim/src/parse.c' l='1283' u='r' c='parse_forward_list'/>
+<use f='exim/src/parse.c' l='1564' u='r' c='parse_forward_list'/>
+<use f='exim/src/filter.c' l='2077' u='r' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2092' u='r' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2355' u='r' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2574' c='filter_interpret'/>
+<use f='exim/src/rda.c' l='569' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='714' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='865' u='r' c='rda_interpret'/>
+<use f='exim/src/routers/queryprogram.c' l='430' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='798' u='r' c='redirect_router_entry'/>

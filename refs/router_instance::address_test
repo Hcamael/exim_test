@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='297' type='BOOL'/>
 <offset>2048</offset>
 <doc f='exim/src/structs.h' l='297'>/* Use this router when testing addresses */</doc>
+<use f='exim/src/globals.c' l='1204' u='w'/>

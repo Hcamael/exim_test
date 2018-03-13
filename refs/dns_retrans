@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='420' type='int'/>
 <doc f='exim/src/globals.h' l='420'>/* Retransmission time setting */</doc>
+<def f='exim/src/globals.c' l='695' type='int'/>
+<use f='exim/src/lookups/dnsdb.c' l='140' u='r' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='225' u='w' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='369' u='w' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='561' u='w' c='dnsdb_find'/>
+<use f='exim/src/readconf.c' l='130' u='a'/>
+<use f='exim/src/readconf.c' l='130' u='a'/>
+<use f='exim/src/readconf.c' l='130' u='a'/>
+<use f='exim/src/readconf.c' l='130' u='a'/>
+<use f='exim/src/dns.c' l='156' u='r' c='dns_init'/>
+<use f='exim/src/dns.c' l='156' u='r' c='dns_init'/>

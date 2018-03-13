@@ -1,1 +1,23 @@
 <dec f='exim/src/store.h' l='50' type='void * store_newblock_3(void * , int , int , const char * , int )'/>
+<use f='exim/src/string.c' l='1111' macro='1' u='c'/>
+<def f='exim/src/store.c' l='506' ll='516' type='void * store_newblock_3(void * block, int newsize, int len, const char * filename, int linenumber)'/>
+<doc f='exim/src/store.c' l='486'>/* Allocate a new block big enough to expend to the given size and
+copy the current data into it.  Free the old one if possible.
+
+This function is specifically provided for use when reading very
+long strings, e.g. header lines. When the string gets longer than a
+complete block, it gets copied to a new block. It is helpful to free
+the old block iff the previous copy of the string is at its start,
+and therefore the only thing in it. Otherwise, for very long strings,
+dead store can pile up somewhat disastrously. This function checks that
+the pointer it is given is the first thing in a block, and that nothing
+has been allocated since. If so, releases that block.
+
+Arguments:
+  block
+  newsize
+  len
+
+Returns:	new location of data
+*/</doc>
+<use f='exim/src/receive.c' l='1817' macro='1' u='c'/>

@@ -1,0 +1,8 @@
+<dec f='exim/src/auths/plaintext.h' l='23' type='auth_plaintext_options_block'/>
+<use f='exim/src/drtables.c' l='137' u='a'/>
+<use f='exim/src/drtables.c' l='137' u='a'/>
+<use f='exim/src/drtables.c' l='137' u='a'/>
+<use f='exim/src/drtables.c' l='137' u='a'/>
+<doc f='exim/src/auths/plaintext.h' l='21'>/* Block containing default values. */</doc>
+<def f='exim/src/auths/plaintext.c' l='31' ll='35' type='auth_plaintext_options_block'/>
+<doc f='exim/src/auths/plaintext.c' l='29'>/* Default private options block for the plaintext authentication method. */</doc>

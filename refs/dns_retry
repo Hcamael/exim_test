@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='421' type='int'/>
 <doc f='exim/src/globals.h' l='421'>/* Number of retries */</doc>
+<def f='exim/src/globals.c' l='696' type='int'/>
+<use f='exim/src/lookups/dnsdb.c' l='141' u='r' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='236' u='w' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='370' u='w' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='562' u='w' c='dnsdb_find'/>
+<use f='exim/src/readconf.c' l='131' u='a'/>
+<use f='exim/src/readconf.c' l='131' u='a'/>
+<use f='exim/src/readconf.c' l='131' u='a'/>
+<use f='exim/src/readconf.c' l='131' u='a'/>
+<use f='exim/src/dns.c' l='157' u='r' c='dns_init'/>
+<use f='exim/src/dns.c' l='157' u='r' c='dns_init'/>

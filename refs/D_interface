@@ -1,1 +1,5 @@
 <dec f='exim/src/macros.h' l='389' macro='1' type='8192'/>
+<use f='exim/src/exim.c' l='2465' macro='1' u='r'/>
+<use f='exim/src/log.c' l='1414' macro='1' u='r'/>
+<use f='exim/src/daemon.c' l='195' u='r' c='handle_smtp_call'/>
+<use f='exim/src/host.c' l='859' u='r' c='host_find_interfaces'/>

@@ -1,0 +1,5 @@
+<dec f='exim/src/auths/spa.h' l='19' type='uschar *'/>
+<use f='exim/src/auths/spa.c' l='308' u='r' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='310' u='r' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='314' u='r' c='auth_spa_client'/>
+<offset>128</offset>

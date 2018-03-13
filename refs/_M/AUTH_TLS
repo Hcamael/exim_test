@@ -1,2 +1,6 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='44'/>
 <doc f='exim/build-Linux-x86_64/config.h' l='43'>/* AUTH_SPA not set */</doc>
+<use f='exim/src/drtables.c' l='54' u='a'/>
+<use f='exim/src/drtables.c' l='160' u='a'/>
+<use f='exim/src/smtp_in.c' l='3835' u='a'/>
+<use f='exim/src/smtp_in.c' l='4249' u='a'/>

@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='273'/>
+<use f='exim/src/exim.c' l='2006' u='c'/>
+<use f='exim/src/exim.c' l='3734' u='c'/>
+<use f='exim/src/exim.c' l='5627' u='c'/>

@@ -1,0 +1,6 @@
+<dec f='exim/src/pdkim/pdkim.h' l='109' type='const uschar *'/>
+<use f='exim/src/pdkim/pdkim.c' l='661' u='w' c='pdkim_parse_pubkey_record'/>
+<use f='exim/src/pdkim/pdkim.c' l='684' u='r' c='pdkim_parse_pubkey_record'/>
+<use f='exim/src/pdkim/pdkim.c' l='684' u='w' c='pdkim_parse_pubkey_record'/>
+<offset>192</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='109'>/* k=  */</doc>

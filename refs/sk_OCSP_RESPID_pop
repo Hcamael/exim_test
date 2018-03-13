@@ -1,0 +1,1 @@
+<def f='include/openssl/ocsp.h' l='94' macro='1' type='OCSP_RESPID * sk_OCSP_RESPID_pop(struct stack_st_OCSP_RESPID * sk)'/>

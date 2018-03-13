@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='173' type='uschar *'/>
 <doc f='exim/src/globals.h' l='173'>/* ACL run on SMTP connection */</doc>
+<def f='exim/src/globals.c' l='242' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='2832' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2835' u='r' c='smtp_start_session'/>
+<use f='exim/src/readconf.c' l='40' u='a'/>
+<use f='exim/src/readconf.c' l='40' u='a'/>
+<use f='exim/src/readconf.c' l='40' u='a'/>
+<use f='exim/src/readconf.c' l='40' u='a'/>

@@ -1,1 +1,7 @@
 <dec f='exim/src/macros.h' l='443' macro='1' type='8'/>
+<use f='exim/src/exim.c' l='5690' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5696' u='r' c='main'/>
+<use f='exim/src/daemon.c' l='617' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='622' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='627' u='r' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='4182' u='r' c='receive_msg'/>

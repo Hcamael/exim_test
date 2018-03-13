@@ -1,2 +1,6 @@
 <dec f='include/dirent.h' l='165' type='struct dirent * readdir(DIR * __dirp)'/>
 <dec f='include/dirent.h' l='173' type='struct dirent64 * readdir64(DIR * __dirp)'/>
+<use f='exim/src/queue.c' l='217' u='c' c='queue_get_spool_list'/>
+<use f='exim/src/transports/tf_maildir.c' l='264' u='c' c='maildir_compute_size'/>
+<use f='exim/src/dbfn.c' l='200' u='c' c='dbfn_open'/>
+<use f='exim/src/sieve.c' l='3485' u='c' c='parse_start'/>

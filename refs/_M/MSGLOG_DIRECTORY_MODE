@@ -1,1 +1,4 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='115'/>
+<use f='exim/src/deliver.c' l='370' u='c'/>
+<use f='exim/src/deliver.c' l='7909' u='c'/>
+<use f='exim/src/receive.c' l='4034' u='c'/>

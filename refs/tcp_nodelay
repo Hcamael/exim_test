@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='930' type='BOOL'/>
 <doc f='exim/src/globals.h' l='930'>/* Controls TCP_NODELAY on daemon */</doc>
+<def f='exim/src/globals.c' l='1432' type='BOOL'/>
+<use f='exim/src/daemon.c' l='967' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1414' u='r' c='daemon_go'/>
+<use f='exim/src/readconf.c' l='340' u='a'/>
+<use f='exim/src/readconf.c' l='340' u='a'/>
+<use f='exim/src/readconf.c' l='340' u='a'/>
+<use f='exim/src/readconf.c' l='340' u='a'/>

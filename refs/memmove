@@ -1,3 +1,16 @@
 <dec f='include/string.h' l='46' type='void * memmove(void * __dest, const void * __src, size_t __n)'/>
 <doc f='include/string.h' l='44'>/* Copy N bytes of SRC to DEST, guaranteeing
    correct behavior for overlapping strings.  */</doc>
+<use f='exim/src/drtables.c' l='524' u='c' c='add_lookup_to_list'/>
+<use f='exim/src/debug.c' l='256' u='c' c='debug_vprintf'/>
+<use f='exim/src/debug.c' l='257' u='c' c='debug_vprintf'/>
+<use f='exim/src/filtertest.c' l='117' u='c' c='read_message_body'/>
+<use f='exim/src/smtp_in.c' l='839' u='c' c='smtp_vprintf'/>
+<use f='exim/src/smtp_in.c' l='4356' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/auths/plaintext.c' l='230' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/log.c' l='152' u='c' c='write_syslog'/>
+<use f='exim/src/acl.c' l='3893' u='c' c='acl_getline'/>
+<use f='exim/src/expand.c' l='1059' u='c' c='read_header_name'/>
+<use f='exim/src/receive.c' l='566' u='c' c='receive_remove_recipient'/>
+<use f='exim/src/receive.c' l='2865' u='c' c='receive_msg'/>
+<use f='exim/src/host.c' l='416' u='c' c='host_address_extract_port'/>

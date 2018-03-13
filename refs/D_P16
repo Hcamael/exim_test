@@ -1,0 +1,2 @@
+<dec f='exim/src/auths/auth-spa.c' l='338' type='void D_P16(uschar * p14, uschar * in, uschar * out)'/>
+<def f='exim/src/auths/auth-spa.c' l='750' ll='755' type='void D_P16(uschar * p14, uschar * in, uschar * out)'/>

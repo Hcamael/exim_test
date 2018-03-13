@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='583' type='uschar []'/>
 <doc f='exim/src/globals.h' l='583'>/* -E&lt;message-id&gt; for use as option */</doc>
+<def f='exim/src/globals.c' l='974' type='uschar [19]'/>
+<use f='exim/src/exim.c' l='1723' u='w' c='main'/>
+<use f='exim/src/exim.c' l='1724' u='r' c='main'/>
+<use f='exim/src/child.c' l='240' c='child_open_exim2'/>
+<use f='exim/src/child.c' l='244' c='child_open_exim2'/>
+<use f='exim/src/child.c' l='252' c='child_open_exim2'/>
+<use f='exim/src/child.c' l='255' c='child_open_exim2'/>

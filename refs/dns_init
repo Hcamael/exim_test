@@ -1,1 +1,22 @@
 <dec f='exim/src/functions.h' l='167' type='void dns_init(BOOL , BOOL , BOOL )'/>
+<use f='exim/src/verify.c' l='3686' u='c' c='verify_check_dnsbl'/>
+<use f='exim/src/exim.c' l='4954' u='c' c='main'/>
+<use f='exim/src/lookups/dnsdb.c' l='282' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='371' u='c' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='563' u='c' c='dnsdb_find'/>
+<use f='exim/src/host.c' l='1692' u='c' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1980' u='c' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2591' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3064' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3195' u='c' c='host_find_bydns'/>
+<def f='exim/src/dns.c' l='139' ll='213' type='void dns_init(BOOL qualify_single, BOOL search_parents, BOOL use_dnssec)'/>
+<doc f='exim/src/dns.c' l='128'>/* Initialize the resolver and the storage for holding DNS answers if this is
+the first time we have been here, and set the resolver options.
+
+Arguments:
+  qualify_single    TRUE to set the RES_DEFNAMES option
+  search_parents    TRUE to set the RES_DNSRCH option
+  use_dnssec        TRUE to set the RES_USE_DNSSEC option
+
+Returns:            nothing
+*/</doc>

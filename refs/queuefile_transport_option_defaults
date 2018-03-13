@@ -1,0 +1,4 @@
+<dec f='exim/src/transports/queuefile.h' l='22' type='queuefile_transport_options_block'/>
+<def f='exim/src/transports/queuefile.c' l='45' ll='47' type='queuefile_transport_options_block'/>
+<doc f='exim/src/transports/queuefile.c' l='43'>/* Default private options block for the appendfile transport. */</doc>
+<doc f='exim/src/transports/queuefile.h' l='20'>/* Block containing default values. */</doc>

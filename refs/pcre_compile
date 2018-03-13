@@ -1,1 +1,6 @@
 <dec f='include/pcre.h' l='540' type='pcre * pcre_compile(const char * , int , const char ** , int * , const unsigned char * )'/>
+<use f='exim/src/filter.c' l='1598' u='c' c='test_condition'/>
+<use f='exim/src/exim.c' l='107' u='c' c='regex_must_compile'/>
+<use f='exim/src/transports/tf_maildir.c' l='150' u='c' c='maildir_ensure_directories'/>
+<use f='exim/src/expand.c' l='2597' u='c' c='eval_condition'/>
+<use f='exim/src/expand.c' l='5303' u='c' c='expand_string_internal'/>

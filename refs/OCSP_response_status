@@ -1,0 +1,2 @@
+<dec f='include/openssl/ocsp.h' l='209' type='int OCSP_response_status(OCSP_RESPONSE * resp)'/>
+<use f='exim/src/tls-openssl.c' l='868' u='c' c='ocsp_load_response'/>

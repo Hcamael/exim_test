@@ -1,1 +1,2 @@
 <dec f='include/openssl/x509.h' l='844' type='X509_EXTENSION * X509_get_ext(const X509 * x, int loc)'/>
+<use f='exim/src/tlscert-openssl.c' l='314' u='c' c='tls_cert_ext_by_oid'/>

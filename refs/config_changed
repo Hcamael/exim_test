@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='286' type='BOOL'/>
 <doc f='exim/src/globals.h' l='286'>/* True if -C used */</doc>
+<def f='exim/src/globals.c' l='518' type='BOOL'/>
+<use f='exim/src/exim.c' l='2389' u='w' c='main'/>
+<use f='exim/src/child.c' l='88' u='r' c='child_exec_exim'/>

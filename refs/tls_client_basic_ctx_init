@@ -1,0 +1,2 @@
+<def f='exim/src/tls-openssl.c' l='2117' ll='2155' type='int tls_client_basic_ctx_init(SSL_CTX * ctx, host_item * host, smtp_transport_options_block * ob, tls_ext_ctx_cb * cbinfo, uschar ** errstr)'/>
+<use f='exim/src/tls-openssl.c' l='2332' u='c' c='tls_client_start'/>

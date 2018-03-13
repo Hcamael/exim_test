@@ -1,2 +1,6 @@
 <dec f='include/x86_64-linux-gnu/bits/sigaction.h' l='35' type='union (anonymous union at /usr/include/x86_64-linux-gnu/bits/sigaction.h:28:5)'/>
 <offset>0</offset>
+<use f='exim/src/deliver.c' l='5543' macro='1' u='m'/>
+<use f='exim/src/exim.c' l='1704' macro='1' u='m'/>
+<use f='exim/src/exim.c' l='5344' macro='1' u='m'/>
+<use f='exim/src/daemon.c' l='427' macro='1' u='m'/>

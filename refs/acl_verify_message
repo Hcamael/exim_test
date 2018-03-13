@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='199' type='uschar *'/>
 <doc f='exim/src/globals.h' l='199'>/* User message for verify failure */</doc>
+<def f='exim/src/globals.c' l='268' type='uschar *'/>
+<use f='exim/src/acl.c' l='1709' u='w' c='acl_verify'/>
+<use f='exim/src/acl.c' l='3705' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3761' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3774' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3794' u='w' c='acl_check_condition'/>
+<use f='exim/src/expand.c' l='458' u='a'/>
+<use f='exim/src/expand.c' l='458' u='a'/>
+<use f='exim/src/expand.c' l='458' u='a'/>
+<use f='exim/src/expand.c' l='458' u='a'/>

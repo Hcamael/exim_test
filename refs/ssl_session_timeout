@@ -1,0 +1,2 @@
+<def f='exim/src/tls-openssl.c' l='144' type='int'/>
+<use f='exim/src/tls-openssl.c' l='1674' u='r' c='tls_init'/>

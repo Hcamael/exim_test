@@ -1,1 +1,3 @@
 <dec f='include/openssl/ssl.h' l='1582' type='int SSL_read(SSL * ssl, void * buf, int num)'/>
+<use f='exim/src/tls-openssl.c' l='2450' u='c' c='tls_refill'/>
+<use f='exim/src/tls-openssl.c' l='2599' u='c' c='tls_read'/>

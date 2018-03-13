@@ -1,2 +1,28 @@
 <dec f='exim/src/local_scan.h' l='167' type='int child_close(pid_t , int )'/>
 <doc f='exim/src/local_scan.h' l='165'>/* Functions that are documented as visible in local_scan(). */</doc>
+<use f='exim/src/deliver.c' l='2632' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='7363' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7833' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8296' u='c' c='deliver_message'/>
+<use f='exim/src/moan.c' l='329' u='c' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='517' u='c' c='moan_tell_someone'/>
+<use f='exim/src/moan.c' l='768' u='c' c='moan_skipped_syntax_errors'/>
+<use f='exim/src/routers/queryprogram.c' l='327' u='c' c='queryprogram_router_entry'/>
+<use f='exim/src/expand.c' l='5034' u='c' c='expand_string_internal'/>
+<def f='exim/src/child.c' l='485' ll='518' type='int child_close(pid_t pid, int timeout)'/>
+<doc f='exim/src/child.c' l='470'>/* Wait for the given process to finish, with optional timeout.
+
+Arguments
+  pid:      the pid to wait for
+  timeout:  maximum time to wait; 0 means for as long as it takes
+
+Returns:    &gt;= 0          process terminated by exiting; value is process
+                            ending status; if an execve() failed, the value
+                            is typically 127 (defined as EX_EXECFAILED)
+            &lt; 0 &amp; &gt; -256  process was terminated by a signal; value is the
+                            negation of the signal number
+            -256          timed out
+            -257          other error in wait(); errno still set
+*/</doc>
+<use f='exim/src/dns.c' l='98' u='c' c='fakens_search'/>
+<use f='exim/src/sieve.c' l='3127' u='c' c='parse_commands'/>

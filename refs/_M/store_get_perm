@@ -1,1 +1,9 @@
 <dec f='exim/src/store.h' l='35'/>
+<use f='exim/src/spool_in.c' l='437' u='c'/>
+<use f='exim/src/acl.c' l='1386' u='c'/>
+<use f='exim/src/acl.c' l='4050' u='c'/>
+<use f='exim/src/host.c' l='811' u='c'/>
+<use f='exim/src/host.c' l='1588' u='c'/>
+<use f='exim/src/host.c' l='1599' u='c'/>
+<use f='exim/src/host.c' l='1604' u='c'/>
+<use f='exim/src/dns.c' l='624' u='c'/>

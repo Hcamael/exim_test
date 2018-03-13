@@ -1,0 +1,4 @@
+<def f='include/openssl/x509v3.h' l='726' ll='732'/>
+<size>16</size>
+<mbr r='ASIdOrRange_st::type' o='0' t='int'/>
+<mbr r='ASIdOrRange_st::u' o='64' t='union (anonymous union at /usr/include/openssl/x509v3.h:728:5)'/>

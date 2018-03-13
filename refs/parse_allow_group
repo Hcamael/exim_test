@@ -1,2 +1,23 @@
 <dec f='exim/src/globals.h' l='646' type='BOOL'/>
 <doc f='exim/src/globals.h' l='646'>/* Allow group syntax */</doc>
+<use f='exim/src/verify.c' l='2205' u='w' c='verify_check_headers'/>
+<use f='exim/src/verify.c' l='2282' u='w' c='verify_check_headers'/>
+<use f='exim/src/verify.c' l='2365' u='w' c='verify_check_notblind'/>
+<use f='exim/src/verify.c' l='2400' u='w' c='verify_check_notblind'/>
+<use f='exim/src/verify.c' l='2502' u='w' c='verify_check_header_address'/>
+<use f='exim/src/verify.c' l='2620' u='w' c='verify_check_header_address'/>
+<def f='exim/src/globals.c' l='1026' type='BOOL'/>
+<use f='exim/src/parse.c' l='661' u='r' c='parse_extract_address'/>
+<use f='exim/src/parse.c' l='674' u='w' c='parse_extract_address'/>
+<use f='exim/src/parse.c' l='796' u='w' c='parse_extract_address'/>
+<use f='exim/src/parse.c' l='830' u='w' c='parse_extract_address'/>
+<use f='exim/src/filter.c' l='1497' u='w' c='test_condition'/>
+<use f='exim/src/filter.c' l='1529' u='w' c='test_condition'/>
+<use f='exim/src/rewrite.c' l='468' u='w' c='rewrite_one_header'/>
+<use f='exim/src/rewrite.c' l='676' u='w' c='rewrite_one_header'/>
+<use f='exim/src/expand.c' l='6787' u='w' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6836' u='w' c='expand_string_internal'/>
+<use f='exim/src/receive.c' l='2468' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2550' u='w' c='receive_msg'/>
+<use f='exim/src/sieve.c' l='2138' u='w' c='parse_test'/>
+<use f='exim/src/sieve.c' l='2184' u='w' c='parse_test'/>

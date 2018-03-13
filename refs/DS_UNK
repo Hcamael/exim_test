@@ -1,1 +1,8 @@
 <dec f='exim/src/structs.h' l='61' type='-1'/>
+<use f='exim/src/deliver.c' l='3638' u='r' c='par_read_pipe'/>
+<use f='exim/src/host.c' l='2132' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2148' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2377' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2614' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2666' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2734' u='r' c='host_find_bydns'/>

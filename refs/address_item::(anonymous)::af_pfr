@@ -1,3 +1,29 @@
 <dec f='exim/src/structs.h' l='590' type='BOOL'/>
 <offset>11</offset>
 <doc f='exim/src/structs.h' l='590'>/* pipe or file or reply delivery */</doc>
+<use f='exim/src/deliver.c' l='257' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='288' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='995' u='r' c='string_log_address'/>
+<use f='exim/src/deliver.c' l='1047' u='r' c='string_log_address'/>
+<use f='exim/src/deliver.c' l='2762' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2808' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2808' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='5270' u='r' c='print_address_information'/>
+<use f='exim/src/deliver.c' l='5442' u='r' c='do_duplicate_check'/>
+<use f='exim/src/deliver.c' l='6015' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6332' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7516' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7981' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7992' u='r' c='deliver_message'/>
+<use f='exim/src/verify.c' l='1729' u='r' c='verify_address'/>
+<use f='exim/src/verify.c' l='2041' u='r' c='verify_address'/>
+<use f='exim/src/verify.c' l='2100' u='r' c='verify_address'/>
+<use f='exim/src/parse.c' l='1640' u='w' c='parse_forward_list'/>
+<use f='exim/src/filter.c' l='1858' u='w' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='1888' u='w' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2301' u='w' c='interpret_commands'/>
+<use f='exim/src/routers/redirect.c' l='401' u='r' c='add_generated'/>
+<use f='exim/src/routers/redirect.c' l='477' u='r' c='add_generated'/>
+<use f='exim/src/sieve.c' l='1054' u='r' c='add_addr'/>
+<use f='exim/src/sieve.c' l='1071' u='w' c='add_addr'/>
+<use f='exim/src/sieve.c' l='3357' u='w' c='parse_commands'/>

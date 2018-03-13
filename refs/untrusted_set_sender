@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='968' type='uschar *'/>
 <doc f='exim/src/globals.h' l='968'>/* Let untrusted users set these senders */</doc>
+<def f='exim/src/globals.c' l='1523' type='uschar *'/>
+<use f='exim/src/readconf.c' l='368' u='a'/>
+<use f='exim/src/readconf.c' l='368' u='a'/>
+<use f='exim/src/readconf.c' l='368' u='a'/>
+<use f='exim/src/readconf.c' l='368' u='a'/>
+<use f='exim/src/receive.c' l='87' u='r' c='receive_check_set_sender'/>
+<use f='exim/src/receive.c' l='90' u='a' c='receive_check_set_sender'/>

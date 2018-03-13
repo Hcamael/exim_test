@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>iplookup.h source code [exim/src/routers/iplookup.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/routers/iplookup.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>routers</a>/<a href='iplookup.h.html'>iplookup.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2009 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><i>/* Private structure for the private options. */</i></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><b>typedef</b> <b>struct</b> {</td></tr>
+<tr><th id="12">12</th><td>  <em>int</em>   <dfn class="decl field" id="(anonymous)::port" title='(anonymous struct)::port' data-ref="(anonymous)::port">port</dfn>;</td></tr>
+<tr><th id="13">13</th><td>  <em>int</em>   <dfn class="decl field" id="(anonymous)::protocol" title='(anonymous struct)::protocol' data-ref="(anonymous)::protocol">protocol</dfn>;</td></tr>
+<tr><th id="14">14</th><td>  <em>int</em>   <dfn class="decl field" id="(anonymous)::timeout" title='(anonymous struct)::timeout' data-ref="(anonymous)::timeout">timeout</dfn>;</td></tr>
+<tr><th id="15">15</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::protocol_name" title='(anonymous struct)::protocol_name' data-ref="(anonymous)::protocol_name">protocol_name</dfn>;</td></tr>
+<tr><th id="16">16</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::hosts" title='(anonymous struct)::hosts' data-ref="(anonymous)::hosts">hosts</dfn>;</td></tr>
+<tr><th id="17">17</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::query" title='(anonymous struct)::query' data-ref="(anonymous)::query">query</dfn>;</td></tr>
+<tr><th id="18">18</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::response_pattern" title='(anonymous struct)::response_pattern' data-ref="(anonymous)::response_pattern">response_pattern</dfn>;</td></tr>
+<tr><th id="19">19</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::reroute" title='(anonymous struct)::reroute' data-ref="(anonymous)::reroute">reroute</dfn>;</td></tr>
+<tr><th id="20">20</th><td>  <em>const</em> <a class="typedef" href="../../../include/pcre.h.html#pcre" title='pcre' data-type='struct real_pcre' data-ref="pcre">pcre</a> *<dfn class="decl field" id="(anonymous)::re_response_pattern" title='(anonymous struct)::re_response_pattern' data-ref="(anonymous)::re_response_pattern">re_response_pattern</dfn>;</td></tr>
+<tr><th id="21">21</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a>  <dfn class="decl field" id="(anonymous)::optional" title='(anonymous struct)::optional' data-ref="(anonymous)::optional">optional</dfn>;</td></tr>
+<tr><th id="22">22</th><td>} <dfn class="typedef" id="iplookup_router_options_block" title='iplookup_router_options_block' data-type='struct iplookup_router_options_block' data-ref="iplookup_router_options_block">iplookup_router_options_block</dfn>;</td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><i>/* Data for reading the private options. */</i></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><b>extern</b> <a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a> <dfn class="decl" id="iplookup_router_options" title='iplookup_router_options' data-ref="iplookup_router_options">iplookup_router_options</dfn>[];</td></tr>
+<tr><th id="27">27</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="iplookup_router_options_count" title='iplookup_router_options_count' data-ref="iplookup_router_options_count">iplookup_router_options_count</dfn>;</td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><i>/* Block containing default values. */</i></td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><b>extern</b> <a class="typedef" href="#iplookup_router_options_block" title='iplookup_router_options_block' data-type='struct iplookup_router_options_block' data-ref="iplookup_router_options_block">iplookup_router_options_block</a> <dfn class="decl" id="iplookup_router_option_defaults" title='iplookup_router_option_defaults' data-ref="iplookup_router_option_defaults">iplookup_router_option_defaults</dfn>;</td></tr>
+<tr><th id="32">32</th><td></td></tr>
+<tr><th id="33">33</th><td><i>/* The main and initialization entry points for the router */</i></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><b>extern</b> <em>int</em> <a class="decl fn" href="iplookup.c.html#iplookup_router_entry" title='iplookup_router_entry' data-ref="iplookup_router_entry" id="iplookup_router_entry">iplookup_router_entry</a>(<a class="typedef" href="../structs.h.html#router_instance" title='router_instance' data-type='struct router_instance' data-ref="router_instance">router_instance</a> *, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *,</td></tr>
+<tr><th id="36">36</th><td>  <b>struct</b> <a class="type" href="../../../include/pwd.h.html#passwd" title='passwd' data-ref="passwd">passwd</a> *, <em>int</em>, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **,</td></tr>
+<tr><th id="37">37</th><td>  <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **);</td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><b>extern</b> <em>void</em> <a class="decl fn" href="iplookup.c.html#iplookup_router_init" title='iplookup_router_init' data-ref="iplookup_router_init" id="iplookup_router_init">iplookup_router_init</a>(<a class="typedef" href="../structs.h.html#router_instance" title='router_instance' data-type='struct router_instance' data-ref="router_instance">router_instance</a> *);</td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><i>/* End of routers/iplookup.h */</i></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='iplookup.c.html'>exim/src/routers/iplookup.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

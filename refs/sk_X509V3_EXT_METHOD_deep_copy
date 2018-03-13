@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='93' macro='1' type='struct stack_st_X509V3_EXT_METHOD * sk_X509V3_EXT_METHOD_deep_copy(const struct stack_st_X509V3_EXT_METHOD * sk, sk_X509V3_EXT_METHOD_copyfunc copyfunc, sk_X509V3_EXT_METHOD_freefunc freefunc)'/>

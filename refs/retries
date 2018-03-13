@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='753' type='retry_config *'/>
 <doc f='exim/src/globals.h' l='753'>/* Chain of retry config information */</doc>
+<def f='exim/src/globals.c' l='1155' type='retry_config *'/>
+<use f='exim/src/retry.c' l='381' u='r' c='retry_find_config'/>

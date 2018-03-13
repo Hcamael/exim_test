@@ -1,1 +1,6 @@
 <dec f='exim/src/dkim.h' l='11' type='void dkim_exim_verify_feed(uschar * , int )'/>
+<use f='exim/src/tls-openssl.c' l='2500' u='c' c='tls_refill'/>
+<use f='exim/src/tls-openssl.c' l='2562' u='c' c='tls_get_cache'/>
+<use f='exim/src/smtp_in.c' l='461' u='c' c='smtp_refill'/>
+<use f='exim/src/smtp_in.c' l='513' u='c' c='smtp_get_cache'/>
+<use f='exim/src/smtp_in.c' l='583' u='c' c='bdat_getc'/>

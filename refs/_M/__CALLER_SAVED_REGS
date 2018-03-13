@@ -1,0 +1,2 @@
+<dec f='exim/src/valgrind.h' l='1193'/>
+<doc f='exim/src/valgrind.h' l='1192'>/* These regs are trashed by the hidden call. */</doc>

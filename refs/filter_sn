@@ -1,2 +1,47 @@
 <dec f='exim/src/globals.h' l='473' type='int [10]'/>
 <doc f='exim/src/globals.h' l='473'>/* variables set by system filter */</doc>
+<use f='exim/src/deliver.c' l='5904' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5904' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='749' type='int [10]'/>
+<use f='exim/src/exim.c' l='5631' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5631' u='r' c='main'/>
+<use f='exim/src/expand.c' l='686' u='a'/>
+<use f='exim/src/expand.c' l='686' u='a'/>
+<use f='exim/src/expand.c' l='687' u='a'/>
+<use f='exim/src/expand.c' l='687' u='a'/>
+<use f='exim/src/expand.c' l='688' u='a'/>
+<use f='exim/src/expand.c' l='688' u='a'/>
+<use f='exim/src/expand.c' l='689' u='a'/>
+<use f='exim/src/expand.c' l='689' u='a'/>
+<use f='exim/src/expand.c' l='690' u='a'/>
+<use f='exim/src/expand.c' l='690' u='a'/>
+<use f='exim/src/expand.c' l='691' u='a'/>
+<use f='exim/src/expand.c' l='691' u='a'/>
+<use f='exim/src/expand.c' l='692' u='a'/>
+<use f='exim/src/expand.c' l='692' u='a'/>
+<use f='exim/src/expand.c' l='693' u='a'/>
+<use f='exim/src/expand.c' l='693' u='a'/>
+<use f='exim/src/expand.c' l='694' u='a'/>
+<use f='exim/src/expand.c' l='694' u='a'/>
+<use f='exim/src/expand.c' l='695' u='a'/>
+<use f='exim/src/expand.c' l='695' u='a'/>
+<use f='exim/src/expand.c' l='686' u='a'/>
+<use f='exim/src/expand.c' l='686' u='a'/>
+<use f='exim/src/expand.c' l='687' u='a'/>
+<use f='exim/src/expand.c' l='687' u='a'/>
+<use f='exim/src/expand.c' l='688' u='a'/>
+<use f='exim/src/expand.c' l='688' u='a'/>
+<use f='exim/src/expand.c' l='689' u='a'/>
+<use f='exim/src/expand.c' l='689' u='a'/>
+<use f='exim/src/expand.c' l='690' u='a'/>
+<use f='exim/src/expand.c' l='690' u='a'/>
+<use f='exim/src/expand.c' l='691' u='a'/>
+<use f='exim/src/expand.c' l='691' u='a'/>
+<use f='exim/src/expand.c' l='692' u='a'/>
+<use f='exim/src/expand.c' l='692' u='a'/>
+<use f='exim/src/expand.c' l='693' u='a'/>
+<use f='exim/src/expand.c' l='693' u='a'/>
+<use f='exim/src/expand.c' l='694' u='a'/>
+<use f='exim/src/expand.c' l='694' u='a'/>
+<use f='exim/src/expand.c' l='695' u='a'/>
+<use f='exim/src/expand.c' l='695' u='a'/>

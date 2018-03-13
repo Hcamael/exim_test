@@ -1,0 +1,15 @@
+dbfn_bdb_error_callback|dbfn_bdb_error_callback
+dbfn_bdb_error_callback|dbfn_bdb_error_callback
+dbfn_close|dbfn_close
+dbfn_delete|dbfn_delete
+dbfn_open|dbfn_open
+dbfn_read_with_length|dbfn_read_with_length
+dbfn_write|dbfn_write
+dbm_version_report|dbm_version_report
+dbfn_bdb_error_callback|dbfn_bdb_error_callback
+dbfn_close|dbfn_close
+dbfn_delete|dbfn_delete
+dbfn_open|dbfn_open
+dbfn_read_with_length|dbfn_read_with_length
+dbfn_scan|dbfn_scan
+dbfn_write|dbfn_write

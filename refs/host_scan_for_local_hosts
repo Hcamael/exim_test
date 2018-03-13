@@ -1,1 +1,40 @@
 <dec f='exim/src/functions.h' l='231' type='int host_scan_for_local_hosts(host_item * , host_item ** , BOOL * )'/>
+<def f='exim/src/host.c' l='1376' ll='1448' type='int host_scan_for_local_hosts(host_item * host, host_item ** lastptr, BOOL * removed)'/>
+<use f='exim/src/host.c' l='2183' u='c' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2746' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3168' u='c' c='host_find_bydns'/>
+<doc f='exim/src/host.c' l='1340'>/* Scan through a chain of addresses and check whether any of them is the
+address of an interface on the local machine. If so, remove that address and
+any previous ones with the same MX value, and all subsequent ones (which will
+have greater or equal MX values) from the chain. Note: marking them as unusable
+is NOT the right thing to do because it causes the hosts not to be used for
+other domains, for which they may well be correct.
+
+The hosts may be part of a longer chain; we only process those between the
+initial pointer and the &quot;last&quot; pointer.
+
+There is also a list of &quot;pseudo-local&quot; host names which are checked against the
+host names. Any match causes that host item to be treated the same as one which
+matches a local IP address.
+
+If the very first host is a local host, then all MX records had a precedence
+greater than or equal to that of the local host. Either there&apos;s a problem in
+the DNS, or an apparently remote name turned out to be an abbreviation for the
+local host. Give a specific return code, and let the caller decide what to do.
+Otherwise, give a success code if at least one host address has been found.
+
+Arguments:
+  host        pointer to the first host in the chain
+  lastptr     pointer to pointer to the last host in the chain (may be updated)
+  removed     if not NULL, set TRUE if some local addresses were removed
+                from the list
+
+Returns:
+  HOST_FOUND       if there is at least one host with an IP address on the chain
+                     and an MX value less than any MX value associated with the
+                     local host
+  HOST_FOUND_LOCAL if a local host is among the lowest-numbered MX hosts; when
+                     the host addresses were obtained from A records or
+                     gethostbyname(), the MX values are set to -1.
+  HOST_FIND_FAILED if no valid hosts with set IP addresses were found
+*/</doc>

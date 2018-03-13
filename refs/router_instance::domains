@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='274' type='uschar *'/>
 <offset>640</offset>
 <doc f='exim/src/structs.h' l='274'>/* Specific domains */</doc>
+<use f='exim/src/globals.c' l='1181' u='w'/>

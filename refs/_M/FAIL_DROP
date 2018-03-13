@@ -1,1 +1,9 @@
 <dec f='exim/src/macros.h' l='301'/>
+<use f='exim/src/smtp_in.c' l='3170' u='c'/>
+<use f='exim/src/acl.c' l='40' u='c'/>
+<use f='exim/src/acl.c' l='43' u='c'/>
+<use f='exim/src/acl.c' l='45' u='c'/>
+<use f='exim/src/acl.c' l='3719' u='c'/>
+<use f='exim/src/acl.c' l='4121' u='c'/>
+<use f='exim/src/acl.c' l='4184' u='c'/>
+<use f='exim/src/acl.c' l='4491' u='c'/>

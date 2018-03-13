@@ -1,0 +1,1 @@
+<def f='include/openssl/conf.h' l='32' macro='1' type='int lh_CONF_VALUE_error(struct lhash_st_CONF_VALUE * lh)'/>

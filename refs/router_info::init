@@ -1,3 +1,15 @@
 <dec f='exim/src/structs.h' l='349' type='void (*)(struct router_instance *)'/>
 <offset>320</offset>
 <doc f='exim/src/structs.h' l='349'>/* Initialization function */</doc>
+<use f='exim/src/drtables.c' l='258' u='w'/>
+<use f='exim/src/drtables.c' l='271' u='w'/>
+<use f='exim/src/drtables.c' l='284' u='w'/>
+<use f='exim/src/drtables.c' l='310' u='w'/>
+<use f='exim/src/drtables.c' l='323' u='w'/>
+<use f='exim/src/drtables.c' l='336' u='w'/>
+<use f='exim/src/drtables.c' l='258' u='w'/>
+<use f='exim/src/drtables.c' l='271' u='w'/>
+<use f='exim/src/drtables.c' l='284' u='w'/>
+<use f='exim/src/drtables.c' l='310' u='w'/>
+<use f='exim/src/drtables.c' l='323' u='w'/>
+<use f='exim/src/drtables.c' l='336' u='w'/>

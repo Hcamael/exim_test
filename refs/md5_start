@@ -1,1 +1,15 @@
 <dec f='exim/src/functions.h' l='284' type='void md5_start(md5 * )'/>
+<use f='exim/src/exim_dbutil.c' l='922' u='c' c='main'/>
+<def f='exim/src/auths/md5.c' l='35' ll='43' type='void md5_start(md5 * base)'/>
+<doc f='exim/src/auths/md5.c' l='30'>/*
+Argument:  pointer to md5 storage structure
+Returns:   nothing
+*/</doc>
+<use f='exim/src/auths/cram_md5.c' l='123' u='c' c='compute_cram_md5'/>
+<use f='exim/src/auths/cram_md5.c' l='144' u='c' c='compute_cram_md5'/>
+<use f='exim/src/auths/cram_md5.c' l='150' u='c' c='compute_cram_md5'/>
+<use f='exim/src/acl.c' l='2543' u='c' c='acl_ratelimit'/>
+<use f='exim/src/expand.c' l='2691' u='c' c='eval_condition'/>
+<use f='exim/src/expand.c' l='3346' u='c' c='chash_start'/>
+<use f='exim/src/expand.c' l='6414' u='c' c='expand_string_internal'/>
+<use f='exim/src/sieve.c' l='3306' u='c' c='parse_commands'/>

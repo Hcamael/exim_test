@@ -1,0 +1,1 @@
+<dec f='include/openssl/ocsp.h' l='325' type='const OCSP_CERTID * OCSP_SINGLERESP_get0_id(const OCSP_SINGLERESP * x)'/>

@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='456' type='uschar *'/>
 <doc f='exim/src/globals.h' l='456'>/* Path to exec exim */</doc>
+<def f='exim/src/globals.c' l='728' ll='729' type='uschar *'/>
+<use f='exim/src/expand.c' l='536' u='a'/>
+<use f='exim/src/expand.c' l='536' u='a'/>
+<use f='exim/src/expand.c' l='536' u='a'/>
+<use f='exim/src/expand.c' l='536' u='a'/>
+<use f='exim/src/daemon.c' l='2097' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='2099' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='2101' u='r' c='daemon_go'/>
+<use f='exim/src/readconf.c' l='146' u='a'/>
+<use f='exim/src/readconf.c' l='146' u='a'/>
+<use f='exim/src/readconf.c' l='146' u='a'/>
+<use f='exim/src/readconf.c' l='146' u='a'/>
+<use f='exim/src/child.c' l='82' u='r' c='child_exec_exim'/>
+<use f='exim/src/child.c' l='155' u='r' c='child_exec_exim'/>

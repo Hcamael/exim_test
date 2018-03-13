@@ -1,0 +1,1 @@
+<dec f='include/openssl/x509v3.h' l='820' type='int X509v3_asid_add_id_or_range(ASIdentifiers * asid, int which, ASN1_INTEGER * min, ASN1_INTEGER * max)'/>

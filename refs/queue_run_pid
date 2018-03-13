@@ -1,3 +1,12 @@
 <dec f='exim/src/globals.h' l='688' type='pid_t'/>
 <doc f='exim/src/globals.h' l='687'>/*   immediate children */</doc>
 <doc f='exim/src/globals.h' l='688'>/* PID of the queue running process or 0 */</doc>
+<use f='exim/src/deliver.c' l='5518' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5520' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1074' type='pid_t'/>
+<use f='exim/src/exim.c' l='2678' u='w' c='main'/>
+<use f='exim/src/queue.c' l='395' u='w' c='queue_run'/>
+<use f='exim/src/queue.c' l='413' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='622' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='659' u='r' c='queue_run'/>
+<use f='exim/src/expand.c' l='2243' u='r' c='eval_condition'/>

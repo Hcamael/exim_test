@@ -1,3 +1,11 @@
 <dec f='exim/src/structs.h' l='557' type='uschar *'/>
 <offset>2176</offset>
 <doc f='exim/src/structs.h' l='557'>/* DN of server&apos;s certificate */</doc>
+<use f='exim/src/deliver.c' l='827' u='r' c='d_tlslog'/>
+<use f='exim/src/deliver.c' l='828' u='r' c='d_tlslog'/>
+<use f='exim/src/deliver.c' l='1620' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='3505' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3511' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4797' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4800' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/globals.c' l='366' u='w'/>

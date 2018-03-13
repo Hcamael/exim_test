@@ -1,0 +1,6 @@
+<dec f='include/openssl/x509v3.h' l='147' type='ASN1_IA5STRING *'/>
+<use f='exim/src/tlscert-openssl.c' l='426' u='r' c='tls_cert_ocsp_uri'/>
+<use f='exim/src/tlscert-openssl.c' l='427' u='r' c='tls_cert_ocsp_uri'/>
+<offset>0</offset>
+<doc f='include/openssl/x509v3.h' l='147'>/* rfc822Name, dNSName,
+                                 * uniformResourceIdentifier */</doc>

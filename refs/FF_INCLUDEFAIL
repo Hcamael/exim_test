@@ -1,2 +1,5 @@
 <dec f='exim/src/macros.h' l='635' type='5'/>
 <doc f='exim/src/macros.h' l='635'>/* :include: failed */</doc>
+<use f='exim/src/parse.c' l='1521' u='r' c='parse_forward_list'/>
+<use f='exim/src/parse.c' l='1529' u='r' c='parse_forward_list'/>
+<use f='exim/src/routers/redirect.c' l='804' c='redirect_router_entry'/>

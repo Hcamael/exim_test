@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>queryprogram.h source code [exim/src/routers/queryprogram.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/routers/queryprogram.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>routers</a>/<a href='queryprogram.h.html'>queryprogram.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2009 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><i>/* Private structure for the private options. */</i></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><b>typedef</b> <b>struct</b> {</td></tr>
+<tr><th id="12">12</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::command" title='(anonymous struct)::command' data-ref="(anonymous)::command">command</dfn>;</td></tr>
+<tr><th id="13">13</th><td>  <em>int</em> <dfn class="decl field" id="(anonymous)::timeout" title='(anonymous struct)::timeout' data-ref="(anonymous)::timeout">timeout</dfn>;</td></tr>
+<tr><th id="14">14</th><td>  <a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#uid_t" title='uid_t' data-type='__uid_t' data-ref="uid_t">uid_t</a> <dfn class="decl field" id="(anonymous)::cmd_uid" title='(anonymous struct)::cmd_uid' data-ref="(anonymous)::cmd_uid">cmd_uid</dfn>;</td></tr>
+<tr><th id="15">15</th><td>  <a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#gid_t" title='gid_t' data-type='__gid_t' data-ref="gid_t">gid_t</a> <dfn class="decl field" id="(anonymous)::cmd_gid" title='(anonymous struct)::cmd_gid' data-ref="(anonymous)::cmd_gid">cmd_gid</dfn>;</td></tr>
+<tr><th id="16">16</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="decl field" id="(anonymous)::cmd_uid_set" title='(anonymous struct)::cmd_uid_set' data-ref="(anonymous)::cmd_uid_set">cmd_uid_set</dfn>;</td></tr>
+<tr><th id="17">17</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="decl field" id="(anonymous)::cmd_gid_set" title='(anonymous struct)::cmd_gid_set' data-ref="(anonymous)::cmd_gid_set">cmd_gid_set</dfn>;</td></tr>
+<tr><th id="18">18</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::current_directory" title='(anonymous struct)::current_directory' data-ref="(anonymous)::current_directory">current_directory</dfn>;</td></tr>
+<tr><th id="19">19</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::expand_cmd_gid" title='(anonymous struct)::expand_cmd_gid' data-ref="(anonymous)::expand_cmd_gid">expand_cmd_gid</dfn>;</td></tr>
+<tr><th id="20">20</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::expand_cmd_uid" title='(anonymous struct)::expand_cmd_uid' data-ref="(anonymous)::expand_cmd_uid">expand_cmd_uid</dfn>;</td></tr>
+<tr><th id="21">21</th><td>} <dfn class="typedef" id="queryprogram_router_options_block" title='queryprogram_router_options_block' data-type='struct queryprogram_router_options_block' data-ref="queryprogram_router_options_block">queryprogram_router_options_block</dfn>;</td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><i>/* Data for reading the private options. */</i></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><b>extern</b> <a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a> <dfn class="decl" id="queryprogram_router_options" title='queryprogram_router_options' data-ref="queryprogram_router_options">queryprogram_router_options</dfn>[];</td></tr>
+<tr><th id="26">26</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="queryprogram_router_options_count" title='queryprogram_router_options_count' data-ref="queryprogram_router_options_count">queryprogram_router_options_count</dfn>;</td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><i>/* Block containing default values. */</i></td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><b>extern</b> <a class="typedef" href="#queryprogram_router_options_block" title='queryprogram_router_options_block' data-type='struct queryprogram_router_options_block' data-ref="queryprogram_router_options_block">queryprogram_router_options_block</a> <dfn class="decl" id="queryprogram_router_option_defaults" title='queryprogram_router_option_defaults' data-ref="queryprogram_router_option_defaults">queryprogram_router_option_defaults</dfn>;</td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><i>/* The main and initialization entry points for the router */</i></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="queryprogram_router_entry" title='queryprogram_router_entry' data-ref="queryprogram_router_entry">queryprogram_router_entry</dfn>(<a class="typedef" href="../structs.h.html#router_instance" title='router_instance' data-type='struct router_instance' data-ref="router_instance">router_instance</a> *, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *,</td></tr>
+<tr><th id="35">35</th><td>  <b>struct</b> <a class="type" href="../../../include/pwd.h.html#passwd" title='passwd' data-ref="passwd">passwd</a> *, <em>int</em>, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **,</td></tr>
+<tr><th id="36">36</th><td>  <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **);</td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="queryprogram_router_init" title='queryprogram_router_init' data-ref="queryprogram_router_init">queryprogram_router_init</dfn>(<a class="typedef" href="../structs.h.html#router_instance" title='router_instance' data-type='struct router_instance' data-ref="router_instance">router_instance</a> *);</td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><i>/* End of routers/queryprogram.h */</i></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../drtables.c.html'>exim/src/drtables.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

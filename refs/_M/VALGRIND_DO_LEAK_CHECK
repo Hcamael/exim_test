@@ -1,0 +1,2 @@
+<dec f='exim/src/memcheck.h' l='186'/>
+<doc f='exim/src/memcheck.h' l='185'>/* Do a full memory leak check (like --leak-check=full) mid-execution. */</doc>

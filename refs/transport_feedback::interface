@@ -1,2 +1,5 @@
 <dec f='exim/src/structs.h' l='91' type='uschar *'/>
 <offset>0</offset>
+<use f='exim/src/verify.c' l='391' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='663' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='1796' u='w' c='verify_address'/>

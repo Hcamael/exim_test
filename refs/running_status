@@ -1,2 +1,31 @@
 <dec f='exim/src/globals.h' l='771' type='uschar *'/>
 <doc f='exim/src/globals.h' l='771'>/* Flag string for testing */</doc>
+<def f='exim/src/globals.c' l='1259' type='uschar *'/>
+<doc f='exim/src/globals.c' l='1251'>/* This is a weird one. The following string gets patched in the binary by the
+script that sets up a copy of Exim for running in the test harness. It seems
+that compilers are now clever, and share constant strings if they can.
+Elsewhere in Exim the string &quot;&lt;&quot; is used. The compiler optimization seems to
+make use of the end of this string in order to save space. So the patching then
+wrecks this. We defeat this optimization by adding some additional characters
+onto the end of the string. */</doc>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1629' u='r' c='main'/>

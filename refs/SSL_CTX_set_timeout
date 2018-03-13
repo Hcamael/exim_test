@@ -1,1 +1,3 @@
 <dec f='include/openssl/ssl.h' l='1324' type='long SSL_CTX_set_timeout(SSL_CTX * ctx, long t)'/>
+<use f='exim/src/tls-openssl.c' l='1232' u='c' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1674' u='c' c='tls_init'/>

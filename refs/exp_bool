@@ -1,1 +1,20 @@
 <dec f='exim/src/functions.h' l='189' type='int exp_bool(address_item * addr, uschar * mtype, uschar * mname, unsigned int dgb_opt, uschar * oname, BOOL bvalue, uschar * svalue, BOOL * rvalue)'/>
+<use f='exim/src/deliver.c' l='4287' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4386' u='c' c='do_remote_deliveries'/>
+<def f='exim/src/expand.c' l='7756' ll='7795' type='int exp_bool(address_item * addr, uschar * mtype, uschar * mname, unsigned int dbg_opt, uschar * oname, BOOL bvalue, uschar * svalue, BOOL * rvalue)'/>
+<doc f='exim/src/expand.c' l='7739'>/* These values are usually fixed boolean values, but they are permitted to be
+expanded strings.
+
+Arguments:
+  addr       address being routed
+  mtype      the module type
+  mname      the module name
+  dbg_opt    debug selectors
+  oname      the option name
+  bvalue     the router&apos;s boolean value
+  svalue     the router&apos;s string value
+  rvalue     where to put the returned value
+
+Returns:     OK     value placed in rvalue
+             DEFER  expansion failed
+*/</doc>

@@ -1,1 +1,25 @@
 <dec f='exim/src/functions.h' l='187' type='void exim_setugid(uid_t , gid_t , BOOL , uschar * )'/>
+<use f='exim/src/deliver.c' l='2346' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='4728' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='7140' u='c' c='deliver_message'/>
+<def f='exim/src/exim.c' l='590' ll='642' type='void exim_setugid(uid_t uid, gid_t gid, BOOL igflag, uschar * msg)'/>
+<use f='exim/src/exim.c' l='3707' u='c' c='main'/>
+<use f='exim/src/exim.c' l='3729' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4148' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4339' u='c' c='main'/>
+<doc f='exim/src/exim.c' l='575'>/* This function sets a new uid and gid permanently, optionally calling
+initgroups() to set auxiliary groups. There are some special cases when running
+Exim in unprivileged modes. In these situations the effective uid will not be
+root; if we already have the right effective uid/gid, and don&apos;t need to
+initialize any groups, leave things as they are.
+
+Arguments:
+  uid        the uid
+  gid        the gid
+  igflag     TRUE if initgroups() wanted
+  msg        text to use in debugging output and failure log
+
+Returns:     nothing; bombs out on failure
+*/</doc>
+<use f='exim/src/rda.c' l='629' u='c' c='rda_interpret'/>
+<use f='exim/src/daemon.c' l='1566' u='c' c='daemon_go'/>

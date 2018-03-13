@@ -1,0 +1,5 @@
+<def f='exim/src/tls-openssl.c' l='145' type='BOOL'/>
+<use f='exim/src/tls-openssl.c' l='504' u='a' c='verify_callback_client'/>
+<use f='exim/src/tls-openssl.c' l='2132' u='w' c='tls_client_basic_ctx_init'/>
+<use f='exim/src/tls-openssl.c' l='2134' u='w' c='tls_client_basic_ctx_init'/>
+<use f='exim/src/tls-openssl.c' l='2139' u='r' c='tls_client_basic_ctx_init'/>

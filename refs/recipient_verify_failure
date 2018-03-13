@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='729' type='uschar *'/>
 <doc f='exim/src/globals.h' l='729'>/* What went wrong */</doc>
+<use f='exim/src/verify.c' l='514' u='a' c='do_callout'/>
+<use f='exim/src/verify.c' l='1612' u='a' c='verify_address'/>
+<def f='exim/src/globals.c' l='1127' type='uschar *'/>
+<use f='exim/src/expand.c' l='647' u='a'/>
+<use f='exim/src/expand.c' l='647' u='a'/>
+<use f='exim/src/expand.c' l='647' u='a'/>
+<use f='exim/src/expand.c' l='647' u='a'/>

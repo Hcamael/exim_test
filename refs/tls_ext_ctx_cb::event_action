@@ -1,0 +1,5 @@
+<dec f='exim/src/tls-openssl.c' l='176' type='uschar *'/>
+<use f='exim/src/tls-openssl.c' l='313' u='r' c='verify_event'/>
+<use f='exim/src/tls-openssl.c' l='1528' u='w' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='2399' u='w' c='tls_client_start'/>
+<offset>704</offset>

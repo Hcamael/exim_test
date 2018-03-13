@@ -1,2 +1,12 @@
 <dec f='include/netdb.h' l='61' type='int * __h_errno_location()'/>
 <doc f='include/netdb.h' l='60'>/* Function to get address of global `h_errno&apos; variable.  */</doc>
+<use f='exim/src/host.c' l='1568' macro='1' u='c'/>
+<use f='exim/src/host.c' l='1569' macro='1' u='c'/>
+<use f='exim/src/host.c' l='1569' macro='1' u='c'/>
+<use f='exim/src/host.c' l='2053' macro='1' u='c'/>
+<use f='exim/src/dns.c' l='101' macro='1' u='c'/>
+<use f='exim/src/dns.c' l='102' macro='1' u='c'/>
+<use f='exim/src/dns.c' l='104' macro='1' u='c'/>
+<use f='exim/src/dns.c' l='105' macro='1' u='c'/>
+<use f='exim/src/dns.c' l='776' macro='1' u='c'/>
+<use f='exim/src/dns.c' l='819' macro='1' u='c'/>

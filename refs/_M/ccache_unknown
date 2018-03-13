@@ -1,2 +1,10 @@
 <dec f='exim/src/macros.h' l='729'/>
 <doc f='exim/src/macros.h' l='727'>/* Values for fields in callout cache records */</doc>
+<use f='exim/src/verify.c' l='108' u='c'/>
+<use f='exim/src/verify.c' l='111' u='c'/>
+<use f='exim/src/verify.c' l='238' u='c'/>
+<use f='exim/src/verify.c' l='315' u='c'/>
+<use f='exim/src/verify.c' l='335' u='c'/>
+<use f='exim/src/verify.c' l='519' u='c'/>
+<use f='exim/src/verify.c' l='520' u='c'/>
+<use f='exim/src/verify.c' l='521' u='c'/>

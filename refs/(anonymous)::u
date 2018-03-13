@@ -1,2 +1,14 @@
 <dec f='exim/src/hash.h' l='57' type='union (anonymous union at /home/ubuntu/exim/src/build-Linux-x86_64/./hash.h:50:3)'/>
 <offset>64</offset>
+<use f='exim/src/hash.c' l='39' u='m' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='40' u='m' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='41' u='m' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='42' u='m' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='68' u='m' c='exim_sha_update'/>
+<use f='exim/src/hash.c' l='69' u='m' c='exim_sha_update'/>
+<use f='exim/src/hash.c' l='70' u='m' c='exim_sha_update'/>
+<use f='exim/src/hash.c' l='71' u='m' c='exim_sha_update'/>
+<use f='exim/src/hash.c' l='91' u='m' c='exim_sha_finish'/>
+<use f='exim/src/hash.c' l='92' u='m' c='exim_sha_finish'/>
+<use f='exim/src/hash.c' l='93' u='m' c='exim_sha_finish'/>
+<use f='exim/src/hash.c' l='94' u='m' c='exim_sha_finish'/>

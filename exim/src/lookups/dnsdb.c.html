@@ -1,0 +1,629 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>dnsdb.c source code [exim/src/lookups/dnsdb.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/lookups/dnsdb.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>lookups</a>/<a href='dnsdb.c.html'>dnsdb.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><u>#include <a href="../exim.h.html">"../exim.h"</a></u></td></tr>
+<tr><th id="9">9</th><td><u>#include <a href="lf_functions.h.html">"lf_functions.h"</a></u></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><i>/* Ancient systems (e.g. SunOS4) don't appear to have T_TXT defined in their</i></td></tr>
+<tr><th id="14">14</th><td><i>header files. */</i></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><u>#<span data-ppcond="16">ifndef</span> <a class="macro" href="../../../include/arpa/nameser_compat.h.html#145" data-ref="_M/T_TXT">T_TXT</a></u></td></tr>
+<tr><th id="17">17</th><td><u># define T_TXT 16</u></td></tr>
+<tr><th id="18">18</th><td><u>#<span data-ppcond="16">endif</span></u></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><i>/* Many systems do not have T_SPF. */</i></td></tr>
+<tr><th id="21">21</th><td><u>#<span data-ppcond="21">ifndef</span> <a class="macro" href="../exim.h.html#324" data-ref="_M/T_SPF">T_SPF</a></u></td></tr>
+<tr><th id="22">22</th><td><u># define T_SPF 99</u></td></tr>
+<tr><th id="23">23</th><td><u>#<span data-ppcond="21">endif</span></u></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><i>/* New TLSA record for DANE */</i></td></tr>
+<tr><th id="26">26</th><td><u>#<span data-ppcond="26">ifndef</span> <a class="macro" href="../exim.h.html#329" data-ref="_M/T_TLSA">T_TLSA</a></u></td></tr>
+<tr><th id="27">27</th><td><u># define T_TLSA 52</u></td></tr>
+<tr><th id="28">28</th><td><u>#<span data-ppcond="26">endif</span></u></td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><i  data-doc="type_names">/* Table of recognized DNS record types and their integer values. */</i></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><em>static</em> <em>const</em> <em>char</em> *<dfn class="tu decl def" id="type_names" title='type_names' data-type='const char *[13]' data-ref="type_names">type_names</dfn>[] = {</td></tr>
+<tr><th id="33">33</th><td>  <q>"a"</q>,</td></tr>
+<tr><th id="34">34</th><td><u>#<span data-ppcond="34">if</span> <a class="macro" href="../../build-Linux-x86_64/config.h.html#28" title="0" data-ref="_M/HAVE_IPV6">HAVE_IPV6</a></u></td></tr>
+<tr><th id="35">35</th><td>  <q>"a+"</q>,</td></tr>
+<tr><th id="36">36</th><td>  <q>"aaaa"</q>,</td></tr>
+<tr><th id="37">37</th><td><u>#<span data-ppcond="34">endif</span></u></td></tr>
+<tr><th id="38">38</th><td>  <q>"cname"</q>,</td></tr>
+<tr><th id="39">39</th><td>  <q>"csa"</q>,</td></tr>
+<tr><th id="40">40</th><td>  <q>"mx"</q>,</td></tr>
+<tr><th id="41">41</th><td>  <q>"mxh"</q>,</td></tr>
+<tr><th id="42">42</th><td>  <q>"ns"</q>,</td></tr>
+<tr><th id="43">43</th><td>  <q>"ptr"</q>,</td></tr>
+<tr><th id="44">44</th><td>  <q>"soa"</q>,</td></tr>
+<tr><th id="45">45</th><td>  <q>"spf"</q>,</td></tr>
+<tr><th id="46">46</th><td>  <q>"srv"</q>,</td></tr>
+<tr><th id="47">47</th><td>  <q>"tlsa"</q>,</td></tr>
+<tr><th id="48">48</th><td>  <q>"txt"</q>,</td></tr>
+<tr><th id="49">49</th><td>  <q>"zns"</q></td></tr>
+<tr><th id="50">50</th><td>};</td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><em>static</em> <em>int</em> <dfn class="tu decl def" id="type_values" title='type_values' data-type='int [13]' data-ref="type_values">type_values</dfn>[] = {</td></tr>
+<tr><th id="53">53</th><td>  <a class="macro" href="../../../include/arpa/nameser_compat.h.html#130" title="ns_t_a" data-ref="_M/T_A">T_A</a>,</td></tr>
+<tr><th id="54">54</th><td><u>#<span data-ppcond="54">if</span> <a class="macro" href="../../build-Linux-x86_64/config.h.html#28" title="0" data-ref="_M/HAVE_IPV6">HAVE_IPV6</a></u></td></tr>
+<tr><th id="55">55</th><td>  T_ADDRESSES,     <i>/* Private type for AAAA + A */</i></td></tr>
+<tr><th id="56">56</th><td>  T_AAAA,</td></tr>
+<tr><th id="57">57</th><td><u>#<span data-ppcond="54">endif</span></u></td></tr>
+<tr><th id="58">58</th><td>  <a class="macro" href="../../../include/arpa/nameser_compat.h.html#134" title="ns_t_cname" data-ref="_M/T_CNAME">T_CNAME</a>,</td></tr>
+<tr><th id="59">59</th><td>  <a class="macro" href="../exim.h.html#379" title="(-3)" data-ref="_M/T_CSA">T_CSA</a>,     <i>/* Private type for "Client SMTP Authorization". */</i></td></tr>
+<tr><th id="60">60</th><td>  <a class="macro" href="../../../include/arpa/nameser_compat.h.html#144" title="ns_t_mx" data-ref="_M/T_MX">T_MX</a>,</td></tr>
+<tr><th id="61">61</th><td>  <a class="macro" href="../exim.h.html#378" title="(-2)" data-ref="_M/T_MXH">T_MXH</a>,     <i>/* Private type for "MX hostnames" */</i></td></tr>
+<tr><th id="62">62</th><td>  <a class="macro" href="../../../include/arpa/nameser_compat.h.html#131" title="ns_t_ns" data-ref="_M/T_NS">T_NS</a>,</td></tr>
+<tr><th id="63">63</th><td>  <a class="macro" href="../../../include/arpa/nameser_compat.h.html#141" title="ns_t_ptr" data-ref="_M/T_PTR">T_PTR</a>,</td></tr>
+<tr><th id="64">64</th><td>  <a class="macro" href="../../../include/arpa/nameser_compat.h.html#135" title="ns_t_soa" data-ref="_M/T_SOA">T_SOA</a>,</td></tr>
+<tr><th id="65">65</th><td>  <a class="macro" href="../exim.h.html#324" title="99" data-ref="_M/T_SPF">T_SPF</a>,</td></tr>
+<tr><th id="66">66</th><td>  <a class="macro" href="../../../include/arpa/nameser_compat.h.html#162" title="ns_t_srv" data-ref="_M/T_SRV">T_SRV</a>,</td></tr>
+<tr><th id="67">67</th><td>  <a class="macro" href="../exim.h.html#329" title="52" data-ref="_M/T_TLSA">T_TLSA</a>,</td></tr>
+<tr><th id="68">68</th><td>  <a class="macro" href="../../../include/arpa/nameser_compat.h.html#145" title="ns_t_txt" data-ref="_M/T_TXT">T_TXT</a>,</td></tr>
+<tr><th id="69">69</th><td>  <a class="macro" href="../exim.h.html#377" title="(-1)" data-ref="_M/T_ZNS">T_ZNS</a>      <i>/* Private type for "zone nameservers" */</i></td></tr>
+<tr><th id="70">70</th><td>};</td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td></td></tr>
+<tr><th id="73">73</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="74">74</th><td><i>*              Open entry point                  *</i></td></tr>
+<tr><th id="75">75</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td><i  data-doc="dnsdb_open">/* See local README for interface description. */</i></td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><em>static</em> <em>void</em> *</td></tr>
+<tr><th id="80">80</th><td><dfn class="tu decl def fn" id="dnsdb_open" title='dnsdb_open' data-type='void * dnsdb_open(uschar * filename, uschar ** errmsg)' data-ref="dnsdb_open">dnsdb_open</dfn>(<a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="1filename" title='filename' data-type='uschar *' data-ref="1filename">filename</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col2 decl" id="2errmsg" title='errmsg' data-type='uschar **' data-ref="2errmsg">errmsg</dfn>)</td></tr>
+<tr><th id="81">81</th><td>{</td></tr>
+<tr><th id="82">82</th><td><a class="local col1 ref" href="#1filename" title='filename' data-ref="1filename">filename</a> = <a class="local col1 ref" href="#1filename" title='filename' data-ref="1filename">filename</a>;   <i>/* Keep picky compilers happy */</i></td></tr>
+<tr><th id="83">83</th><td><a class="local col2 ref" href="#2errmsg" title='errmsg' data-ref="2errmsg">errmsg</a> = <a class="local col2 ref" href="#2errmsg" title='errmsg' data-ref="2errmsg">errmsg</a>;       <i>/* Ditto */</i></td></tr>
+<tr><th id="84">84</th><td><b>return</b> (<em>void</em> *)(-<var>1</var>);   <i>/* Any non-0 value */</i></td></tr>
+<tr><th id="85">85</th><td>}</td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="90">90</th><td><i>*           Find entry point for dnsdb           *</i></td></tr>
+<tr><th id="91">91</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td><i  data-doc="dnsdb_find">/* See local README for interface description. The query in the "keystring" may</i></td></tr>
+<tr><th id="94">94</th><td><i  data-doc="dnsdb_find">consist of a number of parts.</i></td></tr>
+<tr><th id="95">95</th><td><i  data-doc="dnsdb_find"></i></td></tr>
+<tr><th id="96">96</th><td><i  data-doc="dnsdb_find">(a) If the first significant character is '&gt;' then the next character is the</i></td></tr>
+<tr><th id="97">97</th><td><i  data-doc="dnsdb_find">separator character that is used when multiple records are found. The default</i></td></tr>
+<tr><th id="98">98</th><td><i  data-doc="dnsdb_find">separator is newline.</i></td></tr>
+<tr><th id="99">99</th><td><i  data-doc="dnsdb_find"></i></td></tr>
+<tr><th id="100">100</th><td><i  data-doc="dnsdb_find">(b) If the next character is ',' then the next character is the separator</i></td></tr>
+<tr><th id="101">101</th><td><i  data-doc="dnsdb_find">character used for multiple items of text in "TXT" records. Alternatively,</i></td></tr>
+<tr><th id="102">102</th><td><i  data-doc="dnsdb_find">if the next character is ';' then these multiple items are concatenated with</i></td></tr>
+<tr><th id="103">103</th><td><i  data-doc="dnsdb_find">no separator. With neither of these options specified, only the first item</i></td></tr>
+<tr><th id="104">104</th><td><i  data-doc="dnsdb_find">is output.  Similarly for "SPF" records, but the default for joining multiple</i></td></tr>
+<tr><th id="105">105</th><td><i  data-doc="dnsdb_find">items in one SPF record is the empty string, for direct concatenation.</i></td></tr>
+<tr><th id="106">106</th><td><i  data-doc="dnsdb_find"></i></td></tr>
+<tr><th id="107">107</th><td><i  data-doc="dnsdb_find">(c) Options, all comma-terminated, in any order.  Any unrecognised option</i></td></tr>
+<tr><th id="108">108</th><td><i  data-doc="dnsdb_find">terminates option processing.  Recognised options are:</i></td></tr>
+<tr><th id="109">109</th><td><i  data-doc="dnsdb_find"></i></td></tr>
+<tr><th id="110">110</th><td><i  data-doc="dnsdb_find">- 'defer_FOO':  set the defer behaviour to FOO.  The possible behaviours are:</i></td></tr>
+<tr><th id="111">111</th><td><i  data-doc="dnsdb_find">'strict', where any defer causes the whole lookup to defer; 'lax', where a defer</i></td></tr>
+<tr><th id="112">112</th><td><i  data-doc="dnsdb_find">causes the whole lookup to defer only if none of the DNS queries succeeds; and</i></td></tr>
+<tr><th id="113">113</th><td><i  data-doc="dnsdb_find">'never', where all defers are as if the lookup failed. The default is 'lax'.</i></td></tr>
+<tr><th id="114">114</th><td><i  data-doc="dnsdb_find"></i></td></tr>
+<tr><th id="115">115</th><td><i  data-doc="dnsdb_find">- 'dnssec_FOO', with 'strict', 'lax' and 'never' (default).  The meanings are</i></td></tr>
+<tr><th id="116">116</th><td><i  data-doc="dnsdb_find">require, try and don't-try dnssec respectively.</i></td></tr>
+<tr><th id="117">117</th><td><i  data-doc="dnsdb_find"></i></td></tr>
+<tr><th id="118">118</th><td><i  data-doc="dnsdb_find">- 'retrans_VAL', set the timeout value.  VAL is an Exim time specification</i></td></tr>
+<tr><th id="119">119</th><td><i  data-doc="dnsdb_find">(eg "5s").  The default is set by the main configuration option 'dns_retrans'.</i></td></tr>
+<tr><th id="120">120</th><td><i  data-doc="dnsdb_find"></i></td></tr>
+<tr><th id="121">121</th><td><i  data-doc="dnsdb_find">- 'retry_VAL', set the retry count on timeouts.  VAL is an integer.  The</i></td></tr>
+<tr><th id="122">122</th><td><i  data-doc="dnsdb_find">default is set by the main configuration option "dns_retry".</i></td></tr>
+<tr><th id="123">123</th><td><i  data-doc="dnsdb_find"></i></td></tr>
+<tr><th id="124">124</th><td><i  data-doc="dnsdb_find">(d) If the next sequence of characters is a sequence of letters and digits</i></td></tr>
+<tr><th id="125">125</th><td><i  data-doc="dnsdb_find">followed by '=', it is interpreted as the name of the DNS record type. The</i></td></tr>
+<tr><th id="126">126</th><td><i  data-doc="dnsdb_find">default is "TXT".</i></td></tr>
+<tr><th id="127">127</th><td><i  data-doc="dnsdb_find"></i></td></tr>
+<tr><th id="128">128</th><td><i  data-doc="dnsdb_find">(e) Then there follows list of domain names. This is a generalized Exim list,</i></td></tr>
+<tr><th id="129">129</th><td><i  data-doc="dnsdb_find">which may start with '&lt;' in order to set a specific separator. The default</i></td></tr>
+<tr><th id="130">130</th><td><i  data-doc="dnsdb_find">separator, as always, is colon. */</i></td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="133">133</th><td><dfn class="tu decl def fn" id="dnsdb_find" title='dnsdb_find' data-type='int dnsdb_find(void * handle, uschar * filename, const uschar * keystring, int length, uschar ** result, uschar ** errmsg, uint * do_cache)' data-ref="dnsdb_find">dnsdb_find</dfn>(<em>void</em> *<dfn class="local col3 decl" id="3handle" title='handle' data-type='void *' data-ref="3handle">handle</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="4filename" title='filename' data-type='uschar *' data-ref="4filename">filename</dfn>, <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col5 decl" id="5keystring" title='keystring' data-type='const uschar *' data-ref="5keystring">keystring</dfn>, <em>int</em> <dfn class="local col6 decl" id="6length" title='length' data-type='int' data-ref="6length">length</dfn>,</td></tr>
+<tr><th id="134">134</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col7 decl" id="7result" title='result' data-type='uschar **' data-ref="7result">result</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col8 decl" id="8errmsg" title='errmsg' data-type='uschar **' data-ref="8errmsg">errmsg</dfn>, <a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> *<dfn class="local col9 decl" id="9do_cache" title='do_cache' data-type='uint *' data-ref="9do_cache">do_cache</dfn>)</td></tr>
+<tr><th id="135">135</th><td>{</td></tr>
+<tr><th id="136">136</th><td><em>int</em> <dfn class="local col0 decl" id="10rc" title='rc' data-type='int' data-ref="10rc">rc</dfn>;</td></tr>
+<tr><th id="137">137</th><td><em>int</em> <dfn class="local col1 decl" id="11sep" title='sep' data-type='int' data-ref="11sep">sep</dfn> = <var>0</var>;</td></tr>
+<tr><th id="138">138</th><td><em>int</em> <dfn class="local col2 decl" id="12defer_mode" title='defer_mode' data-type='int' data-ref="12defer_mode">defer_mode</dfn> = <a class="macro" href="../macros.h.html#291" title="6" data-ref="_M/PASS">PASS</a>;</td></tr>
+<tr><th id="139">139</th><td><em>int</em> <dfn class="local col3 decl" id="13dnssec_mode" title='dnssec_mode' data-type='int' data-ref="13dnssec_mode">dnssec_mode</dfn> = <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>;</td></tr>
+<tr><th id="140">140</th><td><em>int</em> <dfn class="local col4 decl" id="14save_retrans" title='save_retrans' data-type='int' data-ref="14save_retrans">save_retrans</dfn> = <a class="ref" href="../globals.h.html#dns_retrans" title='dns_retrans' data-ref="dns_retrans">dns_retrans</a>;</td></tr>
+<tr><th id="141">141</th><td><em>int</em> <dfn class="local col5 decl" id="15save_retry" title='save_retry' data-type='int' data-ref="15save_retry">save_retry</dfn> =   <a class="ref" href="../globals.h.html#dns_retry" title='dns_retry' data-ref="dns_retry">dns_retry</a>;</td></tr>
+<tr><th id="142">142</th><td><em>int</em> <dfn class="local col6 decl" id="16type" title='type' data-type='int' data-ref="16type">type</dfn>;</td></tr>
+<tr><th id="143">143</th><td><em>int</em> <dfn class="local col7 decl" id="17failrc" title='failrc' data-type='int' data-ref="17failrc">failrc</dfn> = <a class="macro" href="../macros.h.html#285" title="2" data-ref="_M/FAIL">FAIL</a>;</td></tr>
+<tr><th id="144">144</th><td><em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col8 decl" id="18outsep" title='outsep' data-type='const uschar *' data-ref="18outsep">outsep</dfn> = <a class="macro" href="../mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a><q>"\n"</q>;</td></tr>
+<tr><th id="145">145</th><td><em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col9 decl" id="19outsep2" title='outsep2' data-type='const uschar *' data-ref="19outsep2">outsep2</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="146">146</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col0 decl" id="20equals" title='equals' data-type='uschar *' data-ref="20equals">equals</dfn>, *<dfn class="local col1 decl" id="21domain" title='domain' data-type='uschar *' data-ref="21domain">domain</dfn>, *<dfn class="local col2 decl" id="22found" title='found' data-type='uschar *' data-ref="22found">found</dfn>;</td></tr>
+<tr><th id="147">147</th><td></td></tr>
+<tr><th id="148">148</th><td><i>/* Because we're working in the search pool, we try to reclaim as much</i></td></tr>
+<tr><th id="149">149</th><td><i>store as possible later, so we preallocate the result here */</i></td></tr>
+<tr><th id="150">150</th><td></td></tr>
+<tr><th id="151">151</th><td><a class="typedef" href="../structs.h.html#gstring" title='gstring' data-type='struct gstring' data-ref="gstring">gstring</a> * <dfn class="local col3 decl" id="23yield" title='yield' data-type='gstring *' data-ref="23yield">yield</dfn> = <a class="ref fn" href="../functions.h.html#string_get" title='string_get' data-ref="string_get">string_get</a>(<var>256</var>);</td></tr>
+<tr><th id="152">152</th><td></td></tr>
+<tr><th id="153">153</th><td><a class="typedef" href="../structs.h.html#dns_record" title='dns_record' data-type='struct dns_record' data-ref="dns_record">dns_record</a> *<dfn class="local col4 decl" id="24rr" title='rr' data-type='dns_record *' data-ref="24rr">rr</dfn>;</td></tr>
+<tr><th id="154">154</th><td><a class="typedef" href="../structs.h.html#dns_answer" title='dns_answer' data-type='struct dns_answer' data-ref="dns_answer">dns_answer</a> <dfn class="local col5 decl" id="25dnsa" title='dnsa' data-type='dns_answer' data-ref="25dnsa">dnsa</dfn>;</td></tr>
+<tr><th id="155">155</th><td><a class="typedef" href="../structs.h.html#dns_scan" title='dns_scan' data-type='struct dns_scan' data-ref="dns_scan">dns_scan</a> <dfn class="local col6 decl" id="26dnss" title='dnss' data-type='dns_scan' data-ref="26dnss">dnss</dfn>;</td></tr>
+<tr><th id="156">156</th><td></td></tr>
+<tr><th id="157">157</th><td><a class="local col3 ref" href="#3handle" title='handle' data-ref="3handle">handle</a> = <a class="local col3 ref" href="#3handle" title='handle' data-ref="3handle">handle</a>;           <i>/* Keep picky compilers happy */</i></td></tr>
+<tr><th id="158">158</th><td><a class="local col4 ref" href="#4filename" title='filename' data-ref="4filename">filename</a> = <a class="local col4 ref" href="#4filename" title='filename' data-ref="4filename">filename</a>;</td></tr>
+<tr><th id="159">159</th><td><a class="local col6 ref" href="#6length" title='length' data-ref="6length">length</a> = <a class="local col6 ref" href="#6length" title='length' data-ref="6length">length</a>;</td></tr>
+<tr><th id="160">160</th><td><a class="local col9 ref" href="#9do_cache" title='do_cache' data-ref="9do_cache">do_cache</a> = <a class="local col9 ref" href="#9do_cache" title='do_cache' data-ref="9do_cache">do_cache</a>;</td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td><i>/* If the string starts with '&gt;' we change the output separator.</i></td></tr>
+<tr><th id="163">163</th><td><i>If it's followed by ';' or ',' we set the TXT output separator. */</i></td></tr>
+<tr><th id="164">164</th><td></td></tr>
+<tr><th id="165">165</th><td><b>while</b> (<a class="macro" href="../../../include/ctype.h.html#205" title="((*__ctype_b_loc ())[(int) ((*keystring))] &amp; (unsigned short int) _ISspace)" data-ref="_M/isspace">isspace</a>(*<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>)) <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>++;</td></tr>
+<tr><th id="166">166</th><td><b>if</b> (*<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> == <kbd>'&gt;'</kbd>)</td></tr>
+<tr><th id="167">167</th><td>  {</td></tr>
+<tr><th id="168">168</th><td>  <a class="local col8 ref" href="#18outsep" title='outsep' data-ref="18outsep">outsep</a> = <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> + <var>1</var>;</td></tr>
+<tr><th id="169">169</th><td>  <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> += <var>2</var>;</td></tr>
+<tr><th id="170">170</th><td>  <b>if</b> (*<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> == <kbd>','</kbd>)</td></tr>
+<tr><th id="171">171</th><td>    {</td></tr>
+<tr><th id="172">172</th><td>    <a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a> = <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> + <var>1</var>;</td></tr>
+<tr><th id="173">173</th><td>    <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> += <var>2</var>;</td></tr>
+<tr><th id="174">174</th><td>    }</td></tr>
+<tr><th id="175">175</th><td>  <b>else</b> <b>if</b> (*<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> == <kbd>';'</kbd>)</td></tr>
+<tr><th id="176">176</th><td>    {</td></tr>
+<tr><th id="177">177</th><td>    <a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>""</q>;</td></tr>
+<tr><th id="178">178</th><td>    <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>++;</td></tr>
+<tr><th id="179">179</th><td>    }</td></tr>
+<tr><th id="180">180</th><td>  <b>while</b> (<a class="macro" href="../../../include/ctype.h.html#205" title="((*__ctype_b_loc ())[(int) ((*keystring))] &amp; (unsigned short int) _ISspace)" data-ref="_M/isspace">isspace</a>(*<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>)) <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>++;</td></tr>
+<tr><th id="181">181</th><td>  }</td></tr>
+<tr><th id="182">182</th><td></td></tr>
+<tr><th id="183">183</th><td><i>/* Check for a modifier keyword. */</i></td></tr>
+<tr><th id="184">184</th><td></td></tr>
+<tr><th id="185">185</th><td><b>for</b> (;;)</td></tr>
+<tr><th id="186">186</th><td>  {</td></tr>
+<tr><th id="187">187</th><td>  <b>if</b> (<a class="ref fn" href="../functions.h.html#strncmpic" title='strncmpic' data-ref="strncmpic">strncmpic</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"defer_"</q>, <var>6</var>) == <var>0</var>)</td></tr>
+<tr><th id="188">188</th><td>    {</td></tr>
+<tr><th id="189">189</th><td>    <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> += <var>6</var>;</td></tr>
+<tr><th id="190">190</th><td>    <b>if</b> (<a class="ref fn" href="../functions.h.html#strncmpic" title='strncmpic' data-ref="strncmpic">strncmpic</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"strict"</q>, <var>6</var>) == <var>0</var>)</td></tr>
+<tr><th id="191">191</th><td>      { <a class="local col2 ref" href="#12defer_mode" title='defer_mode' data-ref="12defer_mode">defer_mode</a> = <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>; <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> += <var>6</var>; }</td></tr>
+<tr><th id="192">192</th><td>    <b>else</b> <b>if</b> (<a class="ref fn" href="../functions.h.html#strncmpic" title='strncmpic' data-ref="strncmpic">strncmpic</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"lax"</q>, <var>3</var>) == <var>0</var>)</td></tr>
+<tr><th id="193">193</th><td>      { <a class="local col2 ref" href="#12defer_mode" title='defer_mode' data-ref="12defer_mode">defer_mode</a> = <a class="macro" href="../macros.h.html#291" title="6" data-ref="_M/PASS">PASS</a>; <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> += <var>3</var>; }</td></tr>
+<tr><th id="194">194</th><td>    <b>else</b> <b>if</b> (<a class="ref fn" href="../functions.h.html#strncmpic" title='strncmpic' data-ref="strncmpic">strncmpic</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"never"</q>, <var>5</var>) == <var>0</var>)</td></tr>
+<tr><th id="195">195</th><td>      { <a class="local col2 ref" href="#12defer_mode" title='defer_mode' data-ref="12defer_mode">defer_mode</a> = <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>; <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> += <var>5</var>; }</td></tr>
+<tr><th id="196">196</th><td>    <b>else</b></td></tr>
+<tr><th id="197">197</th><td>      {</td></tr>
+<tr><th id="198">198</th><td>      *<a class="local col8 ref" href="#8errmsg" title='errmsg' data-ref="8errmsg">errmsg</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"unsupported dnsdb defer behaviour"</q>;</td></tr>
+<tr><th id="199">199</th><td>      <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="200">200</th><td>      }</td></tr>
+<tr><th id="201">201</th><td>    }</td></tr>
+<tr><th id="202">202</th><td>  <b>else</b> <b>if</b> (<a class="ref fn" href="../functions.h.html#strncmpic" title='strncmpic' data-ref="strncmpic">strncmpic</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"dnssec_"</q>, <var>7</var>) == <var>0</var>)</td></tr>
+<tr><th id="203">203</th><td>    {</td></tr>
+<tr><th id="204">204</th><td>    <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> += <var>7</var>;</td></tr>
+<tr><th id="205">205</th><td>    <b>if</b> (<a class="ref fn" href="../functions.h.html#strncmpic" title='strncmpic' data-ref="strncmpic">strncmpic</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"strict"</q>, <var>6</var>) == <var>0</var>)</td></tr>
+<tr><th id="206">206</th><td>      { <a class="local col3 ref" href="#13dnssec_mode" title='dnssec_mode' data-ref="13dnssec_mode">dnssec_mode</a> = <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>; <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> += <var>6</var>; }</td></tr>
+<tr><th id="207">207</th><td>    <b>else</b> <b>if</b> (<a class="ref fn" href="../functions.h.html#strncmpic" title='strncmpic' data-ref="strncmpic">strncmpic</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"lax"</q>, <var>3</var>) == <var>0</var>)</td></tr>
+<tr><th id="208">208</th><td>      { <a class="local col3 ref" href="#13dnssec_mode" title='dnssec_mode' data-ref="13dnssec_mode">dnssec_mode</a> = <a class="macro" href="../macros.h.html#291" title="6" data-ref="_M/PASS">PASS</a>; <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> += <var>3</var>; }</td></tr>
+<tr><th id="209">209</th><td>    <b>else</b> <b>if</b> (<a class="ref fn" href="../functions.h.html#strncmpic" title='strncmpic' data-ref="strncmpic">strncmpic</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"never"</q>, <var>5</var>) == <var>0</var>)</td></tr>
+<tr><th id="210">210</th><td>      { <a class="local col3 ref" href="#13dnssec_mode" title='dnssec_mode' data-ref="13dnssec_mode">dnssec_mode</a> = <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>; <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> += <var>5</var>; }</td></tr>
+<tr><th id="211">211</th><td>    <b>else</b></td></tr>
+<tr><th id="212">212</th><td>      {</td></tr>
+<tr><th id="213">213</th><td>      *<a class="local col8 ref" href="#8errmsg" title='errmsg' data-ref="8errmsg">errmsg</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"unsupported dnsdb dnssec behaviour"</q>;</td></tr>
+<tr><th id="214">214</th><td>      <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="215">215</th><td>      }</td></tr>
+<tr><th id="216">216</th><td>    }</td></tr>
+<tr><th id="217">217</th><td>  <b>else</b> <b>if</b> (<a class="ref fn" href="../functions.h.html#strncmpic" title='strncmpic' data-ref="strncmpic">strncmpic</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"retrans_"</q>, <var>8</var>) == <var>0</var>)</td></tr>
+<tr><th id="218">218</th><td>    {</td></tr>
+<tr><th id="219">219</th><td>    <em>int</em> <dfn class="local col7 decl" id="27timeout_sec" title='timeout_sec' data-type='int' data-ref="27timeout_sec">timeout_sec</dfn>;</td></tr>
+<tr><th id="220">220</th><td>    <b>if</b> ((<a class="local col7 ref" href="#27timeout_sec" title='timeout_sec' data-ref="27timeout_sec">timeout_sec</a> = <a class="ref fn" href="../functions.h.html#readconf_readtime" title='readconf_readtime' data-ref="readconf_readtime">readconf_readtime</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> += <var>8</var>, <kbd>','</kbd>, <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>)) &lt;= <var>0</var>)</td></tr>
+<tr><th id="221">221</th><td>      {</td></tr>
+<tr><th id="222">222</th><td>      *<a class="local col8 ref" href="#8errmsg" title='errmsg' data-ref="8errmsg">errmsg</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"unsupported dnsdb timeout value"</q>;</td></tr>
+<tr><th id="223">223</th><td>      <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="224">224</th><td>      }</td></tr>
+<tr><th id="225">225</th><td>    <a class="ref" href="../globals.h.html#dns_retrans" title='dns_retrans' data-ref="dns_retrans">dns_retrans</a> = <a class="local col7 ref" href="#27timeout_sec" title='timeout_sec' data-ref="27timeout_sec">timeout_sec</a>;</td></tr>
+<tr><th id="226">226</th><td>    <b>while</b> (*<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> != <kbd>','</kbd>) <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>++;</td></tr>
+<tr><th id="227">227</th><td>    }</td></tr>
+<tr><th id="228">228</th><td>  <b>else</b> <b>if</b> (<a class="ref fn" href="../functions.h.html#strncmpic" title='strncmpic' data-ref="strncmpic">strncmpic</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"retry_"</q>, <var>6</var>) == <var>0</var>)</td></tr>
+<tr><th id="229">229</th><td>    {</td></tr>
+<tr><th id="230">230</th><td>    <em>int</em> <dfn class="local col8 decl" id="28retries" title='retries' data-type='int' data-ref="28retries">retries</dfn>;</td></tr>
+<tr><th id="231">231</th><td>    <b>if</b> ((<a class="local col8 ref" href="#28retries" title='retries' data-ref="28retries">retries</a> = (<em>int</em>)<a class="ref fn" href="../../../include/stdlib.h.html#strtol" title='strtol' data-ref="strtol">strtol</a>(<a class="macro" href="../mytypes.h.html#66" title="(const char *)" data-ref="_M/CCS">CCS</a> <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> + <var>6</var>, <a class="macro" href="../mytypes.h.html#67" title="(char **)" data-ref="_M/CSS">CSS</a> &amp;<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <var>0</var>)) &lt; <var>0</var>)</td></tr>
+<tr><th id="232">232</th><td>      {</td></tr>
+<tr><th id="233">233</th><td>      *<a class="local col8 ref" href="#8errmsg" title='errmsg' data-ref="8errmsg">errmsg</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"unsupported dnsdb retry count"</q>;</td></tr>
+<tr><th id="234">234</th><td>      <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="235">235</th><td>      }</td></tr>
+<tr><th id="236">236</th><td>    <a class="ref" href="../globals.h.html#dns_retry" title='dns_retry' data-ref="dns_retry">dns_retry</a> = <a class="local col8 ref" href="#28retries" title='retries' data-ref="28retries">retries</a>;</td></tr>
+<tr><th id="237">237</th><td>    }</td></tr>
+<tr><th id="238">238</th><td>  <b>else</b></td></tr>
+<tr><th id="239">239</th><td>    <b>break</b>;</td></tr>
+<tr><th id="240">240</th><td></td></tr>
+<tr><th id="241">241</th><td>  <b>while</b> (<a class="macro" href="../../../include/ctype.h.html#205" title="((*__ctype_b_loc ())[(int) ((*keystring))] &amp; (unsigned short int) _ISspace)" data-ref="_M/isspace">isspace</a>(*<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>)) <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>++;</td></tr>
+<tr><th id="242">242</th><td>  <b>if</b> (*<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>++ != <kbd>','</kbd>)</td></tr>
+<tr><th id="243">243</th><td>    {</td></tr>
+<tr><th id="244">244</th><td>    *<a class="local col8 ref" href="#8errmsg" title='errmsg' data-ref="8errmsg">errmsg</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"dnsdb modifier syntax error"</q>;</td></tr>
+<tr><th id="245">245</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="246">246</th><td>    }</td></tr>
+<tr><th id="247">247</th><td>  <b>while</b> (<a class="macro" href="../../../include/ctype.h.html#205" title="((*__ctype_b_loc ())[(int) ((*keystring))] &amp; (unsigned short int) _ISspace)" data-ref="_M/isspace">isspace</a>(*<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>)) <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>++;</td></tr>
+<tr><th id="248">248</th><td>  }</td></tr>
+<tr><th id="249">249</th><td></td></tr>
+<tr><th id="250">250</th><td><i>/* Figure out the "type" value if it is not T_TXT.</i></td></tr>
+<tr><th id="251">251</th><td><i>If the keystring contains an = this must be preceded by a valid type name. */</i></td></tr>
+<tr><th id="252">252</th><td></td></tr>
+<tr><th id="253">253</th><td><a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> = <a class="macro" href="../../../include/arpa/nameser_compat.h.html#145" title="ns_t_txt" data-ref="_M/T_TXT">T_TXT</a>;</td></tr>
+<tr><th id="254">254</th><td><b>if</b> ((<a class="local col0 ref" href="#20equals" title='equals' data-ref="20equals">equals</a> = <a class="macro" href="../mytypes.h.html#97" title="(unsigned char *) (__extension__ (__builtin_constant_p (&apos;=&apos;) &amp;&amp; !__builtin_constant_p ((const char *)(keystring)) &amp;&amp; (&apos;=&apos;) == &apos;\0&apos; ? (char *) __rawmemchr ((const char *)(keystring), &apos;=&apos;) : __builtin_strchr ((const char *)(keystring), &apos;=&apos;)))" data-ref="_M/Ustrchr">Ustrchr</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <kbd>'='</kbd>)) != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="255">255</th><td>  {</td></tr>
+<tr><th id="256">256</th><td>  <em>int</em> <dfn class="local col9 decl" id="29i" title='i' data-type='int' data-ref="29i">i</dfn>, <dfn class="local col0 decl" id="30len" title='len' data-type='int' data-ref="30len">len</dfn>;</td></tr>
+<tr><th id="257">257</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="31tend" title='tend' data-type='uschar *' data-ref="31tend">tend</dfn> = <a class="local col0 ref" href="#20equals" title='equals' data-ref="20equals">equals</a>;</td></tr>
+<tr><th id="258">258</th><td></td></tr>
+<tr><th id="259">259</th><td>  <b>while</b> (<a class="local col1 ref" href="#31tend" title='tend' data-ref="31tend">tend</a> &gt; <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> &amp;&amp; <a class="macro" href="../../../include/ctype.h.html#205" title="((*__ctype_b_loc ())[(int) ((tend[-1]))] &amp; (unsigned short int) _ISspace)" data-ref="_M/isspace">isspace</a>(<a class="local col1 ref" href="#31tend" title='tend' data-ref="31tend">tend</a>[-<var>1</var>])) <a class="local col1 ref" href="#31tend" title='tend' data-ref="31tend">tend</a>--;</td></tr>
+<tr><th id="260">260</th><td>  <a class="local col0 ref" href="#30len" title='len' data-ref="30len">len</a> = <a class="local col1 ref" href="#31tend" title='tend' data-ref="31tend">tend</a> - <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>;</td></tr>
+<tr><th id="261">261</th><td></td></tr>
+<tr><th id="262">262</th><td>  <b>for</b> (<a class="local col9 ref" href="#29i" title='i' data-ref="29i">i</a> = <var>0</var>; <a class="local col9 ref" href="#29i" title='i' data-ref="29i">i</a> &lt; <a class="macro" href="../macros.h.html#16" title="(sizeof(type_names) / sizeof(*type_names))" data-ref="_M/nelem">nelem</a>(<a class="tu ref" href="#type_names" title='type_names' data-use='r' data-ref="type_names">type_names</a>); <a class="local col9 ref" href="#29i" title='i' data-ref="29i">i</a>++)</td></tr>
+<tr><th id="263">263</th><td>    <b>if</b> (<a class="local col0 ref" href="#30len" title='len' data-ref="30len">len</a> == <a class="macro" href="../mytypes.h.html#104" title="(int)strlen((const char *)(type_names[i]))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="tu ref" href="#type_names" title='type_names' data-use='r' data-ref="type_names">type_names</a>[<a class="local col9 ref" href="#29i" title='i' data-ref="29i">i</a>]) &amp;&amp;</td></tr>
+<tr><th id="264">264</th><td>        <a class="ref fn" href="../functions.h.html#strncmpic" title='strncmpic' data-ref="strncmpic">strncmpic</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="tu ref" href="#type_names" title='type_names' data-use='r' data-ref="type_names">type_names</a>[<a class="local col9 ref" href="#29i" title='i' data-ref="29i">i</a>], <a class="local col0 ref" href="#30len" title='len' data-ref="30len">len</a>) == <var>0</var>)</td></tr>
+<tr><th id="265">265</th><td>      {</td></tr>
+<tr><th id="266">266</th><td>      <a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> = <a class="tu ref" href="#type_values" title='type_values' data-use='r' data-ref="type_values">type_values</a>[<a class="local col9 ref" href="#29i" title='i' data-ref="29i">i</a>];</td></tr>
+<tr><th id="267">267</th><td>      <b>break</b>;</td></tr>
+<tr><th id="268">268</th><td>      }</td></tr>
+<tr><th id="269">269</th><td></td></tr>
+<tr><th id="270">270</th><td>  <b>if</b> (<a class="local col9 ref" href="#29i" title='i' data-ref="29i">i</a> &gt;= <a class="macro" href="../macros.h.html#16" title="(sizeof(type_names) / sizeof(*type_names))" data-ref="_M/nelem">nelem</a>(<a class="tu ref" href="#type_names" title='type_names' data-use='r' data-ref="type_names">type_names</a>))</td></tr>
+<tr><th id="271">271</th><td>    {</td></tr>
+<tr><th id="272">272</th><td>    *<a class="local col8 ref" href="#8errmsg" title='errmsg' data-ref="8errmsg">errmsg</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"unsupported DNS record type"</q>;</td></tr>
+<tr><th id="273">273</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="274">274</th><td>    }</td></tr>
+<tr><th id="275">275</th><td></td></tr>
+<tr><th id="276">276</th><td>  <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a> = <a class="local col0 ref" href="#20equals" title='equals' data-ref="20equals">equals</a> + <var>1</var>;</td></tr>
+<tr><th id="277">277</th><td>  <b>while</b> (<a class="macro" href="../../../include/ctype.h.html#205" title="((*__ctype_b_loc ())[(int) ((*keystring))] &amp; (unsigned short int) _ISspace)" data-ref="_M/isspace">isspace</a>(*<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>)) <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>++;</td></tr>
+<tr><th id="278">278</th><td>  }</td></tr>
+<tr><th id="279">279</th><td></td></tr>
+<tr><th id="280">280</th><td><i>/* Initialize the resolver in case this is the first time it has been used. */</i></td></tr>
+<tr><th id="281">281</th><td></td></tr>
+<tr><th id="282">282</th><td><a class="ref fn" href="../functions.h.html#dns_init" title='dns_init' data-ref="dns_init">dns_init</a>(<a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <a class="local col3 ref" href="#13dnssec_mode" title='dnssec_mode' data-ref="13dnssec_mode">dnssec_mode</a> != <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>);</td></tr>
+<tr><th id="283">283</th><td></td></tr>
+<tr><th id="284">284</th><td><i>/* The remainder of the string must be a list of domains. As long as the lookup</i></td></tr>
+<tr><th id="285">285</th><td><i>for at least one of them succeeds, we return success. Failure means that none</i></td></tr>
+<tr><th id="286">286</th><td><i>of them were found.</i></td></tr>
+<tr><th id="287">287</th><td><i></i></td></tr>
+<tr><th id="288">288</th><td><i>The original implementation did not support a list of domains. Adding the list</i></td></tr>
+<tr><th id="289">289</th><td><i>feature is compatible, except in one case: when PTR records are being looked up</i></td></tr>
+<tr><th id="290">290</th><td><i>for a single IPv6 address. Fortunately, we can hack in a compatibility feature</i></td></tr>
+<tr><th id="291">291</th><td><i>here: If the type is PTR and no list separator is specified, and the entire</i></td></tr>
+<tr><th id="292">292</th><td><i>remaining string is valid as an IP address, set an impossible separator so that</i></td></tr>
+<tr><th id="293">293</th><td><i>it is treated as one item. */</i></td></tr>
+<tr><th id="294">294</th><td></td></tr>
+<tr><th id="295">295</th><td><b>if</b> (<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../../../include/arpa/nameser_compat.h.html#141" title="ns_t_ptr" data-ref="_M/T_PTR">T_PTR</a> &amp;&amp; <a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>[<var>0</var>] != <kbd>'&lt;'</kbd> &amp;&amp;</td></tr>
+<tr><th id="296">296</th><td>    <a class="ref fn" href="../functions.h.html#string_is_ip_address" title='string_is_ip_address' data-ref="string_is_ip_address">string_is_ip_address</a>(<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) != <var>0</var>)</td></tr>
+<tr><th id="297">297</th><td>  <a class="local col1 ref" href="#11sep" title='sep' data-ref="11sep">sep</a> = -<var>1</var>;</td></tr>
+<tr><th id="298">298</th><td></td></tr>
+<tr><th id="299">299</th><td><i>/* SPF strings should be concatenated without a separator, thus make</i></td></tr>
+<tr><th id="300">300</th><td><i>it the default if not defined (see RFC 4408 section 3.1.3).</i></td></tr>
+<tr><th id="301">301</th><td><i>Multiple SPF records are forbidden (section 3.1.2) but are currently</i></td></tr>
+<tr><th id="302">302</th><td><i>not handled specially, thus they are concatenated with \n by default.</i></td></tr>
+<tr><th id="303">303</th><td><i>MX priority and value are space-separated by default.</i></td></tr>
+<tr><th id="304">304</th><td><i>SRV and TLSA record parts are space-separated by default. */</i></td></tr>
+<tr><th id="305">305</th><td></td></tr>
+<tr><th id="306">306</th><td><b>if</b> (!<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>) <b>switch</b>(<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a>)</td></tr>
+<tr><th id="307">307</th><td>  {</td></tr>
+<tr><th id="308">308</th><td>  <b>case</b> <a class="macro" href="../exim.h.html#324" title="99" data-ref="_M/T_SPF">T_SPF</a>:                         <a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>""</q>;  <b>break</b>;</td></tr>
+<tr><th id="309">309</th><td>  <b>case</b> <a class="macro" href="../../../include/arpa/nameser_compat.h.html#162" title="ns_t_srv" data-ref="_M/T_SRV">T_SRV</a>: <b>case</b> <a class="macro" href="../../../include/arpa/nameser_compat.h.html#144" title="ns_t_mx" data-ref="_M/T_MX">T_MX</a>: <b>case</b> <a class="macro" href="../exim.h.html#329" title="52" data-ref="_M/T_TLSA">T_TLSA</a>: <a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>" "</q>; <b>break</b>;</td></tr>
+<tr><th id="310">310</th><td>  }</td></tr>
+<tr><th id="311">311</th><td></td></tr>
+<tr><th id="312">312</th><td><i>/* Now scan the list and do a lookup for each item */</i></td></tr>
+<tr><th id="313">313</th><td></td></tr>
+<tr><th id="314">314</th><td><b>while</b> ((<a class="local col1 ref" href="#21domain" title='domain' data-ref="21domain">domain</a> = <a class="ref fn" href="../functions.h.html#string_nextinlist" title='string_nextinlist' data-ref="string_nextinlist">string_nextinlist</a>(&amp;<a class="local col5 ref" href="#5keystring" title='keystring' data-ref="5keystring">keystring</a>, &amp;<a class="local col1 ref" href="#11sep" title='sep' data-ref="11sep">sep</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <var>0</var>)))</td></tr>
+<tr><th id="315">315</th><td>  {</td></tr>
+<tr><th id="316">316</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col2 decl" id="32rbuffer" title='rbuffer' data-type='uschar [256]' data-ref="32rbuffer">rbuffer</dfn>[<var>256</var>];</td></tr>
+<tr><th id="317">317</th><td>  <em>int</em> <dfn class="local col3 decl" id="33searchtype" title='searchtype' data-type='int' data-ref="33searchtype">searchtype</dfn> = (<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../exim.h.html#379" title="(-3)" data-ref="_M/T_CSA">T_CSA</a>)? <a class="macro" href="../../../include/arpa/nameser_compat.h.html#162" title="ns_t_srv" data-ref="_M/T_SRV">T_SRV</a> :         <i>/* record type we want */</i></td></tr>
+<tr><th id="318">318</th><td>                   (<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../exim.h.html#378" title="(-2)" data-ref="_M/T_MXH">T_MXH</a>)? <a class="macro" href="../../../include/arpa/nameser_compat.h.html#144" title="ns_t_mx" data-ref="_M/T_MX">T_MX</a> :</td></tr>
+<tr><th id="319">319</th><td>                   (<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../exim.h.html#377" title="(-1)" data-ref="_M/T_ZNS">T_ZNS</a>)? <a class="macro" href="../../../include/arpa/nameser_compat.h.html#131" title="ns_t_ns" data-ref="_M/T_NS">T_NS</a> : <a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a>;</td></tr>
+<tr><th id="320">320</th><td></td></tr>
+<tr><th id="321">321</th><td>  <i>/* If the type is PTR or CSA, we have to construct the relevant magic lookup</i></td></tr>
+<tr><th id="322">322</th><td><i>  key if the original is an IP address (some experimental protocols are using</i></td></tr>
+<tr><th id="323">323</th><td><i>  PTR records for different purposes where the key string is a host name, and</i></td></tr>
+<tr><th id="324">324</th><td><i>  Exim's extended CSA can be keyed by domains or IP addresses). This code for</i></td></tr>
+<tr><th id="325">325</th><td><i>  doing the reversal is now in a separate function. */</i></td></tr>
+<tr><th id="326">326</th><td></td></tr>
+<tr><th id="327">327</th><td>  <b>if</b> ((<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../../../include/arpa/nameser_compat.h.html#141" title="ns_t_ptr" data-ref="_M/T_PTR">T_PTR</a> || <a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../exim.h.html#379" title="(-3)" data-ref="_M/T_CSA">T_CSA</a>) &amp;&amp;</td></tr>
+<tr><th id="328">328</th><td>      <a class="ref fn" href="../functions.h.html#string_is_ip_address" title='string_is_ip_address' data-ref="string_is_ip_address">string_is_ip_address</a>(<a class="local col1 ref" href="#21domain" title='domain' data-ref="21domain">domain</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) != <var>0</var>)</td></tr>
+<tr><th id="329">329</th><td>    {</td></tr>
+<tr><th id="330">330</th><td>    <a class="ref fn" href="../functions.h.html#dns_build_reverse" title='dns_build_reverse' data-ref="dns_build_reverse">dns_build_reverse</a>(<a class="local col1 ref" href="#21domain" title='domain' data-ref="21domain">domain</a>, <a class="local col2 ref" href="#32rbuffer" title='rbuffer' data-ref="32rbuffer">rbuffer</a>);</td></tr>
+<tr><th id="331">331</th><td>    <a class="local col1 ref" href="#21domain" title='domain' data-ref="21domain">domain</a> = <a class="local col2 ref" href="#32rbuffer" title='rbuffer' data-ref="32rbuffer">rbuffer</a>;</td></tr>
+<tr><th id="332">332</th><td>    }</td></tr>
+<tr><th id="333">333</th><td></td></tr>
+<tr><th id="334">334</th><td>  <b>do</b></td></tr>
+<tr><th id="335">335</th><td>    {</td></tr>
+<tr><th id="336">336</th><td>    <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_lookup))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#392" title='D_lookup' data-ref="D_lookup">D_lookup</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"dnsdb key: %s\n"</q>, <a class="local col1 ref" href="#21domain" title='domain' data-ref="21domain">domain</a>);</td></tr>
+<tr><th id="337">337</th><td></td></tr>
+<tr><th id="338">338</th><td>    <i>/* Do the lookup and sort out the result. There are four special types that</i></td></tr>
+<tr><th id="339">339</th><td><i>    are handled specially: T_CSA, T_ZNS, T_ADDRESSES and T_MXH.</i></td></tr>
+<tr><th id="340">340</th><td><i>    The first two are handled in a special lookup function so that the facility</i></td></tr>
+<tr><th id="341">341</th><td><i>    could be used from other parts of the Exim code. T_ADDRESSES is handled by looping</i></td></tr>
+<tr><th id="342">342</th><td><i>    over the types of A lookup.  T_MXH affects only what happens later on in</i></td></tr>
+<tr><th id="343">343</th><td><i>    this function, but for tidiness it is handled by the "special". If the</i></td></tr>
+<tr><th id="344">344</th><td><i>    lookup fails, continue with the next domain. In the case of DEFER, adjust</i></td></tr>
+<tr><th id="345">345</th><td><i>    the final "nothing found" result, but carry on to the next domain. */</i></td></tr>
+<tr><th id="346">346</th><td></td></tr>
+<tr><th id="347">347</th><td>    <a class="local col2 ref" href="#22found" title='found' data-ref="22found">found</a> = <a class="local col1 ref" href="#21domain" title='domain' data-ref="21domain">domain</a>;</td></tr>
+<tr><th id="348">348</th><td><u>#<span data-ppcond="348">if</span> <a class="macro" href="../../build-Linux-x86_64/config.h.html#28" title="0" data-ref="_M/HAVE_IPV6">HAVE_IPV6</a></u></td></tr>
+<tr><th id="349">349</th><td>    <b>if</b> (type == T_ADDRESSES)		<i>/* NB cannot happen unless HAVE_IPV6 */</i></td></tr>
+<tr><th id="350">350</th><td>      {</td></tr>
+<tr><th id="351">351</th><td>      <b>if</b> (searchtype == T_ADDRESSES) searchtype = T_AAAA;</td></tr>
+<tr><th id="352">352</th><td>      <b>else</b> <b>if</b> (searchtype == T_AAAA) searchtype = T_A;</td></tr>
+<tr><th id="353">353</th><td>      rc = dns_special_lookup(&amp;dnsa, domain, searchtype, CUSS &amp;found);</td></tr>
+<tr><th id="354">354</th><td>      }</td></tr>
+<tr><th id="355">355</th><td>    <b>else</b></td></tr>
+<tr><th id="356">356</th><td><u>#<span data-ppcond="348">endif</span></u></td></tr>
+<tr><th id="357">357</th><td>      <a class="local col0 ref" href="#10rc" title='rc' data-ref="10rc">rc</a> = <a class="ref fn" href="../functions.h.html#dns_special_lookup" title='dns_special_lookup' data-ref="dns_special_lookup">dns_special_lookup</a>(&amp;<a class="local col5 ref" href="#25dnsa" title='dnsa' data-ref="25dnsa">dnsa</a>, <a class="local col1 ref" href="#21domain" title='domain' data-ref="21domain">domain</a>, <a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a>, <a class="macro" href="../mytypes.h.html#71" title="(const unsigned char **)" data-ref="_M/CUSS">CUSS</a> &amp;<a class="local col2 ref" href="#22found" title='found' data-ref="22found">found</a>);</td></tr>
+<tr><th id="358">358</th><td></td></tr>
+<tr><th id="359">359</th><td>    <a class="ref" href="../globals.h.html#lookup_dnssec_authenticated" title='lookup_dnssec_authenticated' data-ref="lookup_dnssec_authenticated">lookup_dnssec_authenticated</a> = <a class="local col3 ref" href="#13dnssec_mode" title='dnssec_mode' data-ref="13dnssec_mode">dnssec_mode</a>==<a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a> ? <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span></td></tr>
+<tr><th id="360">360</th><td>      : <a class="ref fn" href="../functions.h.html#dns_is_secure" title='dns_is_secure' data-ref="dns_is_secure">dns_is_secure</a>(&amp;<a class="local col5 ref" href="#25dnsa" title='dnsa' data-ref="25dnsa">dnsa</a>) ? <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"yes"</q> : <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"no"</q>;</td></tr>
+<tr><th id="361">361</th><td></td></tr>
+<tr><th id="362">362</th><td>    <b>if</b> (<a class="local col0 ref" href="#10rc" title='rc' data-ref="10rc">rc</a> == <a class="enum" href="../macros.h.html#DNS_NOMATCH" title='DNS_NOMATCH' data-ref="DNS_NOMATCH">DNS_NOMATCH</a> || <a class="local col0 ref" href="#10rc" title='rc' data-ref="10rc">rc</a> == <a class="enum" href="../macros.h.html#DNS_NODATA" title='DNS_NODATA' data-ref="DNS_NODATA">DNS_NODATA</a>) <b>continue</b>;</td></tr>
+<tr><th id="363">363</th><td>    <b>if</b> (  <a class="local col0 ref" href="#10rc" title='rc' data-ref="10rc">rc</a> != <a class="enum" href="../macros.h.html#DNS_SUCCEED" title='DNS_SUCCEED' data-ref="DNS_SUCCEED">DNS_SUCCEED</a></td></tr>
+<tr><th id="364">364</th><td>       || (<a class="local col3 ref" href="#13dnssec_mode" title='dnssec_mode' data-ref="13dnssec_mode">dnssec_mode</a> == <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a> &amp;&amp; !<a class="ref fn" href="../functions.h.html#dns_is_secure" title='dns_is_secure' data-ref="dns_is_secure">dns_is_secure</a>(&amp;<a class="local col5 ref" href="#25dnsa" title='dnsa' data-ref="25dnsa">dnsa</a>))</td></tr>
+<tr><th id="365">365</th><td>       )</td></tr>
+<tr><th id="366">366</th><td>      {</td></tr>
+<tr><th id="367">367</th><td>      <b>if</b> (<a class="local col2 ref" href="#12defer_mode" title='defer_mode' data-ref="12defer_mode">defer_mode</a> == <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>)</td></tr>
+<tr><th id="368">368</th><td>	{</td></tr>
+<tr><th id="369">369</th><td>	<a class="ref" href="../globals.h.html#dns_retrans" title='dns_retrans' data-ref="dns_retrans">dns_retrans</a> = <a class="local col4 ref" href="#14save_retrans" title='save_retrans' data-ref="14save_retrans">save_retrans</a>;</td></tr>
+<tr><th id="370">370</th><td>	<a class="ref" href="../globals.h.html#dns_retry" title='dns_retry' data-ref="dns_retry">dns_retry</a> = <a class="local col5 ref" href="#15save_retry" title='save_retry' data-ref="15save_retry">save_retry</a>;</td></tr>
+<tr><th id="371">371</th><td>	<a class="ref fn" href="../functions.h.html#dns_init" title='dns_init' data-ref="dns_init">dns_init</a>(<a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>);			<i>/* clr dnssec bit */</i></td></tr>
+<tr><th id="372">372</th><td>	<b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;					<i>/* always defer */</i></td></tr>
+<tr><th id="373">373</th><td>	}</td></tr>
+<tr><th id="374">374</th><td>      <b>if</b> (<a class="local col2 ref" href="#12defer_mode" title='defer_mode' data-ref="12defer_mode">defer_mode</a> == <a class="macro" href="../macros.h.html#291" title="6" data-ref="_M/PASS">PASS</a>) <a class="local col7 ref" href="#17failrc" title='failrc' data-ref="17failrc">failrc</a> = <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;         <i>/* defer only if all do */</i></td></tr>
+<tr><th id="375">375</th><td>      <b>continue</b>;                                       <i>/* treat defer as fail */</i></td></tr>
+<tr><th id="376">376</th><td>      }</td></tr>
+<tr><th id="377">377</th><td></td></tr>
+<tr><th id="378">378</th><td></td></tr>
+<tr><th id="379">379</th><td>    <i>/* Search the returned records */</i></td></tr>
+<tr><th id="380">380</th><td></td></tr>
+<tr><th id="381">381</th><td>    <b>for</b> (<a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a> = <a class="ref fn" href="../functions.h.html#dns_next_rr" title='dns_next_rr' data-ref="dns_next_rr">dns_next_rr</a>(&amp;<a class="local col5 ref" href="#25dnsa" title='dnsa' data-ref="25dnsa">dnsa</a>, &amp;<a class="local col6 ref" href="#26dnss" title='dnss' data-ref="26dnss">dnss</a>, <a class="enum" href="../macros.h.html#RESET_ANSWERS" title='RESET_ANSWERS' data-ref="RESET_ANSWERS">RESET_ANSWERS</a>); <a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a>;</td></tr>
+<tr><th id="382">382</th><td>         <a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a> = <a class="ref fn" href="../functions.h.html#dns_next_rr" title='dns_next_rr' data-ref="dns_next_rr">dns_next_rr</a>(&amp;<a class="local col5 ref" href="#25dnsa" title='dnsa' data-ref="25dnsa">dnsa</a>, &amp;<a class="local col6 ref" href="#26dnss" title='dnss' data-ref="26dnss">dnss</a>, <a class="enum" href="../macros.h.html#RESET_NEXT" title='RESET_NEXT' data-ref="RESET_NEXT">RESET_NEXT</a>)) <b>if</b> (<a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a>-&gt;<a class="ref field" href="../structs.h.html#(anonymous)::type" title='(anonymous struct)::type' data-ref="(anonymous)::type">type</a> == <a class="local col3 ref" href="#33searchtype" title='searchtype' data-ref="33searchtype">searchtype</a>)</td></tr>
+<tr><th id="383">383</th><td>      {</td></tr>
+<tr><th id="384">384</th><td>      <b>if</b> (*<a class="local col9 ref" href="#9do_cache" title='do_cache' data-ref="9do_cache">do_cache</a> &gt; <a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a>-&gt;<a class="ref field" href="../structs.h.html#(anonymous)::ttl" title='(anonymous struct)::ttl' data-ref="(anonymous)::ttl">ttl</a>)</td></tr>
+<tr><th id="385">385</th><td>	*<a class="local col9 ref" href="#9do_cache" title='do_cache' data-ref="9do_cache">do_cache</a> = <a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a>-&gt;<a class="ref field" href="../structs.h.html#(anonymous)::ttl" title='(anonymous struct)::ttl' data-ref="(anonymous)::ttl">ttl</a>;</td></tr>
+<tr><th id="386">386</th><td></td></tr>
+<tr><th id="387">387</th><td>      <b>if</b> (<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../../../include/arpa/nameser_compat.h.html#130" title="ns_t_a" data-ref="_M/T_A">T_A</a> || <a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../../../include/arpa/nameser_compat.h.html#157" title="ns_t_aaaa" data-ref="_M/T_AAAA">T_AAAA</a> || <a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../exim.h.html#380" title="(-4)" data-ref="_M/T_ADDRESSES">T_ADDRESSES</a>)</td></tr>
+<tr><th id="388">388</th><td>        {</td></tr>
+<tr><th id="389">389</th><td>        <a class="typedef" href="../structs.h.html#dns_address" title='dns_address' data-type='struct dns_address' data-ref="dns_address">dns_address</a> *<dfn class="local col4 decl" id="34da" title='da' data-type='dns_address *' data-ref="34da">da</dfn>;</td></tr>
+<tr><th id="390">390</th><td>        <b>for</b> (<a class="local col4 ref" href="#34da" title='da' data-ref="34da">da</a> = <a class="ref fn" href="../functions.h.html#dns_address_from_rr" title='dns_address_from_rr' data-ref="dns_address_from_rr">dns_address_from_rr</a>(&amp;<a class="local col5 ref" href="#25dnsa" title='dnsa' data-ref="25dnsa">dnsa</a>, <a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a>); <a class="local col4 ref" href="#34da" title='da' data-ref="34da">da</a>; <a class="local col4 ref" href="#34da" title='da' data-ref="34da">da</a> = <a class="local col4 ref" href="#34da" title='da' data-ref="34da">da</a>-&gt;<a class="ref field" href="../structs.h.html#dns_address::next" title='dns_address::next' data-ref="dns_address::next">next</a>)</td></tr>
+<tr><th id="391">391</th><td>          {</td></tr>
+<tr><th id="392">392</th><td>          <b>if</b> (<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>-&gt;<a class="ref field" href="../structs.h.html#gstring::ptr" title='gstring::ptr' data-ref="gstring::ptr">ptr</a>) <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_catn" title='string_catn' data-ref="string_catn">string_catn</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="local col8 ref" href="#18outsep" title='outsep' data-ref="18outsep">outsep</a>, <var>1</var>);</td></tr>
+<tr><th id="393">393</th><td>          <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_cat" title='string_cat' data-ref="string_cat">string_cat</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="local col4 ref" href="#34da" title='da' data-ref="34da">da</a>-&gt;<a class="ref field" href="../structs.h.html#dns_address::address" title='dns_address::address' data-ref="dns_address::address">address</a>);</td></tr>
+<tr><th id="394">394</th><td>          }</td></tr>
+<tr><th id="395">395</th><td>        <b>continue</b>;</td></tr>
+<tr><th id="396">396</th><td>        }</td></tr>
+<tr><th id="397">397</th><td></td></tr>
+<tr><th id="398">398</th><td>      <i>/* Other kinds of record just have one piece of data each, but there may be</i></td></tr>
+<tr><th id="399">399</th><td><i>      several of them, of course. */</i></td></tr>
+<tr><th id="400">400</th><td></td></tr>
+<tr><th id="401">401</th><td>      <b>if</b> (<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>-&gt;<a class="ref field" href="../structs.h.html#gstring::ptr" title='gstring::ptr' data-ref="gstring::ptr">ptr</a>) <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_catn" title='string_catn' data-ref="string_catn">string_catn</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="local col8 ref" href="#18outsep" title='outsep' data-ref="18outsep">outsep</a>, <var>1</var>);</td></tr>
+<tr><th id="402">402</th><td></td></tr>
+<tr><th id="403">403</th><td>      <b>if</b> (<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../../../include/arpa/nameser_compat.h.html#145" title="ns_t_txt" data-ref="_M/T_TXT">T_TXT</a> || <a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../exim.h.html#324" title="99" data-ref="_M/T_SPF">T_SPF</a>)</td></tr>
+<tr><th id="404">404</th><td>        {</td></tr>
+<tr><th id="405">405</th><td>        <b>if</b> (<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)	<i>/* output only the first item of data */</i></td></tr>
+<tr><th id="406">406</th><td>          <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_catn" title='string_catn' data-ref="string_catn">string_catn</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> (<a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a>-&gt;<a class="ref field" href="../structs.h.html#(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</a>+<var>1</var>), (<a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a>-&gt;<a class="ref field" href="../structs.h.html#(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</a>)[<var>0</var>]);</td></tr>
+<tr><th id="407">407</th><td>        <b>else</b></td></tr>
+<tr><th id="408">408</th><td>          {</td></tr>
+<tr><th id="409">409</th><td>          <i>/* output all items */</i></td></tr>
+<tr><th id="410">410</th><td>          <em>int</em> <dfn class="local col5 decl" id="35data_offset" title='data_offset' data-type='int' data-ref="35data_offset">data_offset</dfn> = <var>0</var>;</td></tr>
+<tr><th id="411">411</th><td>          <b>while</b> (<a class="local col5 ref" href="#35data_offset" title='data_offset' data-ref="35data_offset">data_offset</a> &lt; <a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a>-&gt;<a class="ref field" href="../structs.h.html#(anonymous)::size" title='(anonymous struct)::size' data-ref="(anonymous)::size">size</a>)</td></tr>
+<tr><th id="412">412</th><td>            {</td></tr>
+<tr><th id="413">413</th><td>            <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col6 decl" id="36chunk_len" title='chunk_len' data-type='uschar' data-ref="36chunk_len">chunk_len</dfn> = (<a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a>-&gt;<a class="ref field" href="../structs.h.html#(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</a>)[<a class="local col5 ref" href="#35data_offset" title='data_offset' data-ref="35data_offset">data_offset</a>++];</td></tr>
+<tr><th id="414">414</th><td>            <b>if</b> (<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>[<var>0</var>] != <kbd>'\0'</kbd> &amp;&amp; <a class="local col5 ref" href="#35data_offset" title='data_offset' data-ref="35data_offset">data_offset</a> != <var>1</var>)</td></tr>
+<tr><th id="415">415</th><td>              <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_catn" title='string_catn' data-ref="string_catn">string_catn</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>, <var>1</var>);</td></tr>
+<tr><th id="416">416</th><td>            <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_catn" title='string_catn' data-ref="string_catn">string_catn</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> ((<a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a>-&gt;<a class="ref field" href="../structs.h.html#(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</a>)+<a class="local col5 ref" href="#35data_offset" title='data_offset' data-ref="35data_offset">data_offset</a>), <a class="local col6 ref" href="#36chunk_len" title='chunk_len' data-ref="36chunk_len">chunk_len</a>);</td></tr>
+<tr><th id="417">417</th><td>            <a class="local col5 ref" href="#35data_offset" title='data_offset' data-ref="35data_offset">data_offset</a> += <a class="local col6 ref" href="#36chunk_len" title='chunk_len' data-ref="36chunk_len">chunk_len</a>;</td></tr>
+<tr><th id="418">418</th><td>            }</td></tr>
+<tr><th id="419">419</th><td>          }</td></tr>
+<tr><th id="420">420</th><td>        }</td></tr>
+<tr><th id="421">421</th><td>      <b>else</b> <b>if</b> (<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../exim.h.html#329" title="52" data-ref="_M/T_TLSA">T_TLSA</a>)</td></tr>
+<tr><th id="422">422</th><td>        {</td></tr>
+<tr><th id="423">423</th><td>        <a class="typedef" href="../../../include/stdint.h.html#uint8_t" title='uint8_t' data-type='unsigned char' data-ref="uint8_t">uint8_t</a> <dfn class="local col7 decl" id="37usage" title='usage' data-type='uint8_t' data-ref="37usage">usage</dfn>, <dfn class="local col8 decl" id="38selector" title='selector' data-type='uint8_t' data-ref="38selector">selector</dfn>, <dfn class="local col9 decl" id="39matching_type" title='matching_type' data-type='uint8_t' data-ref="39matching_type">matching_type</dfn>;</td></tr>
+<tr><th id="424">424</th><td>        <a class="typedef" href="../../../include/stdint.h.html#uint16_t" title='uint16_t' data-type='unsigned short' data-ref="uint16_t">uint16_t</a> <dfn class="local col0 decl" id="40i" title='i' data-type='uint16_t' data-ref="40i">i</dfn>, <dfn class="local col1 decl" id="41payload_length" title='payload_length' data-type='uint16_t' data-ref="41payload_length">payload_length</dfn>;</td></tr>
+<tr><th id="425">425</th><td>        <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col2 decl" id="42s" title='s' data-type='uschar [8192]' data-ref="42s">s</dfn>[<a class="macro" href="../exim.h.html#331" title="8192" data-ref="_M/MAX_TLSA_EXPANDED_SIZE">MAX_TLSA_EXPANDED_SIZE</a>];</td></tr>
+<tr><th id="426">426</th><td>	<a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="local col3 decl" id="43sp" title='sp' data-type='uschar *' data-ref="43sp">sp</dfn> = <a class="local col2 ref" href="#42s" title='s' data-ref="42s">s</a>;</td></tr>
+<tr><th id="427">427</th><td>        <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="local col4 decl" id="44p" title='p' data-type='uschar *' data-ref="44p">p</dfn> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a>-&gt;<a class="ref field" href="../structs.h.html#(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</a>;</td></tr>
+<tr><th id="428">428</th><td></td></tr>
+<tr><th id="429">429</th><td>        <a class="local col7 ref" href="#37usage" title='usage' data-ref="37usage">usage</a> = *<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a>++;</td></tr>
+<tr><th id="430">430</th><td>        <a class="local col8 ref" href="#38selector" title='selector' data-ref="38selector">selector</a> = *<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a>++;</td></tr>
+<tr><th id="431">431</th><td>        <a class="local col9 ref" href="#39matching_type" title='matching_type' data-ref="39matching_type">matching_type</a> = *<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a>++;</td></tr>
+<tr><th id="432">432</th><td>        <i>/* What's left after removing the first 3 bytes above */</i></td></tr>
+<tr><th id="433">433</th><td>        <a class="local col1 ref" href="#41payload_length" title='payload_length' data-ref="41payload_length">payload_length</a> = <a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a>-&gt;<a class="ref field" href="../structs.h.html#(anonymous)::size" title='(anonymous struct)::size' data-ref="(anonymous)::size">size</a> - <var>3</var>;</td></tr>
+<tr><th id="434">434</th><td>        <a class="local col3 ref" href="#43sp" title='sp' data-ref="43sp">sp</a> += <a class="ref fn" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col2 ref" href="#42s" title='s' data-ref="42s">s</a>, <q>"%d%c%d%c%d%c"</q>, <a class="local col7 ref" href="#37usage" title='usage' data-ref="37usage">usage</a>, *<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>,</td></tr>
+<tr><th id="435">435</th><td>		<a class="local col8 ref" href="#38selector" title='selector' data-ref="38selector">selector</a>, *<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>, <a class="local col9 ref" href="#39matching_type" title='matching_type' data-ref="39matching_type">matching_type</a>, *<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>);</td></tr>
+<tr><th id="436">436</th><td>        <i>/* Now append the cert/identifier, one hex char at a time */</i></td></tr>
+<tr><th id="437">437</th><td>        <b>for</b> (<a class="local col0 ref" href="#40i" title='i' data-ref="40i">i</a>=<var>0</var>;</td></tr>
+<tr><th id="438">438</th><td>             <a class="local col0 ref" href="#40i" title='i' data-ref="40i">i</a> &lt; <a class="local col1 ref" href="#41payload_length" title='payload_length' data-ref="41payload_length">payload_length</a> &amp;&amp; <a class="local col3 ref" href="#43sp" title='sp' data-ref="43sp">sp</a>-<a class="local col2 ref" href="#42s" title='s' data-ref="42s">s</a> &lt; (<a class="macro" href="../exim.h.html#331" title="8192" data-ref="_M/MAX_TLSA_EXPANDED_SIZE">MAX_TLSA_EXPANDED_SIZE</a> - <var>4</var>);</td></tr>
+<tr><th id="439">439</th><td>             <a class="local col0 ref" href="#40i" title='i' data-ref="40i">i</a>++)</td></tr>
+<tr><th id="440">440</th><td>          <a class="local col3 ref" href="#43sp" title='sp' data-ref="43sp">sp</a> += <a class="ref fn" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col3 ref" href="#43sp" title='sp' data-ref="43sp">sp</a>, <q>"%02x"</q>, (<em>unsigned</em> <em>char</em>)<a class="local col4 ref" href="#44p" title='p' data-ref="44p">p</a>[<a class="local col0 ref" href="#40i" title='i' data-ref="40i">i</a>]);</td></tr>
+<tr><th id="441">441</th><td></td></tr>
+<tr><th id="442">442</th><td>        <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_cat" title='string_cat' data-ref="string_cat">string_cat</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="local col2 ref" href="#42s" title='s' data-ref="42s">s</a>);</td></tr>
+<tr><th id="443">443</th><td>        }</td></tr>
+<tr><th id="444">444</th><td>      <b>else</b>   <i>/* T_CNAME, T_CSA, T_MX, T_MXH, T_NS, T_PTR, T_SOA, T_SRV */</i></td></tr>
+<tr><th id="445">445</th><td>        {</td></tr>
+<tr><th id="446">446</th><td>        <em>int</em> <dfn class="local col5 decl" id="45priority" title='priority' data-type='int' data-ref="45priority">priority</dfn>, <dfn class="local col6 decl" id="46weight" title='weight' data-type='int' data-ref="46weight">weight</dfn>, <dfn class="local col7 decl" id="47port" title='port' data-type='int' data-ref="47port">port</dfn>;</td></tr>
+<tr><th id="447">447</th><td>        <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col8 decl" id="48s" title='s' data-type='uschar [264]' data-ref="48s">s</dfn>[<var>264</var>];</td></tr>
+<tr><th id="448">448</th><td>        <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="local col9 decl" id="49p" title='p' data-type='uschar *' data-ref="49p">p</dfn> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="local col4 ref" href="#24rr" title='rr' data-ref="24rr">rr</a>-&gt;<a class="ref field" href="../structs.h.html#(anonymous)::data" title='(anonymous struct)::data' data-ref="(anonymous)::data">data</a>;</td></tr>
+<tr><th id="449">449</th><td></td></tr>
+<tr><th id="450">450</th><td>	<b>switch</b> (<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a>)</td></tr>
+<tr><th id="451">451</th><td>	  {</td></tr>
+<tr><th id="452">452</th><td>	  <b>case</b> <a class="macro" href="../exim.h.html#378" title="(-2)" data-ref="_M/T_MXH">T_MXH</a>:</td></tr>
+<tr><th id="453">453</th><td>	    <i>/* mxh ignores the priority number and includes only the hostnames */</i></td></tr>
+<tr><th id="454">454</th><td>	    <a class="macro" href="../../../include/arpa/nameser_compat.h.html#181" title="NS_GET16" data-ref="_M/GETSHORT">GETSHORT</a>(<a class="local col5 ref" href="#45priority" title='priority' data-ref="45priority">priority</a>, <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>);</td></tr>
+<tr><th id="455">455</th><td>	    <b>break</b>;</td></tr>
+<tr><th id="456">456</th><td></td></tr>
+<tr><th id="457">457</th><td>	  <b>case</b> <a class="macro" href="../../../include/arpa/nameser_compat.h.html#144" title="ns_t_mx" data-ref="_M/T_MX">T_MX</a>:</td></tr>
+<tr><th id="458">458</th><td>	    <a class="macro" href="../../../include/arpa/nameser_compat.h.html#181" title="NS_GET16" data-ref="_M/GETSHORT">GETSHORT</a>(<a class="local col5 ref" href="#45priority" title='priority' data-ref="45priority">priority</a>, <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>);</td></tr>
+<tr><th id="459">459</th><td>	    <a class="ref fn" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>, <q>"%d%c"</q>, <a class="local col5 ref" href="#45priority" title='priority' data-ref="45priority">priority</a>, *<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>);</td></tr>
+<tr><th id="460">460</th><td>	    <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_cat" title='string_cat' data-ref="string_cat">string_cat</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>);</td></tr>
+<tr><th id="461">461</th><td>	    <b>break</b>;</td></tr>
+<tr><th id="462">462</th><td></td></tr>
+<tr><th id="463">463</th><td>	  <b>case</b> <a class="macro" href="../../../include/arpa/nameser_compat.h.html#162" title="ns_t_srv" data-ref="_M/T_SRV">T_SRV</a>:</td></tr>
+<tr><th id="464">464</th><td>	    <a class="macro" href="../../../include/arpa/nameser_compat.h.html#181" title="NS_GET16" data-ref="_M/GETSHORT">GETSHORT</a>(<a class="local col5 ref" href="#45priority" title='priority' data-ref="45priority">priority</a>, <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>);</td></tr>
+<tr><th id="465">465</th><td>	    <a class="macro" href="../../../include/arpa/nameser_compat.h.html#181" title="NS_GET16" data-ref="_M/GETSHORT">GETSHORT</a>(<a class="local col6 ref" href="#46weight" title='weight' data-ref="46weight">weight</a>, <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>);</td></tr>
+<tr><th id="466">466</th><td>	    <a class="macro" href="../../../include/arpa/nameser_compat.h.html#181" title="NS_GET16" data-ref="_M/GETSHORT">GETSHORT</a>(<a class="local col7 ref" href="#47port" title='port' data-ref="47port">port</a>, <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>);</td></tr>
+<tr><th id="467">467</th><td>	    <a class="ref fn" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>, <q>"%d%c%d%c%d%c"</q>, <a class="local col5 ref" href="#45priority" title='priority' data-ref="45priority">priority</a>, *<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>,</td></tr>
+<tr><th id="468">468</th><td>			      <a class="local col6 ref" href="#46weight" title='weight' data-ref="46weight">weight</a>, *<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>, <a class="local col7 ref" href="#47port" title='port' data-ref="47port">port</a>, *<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>);</td></tr>
+<tr><th id="469">469</th><td>	    <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_cat" title='string_cat' data-ref="string_cat">string_cat</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>);</td></tr>
+<tr><th id="470">470</th><td>	    <b>break</b>;</td></tr>
+<tr><th id="471">471</th><td></td></tr>
+<tr><th id="472">472</th><td>	  <b>case</b> <a class="macro" href="../exim.h.html#379" title="(-3)" data-ref="_M/T_CSA">T_CSA</a>:</td></tr>
+<tr><th id="473">473</th><td>	    <i>/* See acl_verify_csa() for more comments about CSA. */</i></td></tr>
+<tr><th id="474">474</th><td>	    <a class="macro" href="../../../include/arpa/nameser_compat.h.html#181" title="NS_GET16" data-ref="_M/GETSHORT">GETSHORT</a>(<a class="local col5 ref" href="#45priority" title='priority' data-ref="45priority">priority</a>, <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>);</td></tr>
+<tr><th id="475">475</th><td>	    <a class="macro" href="../../../include/arpa/nameser_compat.h.html#181" title="NS_GET16" data-ref="_M/GETSHORT">GETSHORT</a>(<a class="local col6 ref" href="#46weight" title='weight' data-ref="46weight">weight</a>, <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>);</td></tr>
+<tr><th id="476">476</th><td>	    <a class="macro" href="../../../include/arpa/nameser_compat.h.html#181" title="NS_GET16" data-ref="_M/GETSHORT">GETSHORT</a>(<a class="local col7 ref" href="#47port" title='port' data-ref="47port">port</a>, <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>);</td></tr>
+<tr><th id="477">477</th><td></td></tr>
+<tr><th id="478">478</th><td>	    <b>if</b> (<a class="local col5 ref" href="#45priority" title='priority' data-ref="45priority">priority</a> != <var>1</var>) <b>continue</b>;      <i>/* CSA version must be 1 */</i></td></tr>
+<tr><th id="479">479</th><td></td></tr>
+<tr><th id="480">480</th><td>	    <i>/* If the CSA record we found is not the one we asked for, analyse</i></td></tr>
+<tr><th id="481">481</th><td><i>	    the subdomain assertions in the port field, else analyse the direct</i></td></tr>
+<tr><th id="482">482</th><td><i>	    authorization status in the weight field. */</i></td></tr>
+<tr><th id="483">483</th><td></td></tr>
+<tr><th id="484">484</th><td>	    <b>if</b> (<a class="macro" href="../mytypes.h.html#100" title="__extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p ((const char *)(found)) &amp;&amp; __builtin_constant_p ((const char *)(domain)) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(found)), __s2_len = __builtin_strlen ((const char *)(domain)), (!((size_t)(const void *)(((const char *)(found)) + 1) - (size_t)(const void *)((const char *)(found)) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)(((const char *)(domain)) + 1) - (size_t)(const void *)((const char *)(domain)) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp ((const char *)(found), (const char *)(domain)) : (__builtin_constant_p ((const char *)(found)) &amp;&amp; ((size_t)(const void *)(((const char *)(found)) + 1) - (size_t)(const void *)((const char *)(found)) == 1) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(found)), __s1_len &lt; 4) ? (__builtin_constant_p ((const char *)(domain)) &amp;&amp; ((size_t)(const void *)(((const char *)(domain)) + 1) - (size_t)(const void *)((const char *)(domain)) == 1) ? __builtin_strcmp ((const char *)(found), (const char *)(domain)) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(domain)); int __result = (((const unsigned char *) (const char *) ((const char *)(found)))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(found)))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(found)))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(found)))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p ((const char *)(domain)) &amp;&amp; ((size_t)(const void *)(((const char *)(domain)) + 1) - (size_t)(const void *)((const char *)(domain)) == 1) &amp;&amp; (__s2_len = __builtin_strlen ((const char *)(domain)), __s2_len &lt; 4) ? (__builtin_constant_p ((const char *)(found)) &amp;&amp; ((size_t)(const void *)(((const char *)(found)) + 1) - (size_t)(const void *)((const char *)(found)) == 1) ? __builtin_strcmp ((const char *)(found), (const char *)(domain)) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(found)); int __result = (((const unsigned char *) (const char *) ((const char *)(domain)))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(domain)))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(domain)))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(domain)))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp ((const char *)(found), (const char *)(domain))))); })" data-ref="_M/Ustrcmp">Ustrcmp</a>(<a class="local col2 ref" href="#22found" title='found' data-ref="22found">found</a>, <a class="local col1 ref" href="#21domain" title='domain' data-ref="21domain">domain</a>) != <var>0</var>)</td></tr>
+<tr><th id="485">485</th><td>	      {</td></tr>
+<tr><th id="486">486</th><td>	      <b>if</b> (<a class="local col7 ref" href="#47port" title='port' data-ref="47port">port</a> &amp; <var>1</var>) *<a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a> = <kbd>'X'</kbd>;         <i>/* explicit authorization required */</i></td></tr>
+<tr><th id="487">487</th><td>	      <b>else</b> *<a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a> = <kbd>'?'</kbd>;                  <i>/* no subdomain assertions here */</i></td></tr>
+<tr><th id="488">488</th><td>	      }</td></tr>
+<tr><th id="489">489</th><td>	    <b>else</b></td></tr>
+<tr><th id="490">490</th><td>	      {</td></tr>
+<tr><th id="491">491</th><td>	      <b>if</b> (<a class="local col6 ref" href="#46weight" title='weight' data-ref="46weight">weight</a> &lt; <var>2</var>) *<a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a> = <kbd>'N'</kbd>;       <i>/* not authorized */</i></td></tr>
+<tr><th id="492">492</th><td>	      <b>else</b> <b>if</b> (<a class="local col6 ref" href="#46weight" title='weight' data-ref="46weight">weight</a> == <var>2</var>) *<a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a> = <kbd>'Y'</kbd>; <i>/* authorized */</i></td></tr>
+<tr><th id="493">493</th><td>	      <b>else</b> <b>if</b> (<a class="local col6 ref" href="#46weight" title='weight' data-ref="46weight">weight</a> == <var>3</var>) *<a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a> = <kbd>'?'</kbd>; <i>/* unauthorizable */</i></td></tr>
+<tr><th id="494">494</th><td>	      <b>else</b> <b>continue</b>;                  <i>/* invalid */</i></td></tr>
+<tr><th id="495">495</th><td>	      }</td></tr>
+<tr><th id="496">496</th><td></td></tr>
+<tr><th id="497">497</th><td>	    <a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>[<var>1</var>] = <kbd>' '</kbd>;</td></tr>
+<tr><th id="498">498</th><td>	    <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_catn" title='string_catn' data-ref="string_catn">string_catn</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>, <var>2</var>);</td></tr>
+<tr><th id="499">499</th><td>	    <b>break</b>;</td></tr>
+<tr><th id="500">500</th><td></td></tr>
+<tr><th id="501">501</th><td>	  <b>default</b>:</td></tr>
+<tr><th id="502">502</th><td>	    <b>break</b>;</td></tr>
+<tr><th id="503">503</th><td>	  }</td></tr>
+<tr><th id="504">504</th><td></td></tr>
+<tr><th id="505">505</th><td>        <i>/* GETSHORT() has advanced the pointer to the target domain. */</i></td></tr>
+<tr><th id="506">506</th><td></td></tr>
+<tr><th id="507">507</th><td>        <a class="local col0 ref" href="#10rc" title='rc' data-ref="10rc">rc</a> = <a class="macro" href="../../../include/resolv.h.html#289" title="__dn_expand" data-ref="_M/dn_expand">dn_expand</a>(<a class="local col5 ref" href="#25dnsa" title='dnsa' data-ref="25dnsa">dnsa</a>.<a class="ref field" href="../structs.h.html#(anonymous)::answer" title='(anonymous struct)::answer' data-ref="(anonymous)::answer">answer</a>, <a class="local col5 ref" href="#25dnsa" title='dnsa' data-ref="25dnsa">dnsa</a>.<a class="ref field" href="../structs.h.html#(anonymous)::answer" title='(anonymous struct)::answer' data-ref="(anonymous)::answer">answer</a> + <a class="local col5 ref" href="#25dnsa" title='dnsa' data-ref="25dnsa">dnsa</a>.<a class="ref field" href="../structs.h.html#(anonymous)::answerlen" title='(anonymous struct)::answerlen' data-ref="(anonymous)::answerlen">answerlen</a>, <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>,</td></tr>
+<tr><th id="508">508</th><td>          (<a class="macro" href="../exim.h.html#445" title="char *" data-ref="_M/DN_EXPAND_ARG4_TYPE">DN_EXPAND_ARG4_TYPE</a>)<a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>, <b>sizeof</b>(<a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>));</td></tr>
+<tr><th id="509">509</th><td></td></tr>
+<tr><th id="510">510</th><td>        <i>/* If an overlong response was received, the data will have been</i></td></tr>
+<tr><th id="511">511</th><td><i>        truncated and dn_expand may fail. */</i></td></tr>
+<tr><th id="512">512</th><td></td></tr>
+<tr><th id="513">513</th><td>        <b>if</b> (<a class="local col0 ref" href="#10rc" title='rc' data-ref="10rc">rc</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="514">514</th><td>          {</td></tr>
+<tr><th id="515">515</th><td>          <a class="ref fn" href="../local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="../macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"host name alias list truncated: type=%s "</q></td></tr>
+<tr><th id="516">516</th><td>            <q>"domain=%s"</q>, <a class="ref fn" href="../functions.h.html#dns_text_type" title='dns_text_type' data-ref="dns_text_type">dns_text_type</a>(<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a>), <a class="local col1 ref" href="#21domain" title='domain' data-ref="21domain">domain</a>);</td></tr>
+<tr><th id="517">517</th><td>          <b>break</b>;</td></tr>
+<tr><th id="518">518</th><td>          }</td></tr>
+<tr><th id="519">519</th><td>        <b>else</b> <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_cat" title='string_cat' data-ref="string_cat">string_cat</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>);</td></tr>
+<tr><th id="520">520</th><td></td></tr>
+<tr><th id="521">521</th><td>	<b>if</b> (<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../../../include/arpa/nameser_compat.h.html#135" title="ns_t_soa" data-ref="_M/T_SOA">T_SOA</a> &amp;&amp; <a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="522">522</th><td>	  {</td></tr>
+<tr><th id="523">523</th><td>	  <em>unsigned</em> <em>long</em> <dfn class="local col0 decl" id="50serial" title='serial' data-type='unsigned long' data-ref="50serial">serial</dfn>, <dfn class="local col1 decl" id="51refresh" title='refresh' data-type='unsigned long' data-ref="51refresh">refresh</dfn>, <dfn class="local col2 decl" id="52retry" title='retry' data-type='unsigned long' data-ref="52retry">retry</dfn>, <dfn class="local col3 decl" id="53expire" title='expire' data-type='unsigned long' data-ref="53expire">expire</dfn>, <dfn class="local col4 decl" id="54minimum" title='minimum' data-type='unsigned long' data-ref="54minimum">minimum</dfn>;</td></tr>
+<tr><th id="524">524</th><td></td></tr>
+<tr><th id="525">525</th><td>	  <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a> += <a class="local col0 ref" href="#10rc" title='rc' data-ref="10rc">rc</a>;</td></tr>
+<tr><th id="526">526</th><td>	  <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_catn" title='string_catn' data-ref="string_catn">string_catn</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>, <var>1</var>);</td></tr>
+<tr><th id="527">527</th><td></td></tr>
+<tr><th id="528">528</th><td>	  <a class="local col0 ref" href="#10rc" title='rc' data-ref="10rc">rc</a> = <a class="macro" href="../../../include/resolv.h.html#289" title="__dn_expand" data-ref="_M/dn_expand">dn_expand</a>(<a class="local col5 ref" href="#25dnsa" title='dnsa' data-ref="25dnsa">dnsa</a>.<a class="ref field" href="../structs.h.html#(anonymous)::answer" title='(anonymous struct)::answer' data-ref="(anonymous)::answer">answer</a>, <a class="local col5 ref" href="#25dnsa" title='dnsa' data-ref="25dnsa">dnsa</a>.<a class="ref field" href="../structs.h.html#(anonymous)::answer" title='(anonymous struct)::answer' data-ref="(anonymous)::answer">answer</a> + <a class="local col5 ref" href="#25dnsa" title='dnsa' data-ref="25dnsa">dnsa</a>.<a class="ref field" href="../structs.h.html#(anonymous)::answerlen" title='(anonymous struct)::answerlen' data-ref="(anonymous)::answerlen">answerlen</a>, <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>,</td></tr>
+<tr><th id="529">529</th><td>	    (<a class="macro" href="../exim.h.html#445" title="char *" data-ref="_M/DN_EXPAND_ARG4_TYPE">DN_EXPAND_ARG4_TYPE</a>)<a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>, <b>sizeof</b>(<a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>));</td></tr>
+<tr><th id="530">530</th><td>	  <b>if</b> (<a class="local col0 ref" href="#10rc" title='rc' data-ref="10rc">rc</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="531">531</th><td>	    {</td></tr>
+<tr><th id="532">532</th><td>	    <a class="ref fn" href="../local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="../macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"responsible-mailbox truncated: type=%s "</q></td></tr>
+<tr><th id="533">533</th><td>	      <q>"domain=%s"</q>, <a class="ref fn" href="../functions.h.html#dns_text_type" title='dns_text_type' data-ref="dns_text_type">dns_text_type</a>(<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a>), <a class="local col1 ref" href="#21domain" title='domain' data-ref="21domain">domain</a>);</td></tr>
+<tr><th id="534">534</th><td>	    <b>break</b>;</td></tr>
+<tr><th id="535">535</th><td>	    }</td></tr>
+<tr><th id="536">536</th><td>	  <b>else</b> <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_cat" title='string_cat' data-ref="string_cat">string_cat</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>);</td></tr>
+<tr><th id="537">537</th><td></td></tr>
+<tr><th id="538">538</th><td>	  <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a> += <a class="local col0 ref" href="#10rc" title='rc' data-ref="10rc">rc</a>;</td></tr>
+<tr><th id="539">539</th><td>	  <a class="macro" href="../../../include/arpa/nameser_compat.h.html#182" title="NS_GET32" data-ref="_M/GETLONG">GETLONG</a>(<a class="local col0 ref" href="#50serial" title='serial' data-ref="50serial">serial</a>, <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>); <a class="macro" href="../../../include/arpa/nameser_compat.h.html#182" title="NS_GET32" data-ref="_M/GETLONG">GETLONG</a>(<a class="local col1 ref" href="#51refresh" title='refresh' data-ref="51refresh">refresh</a>, <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>);</td></tr>
+<tr><th id="540">540</th><td>	  <a class="macro" href="../../../include/arpa/nameser_compat.h.html#182" title="NS_GET32" data-ref="_M/GETLONG">GETLONG</a>(<a class="local col2 ref" href="#52retry" title='retry' data-ref="52retry">retry</a>,  <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>); <a class="macro" href="../../../include/arpa/nameser_compat.h.html#182" title="NS_GET32" data-ref="_M/GETLONG">GETLONG</a>(<a class="local col3 ref" href="#53expire" title='expire' data-ref="53expire">expire</a>,  <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>); <a class="macro" href="../../../include/arpa/nameser_compat.h.html#182" title="NS_GET32" data-ref="_M/GETLONG">GETLONG</a>(<a class="local col4 ref" href="#54minimum" title='minimum' data-ref="54minimum">minimum</a>, <a class="local col9 ref" href="#49p" title='p' data-ref="49p">p</a>);</td></tr>
+<tr><th id="541">541</th><td>	  <a class="ref fn" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>, <q>"%c%lu%c%lu%c%lu%c%lu%c%lu"</q>,</td></tr>
+<tr><th id="542">542</th><td>	    *<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>, <a class="local col0 ref" href="#50serial" title='serial' data-ref="50serial">serial</a>, *<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>, <a class="local col1 ref" href="#51refresh" title='refresh' data-ref="51refresh">refresh</a>,</td></tr>
+<tr><th id="543">543</th><td>	    *<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>, <a class="local col2 ref" href="#52retry" title='retry' data-ref="52retry">retry</a>,  *<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>, <a class="local col3 ref" href="#53expire" title='expire' data-ref="53expire">expire</a>,  *<a class="local col9 ref" href="#19outsep2" title='outsep2' data-ref="19outsep2">outsep2</a>, <a class="local col4 ref" href="#54minimum" title='minimum' data-ref="54minimum">minimum</a>);</td></tr>
+<tr><th id="544">544</th><td>	  <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> = <a class="ref fn" href="../functions.h.html#string_cat" title='string_cat' data-ref="string_cat">string_cat</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>, <a class="local col8 ref" href="#48s" title='s' data-ref="48s">s</a>);</td></tr>
+<tr><th id="545">545</th><td>	  }</td></tr>
+<tr><th id="546">546</th><td>        }</td></tr>
+<tr><th id="547">547</th><td>      }    <i>/* Loop for list of returned records */</i></td></tr>
+<tr><th id="548">548</th><td></td></tr>
+<tr><th id="549">549</th><td>           <i>/* Loop for set of A-lookup types */</i></td></tr>
+<tr><th id="550">550</th><td>    } <b>while</b> (<a class="local col6 ref" href="#16type" title='type' data-ref="16type">type</a> == <a class="macro" href="../exim.h.html#380" title="(-4)" data-ref="_M/T_ADDRESSES">T_ADDRESSES</a> &amp;&amp; <a class="local col3 ref" href="#33searchtype" title='searchtype' data-ref="33searchtype">searchtype</a> != <a class="macro" href="../../../include/arpa/nameser_compat.h.html#130" title="ns_t_a" data-ref="_M/T_A">T_A</a>);</td></tr>
+<tr><th id="551">551</th><td></td></tr>
+<tr><th id="552">552</th><td>  }        <i>/* Loop for list of domains */</i></td></tr>
+<tr><th id="553">553</th><td></td></tr>
+<tr><th id="554">554</th><td><i>/* Reclaim unused memory */</i></td></tr>
+<tr><th id="555">555</th><td></td></tr>
+<tr><th id="556">556</th><td><a class="macro" href="../store.h.html#39" title="store_reset_3(yield-&gt;s + yield-&gt;ptr + 1, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/lookups/dnsdb.c&quot;, 556)" data-ref="_M/store_reset">store_reset</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>-&gt;<a class="ref field" href="../structs.h.html#gstring::s" title='gstring::s' data-ref="gstring::s">s</a> + <a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>-&gt;<a class="ref field" href="../structs.h.html#gstring::ptr" title='gstring::ptr' data-ref="gstring::ptr">ptr</a> + <var>1</var>);</td></tr>
+<tr><th id="557">557</th><td></td></tr>
+<tr><th id="558">558</th><td><i>/* If yield NULL we have not found anything. Otherwise, insert the terminating</i></td></tr>
+<tr><th id="559">559</th><td><i>zero and return the result. */</i></td></tr>
+<tr><th id="560">560</th><td></td></tr>
+<tr><th id="561">561</th><td><a class="ref" href="../globals.h.html#dns_retrans" title='dns_retrans' data-ref="dns_retrans">dns_retrans</a> = <a class="local col4 ref" href="#14save_retrans" title='save_retrans' data-ref="14save_retrans">save_retrans</a>;</td></tr>
+<tr><th id="562">562</th><td><a class="ref" href="../globals.h.html#dns_retry" title='dns_retry' data-ref="dns_retry">dns_retry</a> = <a class="local col5 ref" href="#15save_retry" title='save_retry' data-ref="15save_retry">save_retry</a>;</td></tr>
+<tr><th id="563">563</th><td><a class="ref fn" href="../functions.h.html#dns_init" title='dns_init' data-ref="dns_init">dns_init</a>(<a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>);	<i>/* clear the dnssec bit for getaddrbyname */</i></td></tr>
+<tr><th id="564">564</th><td></td></tr>
+<tr><th id="565">565</th><td><b>if</b> (!<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a> || !<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>-&gt;<a class="ref field" href="../structs.h.html#gstring::ptr" title='gstring::ptr' data-ref="gstring::ptr">ptr</a>) <b>return</b> <a class="local col7 ref" href="#17failrc" title='failrc' data-ref="17failrc">failrc</a>;</td></tr>
+<tr><th id="566">566</th><td></td></tr>
+<tr><th id="567">567</th><td>*<a class="local col7 ref" href="#7result" title='result' data-ref="7result">result</a> = <a class="ref fn" href="../functions.h.html#string_from_gstring" title='string_from_gstring' data-ref="string_from_gstring">string_from_gstring</a>(<a class="local col3 ref" href="#23yield" title='yield' data-ref="23yield">yield</a>);</td></tr>
+<tr><th id="568">568</th><td><b>return</b> <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>;</td></tr>
+<tr><th id="569">569</th><td>}</td></tr>
+<tr><th id="570">570</th><td></td></tr>
+<tr><th id="571">571</th><td></td></tr>
+<tr><th id="572">572</th><td></td></tr>
+<tr><th id="573">573</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="574">574</th><td><i>*         Version reporting entry point          *</i></td></tr>
+<tr><th id="575">575</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="576">576</th><td></td></tr>
+<tr><th id="577">577</th><td><i>/* See local README for interface description. */</i></td></tr>
+<tr><th id="578">578</th><td></td></tr>
+<tr><th id="579">579</th><td><u>#include <a href="../../build-Linux-x86_64/version.h.html">"../version.h"</a></u></td></tr>
+<tr><th id="580">580</th><td></td></tr>
+<tr><th id="581">581</th><td><em>void</em></td></tr>
+<tr><th id="582">582</th><td><dfn class="decl def fn" id="dnsdb_version_report" title='dnsdb_version_report' data-ref="dnsdb_version_report">dnsdb_version_report</dfn>(<a class="typedef" href="../../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col5 decl" id="55f" title='f' data-type='FILE *' data-ref="55f">f</dfn>)</td></tr>
+<tr><th id="583">583</th><td>{</td></tr>
+<tr><th id="584">584</th><td><u>#<span data-ppcond="584">ifdef</span> <span class="macro" data-ref="_M/DYNLOOKUP">DYNLOOKUP</span></u></td></tr>
+<tr><th id="585">585</th><td>fprintf(f, <q>"Library version: DNSDB: Exim version %s\n"</q>, EXIM_VERSION_STR);</td></tr>
+<tr><th id="586">586</th><td><u>#<span data-ppcond="584">endif</span></u></td></tr>
+<tr><th id="587">587</th><td>}</td></tr>
+<tr><th id="588">588</th><td></td></tr>
+<tr><th id="589">589</th><td></td></tr>
+<tr><th id="590">590</th><td><em>static</em> <a class="typedef" href="../lookupapi.h.html#lookup_info" title='lookup_info' data-type='struct lookup_info' data-ref="lookup_info">lookup_info</a> <dfn class="tu decl def" id="_lookup_info" title='_lookup_info' data-type='lookup_info' data-ref="_lookup_info">_lookup_info</dfn> = {</td></tr>
+<tr><th id="591">591</th><td>  <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"dnsdb"</q>,                     <i>/* lookup name */</i></td></tr>
+<tr><th id="592">592</th><td>  <a class="macro" href="../macros.h.html#736" title="1" data-ref="_M/lookup_querystyle">lookup_querystyle</a>,             <i>/* query style */</i></td></tr>
+<tr><th id="593">593</th><td>  <a class="tu ref fn" href="#dnsdb_open" title='dnsdb_open' data-ref="dnsdb_open">dnsdb_open</a>,                    <i>/* open function */</i></td></tr>
+<tr><th id="594">594</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,                          <i>/* check function */</i></td></tr>
+<tr><th id="595">595</th><td>  <a class="tu ref fn" href="#dnsdb_find" title='dnsdb_find' data-ref="dnsdb_find">dnsdb_find</a>,                    <i>/* find function */</i></td></tr>
+<tr><th id="596">596</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,                          <i>/* no close function */</i></td></tr>
+<tr><th id="597">597</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,                          <i>/* no tidy function */</i></td></tr>
+<tr><th id="598">598</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,                          <i>/* no quoting function */</i></td></tr>
+<tr><th id="599">599</th><td>  <a class="ref fn" href="#dnsdb_version_report" title='dnsdb_version_report' data-ref="dnsdb_version_report">dnsdb_version_report</a>           <i>/* version reporting */</i></td></tr>
+<tr><th id="600">600</th><td>};</td></tr>
+<tr><th id="601">601</th><td></td></tr>
+<tr><th id="602">602</th><td><u>#<span data-ppcond="602">ifdef</span> <span class="macro" data-ref="_M/DYNLOOKUP">DYNLOOKUP</span></u></td></tr>
+<tr><th id="603">603</th><td><u>#define dnsdb_lookup_module_info _lookup_module_info</u></td></tr>
+<tr><th id="604">604</th><td><u>#<span data-ppcond="602">endif</span></u></td></tr>
+<tr><th id="605">605</th><td></td></tr>
+<tr><th id="606">606</th><td><em>static</em> <a class="typedef" href="../lookupapi.h.html#lookup_info" title='lookup_info' data-type='struct lookup_info' data-ref="lookup_info">lookup_info</a> *<dfn class="tu decl def" id="_lookup_list" title='_lookup_list' data-type='lookup_info *[1]' data-ref="_lookup_list">_lookup_list</dfn>[] = { &amp;<a class="tu ref" href="#_lookup_info" title='_lookup_info' data-use='a' data-ref="_lookup_info">_lookup_info</a> };</td></tr>
+<tr><th id="607">607</th><td><a class="typedef" href="../lookupapi.h.html#lookup_module_info" title='lookup_module_info' data-type='struct lookup_module_info' data-ref="lookup_module_info">lookup_module_info</a> <dfn class="decl def" id="dnsdb_lookup_module_info" title='dnsdb_lookup_module_info' data-ref="dnsdb_lookup_module_info">dnsdb_lookup_module_info</dfn> = { <a class="macro" href="../lookupapi.h.html#50" title="0x4c4d4933" data-ref="_M/LOOKUP_MODULE_INFO_MAGIC">LOOKUP_MODULE_INFO_MAGIC</a>, <a class="tu ref" href="#_lookup_list" title='_lookup_list' data-ref="_lookup_list">_lookup_list</a>, <var>1</var> };</td></tr>
+<tr><th id="608">608</th><td></td></tr>
+<tr><th id="609">609</th><td><i>/* vi: aw ai sw=2</i></td></tr>
+<tr><th id="610">610</th><td><i>*/</i></td></tr>
+<tr><th id="611">611</th><td><i>/* End of lookups/dnsdb.c */</i></td></tr>
+<tr><th id="612">612</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,2 +1,8 @@
 <dec f='include/openssl/bio.h' l='449'/>
 <doc f='include/openssl/bio.h' l='447'>/* #define BIO_set_md(b,md)     BIO_ctrl(b,BIO_C_SET_MD,1,(char *)md) */</doc>
+<use f='exim/src/tlscert-openssl.c' l='113' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='129' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='257' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='283' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='332' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='484' u='c'/>

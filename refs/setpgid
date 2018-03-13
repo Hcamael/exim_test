@@ -2,3 +2,4 @@
 <doc f='include/unistd.h' l='646'>/* Set the process group ID of the process matching PID to PGID.
    If PID is zero, the current process&apos;s process group ID is set.
    If PGID is zero, the process ID of the process is used.  */</doc>
+<use f='exim/src/child.c' l='377' u='c' c='child_open_uid'/>

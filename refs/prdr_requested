@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='654' type='BOOL'/>
 <doc f='exim/src/globals.h' l='654'>/* Connecting mail server wants PRDR */</doc>
+<def f='exim/src/globals.c' l='173' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='2008' u='w' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='4605' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4760' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4768' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/acl.c' l='3257' u='r' c='acl_check_condition'/>
+<use f='exim/src/expand.c' l='621' u='a'/>
+<use f='exim/src/expand.c' l='621' u='a'/>
+<use f='exim/src/expand.c' l='621' u='a'/>
+<use f='exim/src/expand.c' l='621' u='a'/>
+<use f='exim/src/receive.c' l='3457' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3524' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3936' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4169' u='r' c='receive_msg'/>

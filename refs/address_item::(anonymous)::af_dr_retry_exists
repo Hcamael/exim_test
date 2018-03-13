@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='582' type='BOOL'/>
 <offset>3</offset>
 <doc f='exim/src/structs.h' l='582'>/* router retry record exists */</doc>
+<use f='exim/src/deliver.c' l='6671' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6755' u='r' c='deliver_message'/>

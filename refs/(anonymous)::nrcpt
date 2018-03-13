@@ -1,3 +1,9 @@
 <dec f='exim/src/globals.h' l='310' type='int'/>
 <offset>64</offset>
 <doc f='exim/src/globals.h' l='310'>/* Count of addresses */</doc>
+<use f='exim/src/verify.c' l='429' u='w' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='1048' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='1386' u='w' c='close_cutthrough_connection'/>
+<use f='exim/src/globals.c' l='553' u='w'/>
+<use f='exim/src/acl.c' l='4423' u='r' c='acl_check'/>
+<use f='exim/src/acl.c' l='4443' u='r' c='acl_check'/>

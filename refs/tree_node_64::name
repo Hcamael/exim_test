@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='706' type='uschar [64]'/>
 <offset>200</offset>
 <doc f='exim/src/structs.h' l='706'>/* node name - bounded length */</doc>
+<use f='exim/src/macro_predef.c' l='315' u='r' c='macro_dump'/>

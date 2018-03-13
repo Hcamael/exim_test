@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='531' type='int'/>
 <doc f='exim/src/globals.h' l='531'>/* Time to keep malformed messages */</doc>
+<use f='exim/src/deliver.c' l='5626' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5633' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='832' type='int'/>
+<doc f='exim/src/globals.c' l='832'>/* 4 days */</doc>
+<use f='exim/src/readconf.c' l='182' u='a'/>
+<use f='exim/src/readconf.c' l='182' u='a'/>
+<use f='exim/src/readconf.c' l='182' u='a'/>
+<use f='exim/src/readconf.c' l='182' u='a'/>

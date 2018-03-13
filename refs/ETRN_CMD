@@ -1,0 +1,8 @@
+<dec f='exim/src/smtp_in.c' l='73' type='6'/>
+<use f='exim/src/smtp_in.c' l='201'/>
+<use f='exim/src/smtp_in.c' l='201'/>
+<use f='exim/src/smtp_in.c' l='201'/>
+<use f='exim/src/smtp_in.c' l='201'/>
+<use f='exim/src/smtp_in.c' l='2264' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='5498' c='smtp_setup_msg'/>
+<doc f='exim/src/smtp_in.c' l='73'>/* This by analogy with TURN from the RFC */</doc>

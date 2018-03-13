@@ -1,1 +1,6 @@
 <dec f='exim/src/structs.h' l='55' type='2'/>
+<use f='exim/src/smtp_in.c' l='580' u='r' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='640' u='r' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='646' u='r' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='694' u='r' c='bdat_flush_data'/>
+<use f='exim/src/smtp_in.c' l='5087' u='r' c='smtp_setup_msg'/>

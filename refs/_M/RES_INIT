@@ -2,3 +2,4 @@
 <doc f='include/resolv.h' l='192'>/*
  * Resolver options (keep these in synch with res_debug.c, please)
  */</doc>
+<use f='exim/src/dns.c' l='144' u='c'/>

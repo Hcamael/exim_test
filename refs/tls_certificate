@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='113' type='uschar *'/>
 <doc f='exim/src/globals.h' l='113'>/* Certificate file */</doc>
+<use f='exim/src/tls-openssl.c' l='1969' u='r' c='tls_server_start'/>
+<def f='exim/src/globals.c' l='149' type='uschar *'/>
+<use f='exim/src/readconf.c' l='348' u='a'/>
+<use f='exim/src/readconf.c' l='348' u='a'/>
+<use f='exim/src/readconf.c' l='348' u='a'/>
+<use f='exim/src/readconf.c' l='348' u='a'/>

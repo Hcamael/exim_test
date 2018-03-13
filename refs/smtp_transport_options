@@ -1,0 +1,12 @@
+<dec f='exim/src/transports/smtp.h' l='161' type='optionlist []'/>
+<doc f='exim/src/transports/smtp.h' l='159'>/* Data for reading the private options. */</doc>
+<use f='exim/src/drtables.c' l='433'/>
+<use f='exim/src/drtables.c' l='433'/>
+<use f='exim/src/drtables.c' l='433'/>
+<use f='exim/src/drtables.c' l='433'/>
+<def f='exim/src/transports/smtp.c' l='17' ll='185' type='optionlist [68]'/>
+<use f='exim/src/transports/smtp.c' l='191' u='r'/>
+<doc f='exim/src/transports/smtp.c' l='12'>/* Options specific to the smtp transport. This transport also supports LMTP
+over TCP/IP. The options must be in alphabetic order (note that &quot;_&quot; comes
+before the lower case letters). Some live in the transport_instance block so as
+to be publicly visible; these are flagged with opt_public. */</doc>

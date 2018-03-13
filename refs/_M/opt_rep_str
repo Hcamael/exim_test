@@ -1,1 +1,5 @@
 <dec f='exim/src/macros.h' l='706'/>
+<use f='exim/src/route.c' l='81' u='c'/>
+<use f='exim/src/route.c' l='83' u='c'/>
+<use f='exim/src/transport.c' l='53' u='c'/>
+<use f='exim/src/transport.c' l='57' u='c'/>

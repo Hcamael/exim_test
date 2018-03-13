@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='523' type='int'/>
 <doc f='exim/src/globals.h' l='523'>/* Timeout for inetd wait mode */</doc>
+<def f='exim/src/globals.c' l='821' type='int'/>
+<use f='exim/src/exim.c' l='2248' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2249' u='r' c='main'/>
+<use f='exim/src/daemon.c' l='1603' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1604' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1760' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1762' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1778' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1782' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='2047' u='r' c='daemon_go'/>

@@ -1,0 +1,6 @@
+<dec f='exim/src/pdkim/pdkim.h' l='157' type='int'/>
+<use f='exim/src/pdkim/pdkim.c' l='567' u='w' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1224' u='r' c='pdkim_create_header'/>
+<offset>224</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='155'>/* (q=) Query Method. Currently, only PDKIM_QUERYMETHOD_DNS_TXT
+     is specified */</doc>

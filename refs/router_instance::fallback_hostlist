@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='331' type='host_item *'/>
 <offset>2944</offset>
 <doc f='exim/src/structs.h' l='331'>/* For remote transport (block chain) */</doc>
+<use f='exim/src/globals.c' l='1238' u='w'/>
+<use f='exim/src/routers/rf_queue_add.c' l='89' u='r' c='rf_queue_add'/>

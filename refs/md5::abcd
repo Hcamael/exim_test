@@ -1,2 +1,15 @@
 <dec f='exim/src/structs.h' l='795' type='unsigned int [4]'/>
 <offset>32</offset>
+<use f='exim/src/auths/md5.c' l='38' u='w' c='md5_start'/>
+<use f='exim/src/auths/md5.c' l='39' u='w' c='md5_start'/>
+<use f='exim/src/auths/md5.c' l='40' u='w' c='md5_start'/>
+<use f='exim/src/auths/md5.c' l='41' u='w' c='md5_start'/>
+<use f='exim/src/auths/md5.c' l='64' u='r' c='md5_mid'/>
+<use f='exim/src/auths/md5.c' l='65' u='r' c='md5_mid'/>
+<use f='exim/src/auths/md5.c' l='66' u='r' c='md5_mid'/>
+<use f='exim/src/auths/md5.c' l='67' u='r' c='md5_mid'/>
+<use f='exim/src/auths/md5.c' l='205' u='w' c='md5_mid'/>
+<use f='exim/src/auths/md5.c' l='206' u='w' c='md5_mid'/>
+<use f='exim/src/auths/md5.c' l='207' u='w' c='md5_mid'/>
+<use f='exim/src/auths/md5.c' l='208' u='w' c='md5_mid'/>
+<use f='exim/src/auths/md5.c' l='289' u='r' c='md5_end'/>

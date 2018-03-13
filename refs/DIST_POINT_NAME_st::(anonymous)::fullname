@@ -1,0 +1,3 @@
+<dec f='include/openssl/x509v3.h' l='174' type='GENERAL_NAMES *'/>
+<use f='exim/src/tlscert-openssl.c' l='451' u='r' c='tls_cert_crl_uri'/>
+<offset>0</offset>

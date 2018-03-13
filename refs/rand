@@ -1,2 +1,5 @@
 <dec f='include/stdlib.h' l='374' type='int rand()'/>
 <doc f='include/stdlib.h' l='373'>/* Return a random integer between 0 and RAND_MAX inclusive.  */</doc>
+<use f='exim/src/deliver.c' l='7280' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7531' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8151' u='c' c='deliver_message'/>

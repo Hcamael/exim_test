@@ -1,2 +1,36 @@
 <dec f='exim/src/globals.h' l='458' type='uid_t'/>
 <doc f='exim/src/globals.h' l='458'>/* Non-root uid for exim */</doc>
+<use f='exim/src/deliver.c' l='353' u='r' c='open_msglog_file'/>
+<use f='exim/src/deliver.c' l='1922' u='r' c='findugid'/>
+<use f='exim/src/deliver.c' l='7024' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7140' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='730' type='uid_t'/>
+<use f='exim/src/directory.c' l='72' u='r' c='directory_make'/>
+<use f='exim/src/exim.c' l='222' u='r' c='usr1_handler'/>
+<use f='exim/src/exim.c' l='1606' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3720' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3816' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3835' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4039' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4199' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4272' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4339' u='r' c='main'/>
+<use f='exim/src/rda.c' l='635' u='r' c='rda_interpret'/>
+<use f='exim/src/log.c' l='322' u='r' c='log_create_as_exim'/>
+<use f='exim/src/log.c' l='481' u='r' c='open_log'/>
+<use f='exim/src/log.c' l='504' u='r' c='open_log'/>
+<use f='exim/src/expand.c' l='537' u='a'/>
+<use f='exim/src/expand.c' l='537' u='a'/>
+<use f='exim/src/expand.c' l='537' u='a'/>
+<use f='exim/src/expand.c' l='537' u='a'/>
+<use f='exim/src/daemon.c' l='1566' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1571' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1573' u='r' c='daemon_go'/>
+<use f='exim/src/readconf.c' l='147' u='a'/>
+<use f='exim/src/readconf.c' l='147' u='a'/>
+<use f='exim/src/readconf.c' l='147' u='a'/>
+<use f='exim/src/readconf.c' l='147' u='a'/>
+<use f='exim/src/receive.c' l='3041' u='r' c='receive_msg'/>
+<use f='exim/src/dbfn.c' l='205' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='208' u='r' c='dbfn_open'/>
+<use f='exim/src/spool_out.c' l='95' u='r' c='spool_open_temp'/>

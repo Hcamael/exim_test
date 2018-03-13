@@ -1,1 +1,12 @@
 <dec f='exim/src/macros.h' l='730'/>
+<use f='exim/src/verify.c' l='80' u='c'/>
+<use f='exim/src/verify.c' l='196' u='c'/>
+<use f='exim/src/verify.c' l='255' u='c'/>
+<use f='exim/src/verify.c' l='273' u='c'/>
+<use f='exim/src/verify.c' l='348' u='c'/>
+<use f='exim/src/verify.c' l='507' u='c'/>
+<use f='exim/src/verify.c' l='739' u='c'/>
+<use f='exim/src/verify.c' l='802' u='c'/>
+<use f='exim/src/verify.c' l='869' u='c'/>
+<use f='exim/src/verify.c' l='947' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='179' u='c'/>

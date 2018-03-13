@@ -1,0 +1,2 @@
+<dec f='include/openssl/ocsp.h' l='333' macro='1' type='OCSP_RESPONSE * OCSP_RESPONSE_new()'/>
+<use f='exim/src/tls-openssl.c' l='860' macro='1' u='r'/>

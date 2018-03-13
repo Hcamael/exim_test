@@ -1,1 +1,12 @@
 <dec f='exim/src/functions.h' l='314' type='uschar * parse_message_id(uschar * , uschar ** , uschar ** )'/>
+<def f='exim/src/parse.c' l='1728' ll='1769' type='uschar * parse_message_id(uschar * str, uschar ** yield, uschar ** error)'/>
+<doc f='exim/src/parse.c' l='1717'>/* This function is used to extract message ids from In-Reply-To: and
+References: header lines.
+
+Arguments:
+  str          pointer to the start of the message-id
+  yield        put pointer to the message id (in dynamic memory) here
+  error        put error message here on failure
+
+Returns:       points after the processed message-id or NULL on error
+*/</doc>

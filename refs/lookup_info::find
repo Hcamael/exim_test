@@ -1,3 +1,5 @@
 <dec f='exim/src/lookupapi.h' l='30' type='int (*)(void *, uschar *, const uschar *, int, uschar **, uschar **, uint *)'/>
 <offset>256</offset>
 <doc f='exim/src/lookupapi.h' l='30'>/* find function */</doc>
+<use f='exim/src/search.c' l='84' u='r' c='search_findtype'/>
+<use f='exim/src/search.c' l='522' u='r' c='internal_search_find'/>

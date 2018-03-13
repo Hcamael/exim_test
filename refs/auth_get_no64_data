@@ -1,1 +1,17 @@
 <dec f='exim/src/functions.h' l='102' type='int auth_get_no64_data(uschar ** , uschar * )'/>
+<def f='exim/src/auths/get_no64_data.c' l='29' ll='45' type='int auth_get_no64_data(uschar ** aptr, uschar * challenge)'/>
+<doc f='exim/src/auths/get_no64_data.c' l='15'>/* This function is used by authentication drivers to output a challenge
+to the SMTP client and read the response line. This version does not use base
+64 encoding for the text on the 334 line. It is used by the SPA, dovecot
+and gsasl authenticators.
+
+Arguments:
+   aptr       set to point to the response (which is in big_buffer)
+   challenge  the challenge text (unencoded)
+
+Returns:      OK on success
+              BAD64 if response too large for buffer
+              CANCELLED if response is &quot;*&quot;
+*/</doc>
+<use f='exim/src/auths/spa.c' l='148' u='c' c='auth_spa_server'/>
+<use f='exim/src/auths/spa.c' l='167' u='c' c='auth_spa_server'/>

@@ -1,0 +1,2 @@
+<dec f='include/openssl/conf.h' l='48' type='int (*)(CONF *, const char *, long *)'/>
+<offset>576</offset>

@@ -1,1 +1,6 @@
 <dec f='include/netdb.h' l='70'/>
+<use f='exim/src/host.c' l='247' u='c'/>
+<use f='exim/src/host.c' l='2069' u='c'/>
+<use f='exim/src/host.c' l='2070' u='c'/>
+<use f='exim/src/dns.c' l='105' u='c'/>
+<use f='exim/src/dns.c' l='812' u='c'/>

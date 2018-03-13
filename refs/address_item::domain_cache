@@ -1,2 +1,10 @@
 <dec f='exim/src/structs.h' l='620' type='unsigned int [1]'/>
 <offset>2720</offset>
+<use f='exim/src/deliver.c' l='5120' u='r' c='deliver_split_address'/>
+<use f='exim/src/deliver.c' l='6486' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6698' u='r' c='deliver_message'/>
+<use f='exim/src/verify.c' l='1665' u='w' c='verify_address'/>
+<use f='exim/src/globals.c' l='382' u='w'/>
+<use f='exim/src/routers/dnslookup.c' l='314' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/dnslookup.c' l='351' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/acl.c' l='3465' u='r' c='acl_check_condition'/>

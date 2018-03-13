@@ -1,0 +1,6 @@
+<dec f='exim/src/acl.c' l='589' type='6'/>
+<use f='exim/src/acl.c' l='602'/>
+<use f='exim/src/acl.c' l='2279' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='2299' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='2346' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2381' c='acl_ratelimit'/>

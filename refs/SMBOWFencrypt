@@ -1,0 +1,5 @@
+<dec f='exim/src/auths/auth-spa.c' l='339' type='void SMBOWFencrypt(uschar * passwd, uschar * c8, uschar * p24)'/>
+<use f='exim/src/auths/auth-spa.c' l='864' u='c' c='spa_smb_encrypt'/>
+<def f='exim/src/auths/auth-spa.c' l='970' ll='979' type='void SMBOWFencrypt(uschar * passwd, uschar * c8, uschar * p24)'/>
+<use f='exim/src/auths/auth-spa.c' l='1011' u='c' c='spa_smb_nt_encrypt'/>
+<doc f='exim/src/auths/auth-spa.c' l='969'>/* Does the des encryption from the NT or LM MD4 hash. */</doc>

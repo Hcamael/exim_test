@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>auth-spa.h source code [exim/src/auths/auth-spa.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/auths/auth-spa.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>auths</a>/<a href='auth-spa.h.html'>auth-spa.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/*</i></td></tr>
+<tr><th id="6">6</th><td><i> * This file provides the necessary methods for authenticating with</i></td></tr>
+<tr><th id="7">7</th><td><i> * Microsoft's Secure Password Authentication.</i></td></tr>
+<tr><th id="8">8</th><td><i></i></td></tr>
+<tr><th id="9">9</th><td><i> * All the code used here was torn by Marc Prud'hommeaux out of the</i></td></tr>
+<tr><th id="10">10</th><td><i> * Samba project (by Andrew Tridgell, Jeremy Allison, and others).</i></td></tr>
+<tr><th id="11">11</th><td><i> */</i></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><i>/* December 2004: The spa_base64_to_bits() function has no length checking in</i></td></tr>
+<tr><th id="14">14</th><td><i>it. I have added a check. PH */</i></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><i>/* It seems that some systems have existing but different definitions of some</i></td></tr>
+<tr><th id="17">17</th><td><i>of the following types. I received a complaint about "int16" causing</i></td></tr>
+<tr><th id="18">18</th><td><i>compilation problems. So I (PH) have renamed them all, to be on the safe side.</i></td></tr>
+<tr><th id="19">19</th><td><i></i></td></tr>
+<tr><th id="20">20</th><td><i>typedef signed short int16;</i></td></tr>
+<tr><th id="21">21</th><td><i>typedef unsigned short uint16;</i></td></tr>
+<tr><th id="22">22</th><td><i>typedef unsigned uint32;</i></td></tr>
+<tr><th id="23">23</th><td><i>typedef unsigned char  uint8;</i></td></tr>
+<tr><th id="24">24</th><td><i>*/</i></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><b>typedef</b> <em>signed</em> <em>short</em> <dfn class="typedef" id="int16x" title='int16x' data-type='short' data-ref="int16x">int16x</dfn>;</td></tr>
+<tr><th id="27">27</th><td><b>typedef</b> <em>unsigned</em> <em>short</em> <dfn class="typedef" id="uint16x" title='uint16x' data-type='unsigned short' data-ref="uint16x">uint16x</dfn>;</td></tr>
+<tr><th id="28">28</th><td><b>typedef</b> <em>unsigned</em> <dfn class="typedef" id="uint32x" title='uint32x' data-type='unsigned int' data-ref="uint32x">uint32x</dfn>;</td></tr>
+<tr><th id="29">29</th><td><b>typedef</b> <em>unsigned</em> <em>char</em>  <dfn class="typedef" id="uint8x" title='uint8x' data-type='unsigned char' data-ref="uint8x">uint8x</dfn>;</td></tr>
+<tr><th id="30">30</th><td></td></tr>
+<tr><th id="31">31</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="32">32</th><td>{</td></tr>
+<tr><th id="33">33</th><td>       <a class="typedef" href="#uint16x" title='uint16x' data-type='unsigned short' data-ref="uint16x">uint16x</a>         <dfn class="decl field" id="(anonymous)::len" title='(anonymous struct)::len' data-ref="(anonymous)::len">len</dfn>;</td></tr>
+<tr><th id="34">34</th><td>       <a class="typedef" href="#uint16x" title='uint16x' data-type='unsigned short' data-ref="uint16x">uint16x</a>         <dfn class="decl field" id="(anonymous)::maxlen" title='(anonymous struct)::maxlen' data-ref="(anonymous)::maxlen">maxlen</dfn>;</td></tr>
+<tr><th id="35">35</th><td>       <a class="typedef" href="#uint32x" title='uint32x' data-type='unsigned int' data-ref="uint32x">uint32x</a>         <dfn class="decl field" id="(anonymous)::offset" title='(anonymous struct)::offset' data-ref="(anonymous)::offset">offset</dfn>;</td></tr>
+<tr><th id="36">36</th><td>} <dfn class="typedef" id="SPAStrHeader" title='SPAStrHeader' data-type='struct SPAStrHeader' data-ref="SPAStrHeader">SPAStrHeader</dfn>;</td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="39">39</th><td>{</td></tr>
+<tr><th id="40">40</th><td>       <em>char</em>         <dfn class="decl field" id="(anonymous)::ident" title='(anonymous struct)::ident' data-ref="(anonymous)::ident">ident</dfn>[<var>8</var>];</td></tr>
+<tr><th id="41">41</th><td>       <a class="typedef" href="#uint32x" title='uint32x' data-type='unsigned int' data-ref="uint32x">uint32x</a>         <dfn class="decl field" id="(anonymous)::msgType" title='(anonymous struct)::msgType' data-ref="(anonymous)::msgType">msgType</dfn>;</td></tr>
+<tr><th id="42">42</th><td>       <a class="typedef" href="#SPAStrHeader" title='SPAStrHeader' data-type='struct SPAStrHeader' data-ref="SPAStrHeader">SPAStrHeader</a>    <dfn class="decl field" id="(anonymous)::uDomain" title='(anonymous struct)::uDomain' data-ref="(anonymous)::uDomain">uDomain</dfn>;</td></tr>
+<tr><th id="43">43</th><td>       <a class="typedef" href="#uint32x" title='uint32x' data-type='unsigned int' data-ref="uint32x">uint32x</a>         <dfn class="decl field" id="(anonymous)::flags" title='(anonymous struct)::flags' data-ref="(anonymous)::flags">flags</dfn>;</td></tr>
+<tr><th id="44">44</th><td>       <a class="typedef" href="#uint8x" title='uint8x' data-type='unsigned char' data-ref="uint8x">uint8x</a>         <dfn class="decl field" id="(anonymous)::challengeData" title='(anonymous struct)::challengeData' data-ref="(anonymous)::challengeData">challengeData</dfn>[<var>8</var>];</td></tr>
+<tr><th id="45">45</th><td>       <a class="typedef" href="#uint8x" title='uint8x' data-type='unsigned char' data-ref="uint8x">uint8x</a>         <dfn class="decl field" id="(anonymous)::reserved" title='(anonymous struct)::reserved' data-ref="(anonymous)::reserved">reserved</dfn>[<var>8</var>];</td></tr>
+<tr><th id="46">46</th><td>       <a class="typedef" href="#SPAStrHeader" title='SPAStrHeader' data-type='struct SPAStrHeader' data-ref="SPAStrHeader">SPAStrHeader</a>    <dfn class="decl field" id="(anonymous)::emptyString" title='(anonymous struct)::emptyString' data-ref="(anonymous)::emptyString">emptyString</dfn>;</td></tr>
+<tr><th id="47">47</th><td>       <a class="typedef" href="#uint8x" title='uint8x' data-type='unsigned char' data-ref="uint8x">uint8x</a>         <dfn class="decl field" id="(anonymous)::buffer" title='(anonymous struct)::buffer' data-ref="(anonymous)::buffer">buffer</dfn>[<var>1024</var>];</td></tr>
+<tr><th id="48">48</th><td>       <a class="typedef" href="#uint32x" title='uint32x' data-type='unsigned int' data-ref="uint32x">uint32x</a>         <dfn class="decl field" id="(anonymous)::bufIndex" title='(anonymous struct)::bufIndex' data-ref="(anonymous)::bufIndex">bufIndex</dfn>;</td></tr>
+<tr><th id="49">49</th><td>} <dfn class="typedef" id="SPAAuthChallenge" title='SPAAuthChallenge' data-type='struct SPAAuthChallenge' data-ref="SPAAuthChallenge">SPAAuthChallenge</dfn>;</td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="53">53</th><td>{</td></tr>
+<tr><th id="54">54</th><td>       <em>char</em>         <dfn class="decl field" id="(anonymous)::ident" title='(anonymous struct)::ident' data-ref="(anonymous)::ident">ident</dfn>[<var>8</var>];</td></tr>
+<tr><th id="55">55</th><td>       <a class="typedef" href="#uint32x" title='uint32x' data-type='unsigned int' data-ref="uint32x">uint32x</a>         <dfn class="decl field" id="(anonymous)::msgType" title='(anonymous struct)::msgType' data-ref="(anonymous)::msgType">msgType</dfn>;</td></tr>
+<tr><th id="56">56</th><td>       <a class="typedef" href="#uint32x" title='uint32x' data-type='unsigned int' data-ref="uint32x">uint32x</a>         <dfn class="decl field" id="(anonymous)::flags" title='(anonymous struct)::flags' data-ref="(anonymous)::flags">flags</dfn>;</td></tr>
+<tr><th id="57">57</th><td>       <a class="typedef" href="#SPAStrHeader" title='SPAStrHeader' data-type='struct SPAStrHeader' data-ref="SPAStrHeader">SPAStrHeader</a>    <dfn class="decl field" id="(anonymous)::user" title='(anonymous struct)::user' data-ref="(anonymous)::user">user</dfn>;</td></tr>
+<tr><th id="58">58</th><td>       <a class="typedef" href="#SPAStrHeader" title='SPAStrHeader' data-type='struct SPAStrHeader' data-ref="SPAStrHeader">SPAStrHeader</a>    <dfn class="decl field" id="(anonymous)::domain" title='(anonymous struct)::domain' data-ref="(anonymous)::domain">domain</dfn>;</td></tr>
+<tr><th id="59">59</th><td>       <a class="typedef" href="#uint8x" title='uint8x' data-type='unsigned char' data-ref="uint8x">uint8x</a>         <dfn class="decl field" id="(anonymous)::buffer" title='(anonymous struct)::buffer' data-ref="(anonymous)::buffer">buffer</dfn>[<var>1024</var>];</td></tr>
+<tr><th id="60">60</th><td>       <a class="typedef" href="#uint32x" title='uint32x' data-type='unsigned int' data-ref="uint32x">uint32x</a>         <dfn class="decl field" id="(anonymous)::bufIndex" title='(anonymous struct)::bufIndex' data-ref="(anonymous)::bufIndex">bufIndex</dfn>;</td></tr>
+<tr><th id="61">61</th><td>} <dfn class="typedef" id="SPAAuthRequest" title='SPAAuthRequest' data-type='struct SPAAuthRequest' data-ref="SPAAuthRequest">SPAAuthRequest</dfn>;</td></tr>
+<tr><th id="62">62</th><td></td></tr>
+<tr><th id="63">63</th><td><b>typedef</b> <b>struct</b></td></tr>
+<tr><th id="64">64</th><td>{</td></tr>
+<tr><th id="65">65</th><td>       <em>char</em>         <dfn class="decl field" id="(anonymous)::ident" title='(anonymous struct)::ident' data-ref="(anonymous)::ident">ident</dfn>[<var>8</var>];</td></tr>
+<tr><th id="66">66</th><td>       <a class="typedef" href="#uint32x" title='uint32x' data-type='unsigned int' data-ref="uint32x">uint32x</a>         <dfn class="decl field" id="(anonymous)::msgType" title='(anonymous struct)::msgType' data-ref="(anonymous)::msgType">msgType</dfn>;</td></tr>
+<tr><th id="67">67</th><td>       <a class="typedef" href="#SPAStrHeader" title='SPAStrHeader' data-type='struct SPAStrHeader' data-ref="SPAStrHeader">SPAStrHeader</a>    <dfn class="decl field" id="(anonymous)::lmResponse" title='(anonymous struct)::lmResponse' data-ref="(anonymous)::lmResponse">lmResponse</dfn>;</td></tr>
+<tr><th id="68">68</th><td>       <a class="typedef" href="#SPAStrHeader" title='SPAStrHeader' data-type='struct SPAStrHeader' data-ref="SPAStrHeader">SPAStrHeader</a>    <dfn class="decl field" id="(anonymous)::ntResponse" title='(anonymous struct)::ntResponse' data-ref="(anonymous)::ntResponse">ntResponse</dfn>;</td></tr>
+<tr><th id="69">69</th><td>       <a class="typedef" href="#SPAStrHeader" title='SPAStrHeader' data-type='struct SPAStrHeader' data-ref="SPAStrHeader">SPAStrHeader</a>    <dfn class="decl field" id="(anonymous)::uDomain" title='(anonymous struct)::uDomain' data-ref="(anonymous)::uDomain">uDomain</dfn>;</td></tr>
+<tr><th id="70">70</th><td>       <a class="typedef" href="#SPAStrHeader" title='SPAStrHeader' data-type='struct SPAStrHeader' data-ref="SPAStrHeader">SPAStrHeader</a>    <dfn class="decl field" id="(anonymous)::uUser" title='(anonymous struct)::uUser' data-ref="(anonymous)::uUser">uUser</dfn>;</td></tr>
+<tr><th id="71">71</th><td>       <a class="typedef" href="#SPAStrHeader" title='SPAStrHeader' data-type='struct SPAStrHeader' data-ref="SPAStrHeader">SPAStrHeader</a>    <dfn class="decl field" id="(anonymous)::uWks" title='(anonymous struct)::uWks' data-ref="(anonymous)::uWks">uWks</dfn>;</td></tr>
+<tr><th id="72">72</th><td>       <a class="typedef" href="#SPAStrHeader" title='SPAStrHeader' data-type='struct SPAStrHeader' data-ref="SPAStrHeader">SPAStrHeader</a>    <dfn class="decl field" id="(anonymous)::sessionKey" title='(anonymous struct)::sessionKey' data-ref="(anonymous)::sessionKey">sessionKey</dfn>;</td></tr>
+<tr><th id="73">73</th><td>       <a class="typedef" href="#uint32x" title='uint32x' data-type='unsigned int' data-ref="uint32x">uint32x</a>         <dfn class="decl field" id="(anonymous)::flags" title='(anonymous struct)::flags' data-ref="(anonymous)::flags">flags</dfn>;</td></tr>
+<tr><th id="74">74</th><td>       <a class="typedef" href="#uint8x" title='uint8x' data-type='unsigned char' data-ref="uint8x">uint8x</a>         <dfn class="decl field" id="(anonymous)::buffer" title='(anonymous struct)::buffer' data-ref="(anonymous)::buffer">buffer</dfn>[<var>1024</var>];</td></tr>
+<tr><th id="75">75</th><td>       <a class="typedef" href="#uint32x" title='uint32x' data-type='unsigned int' data-ref="uint32x">uint32x</a>         <dfn class="decl field" id="(anonymous)::bufIndex" title='(anonymous struct)::bufIndex' data-ref="(anonymous)::bufIndex">bufIndex</dfn>;</td></tr>
+<tr><th id="76">76</th><td>} <dfn class="typedef" id="SPAAuthResponse" title='SPAAuthResponse' data-type='struct SPAAuthResponse' data-ref="SPAAuthResponse">SPAAuthResponse</dfn>;</td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><u>#define <dfn class="macro" id="_M/spa_request_length" data-ref="_M/spa_request_length">spa_request_length</dfn>(ptr) (((ptr)-&gt;buffer - (uint8x*)(ptr)) + (ptr)-&gt;bufIndex)</u></td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><em>void</em> <dfn class="decl fn" id="spa_bits_to_base64" title='spa_bits_to_base64' data-ref="spa_bits_to_base64">spa_bits_to_base64</dfn> (<em>unsigned</em> <em>char</em> *, <em>const</em> <em>unsigned</em> <em>char</em> *, <em>int</em>);</td></tr>
+<tr><th id="81">81</th><td><em>int</em> <dfn class="decl fn" id="spa_base64_to_bits" title='spa_base64_to_bits' data-ref="spa_base64_to_bits">spa_base64_to_bits</dfn>(<em>char</em> *, <em>int</em>, <em>const</em> <em>char</em> *);</td></tr>
+<tr><th id="82">82</th><td><em>void</em> <dfn class="decl fn" id="spa_build_auth_response" title='spa_build_auth_response' data-ref="spa_build_auth_response">spa_build_auth_response</dfn> (<a class="typedef" href="#SPAAuthChallenge" title='SPAAuthChallenge' data-type='struct SPAAuthChallenge' data-ref="SPAAuthChallenge">SPAAuthChallenge</a> *<dfn class="local col1 decl" id="1challenge" title='challenge' data-type='SPAAuthChallenge *' data-ref="1challenge">challenge</dfn>,</td></tr>
+<tr><th id="83">83</th><td>       <a class="typedef" href="#SPAAuthResponse" title='SPAAuthResponse' data-type='struct SPAAuthResponse' data-ref="SPAAuthResponse">SPAAuthResponse</a> *<dfn class="local col2 decl" id="2response" title='response' data-type='SPAAuthResponse *' data-ref="2response">response</dfn>, <em>char</em> *<dfn class="local col3 decl" id="3user" title='user' data-type='char *' data-ref="3user">user</dfn>, <em>char</em> *<dfn class="local col4 decl" id="4password" title='password' data-type='char *' data-ref="4password">password</dfn>);</td></tr>
+<tr><th id="84">84</th><td><em>void</em> <dfn class="decl fn" id="spa_build_auth_request" title='spa_build_auth_request' data-ref="spa_build_auth_request">spa_build_auth_request</dfn> (<a class="typedef" href="#SPAAuthRequest" title='SPAAuthRequest' data-type='struct SPAAuthRequest' data-ref="SPAAuthRequest">SPAAuthRequest</a> *<dfn class="local col5 decl" id="5request" title='request' data-type='SPAAuthRequest *' data-ref="5request">request</dfn>, <em>char</em> *<dfn class="local col6 decl" id="6user" title='user' data-type='char *' data-ref="6user">user</dfn>,</td></tr>
+<tr><th id="85">85</th><td>       <em>char</em> *<dfn class="local col7 decl" id="7domain" title='domain' data-type='char *' data-ref="7domain">domain</dfn>);</td></tr>
+<tr><th id="86">86</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="spa_smb_encrypt" title='spa_smb_encrypt' data-ref="spa_smb_encrypt">spa_smb_encrypt</dfn> (<em>unsigned</em> <em>char</em> * <dfn class="local col8 decl" id="8passwd" title='passwd' data-type='unsigned char *' data-ref="8passwd">passwd</dfn>, <em>unsigned</em> <em>char</em> * <dfn class="local col9 decl" id="9c8" title='c8' data-type='unsigned char *' data-ref="9c8">c8</dfn>,</td></tr>
+<tr><th id="87">87</th><td>                             <em>unsigned</em> <em>char</em> * <dfn class="local col0 decl" id="10p24" title='p24' data-type='unsigned char *' data-ref="10p24">p24</dfn>);</td></tr>
+<tr><th id="88">88</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="spa_smb_nt_encrypt" title='spa_smb_nt_encrypt' data-ref="spa_smb_nt_encrypt">spa_smb_nt_encrypt</dfn> (<em>unsigned</em> <em>char</em> * <dfn class="local col1 decl" id="11passwd" title='passwd' data-type='unsigned char *' data-ref="11passwd">passwd</dfn>, <em>unsigned</em> <em>char</em> * <dfn class="local col2 decl" id="12c8" title='c8' data-type='unsigned char *' data-ref="12c8">c8</dfn>,</td></tr>
+<tr><th id="89">89</th><td>                                <em>unsigned</em> <em>char</em> * <dfn class="local col3 decl" id="13p24" title='p24' data-type='unsigned char *' data-ref="13p24">p24</dfn>);</td></tr>
+<tr><th id="90">90</th><td><b>extern</b> <em>char</em> *<dfn class="decl fn" id="unicodeToString" title='unicodeToString' data-ref="unicodeToString">unicodeToString</dfn>(<em>char</em> *<dfn class="local col4 decl" id="14p" title='p' data-type='char *' data-ref="14p">p</dfn>, <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="local col5 decl" id="15len" title='len' data-type='size_t' data-ref="15len">len</dfn>);</td></tr>
+<tr><th id="91">91</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="spa_build_auth_challenge" title='spa_build_auth_challenge' data-ref="spa_build_auth_challenge">spa_build_auth_challenge</dfn>(<a class="typedef" href="#SPAAuthRequest" title='SPAAuthRequest' data-type='struct SPAAuthRequest' data-ref="SPAAuthRequest">SPAAuthRequest</a> *, <a class="typedef" href="#SPAAuthChallenge" title='SPAAuthChallenge' data-type='struct SPAAuthChallenge' data-ref="SPAAuthChallenge">SPAAuthChallenge</a> *);</td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='spa.c.html'>exim/src/auths/spa.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

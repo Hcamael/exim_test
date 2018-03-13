@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='799' type='uschar *'/>
 <doc f='exim/src/globals.h' l='799'>/* Permitted unqualified senders */</doc>
+<def f='exim/src/globals.c' l='1293' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='2785' u='a' c='smtp_start_session'/>
+<use f='exim/src/readconf.c' l='274' u='a'/>
+<use f='exim/src/readconf.c' l='274' u='a'/>
+<use f='exim/src/readconf.c' l='274' u='a'/>
+<use f='exim/src/readconf.c' l='274' u='a'/>

@@ -1,3 +1,11 @@
 <dec f='exim/src/structs.h' l='210' type='void (*)(struct transport_instance *)'/>
 <offset>320</offset>
 <doc f='exim/src/structs.h' l='210'>/* Initialization function */</doc>
+<use f='exim/src/drtables.c' l='367' u='w'/>
+<use f='exim/src/drtables.c' l='381' u='w'/>
+<use f='exim/src/drtables.c' l='409' u='w'/>
+<use f='exim/src/drtables.c' l='437' u='w'/>
+<use f='exim/src/drtables.c' l='367' u='w'/>
+<use f='exim/src/drtables.c' l='381' u='w'/>
+<use f='exim/src/drtables.c' l='409' u='w'/>
+<use f='exim/src/drtables.c' l='437' u='w'/>

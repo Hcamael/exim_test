@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='605' type='BOOL'/>
 <offset>26</offset>
 <doc f='exim/src/structs.h' l='605'>/* delivery connection used TCP Fast Open */</doc>
+<use f='exim/src/deliver.c' l='3559' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4862' u='r' c='do_remote_deliveries'/>

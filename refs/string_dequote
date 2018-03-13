@@ -1,1 +1,15 @@
 <dec f='exim/src/functions.h' l='460' type='uschar * string_dequote(const uschar ** )'/>
+<def f='exim/src/string.c' l='644' ll='695' type='uschar * string_dequote(const uschar ** sptr)'/>
+<doc f='exim/src/string.c' l='634'>/* This function copies from a string until its end, or until whitespace is
+encountered, unless the string begins with a double quote, in which case the
+terminating quote is sought, and escaping within the string is done. The length
+of a de-quoted string can be no longer than the original, since escaping always
+turns n characters into 1 character.
+
+Argument:  pointer to the pointer to the first character, which gets updated
+Returns:   the new string
+*/</doc>
+<use f='exim/src/moan.c' l='635' u='c' c='moan_check_errorcopy'/>
+<use f='exim/src/acl.c' l='4248' u='c' c='acl_check_wargs'/>
+<use f='exim/src/acl.c' l='4255' u='c' c='acl_check_wargs'/>
+<use f='exim/src/expand.c' l='1137' u='c' c='expand_getkeyed'/>

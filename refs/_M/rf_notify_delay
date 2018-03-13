@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='882'/>
+<use f='exim/src/deliver.c' l='8062' u='c'/>
+<use f='exim/src/deliver.c' l='8062' u='c'/>
+<use f='exim/src/smtp_in.c' l='4883' u='c'/>

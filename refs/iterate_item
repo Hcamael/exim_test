@@ -1,2 +1,27 @@
 <dec f='exim/src/globals.h' l='526' type='uschar *'/>
 <doc f='exim/src/globals.h' l='526'>/* Item from iterate list */</doc>
+<def f='exim/src/globals.c' l='826' type='uschar *'/>
+<use f='exim/src/expand.c' l='551' u='a'/>
+<use f='exim/src/expand.c' l='551' u='a'/>
+<use f='exim/src/expand.c' l='551' u='a'/>
+<use f='exim/src/expand.c' l='551' u='a'/>
+<use f='exim/src/expand.c' l='2824' u='r' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2833' u='w' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2835' u='r' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2836' u='r' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2842' u='w' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2916' u='r' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2955' u='w' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2957' u='r' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2962' u='w' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2972' u='w' c='eval_condition'/>
+<use f='exim/src/expand.c' l='5722' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5813' u='w' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5818' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5825' u='w' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5834' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5847' u='w' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5910' u='w' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5921' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5989' u='w' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6068' u='w' c='expand_string_internal'/>

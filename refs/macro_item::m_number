@@ -1,2 +1,6 @@
 <dec f='exim/src/structs.h' l='715' type='unsigned int'/>
 <offset>96</offset>
+<use f='exim/src/macro.c' l='41' u='w' c='macro_create'/>
+<use f='exim/src/macro_predef.c' l='298' u='r' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='304' u='r' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='320' u='r' c='macro_dump'/>

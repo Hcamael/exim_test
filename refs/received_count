@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='721' type='int'/>
 <doc f='exim/src/globals.h' l='721'>/* Count of Received: headers */</doc>
+<use f='exim/src/deliver.c' l='5820' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1099' type='int'/>
+<use f='exim/src/spool_in.c' l='274' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='879' u='w' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='640' u='a'/>
+<use f='exim/src/expand.c' l='640' u='a'/>
+<use f='exim/src/expand.c' l='640' u='a'/>
+<use f='exim/src/expand.c' l='640' u='a'/>
+<use f='exim/src/receive.c' l='1716' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2325' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2998' u='r' c='receive_msg'/>

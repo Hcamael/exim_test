@@ -1,2 +1,17 @@
 <dec f='exim/src/globals.h' l='439' type='BOOL'/>
 <doc f='exim/src/globals.h' l='439'>/* Make $recipients available */</doc>
+<use f='exim/src/deliver.c' l='5848' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5898' u='w' c='deliver_message'/>
+<def f='exim/src/globals.c' l='711' type='BOOL'/>
+<use f='exim/src/filtertest.c' l='263' u='w' c='filter_runtest'/>
+<use f='exim/src/filtertest.c' l='267' u='w' c='filter_runtest'/>
+<use f='exim/src/exim.c' l='5000' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5395' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5398' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5543' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5546' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='5160' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5163' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/expand.c' l='1672' u='r' c='fn_recipients'/>
+<use f='exim/src/receive.c' l='3336' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3662' u='w' c='receive_msg'/>

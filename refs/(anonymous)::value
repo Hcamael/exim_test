@@ -1,2 +1,4 @@
 <dec f='exim/src/local_scan.h' l='120' type='void *'/>
 <offset>128</offset>
+<dec f='include/openssl/conf.h' l='28' type='char *'/>
+<offset>128</offset>

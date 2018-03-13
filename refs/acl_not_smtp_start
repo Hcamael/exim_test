@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='170' type='uschar *'/>
 <doc f='exim/src/globals.h' l='170'>/* ACL run at the beginning of a non-SMTP session */</doc>
+<def f='exim/src/globals.c' l='239' type='uschar *'/>
+<use f='exim/src/exim.c' l='5392' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5396' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5540' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5544' u='r' c='main'/>
+<use f='exim/src/readconf.c' l='38' u='a'/>
+<use f='exim/src/readconf.c' l='38' u='a'/>
+<use f='exim/src/readconf.c' l='38' u='a'/>
+<use f='exim/src/readconf.c' l='38' u='a'/>

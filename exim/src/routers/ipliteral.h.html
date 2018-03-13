@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ipliteral.h source code [exim/src/routers/ipliteral.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/routers/ipliteral.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>routers</a>/<a href='ipliteral.h.html'>ipliteral.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2009 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><i>/* Private structure for the private options. Some compilers do not like empty</i></td></tr>
+<tr><th id="10">10</th><td><i>structures - the Standard, alas, says "undefined behaviour" for an empty</i></td></tr>
+<tr><th id="11">11</th><td><i>structure - so we have to put in a dummy value. */</i></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><b>typedef</b> <b>struct</b> {</td></tr>
+<tr><th id="14">14</th><td>  <em>int</em> <dfn class="decl field" id="(anonymous)::dummy" title='(anonymous struct)::dummy' data-ref="(anonymous)::dummy">dummy</dfn>;</td></tr>
+<tr><th id="15">15</th><td>} <dfn class="typedef" id="ipliteral_router_options_block" title='ipliteral_router_options_block' data-type='struct ipliteral_router_options_block' data-ref="ipliteral_router_options_block">ipliteral_router_options_block</dfn>;</td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><i>/* Data for reading the private options. */</i></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><b>extern</b> <a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a> <dfn class="decl" id="ipliteral_router_options" title='ipliteral_router_options' data-ref="ipliteral_router_options">ipliteral_router_options</dfn>[];</td></tr>
+<tr><th id="20">20</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="ipliteral_router_options_count" title='ipliteral_router_options_count' data-ref="ipliteral_router_options_count">ipliteral_router_options_count</dfn>;</td></tr>
+<tr><th id="21">21</th><td></td></tr>
+<tr><th id="22">22</th><td><i>/* Block containing default values. */</i></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><b>extern</b> <a class="typedef" href="#ipliteral_router_options_block" title='ipliteral_router_options_block' data-type='struct ipliteral_router_options_block' data-ref="ipliteral_router_options_block">ipliteral_router_options_block</a> <dfn class="decl" id="ipliteral_router_option_defaults" title='ipliteral_router_option_defaults' data-ref="ipliteral_router_option_defaults">ipliteral_router_option_defaults</dfn>;</td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><i>/* The main and initialization entry points for the router */</i></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="ipliteral_router_entry" title='ipliteral_router_entry' data-ref="ipliteral_router_entry">ipliteral_router_entry</dfn>(<a class="typedef" href="../structs.h.html#router_instance" title='router_instance' data-type='struct router_instance' data-ref="router_instance">router_instance</a> *, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *,</td></tr>
+<tr><th id="29">29</th><td>  <b>struct</b> <a class="type" href="../../../include/pwd.h.html#passwd" title='passwd' data-ref="passwd">passwd</a> *, <em>int</em>, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **,</td></tr>
+<tr><th id="30">30</th><td>  <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **);</td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="ipliteral_router_init" title='ipliteral_router_init' data-ref="ipliteral_router_init">ipliteral_router_init</dfn>(<a class="typedef" href="../structs.h.html#router_instance" title='router_instance' data-type='struct router_instance' data-ref="router_instance">router_instance</a> *);</td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><i>/* End of routers/ipliteral.h */</i></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../drtables.c.html'>exim/src/drtables.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,0 +1,2 @@
+<dec f='include/openssl/ocsp.h' l='214' type='int OCSP_resp_count(OCSP_BASICRESP * bs)'/>
+<use f='exim/src/tls-openssl.c' l='1414' u='c' c='tls_client_stapling_cb'/>

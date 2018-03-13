@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='879' type='BOOL'/>
 <doc f='exim/src/globals.h' l='879'>/* current -D file has CRLF rather than NL */</doc>
+<use f='exim/src/dkim_transport.c' l='127' u='r' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='171' u='w' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='181' u='w' c='dkt_direct'/>
+<def f='exim/src/globals.c' l='1381' type='BOOL'/>
+<use f='exim/src/spool_in.c' l='288' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='619' u='w' c='spool_read_header'/>
+<use f='exim/src/receive.c' l='1028' u='w' c='read_message_bdat_smtp_wire'/>
+<use f='exim/src/spool_out.c' l='202' u='r' c='spool_write_header'/>

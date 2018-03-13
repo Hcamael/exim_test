@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='686' type='BOOL'/>
 <doc f='exim/src/globals.h' l='686'>/* TRUE for queue running process and */</doc>
+<use f='exim/src/deliver.c' l='2939' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='6644' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8483' u='r' c='deliver_get_sender_address'/>
+<use f='exim/src/deliver.c' l='8488' u='w' c='deliver_get_sender_address'/>
+<use f='exim/src/deliver.c' l='8493' u='w' c='deliver_get_sender_address'/>
+<def f='exim/src/globals.c' l='1076' type='BOOL'/>
+<use f='exim/src/queue.c' l='396' u='w' c='queue_run'/>
+<use f='exim/src/spool_in.c' l='70' u='r' c='spool_open_datafile'/>

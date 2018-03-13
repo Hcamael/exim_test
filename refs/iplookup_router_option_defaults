@@ -1,0 +1,4 @@
+<dec f='exim/src/routers/iplookup.h' l='31' type='iplookup_router_options_block'/>
+<def f='exim/src/routers/iplookup.c' l='51' type='iplookup_router_options_block'/>
+<doc f='exim/src/routers/iplookup.c' l='50'>/* Dummy entries */</doc>
+<doc f='exim/src/routers/iplookup.h' l='29'>/* Block containing default values. */</doc>

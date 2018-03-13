@@ -4,3 +4,41 @@
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */</doc>
+<use f='exim/src/deliver.c' l='116' u='c' c='readn'/>
+<use f='exim/src/deliver.c' l='2475' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2481' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2483' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2484' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2485' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2486' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2487' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2488' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2494' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2504' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2517' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2520' u='c' c='deliver_local'/>
+<use f='exim/src/dkim_transport.c' l='79' u='c' c='dkt_send_file'/>
+<use f='exim/src/filtertest.c' l='182' u='c' c='filter_runtest'/>
+<use f='exim/src/smtp_in.c' l='444' u='c' c='smtp_refill'/>
+<use f='exim/src/queue.c' l='686' u='c' c='queue_run'/>
+<use f='exim/src/queue.c' l='1064' u='c' c='queue_action'/>
+<use f='exim/src/rda.c' l='476' u='c' c='rda_read_string'/>
+<use f='exim/src/rda.c' l='482' u='c' c='rda_read_string'/>
+<use f='exim/src/rda.c' l='801' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='802' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='836' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='852' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='859' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='890' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='891' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='918' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='926' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='928' u='c' c='rda_interpret'/>
+<use f='exim/src/routers/queryprogram.c' l='353' u='c' c='queryprogram_router_entry'/>
+<use f='exim/src/acl.c' l='4023' u='c' c='acl_check_internal'/>
+<use f='exim/src/transports/tf_maildir.c' l='408' u='c' c='maildir_ensure_sizefile'/>
+<use f='exim/src/transports/queuefile.c' l='83' u='c' c='copy_spool_file'/>
+<use f='exim/src/expand.c' l='1853' u='c' c='find_variable'/>
+<use f='exim/src/daemon.c' l='527' u='c' c='handle_smtp_call'/>
+<use f='exim/src/dns.c' l='80' u='c' c='fakens_search'/>
+<use f='exim/src/dns.c' l='91' u='c' c='fakens_search'/>

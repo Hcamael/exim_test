@@ -1,3 +1,7 @@
 <dec f='include/linux/limits.h' l='6'/>
 <use f='include/x86_64-linux-gnu/bits/posix1_lim.h' l='171' u='a'/>
 <use f='include/x86_64-linux-gnu/sys/param.h' l='38' u='a'/>
+<use f='exim/src/exim.c' l='626' u='c'/>
+<use f='exim/src/exim.c' l='629' u='c'/>
+<use f='exim/src/exim.c' l='1535' u='c'/>
+<use f='exim/src/exim.c' l='3647' u='c'/>

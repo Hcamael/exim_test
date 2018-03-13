@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='795' type='uschar *'/>
 <doc f='exim/src/globals.h' l='795'>/* Configured rate limit */</doc>
+<def f='exim/src/globals.c' l='1289' type='uschar *'/>
+<use f='exim/src/exim.c' l='5126' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='2021' u='w' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='2232' u='w' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2233' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2236' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2243' u='r' c='acl_ratelimit'/>
+<use f='exim/src/expand.c' l='674' u='a'/>
+<use f='exim/src/expand.c' l='674' u='a'/>
+<use f='exim/src/expand.c' l='674' u='a'/>
+<use f='exim/src/expand.c' l='674' u='a'/>

@@ -1,1 +1,6 @@
 <dec f='exim/src/functions.h' l='42' type='uschar * tls_cert_der_b64(void * cert)'/>
+<def f='exim/src/tlscert-openssl.c' l='473' ll='490' type='uschar * tls_cert_der_b64(void * cert)'/>
+<doc f='exim/src/tlscert-openssl.c' l='470'>/*****************************************************
+*  Certificate operator routines
+*****************************************************/</doc>
+<use f='exim/src/expand.c' l='7209' u='c' c='expand_string_internal'/>

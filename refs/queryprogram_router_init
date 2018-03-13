@@ -1,0 +1,8 @@
+<dec f='exim/src/routers/queryprogram.h' l='38' type='void queryprogram_router_init(router_instance * )'/>
+<use f='exim/src/drtables.c' l='323'/>
+<use f='exim/src/drtables.c' l='323'/>
+<use f='exim/src/drtables.c' l='323'/>
+<use f='exim/src/drtables.c' l='323'/>
+<def f='exim/src/routers/queryprogram.c' l='80' ll='97' type='void queryprogram_router_init(router_instance * rblock)'/>
+<doc f='exim/src/routers/queryprogram.c' l='77'>/* Called for each instance, after its options have been read, to enable
+consistency checks to be done, or anything else that needs to be set up. */</doc>

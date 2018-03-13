@@ -1,3 +1,42 @@
 <dec f='exim/src/structs.h' l='68' type='int'/>
 <offset>224</offset>
 <doc f='exim/src/structs.h' l='68'>/* MX value if found via MX records */</doc>
+<use f='exim/src/deliver.c' l='472' u='r' c='same_hosts'/>
+<use f='exim/src/deliver.c' l='482' u='r' c='same_hosts'/>
+<use f='exim/src/deliver.c' l='483' u='r' c='same_hosts'/>
+<use f='exim/src/verify.c' l='2145' u='r' c='verify_address'/>
+<use f='exim/src/verify.c' l='2145' u='r' c='verify_address'/>
+<use f='exim/src/verify.c' l='3012' u='w' c='check_host'/>
+<use f='exim/src/smtp_in.c' l='3518' u='w' c='smtp_verify_helo'/>
+<use f='exim/src/routers/rf_self_action.c' l='63' u='r' c='rf_self_action'/>
+<use f='exim/src/routers/dnslookup.c' l='285' u='w' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/dnslookup.c' l='310' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/dnslookup.c' l='375' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='84' u='r' c='rf_lookup_hostlist'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='223' u='w' c='rf_lookup_hostlist'/>
+<use f='exim/src/acl.c' l='2772' u='w' c='acl_udpsend'/>
+<use f='exim/src/ip.c' l='365' u='w' c='ip_connectedsocket'/>
+<use f='exim/src/host.c' l='340' u='w' c='host_build_hostlist'/>
+<use f='exim/src/host.c' l='1419' u='r' c='host_scan_for_local_hosts'/>
+<use f='exim/src/host.c' l='1419' u='r' c='host_scan_for_local_hosts'/>
+<use f='exim/src/host.c' l='1431' u='r' c='host_scan_for_local_hosts'/>
+<use f='exim/src/host.c' l='1441' u='r' c='host_scan_for_local_hosts'/>
+<use f='exim/src/host.c' l='1484' u='r' c='host_remove_duplicates'/>
+<use f='exim/src/host.c' l='1839' u='w' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='2143' u='w' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2143' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2441' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2466' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2732' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2759' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2838' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2838' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2839' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2842' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2866' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2883' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2961' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2978' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2978' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3038' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3185' u='r' c='host_find_bydns'/>

@@ -1,0 +1,27 @@
+<dec f='exim/src/tls-openssl.c' l='160' type='uschar *'/>
+<use f='exim/src/tls-openssl.c' l='846' u='w' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='853' u='r' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='856' u='r' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='1157' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1158' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1518' u='w' c='tls_init'/>
+<offset>64</offset>

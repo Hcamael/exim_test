@@ -1,3 +1,23 @@
 <dec f='exim/src/structs.h' l='716' type='tree_node'/>
 <offset>128</offset>
 <doc f='exim/src/structs.h' l='716'>/* contains name; ptr indicates val */</doc>
+<use f='exim/src/macro.c' l='42' u='a' c='macro_create'/>
+<use f='exim/src/macro.c' l='47' u='m' c='macro_create'/>
+<use f='exim/src/macro.c' l='48' u='m' c='macro_create'/>
+<use f='exim/src/macro.c' l='49' u='a' c='macro_create'/>
+<use f='exim/src/macro.c' l='106' u='m' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='111' u='m' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro_predef.c' l='295' u='m' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='295' u='m' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='295' u='m' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='296' u='m' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='296' u='m' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='296' u='m' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='304' u='m' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='304' u='m' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='311' u='m' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='312' u='m' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='313' u='m' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='315' u='m' c='macro_dump'/>
+<use f='exim/src/exim.c' l='2445' u='m' c='main'/>
+<use f='exim/src/exim.c' l='2445' u='m' c='main'/>

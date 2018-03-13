@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='102' type='4'/>
 <doc f='exim/src/globals.h' l='102'>/* verified */</doc>
+<use f='exim/src/tls-openssl.c' l='1312' u='r' c='tls_server_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1446' u='r' c='tls_client_stapling_cb'/>

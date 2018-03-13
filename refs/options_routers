@@ -1,0 +1,3 @@
+<dec f='exim/src/macro_predef.h' l='18' type='void options_routers()'/>
+<use f='exim/src/macro_predef.c' l='270' u='c' c='options'/>
+<def f='exim/src/route.c' l='150' ll='164' type='void options_routers()'/>

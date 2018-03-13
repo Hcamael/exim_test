@@ -1,0 +1,10 @@
+<dec f='exim/src/routers/ipliteral.h' l='19' type='optionlist []'/>
+<use f='exim/src/drtables.c' l='280'/>
+<use f='exim/src/drtables.c' l='280'/>
+<use f='exim/src/drtables.c' l='280'/>
+<use f='exim/src/drtables.c' l='280'/>
+<doc f='exim/src/routers/ipliteral.h' l='17'>/* Data for reading the private options. */</doc>
+<def f='exim/src/routers/ipliteral.c' l='17' ll='19' type='optionlist [1]'/>
+<use f='exim/src/routers/ipliteral.c' l='25' u='r'/>
+<doc f='exim/src/routers/ipliteral.c' l='14'>/* Options specific to the ipliteral router. Because some compilers do not like
+empty declarations (&quot;undefined&quot; in the Standard) we put in a dummy value. */</doc>

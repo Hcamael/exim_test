@@ -1,1 +1,2 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='46'/>
+<use f='exim/src/globals.c' l='728' u='c'/>

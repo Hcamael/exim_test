@@ -1,1 +1,25 @@
 <dec f='exim/src/functions.h' l='152' type='void deliver_set_expansions(address_item * )'/>
+<def f='exim/src/deliver.c' l='172' ll='305' type='void deliver_set_expansions(address_item * addr)'/>
+<use f='exim/src/deliver.c' l='1782' u='c' c='common_error'/>
+<use f='exim/src/deliver.c' l='1986' u='c' c='check_message_size'/>
+<use f='exim/src/deliver.c' l='1988' u='c' c='check_message_size'/>
+<use f='exim/src/deliver.c' l='2776' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2778' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2831' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2834' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3009' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3109' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='4285' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4291' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4385' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4402' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4427' u='c' c='do_remote_deliveries'/>
+<doc f='exim/src/deliver.c' l='163'>/* Certain expansion variables are valid only when handling an address or
+address list. This function sets them up or clears the values, according to its
+argument.
+
+Arguments:
+  addr          the address in question, or NULL to clear values
+Returns:        nothing
+*/</doc>
+<use f='exim/src/verify.c' l='1895' u='c' c='verify_address'/>

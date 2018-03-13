@@ -1,2 +1,35 @@
 <dec f='exim/src/local_scan.h' l='150' type='uschar *'/>
 <doc f='exim/src/local_scan.h' l='150'>/* Interface for incoming call */</doc>
+<use f='exim/src/verify.c' l='2681' u='r' c='verify_get_ident'/>
+<def f='exim/src/globals.c' l='823' type='uschar *'/>
+<use f='exim/src/exim.c' l='3065' u='w' c='main'/>
+<use f='exim/src/exim.c' l='4216' u='w' c='main'/>
+<use f='exim/src/exim.c' l='4230' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4231' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4267' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5074' u='r' c='main'/>
+<use f='exim/src/smtp_in.c' l='1704' u='r' c='smtp_get_connection_info'/>
+<use f='exim/src/smtp_in.c' l='1706' u='r' c='smtp_get_connection_info'/>
+<use f='exim/src/queue.c' l='967' u='w' c='queue_list'/>
+<use f='exim/src/spool_in.c' l='267' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='570' u='w' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='549' u='a'/>
+<use f='exim/src/expand.c' l='549' u='a'/>
+<use f='exim/src/expand.c' l='642' u='a'/>
+<use f='exim/src/expand.c' l='642' u='a'/>
+<use f='exim/src/expand.c' l='549' u='a'/>
+<use f='exim/src/expand.c' l='549' u='a'/>
+<use f='exim/src/expand.c' l='642' u='a'/>
+<use f='exim/src/expand.c' l='642' u='a'/>
+<use f='exim/src/daemon.c' l='194' u='w' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='196' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='209' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='373' u='w' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='373' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='750' u='w' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='1308' u='r' c='add_host_info_for_log'/>
+<use f='exim/src/receive.c' l='1311' u='r' c='add_host_info_for_log'/>
+<use f='exim/src/host.c' l='697' u='r' c='host_and_ident'/>
+<use f='exim/src/host.c' l='698' u='r' c='host_and_ident'/>
+<use f='exim/src/spool_out.c' l='178' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='179' u='r' c='spool_write_header'/>

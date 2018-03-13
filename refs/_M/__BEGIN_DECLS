@@ -50,3 +50,6 @@
 <use f='include/sched.h' l='48' u='c'/>
 <use f='include/pthread.h' l='228' u='c'/>
 <use f='include/iconv.h' l='26' u='c'/>
+<use f='include/assert.h' l='66' u='c'/>
+<use f='include/crypt.h' l='29' u='c'/>
+<use f='include/x86_64-linux-gnu/gnu/libc-version.h' l='24' u='c'/>

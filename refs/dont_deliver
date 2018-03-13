@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='431' type='BOOL'/>
 <doc f='exim/src/globals.h' l='431'>/* TRUE for -N option */</doc>
+<use f='exim/src/deliver.c' l='2716' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='7206' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='706' type='BOOL'/>
+<use f='exim/src/exim.c' l='2911' u='w' c='main'/>
+<use f='exim/src/exim.c' l='4201' u='r' c='main'/>
+<use f='exim/src/queue.c' l='526' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='535' u='w' c='queue_run'/>
+<use f='exim/src/spool_in.c' l='592' u='w' c='spool_read_header'/>
+<use f='exim/src/transports/queuefile.c' l='229' u='r' c='queuefile_transport_entry'/>
+<use f='exim/src/child.c' l='111' u='r' c='child_exec_exim'/>
+<use f='exim/src/spool_out.c' l='219' u='r' c='spool_write_header'/>

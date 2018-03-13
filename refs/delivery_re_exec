@@ -1,1 +1,4 @@
 <dec f='exim/src/functions.h' l='157' type='void delivery_re_exec(int )'/>
+<def f='exim/src/deliver.c' l='8524' ll='8585' type='void delivery_re_exec(int exec_type)'/>
+<use f='exim/src/exim.c' l='5730' u='c' c='main'/>
+<use f='exim/src/daemon.c' l='667' u='c' c='handle_smtp_call'/>

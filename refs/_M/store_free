@@ -1,1 +1,15 @@
 <dec f='exim/src/store.h' l='33'/>
+<use f='exim/src/pdkim/pdkim.c' l='918' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='919' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1404' u='c'/>
+<use f='exim/src/drtables.c' l='776' u='c'/>
+<use f='exim/src/exim.c' l='60' u='c'/>
+<use f='exim/src/exim.c' l='4740' u='c'/>
+<use f='exim/src/smtp_in.c' l='1843' u='c'/>
+<use f='exim/src/smtp_in.c' l='2035' u='c'/>
+<use f='exim/src/smtp_in.c' l='2041' u='c'/>
+<use f='exim/src/smtp_in.c' l='2053' u='c'/>
+<use f='exim/src/smtp_in.c' l='5341' u='c'/>
+<use f='exim/src/store.c' l='157' u='c'/>
+<use f='exim/src/rewrite.c' l='667' u='c'/>
+<use f='exim/src/daemon.c' l='866' u='c'/>

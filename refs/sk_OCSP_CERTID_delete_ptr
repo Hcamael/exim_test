@@ -1,0 +1,1 @@
+<def f='include/openssl/ocsp.h' l='72' macro='1' type='OCSP_CERTID * sk_OCSP_CERTID_delete_ptr(struct stack_st_OCSP_CERTID * sk, OCSP_CERTID * ptr)'/>

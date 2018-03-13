@@ -1,0 +1,4 @@
+bdat_flush_data|bdat_flush_data
+bdat_getbuf|bdat_getbuf
+bdat_getc|bdat_getc
+bdat_ungetc|bdat_ungetc

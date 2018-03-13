@@ -1,1 +1,2 @@
 <dec f='include/netinet/tcp.h' l='151' type='3'/>
+<use f='exim/src/smtp_in.c' l='2324' u='r' c='tfo_in_check'/>

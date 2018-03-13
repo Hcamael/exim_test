@@ -1,1 +1,5 @@
 <dec f='exim/src/functions.h' l='417' type='uschar * smtp_getbuf(unsigned int * )'/>
+<use f='exim/src/tls-openssl.c' l='2464' u='r' c='tls_refill'/>
+<use f='exim/src/tls-openssl.c' l='2542' u='c' c='tls_getbuf'/>
+<def f='exim/src/smtp_in.c' l='490' ll='505' type='uschar * smtp_getbuf(unsigned int * len)'/>
+<use f='exim/src/smtp_in.c' l='2428' u='r' c='smtp_start_session'/>

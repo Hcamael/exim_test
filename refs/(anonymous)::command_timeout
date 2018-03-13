@@ -1,0 +1,4 @@
+<dec f='exim/src/transports/smtp.h' l='53' type='int'/>
+<offset>1600</offset>
+<use f='exim/src/verify.c' l='684' u='w' c='do_callout'/>
+<use f='exim/src/tls-openssl.c' l='2406' u='r' c='tls_client_start'/>

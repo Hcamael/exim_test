@@ -1,2 +1,6 @@
 <dec f='exim/src/macros.h' l='243' type='7'/>
 <doc f='exim/src/macros.h' l='243'>/* Excessively long single line in header */</doc>
+<use f='exim/src/moan.c' l='169' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='273' u='r' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='426' c='moan_to_sender'/>
+<use f='exim/src/receive.c' l='2162' u='r' c='receive_msg'/>

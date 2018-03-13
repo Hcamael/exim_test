@@ -1,1 +1,7 @@
 <dec f='exim/src/functions.h' l='124' type='void cutthrough_data_put_nl()'/>
+<def f='exim/src/verify.c' l='1270' ll='1274' type='void cutthrough_data_put_nl()'/>
+<use f='exim/src/receive.c' l='832' u='c' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='861' u='c' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='882' u='c' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='992' u='c' c='read_message_bdat_smtp'/>
+<use f='exim/src/receive.c' l='1009' u='c' c='read_message_bdat_smtp'/>

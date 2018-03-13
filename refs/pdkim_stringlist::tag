@@ -1,0 +1,5 @@
+<dec f='exim/src/pdkim/pdkim.c' l='58' type='int'/>
+<use f='exim/src/pdkim/pdkim.c' l='1544' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1554' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1569' u='w' c='pdkim_feed_finish'/>
+<offset>64</offset>

@@ -1,1 +1,4 @@
 <dec f='include/openssl/evp.h' l='662' type='const EVP_MD * EVP_sha256()'/>
+<use f='exim/src/tls-openssl.c' l='1537' u='c' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='2758' u='c' c='tls_validate_require_cipher'/>
+<use f='exim/src/tlscert-openssl.c' l='526' u='c' c='tls_cert_fprt_sha256'/>

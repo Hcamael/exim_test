@@ -1,3 +1,5 @@
 <dec f='include/arpa/nameser_compat.h' l='74' type='unsigned int'/>
 <offset>29</offset>
 <doc f='include/arpa/nameser_compat.h' l='74'>/*%&lt; authentic data from named */</doc>
+<use f='exim/src/dns.c' l='508' u='r' c='dns_is_secure'/>
+<use f='exim/src/dns.c' l='539' u='w' c='dns_set_insecure'/>

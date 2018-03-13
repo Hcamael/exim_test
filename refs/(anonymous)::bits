@@ -1,3 +1,21 @@
 <dec f='exim/src/globals.h' l='84' type='int'/>
 <offset>32</offset>
 <doc f='exim/src/globals.h' l='84'>/* bits used in TLS session */</doc>
+<use f='exim/src/tls-openssl.c' l='2077' u='a' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2423' u='a' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2474' u='w' c='tls_refill'/>
+<use f='exim/src/tls.c' l='214' u='a' c='tls_modify_variables'/>
+<use f='exim/src/globals.c' l='105' u='w'/>
+<use f='exim/src/globals.c' l='122' u='w'/>
+<use f='exim/src/expand.c' l='724' u='a'/>
+<use f='exim/src/expand.c' l='724' u='a'/>
+<use f='exim/src/expand.c' l='728' u='a'/>
+<use f='exim/src/expand.c' l='728' u='a'/>
+<use f='exim/src/expand.c' l='738' u='a'/>
+<use f='exim/src/expand.c' l='738' u='a'/>
+<use f='exim/src/expand.c' l='724' u='a'/>
+<use f='exim/src/expand.c' l='724' u='a'/>
+<use f='exim/src/expand.c' l='728' u='a'/>
+<use f='exim/src/expand.c' l='728' u='a'/>
+<use f='exim/src/expand.c' l='738' u='a'/>
+<use f='exim/src/expand.c' l='738' u='a'/>

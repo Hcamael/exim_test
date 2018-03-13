@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='828' type='double'/>
 <doc f='exim/src/globals.h' l='828'>/* Current MAIL delay */</doc>
+<def f='exim/src/globals.c' l='1327' type='double'/>
+<use f='exim/src/smtp_in.c' l='2368' u='w' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='4647' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4648' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4649' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4650' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4651' u='w' c='smtp_setup_msg'/>

@@ -1,2 +1,4 @@
 <dec f='exim/src/dbstuff.h' l='181'/>
 <doc f='exim/src/dbstuff.h' l='179'>/* Return values from EXIM_DBPUTB */</doc>
+<use f='exim/src/exim_dbmbuild.c' l='304' u='c'/>
+<use f='exim/src/exim_dbmbuild.c' l='398' u='c'/>

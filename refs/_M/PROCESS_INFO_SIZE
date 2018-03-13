@@ -1,2 +1,5 @@
 <dec f='exim/src/macros.h' l='147'/>
 <doc f='exim/src/macros.h' l='145'>/* The size of the buffer holding the processing information string. */</doc>
+<use f='exim/src/globals.c' l='1036' u='c'/>
+<use f='exim/src/exim.c' l='180' u='c'/>
+<use f='exim/src/receive.c' l='2645' u='c'/>

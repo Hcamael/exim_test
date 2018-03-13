@@ -1,2 +1,13 @@
 <dec f='exim/src/macros.h' l='570' type='1'/>
 <doc f='exim/src/macros.h' l='570'>/* Freeze message */</doc>
+<use f='exim/src/deliver.c' l='1660' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1697' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1701' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='2595' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='3723' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4055' u='r' c='par_wait'/>
+<use f='exim/src/routers/rf_self_action.c' l='93' u='r' c='rf_self_action'/>
+<use f='exim/src/routers/queryprogram.c' l='466' u='r' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='205' u='r' c='rf_lookup_hostlist'/>
+<use f='exim/src/routers/redirect.c' l='794' u='r' c='redirect_router_entry'/>
+<use f='exim/src/transports/tf_maildir.c' l='125' u='r' c='maildir_ensure_directories'/>

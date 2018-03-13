@@ -1,1 +1,12 @@
 <dec f='exim/src/functions.h' l='459' type='uschar * string_copynlc(uschar * , int )'/>
+<use f='exim/src/tlscert-openssl.c' l='239' u='c' c='tls_cert_serial_number'/>
+<def f='exim/src/string.c' l='512' ll='520' type='uschar * string_copynlc(uschar * s, int n)'/>
+<doc f='exim/src/string.c' l='502'>/* It is assumed the data contains no zeros. A zero is added
+onto the end.
+
+Arguments:
+  s         string to copy
+  n         number of characters
+
+Returns:    copy of string in new store, with letters lowercased
+*/</doc>

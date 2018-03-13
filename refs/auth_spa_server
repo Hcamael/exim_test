@@ -1,0 +1,2 @@
+<dec f='exim/src/auths/spa.h' l='35' type='int auth_spa_server(auth_instance * , uschar * )'/>
+<def f='exim/src/auths/spa.c' l='131' ll='259' type='int auth_spa_server(auth_instance * ablock, uschar * data)'/>

@@ -1,0 +1,7 @@
+<dec f='exim/src/expand.c' l='402' type='11'/>
+<use f='exim/src/expand.c' l='662'/>
+<use f='exim/src/expand.c' l='662'/>
+<use f='exim/src/expand.c' l='662'/>
+<use f='exim/src/expand.c' l='662'/>
+<use f='exim/src/expand.c' l='1805' c='find_variable'/>
+<doc f='exim/src/expand.c' l='402'>/* extract local part from string */</doc>

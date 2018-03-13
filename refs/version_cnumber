@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='980' type='uschar *'/>
 <doc f='exim/src/globals.h' l='980'>/* Compile number */</doc>
+<def f='exim/src/globals.c' l='1555' type='uschar *'/>
+<use f='exim/src/version.c' l='39' u='w' c='version_init'/>
+<use f='exim/src/version.c' l='41' u='r' c='version_init'/>
+<use f='exim/src/exim.c' l='2232' u='r' c='main'/>
+<use f='exim/src/expand.c' l='483' u='a'/>
+<use f='exim/src/expand.c' l='483' u='a'/>
+<use f='exim/src/expand.c' l='483' u='a'/>
+<use f='exim/src/expand.c' l='483' u='a'/>

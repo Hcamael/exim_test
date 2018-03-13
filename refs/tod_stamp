@@ -1,1 +1,52 @@
 <dec f='exim/src/functions.h' l='494' type='uschar * tod_stamp(int )'/>
+<use f='exim/src/deliver.c' l='1463' u='c' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='2041' u='c' c='previously_transported'/>
+<use f='exim/src/deliver.c' l='6391' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6542' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6772' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7376' u='c' c='deliver_message'/>
+<def f='exim/src/tod.c' l='52' ll='223' type='uschar * tod_stamp(int type)'/>
+<doc f='exim/src/tod.c' l='23'>/* The log timestamp format is dd-mmm-yy so as to be non-confusing on both
+sides of the Atlantic. We calculate an explicit numerical offset from GMT for
+the full datestamp and BSD inbox datestamp. Note that on some systems
+localtime() and gmtime() re-use the same store, so we must save the local time
+values before calling gmtime(). If timestamps_utc is set, don&apos;t use
+localtime(); all times are then in UTC (with offset +0000).
+
+There are also some contortions to get the day of the month without
+a leading zero for the full stamp, since Ustrftime() doesn&apos;t provide this
+option.
+
+Argument:  type of timestamp required:
+             tod_bsdin                  BSD inbox format
+             tod_epoch                  Unix epoch format
+             tod_epochl                 Unix epoch/usec format
+             tod_full                   full date and time
+             tod_log                    log file data line format,
+                                          with zone if log_timezone is TRUE
+             tod_log_bare               always without zone
+             tod_log_datestamp_daily    for log file names when datestamped daily
+             tod_log_datestamp_monthly  for log file names when datestamped monthly
+             tod_log_zone               always with zone
+             tod_mbx                    MBX inbox format
+             tod_zone                   just the timezone offset
+             tod_zulu                   time in 8601 zulu format
+
+Returns:   pointer to fixed buffer containing the timestamp
+*/</doc>
+<use f='exim/src/string.c' l='1426' u='c' c='string_vformat'/>
+<use f='exim/src/string.c' l='1434' u='c' c='string_vformat'/>
+<use f='exim/src/exim.c' l='4012' u='c' c='main'/>
+<use f='exim/src/log.c' l='900' u='c' c='log_write'/>
+<use f='exim/src/log.c' l='988' u='c' c='log_write'/>
+<use f='exim/src/log.c' l='1104' u='c' c='log_write'/>
+<use f='exim/src/expand.c' l='1868' u='c' c='find_variable'/>
+<use f='exim/src/expand.c' l='1871' u='c' c='find_variable'/>
+<use f='exim/src/expand.c' l='1874' u='c' c='find_variable'/>
+<use f='exim/src/expand.c' l='1877' u='c' c='find_variable'/>
+<use f='exim/src/expand.c' l='1880' u='c' c='find_variable'/>
+<use f='exim/src/expand.c' l='1883' u='c' c='find_variable'/>
+<use f='exim/src/expand.c' l='1886' u='c' c='find_variable'/>
+<use f='exim/src/expand.c' l='1889' u='c' c='find_variable'/>
+<use f='exim/src/receive.c' l='2958' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4052' u='c' c='receive_msg'/>

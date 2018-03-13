@@ -1,0 +1,6 @@
+<def f='exim/src/verify.c' l='18' type='uschar [8192]'/>
+<use f='exim/src/verify.c' l='1068' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='1069' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='1070' u='r' c='do_callout'/>
+<use f='exim/src/verify.c' l='1381' u='r' c='close_cutthrough_connection'/>
+<use f='exim/src/verify.c' l='1398' u='r' c='close_cutthrough_connection'/>

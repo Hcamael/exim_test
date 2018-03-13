@@ -1,1 +1,3 @@
 <dec f='exim/src/functions.h' l='341' type='uschar * readconf_readname(uschar * , int , uschar * )'/>
+<use f='exim/src/acl.c' l='756' u='c' c='acl_read'/>
+<use f='exim/src/acl.c' l='794' u='c' c='acl_read'/>

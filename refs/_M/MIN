@@ -1,2 +1,4 @@
 <dec f='include/x86_64-linux-gnu/sys/param.h' l='102'/>
 <doc f='include/x86_64-linux-gnu/sys/param.h' l='101'>/* Macros for min/max.  */</doc>
+<use f='exim/src/tls-openssl.c' l='2451' u='c'/>
+<use f='exim/src/smtp_in.c' l='444' u='c'/>

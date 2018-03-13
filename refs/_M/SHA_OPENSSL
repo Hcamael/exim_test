@@ -1,3 +1,4 @@
 <dec f='exim/src/sha_ver.h' l='36'/>
 <use f='exim/src/hash.h' l='16' u='a'/>
 <use f='exim/src/hash.h' l='49' u='a'/>
+<use f='exim/src/hash.c' l='31' u='a'/>

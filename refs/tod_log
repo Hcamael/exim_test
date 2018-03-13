@@ -1,1 +1,11 @@
 <dec f='exim/src/macros.h' l='220' type='0'/>
+<use f='exim/src/deliver.c' l='1463' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='2041' u='r' c='previously_transported'/>
+<use f='exim/src/deliver.c' l='6391' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6542' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6772' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7376' u='r' c='deliver_message'/>
+<use f='exim/src/tod.c' l='83' u='r' c='tod_stamp'/>
+<use f='exim/src/exim.c' l='4012' u='r' c='main'/>
+<use f='exim/src/log.c' l='900' u='r' c='log_write'/>
+<use f='exim/src/receive.c' l='4052' u='r' c='receive_msg'/>

@@ -1,1 +1,10 @@
 <dec f='exim/src/macros.h' l='382' macro='1' type='64'/>
+<use f='exim/src/verify.c' l='3357' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3371' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3384' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3453' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3523' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3604' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3700' u='r' c='verify_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3809' u='r' c='verify_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3844' u='r' c='verify_check_dnsbl'/>

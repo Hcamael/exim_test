@@ -1,0 +1,1 @@
+<dec f='include/openssl/x509v3.h' l='655' type='long X509_get_proxy_pathlen(X509 * x)'/>

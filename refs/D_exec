@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='383' macro='1' type='128'/>
+<use f='exim/src/exim.c' l='4150' u='r' c='main'/>
+<use f='exim/src/smtp_in.c' l='5607' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/child.c' l='149' u='r' c='child_exec_exim'/>

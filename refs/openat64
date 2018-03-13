@@ -1,2 +1,5 @@
 <dec f='include/fcntl.h' l='184' type='int openat(int __fd, const char * __file, int __oflag)'/>
 <dec f='include/fcntl.h' l='191' type='int openat64(int __fd, const char * __file, int __oflag)'/>
+<use f='exim/src/parse.c' l='1466' u='c' c='parse_forward_list'/>
+<use f='exim/src/transports/queuefile.c' l='139' u='c' c='copy_spool_files'/>
+<use f='exim/src/transports/queuefile.c' l='143' u='c' c='copy_spool_files'/>

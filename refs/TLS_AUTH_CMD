@@ -1,0 +1,6 @@
+<dec f='exim/src/smtp_in.c' l='75' type='8'/>
+<use f='exim/src/smtp_in.c' l='190'/>
+<use f='exim/src/smtp_in.c' l='190'/>
+<use f='exim/src/smtp_in.c' l='190'/>
+<use f='exim/src/smtp_in.c' l='190'/>
+<doc f='exim/src/smtp_in.c' l='75'>/* auto-command at start of SSL */</doc>

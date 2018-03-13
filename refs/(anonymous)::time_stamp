@@ -10,3 +10,22 @@
 <doc f='exim/src/dbstuff.h' l='673'>/* Timestamp of writing */</doc>
 <doc f='exim/src/dbstuff.h' l='721'>/* Timestamp of last address check */</doc>
 <doc f='exim/src/dbstuff.h' l='731'>/* Time stamp of last connection */</doc>
+<use f='exim/src/deliver.c' l='2932' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2941' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='6560' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6566' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6576' u='r' c='deliver_message'/>
+<use f='exim/src/verify.c' l='85' u='r' c='get_callout_cache_record'/>
+<use f='exim/src/verify.c' l='103' u='r' c='get_callout_cache_record'/>
+<use f='exim/src/exim_dbutil.c' l='413' u='w' c='dbfn_write'/>
+<use f='exim/src/exim_dbutil.c' l='889' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='987' u='r' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1052' u='r' c='main'/>
+<use f='exim/src/acl.c' l='2584' u='w' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2634' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2651' u='w' c='acl_ratelimit'/>
+<use f='exim/src/retry.c' l='190' u='r' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='200' u='r' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='667' u='r' c='retry_update'/>
+<use f='exim/src/dbfn.c' l='346' u='w' c='dbfn_write'/>
+<use f='exim/src/enq.c' l='57' u='r' c='enq_start'/>

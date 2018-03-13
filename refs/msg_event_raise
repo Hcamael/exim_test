@@ -1,1 +1,4 @@
 <dec f='exim/src/functions.h' l='182' type='void msg_event_raise(const uschar * , const address_item * )'/>
+<def f='exim/src/deliver.c' l='871' ll='901' type='void msg_event_raise(const uschar * event, const address_item * addr)'/>
+<use f='exim/src/deliver.c' l='1286' u='c' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1432' u='c' c='failure_log'/>

@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='290' type='int'/>
 <doc f='exim/src/globals.h' l='290'>/* Line number */</doc>
+<def f='exim/src/globals.c' l='521' type='int'/>
+<use f='exim/src/log.c' l='560' u='r' c='log_config_info'/>

@@ -1,1 +1,5 @@
 <dec f='exim/src/functions.h' l='129' type='void release_cutthrough_connection(const uschar * )'/>
+<use f='exim/src/deliver.c' l='4994' u='c' c='do_remote_deliveries'/>
+<def f='exim/src/verify.c' l='1410' ll='1417' type='void release_cutthrough_connection(const uschar * why)'/>
+<use f='exim/src/exim.c' l='5750' u='c' c='main'/>
+<use f='exim/src/daemon.c' l='680' u='c' c='handle_smtp_call'/>

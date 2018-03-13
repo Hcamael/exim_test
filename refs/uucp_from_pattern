@@ -1,2 +1,21 @@
 <dec f='exim/src/globals.h' l='969' type='uschar *'/>
 <doc f='exim/src/globals.h' l='969'>/* For recognizing &quot;From &quot; lines */</doc>
+<def f='exim/src/globals.c' l='1540' ll='1546' type='uschar *'/>
+<doc f='exim/src/globals.c' l='1525'>/*  A regex for matching a &quot;From_&quot; line in an incoming message, in the form
+
+    From ph10 Fri Jan  5 12:35 GMT 1996
+
+which  the &quot;mail&quot; commands send to the MTA (undocumented, of course), or in
+the  form
+
+    From ph10 Fri, 7 Jan 97 14:00:00 GMT
+
+which  is apparently used by some UUCPs, despite it not being in RFC 976.
+Because  of variations in time formats, just match up to the minutes. That
+should  be sufficient. Examples have been seen of time fields like 12:1:03,
+so  just require one digit for hours and minutes. The weekday is also absent
+in  some forms. */</doc>
+<use f='exim/src/readconf.c' l='369' u='a'/>
+<use f='exim/src/readconf.c' l='369' u='a'/>
+<use f='exim/src/readconf.c' l='369' u='a'/>
+<use f='exim/src/readconf.c' l='369' u='a'/>

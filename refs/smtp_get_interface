@@ -1,1 +1,19 @@
 <dec f='exim/src/functions.h' l='413' type='BOOL smtp_get_interface(uschar * , int , address_item * , uschar ** , uschar * )'/>
+<use f='exim/src/verify.c' l='391' u='c' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='663' u='c' c='do_callout'/>
+<def f='exim/src/smtp_out.c' l='36' ll='76' type='BOOL smtp_get_interface(uschar * istring, int host_af, address_item * addr, uschar ** interface, uschar * msg)'/>
+<doc f='exim/src/smtp_out.c' l='20'>/* This function is called from the smtp transport and also from the callout
+code in verify.c. Its job is to expand a string to get a list of interfaces,
+and choose a suitable one (IPv4 or IPv6) for the outgoing address.
+
+Arguments:
+  istring    string interface setting, may be NULL, meaning &quot;any&quot;, in
+               which case the function does nothing
+  host_af    AF_INET or AF_INET6 for the outgoing IP address
+  addr       the mail address being handled (for setting errors)
+  interface  point this to the interface
+  msg        to add to any error message
+
+Returns:     TRUE on success, FALSE on failure, with error message
+               set in addr and transport_return set to PANIC
+*/</doc>

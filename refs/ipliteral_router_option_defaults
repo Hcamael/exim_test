@@ -1,0 +1,9 @@
+<dec f='exim/src/routers/ipliteral.h' l='24' type='ipliteral_router_options_block'/>
+<use f='exim/src/drtables.c' l='282' u='a'/>
+<use f='exim/src/drtables.c' l='282' u='a'/>
+<use f='exim/src/drtables.c' l='282' u='a'/>
+<use f='exim/src/drtables.c' l='282' u='a'/>
+<doc f='exim/src/routers/ipliteral.h' l='22'>/* Block containing default values. */</doc>
+<def f='exim/src/routers/ipliteral.c' l='30' type='ipliteral_router_options_block'/>
+<doc f='exim/src/routers/ipliteral.c' l='27'>/* Default private options block for the ipliteral router. Again, a dummy
+value is present to keep some compilers happy. */</doc>

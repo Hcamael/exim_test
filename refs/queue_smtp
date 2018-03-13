@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='700' type='BOOL'/>
 <doc f='exim/src/globals.h' l='700'>/* Disable all immediate SMTP (-odqs)*/</doc>
+<def f='exim/src/globals.c' l='1077' type='BOOL'/>
+<use f='exim/src/exim.c' l='3019' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5178' u='w' c='main'/>
+<use f='exim/src/queue.c' l='393' u='w' c='queue_run'/>
+<use f='exim/src/queue.c' l='1433' u='a' c='queue_check_only'/>
+<use f='exim/src/child.c' l='112' u='r' c='child_exec_exim'/>

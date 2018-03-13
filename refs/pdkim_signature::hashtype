@@ -1,0 +1,41 @@
+<dec f='exim/src/pdkim/pdkim.h' l='145' type='int'/>
+<use f='exim/src/pdkim/pdkim.c' l='121' u='r' c='dkim_sig_to_a_tag'/>
+<use f='exim/src/pdkim/pdkim.c' l='121' u='r' c='dkim_sig_to_a_tag'/>
+<use f='exim/src/pdkim/pdkim.c' l='124' u='r' c='dkim_sig_to_a_tag'/>
+<use f='exim/src/pdkim/pdkim.c' l='450' u='w' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='546' u='w' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='547' u='r' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='610' u='r' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='787' u='r' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='1448' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1613' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1626' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1668' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1715' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1721' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1732' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1819' u='w' c='pdkim_init_sign'/>
+<use f='exim/src/pdkim/pdkim.c' l='1882' u='r' c='pdkim_set_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='1889' u='r' c='pdkim_set_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='1893' u='r' c='pdkim_set_bodyhash'/>
+<offset>128</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='145'>/* pdkim_hashes index */</doc>

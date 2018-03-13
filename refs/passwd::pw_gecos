@@ -1,3 +1,4 @@
 <dec f='include/pwd.h' l='55' type='char *'/>
 <offset>192</offset>
 <doc f='include/pwd.h' l='55'>/* Real name.  */</doc>
+<use f='exim/src/exim.c' l='4700' u='r' c='main'/>

@@ -1,1 +1,2 @@
 <dec f='include/openssl/asn1.h' l='752' type='int ASN1_GENERALIZEDTIME_print(BIO * fp, const ASN1_GENERALIZEDTIME * a)'/>
+<use f='exim/src/tls-openssl.c' l='1321' u='c' c='time_print'/>

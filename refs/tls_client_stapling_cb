@@ -1,0 +1,2 @@
+<def f='exim/src/tls-openssl.c' l='1325' ll='1471' type='int tls_client_stapling_cb(SSL * s, void * arg)'/>
+<use f='exim/src/tls-openssl.c' l='1659' u='r' c='tls_init'/>

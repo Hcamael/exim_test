@@ -1,1 +1,5 @@
 <dec f='exim/src/macros.h' l='621' type='1'/>
+<use f='exim/src/routers/redirect.c' l='18' u='r'/>
+<use f='exim/src/routers/redirect.c' l='18' u='r'/>
+<use f='exim/src/routers/redirect.c' l='18' u='r'/>
+<use f='exim/src/routers/redirect.c' l='18' u='r'/>

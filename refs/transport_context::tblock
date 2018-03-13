@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='239' type='transport_instance *'/>
 <offset>64</offset>
 <doc f='exim/src/structs.h' l='239'>/* transport */</doc>
+<use f='exim/src/deliver.c' l='7815' u='w' c='deliver_message'/>
+<use f='exim/src/verify.c' l='1356' u='w' c='cutthrough_headers_send'/>

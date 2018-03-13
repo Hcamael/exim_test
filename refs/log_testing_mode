@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='559' type='BOOL'/>
 <doc f='exim/src/globals.h' l='559'>/* TRUE in various testing modes */</doc>
+<def f='exim/src/globals.c' l='949' type='BOOL'/>
+<use f='exim/src/exim.c' l='2054' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2212' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2217' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2223' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2236' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='5253' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5254' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5259' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/log.c' l='951' u='r' c='log_write'/>
+<use f='exim/src/host.c' l='1800' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='2173' u='r' c='host_find_byname'/>

@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='309' type='BOOL'/>
 <offset>2272</offset>
 <doc f='exim/src/structs.h' l='309'>/* Flag to indicate gid is set */</doc>
+<use f='exim/src/globals.c' l='1216' u='w'/>
+<use f='exim/src/routers/rf_get_ugid.c' l='37' u='r' c='rf_get_ugid'/>

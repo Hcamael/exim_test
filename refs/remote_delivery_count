@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='750' type='int'/>
 <doc f='exim/src/globals.h' l='750'>/* Number of remote addresses */</doc>
+<use f='exim/src/deliver.c' l='4343' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4346' u='r' c='do_remote_deliveries'/>
+<def f='exim/src/globals.c' l='1149' type='int'/>
+<use f='exim/src/routers/rf_queue_add.c' l='92' u='w' c='rf_queue_add'/>

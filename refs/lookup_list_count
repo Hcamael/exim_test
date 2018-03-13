@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='563' type='int'/>
 <doc f='exim/src/globals.h' l='563'>/* Number of entries in the list */</doc>
+<def f='exim/src/drtables.c' l='20' type='int'/>
+<use f='exim/src/drtables.c' l='502' u='w' c='addlookupmodule'/>
+<use f='exim/src/drtables.c' l='526' u='r' c='add_lookup_to_list'/>
+<use f='exim/src/drtables.c' l='761' u='r' c='init_lookup_list'/>
+<use f='exim/src/drtables.c' l='763' u='r' c='init_lookup_list'/>
+<use f='exim/src/drtables.c' l='764' u='r' c='init_lookup_list'/>
+<use f='exim/src/exim.c' l='1029' u='r' c='show_whats_supported'/>
+<use f='exim/src/search.c' l='68' u='r' c='search_findtype'/>
+<use f='exim/src/search.c' l='270' u='r' c='search_tidyup'/>

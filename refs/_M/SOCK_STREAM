@@ -1,1 +1,9 @@
 <dec f='include/x86_64-linux-gnu/bits/socket_type.h' l='28'/>
+<use f='exim/src/deliver.c' l='8544' u='c'/>
+<use f='exim/src/verify.c' l='2679' u='c'/>
+<use f='exim/src/smtp_out.c' l='224' u='c'/>
+<use f='exim/src/ip.c' l='458' u='c'/>
+<use f='exim/src/ip.c' l='468' u='c'/>
+<use f='exim/src/expand.c' l='4822' u='c'/>
+<use f='exim/src/expand.c' l='4837' u='c'/>
+<use f='exim/src/daemon.c' l='1378' u='c'/>

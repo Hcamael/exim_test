@@ -1,0 +1,7 @@
+<dec f='exim/src/routers/ipliteral.h' l='32' type='void ipliteral_router_init(router_instance * )'/>
+<use f='exim/src/drtables.c' l='284'/>
+<use f='exim/src/drtables.c' l='284'/>
+<use f='exim/src/drtables.c' l='284'/>
+<use f='exim/src/drtables.c' l='284'/>
+<def f='exim/src/routers/ipliteral.c' l='36' type='void ipliteral_router_init(router_instance * rblock)'/>
+<doc f='exim/src/routers/ipliteral.c' l='35'>/* Dummy entries */</doc>

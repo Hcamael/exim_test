@@ -1,1 +1,6 @@
 <dec f='exim/src/osfunctions.h' l='21' type='int os_getloadavg()'/>
+<use f='exim/src/exim.c' l='5666' macro='1' u='c'/>
+<use f='exim/src/queue.c' l='489' u='c' c='queue_run'/>
+<use f='exim/src/expand.c' l='1796' macro='1' u='c'/>
+<use f='exim/src/daemon.c' l='236' macro='1' u='c'/>
+<use f='exim/src/daemon.c' l='605' macro='1' u='c'/>

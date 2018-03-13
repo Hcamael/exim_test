@@ -1,2 +1,29 @@
 <dec f='exim/src/globals.h' l='818' type='uschar *'/>
 <doc f='exim/src/globals.h' l='818'>/* Hostname for this message */</doc>
+<use f='exim/src/deliver.c' l='7314' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7701' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8241' u='r' c='deliver_message'/>
+<use f='exim/src/tls-openssl.c' l='1014' u='r' c='tls_install_selfsign'/>
+<def f='exim/src/globals.c' l='1314' type='uschar *'/>
+<use f='exim/src/exim.c' l='5044' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5055' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='927' u='r' c='command_timeout_handler'/>
+<use f='exim/src/smtp_in.c' l='951' u='r' c='command_sigterm_handler'/>
+<use f='exim/src/smtp_in.c' l='1659' u='r' c='smtp_closedown'/>
+<use f='exim/src/smtp_in.c' l='2752' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2774' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='3724' u='r' c='smtp_quit_handler'/>
+<use f='exim/src/smtp_in.c' l='4125' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5402' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5471' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/spool_in.c' l='286' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='481' u='w' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='680' u='a'/>
+<use f='exim/src/expand.c' l='680' u='a'/>
+<use f='exim/src/expand.c' l='680' u='a'/>
+<use f='exim/src/expand.c' l='680' u='a'/>
+<use f='exim/src/daemon.c' l='384' u='w' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='402' u='w' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='340' u='r' c='receive_bomb_out'/>
+<use f='exim/src/spool_out.c' l='181' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='182' u='r' c='spool_write_header'/>

@@ -1,2 +1,7 @@
 <dec f='include/stdlib.h' l='483' type='void free(void * __ptr)'/>
 <doc f='include/stdlib.h' l='482'>/* Free a block allocated by `malloc&apos;, `realloc&apos; or `calloc&apos;.  */</doc>
+<use f='exim/src/auths/auth-spa.c' l='1396' u='c' c='spa_build_auth_request'/>
+<use f='exim/src/auths/auth-spa.c' l='1532' u='c' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1533' u='c' c='spa_build_auth_response'/>
+<use f='exim/src/store.c' l='475' u='c' c='store_release_3'/>
+<use f='exim/src/store.c' l='607' u='c' c='store_free_3'/>

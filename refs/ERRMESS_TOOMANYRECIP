@@ -1,2 +1,6 @@
 <dec f='exim/src/macros.h' l='245' type='9'/>
 <doc f='exim/src/macros.h' l='245'>/* Too many recipients */</doc>
+<use f='exim/src/moan.c' l='184' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='436' c='moan_to_sender'/>
+<use f='exim/src/exim.c' l='5471' u='r' c='main'/>
+<use f='exim/src/receive.c' l='2480' u='r' c='receive_msg'/>

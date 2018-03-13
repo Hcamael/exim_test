@@ -1,2 +1,25 @@
 <dec f='exim/src/globals.h' l='356' type='uschar *'/>
 <doc f='exim/src/globals.h' l='356'>/* Home directory for pipes */</doc>
+<use f='exim/src/deliver.c' l='2183' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2184' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2188' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2189' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2190' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2197' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2200' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2230' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2230' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2353' u='r' c='deliver_local'/>
+<use f='exim/src/globals.c' l='217' u='a'/>
+<use f='exim/src/globals.c' l='217' u='a'/>
+<def f='exim/src/globals.c' l='632' type='uschar *'/>
+<use f='exim/src/filter.c' l='1847' u='r' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='1847' u='r' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='1848' u='r' c='interpret_commands'/>
+<use f='exim/src/exim.c' l='5594' u='w' c='main'/>
+<use f='exim/src/routers/rf_queue_add.c' l='76' u='r' c='rf_queue_add'/>
+<use f='exim/src/routers/redirect.c' l='417' u='r' c='add_generated'/>
+<use f='exim/src/expand.c' l='540' u='a'/>
+<use f='exim/src/expand.c' l='540' u='a'/>
+<use f='exim/src/expand.c' l='540' u='a'/>
+<use f='exim/src/expand.c' l='540' u='a'/>

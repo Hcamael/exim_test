@@ -1,2 +1,22 @@
 <dec f='exim/src/globals.h' l='960' type='BOOL'/>
 <doc f='exim/src/globals.h' l='960'>/* Caller is trusted */</doc>
+<def f='exim/src/globals.c' l='1515' type='BOOL'/>
+<use f='exim/src/moan.c' l='385' u='r' c='moan_to_sender'/>
+<use f='exim/src/exim.c' l='3836' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3842' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3844' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3847' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3849' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3850' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3852' u='w' c='main'/>
+<use f='exim/src/exim.c' l='4168' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4214' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4237' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4698' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4837' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4879' u='r' c='main'/>
+<use f='exim/src/receive.c' l='86' u='r' c='receive_check_set_sender'/>
+<use f='exim/src/receive.c' l='2076' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2380' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2756' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2829' u='r' c='receive_msg'/>

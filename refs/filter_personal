@@ -1,1 +1,13 @@
 <dec f='exim/src/functions.h' l='203' type='BOOL filter_personal(string_item * , BOOL )'/>
+<use f='exim/src/filter.c' l='1455' u='c' c='test_condition'/>
+<def f='exim/src/filter.c' l='2374' ll='2482' type='BOOL filter_personal(string_item * aliases, BOOL scan_cc)'/>
+<doc f='exim/src/filter.c' l='2364'>/* This function is global so that it can also be called from the code that
+implements Sieve filters.
+
+Arguments:
+  aliases    a chain of aliases
+  scan_cc    TRUE if Cc: and Bcc: are to be scanned (Exim filters do not)
+
+Returns:     TRUE if the message is deemed to be personal
+*/</doc>
+<use f='exim/src/sieve.c' l='3296' u='c' c='parse_commands'/>

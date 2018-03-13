@@ -1,0 +1,6 @@
+<dec f='exim/src/auths/auth-spa.h' l='81' type='int spa_base64_to_bits(char * , int , const char * )'/>
+<use f='exim/src/auths/spa.c' l='154' u='c' c='auth_spa_server'/>
+<use f='exim/src/auths/spa.c' l='174' u='c' c='auth_spa_server'/>
+<use f='exim/src/auths/spa.c' l='348' u='c' c='auth_spa_client'/>
+<def f='exim/src/auths/auth-spa.c' l='403' ll='453' type='int spa_base64_to_bits(char * out, int outlength, const char * in)'/>
+<doc f='exim/src/auths/auth-spa.c' l='401'>/* The outlength parameter was added by PH, December 2004 */</doc>

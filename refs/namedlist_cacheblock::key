@@ -1,2 +1,23 @@
 <dec f='exim/src/structs.h' l='859' type='uschar *'/>
 <offset>64</offset>
+<use f='exim/src/match.c' l='672' u='w' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='702' u='r' c='match_check_list'/>

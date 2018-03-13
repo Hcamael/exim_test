@@ -1,1 +1,2 @@
 <dec f='include/openssl/ssl.h' l='1323' type='void SSL_CTX_free(SSL_CTX * )'/>
+<use f='exim/src/tls-openssl.c' l='2794' u='c' c='tls_validate_require_cipher'/>

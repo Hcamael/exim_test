@@ -1,1 +1,3 @@
 <dec f='exim/src/macros.h' l='724'/>
+<use f='exim/src/verify.c' l='1029' u='c'/>
+<use f='exim/src/acl.c' l='1581' u='c'/>

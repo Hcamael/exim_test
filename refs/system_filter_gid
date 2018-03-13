@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='920' type='gid_t'/>
 <doc f='exim/src/globals.h' l='920'>/* Gid for running system filter */</doc>
+<use f='exim/src/deliver.c' l='5839' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5991' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1422' type='gid_t'/>
+<use f='exim/src/readconf.c' l='336' u='a'/>
+<use f='exim/src/readconf.c' l='336' u='a'/>
+<use f='exim/src/readconf.c' l='336' u='a'/>
+<use f='exim/src/readconf.c' l='336' u='a'/>

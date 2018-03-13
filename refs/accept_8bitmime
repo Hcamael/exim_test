@@ -1,3 +1,11 @@
 <dec f='exim/src/globals.h' l='159' type='BOOL'/>
 <doc f='exim/src/globals.h' l='157'>/* General global variables */</doc>
 <doc f='exim/src/globals.h' l='159'>/* Allow *BITMIME incoming */</doc>
+<def f='exim/src/globals.c' l='326' type='BOOL'/>
+<doc f='exim/src/globals.c' l='326'>/* deliberately not RFC compliant */</doc>
+<use f='exim/src/smtp_in.c' l='4192' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4471' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/readconf.c' l='33' u='a'/>
+<use f='exim/src/readconf.c' l='33' u='a'/>
+<use f='exim/src/readconf.c' l='33' u='a'/>
+<use f='exim/src/readconf.c' l='33' u='a'/>

@@ -1,0 +1,9 @@
+<dec f='exim/src/pdkim/pdkim.h' l='246' type='pdkim_pubkey *'/>
+<use f='exim/src/pdkim/pdkim.c' l='1699' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1710' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1712' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1719' u='r' c='pdkim_feed_finish'/>
+<offset>1152</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='243'>/* Pointer to a public key record that was used to verify the signature.
+     See pdkim_pubkey declaration above for more information.
+     Caution: is NULL if signing or if no record was retrieved. */</doc>

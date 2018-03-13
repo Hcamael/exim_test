@@ -1,1 +1,4 @@
 <dec f='exim/src/mytypes.h' l='99'/>
+<use f='exim/src/smtp_out.c' l='284' u='c'/>
+<use f='exim/src/sieve.c' l='1681' u='c'/>
+<use f='exim/src/sieve.c' l='1691' u='c'/>

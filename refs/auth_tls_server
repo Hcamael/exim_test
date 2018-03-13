@@ -1,0 +1,6 @@
+<dec f='exim/src/auths/tls.h' l='28' type='int auth_tls_server(auth_instance * , uschar * )'/>
+<use f='exim/src/drtables.c' l='168'/>
+<use f='exim/src/drtables.c' l='168'/>
+<use f='exim/src/drtables.c' l='168'/>
+<use f='exim/src/drtables.c' l='168'/>
+<def f='exim/src/auths/tls.c' l='47' type='int auth_tls_server(auth_instance * ablock, uschar * data)'/>

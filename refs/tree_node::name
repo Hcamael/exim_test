@@ -1,3 +1,249 @@
 <dec f='exim/src/structs.h' l='694' type='uschar [1]'/>
 <offset>200</offset>
 <doc f='exim/src/structs.h' l='694'>/* node name - variable length */</doc>
+<use f='exim/src/tree.c' l='206' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='206' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='231' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='238' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='251' u='r' c='tree_insertnode'/>
+<use f='exim/src/tree.c' l='336' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/tree.c' l='336' u='r' c='tree_search'/>
+<use f='exim/src/verify.c' l='3377' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/debug.c' l='45' c='tree_printsub'/>
+<use f='exim/src/macro.c' l='47' u='r' c='macro_create'/>
+<use f='exim/src/macro.c' l='84' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='84' u='r' c='macro_search_prefix'/>
+<use f='exim/src/macro.c' l='108' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro.c' l='108' u='r' c='macro_search_largest_prefix'/>
+<use f='exim/src/macro_predef.c' l='304' u='r' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='313' c='macro_dump'/>
+<use f='exim/src/macro_predef.c' l='315' u='r' c='macro_dump'/>
+<use f='exim/src/exim.c' l='2445' c='main'/>
+<use f='exim/src/queue.c' l='789' c='queue_list_extras'/>
+<use f='exim/src/spool_in.c' l='183' u='r' c='read_nonrecipients_tree'/>
+<use f='exim/src/search.c' l='383' c='search_open'/>
+<use f='exim/src/search.c' l='427' u='r' c='search_open'/>
+<use f='exim/src/search.c' l='471' u='r' c='internal_search_find'/>
+<use f='exim/src/search.c' l='547' u='r' c='internal_search_find'/>
+<use f='exim/src/search.c' l='628' u='r' c='search_find'/>
+<use f='exim/src/search.c' l='662' c='search_find'/>
+<use f='exim/src/acl.c' l='1387' u='r' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='2697' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='4051' u='r' c='acl_check_internal'/>
+<use f='exim/src/acl.c' l='4529' u='r' c='acl_var_create'/>
+<use f='exim/src/dns.c' l='625' u='r' c='dns_return'/>

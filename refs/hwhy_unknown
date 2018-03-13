@@ -1,1 +1,8 @@
 <dec f='exim/src/macros.h' l='748' type='0'/>
+<use f='exim/src/routers/dnslookup.c' l='287' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/host.c' l='343' u='r' c='host_build_hostlist'/>
+<use f='exim/src/host.c' l='2131' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2147' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2443' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2869' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2886' u='r' c='host_find_bydns'/>

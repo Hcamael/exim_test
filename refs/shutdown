@@ -5,3 +5,4 @@
      SHUT_WR   = No more transmissions;
      SHUT_RDWR = No more receptions or transmissions.
    Returns 0 on success, -1 for errors.  */</doc>
+<use f='exim/src/expand.c' l='4889' u='c' c='expand_string_internal'/>

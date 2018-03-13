@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='823' type='uschar *'/>
 <doc f='exim/src/globals.h' l='823'>/* For all SMTP commands */</doc>
+<def f='exim/src/globals.c' l='1322' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='1581' u='w' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='1582' u='r' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='1582' u='w' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='1583' u='r' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='4011' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4012' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5032' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5236' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5507' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/expand.c' l='682' u='a'/>
+<use f='exim/src/expand.c' l='682' u='a'/>
+<use f='exim/src/expand.c' l='682' u='a'/>
+<use f='exim/src/expand.c' l='682' u='a'/>

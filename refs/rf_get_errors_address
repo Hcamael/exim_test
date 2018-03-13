@@ -1,0 +1,23 @@
+<dec f='exim/src/routers/rf_functions.h' l='16' type='int rf_get_errors_address(address_item * , router_instance * , int , uschar ** )'/>
+<def f='exim/src/routers/rf_get_errors_address.c' l='35' ll='129' type='int rf_get_errors_address(address_item * addr, router_instance * rblock, int verify, uschar ** errors_to)'/>
+<doc f='exim/src/routers/rf_get_errors_address.c' l='16'>/* This function is called by routers to sort out the errors address for a
+particular address. If there is a setting in the router block, then expand and
+verify it, and if it works, use it. Otherwise use any setting that is in the
+address itself. This might be NULL, meaning unset (the message&apos;s sender is then
+used). Verification isn&apos;t done when the original address is just being
+verified, as otherwise there might be routing loops if someone sets up a silly
+configuration.
+
+Arguments:
+  addr         the input address
+  rblock       the router instance
+  verify       v_none / v_recipient / v_sender / v_expn
+  errors_to    point the errors address here
+
+Returns:       OK if no problem
+               DEFER if verifying the address caused a deferment
+                 or a big disaster (e.g. expansion failure)
+*/</doc>
+<use f='exim/src/routers/dnslookup.c' l='457' u='c' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/queryprogram.c' l='236' u='c' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='294' u='c' c='sort_errors_and_headers'/>

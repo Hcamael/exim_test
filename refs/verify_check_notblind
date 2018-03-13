@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='537' type='int verify_check_notblind()'/>
+<def f='exim/src/verify.c' l='2342' ll='2408' type='int verify_check_notblind()'/>
+<doc f='exim/src/verify.c' l='2328'>/* This function checks that every (envelope) recipient is mentioned in either
+the To: or Cc: header lines, thus detecting blind carbon copies.
+
+There are two ways of scanning that could be used: either scan the header lines
+and tick off the recipients, or scan the recipients and check the header lines.
+The original proposed patch did the former, but I have chosen to do the latter,
+because (a) it requires no memory and (b) will use fewer resources when there
+are many addresses in To: and/or Cc: and only one or two envelope recipients.
+
+Arguments:   none
+Returns:     OK    if there are no blind recipients
+             FAIL  if there is at least one blind recipient
+*/</doc>
+<use f='exim/src/acl.c' l='1725' u='c' c='acl_verify'/>

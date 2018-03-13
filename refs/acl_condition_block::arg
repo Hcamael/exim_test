@@ -1,2 +1,12 @@
 <dec f='exim/src/structs.h' l='875' type='uschar *'/>
 <offset>64</offset>
+<use f='exim/src/acl.c' l='913' u='w' c='acl_read'/>
+<use f='exim/src/acl.c' l='2870' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2871' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2877' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2878' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2896' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2897' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2901' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2931' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2933' u='r' c='acl_check_condition'/>

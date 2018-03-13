@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='695' type='uschar *'/>
 <doc f='exim/src/globals.h' l='695'>/* Queue if file exists/not-exists */</doc>
+<def f='exim/src/globals.c' l='1064' type='uschar *'/>
+<use f='exim/src/queue.c' l='1425' u='r' c='queue_check_only'/>
+<use f='exim/src/queue.c' l='1427' u='r' c='queue_check_only'/>
+<use f='exim/src/readconf.c' l='250' u='a'/>
+<use f='exim/src/readconf.c' l='250' u='a'/>
+<use f='exim/src/readconf.c' l='250' u='a'/>
+<use f='exim/src/readconf.c' l='250' u='a'/>

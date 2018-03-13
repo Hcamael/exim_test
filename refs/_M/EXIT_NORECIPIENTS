@@ -2,3 +2,4 @@
 <doc f='exim/src/macros.h' l='48'>/* We need a special return code for &quot;no recipients and failed to send an error
 message&quot;. ANSI C defines only EXIT_FAILURE and EXIT_SUCCESS. On the assumption
 that these are always 1 and 0 on Unix systems ... */</doc>
+<use f='exim/src/receive.c' l='3259' u='c'/>

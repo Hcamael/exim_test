@@ -1,0 +1,4 @@
+<def f='exim/src/deliver.c' l='20' ll='29'/>
+<size>48</size>
+<doc f='exim/src/deliver.c' l='17'>/* Data block for keeping track of subprocesses for parallel remote
+delivery. */</doc>

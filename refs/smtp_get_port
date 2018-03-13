@@ -1,1 +1,17 @@
 <dec f='exim/src/functions.h' l='415' type='BOOL smtp_get_port(uschar * , address_item * , int * , uschar * )'/>
+<use f='exim/src/verify.c' l='393' u='c' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='665' u='c' c='do_callout'/>
+<def f='exim/src/smtp_out.c' l='98' ll='138' type='BOOL smtp_get_port(uschar * rstring, address_item * addr, int * port, uschar * msg)'/>
+<doc f='exim/src/smtp_out.c' l='84'>/* This function is called from the smtp transport and also from the callout
+code in verify.c. Its job is to find a port number. Note that getservbyname()
+produces the number in network byte order.
+
+Arguments:
+  rstring     raw (unexpanded) string representation of the port
+  addr        the mail address being handled (for setting errors)
+  port        stick the port in here
+  msg         for adding to error message
+
+Returns:      TRUE on success, FALSE on failure, with error message set
+                in addr, and transport_return set to PANIC
+*/</doc>

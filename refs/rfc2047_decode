@@ -1,1 +1,6 @@
 <dec f='exim/src/local_scan.h' l='187' type='uschar * rfc2047_decode(uschar * , BOOL , uschar * , int , int * , uschar ** )'/>
+<use f='exim/src/expand.c' l='6958' u='c' c='expand_string_internal'/>
+<def f='exim/src/rfc2047.c' l='345' ll='350' type='uschar * rfc2047_decode(uschar * string, BOOL lencheck, uschar * target, int zeroval, int * lenptr, uschar ** error)'/>
+<doc f='exim/src/rfc2047.c' l='342'>/* This is the stub that provides the original interface without the sizeptr
+argument. */</doc>
+<use f='exim/src/sieve.c' l='1117' u='c' c='expand_header'/>

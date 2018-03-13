@@ -1,0 +1,6 @@
+<dec f='exim/src/transports/smtp.h' l='25' type='uschar *'/>
+<dec f='exim/src/transports/smtp.h' l='101' type='int'/>
+<offset>224</offset>
+<use f='exim/src/verify.c' l='673' u='w' c='do_callout'/>
+<dec f='exim/src/routers/iplookup.h' l='12' type='int'/>
+<offset>0</offset>

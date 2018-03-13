@@ -1,2 +1,19 @@
 <dec f='exim/src/globals.h' l='775' type='BOOL'/>
 <doc f='exim/src/globals.h' l='775'>/* Set TRUE if lookup deferred */</doc>
+<use f='exim/src/verify.c' l='2979' u='r' c='check_host'/>
+<def f='exim/src/globals.c' l='1264' type='BOOL'/>
+<use f='exim/src/search.c' l='478' u='w' c='internal_search_find'/>
+<use f='exim/src/search.c' l='524' u='w' c='internal_search_find'/>
+<use f='exim/src/search.c' l='567' u='r' c='internal_search_find'/>
+<use f='exim/src/search.c' l='672' u='r' c='search_find'/>
+<use f='exim/src/search.c' l='695' u='r' c='search_find'/>
+<use f='exim/src/search.c' l='733' u='r' c='search_find'/>
+<use f='exim/src/search.c' l='775' u='r' c='search_find'/>
+<use f='exim/src/routers/dnslookup.c' l='269' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/dnslookup.c' l='274' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/acl.c' l='2902' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='4287' u='r' c='acl_check_wargs'/>
+<use f='exim/src/match.c' l='306' u='r' c='check_string'/>
+<use f='exim/src/expand.c' l='913' u='r' c='expand_check_condition'/>
+<use f='exim/src/expand.c' l='4358' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='7575' u='w' c='expand_cstring'/>

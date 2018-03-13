@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='724' type='tree_node_64'/>
 <offset>128</offset>
 <doc f='exim/src/structs.h' l='724'>/* contains name; ptr indicates val */</doc>
+<use f='exim/src/macro_predef.c' l='315' u='m' c='macro_dump'/>

@@ -1,1 +1,5 @@
 <dec f='exim/src/functions.h' l='110' type='uschar * bdat_getbuf(unsigned int * )'/>
+<use f='exim/src/smtp_in.c' l='656' u='r' c='bdat_getc'/>
+<def f='exim/src/smtp_in.c' l='667' ll='679' type='uschar * bdat_getbuf(unsigned int * len)'/>
+<use f='exim/src/smtp_in.c' l='687' u='c' c='bdat_flush_data'/>
+<use f='exim/src/receive.c' l='1035' u='c' c='read_message_bdat_smtp_wire'/>

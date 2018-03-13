@@ -1,1 +1,6 @@
 <dec f='exim/src/macros.h' l='916' type='2'/>
+<use f='exim/src/verify.c' l='3182' u='r' c='verify_check_this_host'/>
+<use f='exim/src/match.c' l='378' c='get_check_key'/>
+<use f='exim/src/match.c' l='556' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='615' u='r' c='match_check_list'/>
+<use f='exim/src/expand.c' l='2646' u='r' c='eval_condition'/>

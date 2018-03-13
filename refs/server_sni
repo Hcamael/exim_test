@@ -1,0 +1,16 @@
+<def f='exim/src/tls-openssl.c' l='139' type='SSL_CTX *'/>
+<use f='exim/src/tls-openssl.c' l='1219' u='w' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1229' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1230' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1231' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1232' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1233' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1234' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1236' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1237' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1242' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1246' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1247' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1251' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1257' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1261' u='r' c='tls_servername_cb'/>

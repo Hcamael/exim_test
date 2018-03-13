@@ -1,2 +1,19 @@
 <dec f='exim/src/globals.h' l='678' type='const uschar *'/>
 <doc f='exim/src/globals.h' l='678'>/* Domain to qualify recipients with */</doc>
+<use f='exim/src/deliver.c' l='6000' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1056' type='const uschar *'/>
+<use f='exim/src/exim.c' l='5587' u='r' c='main'/>
+<use f='exim/src/routers/redirect.c' l='542' u='r' c='redirect_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='698' u='w' c='redirect_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='703' u='w' c='redirect_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='730' u='w' c='redirect_router_entry'/>
+<use f='exim/src/rewrite.c' l='67' u='r' c='rewrite_address_qualify'/>
+<use f='exim/src/rewrite.c' l='807' u='r' c='rewrite_test'/>
+<use f='exim/src/expand.c' l='635' u='a'/>
+<use f='exim/src/expand.c' l='635' u='a'/>
+<use f='exim/src/expand.c' l='635' u='a'/>
+<use f='exim/src/expand.c' l='635' u='a'/>
+<use f='exim/src/readconf.c' l='246' u='a'/>
+<use f='exim/src/readconf.c' l='246' u='a'/>
+<use f='exim/src/readconf.c' l='246' u='a'/>
+<use f='exim/src/readconf.c' l='246' u='a'/>

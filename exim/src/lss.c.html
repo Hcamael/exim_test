@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>lss.c source code [exim/src/lss.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/lss.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='lss.c.html'>lss.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2015 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Support functions for calling from local_scan(). These are mostly just</i></td></tr>
+<tr><th id="9">9</th><td><i>wrappers for various internal functions. */</i></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td><u>#include <a href="exim.h.html">"exim.h"</a></u></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="16">16</th><td><i>*            Match a domain in a list            *</i></td></tr>
+<tr><th id="17">17</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><i>/*</i></td></tr>
+<tr><th id="20">20</th><td><i>Arguments:</i></td></tr>
+<tr><th id="21">21</th><td><i>  domain         the domain we are testing</i></td></tr>
+<tr><th id="22">22</th><td><i>  list           the domain list</i></td></tr>
+<tr><th id="23">23</th><td><i></i></td></tr>
+<tr><th id="24">24</th><td><i>Returns:         OK/FAIL/DEFER</i></td></tr>
+<tr><th id="25">25</th><td><i>*/</i></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><em>int</em></td></tr>
+<tr><th id="28">28</th><td><dfn class="decl def fn" id="lss_match_domain" title='lss_match_domain' data-ref="lss_match_domain">lss_match_domain</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="1domain" title='domain' data-type='uschar *' data-ref="1domain">domain</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="2list" title='list' data-type='uschar *' data-ref="2list">list</dfn>)</td></tr>
+<tr><th id="29">29</th><td>{</td></tr>
+<tr><th id="30">30</th><td><b>return</b> <a class="ref fn" href="functions.h.html#match_isinlist" title='match_isinlist' data-ref="match_isinlist">match_isinlist</a>(<a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a> <a class="local col1 ref" href="#1domain" title='domain' data-ref="1domain">domain</a>, <a class="macro" href="mytypes.h.html#71" title="(const unsigned char **)" data-ref="_M/CUSS">CUSS</a> &amp;<a class="local col2 ref" href="#2list" title='list' data-ref="2list">list</a>, <var>0</var>, &amp;<a class="ref" href="globals.h.html#domainlist_anchor" title='domainlist_anchor' data-ref="domainlist_anchor">domainlist_anchor</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="enum" href="macros.h.html#MCL_DOMAIN" title='MCL_DOMAIN' data-ref="MCL_DOMAIN">MCL_DOMAIN</a>,</td></tr>
+<tr><th id="31">31</th><td>  <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="32">32</th><td>}</td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="37">37</th><td><i>*            Match a local part in a list        *</i></td></tr>
+<tr><th id="38">38</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><i>/*</i></td></tr>
+<tr><th id="41">41</th><td><i>Arguments:</i></td></tr>
+<tr><th id="42">42</th><td><i>  local_part     the local part we are testing</i></td></tr>
+<tr><th id="43">43</th><td><i>  list           the local part list</i></td></tr>
+<tr><th id="44">44</th><td><i>  caseless       TRUE for caseless matching</i></td></tr>
+<tr><th id="45">45</th><td><i></i></td></tr>
+<tr><th id="46">46</th><td><i>Returns:         OK/FAIL/DEFER</i></td></tr>
+<tr><th id="47">47</th><td><i>*/</i></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><em>int</em></td></tr>
+<tr><th id="50">50</th><td><dfn class="decl def fn" id="lss_match_local_part" title='lss_match_local_part' data-ref="lss_match_local_part">lss_match_local_part</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="3local_part" title='local_part' data-type='uschar *' data-ref="3local_part">local_part</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="4list" title='list' data-type='uschar *' data-ref="4list">list</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col5 decl" id="5caseless" title='caseless' data-type='BOOL' data-ref="5caseless">caseless</dfn>)</td></tr>
+<tr><th id="51">51</th><td>{</td></tr>
+<tr><th id="52">52</th><td><b>return</b> <a class="ref fn" href="functions.h.html#match_isinlist" title='match_isinlist' data-ref="match_isinlist">match_isinlist</a>(<a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a> <a class="local col3 ref" href="#3local_part" title='local_part' data-ref="3local_part">local_part</a>, <a class="macro" href="mytypes.h.html#71" title="(const unsigned char **)" data-ref="_M/CUSS">CUSS</a> &amp;<a class="local col4 ref" href="#4list" title='list' data-ref="4list">list</a>, <var>0</var>, &amp;<a class="ref" href="globals.h.html#localpartlist_anchor" title='localpartlist_anchor' data-ref="localpartlist_anchor">localpartlist_anchor</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="53">53</th><td>  <a class="enum" href="macros.h.html#MCL_LOCALPART" title='MCL_LOCALPART' data-ref="MCL_LOCALPART">MCL_LOCALPART</a>, <a class="local col5 ref" href="#5caseless" title='caseless' data-ref="5caseless">caseless</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="54">54</th><td>}</td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="59">59</th><td><i>*            Match an address in a list          *</i></td></tr>
+<tr><th id="60">60</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><i>/*</i></td></tr>
+<tr><th id="63">63</th><td><i>Arguments:</i></td></tr>
+<tr><th id="64">64</th><td><i>  address        the address we are testing</i></td></tr>
+<tr><th id="65">65</th><td><i>  list           the address list</i></td></tr>
+<tr><th id="66">66</th><td><i>  caseless       TRUE for caseless matching</i></td></tr>
+<tr><th id="67">67</th><td><i></i></td></tr>
+<tr><th id="68">68</th><td><i>Returns:         OK/FAIL/DEFER</i></td></tr>
+<tr><th id="69">69</th><td><i>*/</i></td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td><em>int</em></td></tr>
+<tr><th id="72">72</th><td><dfn class="decl def fn" id="lss_match_address" title='lss_match_address' data-ref="lss_match_address">lss_match_address</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="6address" title='address' data-type='uschar *' data-ref="6address">address</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col7 decl" id="7list" title='list' data-type='uschar *' data-ref="7list">list</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col8 decl" id="8caseless" title='caseless' data-type='BOOL' data-ref="8caseless">caseless</dfn>)</td></tr>
+<tr><th id="73">73</th><td>{</td></tr>
+<tr><th id="74">74</th><td><b>return</b> <a class="ref fn" href="functions.h.html#match_address_list" title='match_address_list' data-ref="match_address_list">match_address_list</a>(<a class="macro" href="mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a> <a class="local col6 ref" href="#6address" title='address' data-ref="6address">address</a>, <a class="local col8 ref" href="#8caseless" title='caseless' data-ref="8caseless">caseless</a>, <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>, <a class="macro" href="mytypes.h.html#71" title="(const unsigned char **)" data-ref="_M/CUSS">CUSS</a> &amp;<a class="local col7 ref" href="#7list" title='list' data-ref="7list">list</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, -<var>1</var>, <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="75">75</th><td>}</td></tr>
+<tr><th id="76">76</th><td></td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="80">80</th><td><i>*            Match a host in a list              *</i></td></tr>
+<tr><th id="81">81</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td><i>/*</i></td></tr>
+<tr><th id="84">84</th><td><i>Arguments:</i></td></tr>
+<tr><th id="85">85</th><td><i>  host name      the name of the host we are testing, or NULL if this is the</i></td></tr>
+<tr><th id="86">86</th><td><i>                   sender host and its name hasn't yet been looked up</i></td></tr>
+<tr><th id="87">87</th><td><i>  host address   the IP address of the host, or an empty string for a local</i></td></tr>
+<tr><th id="88">88</th><td><i>                   message</i></td></tr>
+<tr><th id="89">89</th><td><i>  list           the host list</i></td></tr>
+<tr><th id="90">90</th><td><i></i></td></tr>
+<tr><th id="91">91</th><td><i>Returns:         OK/FAIL/DEFER</i></td></tr>
+<tr><th id="92">92</th><td><i>                 ERROR if failed to find host name when needed</i></td></tr>
+<tr><th id="93">93</th><td><i>*/</i></td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td><em>int</em></td></tr>
+<tr><th id="96">96</th><td><dfn class="decl def fn" id="lss_match_host" title='lss_match_host' data-ref="lss_match_host">lss_match_host</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col9 decl" id="9host_name" title='host_name' data-type='uschar *' data-ref="9host_name">host_name</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col0 decl" id="10host_address" title='host_address' data-type='uschar *' data-ref="10host_address">host_address</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="11list" title='list' data-type='uschar *' data-ref="11list">list</dfn>)</td></tr>
+<tr><th id="97">97</th><td>{</td></tr>
+<tr><th id="98">98</th><td><b>return</b> <a class="ref fn" href="functions.h.html#verify_check_this_host" title='verify_check_this_host' data-ref="verify_check_this_host">verify_check_this_host</a>(<a class="macro" href="mytypes.h.html#71" title="(const unsigned char **)" data-ref="_M/CUSS">CUSS</a> &amp;<a class="local col1 ref" href="#11list" title='list' data-ref="11list">list</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="local col9 ref" href="#9host_name" title='host_name' data-ref="9host_name">host_name</a>, <a class="local col0 ref" href="#10host_address" title='host_address' data-ref="10host_address">host_address</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="99">99</th><td>}</td></tr>
+<tr><th id="100">100</th><td></td></tr>
+<tr><th id="101">101</th><td></td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="104">104</th><td><i>*           Base 64 encode/decode                *</i></td></tr>
+<tr><th id="105">105</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="106">106</th><td></td></tr>
+<tr><th id="107">107</th><td><i>/* These functions just give less "internal" names to the functions.</i></td></tr>
+<tr><th id="108">108</th><td><i></i></td></tr>
+<tr><th id="109">109</th><td><i>Arguments:</i></td></tr>
+<tr><th id="110">110</th><td><i>  clear       points to the clear text bytes</i></td></tr>
+<tr><th id="111">111</th><td><i>  len         the number of bytes to encode</i></td></tr>
+<tr><th id="112">112</th><td><i></i></td></tr>
+<tr><th id="113">113</th><td><i>Returns:      a pointer to the zero-terminated base 64 string, which</i></td></tr>
+<tr><th id="114">114</th><td><i>              is in working store</i></td></tr>
+<tr><th id="115">115</th><td><i>*/</i></td></tr>
+<tr><th id="116">116</th><td></td></tr>
+<tr><th id="117">117</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *</td></tr>
+<tr><th id="118">118</th><td><dfn class="decl def fn" id="lss_b64encode" title='lss_b64encode' data-ref="lss_b64encode">lss_b64encode</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="12clear" title='clear' data-type='uschar *' data-ref="12clear">clear</dfn>, <em>int</em> <dfn class="local col3 decl" id="13len" title='len' data-type='int' data-ref="13len">len</dfn>)</td></tr>
+<tr><th id="119">119</th><td>{</td></tr>
+<tr><th id="120">120</th><td><b>return</b> <a class="ref fn" href="functions.h.html#b64encode" title='b64encode' data-ref="b64encode">b64encode</a>(<a class="local col2 ref" href="#12clear" title='clear' data-ref="12clear">clear</a>, <a class="local col3 ref" href="#13len" title='len' data-ref="13len">len</a>);</td></tr>
+<tr><th id="121">121</th><td>}</td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td><i>/*</i></td></tr>
+<tr><th id="124">124</th><td><i>Arguments:</i></td></tr>
+<tr><th id="125">125</th><td><i>  code        points to the coded string, zero-terminated</i></td></tr>
+<tr><th id="126">126</th><td><i>  ptr         where to put the pointer to the result, which is in</i></td></tr>
+<tr><th id="127">127</th><td><i>              dynamic store</i></td></tr>
+<tr><th id="128">128</th><td><i></i></td></tr>
+<tr><th id="129">129</th><td><i>Returns:      the number of bytes in the result,</i></td></tr>
+<tr><th id="130">130</th><td><i>              or -1 if the input was malformed</i></td></tr>
+<tr><th id="131">131</th><td><i></i></td></tr>
+<tr><th id="132">132</th><td><i>A zero is added on to the end to make it easy in cases where the result is to</i></td></tr>
+<tr><th id="133">133</th><td><i>be interpreted as text. This is not included in the count. */</i></td></tr>
+<tr><th id="134">134</th><td></td></tr>
+<tr><th id="135">135</th><td><em>int</em></td></tr>
+<tr><th id="136">136</th><td><dfn class="decl def fn" id="lss_b64decode" title='lss_b64decode' data-ref="lss_b64decode">lss_b64decode</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="14code" title='code' data-type='uschar *' data-ref="14code">code</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col5 decl" id="15ptr" title='ptr' data-type='uschar **' data-ref="15ptr">ptr</dfn>)</td></tr>
+<tr><th id="137">137</th><td>{</td></tr>
+<tr><th id="138">138</th><td><b>return</b> <a class="ref fn" href="functions.h.html#b64decode" title='b64decode' data-ref="b64decode">b64decode</a>(<a class="local col4 ref" href="#14code" title='code' data-ref="14code">code</a>, <a class="local col5 ref" href="#15ptr" title='ptr' data-ref="15ptr">ptr</a>);</td></tr>
+<tr><th id="139">139</th><td>}</td></tr>
+<tr><th id="140">140</th><td></td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td><i>/* End of lss.c */</i></td></tr>
+<tr><th id="143">143</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

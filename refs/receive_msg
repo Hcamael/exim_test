@@ -1,1 +1,92 @@
 <dec f='exim/src/functions.h' l='350' type='BOOL receive_msg(BOOL )'/>
+<use f='exim/src/exim.c' l='4987' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5115' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5403' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5568' u='c' c='main'/>
+<use f='exim/src/daemon.c' l='506' u='c' c='handle_smtp_call'/>
+<def f='exim/src/receive.c' l='1611' ll='4344' type='BOOL receive_msg(BOOL extract_recip)'/>
+<doc f='exim/src/receive.c' l='1525'>/* Receive a message on the given input, and put it into a pair of spool files.
+Either a non-null list of recipients, or the extract flag will be true, or
+both. The flag sender_local is true for locally generated messages. The flag
+submission_mode is true if an ACL has obeyed &quot;control = submission&quot;. The flag
+suppress_local_fixups is true if an ACL has obeyed &quot;control =
+suppress_local_fixups&quot; or -G was passed on the command-line.
+The flag smtp_input is true if the message is to be
+handled using SMTP conventions about termination and lines starting with dots.
+For non-SMTP messages, dot_ends is true for dot-terminated messages.
+
+If a message was successfully read, message_id[0] will be non-zero.
+
+The general actions of this function are:
+
+  . Read the headers of the message (if any) into a chain of store
+    blocks.
+
+  . If there is a &quot;sender:&quot; header and the message is locally originated,
+    throw it away, unless the caller is trusted, or unless
+    active_local_sender_retain is set - which can only happen if
+    active_local_from_check is false.
+
+  . If recipients are to be extracted from the message, build the
+    recipients list from the headers, removing any that were on the
+    original recipients list (unless extract_addresses_remove_arguments is
+    false), and at the same time, remove any bcc header that may be present.
+
+  . Get the spool file for the data, sort out its unique name, open
+    and lock it (but don&apos;t give it the name yet).
+
+  . Generate a &quot;Message-Id&quot; header if the message doesn&apos;t have one, for
+    locally-originated messages.
+
+  . Generate a &quot;Received&quot; header.
+
+  . Ensure the recipients list is fully qualified and rewritten if necessary.
+
+  . If there are any rewriting rules, apply them to the sender address
+    and also to the headers.
+
+  . If there is no from: header, generate one, for locally-generated messages
+    and messages in &quot;submission mode&quot; only.
+
+  . If the sender is local, check that from: is correct, and if not, generate
+    a Sender: header, unless message comes from a trusted caller, or this
+    feature is disabled by active_local_from_check being false.
+
+  . If there is no &quot;date&quot; header, generate one, for locally-originated
+    or submission mode messages only.
+
+  . Copy the rest of the input, or up to a terminating &quot;.&quot; if in SMTP or
+    dot_ends mode, to the data file. Leave it open, to hold the lock.
+
+  . Write the envelope and the headers to a new file.
+
+  . Set the name for the header file; close it.
+
+  . Set the name for the data file; close it.
+
+Because this function can potentially be called many times in a single
+SMTP connection, all store should be got by store_get(), so that it will be
+automatically retrieved after the message is accepted.
+
+FUDGE: It seems that sites on the net send out messages with just LF
+terminators, despite the warnings in the RFCs, and other MTAs handle this. So
+we make the CRs optional in all cases.
+
+July 2003: Bare CRs in messages, especially in header lines, cause trouble. A
+new regime is now in place in which bare CRs in header lines are turned into LF
+followed by a space, so as not to terminate the header line.
+
+February 2004: A bare LF in a header line in a message whose first line was
+terminated by CRLF is treated in the same way as a bare CR.
+
+Arguments:
+  extract_recip  TRUE if recipients are to be extracted from the message&apos;s
+                   headers
+
+Returns:  TRUE   there are more messages to be read (SMTP input)
+          FALSE  there are no more messages to be read (non-SMTP input
+                 or SMTP connection collapsed, or other failure)
+
+When reading a message for filter testing, the returned value indicates
+whether the headers (which is all that is read) were terminated by &apos;.&apos; or
+not. */</doc>

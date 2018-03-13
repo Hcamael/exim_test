@@ -1,1 +1,2 @@
 <dec f='include/x86_64-linux-gnu/bits/string2.h' l='1297' type='char * __strndup(const char * __string, size_t __n)'/>
+<use f='exim/src/macro.c' l='48' macro='1' u='c'/>

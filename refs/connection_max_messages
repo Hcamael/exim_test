@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='285' type='int'/>
 <doc f='exim/src/globals.h' l='285'>/* Max down one SMTP connection */</doc>
+<use f='exim/src/deliver.c' l='4348' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4348' u='r' c='do_remote_deliveries'/>
+<def f='exim/src/globals.c' l='538' type='int'/>
+<use f='exim/src/exim.c' l='2969' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2981' u='w' c='main'/>
+<use f='exim/src/child.c' l='114' u='r' c='child_exec_exim'/>
+<use f='exim/src/child.c' l='115' u='r' c='child_exec_exim'/>

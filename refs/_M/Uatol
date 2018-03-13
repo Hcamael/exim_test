@@ -1,1 +1,4 @@
 <dec f='exim/src/mytypes.h' l='79'/>
+<use f='exim/src/exim.c' l='2740' u='c'/>
+<use f='exim/src/exim.c' l='2742' u='c'/>
+<use f='exim/src/exim.c' l='2759' u='c'/>

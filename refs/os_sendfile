@@ -1,1 +1,2 @@
 <dec f='exim/build-Linux-x86_64/os.h' l='29' type='ssize_t os_sendfile(int , int , off_t * , size_t )'/>
+<use f='exim/src/dkim_transport.c' l='64' u='c' c='dkt_send_file'/>

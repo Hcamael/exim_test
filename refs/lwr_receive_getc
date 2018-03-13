@@ -1,3 +1,7 @@
 <dec f='exim/src/globals.h' l='139' type='int (*)(unsigned int)'/>
 <doc f='exim/src/globals.h' l='136'>/* Input-reading functions for messages, so we can use special ones for
 incoming TCP/IP. */</doc>
+<use f='exim/src/smtp_in.c' l='547' u='r' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='549' u='r' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='690' u='r' c='bdat_flush_data'/>
+<use f='exim/src/smtp_in.c' l='5095' u='w' c='smtp_setup_msg'/>

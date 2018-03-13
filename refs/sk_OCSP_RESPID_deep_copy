@@ -1,0 +1,1 @@
+<def f='include/openssl/ocsp.h' l='94' macro='1' type='struct stack_st_OCSP_RESPID * sk_OCSP_RESPID_deep_copy(const struct stack_st_OCSP_RESPID * sk, sk_OCSP_RESPID_copyfunc copyfunc, sk_OCSP_RESPID_freefunc freefunc)'/>

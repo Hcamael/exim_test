@@ -1,2 +1,7 @@
 <dec f='exim/src/globals.h' l='825' type='struct timeval'/>
 <doc f='exim/src/globals.h' l='825'>/* Start time of SMTP connection */</doc>
+<def f='exim/src/globals.c' l='1324' type='struct timeval'/>
+<use f='exim/src/smtp_in.c' l='1787' u='a' c='smtp_log_no_mail'/>
+<use f='exim/src/smtp_in.c' l='2357' u='a' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='5483' u='a' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5491' u='a' c='smtp_setup_msg'/>

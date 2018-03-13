@@ -1,0 +1,8 @@
+<dec f='exim/src/routers/queryprogram.h' l='13' type='int'/>
+<dec f='exim/src/transports/pipe.h' l='22' type='int'/>
+<offset>640</offset>
+<dec f='exim/src/routers/iplookup.h' l='14' type='int'/>
+<offset>64</offset>
+<use f='exim/src/routers/queryprogram.c' l='327' u='r' c='queryprogram_router_entry'/>
+<dec f='exim/src/transports/lmtp.h' l='13' type='int'/>
+<offset>128</offset>

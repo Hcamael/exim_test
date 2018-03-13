@@ -1,2 +1,6 @@
 <dec f='exim/src/structs.h' l='676' type='uschar *'/>
 <offset>64</offset>
+<use f='exim/src/exim.c' l='4517' u='r' c='main'/>
+<use f='exim/src/retry.c' l='383' u='r' c='retry_find_config'/>
+<use f='exim/src/retry.c' l='644' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='647' u='r' c='retry_update'/>

@@ -1,2 +1,30 @@
 <dec f='exim/src/globals.h' l='690' type='int'/>
 <doc f='exim/src/globals.h' l='690'>/* Queue running interval */</doc>
+<def f='exim/src/globals.c' l='1060' type='int'/>
+<use f='exim/src/exim.c' l='1809' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3214' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3274' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3284' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3489' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3490' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3500' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3506' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3511' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3516' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3519' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3540' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4185' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4202' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4330' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4334' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4661' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4798' u='r' c='main'/>
+<use f='exim/src/daemon.c' l='1579' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1594' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1624' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1625' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1710' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1711' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1806' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1908' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='2065' u='r' c='daemon_go'/>

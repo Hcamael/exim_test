@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='220' type='1'/>
+<use f='exim/src/tod.c' l='83' u='r' c='tod_stamp'/>
+<use f='exim/src/tod.c' l='91' c='tod_stamp'/>
+<use f='exim/src/expand.c' l='1880' u='r' c='find_variable'/>

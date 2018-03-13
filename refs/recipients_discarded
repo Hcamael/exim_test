@@ -1,2 +1,7 @@
 <dec f='exim/src/globals.h' l='730' type='BOOL'/>
 <doc f='exim/src/globals.h' l='730'>/* By an ACL */</doc>
+<def f='exim/src/globals.c' l='1129' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='4774' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4990' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5032' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/receive.c' l='3339' u='r' c='receive_msg'/>

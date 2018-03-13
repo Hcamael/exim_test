@@ -1,0 +1,6 @@
+<def f='exim/src/auths/auth-spa.c' l='794' ll='823' type='char * safe_strcpy(char * dest, const char * src, size_t maxlength)'/>
+<use f='exim/src/auths/auth-spa.c' l='939' u='c' c='nt_lm_owf_gen'/>
+<doc f='exim/src/auths/auth-spa.c' l='789'>/*******************************************************************
+safe string copy into a known length string. maxlength does not
+include the terminating zero.
+********************************************************************/</doc>

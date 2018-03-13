@@ -1,1 +1,3 @@
 <dec f='exim/src/osfunctions.h' l='24' type='void os_restarting_signal(int , void (*)(int) )'/>
+<use f='exim/src/exim.c' l='213' u='c' c='usr1_handler'/>
+<use f='exim/src/exim.c' l='1680' u='c' c='main'/>

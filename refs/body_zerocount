@@ -1,2 +1,20 @@
 <dec f='exim/src/local_scan.h' l='144' type='int'/>
 <doc f='exim/src/local_scan.h' l='144'>/* Binary zero count in body */</doc>
+<def f='exim/src/globals.c' l='482' type='int'/>
+<use f='exim/src/filtertest.c' l='54' u='w' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='67' u='w' c='read_message_body'/>
+<use f='exim/src/smtp_in.c' l='2019' u='w' c='smtp_reset'/>
+<use f='exim/src/spool_in.c' l='258' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='517' u='w' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='476' u='a'/>
+<use f='exim/src/expand.c' l='476' u='a'/>
+<use f='exim/src/expand.c' l='476' u='a'/>
+<use f='exim/src/expand.c' l='476' u='a'/>
+<use f='exim/src/receive.c' l='630' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='672' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='790' u='w' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='956' u='w' c='read_message_bdat_smtp'/>
+<use f='exim/src/receive.c' l='1722' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2107' u='w' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='208' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='208' u='r' c='spool_write_header'/>

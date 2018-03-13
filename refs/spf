@@ -1,0 +1,9 @@
+<dec f='exim/src/macro_predef.h' l='10' type='void spf(uschar * , int , const uschar * )'/>
+<doc f='exim/src/macro_predef.h' l='8'>/* Global functions */</doc>
+<def f='exim/src/macro_predef.c' l='39' ll='59' type='void spf(uschar * buf, int len, const uschar * fmt)'/>
+<use f='exim/src/macro_predef.c' l='79' u='c' c='options_from_list'/>
+<use f='exim/src/macro_predef.c' l='81' u='c' c='options_from_list'/>
+<doc f='exim/src/macro_predef.c' l='38'>/* restricted snprintf */</doc>
+<use f='exim/src/route.c' l='160' u='c' c='options_routers'/>
+<use f='exim/src/transport.c' l='105' u='c' c='options_transports'/>
+<use f='exim/src/readconf.c' l='400' u='c' c='options_auths'/>

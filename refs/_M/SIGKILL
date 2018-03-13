@@ -1,1 +1,5 @@
 <dec f='include/x86_64-linux-gnu/bits/signum.h' l='41'/>
+<use f='exim/src/deliver.c' l='2594' u='c'/>
+<use f='exim/src/deliver.c' l='4054' u='c'/>
+<use f='exim/src/routers/queryprogram.c' l='337' u='c'/>
+<use f='exim/src/expand.c' l='5039' u='c'/>

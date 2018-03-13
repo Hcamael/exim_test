@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='510' type='uschar *'/>
 <doc f='exim/src/globals.h' l='510'>/* Text for why it failed */</doc>
+<def f='exim/src/globals.c' l='808' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='3702' u='r' c='qualify_recipient'/>
+<use f='exim/src/smtp_in.c' l='4734' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/acl.c' l='1215' u='r' c='acl_verify_reverse'/>
+<use f='exim/src/acl.c' l='1230' u='r' c='acl_verify_reverse'/>
+<use f='exim/src/host.c' l='1803' u='w' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1916' u='w' c='host_name_lookup'/>

@@ -1,0 +1,8 @@
+<dec f='exim/src/tls-openssl.c' l='159' type='uschar *'/>
+<use f='exim/src/tls-openssl.c' l='1148' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1151' u='r' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1244' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1517' u='w' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='1639' u='r' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='1823' u='r' c='setup_certs'/>
+<offset>0</offset>

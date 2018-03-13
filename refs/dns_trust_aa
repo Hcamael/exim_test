@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='423' type='uschar *'/>
 <doc f='exim/src/globals.h' l='423'>/* DNSSEC trust AA as AD */</doc>
+<def f='exim/src/globals.c' l='698' type='uschar *'/>
+<use f='exim/src/readconf.c' l='132' u='a'/>
+<use f='exim/src/readconf.c' l='132' u='a'/>
+<use f='exim/src/readconf.c' l='132' u='a'/>
+<use f='exim/src/readconf.c' l='132' u='a'/>
+<use f='exim/src/dns.c' l='517' u='r' c='dns_is_secure'/>
+<use f='exim/src/dns.c' l='518' u='r' c='dns_is_secure'/>
+<use f='exim/src/dns.c' l='528' u='r' c='dns_is_secure'/>

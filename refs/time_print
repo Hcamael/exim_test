@@ -1,0 +1,4 @@
+<def f='exim/src/tls-openssl.c' l='1317' ll='1323' type='void time_print(BIO * bp, const char * str, ASN1_GENERALIZEDTIME * time)'/>
+<use f='exim/src/tls-openssl.c' l='1430' u='c' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1431' u='c' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1454' u='c' c='tls_client_stapling_cb'/>

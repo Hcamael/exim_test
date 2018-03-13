@@ -1,1 +1,2 @@
 <dec f='exim/src/osfunctions.h' l='39' type='uschar * os_getcwd(uschar * , size_t )'/>
+<use f='exim/src/exim.c' l='3781' u='c' c='main'/>

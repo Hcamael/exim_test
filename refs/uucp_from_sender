@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='970' type='uschar *'/>
 <doc f='exim/src/globals.h' l='970'>/* For building the sender */</doc>
+<def f='exim/src/globals.c' l='1548' type='uschar *'/>
+<use f='exim/src/moan.c' l='390' u='r' c='moan_to_sender'/>
+<use f='exim/src/readconf.c' l='370' u='a'/>
+<use f='exim/src/readconf.c' l='370' u='a'/>
+<use f='exim/src/readconf.c' l='370' u='a'/>
+<use f='exim/src/readconf.c' l='370' u='a'/>
+<use f='exim/src/receive.c' l='2056' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2060' u='r' c='receive_msg'/>

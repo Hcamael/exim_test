@@ -1,2 +1,5 @@
 <dec f='exim/src/structs.h' l='193' type='BOOL'/>
 <offset>2368</offset>
+<use f='exim/src/deliver.c' l='1536' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='2239' u='r' c='deliver_local'/>
+<use f='exim/src/globals.c' l='1494' u='w'/>

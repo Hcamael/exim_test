@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='172' type='uschar *'/>
 <offset>1408</offset>
 <doc f='exim/src/structs.h' l='172'>/* For on-the-fly-filtering */</doc>
+<use f='exim/src/deliver.c' l='2381' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2384' u='r' c='deliver_local'/>
+<use f='exim/src/globals.c' l='1473' u='w'/>

@@ -1,1 +1,9 @@
 <dec f='exim/src/local_scan.h' l='181' type='int lss_match_domain(uschar * , uschar * )'/>
+<def f='exim/src/lss.c' l='27' ll='32' type='int lss_match_domain(uschar * domain, uschar * list)'/>
+<doc f='exim/src/lss.c' l='19'>/*
+Arguments:
+  domain         the domain we are testing
+  list           the domain list
+
+Returns:         OK/FAIL/DEFER
+*/</doc>

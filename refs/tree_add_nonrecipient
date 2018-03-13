@@ -1,1 +1,12 @@
 <dec f='exim/src/functions.h' l='515' type='void tree_add_nonrecipient(uschar * )'/>
+<use f='exim/src/deliver.c' l='668' u='c' c='address_done'/>
+<use f='exim/src/deliver.c' l='669' u='c' c='address_done'/>
+<use f='exim/src/deliver.c' l='677' u='c' c='address_done'/>
+<use f='exim/src/deliver.c' l='683' u='c' c='address_done'/>
+<use f='exim/src/deliver.c' l='691' u='c' c='address_done'/>
+<use f='exim/src/deliver.c' l='5671' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8035' u='c' c='deliver_message'/>
+<use f='exim/src/queue.c' l='906' u='c' c='queue_list'/>
+<use f='exim/src/queue.c' l='1276' u='c' c='queue_action'/>
+<use f='exim/src/queue.c' l='1362' u='c' c='queue_action'/>
+<use f='exim/src/receive.c' l='2452' u='c' c='receive_msg'/>

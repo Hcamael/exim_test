@@ -1,0 +1,12 @@
+<dec f='include/openssl/x509v3.h' l='151' type='union (anonymous union at /usr/include/openssl/x509v3.h:133:5)'/>
+<use f='exim/src/tlscert-openssl.c' l='379' u='m' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='380' u='m' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='384' u='m' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='385' u='m' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='389' u='m' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='390' u='m' c='tls_cert_subject_altname'/>
+<use f='exim/src/tlscert-openssl.c' l='426' u='m' c='tls_cert_ocsp_uri'/>
+<use f='exim/src/tlscert-openssl.c' l='427' u='m' c='tls_cert_ocsp_uri'/>
+<use f='exim/src/tlscert-openssl.c' l='461' u='m' c='tls_cert_crl_uri'/>
+<use f='exim/src/tlscert-openssl.c' l='462' u='m' c='tls_cert_crl_uri'/>
+<offset>64</offset>

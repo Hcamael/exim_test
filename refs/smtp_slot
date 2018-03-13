@@ -1,0 +1,3 @@
+<def f='exim/src/daemon.c' l='16' ll='19'/>
+<size>16</size>
+<doc f='exim/src/daemon.c' l='14'>/* Structure for holding data for each SMTP connection */</doc>

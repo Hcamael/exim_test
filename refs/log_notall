@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='552' type='int []'/>
 <doc f='exim/src/globals.h' l='552'>/* Log options excluded from +all */</doc>
+<def f='exim/src/globals.c' l='882' ll='884' type='int [1]'/>
+<use f='exim/src/exim.c' l='3865' u='r' c='main'/>

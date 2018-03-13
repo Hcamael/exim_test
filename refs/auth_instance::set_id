@@ -1,3 +1,7 @@
 <dec f='exim/src/structs.h' l='384' type='uschar *'/>
 <offset>512</offset>
 <doc f='exim/src/structs.h' l='384'>/* String to set when server as authenticated id */</doc>
+<use f='exim/src/globals.c' l='439' u='w'/>
+<use f='exim/src/smtp_in.c' l='3600' u='r' c='smtp_in_auth'/>
+<use f='exim/src/smtp_in.c' l='3600' u='r' c='smtp_in_auth'/>
+<use f='exim/src/smtp_in.c' l='3624' u='r' c='smtp_in_auth'/>

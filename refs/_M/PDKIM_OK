@@ -1,0 +1,12 @@
+<dec f='exim/src/pdkim/pdkim.h' l='45'/>
+<use f='exim/src/pdkim/pdkim.c' l='165' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='295' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='991' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1046' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1060' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1069' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1399' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1413' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1495' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1770' u='c'/>
+<doc f='exim/src/pdkim/pdkim.h' l='44'>/* Function success / error codes */</doc>

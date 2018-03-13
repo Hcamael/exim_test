@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='470' type='uschar *'/>
 <doc f='exim/src/globals.h' l='470'>/* User defined message for the above. Default is in globals.c. */</doc>
+<def f='exim/src/globals.c' l='743' ll='746' type='uschar *'/>
+<use f='exim/src/acl.c' l='3144' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3150' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='4503' u='w' c='acl_check'/>
+<use f='exim/src/acl.c' l='4503' u='r' c='acl_check'/>
+<use f='exim/src/receive.c' l='4245' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4278' u='r' c='receive_msg'/>

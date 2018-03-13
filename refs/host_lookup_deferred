@@ -1,2 +1,15 @@
 <dec f='exim/src/globals.h' l='507' type='BOOL'/>
 <doc f='exim/src/globals.h' l='507'>/* TRUE if lookup deferred */</doc>
+<def f='exim/src/globals.c' l='805' type='BOOL'/>
+<use f='exim/src/spool_in.c' l='265' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='545' u='w' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='544' u='a'/>
+<use f='exim/src/expand.c' l='544' u='a'/>
+<use f='exim/src/expand.c' l='544' u='a'/>
+<use f='exim/src/expand.c' l='544' u='a'/>
+<use f='exim/src/host.c' l='1668' u='w' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1681' u='w' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1774' u='w' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1788' u='w' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='1875' u='w' c='host_name_lookup'/>
+<use f='exim/src/spool_out.c' l='220' u='r' c='spool_write_header'/>

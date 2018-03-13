@@ -1,0 +1,1 @@
+<dec f='include/openssl/x509v3.h' l='797' macro='1' type='int i2d_IPAddressFamily(IPAddressFamily * a, unsigned char ** out)'/>

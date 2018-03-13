@@ -1,3 +1,13 @@
 <dec f='exim/src/structs.h' l='570' type='uschar *'/>
 <offset>2496</offset>
 <doc f='exim/src/structs.h' l='570'>/* DSN orcpt value */</doc>
+<use f='exim/src/deliver.c' l='6151' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6153' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6153' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7225' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7225' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7330' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7331' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8257' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8258' u='r' c='deliver_message'/>
+<use f='exim/src/globals.c' l='376' u='w'/>

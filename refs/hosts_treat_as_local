@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='517' type='uschar *'/>
 <doc f='exim/src/globals.h' l='517'>/* For routing */</doc>
+<def f='exim/src/globals.c' l='814' type='uschar *'/>
+<use f='exim/src/readconf.c' l='174' u='a'/>
+<use f='exim/src/readconf.c' l='174' u='a'/>
+<use f='exim/src/readconf.c' l='174' u='a'/>
+<use f='exim/src/readconf.c' l='174' u='a'/>
+<use f='exim/src/host.c' l='1391' u='r' c='host_scan_for_local_hosts'/>
+<use f='exim/src/host.c' l='1396' u='a' c='host_scan_for_local_hosts'/>

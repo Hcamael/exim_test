@@ -1,1 +1,17 @@
 <dec f='exim/src/functions.h' l='98' type='int auth_check_some_cond(auth_instance * , uschar * , uschar * , int )'/>
+<use f='exim/src/auths/check_serv_cond.c' l='35' u='c' c='auth_check_serv_cond'/>
+<def f='exim/src/auths/check_serv_cond.c' l='59' ll='128' type='int auth_check_some_cond(auth_instance * ablock, uschar * label, uschar * condition, int unset)'/>
+<doc f='exim/src/auths/check_serv_cond.c' l='44'>/* This underlies server_condition, but is also used for some more generic
+ checks.
+
+Arguments:
+  ablock     the authenticator&apos;s instance block
+  label      debugging label naming the string checked
+  condition  the condition string to be expanded and checked
+  unset      value to return on NULL condition
+
+Returns:
+  OK          success (or unset=OK)
+  DEFER       couldn&apos;t complete the check
+  FAIL        authentication failed
+*/</doc>

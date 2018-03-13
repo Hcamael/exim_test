@@ -1,2 +1,5 @@
 <dec f='exim/src/dbstuff.h' l='168'/>
 <doc f='exim/src/dbstuff.h' l='167'>/* EXIM_DBGET - returns TRUE if successful, FALSE otherwise */</doc>
+<use f='exim/src/exim_dbutil.c' l='375' u='c'/>
+<use f='exim/src/lookups/dbmdb.c' l='108' u='c'/>
+<use f='exim/src/dbfn.c' l='310' u='c'/>

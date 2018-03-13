@@ -1,1 +1,15 @@
 <dec f='exim/src/functions.h' l='137' type='void debug_logging_activate(uschar * , uschar * )'/>
+<def f='exim/src/log.c' l='1395' ll='1431' type='void debug_logging_activate(uschar * tag_name, uschar * opts)'/>
+<doc f='exim/src/log.c' l='1383'>/* Normally, debugging is activated from the command-line; it may be useful
+within the configuration to activate debugging later, based on certain
+conditions.  If debugging is already in progress, we return early, no action
+taken (besides debug-logging that we wanted debug-logging).
+
+Failures in options are not fatal but will result in paniclog entries for the
+misconfiguration.
+
+The first use of this is in ACL logic, &quot;control = debug/tag=foo/opts=+expand&quot;
+which can be combined with conditions, etc, to activate extra logging only
+for certain sources. The second use is inetd wait mode debug preservation. */</doc>
+<use f='exim/src/acl.c' l='3245' u='c' c='acl_check_condition'/>
+<use f='exim/src/daemon.c' l='959' u='c' c='daemon_go'/>

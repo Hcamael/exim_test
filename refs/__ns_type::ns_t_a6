@@ -1,2 +1,3 @@
 <dec f='include/arpa/nameser.h' l='291' type='38'/>
 <doc f='include/arpa/nameser.h' l='291'>/*%&lt; IPv6 address (deprecated, use ns_t_aaaa) */</doc>
+<use f='exim/src/dns.c' l='580' macro='1' c='dns_text_type'/>

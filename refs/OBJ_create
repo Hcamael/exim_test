@@ -1,1 +1,2 @@
 <dec f='include/openssl/objects.h' l='1057' type='int OBJ_create(const char * oid, const char * sn, const char * ln)'/>
+<use f='exim/src/tlscert-openssl.c' l='312' u='c' c='tls_cert_ext_by_oid'/>

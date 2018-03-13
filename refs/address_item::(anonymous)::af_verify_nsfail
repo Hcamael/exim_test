@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='597' type='BOOL'/>
 <offset>18</offset>
 <doc f='exim/src/structs.h' l='597'>/* verify failure was null sender callout */</doc>
+<use f='exim/src/verify.c' l='175' u='w' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='179' u='w' c='cached_callout_lookup'/>
+<use f='exim/src/verify.c' l='606' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='717' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='884' u='w' c='do_callout'/>
+<use f='exim/src/smtp_in.c' l='3246' u='r' c='smtp_handle_acl_fail'/>

@@ -1,1 +1,5 @@
 <dec f='include/openssl/ssl.h' l='1320' type='int SSL_CTX_set_cipher_list(SSL_CTX * , const char * str)'/>
+<use f='exim/src/tls-openssl.c' l='1242' u='c' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1990' u='c' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2312' u='c' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2787' u='c' c='tls_validate_require_cipher'/>

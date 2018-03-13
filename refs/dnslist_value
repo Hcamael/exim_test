@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='428' type='uschar *'/>
 <doc f='exim/src/globals.h' l='428'>/* DNS (black) list IP address */</doc>
+<use f='exim/src/verify.c' l='3585' u='w' c='one_check_dnsbl'/>
+<def f='exim/src/globals.c' l='703' type='uschar *'/>
+<use f='exim/src/expand.c' l='524' u='a'/>
+<use f='exim/src/expand.c' l='524' u='a'/>
+<use f='exim/src/expand.c' l='524' u='a'/>
+<use f='exim/src/expand.c' l='524' u='a'/>

@@ -1,1 +1,34 @@
 <dec f='exim/src/functions.h' l='450' type='gstring * string_append_listele(gstring * , uschar , const uschar * )'/>
+<use f='exim/src/pdkim/pdkim.c' l='1523' u='c' c='pdkim_feed_finish'/>
+<use f='exim/src/tlscert-openssl.c' l='399' u='c' c='tls_cert_subject_altname'/>
+<use f='exim/src/tls.c' l='281' u='c' c='tls_field_from_dn'/>
+<def f='exim/src/string.c' l='1010' ll='1027' type='gstring * string_append_listele(gstring * list, uschar sep, const uschar * ele)'/>
+<doc f='exim/src/string.c' l='994'>/* This function is used to build a list, returning an allocated null-terminated
+growable string. The given element has any embedded separator characters
+doubled.
+
+Despite having the same growable-string interface as string_cat() the list is
+always returned null-terminated.
+
+Arguments:
+  list	expanding-string for the list that is being built, or NULL
+	if this is a new list that has no contents yet
+  sep	list separator character
+  ele	new element to be appended to the list
+
+Returns:  pointer to the start of the list, changed if copied for expansion.
+*/</doc>
+<use f='exim/src/smtp_in.c' l='1802' u='c' c='smtp_cmd_hist'/>
+<use f='exim/src/smtp_in.c' l='1805' u='c' c='smtp_cmd_hist'/>
+<use f='exim/src/routers/rf_get_munge_headers.c' l='111' u='c' c='rf_get_munge_headers'/>
+<use f='exim/src/expand.c' l='6028' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6029' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6032' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6033' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6039' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6040' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6046' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6047' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6053' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6054' u='c' c='expand_string_internal'/>
+<use f='exim/src/daemon.c' l='1171' u='c' c='daemon_go'/>

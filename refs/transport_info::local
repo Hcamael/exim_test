@@ -1,3 +1,16 @@
 <dec f='exim/src/structs.h' l='220' type='BOOL'/>
 <offset>576</offset>
 <doc f='exim/src/structs.h' l='220'>/* TRUE for local transports */</doc>
+<use f='exim/src/deliver.c' l='998' u='r' c='string_log_address'/>
+<use f='exim/src/deliver.c' l='1191' u='r' c='delivery_log'/>
+<use f='exim/src/verify.c' l='1812' u='r' c='verify_address'/>
+<use f='exim/src/verify.c' l='2140' u='r' c='verify_address'/>
+<use f='exim/src/drtables.c' l='371' u='w'/>
+<use f='exim/src/drtables.c' l='385' u='w'/>
+<use f='exim/src/drtables.c' l='413' u='w'/>
+<use f='exim/src/drtables.c' l='441' u='w'/>
+<use f='exim/src/drtables.c' l='371' u='w'/>
+<use f='exim/src/drtables.c' l='385' u='w'/>
+<use f='exim/src/drtables.c' l='413' u='w'/>
+<use f='exim/src/drtables.c' l='441' u='w'/>
+<use f='exim/src/routers/rf_queue_add.c' l='44' u='r' c='rf_queue_add'/>

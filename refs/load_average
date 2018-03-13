@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='534' type='int'/>
 <doc f='exim/src/globals.h' l='534'>/* Most recently read load average */</doc>
+<def f='exim/src/globals.c' l='835' type='int'/>
+<use f='exim/src/exim.c' l='5666' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5698' u='r' c='main'/>
+<use f='exim/src/smtp_in.c' l='2765' u='r' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2772' u='r' c='smtp_start_session'/>
+<use f='exim/src/queue.c' l='489' u='w' c='queue_run'/>
+<use f='exim/src/queue.c' l='493' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='500' u='r' c='queue_run'/>
+<use f='exim/src/daemon.c' l='236' u='w' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='237' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='240' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='244' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='605' u='w' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='629' u='r' c='handle_smtp_call'/>

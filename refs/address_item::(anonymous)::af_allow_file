@@ -1,3 +1,7 @@
 <dec f='exim/src/structs.h' l='579' type='BOOL'/>
 <offset>0</offset>
 <doc f='exim/src/structs.h' l='579'>/* allow file in generated address */</doc>
+<use f='exim/src/deliver.c' l='6023' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6408' u='r' c='deliver_message'/>
+<use f='exim/src/verify.c' l='1744' u='r' c='verify_address'/>
+<use f='exim/src/routers/redirect.c' l='426' u='w' c='add_generated'/>

@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='251' type='int'/>
 <doc f='exim/src/globals.h' l='251'>/* Start of last transaction */</doc>
+<def f='exim/src/globals.c' l='479' type='int'/>
+<use f='exim/src/moan.c' l='560' u='r' c='moan_smtp_batch'/>
+<use f='exim/src/moan.c' l='577' u='r' c='moan_smtp_batch'/>
+<use f='exim/src/smtp_in.c' l='2088' u='w' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2119' u='w' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2265' u='w' c='smtp_setup_batch_msg'/>

@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='188' type='BOOL'/>
 <offset>2208</offset>
 <doc f='exim/src/structs.h' l='188'>/* Add Return-Path header */</doc>
+<use f='exim/src/globals.c' l='1489' u='w'/>

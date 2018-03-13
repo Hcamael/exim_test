@@ -1,2 +1,4 @@
 <dec f='exim/src/structs.h' l='49' type='BOOL'/>
 <offset>128</offset>
+<use f='exim/src/routers/rf_set_ugid.c' l='41' u='r' c='rf_set_ugid'/>
+<use f='exim/src/routers/rf_get_ugid.c' l='38' u='w' c='rf_get_ugid'/>

@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='352' type='void receive_swallow_smtp()'/>
+<use f='exim/src/smtp_in.c' l='1650' u='c' c='smtp_closedown'/>
+<def f='exim/src/receive.c' l='1078' ll='1085' type='void receive_swallow_smtp()'/>
+<use f='exim/src/receive.c' l='1935' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2157' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3001' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3120' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3194' u='c' c='receive_msg'/>
+<doc f='exim/src/receive.c' l='1069'>/* This function is called when there has been some kind of error while reading
+an SMTP message, and the remaining data may need to be swallowed. It is global
+because it is called from smtp_closedown() to shut down an incoming call
+tidily.
+
+Argument:    a FILE from which to read the message
+Returns:     nothing
+*/</doc>

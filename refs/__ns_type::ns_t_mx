@@ -1,2 +1,11 @@
 <dec f='include/arpa/nameser.h' l='268' type='15'/>
 <doc f='include/arpa/nameser.h' l='268'>/*%&lt; Mail routing information. */</doc>
+<use f='exim/src/lookups/dnsdb.c' l='60' macro='1'/>
+<use f='exim/src/lookups/dnsdb.c' l='60' macro='1'/>
+<use f='exim/src/lookups/dnsdb.c' l='309' macro='1' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='318' macro='1' u='r'/>
+<use f='exim/src/lookups/dnsdb.c' l='457' macro='1' c='dnsdb_find'/>
+<use f='exim/src/host.c' l='2665' macro='1' u='r'/>
+<use f='exim/src/host.c' l='2805' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='578' macro='1' c='dns_text_type'/>
+<use f='exim/src/dns.c' l='996' macro='1' u='r'/>

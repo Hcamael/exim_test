@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='949' type='transport_instance *'/>
 <doc f='exim/src/globals.h' l='949'>/* Chain of instantiated transports */</doc>
+<use f='exim/src/deliver.c' l='3034' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='5223' u='r' c='continue_closedown'/>
+<use f='exim/src/deliver.c' l='6074' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1443' type='transport_instance *'/>
+<use f='exim/src/routers/queryprogram.c' l='492' u='r' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/rf_get_transport.c' l='74' u='r' c='rf_get_transport'/>

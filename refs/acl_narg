@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='164' type='int'/>
 <doc f='exim/src/globals.h' l='164'>/* Number of arguments to ACL call */</doc>
+<def f='exim/src/globals.c' l='231' type='int'/>
+<use f='exim/src/acl.c' l='4262' u='r' c='acl_check_wargs'/>
+<use f='exim/src/acl.c' l='4263' u='w' c='acl_check_wargs'/>
+<use f='exim/src/acl.c' l='4264' u='r' c='acl_check_wargs'/>
+<use f='exim/src/acl.c' l='4279' u='w' c='acl_check_wargs'/>
+<use f='exim/src/expand.c' l='457' u='a'/>
+<use f='exim/src/expand.c' l='457' u='a'/>
+<use f='exim/src/expand.c' l='457' u='a'/>
+<use f='exim/src/expand.c' l='457' u='a'/>
+<use f='exim/src/expand.c' l='2073' u='r' c='eval_acl'/>
+<use f='exim/src/expand.c' l='2085' u='w' c='eval_acl'/>
+<use f='exim/src/expand.c' l='2095' u='r' c='eval_acl'/>
+<use f='exim/src/expand.c' l='2096' u='r' c='eval_acl'/>
+<use f='exim/src/expand.c' l='2102' u='w' c='eval_acl'/>

@@ -9,3 +9,9 @@
 <mbr r='wait::w_status' o='0' t='int'/>
 <mbr r='wait::__wait_terminated' o='0' t='struct (anonymous struct at /usr/include/x86_64-linux-gnu/bits/waitstatus.h:69:5)'/>
 <mbr r='wait::__wait_stopped' o='0' t='struct (anonymous struct at /usr/include/x86_64-linux-gnu/bits/waitstatus.h:84:5)'/>
+<use f='exim/src/deliver.c' l='2580' u='c' c='deliver_local'/>
+<use f='exim/src/exim.c' l='4652' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5758' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='5628' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/queue.c' l='666' u='c' c='queue_run'/>
+<use f='exim/src/rda.c' l='950' u='c' c='rda_interpret'/>

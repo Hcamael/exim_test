@@ -1,1 +1,17 @@
 <dec f='exim/src/functions.h' l='322' type='BOOL queue_action(uschar * , int , uschar ** , int , int )'/>
+<use f='exim/src/exim.c' l='4422' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4426' u='c' c='main'/>
+<def f='exim/src/queue.c' l='994' ll='1400' type='BOOL queue_action(uschar * id, int action, uschar ** argv, int argc, int recipients_arg)'/>
+<doc f='exim/src/queue.c' l='980'>/* Actions that require a list of addresses make use of argv/argc/
+recipients_arg. Other actions do not. This function does its own
+authority checking.
+
+Arguments:
+  id              id of the message to work on
+  action          which action is required (MSG_xxx)
+  argv            the original argv for Exim
+  argc            the original argc for Exim
+  recipients_arg  offset to the list of recipients in argv
+
+Returns:          FALSE if there was any problem
+*/</doc>

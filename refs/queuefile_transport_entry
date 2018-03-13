@@ -1,0 +1,5 @@
+<dec f='exim/src/transports/queuefile.h' l='26' type='BOOL queuefile_transport_entry(transport_instance * , address_item * )'/>
+<def f='exim/src/transports/queuefile.c' l='171' ll='270' type='BOOL queuefile_transport_entry(transport_instance * tblock, address_item * addr)'/>
+<doc f='exim/src/transports/queuefile.c' l='168'>/* This transport always returns FALSE, indicating that the status in
+the first address is the status for all addresses in a batch. */</doc>
+<doc f='exim/src/transports/queuefile.h' l='24'>/* The main and init entry points for the transport */</doc>

@@ -1,1 +1,18 @@
 <dec f='exim/src/functions.h' l='97' type='int auth_check_serv_cond(auth_instance * )'/>
+<def f='exim/src/auths/check_serv_cond.c' l='32' ll='37' type='int auth_check_serv_cond(auth_instance * ablock)'/>
+<doc f='exim/src/auths/check_serv_cond.c' l='18'>/* This function is called from the server code of all authenticators. For
+plaintext and gsasl, it is always called: the argument cannot be empty, because
+for those, setting server_condition is what enables it as a server
+authenticator. For all the other authenticators, this function is called after
+they have authenticated, to enable additional authorization to be done.
+
+Argument:     the authenticator&apos;s instance block
+
+Returns:
+  OK          NULL argument, or success
+  DEFER       couldn&apos;t complete the check
+  FAIL        authentication failed
+*/</doc>
+<use f='exim/src/auths/spa.c' l='253' u='c' c='auth_spa_server'/>
+<use f='exim/src/auths/plaintext.c' l='156' u='c' c='auth_plaintext_server'/>
+<use f='exim/src/auths/cram_md5.c' l='248' u='c' c='auth_cram_md5_server'/>

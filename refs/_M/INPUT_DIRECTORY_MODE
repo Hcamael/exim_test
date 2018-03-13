@@ -1,1 +1,2 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='83'/>
+<use f='exim/src/receive.c' l='3030' u='c'/>

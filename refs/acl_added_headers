@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='161' type='header_line *'/>
 <doc f='exim/src/globals.h' l='161'>/* Headers added by an ACL */</doc>
+<def f='exim/src/globals.c' l='227' type='header_line *'/>
+<doc f='exim/src/globals.c' l='225'>/* General global variables */</doc>
+<use f='exim/src/smtp_in.c' l='1964' u='w' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='965' u='a' c='setup_header'/>
+<use f='exim/src/acl.c' l='1050' u='r' c='fn_hdrs_added'/>
+<use f='exim/src/receive.c' l='1186' u='r' c='add_acl_headers'/>
+<use f='exim/src/receive.c' l='1216' u='r' c='add_acl_headers'/>
+<use f='exim/src/receive.c' l='1219' u='r' c='add_acl_headers'/>
+<use f='exim/src/receive.c' l='1281' u='w' c='add_acl_headers'/>

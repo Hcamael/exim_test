@@ -1,3 +1,20 @@
 <dec f='exim/src/structs.h' l='766' type='int'/>
 <offset>0</offset>
 <doc f='exim/src/structs.h' l='766'>/* length of the answer */</doc>
+<use f='exim/src/lookups/dnsdb.c' l='507' u='r' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='528' u='r' c='dnsdb_find'/>
+<use f='exim/src/acl.c' l='1456' u='r' c='acl_verify_csa'/>
+<use f='exim/src/host.c' l='1740' u='r' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='2820' u='r' c='host_find_bydns'/>
+<use f='exim/src/dns.c' l='311' u='r' c='dnss_inc_aptr'/>
+<use f='exim/src/dns.c' l='358' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='389' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='419' u='r' c='dns_next_rr'/>
+<use f='exim/src/dns.c' l='764' u='w' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='768' u='r' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='772' u='r' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='773' u='w' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='776' u='r' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='943' u='r' c='dns_lookup'/>
+<use f='exim/src/dns.c' l='1097' u='w' c='dns_special_lookup'/>
+<use f='exim/src/dns.c' l='1189' u='r' c='dns_address_from_rr'/>

@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='156' type='BOOL'/>
 <offset>736</offset>
 <doc f='exim/src/structs.h' l='156'>/* ) Used only for remote transports  */</doc>
+<use f='exim/src/verify.c' l='2122' u='r' c='verify_address'/>
+<use f='exim/src/globals.c' l='1458' u='w'/>

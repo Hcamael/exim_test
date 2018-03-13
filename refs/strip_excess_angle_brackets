@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='900' type='BOOL'/>
 <doc f='exim/src/globals.h' l='900'>/* Surrounding route-addrs */</doc>
+<def f='exim/src/globals.c' l='1402' type='BOOL'/>
+<use f='exim/src/parse.c' l='699' u='r' c='parse_extract_address'/>
+<use f='exim/src/readconf.c' l='326' u='a'/>
+<use f='exim/src/readconf.c' l='326' u='a'/>
+<use f='exim/src/readconf.c' l='326' u='a'/>
+<use f='exim/src/readconf.c' l='326' u='a'/>

@@ -1,2 +1,16 @@
 <dec f='exim/src/local_scan.h' l='146' type='uschar *'/>
 <doc f='exim/src/local_scan.h' l='146'>/* Charset for RFC 2047 decoding */</doc>
+<def f='exim/src/globals.c' l='764' type='uschar *'/>
+<use f='exim/src/parse.c' l='1004' u='r' c='parse_fix_phrase'/>
+<use f='exim/src/filter.c' l='2028' u='w' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2513' u='r' c='filter_interpret'/>
+<use f='exim/src/filter.c' l='2594' u='w' c='filter_interpret'/>
+<use f='exim/src/expand.c' l='1893' u='r' c='find_variable'/>
+<use f='exim/src/expand.c' l='1898' u='r' c='find_variable'/>
+<use f='exim/src/expand.c' l='3962' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6946' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6959' u='r' c='expand_string_internal'/>
+<use f='exim/src/readconf.c' l='160' u='a'/>
+<use f='exim/src/readconf.c' l='160' u='a'/>
+<use f='exim/src/readconf.c' l='160' u='a'/>
+<use f='exim/src/readconf.c' l='160' u='a'/>

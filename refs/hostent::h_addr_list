@@ -1,3 +1,7 @@
 <dec f='include/netdb.h' l='106' type='char **'/>
 <offset>192</offset>
 <doc f='include/netdb.h' l='106'>/* List of addresses from name server.  */</doc>
+<use f='exim/src/host.c' l='210' u='w' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='267' u='w' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='2091' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2107' u='r' c='host_find_byname'/>

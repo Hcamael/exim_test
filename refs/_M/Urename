@@ -1,1 +1,6 @@
 <dec f='exim/src/mytypes.h' l='94'/>
+<use f='exim/src/deliver.c' l='7905' u='c'/>
+<use f='exim/src/deliver.c' l='7910' u='c'/>
+<use f='exim/src/exim_dbmbuild.c' l='438' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='568' u='c'/>
+<use f='exim/src/spool_out.c' l='353' u='c'/>

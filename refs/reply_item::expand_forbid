@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='474' type='int'/>
 <offset>608</offset>
 <doc f='exim/src/structs.h' l='474'>/* expansion lockout flags */</doc>
+<use f='exim/src/filter.c' l='2311' u='w' c='interpret_commands'/>
+<use f='exim/src/rda.c' l='750' u='a' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='926' u='a' c='rda_interpret'/>

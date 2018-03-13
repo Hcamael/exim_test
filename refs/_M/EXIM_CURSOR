@@ -1,3 +1,4 @@
 <dec f='exim/src/dbstuff.h' l='123'/>
 <use f='exim/src/dbfunctions.h' l='15' u='c'/>
 <doc f='exim/src/dbstuff.h' l='122'>/* Cursor type, for scanning */</doc>
+<use f='exim/src/dbfn.c' l='406' u='c'/>

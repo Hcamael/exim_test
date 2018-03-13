@@ -1,0 +1,4 @@
+<def f='include/openssl/x509v3.h' l='778' ll='784'/>
+<size>16</size>
+<mbr r='IPAddressChoice_st::type' o='0' t='int'/>
+<mbr r='IPAddressChoice_st::u' o='64' t='union (anonymous union at /usr/include/openssl/x509v3.h:780:5)'/>

@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='378' type='BOOL'/>
 <doc f='exim/src/globals.h' l='378'>/* Don&apos;t flush before callouts */</doc>
+<use f='exim/src/verify.c' l='603' u='r' c='do_callout'/>
+<def f='exim/src/globals.c' l='653' type='BOOL'/>
+<use f='exim/src/acl.c' l='3133' u='w' c='acl_check_condition'/>

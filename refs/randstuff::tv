@@ -1,0 +1,4 @@
+<dec f='exim/src/tls-openssl.c' l='104' type='struct timeval'/>
+<use f='exim/src/tls-openssl.c' l='1562' u='a' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='2881' u='a' c='vaguely_random_number'/>
+<offset>0</offset>

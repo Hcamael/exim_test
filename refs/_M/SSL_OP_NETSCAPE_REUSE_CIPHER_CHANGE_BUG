@@ -1,2 +1,4 @@
 <dec f='include/openssl/ssl.h' l='352'/>
 <doc f='include/openssl/ssl.h' l='351'>/* Dead forever, see CVE-2010-4180 */</doc>
+<use f='exim/src/tls-openssl.c' l='2988' u='a'/>
+<use f='exim/src/tls-openssl.c' l='2989' u='c'/>

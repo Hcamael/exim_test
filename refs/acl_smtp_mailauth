@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='186' type='uschar *'/>
 <doc f='exim/src/globals.h' l='186'>/* ACL run for MAIL AUTH */</doc>
+<def f='exim/src/globals.c' l='254' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='4555' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4563' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/readconf.c' l='52' u='a'/>
+<use f='exim/src/readconf.c' l='52' u='a'/>
+<use f='exim/src/readconf.c' l='52' u='a'/>
+<use f='exim/src/readconf.c' l='52' u='a'/>

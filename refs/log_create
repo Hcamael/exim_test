@@ -1,1 +1,15 @@
 <dec f='exim/src/functions.h' l='254' type='int log_create(uschar * )'/>
+<def f='exim/src/log.c' l='256' ll='285' type='int log_create(uschar * name)'/>
+<use f='exim/src/log.c' l='325' u='c' c='log_create_as_exim'/>
+<use f='exim/src/log.c' l='481' u='c' c='open_log'/>
+<doc f='exim/src/log.c' l='244'>/* This function is called to create and open a log file. It may be called in a
+subprocess when the original process is root.
+
+Arguments:
+  name         the file name
+
+The file name has been build in a working buffer, so it is permissible to
+overwrite it temporarily if it is necessary to create the directory.
+
+Returns:       a file descriptor, or &lt; 0 on failure (errno set)
+*/</doc>

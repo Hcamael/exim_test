@@ -1,0 +1,12 @@
+<dec f='exim/src/pdkim/pdkim.h' l='160' type='uschar *'/>
+<use f='exim/src/pdkim/pdkim.c' l='572' u='w' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1227' u='r' c='pdkim_create_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1320' u='r' c='pdkim_key_from_dns'/>
+<use f='exim/src/pdkim/pdkim.c' l='1663' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1663' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1703' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1703' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1703' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1813' u='w' c='pdkim_init_sign'/>
+<offset>256</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='159'>/* (s=) The selector string as given in the signature */</doc>

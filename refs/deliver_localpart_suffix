@@ -1,2 +1,15 @@
 <dec f='exim/src/globals.h' l='368' type='uschar *'/>
 <doc f='exim/src/globals.h' l='368'>/* The stripped suffix, if any */</doc>
+<use f='exim/src/deliver.c' l='223' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='263' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/globals.c' l='214' u='a'/>
+<use f='exim/src/globals.c' l='214' u='a'/>
+<def f='exim/src/globals.c' l='643' type='uschar *'/>
+<use f='exim/src/filter.c' l='2438' u='r' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2443' u='r' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2443' u='r' c='filter_personal'/>
+<use f='exim/src/exim.c' l='5593' u='w' c='main'/>
+<use f='exim/src/expand.c' l='559' u='a'/>
+<use f='exim/src/expand.c' l='559' u='a'/>
+<use f='exim/src/expand.c' l='559' u='a'/>
+<use f='exim/src/expand.c' l='559' u='a'/>

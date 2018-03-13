@@ -3,3 +3,7 @@
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */</doc>
+<use f='exim/src/parse.c' l='1551' u='c' c='parse_forward_list'/>
+<use f='exim/src/rda.c' l='292' u='c' c='rda_get_file_contents'/>
+<use f='exim/src/spool_in.c' l='467' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='508' u='c' c='spool_read_header'/>

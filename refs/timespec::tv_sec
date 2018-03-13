@@ -1,2 +1,9 @@
 <dec f='include/time.h' l='122' type='__time_t'/>
 <offset>0</offset>
+<use f='exim/src/transports/tf_maildir.c' l='310' macro='1' u='r'/>
+<use f='exim/src/transports/tf_maildir.c' l='310' macro='1' u='r'/>
+<use f='exim/src/transports/tf_maildir.c' l='515' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='7382' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='7383' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='7383' macro='1' u='r'/>
+<use f='exim/src/sieve.c' l='3490' macro='1' u='r'/>

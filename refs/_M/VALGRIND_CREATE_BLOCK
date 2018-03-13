@@ -1,0 +1,5 @@
+<dec f='exim/src/memcheck.h' l='140'/>
+<doc f='exim/src/memcheck.h' l='136'>/* Create a block-description handle.  The description is an ascii
+   string which is included in any messages pertaining to addresses
+   within the specified memory range.  Has no other effect on the
+   properties of the memory range. */</doc>

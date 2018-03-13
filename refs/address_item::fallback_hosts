@@ -1,3 +1,11 @@
 <dec f='exim/src/structs.h' l='525' type='host_item *'/>
 <offset>576</offset>
 <doc f='exim/src/structs.h' l='525'>/* to try if delivery defers */</doc>
+<use f='exim/src/deliver.c' l='3781' u='r' c='remote_post_process'/>
+<use f='exim/src/deliver.c' l='3786' u='r' c='remote_post_process'/>
+<use f='exim/src/deliver.c' l='4542' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4546' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='6837' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6837' u='r' c='deliver_message'/>
+<use f='exim/src/globals.c' l='340' u='w'/>
+<use f='exim/src/routers/rf_queue_add.c' l='89' u='w' c='rf_queue_add'/>

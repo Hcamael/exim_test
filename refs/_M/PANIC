@@ -1,1 +1,15 @@
 <dec f='exim/src/macros.h' l='296'/>
+<use f='exim/src/deliver.c' l='1645' u='c'/>
+<use f='exim/src/deliver.c' l='1647' u='c'/>
+<use f='exim/src/deliver.c' l='2326' u='c'/>
+<use f='exim/src/deliver.c' l='2385' u='c'/>
+<use f='exim/src/deliver.c' l='3096' u='c'/>
+<use f='exim/src/deliver.c' l='3130' u='c'/>
+<use f='exim/src/smtp_out.c' l='49' u='c'/>
+<use f='exim/src/smtp_out.c' l='63' u='c'/>
+<use f='exim/src/smtp_out.c' l='105' u='c'/>
+<use f='exim/src/smtp_out.c' l='117' u='c'/>
+<use f='exim/src/smtp_out.c' l='129' u='c'/>
+<use f='exim/src/transports/queuefile.c' l='194' u='c'/>
+<use f='exim/src/transports/queuefile.c' l='209' u='c'/>
+<use f='exim/src/transports/queuefile.c' l='221' u='c'/>

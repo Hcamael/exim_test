@@ -1,1 +1,2 @@
 <dec f='include/openssl/bio.h' l='546' type='int BIO_puts(BIO * bp, const char * buf)'/>
+<use f='exim/src/tls-openssl.c' l='1322' u='c' c='time_print'/>

@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='290' type='uschar *'/>
 <offset>1664</offset>
 <doc f='exim/src/structs.h' l='290'>/* For use while routing */</doc>
+<use f='exim/src/globals.c' l='1197' u='w'/>
+<use f='exim/src/routers/redirect.c' l='414' u='r' c='add_generated'/>

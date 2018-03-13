@@ -1,1 +1,5 @@
 <dec f='exim/src/macros.h' l='768'/>
+<use f='exim/src/filter.c' l='2428' u='c'/>
+<use f='exim/src/filter.c' l='2447' u='c'/>
+<use f='exim/src/rewrite.c' l='36' u='c'/>
+<use f='exim/src/rewrite.c' l='739' u='c'/>

@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='373' type='address_item *'/>
 <doc f='exim/src/globals.h' l='373'>/* Current set of addresses */</doc>
+<use f='exim/src/deliver.c' l='198' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/globals.c' l='215' u='a'/>
+<use f='exim/src/globals.c' l='215' u='a'/>
+<def f='exim/src/globals.c' l='648' type='address_item *'/>

@@ -1,3 +1,24 @@
 <dec f='include/stdlib.h' l='147' type='int atoi(const char * __nptr)'/>
 <def f='include/stdlib.h' l='277' ll='281' macro='1' type='int atoi(const char * __nptr)'/>
 <doc f='include/stdlib.h' l='146'>/* Convert a string to an integer.  */</doc>
+<use f='exim/src/deliver.c' l='3655' u='c' c='par_read_pipe'/>
+<use f='exim/src/exim_dbutil.c' l='793' macro='1' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='817' macro='1' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='821' macro='1' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='866' macro='1' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='870' macro='1' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='874' macro='1' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='894' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='2674' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='2981' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='375' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='380' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='515' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='517' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='529' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='588' macro='1' u='c'/>
+<use f='exim/src/acl.c' l='2995' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='3032' macro='1' u='c'/>
+<use f='exim/src/daemon.c' l='881' u='c' c='handle_ending_processes'/>
+<use f='exim/src/daemon.c' l='928' u='c' c='daemon_go'/>
+<use f='exim/src/host.c' l='1291' macro='1' u='c'/>

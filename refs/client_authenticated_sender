@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='281' type='uschar *'/>
 <doc f='exim/src/globals.h' l='281'>/* AUTH option to SMTP MAIL FROM (not yet used) */</doc>
+<use f='exim/src/deliver.c' l='4848' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4850' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='896' u='r' c='do_callout'/>
+<def f='exim/src/globals.c' l='514' type='uschar *'/>

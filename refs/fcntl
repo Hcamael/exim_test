@@ -4,3 +4,16 @@
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */</doc>
+<use f='exim/src/deliver.c' l='2344' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2344' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='4691' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4691' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/exim_dbutil.c' l='282' u='c' c='dbfn_open'/>
+<use f='exim/src/spool_in.c' l='99' u='c' c='spool_open_datafile'/>
+<use f='exim/src/daemon.c' l='421' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='422' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='423' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='424' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='526' u='c' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='3058' u='c' c='receive_msg'/>
+<use f='exim/src/dbfn.c' l='138' u='c' c='dbfn_open'/>

@@ -3,3 +3,4 @@
  * BIO_FILENAME_READ|BIO_CLOSE to open or close on free.
  * BIO_set_fp(in,stdin,BIO_NOCLOSE);
  */</doc>
+<use f='exim/src/tls-openssl.c' l='1380' u='c'/>

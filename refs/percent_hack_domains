@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='648' type='uschar *'/>
 <doc f='exim/src/globals.h' l='648'>/* Local domains for which &apos;% operates */</doc>
+<use f='exim/src/deliver.c' l='5111' u='r' c='deliver_split_address'/>
+<use f='exim/src/deliver.c' l='5119' u='a' c='deliver_split_address'/>
+<def f='exim/src/globals.c' l='1028' type='uschar *'/>
+<use f='exim/src/readconf.c' l='226' u='a'/>
+<use f='exim/src/readconf.c' l='226' u='a'/>
+<use f='exim/src/readconf.c' l='226' u='a'/>
+<use f='exim/src/readconf.c' l='226' u='a'/>

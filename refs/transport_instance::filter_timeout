@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='182' type='int'/>
 <offset>2016</offset>
 <doc f='exim/src/structs.h' l='182'>/* For transport filter timing */</doc>
+<use f='exim/src/deliver.c' l='2386' u='r' c='deliver_local'/>
+<use f='exim/src/globals.c' l='1483' u='w'/>

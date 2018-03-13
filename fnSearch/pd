@@ -1,0 +1,12 @@
+pdkim_errstr|pdkim_errstr
+pdkim_feed|pdkim_feed
+pdkim_feed_finish|pdkim_feed_finish
+pdkim_free_ctx|pdkim_free_ctx
+pdkim_init|pdkim_init
+pdkim_init_context|pdkim_init_context
+pdkim_init_sign|pdkim_init_sign
+pdkim_init_verify|pdkim_init_verify
+pdkim_set_bodyhash|pdkim_set_bodyhash
+pdkim_set_optional|pdkim_set_optional
+pdkim_verify_ext_status_str|pdkim_verify_ext_status_str
+pdkim_verify_status_str|pdkim_verify_status_str

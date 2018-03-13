@@ -1,1 +1,5 @@
 <dec f='exim/src/functions.h' l='492' type='void timesince(struct timeval * diff, struct timeval * then)'/>
+<def f='exim/src/deliver.c' l='1076' ll='1086' type='void timesince(struct timeval * diff, struct timeval * then)'/>
+<use f='exim/src/deliver.c' l='1108' u='c' c='string_timesince'/>
+<use f='exim/src/deliver.c' l='3013' u='c' c='do_local_deliveries'/>
+<use f='exim/src/receive.c' l='3213' u='c' c='receive_msg'/>

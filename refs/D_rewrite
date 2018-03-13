@@ -1,1 +1,11 @@
 <dec f='exim/src/macros.h' l='400' macro='1' type='16777216'/>
+<use f='exim/src/rda.c' l='637' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='783' u='r' c='rda_interpret'/>
+<use f='exim/src/routers/rf_change_domain.c' l='70' u='r' c='rf_change_domain'/>
+<use f='exim/src/rewrite.c' l='253' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='465' u='r' c='rewrite_one_header'/>
+<use f='exim/src/rewrite.c' l='522' u='r' c='rewrite_one_header'/>
+<use f='exim/src/rewrite.c' l='649' u='r' c='rewrite_one_header'/>
+<use f='exim/src/rewrite.c' l='672' u='r' c='rewrite_one_header'/>
+<use f='exim/src/receive.c' l='2302' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2910' u='r' c='receive_msg'/>

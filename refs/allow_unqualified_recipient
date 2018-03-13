@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='217' type='BOOL'/>
 <doc f='exim/src/globals.h' l='217'>/* As it says */</doc>
+<use f='exim/src/verify.c' l='2232' u='r' c='verify_check_headers'/>
+<def f='exim/src/globals.c' l='421' type='BOOL'/>
+<doc f='exim/src/globals.c' l='421'>/* For local messages */</doc>
+<use f='exim/src/exim.c' l='2113' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5489' u='r' c='main'/>
+<use f='exim/src/smtp_in.c' l='2222' u='r' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2787' u='w' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='3690' u='r' c='qualify_recipient'/>
+<use f='exim/src/spool_in.c' l='255' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='472' u='w' c='spool_read_header'/>
+<use f='exim/src/rewrite.c' l='547' u='r' c='rewrite_one_header'/>
+<use f='exim/src/spool_out.c' l='215' u='r' c='spool_write_header'/>

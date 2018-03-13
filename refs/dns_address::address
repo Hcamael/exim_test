@@ -1,2 +1,55 @@
 <dec f='exim/src/structs.h' l='788' type='uschar [1]'/>
 <offset>64</offset>
+<use f='exim/src/verify.c' l='3444' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3451' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3474' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3492' u='r' c='one_check_dnsbl'/>
+<use f='exim/src/lookups/dnsdb.c' l='393' u='r' c='dnsdb_find'/>
+<use f='exim/src/acl.c' l='1296' c='acl_verify_csa_address'/>
+<use f='exim/src/acl.c' l='1298' u='r' c='acl_verify_csa_address'/>
+<use f='exim/src/host.c' l='279' u='r' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='2425' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2428' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2440' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2459' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2477' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2496' u='r' c='set_address_from_dns'/>
+<use f='exim/src/dns.c' l='1197' u='r' c='dns_address_from_rr'/>

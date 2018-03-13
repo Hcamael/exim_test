@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='735' macro='1' type='struct stack_st_ASIdOrRange * sk_ASIdOrRange_deep_copy(const struct stack_st_ASIdOrRange * sk, sk_ASIdOrRange_copyfunc copyfunc, sk_ASIdOrRange_freefunc freefunc)'/>

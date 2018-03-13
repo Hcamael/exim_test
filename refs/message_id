@@ -1,2 +1,99 @@
 <dec f='exim/src/local_scan.h' l='152' type='uschar *'/>
 <doc f='exim/src/local_scan.h' l='152'>/* Internal id of message being handled */</doc>
+<use f='exim/src/deliver.c' l='2245' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2372' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='3844' u='r' c='par_wait'/>
+<use f='exim/src/deliver.c' l='4030' u='r' c='par_wait'/>
+<use f='exim/src/deliver.c' l='4709' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4737' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4742' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='5558' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5682' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6988' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7142' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7441' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7857' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7877' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8162' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8189' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8349' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8372' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8567' u='r' c='delivery_re_exec'/>
+<use f='exim/src/deliver.c' l='8572' u='r' c='delivery_re_exec'/>
+<use f='exim/src/dkim_transport.c' l='220' u='r' c='dkt_via_kfile'/>
+<def f='exim/src/globals.c' l='970' type='uschar *'/>
+<use f='exim/src/filter.c' l='1466' u='r' c='test_condition'/>
+<use f='exim/src/filter.c' l='1474' u='r' c='test_condition'/>
+<use f='exim/src/filter.c' l='1481' u='r' c='test_condition'/>
+<use f='exim/src/exim.c' l='1726' u='w' c='main'/>
+<use f='exim/src/exim.c' l='1727' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4963' u='w' c='main'/>
+<use f='exim/src/exim.c' l='4964' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4965' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4966' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4968' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5365' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5404' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5574' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5736' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5762' u='r' c='main'/>
+<use f='exim/src/queue.c' l='1009' u='r' c='queue_action'/>
+<use f='exim/src/routers/rf_self_action.c' l='76' u='r' c='rf_self_action'/>
+<use f='exim/src/log.c' l='909' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='910' u='r' c='log_write'/>
+<use f='exim/src/transports/queuefile.c' l='114' u='r' c='copy_spool_files'/>
+<use f='exim/src/transports/queuefile.c' l='115' u='r' c='copy_spool_files'/>
+<use f='exim/src/transports/queuefile.c' l='118' u='r' c='copy_spool_files'/>
+<use f='exim/src/transports/queuefile.c' l='254' u='r' c='queuefile_transport_entry'/>
+<use f='exim/src/expand.c' l='576' u='a'/>
+<use f='exim/src/expand.c' l='576' u='a'/>
+<use f='exim/src/expand.c' l='579' u='a'/>
+<use f='exim/src/expand.c' l='579' u='a'/>
+<use f='exim/src/expand.c' l='576' u='a'/>
+<use f='exim/src/expand.c' l='576' u='a'/>
+<use f='exim/src/expand.c' l='579' u='a'/>
+<use f='exim/src/expand.c' l='579' u='a'/>
+<use f='exim/src/daemon.c' l='491' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='515' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='673' u='r' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='1710' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2613' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2614' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2615' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2625' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2637' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2645' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2651' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3007' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3021' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3069' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3107' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3135' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3154' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3196' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3212' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3435' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3511' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3519' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3555' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3776' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3850' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3858' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4026' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4117' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4118' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4119' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4197' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4262' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4266' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4288' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4289' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4290' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4296' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4297' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4298' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4305' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4332' u='r' c='receive_msg'/>
+<use f='exim/src/host.c' l='2165' u='r' c='host_find_byname'/>
+<use f='exim/src/retry.c' l='154' u='r' c='retry_check_address'/>
+<use f='exim/src/spool_out.c' l='153' u='r' c='spool_write_header'/>

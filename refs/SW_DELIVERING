@@ -1,1 +1,8 @@
 <dec f='exim/src/macros.h' l='983' type='1'/>
+<use f='exim/src/deliver.c' l='5682' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6988' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7441' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7857' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7877' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8372' u='r' c='deliver_message'/>
+<use f='exim/src/spool_out.c' l='44' u='r' c='spool_write_error'/>

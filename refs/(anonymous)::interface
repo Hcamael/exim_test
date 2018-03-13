@@ -1,3 +1,30 @@
 <dec f='exim/src/globals.h' l='312' type='uschar *'/>
 <offset>192</offset>
 <doc f='exim/src/globals.h' l='312'>/* (address of) */</doc>
+<dec f='exim/src/transports/smtp.h' l='24' type='uschar *'/>
+<dec f='exim/src/transports/smtp.h' l='102' type='uschar *'/>
+<offset>256</offset>
+<use f='exim/src/verify.c' l='400' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='402' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='403' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='674' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='1050' u='w' c='do_callout'/>

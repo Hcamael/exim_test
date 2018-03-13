@@ -1,1 +1,46 @@
 <dec f='exim/src/functions.h' l='185' type='void exim_exit(int , const uschar * )'/>
+<use f='exim/src/moan.c' l='590' u='c' c='moan_smtp_batch'/>
+<def f='exim/src/exim.c' l='660' ll='669' type='void exim_exit(int rc, const uschar * process)'/>
+<use f='exim/src/exim.c' l='4462' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4568' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4595' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4601' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4631' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4650' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4654' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4673' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4826' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4829' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4944' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5036' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5130' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5294' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5409' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5416' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5467' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5501' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5574' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5619' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5629' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5635' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5637' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5763' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5795' u='c' c='main'/>
+<doc f='exim/src/exim.c' l='651'>/* Exim exits via this function so that it always clears up any open
+databases.
+
+Arguments:
+  rc         return code
+
+Returns:     does not return
+*/</doc>
+<use f='exim/src/smtp_in.c' l='848' u='c' c='smtp_vprintf'/>
+<use f='exim/src/smtp_in.c' l='928' u='c' c='command_timeout_handler'/>
+<use f='exim/src/smtp_in.c' l='952' u='c' c='command_sigterm_handler'/>
+<use f='exim/src/log.c' l='235' u='c' c='die'/>
+<use f='exim/src/log.c' l='764' u='c' c='log_write'/>
+<use f='exim/src/log.c' l='961' u='c' c='log_write'/>
+<use f='exim/src/receive.c' l='193' u='c' c='receive_statvfs'/>
+<use f='exim/src/receive.c' l='346' u='c' c='receive_bomb_out'/>
+<use f='exim/src/receive.c' l='1147' u='c' c='give_local_error'/>
+<use f='exim/src/receive.c' l='3287' u='c' c='receive_msg'/>

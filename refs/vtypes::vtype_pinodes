@@ -1,0 +1,11 @@
+<dec f='exim/src/expand.c' l='418' type='27'/>
+<use f='exim/src/expand.c' l='564'/>
+<use f='exim/src/expand.c' l='564'/>
+<use f='exim/src/expand.c' l='711'/>
+<use f='exim/src/expand.c' l='711'/>
+<use f='exim/src/expand.c' l='564'/>
+<use f='exim/src/expand.c' l='564'/>
+<use f='exim/src/expand.c' l='711'/>
+<use f='exim/src/expand.c' l='711'/>
+<use f='exim/src/expand.c' l='1924' c='find_variable'/>
+<doc f='exim/src/expand.c' l='418'>/* partition inodes; value is T/F for spool/log */</doc>

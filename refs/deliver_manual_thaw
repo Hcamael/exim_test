@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='370' type='BOOL'/>
 <doc f='exim/src/globals.h' l='370'>/* TRUE if manually thawed */</doc>
+<use f='exim/src/deliver.c' l='5765' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5921' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='645' type='BOOL'/>
+<use f='exim/src/filter.c' l='1481' u='r' c='test_condition'/>
+<use f='exim/src/queue.c' l='1160' u='w' c='queue_action'/>
+<use f='exim/src/queue.c' l='1185' u='w' c='queue_action'/>
+<use f='exim/src/spool_in.c' l='262' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='586' u='w' c='spool_read_header'/>
+<use f='exim/src/routers/redirect.c' l='788' u='r' c='redirect_router_entry'/>
+<use f='exim/src/spool_out.c' l='230' u='r' c='spool_write_header'/>

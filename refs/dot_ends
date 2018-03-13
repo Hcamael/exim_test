@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='432' type='BOOL'/>
 <doc f='exim/src/globals.h' l='432'>/* TRUE if &quot;.&quot; ends non-SMTP input */</doc>
+<def f='exim/src/globals.c' l='707' type='BOOL'/>
+<use f='exim/src/moan.c' l='282' u='r' c='moan_send_message'/>
+<use f='exim/src/filtertest.c' l='50' u='r' c='read_message_body'/>
+<use f='exim/src/exim.c' l='1788' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2611' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3033' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3400' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='5102' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5109' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/receive.c' l='624' u='r' c='read_message_data'/>
+<use f='exim/src/receive.c' l='1857' u='r' c='receive_msg'/>

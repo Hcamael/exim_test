@@ -1,2 +1,35 @@
 <dec f='exim/src/globals.h' l='964' type='uschar *'/>
 <doc f='exim/src/globals.h' l='964'>/* Required timezone setting */</doc>
+<def f='exim/src/globals.c' l='1519' type='uschar *'/>
+<use f='exim/src/exim.c' l='3984' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3984' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3990' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3991' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4003' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4005' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4006' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4011' u='r' c='main'/>
+<use f='exim/src/readconf.c' l='345' u='a'/>
+<use f='exim/src/readconf.c' l='345' u='a'/>
+<use f='exim/src/readconf.c' l='345' u='a'/>
+<use f='exim/src/readconf.c' l='345' u='a'/>

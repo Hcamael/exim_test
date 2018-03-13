@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='253' type='uschar * local_part_quote(uschar * )'/>
+<def f='exim/src/exim.c' l='1095' ll='1128' type='uschar * local_part_quote(uschar * lpart)'/>
+<use f='exim/src/exim.c' l='4887' u='c' c='main'/>
+<doc f='exim/src/exim.c' l='1087'>/* This function is used when a sender address or a From: or Sender: header
+line is being created from the caller&apos;s login, or from an authenticated_id. It
+applies appropriate quoting rules for a local part.
+
+Argument:    the local part
+Returns:     the local part, quoted if necessary
+*/</doc>
+<use f='exim/src/receive.c' l='2778' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2785' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2794' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2844' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2848' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2850' u='c' c='receive_msg'/>

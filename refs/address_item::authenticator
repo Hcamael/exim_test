@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='566' type='uschar *'/>
 <offset>2304</offset>
 <doc f='exim/src/structs.h' l='566'>/* auth driver name used by transport */</doc>
+<use f='exim/src/deliver.c' l='1226' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1228' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='3541' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4430' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='729' u='w' c='do_callout'/>
+<use f='exim/src/globals.c' l='373' u='w'/>

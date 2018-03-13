@@ -1,3 +1,16 @@
 <dec f='exim/src/structs.h' l='449' type='int'/>
 <offset>160</offset>
 <doc f='exim/src/structs.h' l='449'>/* additional error information */</doc>
+<use f='exim/src/deliver.c' l='3465' u='a' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3465' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3466' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3478' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4877' u='a' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4877' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4878' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/retry.c' l='302' u='w' c='retry_add_item'/>
+<use f='exim/src/retry.c' l='310' u='r' c='retry_add_item'/>
+<use f='exim/src/retry.c' l='314' u='r' c='retry_add_item'/>
+<use f='exim/src/retry.c' l='316' u='r' c='retry_add_item'/>
+<use f='exim/src/retry.c' l='631' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='827' u='r' c='retry_update'/>

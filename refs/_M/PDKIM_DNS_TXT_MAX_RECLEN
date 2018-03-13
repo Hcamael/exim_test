@@ -1,0 +1,3 @@
+<dec f='exim/src/pdkim/pdkim.h' l='41'/>
+<doc f='exim/src/pdkim/pdkim.h' l='39'>/* Length of the preallocated buffer for the &quot;answer&quot; from the dns/txt
+   callback function. This should match the maximum RDLENGTH from DNS. */</doc>

@@ -1,0 +1,7 @@
+<dec f='exim/src/pdkim/pdkim.h' l='195' type='uschar *'/>
+<use f='exim/src/pdkim/pdkim.c' l='1653' u='w' c='pdkim_feed_finish'/>
+<offset>1024</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='191'>/* Folded DKIM-Signature: header. Signing only, NULL for verifying.
+     Ready for insertion into the message. Note: Folded using CRLFTB,
+     but final line terminator is NOT included. Note2: This buffer is
+     free()d when you call pdkim_free_ctx(). */</doc>

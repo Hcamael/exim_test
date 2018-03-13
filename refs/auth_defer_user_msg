@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='229' type='uschar *'/>
 <doc f='exim/src/globals.h' l='229'>/* Error message for user */</doc>
+<def f='exim/src/globals.c' l='450' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='3648' u='r' c='smtp_in_auth'/>
+<use f='exim/src/auths/check_serv_cond.c' l='126' u='w' c='auth_check_some_cond'/>

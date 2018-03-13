@@ -1,0 +1,4 @@
+<dec f='exim/src/auths/auth-spa.c' l='337' type='void E_P24(uschar * p21, uschar * c8, uschar * p24)'/>
+<def f='exim/src/auths/auth-spa.c' l='742' ll='748' type='void E_P24(uschar * p21, uschar * c8, uschar * p24)'/>
+<use f='exim/src/auths/auth-spa.c' l='978' u='c' c='SMBOWFencrypt'/>
+<use f='exim/src/auths/auth-spa.c' l='991' u='c' c='NTLMSSPOWFencrypt'/>

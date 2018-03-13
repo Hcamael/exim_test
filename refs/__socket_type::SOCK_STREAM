@@ -1,3 +1,11 @@
 <dec f='include/x86_64-linux-gnu/bits/socket_type.h' l='26' type='1'/>
 <doc f='include/x86_64-linux-gnu/bits/socket_type.h' l='26'>/* Sequenced, reliable, connection-based
 				   byte streams.  */</doc>
+<use f='exim/src/deliver.c' l='8544' macro='1' u='r'/>
+<use f='exim/src/verify.c' l='2679' macro='1' u='r'/>
+<use f='exim/src/smtp_out.c' l='224' macro='1' u='r'/>
+<use f='exim/src/ip.c' l='458' macro='1' u='r'/>
+<use f='exim/src/ip.c' l='468' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='4822' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='4837' macro='1' u='r'/>
+<use f='exim/src/daemon.c' l='1378' macro='1' u='r'/>

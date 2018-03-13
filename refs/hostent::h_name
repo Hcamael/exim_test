@@ -1,3 +1,31 @@
 <dec f='include/netdb.h' l='102' type='char *'/>
 <offset>0</offset>
 <doc f='include/netdb.h' l='102'>/* Official name of host.  */</doc>
+<use f='exim/src/host.c' l='206' u='w' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='263' u='w' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='1576' u='r' c='host_name_lookup_byaddr'/>
+<use f='exim/src/host.c' l='1576' u='r' c='host_name_lookup_byaddr'/>
+<use f='exim/src/host.c' l='1576' u='r' c='host_name_lookup_byaddr'/>
+<use f='exim/src/host.c' l='1586' u='r' c='host_name_lookup_byaddr'/>
+<use f='exim/src/host.c' l='2096' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2097' u='r' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2098' u='r' c='host_find_byname'/>

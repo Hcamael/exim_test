@@ -1,1 +1,17 @@
 <dec f='exim/src/mytypes.h' l='96'/>
+<use f='exim/src/exim_dbmbuild.c' l='208' u='c'/>
+<use f='exim/src/version.c' l='63' u='c'/>
+<use f='exim/src/version.c' l='64' u='c'/>
+<use f='exim/src/filter.c' l='984' u='c'/>
+<use f='exim/src/smtp_in.c' l='2620' u='c'/>
+<use f='exim/src/smtp_in.c' l='5452' u='c'/>
+<use f='exim/src/smtp_in.c' l='5456' u='c'/>
+<use f='exim/src/smtp_in.c' l='5458' u='c'/>
+<use f='exim/src/smtp_in.c' l='5459' u='c'/>
+<use f='exim/src/smtp_in.c' l='5460' u='c'/>
+<use f='exim/src/smtp_in.c' l='5461' u='c'/>
+<use f='exim/src/smtp_in.c' l='5462' u='c'/>
+<use f='exim/src/log.c' l='874' u='c'/>
+<use f='exim/src/rewrite.c' l='618' u='c'/>
+<use f='exim/src/rewrite.c' l='640' u='c'/>
+<use f='exim/src/rewrite.c' l='647' u='c'/>

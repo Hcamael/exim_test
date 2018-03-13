@@ -1,1 +1,32 @@
 <dec f='exim/src/functions.h' l='326' type='void queue_run(uschar * , uschar * , BOOL )'/>
+<use f='exim/src/exim.c' l='4672' u='c' c='main'/>
+<def f='exim/src/queue.c' l='373' ll='739' type='void queue_run(uschar * start_id, uschar * stop_id, BOOL recurse)'/>
+<use f='exim/src/queue.c' l='728' u='c' c='queue_run'/>
+<doc f='exim/src/queue.c' l='345'>/* The arguments give the messages to start and stop at; NULL means start at
+the beginning or stop at the end. If the given start message doesn&apos;t exist, we
+start at the next lexically greater one, and likewise we stop at the after the
+previous lexically lesser one if the given stop message doesn&apos;t exist. Because
+a queue run can take some time, stat each file before forking, in case it has
+been delivered in the meantime by some other means.
+
+The global variables queue_run_force and queue_run_local may be set to cause
+forced deliveries or local-only deliveries, respectively.
+
+If deliver_selectstring[_sender] is not NULL, skip messages whose recipients do
+not contain the string. As this option is typically used when a machine comes
+back online, we want to ensure that at least one delivery attempt takes place,
+so force the first one. The selecting string can optionally be a regex, or
+refer to the sender instead of recipients.
+
+If queue_2stage is set, the queue is scanned twice. The first time, queue_smtp
+is set so that routing is done for all messages. Thus in the second run those
+that are routed to the same host should go down the same SMTP connection.
+
+Arguments:
+  start_id   message id to start at, or NULL for all
+  stop_id    message id to end at, or NULL for all
+  recurse    TRUE if recursing for 2-stage run
+
+Returns:     nothing
+*/</doc>
+<use f='exim/src/daemon.c' l='1880' u='c' c='daemon_go'/>

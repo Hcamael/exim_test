@@ -1,0 +1,12 @@
+rf_expand_data|rf_expand_data
+rf_self_action|rf_self_action
+rf_get_munge_headers|rf_get_munge_headers
+rf_get_errors_address|rf_get_errors_address
+rf_set_ugid|rf_set_ugid
+rf_get_transport|rf_get_transport
+rf_queue_add|rf_queue_add
+rf_lookup_hostlist|rf_lookup_hostlist
+rf_change_domain|rf_change_domain
+rf_get_ugid|rf_get_ugid
+rfc2047_decode|rfc2047_decode
+rfc2047_decode2|rfc2047_decode2

@@ -1,2 +1,3 @@
 <dec f='exim/src/structs.h' l='226'/>
 <doc f='exim/src/structs.h' l='224'>/* smtp transport datachunk callback */</doc>
+<use f='exim/src/dkim_transport.c' l='292' u='c'/>

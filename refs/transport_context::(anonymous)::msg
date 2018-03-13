@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='237' type='gstring *'/>
 <offset>0</offset>
 <doc f='exim/src/structs.h' l='237'>/* allocated string with written message */</doc>
+<use f='exim/src/dkim_transport.c' l='139' u='w' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='144' u='r' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='145' u='r' c='dkt_direct'/>

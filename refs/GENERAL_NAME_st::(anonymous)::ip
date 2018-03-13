@@ -1,0 +1,4 @@
+<dec f='include/openssl/x509v3.h' l='145' type='ASN1_OCTET_STRING *'/>
+<offset>0</offset>
+<doc f='include/openssl/x509v3.h' l='144'>/* Old names */</doc>
+<doc f='include/openssl/x509v3.h' l='145'>/* iPAddress */</doc>

@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='414' type='int'/>
 <doc f='exim/src/globals.h' l='414'>/* How deep to search for CSA SRV records */</doc>
+<def f='exim/src/globals.c' l='689' type='int'/>
+<use f='exim/src/readconf.c' l='126' u='a'/>
+<use f='exim/src/readconf.c' l='126' u='a'/>
+<use f='exim/src/readconf.c' l='126' u='a'/>
+<use f='exim/src/readconf.c' l='126' u='a'/>
+<use f='exim/src/dns.c' l='1050' u='r' c='dns_special_lookup'/>

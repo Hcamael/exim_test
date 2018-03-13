@@ -1,3 +1,10 @@
 <dec f='exim/src/structs.h' l='175' type='uschar *'/>
 <offset>1600</offset>
 <doc f='exim/src/structs.h' l='175'>/* Overriding (rewriting) return path */</doc>
+<use f='exim/src/deliver.c' l='2152' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2154' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2161' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='4444' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4446' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4452' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/globals.c' l='1476' u='w'/>

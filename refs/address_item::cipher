@@ -1,3 +1,12 @@
 <dec f='exim/src/structs.h' l='554' type='uschar *'/>
 <offset>1984</offset>
 <doc f='exim/src/structs.h' l='554'>/* Cipher used for transport */</doc>
+<use f='exim/src/deliver.c' l='814' u='r' c='d_tlslog'/>
+<use f='exim/src/deliver.c' l='815' u='r' c='d_tlslog'/>
+<use f='exim/src/deliver.c' l='816' u='r' c='d_tlslog'/>
+<use f='exim/src/deliver.c' l='1619' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='3504' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3508' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4794' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4796' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/globals.c' l='363' u='w'/>

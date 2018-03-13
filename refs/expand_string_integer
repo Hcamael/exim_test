@@ -1,1 +1,6 @@
 <dec f='exim/src/functions.h' l='197' type='int64_t expand_string_integer(uschar * , BOOL )'/>
+<use f='exim/src/deliver.c' l='1987' u='c' c='check_message_size'/>
+<use f='exim/src/deliver.c' l='2653' u='c' c='tpt_parallel_check'/>
+<use f='exim/src/exim.c' l='5302' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='2439' u='c' c='smtp_start_session'/>
+<def f='exim/src/expand.c' l='7634' ll='7638' macro='1' type='int64_t expand_string_integer(uschar * string, BOOL isplus)'/>

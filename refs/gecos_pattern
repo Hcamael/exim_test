@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='485' type='uschar *'/>
 <doc f='exim/src/globals.h' l='485'>/* Pattern to match */</doc>
+<def f='exim/src/globals.c' l='761' type='uschar *'/>
+<use f='exim/src/exim.c' l='4720' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4723' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4739' u='r' c='main'/>
+<use f='exim/src/readconf.c' l='153' u='a'/>
+<use f='exim/src/readconf.c' l='153' u='a'/>
+<use f='exim/src/readconf.c' l='153' u='a'/>
+<use f='exim/src/readconf.c' l='153' u='a'/>

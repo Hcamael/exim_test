@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='294' type='uschar *'/>
 <offset>1920</offset>
 <doc f='exim/src/structs.h' l='294'>/* IP address translation fudgery */</doc>
+<use f='exim/src/globals.c' l='1201' u='w'/>

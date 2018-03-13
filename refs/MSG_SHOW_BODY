@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='843' type='10'/>
+<use f='exim/src/exim.c' l='2838' u='r' c='main'/>
+<use f='exim/src/queue.c' l='1014' u='r' c='queue_action'/>
+<use f='exim/src/queue.c' l='1031' u='r' c='queue_action'/>

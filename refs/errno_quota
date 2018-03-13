@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='441' type='int'/>
 <doc f='exim/src/globals.h' l='441'>/* Quota errno in this OS */</doc>
+<def f='exim/src/globals.c' l='713' type='int'/>
+<use f='exim/src/retry.c' l='399' u='r' c='retry_find_config'/>

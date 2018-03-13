@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='241' type='uschar *'/>
 <offset>192</offset>
 <doc f='exim/src/structs.h' l='241'>/* string replacement */</doc>
+<use f='exim/src/verify.c' l='1358' u='w' c='cutthrough_headers_send'/>

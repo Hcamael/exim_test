@@ -1,1 +1,13 @@
 <dec f='exim/src/macros.h' l='468' type='43'/>
+<use f='exim/src/deliver.c' l='1095' macro='1' u='r'/>
+<use f='exim/src/deliver.c' l='1095' macro='1' u='r'/>
+<use f='exim/src/tod.c' l='93' macro='1' u='r'/>
+<use f='exim/src/tod.c' l='93' macro='1' u='r'/>
+<use f='exim/src/tod.c' l='170' macro='1' u='r'/>
+<use f='exim/src/tod.c' l='170' macro='1' u='r'/>
+<use f='exim/src/globals.c' l='908' macro='1'/>
+<use f='exim/src/globals.c' l='908' macro='1'/>
+<use f='exim/src/globals.c' l='908' macro='1'/>
+<use f='exim/src/globals.c' l='908' macro='1'/>
+<use f='exim/src/debug.c' l='193' macro='1' u='r'/>
+<use f='exim/src/debug.c' l='193' macro='1' u='r'/>

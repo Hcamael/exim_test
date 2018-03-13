@@ -1,2 +1,22 @@
 <dec f='exim/src/globals.h' l='259' type='int'/>
 <doc f='exim/src/globals.h' l='259'>/* Max amount to return */</doc>
+<use f='exim/src/deliver.c' l='7473' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7786' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='489' type='int'/>
+<use f='exim/src/moan.c' l='72' u='r' c='moan_send_message'/>
+<use f='exim/src/expand.c' l='478' u='a'/>
+<use f='exim/src/expand.c' l='478' u='a'/>
+<use f='exim/src/expand.c' l='655' u='a'/>
+<use f='exim/src/expand.c' l='655' u='a'/>
+<use f='exim/src/expand.c' l='478' u='a'/>
+<use f='exim/src/expand.c' l='478' u='a'/>
+<use f='exim/src/expand.c' l='655' u='a'/>
+<use f='exim/src/expand.c' l='655' u='a'/>
+<use f='exim/src/readconf.c' l='83' u='a'/>
+<use f='exim/src/readconf.c' l='83' u='a'/>
+<use f='exim/src/readconf.c' l='271' u='a'/>
+<use f='exim/src/readconf.c' l='271' u='a'/>
+<use f='exim/src/readconf.c' l='83' u='a'/>
+<use f='exim/src/readconf.c' l='83' u='a'/>
+<use f='exim/src/readconf.c' l='271' u='a'/>
+<use f='exim/src/readconf.c' l='271' u='a'/>

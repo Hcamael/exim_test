@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='173' type='uschar *'/>
 <offset>1472</offset>
 <doc f='exim/src/structs.h' l='173'>/* Add these headers */</doc>
+<use f='exim/src/deliver.c' l='7817' u='w' c='deliver_message'/>
+<use f='exim/src/globals.c' l='1474' u='w'/>

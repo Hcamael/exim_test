@@ -1,3 +1,8 @@
 <dec f='include/stdlib.h' l='164' type='double strtod(const char *restrict __nptr, char **restrict __endptr)'/>
 <use f='include/x86_64-linux-gnu/bits/stdlib-float.h' l='28' u='c' c='atof'/>
 <doc f='include/stdlib.h' l='163'>/* Convert a string to a floating-point number.  */</doc>
+<use f='exim/src/exim_dbutil.c' l='898' macro='1' u='c'/>
+<use f='exim/src/acl.c' l='2236' macro='1' u='c'/>
+<use f='exim/src/acl.c' l='2312' macro='1' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='424' macro='1' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='476' macro='1' u='c'/>

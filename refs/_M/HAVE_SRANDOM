@@ -1,3 +1,6 @@
 <dec f='exim/src/exim.h' l='24'/>
 <doc f='exim/src/exim.h' l='21'>/* Similarly, assume most systems have srandom() unless os.h undefines it.
 This call dates back at least as far as SUSv2. */</doc>
+<use f='exim/src/expand.c' l='957' u='a'/>
+<use f='exim/src/expand.c' l='973' u='a'/>
+<use f='exim/src/expand.c' l='991' u='a'/>

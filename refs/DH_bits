@@ -1,1 +1,2 @@
 <dec f='include/openssl/dh.h' l='126' type='int DH_bits(const DH * dh)'/>
+<use f='exim/src/tls-openssl.c' l='669' u='c' c='init_dh'/>

@@ -1,1 +1,32 @@
 <dec f='exim/src/functions.h' l='421' type='void smtp_message_code(uschar ** , int * , uschar ** , uschar ** , BOOL )'/>
+<use f='exim/src/smtp_in.c' l='2860' u='c' c='smtp_start_session'/>
+<def f='exim/src/smtp_in.c' l='3100' ll='3126' type='void smtp_message_code(uschar ** code, int * codelen, uschar ** msg, uschar ** log_msg, BOOL check_valid)'/>
+<use f='exim/src/smtp_in.c' l='3193' u='c' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3571' u='c' c='smtp_user_msg'/>
+<use f='exim/src/smtp_in.c' l='4147' u='c' c='smtp_setup_msg'/>
+<doc f='exim/src/smtp_in.c' l='3075'>/* This function allows for user messages overriding the response code details
+by providing a suitable response code string at the start of the message
+user_msg. Check the message for starting with a response code and optionally an
+extended status code. If found, check that the first digit is valid, and if so,
+change the code pointer and length to use the replacement. An invalid code
+causes a panic log; in this case, if the log messages is the same as the user
+message, we must also adjust the value of the log message to show the code that
+is actually going to be used (the original one).
+
+This function is global because it is called from receive.c as well as within
+this module.
+
+Note that the code length returned includes the terminating whitespace
+character, which is always included in the regex match.
+
+Arguments:
+  code          SMTP code, may involve extended status codes
+  codelen       length of smtp code; if &gt; 4 there&apos;s an ESC
+  msg           message text
+  log_msg       optional log message, to be adjusted with the new SMTP code
+  check_valid   if true, verify the response code
+
+Returns:        nothing
+*/</doc>
+<use f='exim/src/receive.c' l='534' u='c' c='smtp_user_msg'/>
+<use f='exim/src/receive.c' l='4253' u='c' c='receive_msg'/>

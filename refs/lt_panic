@@ -1,0 +1,2 @@
+<dec f='exim/src/log.c' l='20' type='2'/>
+<use f='exim/src/log.c' l='1167' u='r' c='log_write'/>

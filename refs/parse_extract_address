@@ -1,1 +1,31 @@
 <dec f='exim/src/functions.h' l='307' type='uschar * parse_extract_address(uschar * , uschar ** , int * , int * , int * , BOOL )'/>
+<use f='exim/src/verify.c' l='2218' u='c' c='verify_check_headers'/>
+<use f='exim/src/verify.c' l='2378' u='c' c='verify_check_notblind'/>
+<use f='exim/src/verify.c' l='2546' u='c' c='verify_check_header_address'/>
+<use f='exim/src/header.c' l='396' u='c' c='one_pattern_match'/>
+<def f='exim/src/parse.c' l='617' ll='833' type='uschar * parse_extract_address(uschar * mailbox, uschar ** errorptr, int * start, int * end, int * domain, BOOL allow_null)'/>
+<use f='exim/src/parse.c' l='1609' u='c' c='parse_forward_list'/>
+<use f='exim/src/parse.c' l='1618' u='c' c='parse_forward_list'/>
+<use f='exim/src/filter.c' l='1510' u='c' c='test_condition'/>
+<use f='exim/src/filter.c' l='1755' u='c' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2266' u='c' c='interpret_commands'/>
+<use f='exim/src/exim.c' l='724' u='c' c='test_address'/>
+<use f='exim/src/exim.c' l='2566' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5480' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='2153' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2211' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='4663' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4918' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5198' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/queue.c' l='1324' u='c' c='queue_action'/>
+<use f='exim/src/rewrite.c' l='219' u='c' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='492' u='c' c='rewrite_one_header'/>
+<use f='exim/src/rewrite.c' l='809' u='c' c='rewrite_test'/>
+<use f='exim/src/expand.c' l='6755' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6794' u='c' c='expand_string_internal'/>
+<use f='exim/src/receive.c' l='2065' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2499' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2837' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3982' u='c' c='receive_msg'/>
+<use f='exim/src/sieve.c' l='327' u='c' c='check_mail_address'/>
+<use f='exim/src/sieve.c' l='2149' u='c' c='parse_test'/>

@@ -1,0 +1,7 @@
+<def f='exim/src/exim_dbutil.c' l='162' ll='168' type='uschar * print_time(time_t t)'/>
+<use f='exim/src/exim_dbutil.c' l='987' u='c' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='994' u='c' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='995' u='c' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='996' u='c' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1052' u='c' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1059' u='c' c='main'/>

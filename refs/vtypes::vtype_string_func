@@ -1,0 +1,15 @@
+<dec f='exim/src/expand.c' l='404' type='13'/>
+<use f='exim/src/expand.c' l='539'/>
+<use f='exim/src/expand.c' l='539'/>
+<use f='exim/src/expand.c' l='648'/>
+<use f='exim/src/expand.c' l='648'/>
+<use f='exim/src/expand.c' l='683'/>
+<use f='exim/src/expand.c' l='683'/>
+<use f='exim/src/expand.c' l='539'/>
+<use f='exim/src/expand.c' l='539'/>
+<use f='exim/src/expand.c' l='648'/>
+<use f='exim/src/expand.c' l='648'/>
+<use f='exim/src/expand.c' l='683'/>
+<use f='exim/src/expand.c' l='683'/>
+<use f='exim/src/expand.c' l='1910' c='find_variable'/>
+<doc f='exim/src/expand.c' l='404'>/* value is string returned by given function */</doc>

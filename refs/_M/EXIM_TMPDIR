@@ -1,1 +1,6 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='150'/>
+<use f='exim/src/exim.c' l='3960' u='a'/>
+<use f='exim/src/exim.c' l='3964' u='c'/>
+<use f='exim/src/exim.c' l='3966' u='c'/>
+<use f='exim/src/exim.c' l='3967' u='c'/>
+<use f='exim/src/exim.c' l='3969' u='c'/>

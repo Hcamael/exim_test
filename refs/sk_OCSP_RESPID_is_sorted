@@ -1,0 +1,1 @@
+<def f='include/openssl/ocsp.h' l='94' macro='1' type='int sk_OCSP_RESPID_is_sorted(const struct stack_st_OCSP_RESPID * sk)'/>

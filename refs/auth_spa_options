@@ -1,0 +1,5 @@
+<dec f='exim/src/auths/spa.h' l='25' type='optionlist []'/>
+<def f='exim/src/auths/spa.c' l='47' ll='56' type='optionlist [4]'/>
+<use f='exim/src/auths/spa.c' l='62' u='r'/>
+<doc f='exim/src/auths/spa.c' l='45'>/* Options specific to the spa authentication mechanism. */</doc>
+<doc f='exim/src/auths/spa.h' l='23'>/* Data for reading the private options. */</doc>

@@ -1,2 +1,19 @@
 <dec f='exim/src/globals.h' l='429' type='tree_node *'/>
 <doc f='exim/src/globals.h' l='429'>/* Tree of defined domain lists */</doc>
+<use f='exim/src/deliver.c' l='3222' u='a' c='sort_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='3232' u='a' c='sort_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='5120' u='a' c='deliver_split_address'/>
+<use f='exim/src/deliver.c' l='6486' u='a' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6698' u='a' c='deliver_message'/>
+<def f='exim/src/globals.c' l='704' type='tree_node *'/>
+<use f='exim/src/smtp_in.c' l='4046' u='a' c='smtp_setup_msg'/>
+<use f='exim/src/routers/dnslookup.c' l='314' u='a' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/dnslookup.c' l='351' u='a' c='dnslookup_router_entry'/>
+<use f='exim/src/acl.c' l='3464' u='a' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3631' u='a' c='acl_check_condition'/>
+<use f='exim/src/match.c' l='1230' u='a' c='check_address'/>
+<use f='exim/src/expand.c' l='2613' u='a' c='eval_condition'/>
+<use f='exim/src/expand.c' l='6601' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6608' u='r' c='expand_string_internal'/>
+<use f='exim/src/host.c' l='1397' u='a' c='host_scan_for_local_hosts'/>
+<use f='exim/src/lss.c' l='30' u='a' c='lss_match_domain'/>

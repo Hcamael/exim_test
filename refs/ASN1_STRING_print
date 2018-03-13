@@ -1,1 +1,2 @@
 <dec f='include/openssl/asn1.h' l='754' type='int ASN1_STRING_print(BIO * bp, const ASN1_STRING * v)'/>
+<use f='exim/src/tlscert-openssl.c' l='325' u='c' c='tls_cert_ext_by_oid'/>

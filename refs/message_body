@@ -1,2 +1,19 @@
 <dec f='exim/src/globals.h' l='576' type='uschar *'/>
 <doc f='exim/src/globals.h' l='576'>/* Start of message body for filter */</doc>
+<def f='exim/src/globals.c' l='963' type='uschar *'/>
+<use f='exim/src/filtertest.c' l='41' u='w' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='56' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='85' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='93' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='103' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='130' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='130' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='131' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='253' u='r' c='filter_runtest'/>
+<use f='exim/src/smtp_in.c' l='2033' u='r' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='2035' u='r' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='2036' u='w' c='smtp_reset'/>
+<use f='exim/src/expand.c' l='573' u='a'/>
+<use f='exim/src/expand.c' l='573' u='a'/>
+<use f='exim/src/expand.c' l='573' u='a'/>
+<use f='exim/src/expand.c' l='573' u='a'/>

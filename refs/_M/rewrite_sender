@@ -1,2 +1,5 @@
 <dec f='exim/src/macros.h' l='766'/>
 <doc f='exim/src/macros.h' l='764'>/* Flags for rewrite rules */</doc>
+<use f='exim/src/rewrite.c' l='34' u='c'/>
+<use f='exim/src/rewrite.c' l='540' u='c'/>
+<use f='exim/src/rewrite.c' l='731' u='c'/>

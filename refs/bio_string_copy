@@ -1,0 +1,2 @@
+<def f='exim/src/tlscert-openssl.c' l='109' ll='117' type='uschar * bio_string_copy(BIO * bp, int len)'/>
+<use f='exim/src/tlscert-openssl.c' l='192' u='c' c='x509_name_copy'/>

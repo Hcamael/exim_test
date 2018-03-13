@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='977' type='uschar *'/>
 <doc f='exim/src/globals.h' l='977'>/* Running a router in verify mode */</doc>
+<use f='exim/src/verify.c' l='1695' u='w' c='verify_address'/>
+<use f='exim/src/verify.c' l='2158' u='w' c='verify_address'/>
+<use f='exim/src/tls-openssl.c' l='389' u='r' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='390' u='r' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='466' u='r' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='468' u='r' c='verify_callback'/>
+<def f='exim/src/globals.c' l='1550' type='uschar *'/>
+<use f='exim/src/expand.c' l='770' u='a'/>
+<use f='exim/src/expand.c' l='770' u='a'/>
+<use f='exim/src/expand.c' l='770' u='a'/>
+<use f='exim/src/expand.c' l='770' u='a'/>

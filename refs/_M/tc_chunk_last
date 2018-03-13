@@ -1,1 +1,2 @@
 <dec f='exim/src/structs.h' l='227'/>
+<use f='exim/src/dkim_transport.c' l='301' u='c'/>

@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='265' type='int'/>
 <doc f='exim/src/globals.h' l='265'>/* Time for positive callout cache records to expire */</doc>
+<use f='exim/src/verify.c' l='267' u='r' c='cached_callout_lookup'/>
+<def f='exim/src/globals.c' l='495' type='int'/>
+<use f='exim/src/readconf.c' l='88' u='a'/>
+<use f='exim/src/readconf.c' l='88' u='a'/>
+<use f='exim/src/readconf.c' l='88' u='a'/>
+<use f='exim/src/readconf.c' l='88' u='a'/>

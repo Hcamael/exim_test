@@ -1,1 +1,12 @@
 <dec f='exim/src/functions.h' l='161' type='BOOL dkim_transport_write_message(transport_ctx * , struct ob_dkim * , const uschar ** errstr)'/>
+<def f='exim/src/dkim_transport.c' l='348' ll='371' type='BOOL dkim_transport_write_message(transport_ctx * tctx, struct ob_dkim * dkim, const uschar ** err)'/>
+<doc f='exim/src/dkim_transport.c' l='337'>/* This function is a wrapper around transport_write_message().
+   It is only called from the smtp transport if DKIM or Domainkeys support
+   is compiled in.
+
+Arguments:
+  As for transport_write_message() in transort.c, with additional arguments
+  for DKIM.
+
+Returns:       TRUE on success; FALSE (with errno) for any failure
+*/</doc>

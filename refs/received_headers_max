@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='724' type='int'/>
 <doc f='exim/src/globals.h' l='724'>/* Max count of Received: headers */</doc>
+<use f='exim/src/deliver.c' l='5820' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1121' type='int'/>
+<use f='exim/src/readconf.c' l='259' u='a'/>
+<use f='exim/src/readconf.c' l='259' u='a'/>
+<use f='exim/src/readconf.c' l='259' u='a'/>
+<use f='exim/src/readconf.c' l='259' u='a'/>
+<use f='exim/src/receive.c' l='2998' u='r' c='receive_msg'/>

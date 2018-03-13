@@ -1,1 +1,2 @@
 <dec f='include/openssl/ssl.h' l='1654' type='int SSL_shutdown(SSL * s)'/>
+<use f='exim/src/tls-openssl.c' l='2722' u='c' c='tls_close'/>

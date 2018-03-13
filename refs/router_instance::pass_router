@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='333' type='struct router_instance *'/>
 <offset>3072</offset>
 <doc f='exim/src/structs.h' l='333'>/* Actual router for passed address */</doc>
+<use f='exim/src/globals.c' l='1240' u='w'/>

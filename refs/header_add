@@ -1,2 +1,23 @@
 <dec f='exim/src/local_scan.h' l='173' type='void header_add(int , const char * )'/>
 <dec f='exim/src/functions.h' l='209' type='void header_add(int , const char * )'/>
+<def f='exim/src/header.c' l='239' ll='246' type='void header_add(int type, const char * format)'/>
+<doc f='exim/src/header.c' l='229'>/* This is now a convenience interface to header_add_backend().
+
+Arguments:
+  type      Exim header type character
+  format    sprintf format
+  ...       arguments for the format
+
+Returns:    nothing
+*/</doc>
+<use f='exim/src/filter.c' l='2007' u='c' c='interpret_commands'/>
+<use f='exim/src/rda.c' l='853' u='c' c='rda_interpret'/>
+<use f='exim/src/rewrite.c' l='279' u='c' c='rewrite_one'/>
+<use f='exim/src/receive.c' l='2298' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2777' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2784' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2789' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2793' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2806' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2880' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2883' u='c' c='receive_msg'/>

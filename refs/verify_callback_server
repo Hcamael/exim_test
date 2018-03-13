@@ -1,0 +1,4 @@
+<def f='exim/src/tls-openssl.c' l='507' ll='512' type='int verify_callback_server(int preverify_ok, X509_STORE_CTX * x509ctx)'/>
+<use f='exim/src/tls-openssl.c' l='1252' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='2007' u='r' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2014' u='r' c='tls_server_start'/>

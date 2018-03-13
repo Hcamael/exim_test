@@ -1,0 +1,38 @@
+<dec f='exim/src/pdkim/pdkim.h' l='241' type='int'/>
+<use f='exim/src/pdkim/pdkim.c' l='818' u='w' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='1327' u='w' c='pdkim_key_from_dns'/>
+<use f='exim/src/pdkim/pdkim.c' l='1346' u='w' c='pdkim_key_from_dns'/>
+<use f='exim/src/pdkim/pdkim.c' l='1371' u='w' c='pdkim_key_from_dns'/>
+<use f='exim/src/pdkim/pdkim.c' l='1673' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1685' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1723' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1737' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1756' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1758' u='r' c='pdkim_feed_finish'/>
+<offset>1120</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='215'>/* Extended verification status. Verification only. Depending on the value
+     of verify_status, it can contain:
+
+     For verify_status == PDKIM_VERIFY_INVALID:
+
+        PDKIM_VERIFY_INVALID_PUBKEY_UNAVAILABLE
+          Unable to retrieve a public key container.
+
+        PDKIM_VERIFY_INVALID_BUFFER_SIZE
+          Either the DNS name constructed to retrieve the public key record
+          does not fit into PDKIM_DNS_TXT_MAX_NAMELEN bytes, or the retrieved
+          record is longer than PDKIM_DNS_TXT_MAX_RECLEN bytes.
+
+        PDKIM_VERIFY_INVALID_PUBKEY_PARSING
+          (Syntax) error while parsing the retrieved public key record.
+
+
+     For verify_status == PDKIM_VERIFY_FAIL:
+
+        PDKIM_VERIFY_FAIL_BODY
+          The calculated body hash does not match the advertised body hash
+          from the bh= tag of the signature.
+
+        PDKIM_VERIFY_FAIL_MESSAGE
+          RSA verification of the signature (b= tag) failed.
+  */</doc>

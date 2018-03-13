@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='449' type='uschar *'/>
 <doc f='exim/src/globals.h' l='449'>/* event data */</doc>
+<use f='exim/src/deliver.c' l='849' u='w' c='event_raise'/>
+<use f='exim/src/deliver.c' l='856' u='w' c='event_raise'/>
+<def f='exim/src/globals.c' l='720' type='uschar *'/>
+<doc f='exim/src/globals.c' l='720'>/* auxiliary data variable for event */</doc>
+<use f='exim/src/expand.c' l='528' u='a'/>
+<use f='exim/src/expand.c' l='528' u='a'/>
+<use f='exim/src/expand.c' l='528' u='a'/>
+<use f='exim/src/expand.c' l='528' u='a'/>

@@ -1,1 +1,7 @@
 <dec f='include/openssl/bio.h' l='548' type='long BIO_ctrl(BIO * bp, int cmd, long larg, void * parg)'/>
+<use f='exim/src/tlscert-openssl.c' l='113' macro='1' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='129' macro='1' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='257' macro='1' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='283' macro='1' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='332' macro='1' u='c'/>
+<use f='exim/src/tlscert-openssl.c' l='484' macro='1' u='c'/>

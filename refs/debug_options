@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='338' type='bit_table []'/>
 <doc f='exim/src/globals.h' l='338'>/* Table of debug options */</doc>
+<def f='exim/src/globals.c' l='576' ll='608' type='bit_table [31]'/>
+<use f='exim/src/globals.c' l='609' u='r'/>
+<use f='exim/src/globals.c' l='609' u='r'/>
+<doc f='exim/src/globals.c' l='576'>/* must be in alphabetical order */</doc>
+<use f='exim/src/exim.c' l='2475' u='r' c='main'/>
+<use f='exim/src/log.c' l='1417' u='r' c='debug_logging_activate'/>

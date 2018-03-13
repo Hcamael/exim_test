@@ -1,0 +1,8 @@
+<dec f='exim/src/auths/plaintext.h' l='19' type='int'/>
+<use f='exim/src/drtables.c' l='136' u='a'/>
+<use f='exim/src/drtables.c' l='136' u='a'/>
+<use f='exim/src/drtables.c' l='136' u='a'/>
+<use f='exim/src/drtables.c' l='136' u='a'/>
+<def f='exim/src/auths/plaintext.c' l='26' ll='27' type='int'/>
+<doc f='exim/src/auths/plaintext.c' l='23'>/* Size of the options list. An extern variable has to be used so that its
+address can appear in the tables drtables.c. */</doc>

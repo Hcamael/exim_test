@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='171' type='uschar *'/>
 <doc f='exim/src/globals.h' l='171'>/* Headers deleted by an ACL */</doc>
+<def f='exim/src/globals.c' l='240' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='1965' u='w' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='1096' u='w' c='setup_remove_header'/>
+<use f='exim/src/acl.c' l='1096' u='r' c='setup_remove_header'/>
+<use f='exim/src/acl.c' l='1097' u='r' c='setup_remove_header'/>
+<use f='exim/src/receive.c' l='1186' u='r' c='add_acl_headers'/>
+<use f='exim/src/receive.c' l='1194' u='r' c='add_acl_headers'/>
+<use f='exim/src/receive.c' l='1200' u='r' c='add_acl_headers'/>
+<use f='exim/src/receive.c' l='1212' u='w' c='add_acl_headers'/>

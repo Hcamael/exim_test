@@ -1,2 +1,45 @@
 <dec f='exim/src/globals.h' l='783' type='uschar *'/>
 <doc f='exim/src/globals.h' l='783'>/* Sender host name + address */</doc>
+<use f='exim/src/tls-openssl.c' l='2683' u='r' c='tls_write'/>
+<use f='exim/src/tls-openssl.c' l='2683' u='r' c='tls_write'/>
+<def f='exim/src/globals.c' l='1273' type='uschar *'/>
+<use f='exim/src/exim.c' l='5208' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5216' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5220' u='r' c='main'/>
+<use f='exim/src/smtp_in.c' l='1692' u='r' c='smtp_get_connection_info'/>
+<use f='exim/src/smtp_in.c' l='1693' u='r' c='smtp_get_connection_info'/>
+<use f='exim/src/queue.c' l='964' u='w' c='queue_list'/>
+<use f='exim/src/spool_in.c' l='277' u='w' c='spool_read_header'/>
+<use f='exim/src/routers/rf_self_action.c' l='78' u='r' c='rf_self_action'/>
+<use f='exim/src/routers/rf_self_action.c' l='86' u='r' c='rf_self_action'/>
+<use f='exim/src/expand.c' l='664' u='a'/>
+<use f='exim/src/expand.c' l='664' u='a'/>
+<use f='exim/src/expand.c' l='664' u='a'/>
+<use f='exim/src/expand.c' l='664' u='a'/>
+<use f='exim/src/daemon.c' l='451' u='r' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='374' u='r' c='data_timeout_handler'/>
+<use f='exim/src/receive.c' l='374' u='r' c='data_timeout_handler'/>
+<use f='exim/src/receive.c' l='1303' u='r' c='add_host_info_for_log'/>
+<use f='exim/src/receive.c' l='1307' u='r' c='add_host_info_for_log'/>
+<use f='exim/src/receive.c' l='1930' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2151' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2185' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2185' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2185' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3005' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3005' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3005' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3125' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3126' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3126' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3181' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3181' u='r' c='receive_msg'/>
+<use f='exim/src/host.c' l='596' u='w' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='640' u='w' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='650' u='w' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='660' u='r' c='host_build_sender_fullhost'/>
+<use f='exim/src/host.c' l='688' u='r' c='host_and_ident'/>
+<use f='exim/src/host.c' l='701' u='r' c='host_and_ident'/>
+<use f='exim/src/host.c' l='704' u='r' c='host_and_ident'/>
+<use f='exim/src/spool_out.c' l='41' u='r' c='spool_write_error'/>
+<use f='exim/src/spool_out.c' l='41' u='r' c='spool_write_error'/>

@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='220' type='uschar *'/>
 <doc f='exim/src/globals.h' l='220'>/* ID that failed authentication */</doc>
+<def f='exim/src/globals.c' l='424' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='3629' u='w' c='smtp_in_auth'/>
+<use f='exim/src/smtp_in.c' l='3646' u='w' c='smtp_in_auth'/>
+<use f='exim/src/smtp_in.c' l='3666' u='w' c='smtp_in_auth'/>
+<use f='exim/src/smtp_in.c' l='3672' u='w' c='smtp_in_auth'/>
+<use f='exim/src/expand.c' l='462' u='a'/>
+<use f='exim/src/expand.c' l='462' u='a'/>
+<use f='exim/src/expand.c' l='462' u='a'/>
+<use f='exim/src/expand.c' l='462' u='a'/>

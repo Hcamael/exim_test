@@ -1,1 +1,5 @@
 <dec f='include/asm-generic/errno-base.h' l='16'/>
+<use f='exim/src/dkim_transport.c' l='28' u='c'/>
+<use f='exim/src/string.c' l='1553' u='c'/>
+<use f='exim/src/rda.c' l='115' u='c'/>
+<use f='exim/src/rda.c' l='208' u='c'/>

@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='192' type='uschar *'/>
 <doc f='exim/src/globals.h' l='192'>/* ACL run for QUIT */</doc>
+<def f='exim/src/globals.c' l='260' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='3714' u='r' c='smtp_quit_handler'/>
+<use f='exim/src/smtp_in.c' l='3716' u='r' c='smtp_quit_handler'/>
+<use f='exim/src/smtp_in.c' l='5394' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5395' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/readconf.c' l='58' u='a'/>
+<use f='exim/src/readconf.c' l='58' u='a'/>
+<use f='exim/src/readconf.c' l='58' u='a'/>
+<use f='exim/src/readconf.c' l='58' u='a'/>

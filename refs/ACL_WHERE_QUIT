@@ -1,1 +1,13 @@
 <dec f='exim/src/macros.h' l='948' type='16'/>
+<use f='exim/src/smtp_in.c' l='3716' u='r' c='smtp_quit_handler'/>
+<use f='exim/src/smtp_in.c' l='5395' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/acl.c' l='286' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='286' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='293' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='293' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='286' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='286' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='293' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='293' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='4065' u='r' c='acl_check_internal'/>
+<use f='exim/src/acl.c' l='4456' c='acl_check'/>

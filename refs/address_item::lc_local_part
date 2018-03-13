@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='533' type='uschar *'/>
 <offset>960</offset>
 <doc f='exim/src/structs.h' l='533'>/* lowercased local part */</doc>
+<use f='exim/src/deliver.c' l='238' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='252' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='5153' u='w' c='deliver_split_address'/>
+<use f='exim/src/globals.c' l='346' u='w'/>
+<use f='exim/src/acl.c' l='3103' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='4317' u='w' c='acl_eval'/>

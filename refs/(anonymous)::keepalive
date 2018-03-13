@@ -1,0 +1,3 @@
+<dec f='exim/src/transports/smtp.h' l='70' type='BOOL'/>
+<offset>2272</offset>
+<use f='exim/src/smtp_out.c' l='310' u='r' c='smtp_sock_connect'/>

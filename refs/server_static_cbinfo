@@ -1,0 +1,5 @@
+<def f='exim/src/tls-openssl.c' l='184' type='tls_ext_ctx_cb *'/>
+<use f='exim/src/tls-openssl.c' l='1823' u='r' c='setup_certs'/>
+<use f='exim/src/tls-openssl.c' l='1824' u='r' c='setup_certs'/>
+<use f='exim/src/tls-openssl.c' l='1973' u='a' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='1975' u='r' c='tls_server_start'/>

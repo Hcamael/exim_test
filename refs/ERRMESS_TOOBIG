@@ -1,2 +1,5 @@
 <dec f='exim/src/macros.h' l='244' type='8'/>
 <doc f='exim/src/macros.h' l='244'>/* Message too big */</doc>
+<use f='exim/src/moan.c' l='177' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='431' c='moan_to_sender'/>
+<use f='exim/src/receive.c' l='3141' u='r' c='receive_msg'/>

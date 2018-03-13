@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='200' type='string_item *'/>
 <doc f='exim/src/globals.h' l='200'>/* Logged lines */</doc>
+<def f='exim/src/globals.c' l='269' type='string_item *'/>
+<use f='exim/src/smtp_in.c' l='2049' u='r' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='2051' u='r' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='2052' u='w' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='2052' u='r' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='1144' u='r' c='acl_warn'/>
+<use f='exim/src/acl.c' l='1154' u='r' c='acl_warn'/>
+<use f='exim/src/acl.c' l='1155' u='w' c='acl_warn'/>

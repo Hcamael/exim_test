@@ -1,2 +1,15 @@
 <dec f='exim/src/functions.h' l='194' type='const uschar * expand_cstring(const uschar * )'/>
 <doc f='exim/src/functions.h' l='194'>/* ... so use this one */</doc>
+<use f='exim/src/auths/plaintext.c' l='91' u='c' c='auth_plaintext_server'/>
+<use f='exim/src/match.c' l='489' u='c' c='match_check_list'/>
+<use f='exim/src/match.c' l='493' u='c' c='match_check_list'/>
+<def f='exim/src/expand.c' l='7567' ll='7583' type='const uschar * expand_cstring(const uschar * string)'/>
+<use f='exim/src/expand.c' l='7589' u='c' c='expand_string'/>
+<use f='exim/src/expand.c' l='7611' u='c' c='expand_string_copy'/>
+<doc f='exim/src/expand.c' l='7559'>/* This is the external function call. Do a quick check for any expansion
+metacharacters, and if there are none, just return the input string.
+
+Argument: the string to be expanded
+Returns:  the expanded string, or NULL if expansion failed; if failure was
+          due to a lookup deferring, search_find_defer will be TRUE
+*/</doc>

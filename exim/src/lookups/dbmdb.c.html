@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>dbmdb.c source code [exim/src/lookups/dbmdb.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/lookups/dbmdb.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>lookups</a>/<a href='dbmdb.c.html'>dbmdb.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><u>#include <a href="../exim.h.html">"../exim.h"</a></u></td></tr>
+<tr><th id="9">9</th><td><u>#include <a href="lf_functions.h.html">"lf_functions.h"</a></u></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="13">13</th><td><i>*              Open entry point                  *</i></td></tr>
+<tr><th id="14">14</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><i  data-doc="dbmdb_open">/* See local README for interface description */</i></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><em>static</em> <em>void</em> *</td></tr>
+<tr><th id="19">19</th><td><dfn class="tu decl def fn" id="dbmdb_open" title='dbmdb_open' data-type='void * dbmdb_open(uschar * filename, uschar ** errmsg)' data-ref="dbmdb_open">dbmdb_open</dfn>(<a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="1filename" title='filename' data-type='uschar *' data-ref="1filename">filename</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col2 decl" id="2errmsg" title='errmsg' data-type='uschar **' data-ref="2errmsg">errmsg</dfn>)</td></tr>
+<tr><th id="20">20</th><td>{</td></tr>
+<tr><th id="21">21</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="local col3 decl" id="3dirname" title='dirname' data-type='uschar *' data-ref="3dirname">dirname</dfn> = <a class="ref fn" href="../local_scan.h.html#string_copy" title='string_copy' data-ref="string_copy">string_copy</a>(<a class="local col1 ref" href="#1filename" title='filename' data-ref="1filename">filename</a>);</td></tr>
+<tr><th id="22">22</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="local col4 decl" id="4s" title='s' data-type='uschar *' data-ref="4s">s</dfn>;</td></tr>
+<tr><th id="23">23</th><td><a class="macro" href="../dbstuff.h.html#121" title="DB_ENV" data-ref="_M/EXIM_DB">EXIM_DB</a> *<dfn class="local col5 decl" id="5yield" title='yield' data-type='DB_ENV *' data-ref="5yield">yield</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><b>if</b> ((<a class="local col4 ref" href="#4s" title='s' data-ref="4s">s</a> = <a class="macro" href="../mytypes.h.html#109" title="(unsigned char *) strrchr((const char *)(dirname),&apos;/&apos;)" data-ref="_M/Ustrrchr">Ustrrchr</a>(<a class="local col3 ref" href="#3dirname" title='dirname' data-ref="3dirname">dirname</a>, <kbd>'/'</kbd>))) *<a class="local col4 ref" href="#4s" title='s' data-ref="4s">s</a> = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="26">26</th><td><a class="macro" href="../dbstuff.h.html#636" title="do { if (debug_selector &amp; (D_hints_lookup)) debug_printf(&quot;EXIM_DBOPEN: file &lt;%s&gt; dir &lt;%s&gt; flags=%s\n&quot;, (filename), (dirname), (00) == 00 ? &quot;O_RDONLY&quot; : (00) == 02 ? &quot;O_RDWR&quot; : (00) == (02|0100) ? &quot;O_RDWR|O_CREAT&quot; : &quot;??&quot;); if ( db_env_create(&amp;yield, 0) != 0 || ((*&amp;yield)-&gt;set_errcall(*&amp;yield, dbfn_bdb_error_callback), 0) || (*&amp;yield)-&gt;open(*&amp;yield, (char *) dirname, 0x00000001|0x00000400|0x00010000, 0) != 0 ) *&amp;yield = ((void*)0); else if (db_create((DB **) &amp;((*&amp;yield)-&gt;app_private), *&amp;yield, 0) != 0) { ((DB_ENV *)(*&amp;yield))-&gt;close((DB_ENV *)(*&amp;yield), 0); *&amp;yield = ((void*)0); } else if (((DB *)((*&amp;yield)-&gt;app_private))-&gt;open(((DB *)((*&amp;yield)-&gt;app_private)), ((void*)0), (char *) filename, ((void*)0), (00) == 00 ? DB_UNKNOWN : DB_HASH, (00) == 00 ? 0x00000400 : 0x00000001, 0) != 0 ) { ((DB *)((*&amp;yield)-&gt;app_private))-&gt;close(((DB *)((*&amp;yield)-&gt;app_private)), 0); ((DB_ENV *)(*&amp;yield))-&gt;close((DB_ENV *)(*&amp;yield), 0); *&amp;yield = ((void*)0); }; if (debug_selector &amp; (D_hints_lookup)) debug_printf(&quot;returned from EXIM_DBOPEN: %p\n&quot;, *&amp;yield); } while(0)" data-ref="_M/EXIM_DBOPEN">EXIM_DBOPEN</a>(<a class="local col1 ref" href="#1filename" title='filename' data-ref="1filename">filename</a>, <a class="local col3 ref" href="#3dirname" title='dirname' data-ref="3dirname">dirname</a>, <a class="macro" href="../../../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#43" title="00" data-ref="_M/O_RDONLY">O_RDONLY</a>, <var>0</var>, &amp;<a class="local col5 ref" href="#5yield" title='yield' data-ref="5yield">yield</a>);</td></tr>
+<tr><th id="27">27</th><td><b>if</b> (<a class="local col5 ref" href="#5yield" title='yield' data-ref="5yield">yield</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="28">28</th><td>  {</td></tr>
+<tr><th id="29">29</th><td>  <em>int</em> <dfn class="local col6 decl" id="6save_errno" title='save_errno' data-type='int' data-ref="6save_errno">save_errno</dfn> = <a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>;</td></tr>
+<tr><th id="30">30</th><td>  *<a class="local col2 ref" href="#2errmsg" title='errmsg' data-ref="2errmsg">errmsg</a> = <a class="ref fn" href="../functions.h.html#string_open_failed" title='string_open_failed' data-ref="string_open_failed">string_open_failed</a>(<a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>, <q>"%s as a %s file"</q>, <a class="local col1 ref" href="#1filename" title='filename' data-ref="1filename">filename</a>, <a class="macro" href="../dbstuff.h.html#129" title="&quot;db (v4.1+)&quot;" data-ref="_M/EXIM_DBTYPE">EXIM_DBTYPE</a>);</td></tr>
+<tr><th id="31">31</th><td>  <a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a> = <a class="local col6 ref" href="#6save_errno" title='save_errno' data-ref="6save_errno">save_errno</a>;</td></tr>
+<tr><th id="32">32</th><td>  }</td></tr>
+<tr><th id="33">33</th><td><b>return</b> <a class="local col5 ref" href="#5yield" title='yield' data-ref="5yield">yield</a>;</td></tr>
+<tr><th id="34">34</th><td>}</td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="39">39</th><td><i>*             Check entry point                  *</i></td></tr>
+<tr><th id="40">40</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><i  data-doc="dbmdb_check">/* This needs to know more about the underlying files than is good for it!</i></td></tr>
+<tr><th id="43">43</th><td><i  data-doc="dbmdb_check">We need to know what the real file names are in order to check the owners and</i></td></tr>
+<tr><th id="44">44</th><td><i  data-doc="dbmdb_check">modes. If USE_DB is set, we know it is Berkeley DB, which uses an unmodified</i></td></tr>
+<tr><th id="45">45</th><td><i  data-doc="dbmdb_check">file name. If USE_TDB or USE_GDBM is set, we know it is tdb or gdbm, which do</i></td></tr>
+<tr><th id="46">46</th><td><i  data-doc="dbmdb_check">the same. Otherwise, for safety, we have to check for x.db or x.dir and x.pag.</i></td></tr>
+<tr><th id="47">47</th><td><i  data-doc="dbmdb_check">*/</i></td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td><em>static</em> <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a></td></tr>
+<tr><th id="50">50</th><td><dfn class="tu decl def fn" id="dbmdb_check" title='dbmdb_check' data-type='BOOL dbmdb_check(void * handle, uschar * filename, int modemask, uid_t * owners, gid_t * owngroups, uschar ** errmsg)' data-ref="dbmdb_check">dbmdb_check</dfn>(<em>void</em> *<dfn class="local col7 decl" id="7handle" title='handle' data-type='void *' data-ref="7handle">handle</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col8 decl" id="8filename" title='filename' data-type='uschar *' data-ref="8filename">filename</dfn>, <em>int</em> <dfn class="local col9 decl" id="9modemask" title='modemask' data-type='int' data-ref="9modemask">modemask</dfn>, <a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#uid_t" title='uid_t' data-type='__uid_t' data-ref="uid_t">uid_t</a> *<dfn class="local col0 decl" id="10owners" title='owners' data-type='uid_t *' data-ref="10owners">owners</dfn>,</td></tr>
+<tr><th id="51">51</th><td>  <a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#gid_t" title='gid_t' data-type='__gid_t' data-ref="gid_t">gid_t</a> *<dfn class="local col1 decl" id="11owngroups" title='owngroups' data-type='gid_t *' data-ref="11owngroups">owngroups</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col2 decl" id="12errmsg" title='errmsg' data-type='uschar **' data-ref="12errmsg">errmsg</dfn>)</td></tr>
+<tr><th id="52">52</th><td>{</td></tr>
+<tr><th id="53">53</th><td><em>int</em> <dfn class="local col3 decl" id="13rc" title='rc' data-type='int' data-ref="13rc">rc</dfn>;</td></tr>
+<tr><th id="54">54</th><td><a class="local col7 ref" href="#7handle" title='handle' data-ref="7handle">handle</a> = <a class="local col7 ref" href="#7handle" title='handle' data-ref="7handle">handle</a>;    <i>/* Keep picky compilers happy */</i></td></tr>
+<tr><th id="55">55</th><td></td></tr>
+<tr><th id="56">56</th><td><u>#<span data-ppcond="56">if</span> defined(<a class="macro" href="../../build-Linux-x86_64/config.h.html#156" data-ref="_M/USE_DB">USE_DB</a>) || defined(<span class="macro" data-ref="_M/USE_TDB">USE_TDB</span>) || defined(<span class="macro" data-ref="_M/USE_GDBM">USE_GDBM</span>)</u></td></tr>
+<tr><th id="57">57</th><td><a class="local col3 ref" href="#13rc" title='rc' data-ref="13rc">rc</a> = <a class="ref fn" href="lf_functions.h.html#lf_check_file" title='lf_check_file' data-ref="lf_check_file">lf_check_file</a>(-<var>1</var>, <a class="local col8 ref" href="#8filename" title='filename' data-ref="8filename">filename</a>, <a class="macro" href="../../../include/x86_64-linux-gnu/sys/stat.h.html#111" title="0100000" data-ref="_M/S_IFREG">S_IFREG</a>, <a class="local col9 ref" href="#9modemask" title='modemask' data-ref="9modemask">modemask</a>, <a class="local col0 ref" href="#10owners" title='owners' data-ref="10owners">owners</a>, <a class="local col1 ref" href="#11owngroups" title='owngroups' data-ref="11owngroups">owngroups</a>,</td></tr>
+<tr><th id="58">58</th><td>  <q>"dbm"</q>, <a class="local col2 ref" href="#12errmsg" title='errmsg' data-ref="12errmsg">errmsg</a>);</td></tr>
+<tr><th id="59">59</th><td><u>#<span data-ppcond="56">else</span></u></td></tr>
+<tr><th id="60">60</th><td>  {</td></tr>
+<tr><th id="61">61</th><td>  uschar filebuffer[<var>256</var>];</td></tr>
+<tr><th id="62">62</th><td>  (<em>void</em>)sprintf(CS filebuffer, <q>"%.250s.db"</q>, filename);</td></tr>
+<tr><th id="63">63</th><td>  rc = lf_check_file(-<var>1</var>, filebuffer, S_IFREG, modemask, owners, owngroups,</td></tr>
+<tr><th id="64">64</th><td>    <q>"dbm"</q>, errmsg);</td></tr>
+<tr><th id="65">65</th><td>  <b>if</b> (rc &lt; <var>0</var>)        <i>/* stat() failed */</i></td></tr>
+<tr><th id="66">66</th><td>    {</td></tr>
+<tr><th id="67">67</th><td>    (<em>void</em>)sprintf(CS filebuffer, <q>"%.250s.dir"</q>, filename);</td></tr>
+<tr><th id="68">68</th><td>    rc = lf_check_file(-<var>1</var>, filebuffer, S_IFREG, modemask, owners, owngroups,</td></tr>
+<tr><th id="69">69</th><td>      <q>"dbm"</q>, errmsg);</td></tr>
+<tr><th id="70">70</th><td>    <b>if</b> (rc == <var>0</var>)     <i>/* x.dir was OK */</i></td></tr>
+<tr><th id="71">71</th><td>      {</td></tr>
+<tr><th id="72">72</th><td>      (<em>void</em>)sprintf(CS filebuffer, <q>"%.250s.pag"</q>, filename);</td></tr>
+<tr><th id="73">73</th><td>      rc = lf_check_file(-<var>1</var>, filebuffer, S_IFREG, modemask, owners, owngroups,</td></tr>
+<tr><th id="74">74</th><td>        <q>"dbm"</q>, errmsg);</td></tr>
+<tr><th id="75">75</th><td>      }</td></tr>
+<tr><th id="76">76</th><td>    }</td></tr>
+<tr><th id="77">77</th><td>  }</td></tr>
+<tr><th id="78">78</th><td><u>#<span data-ppcond="56">endif</span></u></td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><b>return</b> <a class="local col3 ref" href="#13rc" title='rc' data-ref="13rc">rc</a> == <var>0</var>;</td></tr>
+<tr><th id="81">81</th><td>}</td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td></td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="86">86</th><td><i>*              Find entry point                  *</i></td></tr>
+<tr><th id="87">87</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="88">88</th><td></td></tr>
+<tr><th id="89">89</th><td><i  data-doc="dbmdb_find">/* See local README for interface description. This function adds 1 to</i></td></tr>
+<tr><th id="90">90</th><td><i  data-doc="dbmdb_find">the keylength in order to include the terminating zero. */</i></td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="93">93</th><td><dfn class="tu decl def fn" id="dbmdb_find" title='dbmdb_find' data-type='int dbmdb_find(void * handle, uschar * filename, const uschar * keystring, int length, uschar ** result, uschar ** errmsg, uint * do_cache)' data-ref="dbmdb_find">dbmdb_find</dfn>(<em>void</em> *<dfn class="local col4 decl" id="14handle" title='handle' data-type='void *' data-ref="14handle">handle</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col5 decl" id="15filename" title='filename' data-type='uschar *' data-ref="15filename">filename</dfn>, <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="16keystring" title='keystring' data-type='const uschar *' data-ref="16keystring">keystring</dfn>, <em>int</em> <dfn class="local col7 decl" id="17length" title='length' data-type='int' data-ref="17length">length</dfn>,</td></tr>
+<tr><th id="94">94</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col8 decl" id="18result" title='result' data-type='uschar **' data-ref="18result">result</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col9 decl" id="19errmsg" title='errmsg' data-type='uschar **' data-ref="19errmsg">errmsg</dfn>, <a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> *<dfn class="local col0 decl" id="20do_cache" title='do_cache' data-type='uint *' data-ref="20do_cache">do_cache</dfn>)</td></tr>
+<tr><th id="95">95</th><td>{</td></tr>
+<tr><th id="96">96</th><td><a class="macro" href="../dbstuff.h.html#121" title="DB_ENV" data-ref="_M/EXIM_DB">EXIM_DB</a> *<dfn class="local col1 decl" id="21d" title='d' data-type='DB_ENV *' data-ref="21d">d</dfn> = (<a class="macro" href="../dbstuff.h.html#121" title="DB_ENV" data-ref="_M/EXIM_DB">EXIM_DB</a> *)<a class="local col4 ref" href="#14handle" title='handle' data-ref="14handle">handle</a>;</td></tr>
+<tr><th id="97">97</th><td><a class="macro" href="../dbstuff.h.html#126" title="DBT" data-ref="_M/EXIM_DATUM">EXIM_DATUM</a> <dfn class="local col2 decl" id="22key" title='key' data-type='DBT' data-ref="22key">key</dfn>, <dfn class="local col3 decl" id="23data" title='data' data-type='DBT' data-ref="23data">data</dfn>;</td></tr>
+<tr><th id="98">98</th><td></td></tr>
+<tr><th id="99">99</th><td><a class="local col5 ref" href="#15filename" title='filename' data-ref="15filename">filename</a> = <a class="local col5 ref" href="#15filename" title='filename' data-ref="15filename">filename</a>;    <i>/* Keep picky compilers happy */</i></td></tr>
+<tr><th id="100">100</th><td><a class="local col9 ref" href="#19errmsg" title='errmsg' data-ref="19errmsg">errmsg</a> = <a class="local col9 ref" href="#19errmsg" title='errmsg' data-ref="19errmsg">errmsg</a>;</td></tr>
+<tr><th id="101">101</th><td><a class="local col0 ref" href="#20do_cache" title='do_cache' data-ref="20do_cache">do_cache</a> = <a class="local col0 ref" href="#20do_cache" title='do_cache' data-ref="20do_cache">do_cache</a>;</td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td><a class="macro" href="../dbstuff.h.html#213" title="memset(&amp;key, 0, sizeof(key))" data-ref="_M/EXIM_DATUM_INIT">EXIM_DATUM_INIT</a>(<a class="local col2 ref" href="#22key" title='key' data-ref="22key">key</a>);               <i>/* Some DBM libraries require datums to */</i></td></tr>
+<tr><th id="104">104</th><td><a class="macro" href="../dbstuff.h.html#213" title="memset(&amp;data, 0, sizeof(data))" data-ref="_M/EXIM_DATUM_INIT">EXIM_DATUM_INIT</a>(<a class="local col3 ref" href="#23data" title='data' data-ref="23data">data</a>);              <i>/* be cleared before use. */</i></td></tr>
+<tr><th id="105">105</th><td><a class="macro" href="../dbstuff.h.html#208" title="(key).data" data-ref="_M/EXIM_DATUM_DATA">EXIM_DATUM_DATA</a>(<a class="local col2 ref" href="#22key" title='key' data-ref="22key">key</a>) = <a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col6 ref" href="#16keystring" title='keystring' data-ref="16keystring">keystring</a>;</td></tr>
+<tr><th id="106">106</th><td><a class="macro" href="../dbstuff.h.html#207" title="(key).size" data-ref="_M/EXIM_DATUM_SIZE">EXIM_DATUM_SIZE</a>(<a class="local col2 ref" href="#22key" title='key' data-ref="22key">key</a>) = <a class="local col7 ref" href="#17length" title='length' data-ref="17length">length</a> + <var>1</var>;</td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td><b>if</b> (<a class="macro" href="../dbstuff.h.html#168" title="(((DB *)((d)-&gt;app_private))-&gt;get(((DB *)((d)-&gt;app_private)), ((void*)0), &amp;key, &amp;data, 0) == 0)" data-ref="_M/EXIM_DBGET">EXIM_DBGET</a>(<a class="local col1 ref" href="#21d" title='d' data-ref="21d">d</a>, <a class="local col2 ref" href="#22key" title='key' data-ref="22key">key</a>, <a class="local col3 ref" href="#23data" title='data' data-ref="23data">data</a>))</td></tr>
+<tr><th id="109">109</th><td>  {</td></tr>
+<tr><th id="110">110</th><td>  *<a class="local col8 ref" href="#18result" title='result' data-ref="18result">result</a> = <a class="ref fn" href="../local_scan.h.html#string_copyn" title='string_copyn' data-ref="string_copyn">string_copyn</a>(<a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="macro" href="../dbstuff.h.html#208" title="(data).data" data-ref="_M/EXIM_DATUM_DATA">EXIM_DATUM_DATA</a>(<a class="local col3 ref" href="#23data" title='data' data-ref="23data">data</a>), <a class="macro" href="../dbstuff.h.html#207" title="(data).size" data-ref="_M/EXIM_DATUM_SIZE">EXIM_DATUM_SIZE</a>(<a class="local col3 ref" href="#23data" title='data' data-ref="23data">data</a>));</td></tr>
+<tr><th id="111">111</th><td>  <a class="macro" href="../dbstuff.h.html#214" title="" data-ref="_M/EXIM_DATUM_FREE">EXIM_DATUM_FREE</a>(data);            <i>/* Some DBM libraries need a free() call */</i></td></tr>
+<tr><th id="112">112</th><td>  <b>return</b> <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>;</td></tr>
+<tr><th id="113">113</th><td>  }</td></tr>
+<tr><th id="114">114</th><td><b>return</b> <a class="macro" href="../macros.h.html#285" title="2" data-ref="_M/FAIL">FAIL</a>;</td></tr>
+<tr><th id="115">115</th><td>}</td></tr>
+<tr><th id="116">116</th><td></td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td></td></tr>
+<tr><th id="119">119</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="120">120</th><td><i>*      Find entry point - no zero on key         *</i></td></tr>
+<tr><th id="121">121</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td><i  data-doc="dbmnz_find">/* See local README for interface description */</i></td></tr>
+<tr><th id="124">124</th><td></td></tr>
+<tr><th id="125">125</th><td><em>int</em></td></tr>
+<tr><th id="126">126</th><td><em>static</em> <dfn class="tu decl def fn" id="dbmnz_find" title='dbmnz_find' data-type='int dbmnz_find(void * handle, uschar * filename, const uschar * keystring, int length, uschar ** result, uschar ** errmsg, uint * do_cache)' data-ref="dbmnz_find">dbmnz_find</dfn>(<em>void</em> *<dfn class="local col4 decl" id="24handle" title='handle' data-type='void *' data-ref="24handle">handle</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col5 decl" id="25filename" title='filename' data-type='uschar *' data-ref="25filename">filename</dfn>, <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="26keystring" title='keystring' data-type='const uschar *' data-ref="26keystring">keystring</dfn>, <em>int</em> <dfn class="local col7 decl" id="27length" title='length' data-type='int' data-ref="27length">length</dfn>,</td></tr>
+<tr><th id="127">127</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col8 decl" id="28result" title='result' data-type='uschar **' data-ref="28result">result</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col9 decl" id="29errmsg" title='errmsg' data-type='uschar **' data-ref="29errmsg">errmsg</dfn>, <a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> *<dfn class="local col0 decl" id="30do_cache" title='do_cache' data-type='uint *' data-ref="30do_cache">do_cache</dfn>)</td></tr>
+<tr><th id="128">128</th><td>{</td></tr>
+<tr><th id="129">129</th><td><b>return</b> <a class="tu ref fn" href="#dbmdb_find" title='dbmdb_find' data-use='c' data-ref="dbmdb_find">dbmdb_find</a>(<a class="local col4 ref" href="#24handle" title='handle' data-ref="24handle">handle</a>, <a class="local col5 ref" href="#25filename" title='filename' data-ref="25filename">filename</a>, <a class="local col6 ref" href="#26keystring" title='keystring' data-ref="26keystring">keystring</a>, <a class="local col7 ref" href="#27length" title='length' data-ref="27length">length</a>-<var>1</var>, <a class="local col8 ref" href="#28result" title='result' data-ref="28result">result</a>, <a class="local col9 ref" href="#29errmsg" title='errmsg' data-ref="29errmsg">errmsg</a>,</td></tr>
+<tr><th id="130">130</th><td>  <a class="local col0 ref" href="#30do_cache" title='do_cache' data-ref="30do_cache">do_cache</a>);</td></tr>
+<tr><th id="131">131</th><td>}</td></tr>
+<tr><th id="132">132</th><td></td></tr>
+<tr><th id="133">133</th><td></td></tr>
+<tr><th id="134">134</th><td></td></tr>
+<tr><th id="135">135</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="136">136</th><td><i>*     Find entry point - zero-joined list key    *</i></td></tr>
+<tr><th id="137">137</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td><i  data-doc="dbmjz_find">/*</i></td></tr>
+<tr><th id="140">140</th><td><i  data-doc="dbmjz_find"> * The parameter passed as a key is a list in normal Exim list syntax.</i></td></tr>
+<tr><th id="141">141</th><td><i  data-doc="dbmjz_find"> * The elements of that list are joined together on NUL, with no trailing</i></td></tr>
+<tr><th id="142">142</th><td><i  data-doc="dbmjz_find"> * NUL, to form the key.</i></td></tr>
+<tr><th id="143">143</th><td><i  data-doc="dbmjz_find"> */</i></td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td><em>static</em> <em>int</em></td></tr>
+<tr><th id="146">146</th><td><dfn class="tu decl def fn" id="dbmjz_find" title='dbmjz_find' data-type='int dbmjz_find(void * handle, uschar * filename, const uschar * keystring, int length, uschar ** result, uschar ** errmsg, uint * do_cache)' data-ref="dbmjz_find">dbmjz_find</dfn>(<em>void</em> *<dfn class="local col1 decl" id="31handle" title='handle' data-type='void *' data-ref="31handle">handle</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="32filename" title='filename' data-type='uschar *' data-ref="32filename">filename</dfn>, <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="33keystring" title='keystring' data-type='const uschar *' data-ref="33keystring">keystring</dfn>, <em>int</em> <dfn class="local col4 decl" id="34length" title='length' data-type='int' data-ref="34length">length</dfn>,</td></tr>
+<tr><th id="147">147</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col5 decl" id="35result" title='result' data-type='uschar **' data-ref="35result">result</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col6 decl" id="36errmsg" title='errmsg' data-type='uschar **' data-ref="36errmsg">errmsg</dfn>, <a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#uint" title='uint' data-type='unsigned int' data-ref="uint">uint</a> *<dfn class="local col7 decl" id="37do_cache" title='do_cache' data-type='uint *' data-ref="37do_cache">do_cache</dfn>)</td></tr>
+<tr><th id="148">148</th><td>{</td></tr>
+<tr><th id="149">149</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col8 decl" id="38key_item" title='key_item' data-type='uschar *' data-ref="38key_item">key_item</dfn>, *<dfn class="local col9 decl" id="39key_buffer" title='key_buffer' data-type='uschar *' data-ref="39key_buffer">key_buffer</dfn>, *<dfn class="local col0 decl" id="40key_p" title='key_p' data-type='uschar *' data-ref="40key_p">key_p</dfn>;</td></tr>
+<tr><th id="150">150</th><td><em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="41key_elems" title='key_elems' data-type='const uschar *' data-ref="41key_elems">key_elems</dfn> = <a class="local col3 ref" href="#33keystring" title='keystring' data-ref="33keystring">keystring</a>;</td></tr>
+<tr><th id="151">151</th><td><em>int</em> <dfn class="local col2 decl" id="42buflen" title='buflen' data-type='int' data-ref="42buflen">buflen</dfn>, <dfn class="local col3 decl" id="43bufleft" title='bufleft' data-type='int' data-ref="43bufleft">bufleft</dfn>, <dfn class="local col4 decl" id="44key_item_len" title='key_item_len' data-type='int' data-ref="44key_item_len">key_item_len</dfn>, <dfn class="local col5 decl" id="45sep" title='sep' data-type='int' data-ref="45sep">sep</dfn> = <var>0</var>;</td></tr>
+<tr><th id="152">152</th><td></td></tr>
+<tr><th id="153">153</th><td><i>/* To a first approximation, the size of the lookup key needs to be about,</i></td></tr>
+<tr><th id="154">154</th><td><i>or less than, the length of the delimited list passed in + 1. */</i></td></tr>
+<tr><th id="155">155</th><td></td></tr>
+<tr><th id="156">156</th><td><a class="local col2 ref" href="#42buflen" title='buflen' data-ref="42buflen">buflen</a> = <a class="local col4 ref" href="#34length" title='length' data-ref="34length">length</a> + <var>3</var>;</td></tr>
+<tr><th id="157">157</th><td><a class="local col9 ref" href="#39key_buffer" title='key_buffer' data-ref="39key_buffer">key_buffer</a> = <a class="macro" href="../store.h.html#34" title="store_get_3(buflen, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/lookups/dbmdb.c&quot;, 157)" data-ref="_M/store_get">store_get</a>(<a class="local col2 ref" href="#42buflen" title='buflen' data-ref="42buflen">buflen</a>);</td></tr>
+<tr><th id="158">158</th><td></td></tr>
+<tr><th id="159">159</th><td><a class="local col9 ref" href="#39key_buffer" title='key_buffer' data-ref="39key_buffer">key_buffer</a>[<var>0</var>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="160">160</th><td></td></tr>
+<tr><th id="161">161</th><td><a class="local col0 ref" href="#40key_p" title='key_p' data-ref="40key_p">key_p</a> = <a class="local col9 ref" href="#39key_buffer" title='key_buffer' data-ref="39key_buffer">key_buffer</a>;</td></tr>
+<tr><th id="162">162</th><td><a class="local col3 ref" href="#43bufleft" title='bufleft' data-ref="43bufleft">bufleft</a> = <a class="local col2 ref" href="#42buflen" title='buflen' data-ref="42buflen">buflen</a>;</td></tr>
+<tr><th id="163">163</th><td></td></tr>
+<tr><th id="164">164</th><td><i>/* In all cases of an empty list item, we can set 1 and advance by 1 and then</i></td></tr>
+<tr><th id="165">165</th><td><i>pick up the trailing NUL from the previous list item, EXCEPT when at the</i></td></tr>
+<tr><th id="166">166</th><td><i>beginning of the output string, in which case we need to supply that NUL</i></td></tr>
+<tr><th id="167">167</th><td><i>ourselves.  */</i></td></tr>
+<tr><th id="168">168</th><td><b>while</b> ((<a class="local col8 ref" href="#38key_item" title='key_item' data-ref="38key_item">key_item</a> = <a class="ref fn" href="../functions.h.html#string_nextinlist" title='string_nextinlist' data-ref="string_nextinlist">string_nextinlist</a>(&amp;<a class="local col1 ref" href="#41key_elems" title='key_elems' data-ref="41key_elems">key_elems</a>, &amp;<a class="local col5 ref" href="#45sep" title='sep' data-ref="45sep">sep</a>, <a class="local col0 ref" href="#40key_p" title='key_p' data-ref="40key_p">key_p</a>, <a class="local col3 ref" href="#43bufleft" title='bufleft' data-ref="43bufleft">bufleft</a>)) != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="169">169</th><td>  {</td></tr>
+<tr><th id="170">170</th><td>  <a class="local col4 ref" href="#44key_item_len" title='key_item_len' data-ref="44key_item_len">key_item_len</a> = <a class="macro" href="../mytypes.h.html#104" title="(int)strlen((const char *)(key_item))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col8 ref" href="#38key_item" title='key_item' data-ref="38key_item">key_item</a>) + <var>1</var>;</td></tr>
+<tr><th id="171">171</th><td>  <b>if</b> (<a class="local col4 ref" href="#44key_item_len" title='key_item_len' data-ref="44key_item_len">key_item_len</a> == <var>1</var>)</td></tr>
+<tr><th id="172">172</th><td>    {</td></tr>
+<tr><th id="173">173</th><td>    <a class="local col0 ref" href="#40key_p" title='key_p' data-ref="40key_p">key_p</a>[<var>0</var>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="174">174</th><td>    <b>if</b> (<a class="local col0 ref" href="#40key_p" title='key_p' data-ref="40key_p">key_p</a> == <a class="local col9 ref" href="#39key_buffer" title='key_buffer' data-ref="39key_buffer">key_buffer</a>)</td></tr>
+<tr><th id="175">175</th><td>      {</td></tr>
+<tr><th id="176">176</th><td>      <a class="local col0 ref" href="#40key_p" title='key_p' data-ref="40key_p">key_p</a>[<var>1</var>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="177">177</th><td>      <a class="local col4 ref" href="#44key_item_len" title='key_item_len' data-ref="44key_item_len">key_item_len</a> += <var>1</var>;</td></tr>
+<tr><th id="178">178</th><td>      }</td></tr>
+<tr><th id="179">179</th><td>    }</td></tr>
+<tr><th id="180">180</th><td></td></tr>
+<tr><th id="181">181</th><td>  <a class="local col3 ref" href="#43bufleft" title='bufleft' data-ref="43bufleft">bufleft</a> -= <a class="local col4 ref" href="#44key_item_len" title='key_item_len' data-ref="44key_item_len">key_item_len</a>;</td></tr>
+<tr><th id="182">182</th><td>  <b>if</b> (<a class="local col3 ref" href="#43bufleft" title='bufleft' data-ref="43bufleft">bufleft</a> &lt;= <var>0</var>)</td></tr>
+<tr><th id="183">183</th><td>    {</td></tr>
+<tr><th id="184">184</th><td>    <i>/* The string_nextinlist() will stop at buffer size, but we should always</i></td></tr>
+<tr><th id="185">185</th><td><i>    have at least 1 character extra, so some assumption has failed. */</i></td></tr>
+<tr><th id="186">186</th><td>    *<a class="local col6 ref" href="#36errmsg" title='errmsg' data-ref="36errmsg">errmsg</a> = <a class="ref fn" href="../local_scan.h.html#string_copy" title='string_copy' data-ref="string_copy">string_copy</a>(<a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"Ran out of buffer space for joining elements"</q>);</td></tr>
+<tr><th id="187">187</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="188">188</th><td>    }</td></tr>
+<tr><th id="189">189</th><td>  <a class="local col0 ref" href="#40key_p" title='key_p' data-ref="40key_p">key_p</a> += <a class="local col4 ref" href="#44key_item_len" title='key_item_len' data-ref="44key_item_len">key_item_len</a>;</td></tr>
+<tr><th id="190">190</th><td>  }</td></tr>
+<tr><th id="191">191</th><td></td></tr>
+<tr><th id="192">192</th><td><b>if</b> (<a class="local col0 ref" href="#40key_p" title='key_p' data-ref="40key_p">key_p</a> == <a class="local col9 ref" href="#39key_buffer" title='key_buffer' data-ref="39key_buffer">key_buffer</a>)</td></tr>
+<tr><th id="193">193</th><td>  {</td></tr>
+<tr><th id="194">194</th><td>  *<a class="local col6 ref" href="#36errmsg" title='errmsg' data-ref="36errmsg">errmsg</a> = <a class="ref fn" href="../local_scan.h.html#string_copy" title='string_copy' data-ref="string_copy">string_copy</a>(<a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"empty list key"</q>);</td></tr>
+<tr><th id="195">195</th><td>  <b>return</b> <a class="macro" href="../macros.h.html#285" title="2" data-ref="_M/FAIL">FAIL</a>;</td></tr>
+<tr><th id="196">196</th><td>  }</td></tr>
+<tr><th id="197">197</th><td></td></tr>
+<tr><th id="198">198</th><td><i>/* We do not pass in the final NULL; if needed, the list should include an</i></td></tr>
+<tr><th id="199">199</th><td><i>empty element to put one in. Boundary: key length 1, is a NULL */</i></td></tr>
+<tr><th id="200">200</th><td><a class="local col4 ref" href="#44key_item_len" title='key_item_len' data-ref="44key_item_len">key_item_len</a> = <a class="local col0 ref" href="#40key_p" title='key_p' data-ref="40key_p">key_p</a> - <a class="local col9 ref" href="#39key_buffer" title='key_buffer' data-ref="39key_buffer">key_buffer</a> - <var>1</var>;</td></tr>
+<tr><th id="201">201</th><td></td></tr>
+<tr><th id="202">202</th><td><a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_lookup))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#392" title='D_lookup' data-ref="D_lookup">D_lookup</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"NUL-joined key length: %d\n"</q>, <a class="local col4 ref" href="#44key_item_len" title='key_item_len' data-ref="44key_item_len">key_item_len</a>);</td></tr>
+<tr><th id="203">203</th><td></td></tr>
+<tr><th id="204">204</th><td><i>/* beware that dbmdb_find() adds 1 to length to get back terminating NUL, so</i></td></tr>
+<tr><th id="205">205</th><td><i>because we've calculated the real length, we need to subtract one more here */</i></td></tr>
+<tr><th id="206">206</th><td><b>return</b> <a class="tu ref fn" href="#dbmdb_find" title='dbmdb_find' data-use='c' data-ref="dbmdb_find">dbmdb_find</a>(<a class="local col1 ref" href="#31handle" title='handle' data-ref="31handle">handle</a>, <a class="local col2 ref" href="#32filename" title='filename' data-ref="32filename">filename</a>,</td></tr>
+<tr><th id="207">207</th><td>    <a class="local col9 ref" href="#39key_buffer" title='key_buffer' data-ref="39key_buffer">key_buffer</a>, <a class="local col4 ref" href="#44key_item_len" title='key_item_len' data-ref="44key_item_len">key_item_len</a> - <var>1</var>,</td></tr>
+<tr><th id="208">208</th><td>    <a class="local col5 ref" href="#35result" title='result' data-ref="35result">result</a>, <a class="local col6 ref" href="#36errmsg" title='errmsg' data-ref="36errmsg">errmsg</a>, <a class="local col7 ref" href="#37do_cache" title='do_cache' data-ref="37do_cache">do_cache</a>);</td></tr>
+<tr><th id="209">209</th><td>}</td></tr>
+<tr><th id="210">210</th><td></td></tr>
+<tr><th id="211">211</th><td></td></tr>
+<tr><th id="212">212</th><td></td></tr>
+<tr><th id="213">213</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="214">214</th><td><i>*              Close entry point                 *</i></td></tr>
+<tr><th id="215">215</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="216">216</th><td></td></tr>
+<tr><th id="217">217</th><td><i  data-doc="dbmdb_close">/* See local README for interface description */</i></td></tr>
+<tr><th id="218">218</th><td></td></tr>
+<tr><th id="219">219</th><td><em>void</em></td></tr>
+<tr><th id="220">220</th><td><em>static</em> <dfn class="tu decl def fn" id="dbmdb_close" title='dbmdb_close' data-type='void dbmdb_close(void * handle)' data-ref="dbmdb_close">dbmdb_close</dfn>(<em>void</em> *<dfn class="local col6 decl" id="46handle" title='handle' data-type='void *' data-ref="46handle">handle</dfn>)</td></tr>
+<tr><th id="221">221</th><td>{</td></tr>
+<tr><th id="222">222</th><td><a class="macro" href="../dbstuff.h.html#648" title="do { if (debug_selector &amp; (D_hints_lookup)) debug_printf(&quot;EXIM_DBCLOSE(%p)\n&quot;, (DB_ENV *)handle); (((DB *)(((DB_ENV *)handle)-&gt;app_private))-&gt;close(((DB *)(((DB_ENV *)handle)-&gt;app_private)), 0) , ((DB_ENV *)((DB_ENV *)handle))-&gt;close((DB_ENV *)((DB_ENV *)handle), 0x00000001)); } while(0)" data-ref="_M/EXIM_DBCLOSE">EXIM_DBCLOSE</a>((<a class="macro" href="../dbstuff.h.html#121" title="DB_ENV" data-ref="_M/EXIM_DB">EXIM_DB</a> *)<a class="local col6 ref" href="#46handle" title='handle' data-ref="46handle">handle</a>);</td></tr>
+<tr><th id="223">223</th><td>}</td></tr>
+<tr><th id="224">224</th><td></td></tr>
+<tr><th id="225">225</th><td></td></tr>
+<tr><th id="226">226</th><td></td></tr>
+<tr><th id="227">227</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="228">228</th><td><i>*         Version reporting entry point          *</i></td></tr>
+<tr><th id="229">229</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="230">230</th><td></td></tr>
+<tr><th id="231">231</th><td><i>/* See local README for interface description. */</i></td></tr>
+<tr><th id="232">232</th><td></td></tr>
+<tr><th id="233">233</th><td><u>#include <a href="../../build-Linux-x86_64/version.h.html">"../version.h"</a></u></td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td><em>void</em></td></tr>
+<tr><th id="236">236</th><td><dfn class="decl def fn" id="dbm_version_report" title='dbm_version_report' data-ref="dbm_version_report">dbm_version_report</dfn>(<a class="typedef" href="../../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col7 decl" id="47f" title='f' data-type='FILE *' data-ref="47f">f</dfn>)</td></tr>
+<tr><th id="237">237</th><td>{</td></tr>
+<tr><th id="238">238</th><td><u>#<span data-ppcond="238">ifdef</span> <span class="macro" data-ref="_M/DYNLOOKUP">DYNLOOKUP</span></u></td></tr>
+<tr><th id="239">239</th><td>fprintf(f, <q>"Library version: DBM: Exim version %s\n"</q>, EXIM_VERSION_STR);</td></tr>
+<tr><th id="240">240</th><td><u>#<span data-ppcond="238">endif</span></u></td></tr>
+<tr><th id="241">241</th><td>}</td></tr>
+<tr><th id="242">242</th><td></td></tr>
+<tr><th id="243">243</th><td></td></tr>
+<tr><th id="244">244</th><td><a class="typedef" href="../lookupapi.h.html#lookup_info" title='lookup_info' data-type='struct lookup_info' data-ref="lookup_info">lookup_info</a> <dfn class="decl def" id="dbm_lookup_info" title='dbm_lookup_info' data-ref="dbm_lookup_info">dbm_lookup_info</dfn> = {</td></tr>
+<tr><th id="245">245</th><td>  <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"dbm"</q>,                       <i>/* lookup name */</i></td></tr>
+<tr><th id="246">246</th><td>  <a class="macro" href="../macros.h.html#737" title="2" data-ref="_M/lookup_absfile">lookup_absfile</a>,                <i>/* uses absolute file name */</i></td></tr>
+<tr><th id="247">247</th><td>  <a class="tu ref fn" href="#dbmdb_open" title='dbmdb_open' data-use='r' data-ref="dbmdb_open">dbmdb_open</a>,                    <i>/* open function */</i></td></tr>
+<tr><th id="248">248</th><td>  <a class="tu ref fn" href="#dbmdb_check" title='dbmdb_check' data-use='r' data-ref="dbmdb_check">dbmdb_check</a>,                   <i>/* check function */</i></td></tr>
+<tr><th id="249">249</th><td>  <a class="tu ref fn" href="#dbmdb_find" title='dbmdb_find' data-use='r' data-ref="dbmdb_find">dbmdb_find</a>,                    <i>/* find function */</i></td></tr>
+<tr><th id="250">250</th><td>  <a class="tu ref fn" href="#dbmdb_close" title='dbmdb_close' data-use='r' data-ref="dbmdb_close">dbmdb_close</a>,                   <i>/* close function */</i></td></tr>
+<tr><th id="251">251</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,                          <i>/* no tidy function */</i></td></tr>
+<tr><th id="252">252</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,                          <i>/* no quoting function */</i></td></tr>
+<tr><th id="253">253</th><td>  <a class="ref fn" href="#dbm_version_report" title='dbm_version_report' data-ref="dbm_version_report">dbm_version_report</a>             <i>/* version reporting */</i></td></tr>
+<tr><th id="254">254</th><td>};</td></tr>
+<tr><th id="255">255</th><td></td></tr>
+<tr><th id="256">256</th><td><a class="typedef" href="../lookupapi.h.html#lookup_info" title='lookup_info' data-type='struct lookup_info' data-ref="lookup_info">lookup_info</a> <dfn class="decl def" id="dbmz_lookup_info" title='dbmz_lookup_info' data-ref="dbmz_lookup_info">dbmz_lookup_info</dfn> = {</td></tr>
+<tr><th id="257">257</th><td>  <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"dbmnz"</q>,                     <i>/* lookup name */</i></td></tr>
+<tr><th id="258">258</th><td>  <a class="macro" href="../macros.h.html#737" title="2" data-ref="_M/lookup_absfile">lookup_absfile</a>,                <i>/* uses absolute file name */</i></td></tr>
+<tr><th id="259">259</th><td>  <a class="tu ref fn" href="#dbmdb_open" title='dbmdb_open' data-ref="dbmdb_open">dbmdb_open</a>,      <i>/* sic */</i>     <i>/* open function */</i></td></tr>
+<tr><th id="260">260</th><td>  <a class="tu ref fn" href="#dbmdb_check" title='dbmdb_check' data-ref="dbmdb_check">dbmdb_check</a>,     <i>/* sic */</i>     <i>/* check function */</i></td></tr>
+<tr><th id="261">261</th><td>  <a class="tu ref fn" href="#dbmnz_find" title='dbmnz_find' data-ref="dbmnz_find">dbmnz_find</a>,                    <i>/* find function */</i></td></tr>
+<tr><th id="262">262</th><td>  <a class="tu ref fn" href="#dbmdb_close" title='dbmdb_close' data-ref="dbmdb_close">dbmdb_close</a>,     <i>/* sic */</i>     <i>/* close function */</i></td></tr>
+<tr><th id="263">263</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,                          <i>/* no tidy function */</i></td></tr>
+<tr><th id="264">264</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,                          <i>/* no quoting function */</i></td></tr>
+<tr><th id="265">265</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>                           <i>/* no version reporting (redundant) */</i></td></tr>
+<tr><th id="266">266</th><td>};</td></tr>
+<tr><th id="267">267</th><td></td></tr>
+<tr><th id="268">268</th><td><a class="typedef" href="../lookupapi.h.html#lookup_info" title='lookup_info' data-type='struct lookup_info' data-ref="lookup_info">lookup_info</a> <dfn class="decl def" id="dbmjz_lookup_info" title='dbmjz_lookup_info' data-ref="dbmjz_lookup_info">dbmjz_lookup_info</dfn> = {</td></tr>
+<tr><th id="269">269</th><td>  <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"dbmjz"</q>,                     <i>/* lookup name */</i></td></tr>
+<tr><th id="270">270</th><td>  <a class="macro" href="../macros.h.html#737" title="2" data-ref="_M/lookup_absfile">lookup_absfile</a>,                <i>/* uses absolute file name */</i></td></tr>
+<tr><th id="271">271</th><td>  <a class="tu ref fn" href="#dbmdb_open" title='dbmdb_open' data-ref="dbmdb_open">dbmdb_open</a>,      <i>/* sic */</i>     <i>/* open function */</i></td></tr>
+<tr><th id="272">272</th><td>  <a class="tu ref fn" href="#dbmdb_check" title='dbmdb_check' data-ref="dbmdb_check">dbmdb_check</a>,     <i>/* sic */</i>     <i>/* check function */</i></td></tr>
+<tr><th id="273">273</th><td>  <a class="tu ref fn" href="#dbmjz_find" title='dbmjz_find' data-ref="dbmjz_find">dbmjz_find</a>,                    <i>/* find function */</i></td></tr>
+<tr><th id="274">274</th><td>  <a class="tu ref fn" href="#dbmdb_close" title='dbmdb_close' data-ref="dbmdb_close">dbmdb_close</a>,     <i>/* sic */</i>     <i>/* close function */</i></td></tr>
+<tr><th id="275">275</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,                          <i>/* no tidy function */</i></td></tr>
+<tr><th id="276">276</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,                          <i>/* no quoting function */</i></td></tr>
+<tr><th id="277">277</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>                           <i>/* no version reporting (redundant) */</i></td></tr>
+<tr><th id="278">278</th><td>};</td></tr>
+<tr><th id="279">279</th><td></td></tr>
+<tr><th id="280">280</th><td><u>#<span data-ppcond="280">ifdef</span> <span class="macro" data-ref="_M/DYNLOOKUP">DYNLOOKUP</span></u></td></tr>
+<tr><th id="281">281</th><td><u>#define dbmdb_lookup_module_info _lookup_module_info</u></td></tr>
+<tr><th id="282">282</th><td><u>#<span data-ppcond="280">endif</span></u></td></tr>
+<tr><th id="283">283</th><td></td></tr>
+<tr><th id="284">284</th><td><em>static</em> <a class="typedef" href="../lookupapi.h.html#lookup_info" title='lookup_info' data-type='struct lookup_info' data-ref="lookup_info">lookup_info</a> *<dfn class="tu decl def" id="_lookup_list" title='_lookup_list' data-type='lookup_info *[3]' data-ref="_lookup_list">_lookup_list</dfn>[] = { &amp;<a class="ref" href="#dbm_lookup_info" title='dbm_lookup_info' data-ref="dbm_lookup_info">dbm_lookup_info</a>, &amp;<a class="ref" href="#dbmz_lookup_info" title='dbmz_lookup_info' data-ref="dbmz_lookup_info">dbmz_lookup_info</a>, &amp;<a class="ref" href="#dbmjz_lookup_info" title='dbmjz_lookup_info' data-ref="dbmjz_lookup_info">dbmjz_lookup_info</a> };</td></tr>
+<tr><th id="285">285</th><td><a class="typedef" href="../lookupapi.h.html#lookup_module_info" title='lookup_module_info' data-type='struct lookup_module_info' data-ref="lookup_module_info">lookup_module_info</a> <dfn class="decl def" id="dbmdb_lookup_module_info" title='dbmdb_lookup_module_info' data-ref="dbmdb_lookup_module_info">dbmdb_lookup_module_info</dfn> = { <a class="macro" href="../lookupapi.h.html#50" title="0x4c4d4933" data-ref="_M/LOOKUP_MODULE_INFO_MAGIC">LOOKUP_MODULE_INFO_MAGIC</a>, <a class="tu ref" href="#_lookup_list" title='_lookup_list' data-ref="_lookup_list">_lookup_list</a>, <var>3</var> };</td></tr>
+<tr><th id="286">286</th><td></td></tr>
+<tr><th id="287">287</th><td><i>/* End of lookups/dbmdb.c */</i></td></tr>
+<tr><th id="288">288</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

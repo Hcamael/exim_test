@@ -1,0 +1,5 @@
+<dec f='exim/src/acl.c' l='537' type='2'/>
+<use f='exim/src/acl.c' l='551'/>
+<use f='exim/src/acl.c' l='562'/>
+<use f='exim/src/acl.c' l='573'/>
+<use f='exim/src/acl.c' l='1398' u='r' c='acl_verify_csa'/>

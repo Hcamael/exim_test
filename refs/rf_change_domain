@@ -1,0 +1,19 @@
+<dec f='exim/src/routers/rf_functions.h' l='14' type='void rf_change_domain(address_item * , const uschar * , BOOL , address_item ** )'/>
+<use f='exim/src/routers/rf_self_action.c' l='106' u='c' c='rf_self_action'/>
+<use f='exim/src/routers/dnslookup.c' l='424' u='c' c='dnslookup_router_entry'/>
+<def f='exim/src/routers/rf_change_domain.c' l='34' ll='83' type='void rf_change_domain(address_item * addr, const uschar * domain, BOOL rewrite, address_item ** addr_new)'/>
+<doc f='exim/src/routers/rf_change_domain.c' l='18'>/* When a router wants to change the address that is being routed, it is like a
+redirection. We insert a new parent of the current address to hold the original
+information, and change the data in the original address, which is now the
+child. The child address is put onto the addr_new chain. Pick up the local part
+from the &quot;address&quot; field so as to get it in external form - caseful, and with
+any quoting retained.
+
+Arguments:
+  addr        the address block
+  domain      the new domain
+  rewrite     TRUE if headers lines are to be rewritten
+  addr_new    the new address chain
+
+Returns:      nothing
+*/</doc>

@@ -1,1 +1,17 @@
 <dec f='exim/src/functions.h' l='244' type='int ip_recv(int , uschar * , int , int )'/>
+<use f='exim/src/verify.c' l='2719' u='c' c='verify_get_ident'/>
+<use f='exim/src/smtp_out.c' l='587' u='c' c='read_response_line'/>
+<def f='exim/src/ip.c' l='603' ll='626' type='int ip_recv(int sock, uschar * buffer, int buffsize, int timeout)'/>
+<doc f='exim/src/ip.c' l='589'>/* The timeout is implemented using select(), and we loop to cover select()
+getting interrupted, and the possibility of select() returning with a positive
+result but no ready descriptor. Is this in fact possible?
+
+Arguments:
+  sock        the socket
+  buffer      to read into
+  bufsize     the buffer size
+  timeout     the timeout
+
+Returns:      &gt; 0 =&gt; that much data read
+              &lt;= 0 on error or EOF; errno set - zero for EOF
+*/</doc>

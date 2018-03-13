@@ -1,1 +1,2 @@
 <dec f='include/signal.h' l='127' type='int kill(__pid_t __pid, int __sig)'/>
+<use f='exim/src/deliver.c' l='3920' u='c' c='par_wait'/>

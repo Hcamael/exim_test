@@ -1,1 +1,19 @@
 <dec f='exim/src/functions.h' l='53' type='void tls_close(BOOL , BOOL )'/>
+<use f='exim/src/deliver.c' l='4991' u='c' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='824' u='c' c='do_callout'/>
+<use f='exim/src/verify.c' l='1091' u='c' c='do_callout'/>
+<use f='exim/src/verify.c' l='1392' u='c' c='close_cutthrough_connection'/>
+<def f='exim/src/tls-openssl.c' l='2711' ll='2729' type='void tls_close(BOOL is_server, BOOL shutdown)'/>
+<doc f='exim/src/tls-openssl.c' l='2701'>/* This is also called from within a delivery subprocess forked from the
+daemon, to shut down the TLS library, without actually doing a shutdown (which
+would tamper with the SSL session in the parent process).
+
+Arguments:   TRUE if SSL_shutdown is to be called
+Returns:     nothing
+
+Used by both server-side and client-side TLS.
+*/</doc>
+<use f='exim/src/exim.c' l='546' u='c' c='close_unwanted'/>
+<use f='exim/src/smtp_in.c' l='3727' u='c' c='smtp_quit_handler'/>
+<use f='exim/src/smtp_in.c' l='5412' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/daemon.c' l='656' u='c' c='handle_smtp_call'/>

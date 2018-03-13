@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='167' macro='1' type='void sk_GENERAL_NAMES_pop_free(struct stack_st_GENERAL_NAMES * sk, sk_GENERAL_NAMES_freefunc freefunc)'/>

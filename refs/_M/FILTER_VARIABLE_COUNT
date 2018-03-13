@@ -3,3 +3,6 @@
 <use f='exim/src/globals.h' l='473' u='c'/>
 <doc f='exim/src/macros.h' l='136'>/* The number of integer variables available in filter files. If this is
 changed, then the tables in expand.c for accessing them must be changed too. */</doc>
+<use f='exim/src/globals.c' l='747' u='c'/>
+<use f='exim/src/globals.c' l='749' u='c'/>
+<use f='exim/src/filter.c' l='2525' u='c'/>

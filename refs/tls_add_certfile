@@ -1,0 +1,3 @@
+<def f='exim/src/tls-openssl.c' l='1041' ll='1051' type='int tls_add_certfile(SSL_CTX * sctx, tls_ext_ctx_cb * cbinfo, uschar * file, uschar ** errstr)'/>
+<use f='exim/src/tls-openssl.c' l='1116' u='c' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1120' u='c' c='tls_expand_session_files'/>

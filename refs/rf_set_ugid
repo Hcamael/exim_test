@@ -1,0 +1,13 @@
+<dec f='exim/src/routers/rf_functions.h' l='29' type='void rf_set_ugid(address_item * , ugid_block * )'/>
+<def f='exim/src/routers/rf_set_ugid.c' l='26' ll='42' type='void rf_set_ugid(address_item * addr, ugid_block * ugid)'/>
+<doc f='exim/src/routers/rf_set_ugid.c' l='16'>/* This function copies any set uid or gid from a ugid block into an
+address.
+
+Arguments:
+  addr        the address
+  ugid        the ugid block
+
+Returns:      nothing
+*/</doc>
+<use f='exim/src/routers/rf_queue_add.c' l='64' u='c' c='rf_queue_add'/>
+<use f='exim/src/routers/redirect.c' l='404' u='c' c='add_generated'/>

@@ -1,0 +1,4 @@
+<dec f='exim/src/pdkim/pdkim.h' l='115' type='int'/>
+<use f='exim/src/pdkim/pdkim.c' l='667' u='w' c='pdkim_parse_pubkey_record'/>
+<offset>544</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='115'>/* t=s */</doc>

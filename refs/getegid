@@ -1,2 +1,9 @@
 <dec f='include/unistd.h' l='687' type='__gid_t getegid()'/>
 <doc f='include/unistd.h' l='686'>/* Get the effective group ID of the calling process.  */</doc>
+<use f='exim/src/deliver.c' l='5991' u='c' c='deliver_message'/>
+<use f='exim/src/string.c' l='1555' u='c' c='string_open_failed'/>
+<use f='exim/src/debug.c' l='129' u='c' c='debug_print_ids'/>
+<use f='exim/src/exim.c' l='594' u='c' c='exim_setugid'/>
+<use f='exim/src/exim.c' l='628' u='c' c='exim_setugid'/>
+<use f='exim/src/exim.c' l='3729' u='c' c='main'/>
+<use f='exim/src/log.c' l='520' u='c' c='open_log'/>

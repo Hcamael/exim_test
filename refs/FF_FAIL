@@ -1,2 +1,11 @@
 <dec f='exim/src/macros.h' l='634' type='4'/>
 <doc f='exim/src/macros.h' l='634'>/* Fail requested */</doc>
+<use f='exim/src/deliver.c' l='5937' u='r' c='deliver_message'/>
+<use f='exim/src/parse.c' l='1362' u='r' c='parse_forward_list'/>
+<use f='exim/src/filtertest.c' l='221' c='filter_runtest'/>
+<use f='exim/src/filter.c' l='2044' u='r' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2564' c='filter_interpret'/>
+<use f='exim/src/rda.c' l='715' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='866' u='r' c='rda_interpret'/>
+<use f='exim/src/routers/queryprogram.c' l='421' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='757' c='redirect_router_entry'/>

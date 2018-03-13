@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='327' type='int'/>
 <offset>2816</offset>
 <doc f='exim/src/structs.h' l='327'>/* Encoded version of &quot;self&quot; */</doc>
+<use f='exim/src/globals.c' l='1234' u='w'/>
+<use f='exim/src/routers/dnslookup.c' l='442' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='245' u='r' c='rf_lookup_hostlist'/>

@@ -1,1 +1,13 @@
 <dec f='exim/src/local_scan.h' l='184' type='int lss_match_host(uschar * , uschar * , uschar * )'/>
+<def f='exim/src/lss.c' l='95' ll='99' type='int lss_match_host(uschar * host_name, uschar * host_address, uschar * list)'/>
+<doc f='exim/src/lss.c' l='83'>/*
+Arguments:
+  host name      the name of the host we are testing, or NULL if this is the
+                   sender host and its name hasn&apos;t yet been looked up
+  host address   the IP address of the host, or an empty string for a local
+                   message
+  list           the host list
+
+Returns:         OK/FAIL/DEFER
+                 ERROR if failed to find host name when needed
+*/</doc>

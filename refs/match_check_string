@@ -1,1 +1,29 @@
 <dec f='exim/src/functions.h' l='280' type='int match_check_string(const uschar * , const uschar * , int , BOOL , BOOL , BOOL , const uschar ** )'/>
+<use f='exim/src/verify.c' l='3039' u='c' c='check_host'/>
+<use f='exim/src/verify.c' l='3068' u='c' c='check_host'/>
+<use f='exim/src/verify.c' l='3094' u='c' c='check_host'/>
+<use f='exim/src/verify.c' l='3106' u='c' c='check_host'/>
+<def f='exim/src/match.c' l='338' ll='350' type='int match_check_string(const uschar * s, const uschar * pattern, int expand_setup, BOOL use_partial, BOOL caseless, BOOL at_is_special, const uschar ** valueptr)'/>
+<use f='exim/src/match.c' l='1032' u='c' c='check_address'/>
+<use f='exim/src/match.c' l='1052' u='c' c='check_address'/>
+<use f='exim/src/match.c' l='1082' u='c' c='check_address'/>
+<use f='exim/src/match.c' l='1114' u='c' c='check_address'/>
+<doc f='exim/src/match.c' l='319'>/* This function is called from several places where is it most convenient to
+pass the arguments individually. It places them in a check_string_block
+structure, and then calls check_string().
+
+Arguments:
+  s            the subject string to be checked
+  pattern      the pattern to check it against
+  expand_setup expansion setup option (see check_string())
+  use_partial  if FALSE, override any partial- search types
+  caseless     TRUE for caseless matching where possible
+  at_is_special TRUE to recognize @, @[], etc.
+  valueptr     if not NULL, and a file lookup was done, return the result
+                 here instead of discarding it; else set it to point to NULL
+
+Returns:       OK    if matched
+               FAIL  if not matched
+               DEFER if lookup deferred
+*/</doc>
+<use f='exim/src/rewrite.c' l='150' u='c' c='rewrite_one'/>

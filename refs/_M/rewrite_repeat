@@ -1,1 +1,2 @@
 <dec f='exim/src/macros.h' l='783'/>
+<use f='exim/src/rewrite.c' l='363' u='c'/>

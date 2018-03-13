@@ -9,3 +9,34 @@ error if any option is set twice. Finally, there&apos;s a bit which is set when 
 option is set with the &quot;hide&quot; prefix, to prevent -bP from showing it to
 non-admin callers. The next byte up in the int is used to keep the bit number
 for booleans that are kept in one bit. */</doc>
+<use f='exim/src/route.c' l='19' u='c'/>
+<use f='exim/src/route.c' l='21' u='c'/>
+<use f='exim/src/route.c' l='23' u='c'/>
+<use f='exim/src/route.c' l='25' u='c'/>
+<use f='exim/src/route.c' l='27' u='c'/>
+<use f='exim/src/route.c' l='29' u='c'/>
+<use f='exim/src/route.c' l='71' u='c'/>
+<use f='exim/src/route.c' l='133' u='c'/>
+<use f='exim/src/routers/accept.c' l='18' u='c'/>
+<use f='exim/src/routers/queryprogram.c' l='17' u='c'/>
+<use f='exim/src/routers/queryprogram.c' l='19' u='c'/>
+<use f='exim/src/routers/queryprogram.c' l='21' u='c'/>
+<use f='exim/src/routers/queryprogram.c' l='23' u='c'/>
+<use f='exim/src/routers/ipliteral.c' l='18' u='c'/>
+<use f='exim/src/transport.c' l='21' u='c'/>
+<use f='exim/src/transport.c' l='23' u='c'/>
+<use f='exim/src/transport.c' l='25' u='c'/>
+<use f='exim/src/transport.c' l='27' u='c'/>
+<use f='exim/src/transport.c' l='29' u='c'/>
+<use f='exim/src/transport.c' l='31' u='c'/>
+<use f='exim/src/transports/appendfile.c' l='27' u='c'/>
+<use f='exim/src/transports/appendfile.c' l='29' u='c'/>
+<use f='exim/src/transports/appendfile.c' l='31' u='c'/>
+<use f='exim/src/transports/smtp.c' l='18' u='c'/>
+<use f='exim/src/transports/smtp.c' l='20' u='c'/>
+<use f='exim/src/readconf.c' l='29' u='c'/>
+<use f='exim/src/readconf.c' l='30' u='c'/>
+<use f='exim/src/readconf.c' l='31' u='c'/>
+<use f='exim/src/readconf.c' l='32' u='c'/>
+<use f='exim/src/readconf.c' l='97' u='c'/>
+<use f='exim/src/readconf.c' l='271' u='c'/>

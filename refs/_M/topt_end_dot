@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='860'/>
+<use f='exim/src/dkim_transport.c' l='140' u='c'/>
+<use f='exim/src/dkim_transport.c' l='153' u='c'/>
+<use f='exim/src/dkim_transport.c' l='258' u='c'/>

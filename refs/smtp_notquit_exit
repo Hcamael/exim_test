@@ -1,1 +1,33 @@
 <dec f='exim/src/functions.h' l='425' type='void smtp_notquit_exit(uschar * , uschar * , uschar * )'/>
+<use f='exim/src/smtp_in.c' l='926' u='c' c='command_timeout_handler'/>
+<use f='exim/src/smtp_in.c' l='950' u='c' c='command_sigterm_handler'/>
+<use f='exim/src/smtp_in.c' l='3330' u='c' c='smtp_handle_acl_fail'/>
+<def f='exim/src/smtp_in.c' l='3362' ll='3411' type='void smtp_notquit_exit(uschar * reason, uschar * code, uschar * defaultrespond)'/>
+<use f='exim/src/smtp_in.c' l='5383' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5470' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5686' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5699' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5717' u='c' c='smtp_setup_msg'/>
+<doc f='exim/src/smtp_in.c' l='3341'>/* This function provides a logging/statistics hook for when an SMTP connection
+is dropped on the floor or the other end goes away. It&apos;s a global function
+because it&apos;s called from receive.c as well as this module. As well as running
+the NOTQUIT ACL, if there is one, this function also outputs a final SMTP
+response, either with a custom message from the ACL, or using a default. There
+is one case, however, when no message is output - after &quot;drop&quot;. In that case,
+the ACL that obeyed &quot;drop&quot; has already supplied the custom message, and NULL is
+passed to this function.
+
+In case things go wrong while processing this function, causing an error that
+may re-enter this function, there is a recursion check.
+
+Arguments:
+  reason          What $smtp_notquit_reason will be set to in the ACL;
+                    if NULL, the ACL is not run
+  code            The error code to return as part of the response
+  defaultrespond  The default message if there&apos;s no user_msg
+
+Returns:          Nothing
+*/</doc>
+<use f='exim/src/receive.c' l='339' u='c' c='receive_bomb_out'/>
+<use f='exim/src/receive.c' l='1105' u='c' c='handle_lost_connection'/>
+<use f='exim/src/receive.c' l='4104' u='c' c='receive_msg'/>

@@ -1,0 +1,9 @@
+<dec f='exim/src/auths/auth-spa.h' l='90' type='char * unicodeToString(char * p, size_t len)'/>
+<def f='exim/src/auths/auth-spa.c' l='1285' ll='1301' type='char * unicodeToString(char * p, size_t len)'/>
+<use f='exim/src/auths/auth-spa.c' l='1261' u='c' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1261' u='c' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1261' u='c' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1261' u='c' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1261' u='c' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1261' u='c' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1261' u='c' c='spa_build_auth_response'/>

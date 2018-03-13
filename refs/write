@@ -3,3 +3,40 @@
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */</doc>
+<use f='exim/src/deliver.c' l='2413' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2414' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2415' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2416' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2417' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2418' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2419' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2420' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2428' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2429' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2441' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2442' u='c' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2560' u='c' c='deliver_local'/>
+<use f='exim/src/dkim_transport.c' l='89' u='c' c='dkt_send_file'/>
+<use f='exim/src/filter.c' l='1976' u='c' c='interpret_commands'/>
+<use f='exim/src/exim.c' l='234' u='c' c='usr1_handler'/>
+<use f='exim/src/queue.c' l='1065' u='c' c='queue_action'/>
+<use f='exim/src/rda.c' l='450' u='c' c='rda_write_string'/>
+<use f='exim/src/rda.c' l='451' u='c' c='rda_write_string'/>
+<use f='exim/src/rda.c' l='651' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='652' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='681' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='686' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='694' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='705' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='723' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='724' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='741' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='749' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='750' u='c' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='752' u='c' c='rda_interpret'/>
+<use f='exim/src/log.c' l='630' u='c' c='write_to_fd_buf'/>
+<use f='exim/src/log.c' l='1172' u='c' c='log_write'/>
+<use f='exim/src/transports/tf_maildir.c' l='216' u='c' c='maildir_record_length'/>
+<use f='exim/src/transports/tf_maildir.c' l='568' u='c' c='maildir_ensure_sizefile'/>
+<use f='exim/src/transports/queuefile.c' l='84' u='c' c='copy_spool_file'/>
+<use f='exim/src/expand.c' l='4876' u='c' c='expand_string_internal'/>

@@ -1,3 +1,17 @@
 <dec f='exim/src/structs.h' l='238' type='union (anonymous union at /home/ubuntu/exim/src/build-Linux-x86_64/./structs.h:235:3)'/>
 <offset>0</offset>
 <doc f='exim/src/structs.h' l='235'>/* discriminated by option topt_output_string */</doc>
+<use f='exim/src/deliver.c' l='7354' u='m' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7814' u='m' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8279' u='m' c='deliver_message'/>
+<use f='exim/src/verify.c' l='1355' u='m' c='cutthrough_headers_send'/>
+<use f='exim/src/dkim_transport.c' l='125' u='m' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='139' u='m' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='144' u='m' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='145' u='m' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='147' u='m' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='238' u='m' c='dkt_via_kfile'/>
+<use f='exim/src/dkim_transport.c' l='239' u='m' c='dkt_via_kfile'/>
+<use f='exim/src/dkim_transport.c' l='245' u='m' c='dkt_via_kfile'/>
+<use f='exim/src/dkim_transport.c' l='308' u='m' c='dkt_via_kfile'/>
+<use f='exim/src/queue.c' l='1145' u='m' c='queue_action'/>

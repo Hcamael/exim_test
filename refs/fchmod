@@ -1,1 +1,7 @@
 <dec f='include/x86_64-linux-gnu/sys/stat.h' l='296' type='int fchmod(int __fd, __mode_t __mode)'/>
+<use f='exim/src/deliver.c' l='358' u='c' c='open_msglog_file'/>
+<use f='exim/src/deliver.c' l='7025' u='c' c='deliver_message'/>
+<use f='exim/src/exim.c' l='457' u='c' c='modefopen'/>
+<use f='exim/src/transports/queuefile.c' l='148' u='c' c='copy_spool_files'/>
+<use f='exim/src/receive.c' l='3045' u='c' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='95' u='c' c='spool_open_temp'/>

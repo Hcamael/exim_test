@@ -1,2 +1,16 @@
 <dec f='exim/src/structs.h' l='876' type='int'/>
 <offset>128</offset>
+<use f='exim/src/acl.c' l='828' u='w' c='acl_read'/>
+<use f='exim/src/acl.c' l='2868' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2875' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2885' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2895' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2911' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2912' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2914' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2940' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2943' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2944' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='2951' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3711' u='r' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3717' u='r' c='acl_check_condition'/>

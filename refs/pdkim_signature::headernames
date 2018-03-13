@@ -1,0 +1,11 @@
+<dec f='exim/src/pdkim/pdkim.h' l='180' type='uschar *'/>
+<use f='exim/src/pdkim/pdkim.c' l='584' u='w' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1231' u='r' c='pdkim_create_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='1490' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1525' u='w' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1536' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1664' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1664' u='r' c='pdkim_feed_finish'/>
+<offset>640</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='178'>/* (h=) Colon-separated list of header names that are included in the
+     signature */</doc>

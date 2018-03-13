@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='608' type='BOOL'/>
 <offset>28</offset>
 <doc f='exim/src/structs.h' l='608'>/* delivery used SMTP PRDR */</doc>
+<use f='exim/src/deliver.c' l='1238' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='3550' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4855' u='r' c='do_remote_deliveries'/>

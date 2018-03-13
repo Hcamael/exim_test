@@ -1,1 +1,2 @@
 <dec f='include/openssl/asn1.h' l='729' type='void * ASN1_d2i_bio(void *(*)(void) xnew, d2i_of_void * d2i, BIO * in, void ** x)'/>
+<use f='exim/src/tls-openssl.c' l='860' macro='1' u='c'/>

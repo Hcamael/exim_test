@@ -1,1 +1,9 @@
 <dec f='exim/src/functions.h' l='410' type='int smtp_feof()'/>
+<use f='exim/src/tls-openssl.c' l='2467' u='r' c='tls_refill'/>
+<def f='exim/src/smtp_in.c' l='744' ll='748' type='int smtp_feof()'/>
+<use f='exim/src/smtp_in.c' l='2431' u='r' c='smtp_start_session'/>
+<doc f='exim/src/smtp_in.c' l='738'>/* Tests for a previous EOF
+
+Arguments:     none
+Returns:       non-zero if the eof flag is set
+*/</doc>

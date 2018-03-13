@@ -1,0 +1,3 @@
+<dec f='exim/src/routers/redirect.h' l='24' type='uschar *'/>
+<offset>640</offset>
+<use f='exim/src/routers/redirect.c' l='435' u='r' c='add_generated'/>

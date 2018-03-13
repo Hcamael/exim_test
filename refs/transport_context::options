@@ -1,3 +1,17 @@
 <dec f='exim/src/structs.h' l='243' type='int'/>
 <offset>320</offset>
 <doc f='exim/src/structs.h' l='243'>/* output processing topt_* */</doc>
+<use f='exim/src/deliver.c' l='7355' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7816' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8280' u='w' c='deliver_message'/>
+<use f='exim/src/verify.c' l='1361' u='w' c='cutthrough_headers_send'/>
+<use f='exim/src/dkim_transport.c' l='126' u='r' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='140' u='w' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='140' u='r' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='148' u='w' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='170' u='w' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='182' u='w' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='187' u='w' c='dkt_direct'/>
+<use f='exim/src/dkim_transport.c' l='240' u='r' c='dkt_via_kfile'/>
+<use f='exim/src/dkim_transport.c' l='241' u='w' c='dkt_via_kfile'/>
+<use f='exim/src/dkim_transport.c' l='246' u='w' c='dkt_via_kfile'/>

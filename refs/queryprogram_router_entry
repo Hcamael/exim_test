@@ -1,0 +1,46 @@
+<dec f='exim/src/routers/queryprogram.h' l='34' type='int queryprogram_router_entry(router_instance * , address_item * , struct passwd * , int , address_item ** , address_item ** , address_item ** , address_item ** )'/>
+<use f='exim/src/drtables.c' l='324'/>
+<use f='exim/src/drtables.c' l='324'/>
+<use f='exim/src/drtables.c' l='324'/>
+<use f='exim/src/drtables.c' l='324'/>
+<doc f='exim/src/routers/queryprogram.h' l='32'>/* The main and initialization entry points for the router */</doc>
+<def f='exim/src/routers/queryprogram.c' l='196' ll='556' type='int queryprogram_router_entry(router_instance * rblock, address_item * addr, struct passwd * pw, int verify, address_item ** addr_local, address_item ** addr_remote, address_item ** addr_new, address_item ** addr_succeed)'/>
+<doc f='exim/src/routers/queryprogram.c' l='156'>/* See local README for interface details. This router returns:
+
+DECLINE
+  . DECLINE returned
+  . self = DECLINE
+
+PASS
+  . PASS returned
+  . timeout of host lookup and pass_on_timeout set
+  . self = PASS
+
+DEFER
+  . verifying the errors address caused a deferment or a big disaster such
+      as an expansion failure (rf_get_errors_address)
+  . expanding a headers_{add,remove} string caused a deferment or another
+      expansion error (rf_get_munge_headers)
+  . a problem in rf_get_transport: no transport when one is needed;
+      failed to expand dynamic transport; failed to find dynamic transport
+  . bad lookup type
+  . problem looking up host (rf_lookup_hostlist)
+  . self = DEFER or FREEZE
+  . failure to set up uid/gid for running the command
+  . failure of transport_set_up_command: too many arguments, expansion fail
+  . failure to create child process
+  . child process crashed or timed out or didn&apos;t return data
+  . :defer: in data
+  . DEFER or FREEZE returned
+  . problem in redirection data
+  . unknown transport name or trouble expanding router transport
+
+FAIL
+  . :fail: in data
+  . FAIL returned
+  . self = FAIL
+
+OK
+  . address added to addr_local or addr_remote for delivery
+  . new addresses added to addr_new
+*/</doc>

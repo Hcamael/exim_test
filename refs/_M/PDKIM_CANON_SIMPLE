@@ -1,0 +1,10 @@
+<dec f='exim/src/pdkim/pdkim.h' l='78'/>
+<use f='exim/src/pdkim/pdkim.c' l='104' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='104' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='105' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='106' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='108' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='108' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='109' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='837' u='c'/>
+<doc f='exim/src/pdkim/pdkim.h' l='76'>/*#define PDKIM_ALGO_RSA_SHA1       1 */</doc>

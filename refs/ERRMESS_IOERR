@@ -1,2 +1,6 @@
 <dec f='exim/src/macros.h' l='241' type='5'/>
 <doc f='exim/src/macros.h' l='241'>/* I/O error while reading a message */</doc>
+<use f='exim/src/moan.c' l='153' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='418' c='moan_to_sender'/>
+<use f='exim/src/receive.c' l='3203' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3864' u='r' c='receive_msg'/>

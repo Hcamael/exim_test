@@ -1,1 +1,25 @@
 <dec f='exim/src/functions.h' l='165' type='int dns_basic_lookup(dns_answer * , const uschar * , int )'/>
+<use f='exim/src/verify.c' l='3385' u='c' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3567' u='c' c='one_check_dnsbl'/>
+<def f='exim/src/dns.c' l='656' ll='827' type='int dns_basic_lookup(dns_answer * dnsa, const uschar * name, int type)'/>
+<use f='exim/src/dns.c' l='885' u='c' c='dns_lookup'/>
+<doc f='exim/src/dns.c' l='635'>/* Call the resolver to look up the given domain name, using the given type,
+and check the result. The error code TRY_AGAIN is documented as meaning &quot;non-
+Authoritative Host not found, or SERVERFAIL&quot;. Sometimes there are badly set
+up nameservers that produce this error continually, so there is the option of
+providing a list of domains for which this is treated as a non-existent
+host.
+
+Arguments:
+  dnsa      pointer to dns_answer structure
+  name      name to look up
+  type      type of DNS record required (T_A, T_MX, etc)
+
+Returns:    DNS_SUCCEED   successful lookup
+            DNS_NOMATCH   name not found (NXDOMAIN)
+                          or name contains illegal characters (if checking)
+                          or name is an IP address (for IP address lookup)
+            DNS_NODATA    domain exists, but no data for this type (NODATA)
+            DNS_AGAIN     soft failure, try again later
+            DNS_FAIL      DNS failure
+*/</doc>

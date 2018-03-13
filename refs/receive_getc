@@ -1,1 +1,21 @@
 <dec f='exim/src/globals.h' l='142' type='int (*)(unsigned int)'/>
+<use f='exim/src/tls-openssl.c' l='2102' u='w' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2463' u='w' c='tls_refill'/>
+<use f='exim/src/smtp_in.c' l='549' u='w' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='655' u='w' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='690' u='w' c='bdat_flush_data'/>
+<use f='exim/src/smtp_in.c' l='1514' u='r' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='2427' u='w' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='5095' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5099' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/auths/get_no64_data.c' l='35' u='r' c='auth_get_no64_data'/>
+<use f='exim/src/auths/get_data.c' l='34' u='r' c='auth_get_data'/>
+<use f='exim/src/receive.c' l='628' u='r' c='read_message_data'/>
+<use f='exim/src/receive.c' l='670' u='r' c='read_message_data'/>
+<use f='exim/src/receive.c' l='788' u='r' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='1785' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1859' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1862' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1893' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1988' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4101' u='r' c='receive_msg'/>

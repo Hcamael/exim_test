@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='204' macro='1' type='DIST_POINT * sk_DIST_POINT_set(struct stack_st_DIST_POINT * sk, int idx, DIST_POINT * ptr)'/>

@@ -1,0 +1,9 @@
+<dec f='exim/src/pdkim/pdkim.h' l='319' type='pdkim_bodyhash * pdkim_set_bodyhash(pdkim_ctx * , pdkim_signature * )'/>
+<use f='exim/src/pdkim/pdkim.c' l='629' u='c' c='pdkim_parse_sig_header'/>
+<def f='exim/src/pdkim/pdkim.c' l='1876' ll='1906' type='pdkim_bodyhash * pdkim_set_bodyhash(pdkim_ctx * ctx, pdkim_signature * sig)'/>
+<doc f='exim/src/pdkim/pdkim.c' l='1870'>/* Set up a blob for calculating the bodyhash according to the
+needs of this signature.  Use an existing one if possible, or
+create a new one.
+
+Return: hashblob pointer, or NULL on error (only used as a boolean).
+*/</doc>

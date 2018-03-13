@@ -1,3 +1,7 @@
 <dec f='include/x86_64-linux-gnu/bits/sigaction.h' l='43' type='__sigset_t'/>
 <offset>64</offset>
 <doc f='include/x86_64-linux-gnu/bits/sigaction.h' l='42'>/* Additional set of signals to be blocked.  */</doc>
+<use f='exim/src/deliver.c' l='5544' u='a' c='deliver_message'/>
+<use f='exim/src/exim.c' l='1705' u='a' c='main'/>
+<use f='exim/src/exim.c' l='5345' u='a' c='main'/>
+<use f='exim/src/daemon.c' l='428' u='a' c='handle_smtp_call'/>

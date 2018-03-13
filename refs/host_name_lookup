@@ -1,1 +1,41 @@
 <dec f='exim/src/functions.h' l='228' type='int host_name_lookup()'/>
+<use f='exim/src/verify.c' l='3083' u='c' c='check_host'/>
+<use f='exim/src/smtp_in.c' l='2663' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='3483' u='c' c='smtp_verify_helo'/>
+<use f='exim/src/smtp_in.c' l='4047' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/acl.c' l='1224' u='c' c='acl_verify_reverse'/>
+<use f='exim/src/expand.c' l='1801' u='c' c='find_variable'/>
+<def f='exim/src/host.c' l='1654' ll='1921' type='int host_name_lookup()'/>
+<doc f='exim/src/host.c' l='1620'>/* Put the name in permanent store, pointed to by sender_host_name. We also set
+up a list of alias names, pointed to by sender_host_alias. The list is
+NULL-terminated. The incoming address is in sender_host_address, either in
+dotted-quad form for IPv4 or in colon-separated form for IPv6.
+
+This function does a thorough check that the names it finds point back to the
+incoming IP address. Any that do not are discarded. Note that this is relied on
+by the ACL reverse_host_lookup check.
+
+On some systems, get{host,ipnode}byaddr() appears to do this internally, but
+this it not universally true. Also, for release 4.30, this function was changed
+to do a direct DNS lookup first, by default[1], because it turns out that that
+is the only guaranteed way to find all the aliases on some systems. My
+experiments indicate that Solaris gethostbyaddr() gives the aliases for but
+Linux does not.
+
+[1] The actual order is controlled by the host_lookup_order option.
+
+Arguments:    none
+Returns:      OK on success, the answer being placed in the global variable
+                sender_host_name, with any aliases in a list hung off
+                sender_host_aliases
+              FAIL if no host name can be found
+              DEFER if a temporary error was encountered
+
+The variable host_lookup_msg is set to an empty string on success, or to a
+reason for the failure otherwise, in a form suitable for tagging onto an error
+message, and also host_lookup_failed is set TRUE if the lookup failed. If there
+was a defer, host_lookup_deferred is set TRUE.
+
+Any dynamically constructed string for host_lookup_msg must be in permanent
+store, because it might be used for several incoming messages on the same SMTP
+connection. */</doc>

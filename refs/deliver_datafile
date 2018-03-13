@@ -1,2 +1,41 @@
 <dec f='exim/src/globals.h' l='346' type='int'/>
 <doc f='exim/src/globals.h' l='346'>/* FD for data part of message */</doc>
+<use f='exim/src/deliver.c' l='4707' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4711' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='5583' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5636' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5637' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5695' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5696' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5754' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5755' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5887' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5888' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7787' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8414' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8415' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8492' u='w' c='deliver_get_sender_address'/>
+<use f='exim/src/deliver.c' l='8494' u='r' c='deliver_get_sender_address'/>
+<use f='exim/src/deliver.c' l='8516' u='r' c='deliver_get_sender_address'/>
+<use f='exim/src/deliver.c' l='8517' u='w' c='deliver_get_sender_address'/>
+<use f='exim/src/dkim_transport.c' l='155' u='r' c='dkt_direct'/>
+<def f='exim/src/globals.c' l='622' type='int'/>
+<use f='exim/src/exim.c' l='4965' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5030' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5032' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5033' u='w' c='main'/>
+<use f='exim/src/queue.c' l='1076' u='w' c='queue_action'/>
+<use f='exim/src/queue.c' l='1108' u='r' c='queue_action'/>
+<use f='exim/src/queue.c' l='1109' u='w' c='queue_action'/>
+<use f='exim/src/queue.c' l='1123' u='r' c='queue_action'/>
+<use f='exim/src/queue.c' l='1124' u='w' c='queue_action'/>
+<use f='exim/src/queue.c' l='1262' u='r' c='queue_action'/>
+<use f='exim/src/queue.c' l='1394' u='r' c='queue_action'/>
+<use f='exim/src/queue.c' l='1396' u='r' c='queue_action'/>
+<use f='exim/src/queue.c' l='1397' u='w' c='queue_action'/>
+<use f='exim/src/transports/queuefile.c' l='249' u='r' c='queuefile_transport_entry'/>
+<use f='exim/src/expand.c' l='1832' u='r' c='find_variable'/>
+<use f='exim/src/expand.c' l='1843' u='r' c='find_variable'/>
+<use f='exim/src/expand.c' l='1850' u='r' c='find_variable'/>
+<use f='exim/src/expand.c' l='1853' u='r' c='find_variable'/>
+<use f='exim/src/receive.c' l='3333' u='w' c='receive_msg'/>

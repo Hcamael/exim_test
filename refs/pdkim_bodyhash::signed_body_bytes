@@ -1,0 +1,10 @@
+<dec f='exim/src/pdkim/pdkim.h' l='127' type='unsigned long'/>
+<use f='exim/src/pdkim/pdkim.c' l='751' u='r' c='pdkim_update_ctx_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='753' u='r' c='pdkim_update_ctx_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='758' u='w' c='pdkim_update_ctx_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='786' u='r' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='796' u='r' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='838' u='r' c='pdkim_body_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='1899' u='w' c='pdkim_set_bodyhash'/>
+<offset>1984</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='127'>/* done so far */</doc>

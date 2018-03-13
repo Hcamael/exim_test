@@ -1,1 +1,13 @@
 <dec f='exim/src/functions.h' l='430' type='int smtp_ungetc(int )'/>
+<use f='exim/src/tls-openssl.c' l='2466' u='r' c='tls_refill'/>
+<use f='exim/src/smtp_in.c' l='361' u='c' c='wouldblock_reading'/>
+<def f='exim/src/smtp_in.c' l='717' ll='722' type='int smtp_ungetc(int ch)'/>
+<use f='exim/src/smtp_in.c' l='2430' u='r' c='smtp_start_session'/>
+<doc f='exim/src/smtp_in.c' l='708'>/* Puts a character back in the input buffer. Only ever
+called once.
+
+Arguments:
+  ch           the character
+
+Returns:       the character
+*/</doc>

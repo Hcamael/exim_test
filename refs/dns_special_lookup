@@ -1,1 +1,21 @@
 <dec f='exim/src/functions.h' l='172' type='int dns_special_lookup(dns_answer * , const uschar * , int , const uschar ** )'/>
+<use f='exim/src/lookups/dnsdb.c' l='357' u='c' c='dnsdb_find'/>
+<use f='exim/src/acl.c' l='1393' u='c' c='acl_verify_csa'/>
+<def f='exim/src/dns.c' l='988' ll='1166' type='int dns_special_lookup(dns_answer * dnsa, const uschar * name, int type, const uschar ** fully_qualified_name)'/>
+<doc f='exim/src/dns.c' l='970'>/* This function handles some invented &quot;lookup types&quot; that synthesize features
+not available in the basic types. The special types all have negative values.
+Positive type values are passed straight on to dns_lookup().
+
+Arguments:
+  dnsa                  pointer to dns_answer structure
+  name                  domain name to look up
+  type                  DNS record type (T_A, T_MX, etc or a &quot;special&quot;)
+  fully_qualified_name  if not NULL, return the returned name here if its
+                          contents are different (i.e. it must be preset)
+
+Returns:                DNS_SUCCEED   successful lookup
+                        DNS_NOMATCH   name not found
+                        DNS_NODATA    no data found
+                        DNS_AGAIN     soft failure, try again later
+                        DNS_FAIL      DNS failure
+*/</doc>

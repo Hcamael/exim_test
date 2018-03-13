@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='494' type='uschar *'/>
 <doc f='exim/src/globals.h' l='494'>/* Allowed to use junk arg */</doc>
+<def f='exim/src/globals.c' l='791' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='2800' u='a' c='smtp_start_session'/>
+<use f='exim/src/readconf.c' l='161' u='a'/>
+<use f='exim/src/readconf.c' l='161' u='a'/>
+<use f='exim/src/readconf.c' l='161' u='a'/>
+<use f='exim/src/readconf.c' l='161' u='a'/>

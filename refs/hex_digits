@@ -1,2 +1,34 @@
 <dec f='exim/src/globals.h' l='501' type='const uschar *'/>
 <doc f='exim/src/globals.h' l='501'>/* Used in several places */</doc>
+<use f='exim/src/string.c' l='261' u='r' c='string_interpret_escape'/>
+<use f='exim/src/string.c' l='261' u='r' c='string_interpret_escape'/>
+<use f='exim/src/string.c' l='261' u='r' c='string_interpret_escape'/>
+<use f='exim/src/string.c' l='261' u='r' c='string_interpret_escape'/>
+<use f='exim/src/string.c' l='263' u='r' c='string_interpret_escape'/>
+<use f='exim/src/string.c' l='263' u='r' c='string_interpret_escape'/>
+<use f='exim/src/string.c' l='263' u='r' c='string_interpret_escape'/>
+<use f='exim/src/string.c' l='263' u='r' c='string_interpret_escape'/>
+<def f='exim/src/globals.c' l='798' type='const uschar *'/>
+<def f='exim/src/exim_dbmbuild.c' l='41' type='const uschar *'/>
+<use f='exim/src/exim_dbmbuild.c' l='117' u='r' c='string_interpret_escape'/>
+<use f='exim/src/exim_dbmbuild.c' l='117' u='r' c='string_interpret_escape'/>
+<use f='exim/src/exim_dbmbuild.c' l='117' u='r' c='string_interpret_escape'/>
+<use f='exim/src/exim_dbmbuild.c' l='117' u='r' c='string_interpret_escape'/>
+<use f='exim/src/exim_dbmbuild.c' l='119' u='r' c='string_interpret_escape'/>
+<use f='exim/src/exim_dbmbuild.c' l='119' u='r' c='string_interpret_escape'/>
+<use f='exim/src/exim_dbmbuild.c' l='119' u='r' c='string_interpret_escape'/>
+<use f='exim/src/exim_dbmbuild.c' l='119' u='r' c='string_interpret_escape'/>
+<doc f='exim/src/exim_dbmbuild.c' l='38'>/* This is global because it&apos;s defined in the headers and compilers grumble
+if it is made static. */</doc>
+<use f='exim/src/expand.c' l='3467' u='r' c='prvs_hmac_sha1'/>
+<use f='exim/src/expand.c' l='3468' u='r' c='prvs_hmac_sha1'/>
+<use f='exim/src/expand.c' l='5267' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5268' u='r' c='expand_string_internal'/>
+<use f='exim/src/rfc2047.c' l='61' u='r' c='rfc2047_qpdecode'/>
+<use f='exim/src/rfc2047.c' l='61' u='r' c='rfc2047_qpdecode'/>
+<use f='exim/src/rfc2047.c' l='61' u='r' c='rfc2047_qpdecode'/>
+<use f='exim/src/rfc2047.c' l='61' u='r' c='rfc2047_qpdecode'/>
+<use f='exim/src/rfc2047.c' l='62' u='r' c='rfc2047_qpdecode'/>
+<use f='exim/src/rfc2047.c' l='62' u='r' c='rfc2047_qpdecode'/>
+<use f='exim/src/rfc2047.c' l='62' u='r' c='rfc2047_qpdecode'/>
+<use f='exim/src/rfc2047.c' l='62' u='r' c='rfc2047_qpdecode'/>

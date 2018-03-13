@@ -1,0 +1,7 @@
+<dec f='exim/src/pdkim/pdkim.h' l='123' type='int'/>
+<use f='exim/src/pdkim/pdkim.c' l='707' u='r' c='pdkim_update_ctx_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='837' u='r' c='pdkim_body_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='888' u='r' c='pdkim_bodyline_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='1883' u='r' c='pdkim_set_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='1890' u='w' c='pdkim_set_bodyhash'/>
+<offset>96</offset>

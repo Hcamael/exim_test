@@ -1,1 +1,82 @@
 <dec f='exim/src/globals.h' l='106' type='tls_support'/>
+<use f='exim/src/deliver.c' l='1614' u='m' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1616' u='m' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1619' u='m' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1620' u='m' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1621' u='m' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1630' u='m' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1631' u='m' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1632' u='m' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1633' u='m' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1634' u='m' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='4787' u='m' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='1046' u='m' c='do_callout'/>
+<use f='exim/src/verify.c' l='1193' u='m' c='cutthrough_send'/>
+<use f='exim/src/verify.c' l='1686' u='a' c='verify_address'/>
+<use f='exim/src/dkim_transport.c' l='59' u='m' c='dkt_send_file'/>
+<use f='exim/src/dkim_transport.c' l='87' u='m' c='dkt_send_file'/>
+<use f='exim/src/smtp_out.c' l='414' u='m' c='flush_buffer'/>
+<use f='exim/src/tls-openssl.c' l='313' u='a' c='verify_event'/>
+<use f='exim/src/tls-openssl.c' l='324' u='a' c='verify_event'/>
+<use f='exim/src/tls-openssl.c' l='393' u='a' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='411' u='a' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='431' u='a' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='456' u='a' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='472' u='a' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='503' u='a' c='verify_callback_client'/>
+<use f='exim/src/tls-openssl.c' l='1349' u='m' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1359' u='m' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1390' u='m' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1420' u='m' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1435' u='m' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1446' u='m' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1450' u='m' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1457' u='m' c='tls_client_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='2296' u='m' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2344' u='m' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2346' u='m' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2350' u='m' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2351' u='m' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2355' u='m' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2356' u='m' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2394' u='m' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2421' u='a' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2423' u='m' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2424' u='m' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2429' u='m' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2432' u='m' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2715' u='m' c='tls_close'/>
+<def f='exim/src/globals.c' l='120' ll='136' type='tls_support'/>
+<use f='exim/src/ip.c' l='615' u='m' c='ip_recv'/>
+<use f='exim/src/expand.c' l='738' u='m'/>
+<use f='exim/src/expand.c' l='738' u='m'/>
+<use f='exim/src/expand.c' l='739' u='m'/>
+<use f='exim/src/expand.c' l='739' u='m'/>
+<use f='exim/src/expand.c' l='740' u='m'/>
+<use f='exim/src/expand.c' l='740' u='m'/>
+<use f='exim/src/expand.c' l='744' u='m'/>
+<use f='exim/src/expand.c' l='744' u='m'/>
+<use f='exim/src/expand.c' l='745' u='m'/>
+<use f='exim/src/expand.c' l='745' u='m'/>
+<use f='exim/src/expand.c' l='746' u='m'/>
+<use f='exim/src/expand.c' l='746' u='m'/>
+<use f='exim/src/expand.c' l='747' u='m'/>
+<use f='exim/src/expand.c' l='747' u='m'/>
+<use f='exim/src/expand.c' l='749' u='m'/>
+<use f='exim/src/expand.c' l='749' u='m'/>
+<use f='exim/src/expand.c' l='738' u='m'/>
+<use f='exim/src/expand.c' l='738' u='m'/>
+<use f='exim/src/expand.c' l='739' u='m'/>
+<use f='exim/src/expand.c' l='739' u='m'/>
+<use f='exim/src/expand.c' l='740' u='m'/>
+<use f='exim/src/expand.c' l='740' u='m'/>
+<use f='exim/src/expand.c' l='744' u='m'/>
+<use f='exim/src/expand.c' l='744' u='m'/>
+<use f='exim/src/expand.c' l='745' u='m'/>
+<use f='exim/src/expand.c' l='745' u='m'/>
+<use f='exim/src/expand.c' l='746' u='m'/>
+<use f='exim/src/expand.c' l='746' u='m'/>
+<use f='exim/src/expand.c' l='747' u='m'/>
+<use f='exim/src/expand.c' l='747' u='m'/>
+<use f='exim/src/expand.c' l='749' u='m'/>
+<use f='exim/src/expand.c' l='749' u='m'/>

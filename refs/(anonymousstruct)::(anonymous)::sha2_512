@@ -1,3 +1,9 @@
 <dec f='exim/src/hash.h' l='53' type='SHA512_CTX'/>
 <offset>0</offset>
 <doc f='exim/src/hash.h' l='53'>/* SHA512 or 384 block                       */</doc>
+<use f='exim/src/hash.c' l='41' u='a' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='42' u='a' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='70' u='a' c='exim_sha_update'/>
+<use f='exim/src/hash.c' l='71' u='a' c='exim_sha_update'/>
+<use f='exim/src/hash.c' l='93' u='a' c='exim_sha_finish'/>
+<use f='exim/src/hash.c' l='94' u='a' c='exim_sha_finish'/>

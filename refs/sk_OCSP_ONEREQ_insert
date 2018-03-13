@@ -1,0 +1,1 @@
+<def f='include/openssl/ocsp.h' l='76' macro='1' type='int sk_OCSP_ONEREQ_insert(struct stack_st_OCSP_ONEREQ * sk, OCSP_ONEREQ * ptr, int idx)'/>

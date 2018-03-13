@@ -1,0 +1,6 @@
+<dec f='exim/src/auths/spa.h' l='17' type='uschar *'/>
+<use f='exim/src/auths/spa.c' l='107' u='r' c='auth_spa_init'/>
+<use f='exim/src/auths/spa.c' l='111' u='r' c='auth_spa_init'/>
+<use f='exim/src/auths/spa.c' l='290' u='r' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='294' u='r' c='auth_spa_client'/>
+<offset>0</offset>

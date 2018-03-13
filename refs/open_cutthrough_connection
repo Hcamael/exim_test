@@ -1,1 +1,6 @@
 <dec f='exim/src/functions.h' l='305' type='int open_cutthrough_connection(address_item * addr)'/>
+<def f='exim/src/verify.c' l='1159' ll='1180' type='int open_cutthrough_connection(address_item * addr)'/>
+<doc f='exim/src/verify.c' l='1156'>/* Called after recipient-acl to get a cutthrough connection open when
+   one was requested and a recipient-verify wasn&apos;t subsequently done.
+*/</doc>
+<use f='exim/src/acl.c' l='4426' u='c' c='acl_check'/>

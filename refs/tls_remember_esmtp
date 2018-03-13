@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='123' type='BOOL'/>
 <doc f='exim/src/globals.h' l='123'>/* For YAEB */</doc>
+<def f='exim/src/globals.c' l='161' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='5334' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/readconf.c' l='358' u='a'/>
+<use f='exim/src/readconf.c' l='358' u='a'/>
+<use f='exim/src/readconf.c' l='358' u='a'/>
+<use f='exim/src/readconf.c' l='358' u='a'/>

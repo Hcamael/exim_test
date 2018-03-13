@@ -1,2 +1,15 @@
 <dec f='exim/src/globals.h' l='642' type='uid_t'/>
 <doc f='exim/src/globals.h' l='642'>/* Uid of ditto */</doc>
+<use f='exim/src/deliver.c' l='1900' u='r' c='findugid'/>
+<def f='exim/src/globals.c' l='1022' type='uid_t'/>
+<use f='exim/src/exim.c' l='4787' u='w' c='main'/>
+<use f='exim/src/exim.c' l='4791' u='r' c='main'/>
+<use f='exim/src/queue.c' l='1120' u='r' c='queue_action'/>
+<use f='exim/src/spool_in.c' l='385' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='408' u='r' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='616' u='a'/>
+<use f='exim/src/expand.c' l='616' u='a'/>
+<use f='exim/src/expand.c' l='616' u='a'/>
+<use f='exim/src/expand.c' l='616' u='a'/>
+<use f='exim/src/daemon.c' l='1571' u='w' c='daemon_go'/>
+<use f='exim/src/spool_out.c' l='154' u='r' c='spool_write_header'/>

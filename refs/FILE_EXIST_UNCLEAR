@@ -1,0 +1,2 @@
+<dec f='exim/src/rda.c' l='15' type='2'/>
+<use f='exim/src/rda.c' l='130' u='r' c='rda_exists'/>

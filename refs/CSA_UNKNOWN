@@ -1,0 +1,9 @@
+<dec f='exim/src/acl.c' l='537' type='0'/>
+<use f='exim/src/acl.c' l='549'/>
+<use f='exim/src/acl.c' l='560'/>
+<use f='exim/src/acl.c' l='571'/>
+<use f='exim/src/acl.c' l='1352' u='r' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1373' u='r' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1404' u='r' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1440' u='r' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='1466' u='r' c='acl_verify_csa'/>

@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='210' type='int header_checkname(header_line * , BOOL )'/>
+<def f='exim/src/header.c' l='299' ll='326' type='int header_checkname(header_line * h, BOOL is_resent)'/>
+<doc f='exim/src/header.c' l='287'>/* This function scans a table of header field names that Exim recognizes, and
+returns the identification of a match. If &quot;resent&quot; is true, the header is known
+to start with &quot;resent-&quot;. In that case, the function matches only those fields
+that are allowed to appear with resent- in front of them.
+
+Arguments:
+  h             points to the header line
+  is_resent     TRUE if the name starts &quot;Resent-&quot;
+
+Returns:        One of the htype_ enum values, identifying the header
+*/</doc>
+<use f='exim/src/filter.c' l='2009' u='c' c='interpret_commands'/>
+<use f='exim/src/receive.c' l='1275' u='c' c='add_acl_headers'/>
+<use f='exim/src/receive.c' l='2249' u='c' c='receive_msg'/>

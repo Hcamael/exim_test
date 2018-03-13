@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='587' type='struct timeval'/>
 <doc f='exim/src/globals.h' l='587'>/* Time used to create last message_id */</doc>
+<def f='exim/src/globals.c' l='973' type='struct timeval'/>
+<use f='exim/src/receive.c' l='1741' u='a' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1747' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2613' u='m' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2628' u='m' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2638' u='m' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3882' u='m' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3882' u='m' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3883' u='a' c='receive_msg'/>

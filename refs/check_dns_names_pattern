@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='268' type='uschar *'/>
 <doc f='exim/src/globals.h' l='268'>/* Regex for syntax check */</doc>
+<def f='exim/src/globals.c' l='498' type='uschar *'/>
+<use f='exim/src/readconf.c' l='125' u='a'/>
+<use f='exim/src/readconf.c' l='125' u='a'/>
+<use f='exim/src/readconf.c' l='125' u='a'/>
+<use f='exim/src/readconf.c' l='125' u='a'/>
+<use f='exim/src/dns.c' l='719' u='r' c='dns_basic_lookup'/>
+<use f='exim/src/dns.c' l='1226' u='r' c='dns_pattern_init'/>
+<use f='exim/src/dns.c' l='1228' u='r' c='dns_pattern_init'/>

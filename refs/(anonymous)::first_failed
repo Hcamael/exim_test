@@ -2,3 +2,10 @@
 <offset>64</offset>
 <doc f='exim/src/dbstuff.h' l='682'>/*************/</doc>
 <doc f='exim/src/dbstuff.h' l='683'>/* Time of first failure */</doc>
+<use f='exim/src/exim_dbutil.c' l='825' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='994' u='r' c='main'/>
+<use f='exim/src/retry.c' l='41' u='r' c='retry_ultimate_address_timeout'/>
+<use f='exim/src/retry.c' l='674' u='w' c='retry_update'/>
+<use f='exim/src/retry.c' l='684' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='757' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='836' u='r' c='retry_update'/>

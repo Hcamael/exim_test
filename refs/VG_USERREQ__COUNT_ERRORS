@@ -1,0 +1,4 @@
+<dec f='exim/src/valgrind.h' l='4293' type='4609'/>
+<doc f='exim/src/valgrind.h' l='4290'>/* Can be useful in regression testing suites -- eg. can
+             send Valgrind&apos;s output to /dev/null and still count
+             errors. */</doc>

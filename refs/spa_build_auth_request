@@ -1,0 +1,3 @@
+<dec f='exim/src/auths/auth-spa.h' l='84' type='void spa_build_auth_request(SPAAuthRequest * request, char * user, char * domain)'/>
+<use f='exim/src/auths/spa.c' l='332' u='c' c='auth_spa_client'/>
+<def f='exim/src/auths/auth-spa.c' l='1377' ll='1397' type='void spa_build_auth_request(SPAAuthRequest * request, char * user, char * domain)'/>

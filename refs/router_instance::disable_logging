@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='306' type='BOOL'/>
 <offset>2176</offset>
 <doc f='exim/src/structs.h' l='306'>/* For very weird requirements */</doc>
+<use f='exim/src/deliver.c' l='1488' u='r' c='post_process_one'/>
+<use f='exim/src/globals.c' l='1213' u='w'/>

@@ -1,1 +1,5 @@
 <dec f='exim/src/store.h' l='15' type='0'/>
+<use f='exim/src/exim.c' l='4445' u='r' c='main'/>
+<use f='exim/src/lookups/lsearch.c' l='92' u='r' c='internal_lsearch_find'/>
+<use f='exim/src/expand.c' l='7577' u='r' c='expand_cstring'/>
+<use f='exim/src/receive.c' l='3664' u='r' c='receive_msg'/>

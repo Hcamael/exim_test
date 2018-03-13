@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='446' type='struct retry_item *'/>
 <offset>0</offset>
 <doc f='exim/src/structs.h' l='446'>/* for chaining */</doc>
+<use f='exim/src/deliver.c' l='3443' u='a' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3447' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3458' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4871' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/retry.c' l='298' u='w' c='retry_add_item'/>
+<use f='exim/src/retry.c' l='571' u='r' c='retry_update'/>

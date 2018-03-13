@@ -1,2 +1,4 @@
 <dec f='exim/src/structs.h' l='165' type='uid_t'/>
 <offset>992</offset>
+<use f='exim/src/deliver.c' l='1875' u='r' c='findugid'/>
+<use f='exim/src/globals.c' l='1466' u='w'/>

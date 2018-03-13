@@ -1,2 +1,8 @@
 <dec f='include/x86_64-linux-gnu/sys/select.h' l='90'/>
 <doc f='include/x86_64-linux-gnu/sys/select.h' l='89'>/* Access macros for `fd_set&apos;.  */</doc>
+<use f='exim/src/deliver.c' l='3948' u='c'/>
+<use f='exim/src/exim.c' l='5559' u='c'/>
+<use f='exim/src/smtp_in.c' l='352' u='c'/>
+<use f='exim/src/ip.c' l='552' u='c'/>
+<use f='exim/src/daemon.c' l='1933' u='c'/>
+<use f='exim/src/receive.c' l='4095' u='c'/>

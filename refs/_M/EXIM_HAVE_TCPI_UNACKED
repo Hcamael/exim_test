@@ -1,1 +1,2 @@
 <dec f='exim/build-Linux-x86_64/os.h' l='85'/>
+<use f='exim/src/smtp_out.c' l='147' u='a'/>

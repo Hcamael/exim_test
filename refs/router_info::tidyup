@@ -1,3 +1,15 @@
 <dec f='exim/src/structs.h' l='361' type='void (*)(struct router_instance *)'/>
 <offset>448</offset>
 <doc f='exim/src/structs.h' l='361'>/* Tidyup function */</doc>
+<use f='exim/src/drtables.c' l='260' u='w'/>
+<use f='exim/src/drtables.c' l='273' u='w'/>
+<use f='exim/src/drtables.c' l='286' u='w'/>
+<use f='exim/src/drtables.c' l='312' u='w'/>
+<use f='exim/src/drtables.c' l='325' u='w'/>
+<use f='exim/src/drtables.c' l='338' u='w'/>
+<use f='exim/src/drtables.c' l='260' u='w'/>
+<use f='exim/src/drtables.c' l='273' u='w'/>
+<use f='exim/src/drtables.c' l='286' u='w'/>
+<use f='exim/src/drtables.c' l='312' u='w'/>
+<use f='exim/src/drtables.c' l='325' u='w'/>
+<use f='exim/src/drtables.c' l='338' u='w'/>

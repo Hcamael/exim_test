@@ -1,3 +1,6 @@
 <dec f='exim/src/hash.h' l='52' type='SHA256_CTX'/>
 <offset>0</offset>
 <doc f='exim/src/hash.h' l='52'>/* SHA256 or 224 block                       */</doc>
+<use f='exim/src/hash.c' l='40' u='a' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='69' u='a' c='exim_sha_update'/>
+<use f='exim/src/hash.c' l='92' u='a' c='exim_sha_finish'/>

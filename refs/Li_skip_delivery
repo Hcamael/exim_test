@@ -1,2 +1,8 @@
 <dec f='exim/src/macros.h' l='451' macro='1' type='11'/>
 <use f='exim/src/macros.h' l='451' macro='1' u='r'/>
+<use f='exim/src/globals.c' l='872'/>
+<use f='exim/src/globals.c' l='872'/>
+<use f='exim/src/globals.c' l='928' macro='1'/>
+<use f='exim/src/globals.c' l='928' macro='1'/>
+<use f='exim/src/globals.c' l='928' macro='1'/>
+<use f='exim/src/globals.c' l='928' macro='1'/>

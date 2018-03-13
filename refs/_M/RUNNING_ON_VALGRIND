@@ -1,0 +1,5 @@
+<dec f='exim/src/valgrind.h' l='4395'/>
+<doc f='exim/src/valgrind.h' l='4391'>/* Returns the number of Valgrinds this code is running under.  That
+   is, 0 if running natively, 1 if running under Valgrind, 2 if
+   running under Valgrind which is running under another Valgrind,
+   etc. */</doc>

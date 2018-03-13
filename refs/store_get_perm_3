@@ -1,1 +1,20 @@
 <dec f='exim/src/store.h' l='48' type='void * store_get_perm_3(int , const char * , int )'/>
+<use f='exim/src/spool_in.c' l='437' macro='1' u='c'/>
+<use f='exim/src/acl.c' l='1386' macro='1' u='c'/>
+<use f='exim/src/acl.c' l='4050' macro='1' u='c'/>
+<def f='exim/src/store.c' l='231' ll='240' type='void * store_get_perm_3(int size, const char * filename, int linenumber)'/>
+<doc f='exim/src/store.c' l='220'>/* This is just a convenience function, useful when just a single block is to
+be obtained.
+
+Arguments:
+  size        amount wanted
+  filename    source file from which called
+  linenumber  line number in source file.
+
+Returns:      pointer to store (panic on malloc failure)
+*/</doc>
+<use f='exim/src/host.c' l='811' macro='1' u='c'/>
+<use f='exim/src/host.c' l='1588' macro='1' u='c'/>
+<use f='exim/src/host.c' l='1599' macro='1' u='c'/>
+<use f='exim/src/host.c' l='1604' macro='1' u='c'/>
+<use f='exim/src/dns.c' l='624' macro='1' u='c'/>

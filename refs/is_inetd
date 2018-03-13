@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='525' type='BOOL'/>
 <doc f='exim/src/globals.h' l='525'>/* True for inetd calls */</doc>
+<def f='exim/src/globals.c' l='825' type='BOOL'/>
+<use f='exim/src/exim.c' l='4274' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5201' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5227' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5243' u='r' c='main'/>
+<use f='exim/src/smtp_in.c' l='1701' u='r' c='smtp_get_connection_info'/>

@@ -1,3 +1,7 @@
 <dec f='exim/src/structs.h' l='178' type='uschar *'/>
 <offset>1792</offset>
 <doc f='exim/src/structs.h' l='178'>/* Biggest message this transport handles */</doc>
+<use f='exim/src/deliver.c' l='1987' u='r' c='check_message_size'/>
+<use f='exim/src/deliver.c' l='2864' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='4269' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/globals.c' l='1479' u='w'/>

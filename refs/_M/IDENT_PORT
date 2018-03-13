@@ -1,2 +1,4 @@
 <dec f='exim/src/macros.h' l='102'/>
 <doc f='exim/src/macros.h' l='100'>/* The RFC 1413 ident port */</doc>
+<use f='exim/src/exim.c' l='5205' u='c'/>
+<use f='exim/src/daemon.c' l='445' u='c'/>

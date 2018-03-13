@@ -1,0 +1,3 @@
+<dec f='include/openssl/ocsp.h' l='232' type='int OCSP_check_validity(ASN1_GENERALIZEDTIME * thisupd, ASN1_GENERALIZEDTIME * nextupd, long sec, long maxsec)'/>
+<use f='exim/src/tls-openssl.c' l='946' u='c' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='1432' u='c' c='tls_client_stapling_cb'/>

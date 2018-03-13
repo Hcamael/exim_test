@@ -1,1 +1,13 @@
 <dec f='exim/src/functions.h' l='89' type='tree_node * acl_var_create(uschar * )'/>
+<use f='exim/src/spool_in.c' l='465' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='504' u='c' c='spool_read_header'/>
+<use f='exim/src/acl.c' l='3662' u='c' c='acl_check_condition'/>
+<def f='exim/src/acl.c' l='4522' ll='4534' type='tree_node * acl_var_create(uschar * name)'/>
+<doc f='exim/src/acl.c' l='4513'>/* Create an ACL variable or reuse an existing one. ACL variables are in a
+binary tree (see tree.c) with acl_var_c and acl_var_m as root nodes.
+
+Argument:
+  name    pointer to the variable&apos;s name, starting with c or m
+
+Returns   the pointer to variable&apos;s tree node
+*/</doc>

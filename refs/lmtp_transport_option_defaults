@@ -1,0 +1,4 @@
+<dec f='exim/src/transports/lmtp.h' l='25' type='lmtp_transport_options_block'/>
+<def f='exim/src/transports/lmtp.c' l='47' type='lmtp_transport_options_block'/>
+<doc f='exim/src/transports/lmtp.c' l='46'>/* Dummy values */</doc>
+<doc f='exim/src/transports/lmtp.h' l='23'>/* Block containing default values. */</doc>

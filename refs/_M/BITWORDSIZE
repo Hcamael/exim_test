@@ -2,3 +2,4 @@
 <use f='exim/src/macros.h' l='457' u='c'/>
 <doc f='exim/src/macros.h' l='334'>/* Assume words are 32 bits wide. Tiny waste of space on 64 bit
 platforms, but this ensures bit vectors always work the same way. */</doc>
+<use f='exim/src/log.c' l='852' u='c'/>

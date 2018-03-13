@@ -1,2 +1,8 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='89'/>
 <doc f='exim/build-Linux-x86_64/config.h' l='88'>/* LOG_FILE_PATH not set */</doc>
+<use f='exim/src/exim.c' l='215' u='c'/>
+<use f='exim/src/exim.c' l='223' u='c'/>
+<use f='exim/src/log.c' l='263' u='c'/>
+<use f='exim/src/log.c' l='281' u='c'/>
+<use f='exim/src/log.c' l='335' u='c'/>
+<use f='exim/src/log.c' l='459' u='c'/>

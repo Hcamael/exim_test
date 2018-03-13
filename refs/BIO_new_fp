@@ -1,1 +1,2 @@
 <dec f='include/openssl/bio.h' l='531' type='BIO * BIO_new_fp(FILE * stream, int close_flag)'/>
+<use f='exim/src/tls-openssl.c' l='1380' u='c' c='tls_client_stapling_cb'/>

@@ -1,0 +1,16 @@
+<dec f='exim/src/transports/tf_maildir.h' l='13' type='BOOL maildir_ensure_directories(uschar * , address_item * , BOOL , int , uschar * )'/>
+<def f='exim/src/transports/tf_maildir.c' l='44' ll='188' type='BOOL maildir_ensure_directories(uschar * path, address_item * addr, BOOL create_directory, int dirmode, uschar * maildirfolder_create_regex)'/>
+<doc f='exim/src/transports/tf_maildir.c' l='29'>/* This function is called at the start of a maildir delivery, to ensure that
+all the relevant directories exist. It also creates a maildirfolder file if the
+base directory matches a given pattern.
+
+Argument:
+  path              the base directory name
+  addr              the address item (for setting an error message)
+  create_directory  true if we are allowed to create missing directories
+  dirmode           the mode for created directories
+  maildirfolder_create_regex
+                    the pattern to match for maildirfolder creation
+
+Returns:            TRUE on success; FALSE on failure
+*/</doc>

@@ -1,1 +1,17 @@
 <dec f='exim/src/functions.h' l='64' type='int tls_server_start(const uschar * , uschar ** )'/>
+<def f='exim/src/tls-openssl.c' l='1948' ll='2112' type='int tls_server_start(const uschar * require_ciphers, uschar ** errstr)'/>
+<doc f='exim/src/tls-openssl.c' l='1934'>/* This is called when Exim is running as a server, after having received
+the STARTTLS command. It must respond to that command, and then negotiate
+a TLS session.
+
+Arguments:
+  require_ciphers   allowed ciphers
+  errstr	    pointer to error message
+
+Returns:            OK on success
+                    DEFER for errors before the start of the negotiation
+                    FAIL for errors during the negotiation; the server can&apos;t
+                      continue running.
+*/</doc>
+<use f='exim/src/smtp_in.c' l='2823' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='5332' u='c' c='smtp_setup_msg'/>

@@ -1,1 +1,8 @@
 <dec f='exim/src/functions.h' l='259' type='macro_item * macro_search(const uschar * )'/>
+<def f='exim/src/macro.c' l='61' ll='68' type='macro_item * macro_search(const uschar * name)'/>
+<doc f='exim/src/macro.c' l='55'>/* Search for a macro, with an exact match on the name.
+Return the node, or NULL for not-found.
+
+Arguments:	name	key to search for
+*/</doc>
+<use f='exim/src/exim.c' l='2431' u='c' c='main'/>

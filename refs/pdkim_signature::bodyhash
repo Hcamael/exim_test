@@ -1,0 +1,9 @@
+<dec f='exim/src/pdkim/pdkim.h' l='189' type='blob'/>
+<use f='exim/src/pdkim/pdkim.c' l='521' u='a' c='pdkim_parse_sig_header'/>
+<use f='exim/src/pdkim/pdkim.c' l='804' u='m' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='805' u='m' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='814' u='m' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='814' u='m' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='1665' u='m' c='pdkim_feed_finish'/>
+<offset>896</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='188'>/* (bh=) Raw body hash data, along with its length in bytes */</doc>

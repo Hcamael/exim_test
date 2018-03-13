@@ -1,0 +1,2 @@
+<dec f='exim/src/expand.c' l='276' type='36'/>
+<use f='exim/src/expand.c' l='7390' c='expand_string_internal'/>

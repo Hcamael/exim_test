@@ -1,0 +1,44 @@
+<dec f='exim/src/routers/rf_functions.h' l='27' type='int rf_self_action(address_item * , host_item * , int , BOOL , uschar * , address_item ** )'/>
+<def f='exim/src/routers/rf_self_action.c' l='59' ll='139' type='int rf_self_action(address_item * addr, host_item * host, int code, BOOL rewrite, uschar * new, address_item ** addr_new)'/>
+<doc f='exim/src/routers/rf_self_action.c' l='18'>/* This function is called from a number of routers on receiving
+HOST_FOUND_LOCAL when looking up a supposedly remote host. The action is
+controlled by a generic configuration option called &quot;self&quot; on each router,
+which can be one of:
+
+   . freeze:                       Log the incident, freeze, and return DEFER
+
+   . defer:                        Log the incident and return DEFER
+
+   . fail:                         Fail the address
+
+   . send:                         Carry on with the delivery regardless -
+                                   this makes sense only if the SMTP
+                                   listener on this machine is a differently
+                                   configured MTA
+
+   . pass:                         The router passes; the address
+                                   gets passed to the next router, overriding
+                                   the setting of no_more
+
+   . reroute:&lt;new-domain&gt;          Change the domain to the given domain
+                                   and return REROUTE so it gets passed back
+                                   to the routers.
+
+   . reroute:rewrite:&lt;new-domain&gt;  The same, but headers containing the
+                                   old domain get rewritten.
+
+These string values are interpreted earlier on, and passed into this function
+as the values of &quot;code&quot; and &quot;rewrite&quot;.
+
+Arguments:
+  addr       the address being routed
+  host       the host that is local, with MX set (or -1 if MX not used)
+  code       the action to be taken (one of the self_xxx enums)
+  rewrite    TRUE if rewriting headers required for REROUTED
+  new        new domain to be used for REROUTED
+  addr_new   child chain for REROUTEED
+
+Returns:   DEFER, REROUTED, PASS, FAIL, or OK, according to the value of code.
+*/</doc>
+<use f='exim/src/routers/dnslookup.c' l='442' u='c' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='245' u='c' c='rf_lookup_hostlist'/>

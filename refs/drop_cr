@@ -1,3 +1,9 @@
 <dec f='exim/src/globals.h' l='435' type='BOOL'/>
 <doc f='exim/src/globals.h' l='434'>/* This option is now a no-opt, retained for compatibility */</doc>
 <doc f='exim/src/globals.h' l='435'>/* For broken local MUAs */</doc>
+<def f='exim/src/globals.c' l='708' type='BOOL'/>
+<doc f='exim/src/globals.c' l='708'>/* No longer used */</doc>
+<use f='exim/src/readconf.c' l='135' u='a'/>
+<use f='exim/src/readconf.c' l='135' u='a'/>
+<use f='exim/src/readconf.c' l='135' u='a'/>
+<use f='exim/src/readconf.c' l='135' u='a'/>

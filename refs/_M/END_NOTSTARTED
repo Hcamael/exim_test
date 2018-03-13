@@ -2,3 +2,5 @@
 <doc f='exim/src/macros.h' l='314'>/* Ending states when reading a message. The order is important. The test
 for having to swallow the rest of an SMTP message is whether the value is
 &gt;= END_NOTENDED. */</doc>
+<use f='exim/src/globals.c' l='968' u='c'/>
+<use f='exim/src/smtp_in.c' l='3790' u='c'/>

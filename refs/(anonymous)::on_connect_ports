@@ -1,3 +1,14 @@
 <dec f='exim/src/globals.h' l='92' type='uschar *'/>
 <offset>256</offset>
 <doc f='exim/src/globals.h' l='92'>/* Ports always tls-on-connect */</doc>
+<use f='exim/src/globals.c' l='113' u='w'/>
+<use f='exim/src/globals.c' l='130' u='w'/>
+<use f='exim/src/daemon.c' l='1152' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1159' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1160' u='w' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1174' u='w' c='daemon_go'/>
+<use f='exim/src/readconf.c' l='356' u='a'/>
+<use f='exim/src/readconf.c' l='356' u='a'/>
+<use f='exim/src/readconf.c' l='356' u='a'/>
+<use f='exim/src/readconf.c' l='356' u='a'/>
+<use f='exim/src/host.c' l='1244' u='r' c='host_is_tls_on_connect_port'/>

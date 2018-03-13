@@ -1,1 +1,22 @@
 <dec f='exim/src/local_scan.h' l='176' type='BOOL header_testname(header_line * , const uschar * , int , BOOL )'/>
+<def f='exim/src/header.c' l='30' ll='39' type='BOOL header_testname(header_line * h, const uschar * name, int len, BOOL notdel)'/>
+<use f='exim/src/header.c' l='139' u='c' c='header_add_backend'/>
+<use f='exim/src/header.c' l='161' u='c' c='header_add_backend'/>
+<use f='exim/src/header.c' l='273' u='c' c='header_remove'/>
+<doc f='exim/src/header.c' l='16'>/* This function tests the name of a header. It is made into a function because
+it isn&apos;t just a string comparison: spaces and tabs are permitted between the
+name and the colon. The h-&gt;text field should nowadays never be NULL, but check
+it just in case.
+
+Arguments:
+  h         points to the header
+  name      the name to test
+  len       the length of the name
+  notdel    if TRUE, force FALSE for deleted headers
+
+Returns:    TRUE or FALSE
+*/</doc>
+<use f='exim/src/receive.c' l='1206' u='c' c='add_acl_headers'/>
+<use f='exim/src/receive.c' l='1235' u='c' c='add_acl_headers'/>
+<use f='exim/src/receive.c' l='1238' u='c' c='add_acl_headers'/>
+<use f='exim/src/receive.c' l='1250' u='c' c='add_acl_headers'/>

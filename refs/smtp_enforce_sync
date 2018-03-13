@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='830' type='BOOL'/>
 <doc f='exim/src/globals.h' l='830'>/* Enforce sync rules */</doc>
+<def f='exim/src/globals.c' l='1329' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='371' u='r' c='check_sync'/>
+<use f='exim/src/smtp_in.c' l='384' u='r' c='pipeline_response'/>
+<use f='exim/src/smtp_in.c' l='1570' u='r' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='1619' u='r' c='smtp_read_command'/>
+<use f='exim/src/acl.c' l='3107' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3111' u='w' c='acl_check_condition'/>
+<use f='exim/src/readconf.c' l='289' u='a'/>
+<use f='exim/src/readconf.c' l='289' u='a'/>
+<use f='exim/src/readconf.c' l='289' u='a'/>
+<use f='exim/src/readconf.c' l='289' u='a'/>

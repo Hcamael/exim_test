@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>rf_set_ugid.c source code [exim/src/routers/rf_set_ugid.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/routers/rf_set_ugid.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>routers</a>/<a href='rf_set_ugid.c.html'>rf_set_ugid.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2009 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><u>#include <a href="../exim.h.html">"../exim.h"</a></u></td></tr>
+<tr><th id="9">9</th><td><u>#include <a href="rf_functions.h.html">"rf_functions.h"</a></u></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="13">13</th><td><i>*      Set uid/gid from block into address       *</i></td></tr>
+<tr><th id="14">14</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td><i>/* This function copies any set uid or gid from a ugid block into an</i></td></tr>
+<tr><th id="17">17</th><td><i>address.</i></td></tr>
+<tr><th id="18">18</th><td><i></i></td></tr>
+<tr><th id="19">19</th><td><i>Arguments:</i></td></tr>
+<tr><th id="20">20</th><td><i>  addr        the address</i></td></tr>
+<tr><th id="21">21</th><td><i>  ugid        the ugid block</i></td></tr>
+<tr><th id="22">22</th><td><i></i></td></tr>
+<tr><th id="23">23</th><td><i>Returns:      nothing</i></td></tr>
+<tr><th id="24">24</th><td><i>*/</i></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><em>void</em></td></tr>
+<tr><th id="27">27</th><td><dfn class="decl def fn" id="rf_set_ugid" title='rf_set_ugid' data-ref="rf_set_ugid">rf_set_ugid</dfn>(<a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *<dfn class="local col1 decl" id="1addr" title='addr' data-type='address_item *' data-ref="1addr">addr</dfn>, <a class="typedef" href="../structs.h.html#ugid_block" title='ugid_block' data-type='struct ugid_block' data-ref="ugid_block">ugid_block</a> *<dfn class="local col2 decl" id="2ugid" title='ugid' data-type='ugid_block *' data-ref="2ugid">ugid</dfn>)</td></tr>
+<tr><th id="28">28</th><td>{</td></tr>
+<tr><th id="29">29</th><td><b>if</b> (<a class="local col2 ref" href="#2ugid" title='ugid' data-ref="2ugid">ugid</a>-&gt;<a class="ref field" href="../structs.h.html#ugid_block::uid_set" title='ugid_block::uid_set' data-ref="ugid_block::uid_set">uid_set</a>)</td></tr>
+<tr><th id="30">30</th><td>  {</td></tr>
+<tr><th id="31">31</th><td>  <a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::uid" title='address_item::uid' data-ref="address_item::uid">uid</a> = <a class="local col2 ref" href="#2ugid" title='ugid' data-ref="2ugid">ugid</a>-&gt;<a class="ref field" href="../structs.h.html#ugid_block::uid" title='ugid_block::uid' data-ref="ugid_block::uid">uid</a>;</td></tr>
+<tr><th id="32">32</th><td>  <a class="macro" href="../macros.h.html#33" title="addr-&gt;flags.af_uid_set = 1" data-ref="_M/setflag">setflag</a>(<a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>, <a class="ref field" href="../structs.h.html#address_item::(anonymous)::af_uid_set" title='address_item::(anonymous struct)::af_uid_set' data-ref="address_item::(anonymous)::af_uid_set">af_uid_set</a>);</td></tr>
+<tr><th id="33">33</th><td>  }</td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><b>if</b> (<a class="local col2 ref" href="#2ugid" title='ugid' data-ref="2ugid">ugid</a>-&gt;<a class="ref field" href="../structs.h.html#ugid_block::gid_set" title='ugid_block::gid_set' data-ref="ugid_block::gid_set">gid_set</a>)</td></tr>
+<tr><th id="36">36</th><td>  {</td></tr>
+<tr><th id="37">37</th><td>  <a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::gid" title='address_item::gid' data-ref="address_item::gid">gid</a> = <a class="local col2 ref" href="#2ugid" title='ugid' data-ref="2ugid">ugid</a>-&gt;<a class="ref field" href="../structs.h.html#ugid_block::gid" title='ugid_block::gid' data-ref="ugid_block::gid">gid</a>;</td></tr>
+<tr><th id="38">38</th><td>  <a class="macro" href="../macros.h.html#33" title="addr-&gt;flags.af_gid_set = 1" data-ref="_M/setflag">setflag</a>(<a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>, <a class="ref field" href="../structs.h.html#address_item::(anonymous)::af_gid_set" title='address_item::(anonymous struct)::af_gid_set' data-ref="address_item::(anonymous)::af_gid_set">af_gid_set</a>);</td></tr>
+<tr><th id="39">39</th><td>  }</td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><b>if</b> (<a class="local col2 ref" href="#2ugid" title='ugid' data-ref="2ugid">ugid</a>-&gt;<a class="ref field" href="../structs.h.html#ugid_block::initgroups" title='ugid_block::initgroups' data-ref="ugid_block::initgroups">initgroups</a>) <a class="macro" href="../macros.h.html#33" title="addr-&gt;flags.af_initgroups = 1" data-ref="_M/setflag">setflag</a>(<a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>, <a class="ref field" href="../structs.h.html#address_item::(anonymous)::af_initgroups" title='address_item::(anonymous struct)::af_initgroups' data-ref="address_item::(anonymous)::af_initgroups">af_initgroups</a>);</td></tr>
+<tr><th id="42">42</th><td>}</td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><i>/* End of rf_set_ugid.c */</i></td></tr>
+<tr><th id="45">45</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

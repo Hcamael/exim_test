@@ -1,1 +1,38 @@
 <dec f='exim/src/functions.h' l='536' type='int verify_check_host(uschar ** )'/>
+<use f='exim/src/verify.c' l='2669' u='c' c='verify_get_ident'/>
+<def f='exim/src/verify.c' l='3218' ll='3223' type='int verify_check_host(uschar ** listptr)'/>
+<doc f='exim/src/verify.c' l='3206'>/* This is a front end to verify_check_this_host(), created because checking
+the remote host is a common occurrence. With luck, a good compiler will spot
+the tail recursion and optimize it. If there&apos;s no host address, this is
+command-line SMTP input - check against an empty string for the address.
+
+Arguments:
+  listptr              pointer to the host list
+
+Returns:               the yield of verify_check_this_host(),
+                       i.e. OK, FAIL, or DEFER
+*/</doc>
+<use f='exim/src/tls-openssl.c' l='2004' u='c' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2011' u='c' c='tls_server_start'/>
+<use f='exim/src/exim.c' l='5101' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5288' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='1597' u='c' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='2661' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2687' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2744' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2767' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2785' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2788' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2793' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2795' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2800' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='4199' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4229' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4252' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4292' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4307' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4644' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4975' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5455' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/daemon.c' l='337' u='c' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='2047' u='c' c='receive_msg'/>

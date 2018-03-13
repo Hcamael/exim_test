@@ -1,0 +1,6 @@
+<dec f='exim/src/tls-openssl.c' l='173' type='host_item *'/>
+<use f='exim/src/tls-openssl.c' l='1049' u='r' c='tls_add_certfile'/>
+<use f='exim/src/tls-openssl.c' l='1060' u='r' c='tls_add_pkeyfile'/>
+<use f='exim/src/tls-openssl.c' l='1526' u='w' c='tls_init'/>
+<offset>576</offset>
+<doc f='exim/src/tls-openssl.c' l='172'>/* only passed down to tls_error: */</doc>

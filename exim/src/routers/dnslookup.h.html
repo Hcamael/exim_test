@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>dnslookup.h source code [exim/src/routers/dnslookup.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/routers/dnslookup.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>routers</a>/<a href='dnslookup.h.html'>dnslookup.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2018 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Private structure for the private options. */</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td><b>typedef</b> <b>struct</b> {</td></tr>
+<tr><th id="11">11</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="decl field" id="(anonymous)::check_secondary_mx" title='(anonymous struct)::check_secondary_mx' data-ref="(anonymous)::check_secondary_mx">check_secondary_mx</dfn>;</td></tr>
+<tr><th id="12">12</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="decl field" id="(anonymous)::qualify_single" title='(anonymous struct)::qualify_single' data-ref="(anonymous)::qualify_single">qualify_single</dfn>;</td></tr>
+<tr><th id="13">13</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="decl field" id="(anonymous)::search_parents" title='(anonymous struct)::search_parents' data-ref="(anonymous)::search_parents">search_parents</dfn>;</td></tr>
+<tr><th id="14">14</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="decl field" id="(anonymous)::rewrite_headers" title='(anonymous struct)::rewrite_headers' data-ref="(anonymous)::rewrite_headers">rewrite_headers</dfn>;</td></tr>
+<tr><th id="15">15</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::widen_domains" title='(anonymous struct)::widen_domains' data-ref="(anonymous)::widen_domains">widen_domains</dfn>;</td></tr>
+<tr><th id="16">16</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::mx_domains" title='(anonymous struct)::mx_domains' data-ref="(anonymous)::mx_domains">mx_domains</dfn>;</td></tr>
+<tr><th id="17">17</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::mx_fail_domains" title='(anonymous struct)::mx_fail_domains' data-ref="(anonymous)::mx_fail_domains">mx_fail_domains</dfn>;</td></tr>
+<tr><th id="18">18</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::srv_fail_domains" title='(anonymous struct)::srv_fail_domains' data-ref="(anonymous)::srv_fail_domains">srv_fail_domains</dfn>;</td></tr>
+<tr><th id="19">19</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::check_srv" title='(anonymous struct)::check_srv' data-ref="(anonymous)::check_srv">check_srv</dfn>;</td></tr>
+<tr><th id="20">20</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::fail_defer_domains" title='(anonymous struct)::fail_defer_domains' data-ref="(anonymous)::fail_defer_domains">fail_defer_domains</dfn>;</td></tr>
+<tr><th id="21">21</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::ipv4_only" title='(anonymous struct)::ipv4_only' data-ref="(anonymous)::ipv4_only">ipv4_only</dfn>;</td></tr>
+<tr><th id="22">22</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="decl field" id="(anonymous)::ipv4_prefer" title='(anonymous struct)::ipv4_prefer' data-ref="(anonymous)::ipv4_prefer">ipv4_prefer</dfn>;</td></tr>
+<tr><th id="23">23</th><td>} <dfn class="typedef" id="dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</dfn>;</td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><i>/* Data for reading the private options. */</i></td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><b>extern</b> <a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a> <dfn class="decl" id="dnslookup_router_options" title='dnslookup_router_options' data-ref="dnslookup_router_options">dnslookup_router_options</dfn>[];</td></tr>
+<tr><th id="28">28</th><td><b>extern</b> <em>int</em> <dfn class="decl" id="dnslookup_router_options_count" title='dnslookup_router_options_count' data-ref="dnslookup_router_options_count">dnslookup_router_options_count</dfn>;</td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><i>/* Block containing default values. */</i></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><b>extern</b> <a class="typedef" href="#dnslookup_router_options_block" title='dnslookup_router_options_block' data-type='struct dnslookup_router_options_block' data-ref="dnslookup_router_options_block">dnslookup_router_options_block</a> <dfn class="decl" id="dnslookup_router_option_defaults" title='dnslookup_router_option_defaults' data-ref="dnslookup_router_option_defaults">dnslookup_router_option_defaults</dfn>;</td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><i>/* The main and initialization entry points for the router */</i></td></tr>
+<tr><th id="35">35</th><td></td></tr>
+<tr><th id="36">36</th><td><b>extern</b> <em>int</em> <dfn class="decl fn" id="dnslookup_router_entry" title='dnslookup_router_entry' data-ref="dnslookup_router_entry">dnslookup_router_entry</dfn>(<a class="typedef" href="../structs.h.html#router_instance" title='router_instance' data-type='struct router_instance' data-ref="router_instance">router_instance</a> *, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *,</td></tr>
+<tr><th id="37">37</th><td>  <b>struct</b> <a class="type" href="../../../include/pwd.h.html#passwd" title='passwd' data-ref="passwd">passwd</a> *, <em>int</em>, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **,</td></tr>
+<tr><th id="38">38</th><td>  <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **);</td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td><b>extern</b> <em>void</em> <dfn class="decl fn" id="dnslookup_router_init" title='dnslookup_router_init' data-ref="dnslookup_router_init">dnslookup_router_init</dfn>(<a class="typedef" href="../structs.h.html#router_instance" title='router_instance' data-type='struct router_instance' data-ref="router_instance">router_instance</a> *);</td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td><i>/* End of routers/dnslookup.h */</i></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='../drtables.c.html'>exim/src/drtables.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

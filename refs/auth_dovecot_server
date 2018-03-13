@@ -1,0 +1,2 @@
+<dec f='exim/src/auths/dovecot.h' l='26' type='int auth_dovecot_server(auth_instance * , uschar * )'/>
+<def f='exim/src/auths/dovecot.c' l='80' type='int auth_dovecot_server(auth_instance * ablock, uschar * data)'/>

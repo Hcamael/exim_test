@@ -1,0 +1,2 @@
+<def f='exim/src/macro_predef.c' l='19' type='void fn_smtp_receive_timeout(const uschar * name, const uschar * str)'/>
+<doc f='exim/src/macro_predef.c' l='17'>/* Global dummy variables */</doc>

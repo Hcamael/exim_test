@@ -1,1 +1,15 @@
 <dec f='exim/src/functions.h' l='476' type='uschar * string_unprinting(uschar * )'/>
+<use f='exim/src/tlscert-openssl.c' l='63' u='c' c='tls_import_cert'/>
+<def f='exim/src/string.c' l='356' ll='406' type='uschar * string_unprinting(uschar * s)'/>
+<doc f='exim/src/string.c' l='345'>/* This function is the reverse of string_printing2.  It searches for
+backslash characters and if any are found, it makes a new copy of the
+string with escape sequences parsed.  Otherwise it returns the original
+string.
+
+Arguments:
+  s             the input string
+
+Returns:        string with printing escapes parsed back
+*/</doc>
+<use f='exim/src/spool_in.c' l='640' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='642' u='c' c='spool_read_header'/>

@@ -1,0 +1,5 @@
+<dec f='exim/src/auths/auth-spa.h' l='80' type='void spa_bits_to_base64(unsigned char * , const unsigned char * , int )'/>
+<use f='exim/src/auths/spa.c' l='164' u='c' c='auth_spa_server'/>
+<use f='exim/src/auths/spa.c' l='333' u='c' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='351' u='c' c='auth_spa_client'/>
+<def f='exim/src/auths/auth-spa.c' l='373' ll='398' type='void spa_bits_to_base64(uschar * out, const uschar * in, int inlen)'/>

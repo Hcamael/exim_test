@@ -1,0 +1,10 @@
+<def f='exim/src/tls-openssl.c' l='1698' ll='1716' type='void construct_cipher_name(SSL * ssl, uschar * cipherbuf, int bsize, int * bits)'/>
+<use f='exim/src/tls-openssl.c' l='2077' u='c' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2423' u='c' c='tls_client_start'/>
+<doc f='exim/src/tls-openssl.c' l='1690'>/*
+Argument:   pointer to an SSL structure for the connection
+            buffer to use for answer
+            size of buffer
+	    pointer to number of bits for cipher
+Returns:    nothing
+*/</doc>

@@ -1,0 +1,13 @@
+<def f='exim/src/sieve.c' l='320' ll='343' type='int check_mail_address(struct Sieve * filter, const struct String * address)'/>
+<use f='exim/src/sieve.c' l='3228' u='c' c='parse_commands'/>
+<doc f='exim/src/sieve.c' l='308'>/*
+Check mail address for being syntactically correct.
+
+Arguments:
+  filter      points to the Sieve filter including its state
+  address     String containing one address
+
+Returns
+  1           Mail address is syntactically OK
+ -1           syntax error
+*/</doc>

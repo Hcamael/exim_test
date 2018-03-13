@@ -1,3 +1,6 @@
 <dec f='exim/src/macros.h' l='193'/>
 <doc f='exim/src/macros.h' l='190'>/* The maximum number of message ids to store in a waiting database
 record. */</doc>
+<use f='exim/src/exim_dbutil.c' l='1004' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='1007' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='1008' u='c'/>

@@ -1,1 +1,2 @@
 <dec f='include/openssl/evp.h' l='934' type='void EVP_PKEY_free(EVP_PKEY * pkey)'/>
+<use f='exim/src/tls-openssl.c' l='1034' u='c' c='tls_install_selfsign'/>

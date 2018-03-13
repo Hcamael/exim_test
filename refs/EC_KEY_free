@@ -2,3 +2,4 @@
 <doc f='include/openssl/ec.h' l='764'>/** Frees a EC_KEY object.
  *  \param  key  EC_KEY object to be freed.
  */</doc>
+<use f='exim/src/tls-openssl.c' l='807' u='c' c='init_ecdh'/>

@@ -1,0 +1,25 @@
+<dec f='exim/src/transports/tf_maildir.h' l='15' type='int maildir_ensure_sizefile(uschar * , appendfile_transport_options_block * , const pcre * , const pcre * , off_t * , int * )'/>
+<def f='exim/src/transports/tf_maildir.c' l='373' ll='598' type='int maildir_ensure_sizefile(uschar * path, appendfile_transport_options_block * ob, const pcre * regex, const pcre * dir_regex, off_t * returned_size, int * returned_filecount)'/>
+<doc f='exim/src/transports/tf_maildir.c' l='349'>/* This function is called before a delivery if the option to use
+maildirsizefile is enabled. Its function is to create the file if it does not
+exist, or to update it if that is necessary.
+
+The logic in this function follows the rules that are described in
+
+  http://www.inter7.com/courierimap/README.maildirquota.html
+
+Or, at least, it is supposed to!
+
+Arguments:
+  path             the path to the maildir directory; this is already backed-up
+                     to the parent if the delivery directory is a maildirfolder
+  ob               the appendfile options block
+  regex            a compiled regex for getting a file&apos;s size from its name
+  dir_regex        a compiled regex for selecting maildir directories
+  returned_size    where to return the current size of the maildir, even if
+                     the maildirsizefile is removed because of a race
+
+Returns:           &gt;=0  a file descriptor for an open maildirsize file
+                   -1   there was an error opening or accessing the file
+                   -2   the file was removed because of a race
+*/</doc>

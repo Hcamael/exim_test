@@ -1,1 +1,11 @@
 <dec f='exim/src/macros.h' l='737'/>
+<use f='exim/src/lookups/lsearch.c' l='428' u='c'/>
+<use f='exim/src/lookups/lsearch.c' l='440' u='c'/>
+<use f='exim/src/lookups/lsearch.c' l='452' u='c'/>
+<use f='exim/src/lookups/lsearch.c' l='464' u='c'/>
+<use f='exim/src/lookups/dbmdb.c' l='246' u='c'/>
+<use f='exim/src/lookups/dbmdb.c' l='258' u='c'/>
+<use f='exim/src/lookups/dbmdb.c' l='270' u='c'/>
+<use f='exim/src/search.c' l='374' u='c'/>
+<use f='exim/src/search.c' l='416' u='c'/>
+<use f='exim/src/search.c' l='628' u='c'/>

@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='703' type='unsigned int'/>
 <doc f='exim/src/globals.h' l='703'>/* Seed for random numbers */</doc>
+<use f='exim/src/deliver.c' l='2311' u='w' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='4685' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='5575' u='w' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1080' type='unsigned int'/>
+<use f='exim/src/host.c' l='85' u='r' c='random_number'/>
+<use f='exim/src/host.c' l='87' u='w' c='random_number'/>
+<use f='exim/src/host.c' l='90' u='w' c='random_number'/>
+<use f='exim/src/host.c' l='93' u='w' c='random_number'/>
+<use f='exim/src/host.c' l='93' u='r' c='random_number'/>
+<use f='exim/src/host.c' l='94' u='r' c='random_number'/>

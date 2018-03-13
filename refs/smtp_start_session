@@ -1,1 +1,13 @@
 <dec f='exim/src/functions.h' l='429' type='BOOL smtp_start_session()'/>
+<use f='exim/src/exim.c' l='5110' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5291' u='c' c='main'/>
+<def f='exim/src/smtp_in.c' l='2348' ll='2937' type='BOOL smtp_start_session()'/>
+<doc f='exim/src/smtp_in.c' l='2339'>/* This function is called at the start of an SMTP session. Thereafter,
+smtp_setup_msg() is called to initiate each separate message. This
+function does host-specific testing, and outputs the banner line.
+
+Arguments:     none
+Returns:       FALSE if the session can not continue; something has
+               gone wrong, or the connection to the host is blocked
+*/</doc>
+<use f='exim/src/daemon.c' l='481' u='c' c='handle_smtp_call'/>

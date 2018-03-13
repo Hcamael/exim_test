@@ -1,0 +1,3 @@
+<dec f='exim/src/transports/lmtp.h' l='29' type='BOOL lmtp_transport_entry(transport_instance * , address_item * )'/>
+<def f='exim/src/transports/lmtp.c' l='49' type='BOOL lmtp_transport_entry(transport_instance * tblock, address_item * addr)'/>
+<doc f='exim/src/transports/lmtp.h' l='27'>/* The main and init entry points for the transport */</doc>

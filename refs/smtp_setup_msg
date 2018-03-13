@@ -1,1 +1,25 @@
 <dec f='exim/src/functions.h' l='428' type='int smtp_setup_msg()'/>
+<use f='exim/src/exim.c' l='5114' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5378' u='c' c='main'/>
+<def f='exim/src/smtp_in.c' l='3771' ll='5740' type='int smtp_setup_msg()'/>
+<doc f='exim/src/smtp_in.c' l='3750'>/* This function conducts the initial dialogue at the start of an incoming SMTP
+message, and builds a list of recipients. However, if the incoming message
+is part of a batch (-bS option) a separate function is called since it would
+be messy having tests splattered about all over this function. This function
+therefore handles the case where interaction is occurring. The input and output
+files are set up in smtp_in and smtp_out.
+
+The global recipients_list is set to point to a vector of recipient_item
+blocks, whose number is given by recipients_count. This is extended by the
+receive_add_recipient() function. The global variable sender_address is set to
+the sender&apos;s address. The yield is +1 if a message has been successfully
+started, 0 if a QUIT command was encountered or the connection was refused from
+the particular host, or -1 if the connection was lost.
+
+Argument: none
+
+Returns:  &gt; 0 message successfully started (reached DATA)
+          = 0 QUIT read or end of file reached or call refused
+          &lt; 0 lost connection
+*/</doc>
+<use f='exim/src/daemon.c' l='504' u='c' c='handle_smtp_call'/>

@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='831' type='uschar *'/>
 <doc f='exim/src/globals.h' l='831'>/* Command to run */</doc>
+<def f='exim/src/globals.c' l='1335' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='5526' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5530' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5532' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/readconf.c' l='290' u='a'/>
+<use f='exim/src/readconf.c' l='290' u='a'/>
+<use f='exim/src/readconf.c' l='290' u='a'/>
+<use f='exim/src/readconf.c' l='290' u='a'/>

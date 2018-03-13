@@ -1,0 +1,2 @@
+<def f='exim/src/tls-openssl.c' l='3049' ll='3069' type='BOOL tls_openssl_one_option_parse(uschar * name, long * value)'/>
+<use f='exim/src/tls-openssl.c' l='3127' u='c' c='tls_openssl_options_parse'/>

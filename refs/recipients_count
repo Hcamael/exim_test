@@ -1,2 +1,82 @@
 <dec f='exim/src/local_scan.h' l='154' type='int'/>
 <doc f='exim/src/local_scan.h' l='154'>/* Number of recipients */</doc>
+<use f='exim/src/deliver.c' l='6127' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8014' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8016' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8028' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8028' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8034' u='r' c='deliver_message'/>
+<use f='exim/src/verify.c' l='2346' u='r' c='verify_check_notblind'/>
+<def f='exim/src/globals.c' l='1128' type='int'/>
+<use f='exim/src/exim.c' l='5531' u='r' c='main'/>
+<use f='exim/src/smtp_in.c' l='414' u='r' c='incomplete_transaction_log'/>
+<use f='exim/src/smtp_in.c' l='417' u='r' c='incomplete_transaction_log'/>
+<use f='exim/src/smtp_in.c' l='418' u='r' c='incomplete_transaction_log'/>
+<use f='exim/src/smtp_in.c' l='420' u='r' c='incomplete_transaction_log'/>
+<use f='exim/src/smtp_in.c' l='1961' u='w' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='2198' u='r' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2242' u='r' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='5011' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5012' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5015' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5016' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5112' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5477' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/queue.c' l='580' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='593' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='948' u='r' c='queue_list'/>
+<use f='exim/src/queue.c' l='1274' u='r' c='queue_action'/>
+<use f='exim/src/queue.c' l='1281' u='r' c='queue_action'/>
+<use f='exim/src/queue.c' l='1352' u='r' c='queue_action'/>
+<use f='exim/src/queue.c' l='1354' u='r' c='queue_action'/>
+<use f='exim/src/spool_in.c' l='708' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='708' u='r' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='708' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='841' u='r' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='842' u='r' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='843' u='r' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='844' u='r' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='845' u='r' c='spool_read_header'/>
+<use f='exim/src/log.c' l='1037' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='1053' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='1060' u='r' c='log_write'/>
+<use f='exim/src/acl.c' l='2290' u='r' c='acl_ratelimit'/>
+<use f='exim/src/expand.c' l='649' u='a'/>
+<use f='exim/src/expand.c' l='649' u='a'/>
+<use f='exim/src/expand.c' l='649' u='a'/>
+<use f='exim/src/expand.c' l='649' u='a'/>
+<use f='exim/src/expand.c' l='1674' u='r' c='fn_recipients'/>
+<use f='exim/src/daemon.c' l='549' u='r' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='488' u='r' c='receive_add_recipient'/>
+<use f='exim/src/receive.c' l='498' u='r' c='receive_add_recipient'/>
+<use f='exim/src/receive.c' l='499' u='r' c='receive_add_recipient'/>
+<use f='exim/src/receive.c' l='505' u='r' c='receive_add_recipient'/>
+<use f='exim/src/receive.c' l='506' u='r' c='receive_add_recipient'/>
+<use f='exim/src/receive.c' l='507' u='w' c='receive_add_recipient'/>
+<use f='exim/src/receive.c' l='561' u='r' c='receive_remove_recipient'/>
+<use f='exim/src/receive.c' l='565' u='w' c='receive_remove_recipient'/>
+<use f='exim/src/receive.c' l='567' u='r' c='receive_remove_recipient'/>
+<use f='exim/src/receive.c' l='1484' u='r' c='received_header_gen'/>
+<use f='exim/src/receive.c' l='2448' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2450' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2455' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2720' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2721' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2723' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2730' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3227' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3231' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3283' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3338' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3424' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3457' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3465' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3472' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3517' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3530' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3536' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3581' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3713' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3720' u='r' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='276' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='277' u='r' c='spool_write_header'/>

@@ -1,1 +1,5 @@
 <dec f='exim/src/macros.h' l='809' type='0'/>
+<use f='exim/src/smtp_in.c' l='1768' u='r' c='smtp_log_no_mail'/>
+<use f='exim/src/smtp_in.c' l='1771' u='r' c='smtp_log_no_mail'/>
+<use f='exim/src/smtp_in.c' l='1801' u='r' c='smtp_cmd_hist'/>
+<use f='exim/src/smtp_in.c' l='2359' u='r' c='smtp_start_session'/>

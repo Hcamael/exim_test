@@ -1,2 +1,5 @@
 <dec f='exim/src/macros.h' l='715'/>
 <doc f='exim/src/macros.h' l='713'>/* Option flags for verify_address() */</doc>
+<use f='exim/src/verify.c' l='1673' u='c'/>
+<use f='exim/src/verify.c' l='2584' u='c'/>
+<use f='exim/src/acl.c' l='1981' u='c'/>

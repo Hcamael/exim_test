@@ -1,0 +1,8 @@
+<dec f='exim/src/routers/dnslookup.h' l='40' type='void dnslookup_router_init(router_instance * )'/>
+<use f='exim/src/drtables.c' l='271'/>
+<use f='exim/src/drtables.c' l='271'/>
+<use f='exim/src/drtables.c' l='271'/>
+<use f='exim/src/drtables.c' l='271'/>
+<def f='exim/src/routers/dnslookup.c' l='93' ll='101' type='void dnslookup_router_init(router_instance * rblock)'/>
+<doc f='exim/src/routers/dnslookup.c' l='90'>/* Called for each instance, after its options have been read, to enable
+consistency checks to be done, or anything else that needs to be set up. */</doc>

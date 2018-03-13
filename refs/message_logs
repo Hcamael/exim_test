@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='589' type='BOOL'/>
 <doc f='exim/src/globals.h' l='589'>/* TRUE to write message logs */</doc>
+<use f='exim/src/deliver.c' l='397' u='r' c='deliver_msglog'/>
+<use f='exim/src/deliver.c' l='5783' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7897' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8378' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='977' type='BOOL'/>
+<use f='exim/src/exim.c' l='2056' u='w' c='main'/>
+<use f='exim/src/queue.c' l='1058' u='r' c='queue_action'/>
+<use f='exim/src/readconf.c' l='210' u='a'/>
+<use f='exim/src/readconf.c' l='210' u='a'/>
+<use f='exim/src/readconf.c' l='210' u='a'/>
+<use f='exim/src/readconf.c' l='210' u='a'/>
+<use f='exim/src/receive.c' l='4022' u='r' c='receive_msg'/>

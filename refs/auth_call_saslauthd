@@ -1,1 +1,17 @@
 <dec f='exim/src/functions.h' l='95' type='int auth_call_saslauthd(const uschar * , const uschar * , const uschar * , const uschar * , uschar ** )'/>
+<def f='exim/src/auths/call_pwcheck.c' l='90' ll='118' type='int auth_call_saslauthd(const uschar * username, const uschar * password, const uschar * service, const uschar * realm, uschar ** errptr)'/>
+<doc f='exim/src/auths/call_pwcheck.c' l='74'>/* This function calls the &quot;saslauthd&quot; Cyrus-SASL authentication daemon,
+saslauthd, As this is called from the string expander, all the strings will
+always be in dynamic store and can be overwritten.
+
+Arguments:
+  username        username
+  password        password
+  service         optional service
+  realm           optional realm
+  errptr          where to point an error message
+
+Returns:   OK if authentication succeeded
+           FAIL if authentication failed
+           ERROR some other error condition
+*/</doc>

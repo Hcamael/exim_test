@@ -1,0 +1,4 @@
+<def f='include/openssl/x509v3.h' l='719' ll='721'/>
+<size>16</size>
+<mbr r='ASRange_st::min' o='0' t='ASN1_INTEGER *'/>
+<mbr r='ASRange_st::max' o='64' t='ASN1_INTEGER *'/>

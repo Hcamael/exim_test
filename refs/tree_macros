@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='957' type='tree_node *'/>
 <doc f='exim/src/globals.h' l='957'>/* Configuration macros */</doc>
+<use f='exim/src/macro.c' l='49' u='a' c='macro_create'/>
+<use f='exim/src/macro.c' l='66' u='r' c='macro_search'/>
+<use f='exim/src/macro.c' l='83' u='r' c='macro_search_prefix'/>
+<def f='exim/src/macro_predef.c' l='14' type='tree_node *'/>
+<use f='exim/src/macro_predef.c' l='335' u='r' c='main'/>
+<use f='exim/src/macro_predef.c' l='335' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4996' u='w' c='main'/>

@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='814' type='uschar *'/>
 <offset>64</offset>
 <doc f='exim/src/structs.h' l='814'>/* current position in the buffer */</doc>
+<use f='exim/src/verify.c' l='1287' u='w' c='cutthrough_response'/>
+<use f='exim/src/smtp_out.c' l='547' u='r' c='read_response_line'/>
+<use f='exim/src/smtp_out.c' l='573' u='w' c='read_response_line'/>

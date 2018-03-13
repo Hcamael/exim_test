@@ -1,2 +1,6 @@
 <dec f='exim/src/dbstuff.h' l='172'/>
 <doc f='exim/src/dbstuff.h' l='171'>/* EXIM_DBPUT - returns nothing useful, assumes replace mode */</doc>
+<use f='exim/src/exim_dbmbuild.c' l='313' u='c'/>
+<use f='exim/src/exim_dbmbuild.c' l='406' u='c'/>
+<use f='exim/src/exim_dbutil.c' l='421' u='c'/>
+<use f='exim/src/dbfn.c' l='356' u='c'/>

@@ -1,0 +1,4 @@
+<dec f='exim/src/auths/spa.h' l='30' type='auth_spa_options_block'/>
+<def f='exim/src/auths/spa.c' l='66' ll='71' type='auth_spa_options_block'/>
+<doc f='exim/src/auths/spa.c' l='64'>/* Default private options block for the condition authentication method. */</doc>
+<doc f='exim/src/auths/spa.h' l='28'>/* Block containing default values. */</doc>

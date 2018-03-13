@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='827' type='BOOL'/>
 <offset>96</offset>
 <doc f='exim/src/structs.h' l='827'>/* TRUE when authenticating */</doc>
+<use f='exim/src/smtp_out.c' l='496' u='r' c='smtp_write_command'/>

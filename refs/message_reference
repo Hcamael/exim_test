@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='598' type='uschar *'/>
 <doc f='exim/src/globals.h' l='598'>/* Reference for error messages */</doc>
+<def f='exim/src/globals.c' l='985' type='uschar *'/>
+<use f='exim/src/moan.c' l='380' u='r' c='moan_to_sender'/>
+<use f='exim/src/moan.c' l='381' u='r' c='moan_to_sender'/>
+<use f='exim/src/exim.c' l='2490' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3081' u='w' c='main'/>
+<use f='exim/src/receive.c' l='3908' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3909' u='r' c='receive_msg'/>

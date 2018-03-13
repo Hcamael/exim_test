@@ -1,1 +1,3 @@
 <dec f='include/netinet/ip.h' l='216'/>
+<use f='exim/src/ip.c' l='687' u='a'/>
+<use f='exim/src/ip.c' l='688' u='c'/>

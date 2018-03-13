@@ -1,3 +1,4 @@
 <dec f='exim/src/lookupapi.h' l='20' type='void *(*)(uschar *, uschar **)'/>
 <offset>128</offset>
 <doc f='exim/src/lookupapi.h' l='20'>/* open function */</doc>
+<use f='exim/src/search.c' l='398' u='r' c='search_open'/>

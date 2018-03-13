@@ -14,3 +14,9 @@
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */</doc>
+<use f='exim/src/deliver.c' l='3879' u='c' c='par_wait'/>
+<use f='exim/src/deliver.c' l='3985' u='c' c='par_wait'/>
+<use f='exim/src/deliver.c' l='8560' u='c' c='delivery_re_exec'/>
+<use f='exim/src/log.c' l='330' u='c' c='log_create_as_exim'/>
+<use f='exim/src/daemon.c' l='842' u='c' c='handle_ending_processes'/>
+<use f='exim/src/child.c' l='499' u='c' c='child_close'/>

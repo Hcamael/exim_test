@@ -1,0 +1,21 @@
+<dec f='exim/src/expand.c' l='419' type='28'/>
+<use f='exim/src/expand.c' l='732'/>
+<use f='exim/src/expand.c' l='732'/>
+<use f='exim/src/expand.c' l='733'/>
+<use f='exim/src/expand.c' l='733'/>
+<use f='exim/src/expand.c' l='745'/>
+<use f='exim/src/expand.c' l='745'/>
+<use f='exim/src/expand.c' l='746'/>
+<use f='exim/src/expand.c' l='746'/>
+<use f='exim/src/expand.c' l='732'/>
+<use f='exim/src/expand.c' l='732'/>
+<use f='exim/src/expand.c' l='733'/>
+<use f='exim/src/expand.c' l='733'/>
+<use f='exim/src/expand.c' l='745'/>
+<use f='exim/src/expand.c' l='745'/>
+<use f='exim/src/expand.c' l='746'/>
+<use f='exim/src/expand.c' l='746'/>
+<use f='exim/src/expand.c' l='1297' u='r' c='expand_getcertele'/>
+<use f='exim/src/expand.c' l='1932' c='find_variable'/>
+<use f='exim/src/expand.c' l='6261' u='r' c='expand_string_internal'/>
+<doc f='exim/src/expand.c' l='419'>/* SSL certificate */</doc>

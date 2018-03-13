@@ -1,3 +1,7 @@
 <dec f='exim/src/structs.h' l='471' type='uschar *'/>
 <offset>448</offset>
 <doc f='exim/src/structs.h' l='471'>/* text string body */</doc>
+<use f='exim/src/rda.c' l='761' u='r' c='rda_interpret'/>
+<use f='exim/src/rda.c' l='937' u='a' c='rda_interpret'/>
+<use f='exim/src/sieve.c' l='3395' u='w' c='parse_commands'/>
+<use f='exim/src/sieve.c' l='3405' u='w' c='parse_commands'/>

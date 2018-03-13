@@ -1,0 +1,2 @@
+<dec f='exim/src/valgrind.h' l='4733'/>
+<doc f='exim/src/valgrind.h' l='4732'>/* Return 1 if a mempool exists, else 0. */</doc>

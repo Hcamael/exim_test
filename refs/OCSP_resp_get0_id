@@ -1,0 +1,1 @@
+<dec f='include/openssl/ocsp.h' l='218' type='int OCSP_resp_get0_id(const OCSP_BASICRESP * bs, const ASN1_OCTET_STRING ** pid, const X509_NAME ** pname)'/>

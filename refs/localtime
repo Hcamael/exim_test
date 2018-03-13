@@ -1,0 +1,5 @@
+<use f='exim/src/tod.c' l='87' u='c' c='tod_stamp'/>
+<use f='exim/src/tlscert-openssl.c' l='163' u='c' c='asn1_time_copy'/>
+<use f='exim/src/debug.c' l='191' u='c' c='debug_vprintf'/>
+<use f='exim/src/exim_dbutil.c' l='165' u='c' c='print_time'/>
+<use f='exim/src/exim_dbutil.c' l='197' u='c' c='read_time'/>

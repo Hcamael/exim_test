@@ -1,0 +1,18 @@
+<dec f='exim/src/auths/auth-spa.h' l='43' type='uint32x'/>
+<dec f='exim/src/auths/auth-spa.h' l='56' type='uint32x'/>
+<dec f='exim/src/auths/auth-spa.h' l='73' type='uint32x'/>
+<offset>480</offset>
+<use f='exim/src/auths/auth-spa.c' l='1393' u='a' c='spa_build_auth_request'/>
+<use f='exim/src/auths/auth-spa.c' l='1393' u='a' c='spa_build_auth_request'/>
+<use f='exim/src/auths/auth-spa.c' l='1393' u='a' c='spa_build_auth_request'/>
+<use f='exim/src/auths/auth-spa.c' l='1393' u='a' c='spa_build_auth_request'/>
+<use f='exim/src/auths/auth-spa.c' l='1419' u='a' c='spa_build_auth_challenge'/>
+<use f='exim/src/auths/auth-spa.c' l='1419' u='a' c='spa_build_auth_challenge'/>
+<use f='exim/src/auths/auth-spa.c' l='1419' u='a' c='spa_build_auth_challenge'/>
+<use f='exim/src/auths/auth-spa.c' l='1419' u='a' c='spa_build_auth_challenge'/>
+<use f='exim/src/auths/auth-spa.c' l='1493' u='a' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1493' u='a' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1493' u='a' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1493' u='a' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1530' u='w' c='spa_build_auth_response'/>
+<use f='exim/src/auths/auth-spa.c' l='1530' u='r' c='spa_build_auth_response'/>

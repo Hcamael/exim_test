@@ -1,2 +1,23 @@
 <dec f='exim/src/globals.h' l='540' type='uschar *'/>
 <doc f='exim/src/globals.h' l='540'>/* Text returned by local_scan() */</doc>
+<def f='exim/src/globals.c' l='847' type='uschar *'/>
+<use f='exim/src/spool_in.c' l='270' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='582' u='w' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='560' u='a'/>
+<use f='exim/src/expand.c' l='560' u='a'/>
+<use f='exim/src/expand.c' l='560' u='a'/>
+<use f='exim/src/expand.c' l='560' u='a'/>
+<use f='exim/src/receive.c' l='3654' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3658' u='a' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3666' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3676' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3678' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3680' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3680' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3708' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3711' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3733' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4327' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4328' u='r' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='224' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='224' u='r' c='spool_write_header'/>

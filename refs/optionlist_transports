@@ -1,1 +1,11 @@
 <dec f='exim/src/globals.h' l='635' type='optionlist []'/>
+<def f='exim/src/transport.c' l='19' ll='87' type='optionlist [32]'/>
+<use f='exim/src/transport.c' l='89' u='r'/>
+<use f='exim/src/transport.c' l='89' u='r'/>
+<use f='exim/src/transport.c' l='101' u='r' c='options_transports'/>
+<use f='exim/src/transport.c' l='101' u='r' c='options_transports'/>
+<use f='exim/src/transport.c' l='101' u='r' c='options_transports'/>
+<doc f='exim/src/transport.c' l='14'>/* Generic options for transports, all of which live inside transport_instance
+data blocks and which therefore have the opt_public flag set. Note that there
+are other options living inside this structure which can be set only from
+certain transports. */</doc>

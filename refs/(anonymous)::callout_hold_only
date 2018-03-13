@@ -1,3 +1,13 @@
 <dec f='exim/src/globals.h' l='305' type='unsigned int'/>
 <offset>0</offset>
 <doc f='exim/src/globals.h' l='305'>/* Conn is only for verify callout */</doc>
+<use f='exim/src/deliver.c' l='4481' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4988' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='8529' u='r' c='delivery_re_exec'/>
+<use f='exim/src/verify.c' l='1045' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='1312' u='r' c='cutthrough_predata'/>
+<use f='exim/src/verify.c' l='1347' u='r' c='cutthrough_headers_send'/>
+<use f='exim/src/verify.c' l='1406' u='w' c='cancel_cutthrough_connection'/>
+<use f='exim/src/verify.c' l='1416' u='w' c='release_cutthrough_connection'/>
+<use f='exim/src/globals.c' l='548' u='w'/>
+<use f='exim/src/receive.c' l='4306' u='w' c='receive_msg'/>

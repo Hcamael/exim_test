@@ -1,1 +1,66 @@
 <dec f='exim/src/functions.h' l='278' type='int match_isinlist(const uschar * , const uschar ** , int , tree_node ** , unsigned int * , int , BOOL , const uschar ** )'/>
+<use f='exim/src/environment.c' l='53' u='c' c='cleanup_environment'/>
+<use f='exim/src/deliver.c' l='3221' u='c' c='sort_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='3231' u='c' c='sort_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='5119' u='c' c='deliver_split_address'/>
+<use f='exim/src/deliver.c' l='6485' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6697' u='c' c='deliver_message'/>
+<use f='exim/src/smtp_in.c' l='4045' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/lookups/lsearch.c' l='185' u='c' c='internal_lsearch_find'/>
+<use f='exim/src/routers/dnslookup.c' l='312' u='c' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/dnslookup.c' l='349' u='c' c='dnslookup_router_entry'/>
+<use f='exim/src/acl.c' l='2973' u='c' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3435' u='c' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3442' u='c' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3464' u='c' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3484' u='c' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3505' u='c' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3631' u='c' c='acl_check_condition'/>
+<def f='exim/src/match.c' l='948' ll='964' type='int match_isinlist(const uschar * s, const uschar ** listptr, int sep, tree_node ** anchorptr, unsigned int * cache_bits, int type, BOOL caseless, const uschar ** valueptr)'/>
+<doc f='exim/src/match.c' l='913'>/* This function is used for domain lists and local part lists. It is not used
+for host lists or address lists, which have additional interpretation of the
+patterns. Some calls of it set sep &gt; UCHAR_MAX in order to use its matching
+facilities on single items. When this is done, it arranges to set the numerical
+variables as a result of the match.
+
+This function is now just a short interface to match_check_list(), which does
+list scanning in a general way. A good compiler will optimize the tail
+recursion.
+
+Arguments:
+  s              string to search for
+  listptr        ptr to ptr to colon separated list of patterns, or NULL
+  sep            a separator value for the list (see string_nextinlist())
+  anchorptr      ptr to tree for named items, or NULL if no named items
+  cache_bits     ptr to cache_bits for ditto, or NULL if not caching
+  type           MCL_DOMAIN when matching a domain list
+                 MCL_LOCALPART when matching a local part list (address lists
+                   have their own function)
+                 MCL_STRING for others (e.g. list of ciphers)
+                 MCL_NOEXPAND (whose value is greater than any of them) may
+                   be added to any value to suppress expansion of the list
+  caseless       TRUE for (mostly) caseless matching - passed directly to
+                   match_check_string()
+  valueptr       pointer to where any lookup data is to be passed back,
+                 or NULL (just passed on to match_check_string)
+
+Returns:         OK    if matched a non-negated item
+                 OK    if hit end of list after a negated item
+                 FAIL  if expansion force-failed
+                 FAIL  if matched a negated item
+                 FAIL  if hit end of list after a non-negated item
+                 DEFER if a lookup deferred
+*/</doc>
+<use f='exim/src/expand.c' l='2613' u='c' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2653' u='c' c='eval_condition'/>
+<use f='exim/src/host.c' l='1396' u='c' c='host_scan_for_local_hosts'/>
+<use f='exim/src/host.c' l='2219' u='c' c='host_find_byname'/>
+<use f='exim/src/host.c' l='2578' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2582' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2647' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2698' u='c' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2708' u='c' c='host_find_bydns'/>
+<use f='exim/src/lss.c' l='30' u='c' c='lss_match_domain'/>
+<use f='exim/src/lss.c' l='52' u='c' c='lss_match_local_part'/>
+<use f='exim/src/dns.c' l='521' u='c' c='dns_is_secure'/>
+<use f='exim/src/dns.c' l='791' u='c' c='dns_basic_lookup'/>

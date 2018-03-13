@@ -1,0 +1,791 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>moan.c source code [exim/src/moan.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/moan.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='moan.c.html'>moan.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Functions for sending messages to sender or to mailmaster. */</i></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><u>#include <a href="exim.h.html">"exim.h"</a></u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="16">16</th><td><i>*            Write From: line for DSN            *</i></td></tr>
+<tr><th id="17">17</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><i>/* This function is called to write the From: line in automatically generated</i></td></tr>
+<tr><th id="20">20</th><td><i>messages - bounces, warnings, etc. It expands a configuration item in order to</i></td></tr>
+<tr><th id="21">21</th><td><i>get the text. If the expansion fails, a panic is logged and the default value</i></td></tr>
+<tr><th id="22">22</th><td><i>for the option is used.</i></td></tr>
+<tr><th id="23">23</th><td><i></i></td></tr>
+<tr><th id="24">24</th><td><i>Argument:   the FILE to write to</i></td></tr>
+<tr><th id="25">25</th><td><i>Returns:    nothing</i></td></tr>
+<tr><th id="26">26</th><td><i>*/</i></td></tr>
+<tr><th id="27">27</th><td></td></tr>
+<tr><th id="28">28</th><td><em>void</em></td></tr>
+<tr><th id="29">29</th><td><dfn class="decl def fn" id="moan_write_from" title='moan_write_from' data-ref="moan_write_from">moan_write_from</dfn>(<a class="typedef" href="../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col1 decl" id="1f" title='f' data-type='FILE *' data-ref="1f">f</dfn>)</td></tr>
+<tr><th id="30">30</th><td>{</td></tr>
+<tr><th id="31">31</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="2s" title='s' data-type='uschar *' data-ref="2s">s</dfn> = <a class="ref fn" href="local_scan.h.html#expand_string" title='expand_string' data-ref="expand_string">expand_string</a>(<a class="ref" href="globals.h.html#dsn_from" title='dsn_from' data-ref="dsn_from">dsn_from</a>);</td></tr>
+<tr><th id="32">32</th><td><b>if</b> (<a class="local col2 ref" href="#2s" title='s' data-ref="2s">s</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="33">33</th><td>  {</td></tr>
+<tr><th id="34">34</th><td>  <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>|<a class="macro" href="macros.h.html#792" title="2" data-ref="_M/LOG_PANIC">LOG_PANIC</a>,</td></tr>
+<tr><th id="35">35</th><td>    <q>"Failed to expand dsn_from (using default): %s"</q>, <a class="ref" href="local_scan.h.html#expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</a>);</td></tr>
+<tr><th id="36">36</th><td>  <a class="local col2 ref" href="#2s" title='s' data-ref="2s">s</a> = <a class="ref fn" href="local_scan.h.html#expand_string" title='expand_string' data-ref="expand_string">expand_string</a>(<a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="macro" href="macros.h.html#122" title="&quot;Mail Delivery System &lt;Mailer-Daemon@$qualify_domain&gt;&quot;" data-ref="_M/DEFAULT_DSN_FROM">DEFAULT_DSN_FROM</a>);</td></tr>
+<tr><th id="37">37</th><td>  }</td></tr>
+<tr><th id="38">38</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col1 ref" href="#1f" title='f' data-ref="1f">f</a>, <q>"From: %s\n"</q>, <a class="local col2 ref" href="#2s" title='s' data-ref="2s">s</a>);</td></tr>
+<tr><th id="39">39</th><td>}</td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="44">44</th><td><i>*              Send error message                *</i></td></tr>
+<tr><th id="45">45</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td><i  data-doc="moan_send_message">/* This function sends an error message by opening a pipe to a new process</i></td></tr>
+<tr><th id="48">48</th><td><i  data-doc="moan_send_message">running Exim, and writing a message to it using the "-t" option. This is not</i></td></tr>
+<tr><th id="49">49</th><td><i  data-doc="moan_send_message">used for delivery failures, which have their own code for handing failed</i></td></tr>
+<tr><th id="50">50</th><td><i  data-doc="moan_send_message">addresses.</i></td></tr>
+<tr><th id="51">51</th><td><i  data-doc="moan_send_message"></i></td></tr>
+<tr><th id="52">52</th><td><i  data-doc="moan_send_message">Arguments:</i></td></tr>
+<tr><th id="53">53</th><td><i  data-doc="moan_send_message">  recipient      addressee for the message</i></td></tr>
+<tr><th id="54">54</th><td><i  data-doc="moan_send_message">  ident          identifies the type of error</i></td></tr>
+<tr><th id="55">55</th><td><i  data-doc="moan_send_message">  eblock         chain of error_blocks containing data about the error</i></td></tr>
+<tr><th id="56">56</th><td><i  data-doc="moan_send_message">  headers        the message's headers</i></td></tr>
+<tr><th id="57">57</th><td><i  data-doc="moan_send_message">  message_file   FILE containing the body of the message</i></td></tr>
+<tr><th id="58">58</th><td><i  data-doc="moan_send_message">  firstline      contains first line of file, if it was read to check for</i></td></tr>
+<tr><th id="59">59</th><td><i  data-doc="moan_send_message">                   "From ", but it turned out not to be</i></td></tr>
+<tr><th id="60">60</th><td><i  data-doc="moan_send_message"></i></td></tr>
+<tr><th id="61">61</th><td><i  data-doc="moan_send_message">Returns:         TRUE if message successfully sent</i></td></tr>
+<tr><th id="62">62</th><td><i  data-doc="moan_send_message">*/</i></td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><em>static</em> <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a></td></tr>
+<tr><th id="65">65</th><td><dfn class="tu decl def fn" id="moan_send_message" title='moan_send_message' data-type='BOOL moan_send_message(uschar * recipient, int ident, error_block * eblock, header_line * headers, FILE * message_file, uschar * firstline)' data-ref="moan_send_message">moan_send_message</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="3recipient" title='recipient' data-type='uschar *' data-ref="3recipient">recipient</dfn>, <em>int</em> <dfn class="local col4 decl" id="4ident" title='ident' data-type='int' data-ref="4ident">ident</dfn>, <a class="typedef" href="structs.h.html#error_block" title='error_block' data-type='struct error_block' data-ref="error_block">error_block</a> *<dfn class="local col5 decl" id="5eblock" title='eblock' data-type='error_block *' data-ref="5eblock">eblock</dfn>,</td></tr>
+<tr><th id="66">66</th><td>  <a class="typedef" href="local_scan.h.html#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *<dfn class="local col6 decl" id="6headers" title='headers' data-type='header_line *' data-ref="6headers">headers</dfn>, <a class="typedef" href="../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col7 decl" id="7message_file" title='message_file' data-type='FILE *' data-ref="7message_file">message_file</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col8 decl" id="8firstline" title='firstline' data-type='uschar *' data-ref="8firstline">firstline</dfn>)</td></tr>
+<tr><th id="67">67</th><td>{</td></tr>
+<tr><th id="68">68</th><td><em>int</em> <dfn class="local col9 decl" id="9written" title='written' data-type='int' data-ref="9written">written</dfn> = <var>0</var>;</td></tr>
+<tr><th id="69">69</th><td><em>int</em> <dfn class="local col0 decl" id="10fd" title='fd' data-type='int' data-ref="10fd">fd</dfn>;</td></tr>
+<tr><th id="70">70</th><td><em>int</em> <dfn class="local col1 decl" id="11status" title='status' data-type='int' data-ref="11status">status</dfn>;</td></tr>
+<tr><th id="71">71</th><td><em>int</em> <dfn class="local col2 decl" id="12count" title='count' data-type='int' data-ref="12count">count</dfn> = <var>0</var>;</td></tr>
+<tr><th id="72">72</th><td><em>int</em> <dfn class="local col3 decl" id="13size_limit" title='size_limit' data-type='int' data-ref="13size_limit">size_limit</dfn> = <a class="ref" href="globals.h.html#bounce_return_size_limit" title='bounce_return_size_limit' data-ref="bounce_return_size_limit">bounce_return_size_limit</a>;</td></tr>
+<tr><th id="73">73</th><td><a class="typedef" href="../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col4 decl" id="14f" title='f' data-type='FILE *' data-ref="14f">f</dfn>;</td></tr>
+<tr><th id="74">74</th><td><em>int</em> <dfn class="local col5 decl" id="15pid" title='pid' data-type='int' data-ref="15pid">pid</dfn> = <a class="ref fn" href="local_scan.h.html#child_open_exim" title='child_open_exim' data-ref="child_open_exim">child_open_exim</a>(&amp;<a class="local col0 ref" href="#10fd" title='fd' data-ref="10fd">fd</a>);</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><i>/* Creation of child failed */</i></td></tr>
+<tr><th id="77">77</th><td></td></tr>
+<tr><th id="78">78</th><td><b>if</b> (<a class="local col5 ref" href="#15pid" title='pid' data-ref="15pid">pid</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="79">79</th><td>  {</td></tr>
+<tr><th id="80">80</th><td>  <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; ((0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )))" data-ref="_M/DEBUG">DEBUG</a>(<a class="macro" href="macros.h.html#413" title="(0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )" data-ref="_M/D_any">D_any</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"Failed to create child to send message: %s\n"</q>,</td></tr>
+<tr><th id="81">81</th><td>    <a class="ref fn" href="../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="82">82</th><td>  <b>return</b> <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="83">83</th><td>  }</td></tr>
+<tr><th id="84">84</th><td><b>else</b> <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; ((0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )))" data-ref="_M/DEBUG">DEBUG</a>(<a class="macro" href="macros.h.html#413" title="(0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )" data-ref="_M/D_any">D_any</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"Child process %d for sending message\n"</q>, <a class="local col5 ref" href="#15pid" title='pid' data-ref="15pid">pid</a>);</td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td><i>/* Creation of child succeeded */</i></td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td><a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a> = <a class="ref fn" href="../../include/stdio.h.html#fdopen" title='fdopen' data-ref="fdopen">fdopen</a>(<a class="local col0 ref" href="#10fd" title='fd' data-ref="10fd">fd</a>, <q>"wb"</q>);</td></tr>
+<tr><th id="89">89</th><td><b>if</b> (<a class="ref" href="globals.h.html#errors_reply_to" title='errors_reply_to' data-ref="errors_reply_to">errors_reply_to</a>) <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"Reply-To: %s\n"</q>, <a class="ref" href="globals.h.html#errors_reply_to" title='errors_reply_to' data-ref="errors_reply_to">errors_reply_to</a>);</td></tr>
+<tr><th id="90">90</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"Auto-Submitted: auto-replied\n"</q>);</td></tr>
+<tr><th id="91">91</th><td><a class="ref fn" href="#moan_write_from" title='moan_write_from' data-ref="moan_write_from">moan_write_from</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>);</td></tr>
+<tr><th id="92">92</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"To: %s\n"</q>, <a class="local col3 ref" href="#3recipient" title='recipient' data-ref="3recipient">recipient</a>);</td></tr>
+<tr><th id="93">93</th><td></td></tr>
+<tr><th id="94">94</th><td><b>switch</b>(<a class="local col4 ref" href="#4ident" title='ident' data-ref="4ident">ident</a>)</td></tr>
+<tr><th id="95">95</th><td>  {</td></tr>
+<tr><th id="96">96</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_BADARGADDRESS" title='ERRMESS_BADARGADDRESS' data-ref="ERRMESS_BADARGADDRESS">ERRMESS_BADARGADDRESS</a>:</td></tr>
+<tr><th id="97">97</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="98">98</th><td>      <q>"Subject: Mail failure - malformed recipient address\n\n"</q>);</td></tr>
+<tr><th id="99">99</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="100">100</th><td>      <q>"A message that you sent contained a recipient address that was incorrectly\n"</q></td></tr>
+<tr><th id="101">101</th><td>      <q>"constructed:\n\n"</q>);</td></tr>
+<tr><th id="102">102</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"  %s  %s\n"</q>, <a class="local col5 ref" href="#5eblock" title='eblock' data-ref="5eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text1" title='error_block::text1' data-ref="error_block::text1">text1</a>, <a class="local col5 ref" href="#5eblock" title='eblock' data-ref="5eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text2" title='error_block::text2' data-ref="error_block::text2">text2</a>);</td></tr>
+<tr><th id="103">103</th><td>    <a class="local col2 ref" href="#12count" title='count' data-ref="12count">count</a> = <a class="macro" href="mytypes.h.html#104" title="(int)strlen((const char *)(eblock-&gt;text1))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col5 ref" href="#5eblock" title='eblock' data-ref="5eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text1" title='error_block::text1' data-ref="error_block::text1">text1</a>);</td></tr>
+<tr><th id="104">104</th><td>    <b>if</b> (<a class="local col2 ref" href="#12count" title='count' data-ref="12count">count</a> &gt; <var>0</var> &amp;&amp; <a class="local col5 ref" href="#5eblock" title='eblock' data-ref="5eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text1" title='error_block::text1' data-ref="error_block::text1">text1</a>[<a class="local col2 ref" href="#12count" title='count' data-ref="12count">count</a>-<var>1</var>] == <kbd>'.'</kbd>)</td></tr>
+<tr><th id="105">105</th><td>      <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="106">106</th><td>	<q>"\nRecipient addresses must not end with a '.' character.\n"</q>);</td></tr>
+<tr><th id="107">107</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="108">108</th><td>      <q>"\nThe message has not been delivered to any recipients.\n"</q>);</td></tr>
+<tr><th id="109">109</th><td>    <b>break</b>;</td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_BADNOADDRESS" title='ERRMESS_BADNOADDRESS' data-ref="ERRMESS_BADNOADDRESS">ERRMESS_BADNOADDRESS</a>:</td></tr>
+<tr><th id="112">112</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_BADADDRESS" title='ERRMESS_BADADDRESS' data-ref="ERRMESS_BADADDRESS">ERRMESS_BADADDRESS</a>:</td></tr>
+<tr><th id="113">113</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="114">114</th><td>      <q>"Subject: Mail failure - malformed recipient address\n\n"</q>);</td></tr>
+<tr><th id="115">115</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="116">116</th><td>      <q>"A message that you sent contained one or more recipient addresses that were\n"</q></td></tr>
+<tr><th id="117">117</th><td>      <q>"incorrectly constructed:\n\n"</q>);</td></tr>
+<tr><th id="118">118</th><td></td></tr>
+<tr><th id="119">119</th><td>    <b>while</b> (<a class="local col5 ref" href="#5eblock" title='eblock' data-ref="5eblock">eblock</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="120">120</th><td>      {</td></tr>
+<tr><th id="121">121</th><td>      <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"  %s: %s\n"</q>, <a class="local col5 ref" href="#5eblock" title='eblock' data-ref="5eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text1" title='error_block::text1' data-ref="error_block::text1">text1</a>, <a class="local col5 ref" href="#5eblock" title='eblock' data-ref="5eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text2" title='error_block::text2' data-ref="error_block::text2">text2</a>);</td></tr>
+<tr><th id="122">122</th><td>      <a class="local col2 ref" href="#12count" title='count' data-ref="12count">count</a>++;</td></tr>
+<tr><th id="123">123</th><td>      <a class="local col5 ref" href="#5eblock" title='eblock' data-ref="5eblock">eblock</a> = <a class="local col5 ref" href="#5eblock" title='eblock' data-ref="5eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::next" title='error_block::next' data-ref="error_block::next">next</a>;</td></tr>
+<tr><th id="124">124</th><td>      }</td></tr>
+<tr><th id="125">125</th><td></td></tr>
+<tr><th id="126">126</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, (<a class="local col2 ref" href="#12count" title='count' data-ref="12count">count</a> == <var>1</var>)? <q>"\nThis address has been ignored. "</q> :</td></tr>
+<tr><th id="127">127</th><td>      <q>"\nThese addresses have been ignored. "</q>);</td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, (<a class="local col4 ref" href="#4ident" title='ident' data-ref="4ident">ident</a> == <a class="enum" href="macros.h.html#ERRMESS_BADADDRESS" title='ERRMESS_BADADDRESS' data-ref="ERRMESS_BADADDRESS">ERRMESS_BADADDRESS</a>)?</td></tr>
+<tr><th id="130">130</th><td>      <q>"The other addresses in the message were\n"</q></td></tr>
+<tr><th id="131">131</th><td>      <q>"syntactically valid and have been passed on for an attempt at delivery.\n"</q> :</td></tr>
+<tr><th id="132">132</th><td></td></tr>
+<tr><th id="133">133</th><td>      <q>"There were no other addresses in your\n"</q></td></tr>
+<tr><th id="134">134</th><td>      <q>"message, and so no attempt at delivery was possible.\n"</q>);</td></tr>
+<tr><th id="135">135</th><td>    <b>break</b>;</td></tr>
+<tr><th id="136">136</th><td></td></tr>
+<tr><th id="137">137</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_IGADDRESS" title='ERRMESS_IGADDRESS' data-ref="ERRMESS_IGADDRESS">ERRMESS_IGADDRESS</a>:</td></tr>
+<tr><th id="138">138</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"Subject: Mail failure - no recipient addresses\n\n"</q>);</td></tr>
+<tr><th id="139">139</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="140">140</th><td>      <q>"A message that you sent using the -t command line option contained no\n"</q></td></tr>
+<tr><th id="141">141</th><td>      <q>"addresses that were not also on the command line, and were therefore\n"</q></td></tr>
+<tr><th id="142">142</th><td>      <q>"suppressed. This left no recipient addresses, and so no delivery could\n"</q></td></tr>
+<tr><th id="143">143</th><td>      <q>"be attempted.\n"</q>);</td></tr>
+<tr><th id="144">144</th><td>    <b>break</b>;</td></tr>
+<tr><th id="145">145</th><td></td></tr>
+<tr><th id="146">146</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_NOADDRESS" title='ERRMESS_NOADDRESS' data-ref="ERRMESS_NOADDRESS">ERRMESS_NOADDRESS</a>:</td></tr>
+<tr><th id="147">147</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"Subject: Mail failure - no recipient addresses\n\n"</q>);</td></tr>
+<tr><th id="148">148</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="149">149</th><td>      <q>"A message that you sent contained no recipient addresses, and therefore no\n"</q></td></tr>
+<tr><th id="150">150</th><td>      <q>"delivery could be attempted.\n"</q>);</td></tr>
+<tr><th id="151">151</th><td>    <b>break</b>;</td></tr>
+<tr><th id="152">152</th><td></td></tr>
+<tr><th id="153">153</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_IOERR" title='ERRMESS_IOERR' data-ref="ERRMESS_IOERR">ERRMESS_IOERR</a>:</td></tr>
+<tr><th id="154">154</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"Subject: Mail failure - system failure\n\n"</q>);</td></tr>
+<tr><th id="155">155</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="156">156</th><td>      <q>"A system failure was encountered while processing a message that you sent,\n"</q></td></tr>
+<tr><th id="157">157</th><td>      <q>"so it has not been possible to deliver it. The error was:\n\n%s\n"</q>,</td></tr>
+<tr><th id="158">158</th><td>      <a class="local col5 ref" href="#5eblock" title='eblock' data-ref="5eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text1" title='error_block::text1' data-ref="error_block::text1">text1</a>);</td></tr>
+<tr><th id="159">159</th><td>    <b>break</b>;</td></tr>
+<tr><th id="160">160</th><td></td></tr>
+<tr><th id="161">161</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_VLONGHEADER" title='ERRMESS_VLONGHEADER' data-ref="ERRMESS_VLONGHEADER">ERRMESS_VLONGHEADER</a>:</td></tr>
+<tr><th id="162">162</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"Subject: Mail failure - overlong header section\n\n"</q>);</td></tr>
+<tr><th id="163">163</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="164">164</th><td>      <q>"A message that you sent contained a header section that was excessively\n"</q></td></tr>
+<tr><th id="165">165</th><td>      <q>"long and could not be handled by the mail transmission software. The\n"</q></td></tr>
+<tr><th id="166">166</th><td>      <q>"message has not been delivered to any recipients.\n"</q>);</td></tr>
+<tr><th id="167">167</th><td>    <b>break</b>;</td></tr>
+<tr><th id="168">168</th><td></td></tr>
+<tr><th id="169">169</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_VLONGHDRLINE" title='ERRMESS_VLONGHDRLINE' data-ref="ERRMESS_VLONGHDRLINE">ERRMESS_VLONGHDRLINE</a>:</td></tr>
+<tr><th id="170">170</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"Subject: Mail failure - overlong header line\n\n"</q>);</td></tr>
+<tr><th id="171">171</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="172">172</th><td>      <q>"A message that you sent contained a header line that was excessively\n"</q></td></tr>
+<tr><th id="173">173</th><td>      <q>"long and could not be handled by the mail transmission software. The\n"</q></td></tr>
+<tr><th id="174">174</th><td>      <q>"message has not been delivered to any recipients.\n"</q>);</td></tr>
+<tr><th id="175">175</th><td>    <b>break</b>;</td></tr>
+<tr><th id="176">176</th><td></td></tr>
+<tr><th id="177">177</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_TOOBIG" title='ERRMESS_TOOBIG' data-ref="ERRMESS_TOOBIG">ERRMESS_TOOBIG</a>:</td></tr>
+<tr><th id="178">178</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"Subject: Mail failure - message too big\n\n"</q>);</td></tr>
+<tr><th id="179">179</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="180">180</th><td>      <q>"A message that you sent was longer than the maximum size allowed on this\n"</q></td></tr>
+<tr><th id="181">181</th><td>      <q>"system. It was not delivered to any recipients.\n"</q>);</td></tr>
+<tr><th id="182">182</th><td>    <b>break</b>;</td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_TOOMANYRECIP" title='ERRMESS_TOOMANYRECIP' data-ref="ERRMESS_TOOMANYRECIP">ERRMESS_TOOMANYRECIP</a>:</td></tr>
+<tr><th id="185">185</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"Subject: Mail failure - too many recipients\n\n"</q>);</td></tr>
+<tr><th id="186">186</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="187">187</th><td>      <q>"A message that you sent contained more recipients than allowed on this\n"</q></td></tr>
+<tr><th id="188">188</th><td>      <q>"system. It was not delivered to any recipients.\n"</q>);</td></tr>
+<tr><th id="189">189</th><td>    <b>break</b>;</td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_LOCAL_SCAN" title='ERRMESS_LOCAL_SCAN' data-ref="ERRMESS_LOCAL_SCAN">ERRMESS_LOCAL_SCAN</a>:</td></tr>
+<tr><th id="192">192</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_LOCAL_ACL" title='ERRMESS_LOCAL_ACL' data-ref="ERRMESS_LOCAL_ACL">ERRMESS_LOCAL_ACL</a>:</td></tr>
+<tr><th id="193">193</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"Subject: Mail failure - rejected by local scanning code\n\n"</q>);</td></tr>
+<tr><th id="194">194</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="195">195</th><td>      <q>"A message that you sent was rejected by the local scanning code that\n"</q></td></tr>
+<tr><th id="196">196</th><td>      <q>"checks incoming messages on this system."</q>);</td></tr>
+<tr><th id="197">197</th><td>      <b>if</b> (<a class="local col5 ref" href="#5eblock" title='eblock' data-ref="5eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text1" title='error_block::text1' data-ref="error_block::text1">text1</a>)</td></tr>
+<tr><th id="198">198</th><td>	<a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>" The following error was given:\n\n  %s"</q>, <a class="local col5 ref" href="#5eblock" title='eblock' data-ref="5eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text1" title='error_block::text1' data-ref="error_block::text1">text1</a>);</td></tr>
+<tr><th id="199">199</th><td>  <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"\n"</q>);</td></tr>
+<tr><th id="200">200</th><td>  <b>break</b>;</td></tr>
+<tr><th id="201">201</th><td></td></tr>
+<tr><th id="202">202</th><td><u>#<span data-ppcond="202">ifdef</span> <span class="macro" data-ref="_M/EXPERIMENTAL_DMARC">EXPERIMENTAL_DMARC</span></u></td></tr>
+<tr><th id="203">203</th><td>  <b>case</b> ERRMESS_DMARC_FORENSIC:</td></tr>
+<tr><th id="204">204</th><td>    bounce_return_message = TRUE;</td></tr>
+<tr><th id="205">205</th><td>    bounce_return_body    = FALSE;</td></tr>
+<tr><th id="206">206</th><td>    fprintf(f,</td></tr>
+<tr><th id="207">207</th><td>          <q>"Subject: DMARC Forensic Report for %s from IP %s\n\n"</q>,</td></tr>
+<tr><th id="208">208</th><td>	  ((eblock == NULL) ? US<q>"Unknown"</q> : eblock-&gt;text2),</td></tr>
+<tr><th id="209">209</th><td>          sender_host_address);</td></tr>
+<tr><th id="210">210</th><td>    fprintf(f,</td></tr>
+<tr><th id="211">211</th><td>      <q>"A message claiming to be from you has failed the published DMARC\n"</q></td></tr>
+<tr><th id="212">212</th><td>      <q>"policy for your domain.\n\n"</q>);</td></tr>
+<tr><th id="213">213</th><td>    <b>while</b> (eblock != NULL)</td></tr>
+<tr><th id="214">214</th><td>      {</td></tr>
+<tr><th id="215">215</th><td>      fprintf(f, <q>"  %s: %s\n"</q>, eblock-&gt;text1, eblock-&gt;text2);</td></tr>
+<tr><th id="216">216</th><td>      count++;</td></tr>
+<tr><th id="217">217</th><td>      eblock = eblock-&gt;next;</td></tr>
+<tr><th id="218">218</th><td>      }</td></tr>
+<tr><th id="219">219</th><td>  <b>break</b>;</td></tr>
+<tr><th id="220">220</th><td><u>#<span data-ppcond="202">endif</span></u></td></tr>
+<tr><th id="221">221</th><td></td></tr>
+<tr><th id="222">222</th><td>  <b>default</b>:</td></tr>
+<tr><th id="223">223</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"Subject: Mail failure\n\n"</q>);</td></tr>
+<tr><th id="224">224</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>,</td></tr>
+<tr><th id="225">225</th><td>      <q>"A message that you sent has caused the error routine to be entered with\n"</q></td></tr>
+<tr><th id="226">226</th><td>      <q>"an unknown error number (%d).\n"</q>, <a class="local col4 ref" href="#4ident" title='ident' data-ref="4ident">ident</a>);</td></tr>
+<tr><th id="227">227</th><td>    <b>break</b>;</td></tr>
+<tr><th id="228">228</th><td>  }</td></tr>
+<tr><th id="229">229</th><td></td></tr>
+<tr><th id="230">230</th><td><i>/* Now, if configured, copy the message; first the headers and then the rest of</i></td></tr>
+<tr><th id="231">231</th><td><i>the input if available, up to the configured limit, if the option for including</i></td></tr>
+<tr><th id="232">232</th><td><i>message bodies in bounces is set. */</i></td></tr>
+<tr><th id="233">233</th><td></td></tr>
+<tr><th id="234">234</th><td><b>if</b> (<a class="ref" href="globals.h.html#bounce_return_message" title='bounce_return_message' data-ref="bounce_return_message">bounce_return_message</a>)</td></tr>
+<tr><th id="235">235</th><td>  {</td></tr>
+<tr><th id="236">236</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#bounce_return_body" title='bounce_return_body' data-ref="bounce_return_body">bounce_return_body</a>)</td></tr>
+<tr><th id="237">237</th><td>    {</td></tr>
+<tr><th id="238">238</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"\n"</q></td></tr>
+<tr><th id="239">239</th><td>      <q>"------ This is a copy of your message, including all the headers."</q>);</td></tr>
+<tr><th id="240">240</th><td>    <b>if</b> (<a class="local col3 ref" href="#13size_limit" title='size_limit' data-ref="13size_limit">size_limit</a> == <var>0</var> || <a class="local col3 ref" href="#13size_limit" title='size_limit' data-ref="13size_limit">size_limit</a> &gt; <a class="ref" href="globals.h.html#thismessage_size_limit" title='thismessage_size_limit' data-ref="thismessage_size_limit">thismessage_size_limit</a>)</td></tr>
+<tr><th id="241">241</th><td>      <a class="local col3 ref" href="#13size_limit" title='size_limit' data-ref="13size_limit">size_limit</a> = <a class="ref" href="globals.h.html#thismessage_size_limit" title='thismessage_size_limit' data-ref="thismessage_size_limit">thismessage_size_limit</a>;</td></tr>
+<tr><th id="242">242</th><td>    <b>if</b> (<a class="local col3 ref" href="#13size_limit" title='size_limit' data-ref="13size_limit">size_limit</a> &gt; <var>0</var> &amp;&amp; <a class="local col3 ref" href="#13size_limit" title='size_limit' data-ref="13size_limit">size_limit</a> &lt; <a class="ref" href="globals.h.html#message_size" title='message_size' data-ref="message_size">message_size</a>)</td></tr>
+<tr><th id="243">243</th><td>      {</td></tr>
+<tr><th id="244">244</th><td>      <em>int</em> <dfn class="local col6 decl" id="16x" title='x' data-type='int' data-ref="16x">x</dfn> = <a class="local col3 ref" href="#13size_limit" title='size_limit' data-ref="13size_limit">size_limit</a>;</td></tr>
+<tr><th id="245">245</th><td>      <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col7 decl" id="17k" title='k' data-type='uschar *' data-ref="17k">k</dfn> = <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>""</q>;</td></tr>
+<tr><th id="246">246</th><td>      <b>if</b> ((<a class="local col6 ref" href="#16x" title='x' data-ref="16x">x</a> &amp; <var>1023</var>) == <var>0</var>)</td></tr>
+<tr><th id="247">247</th><td>        {</td></tr>
+<tr><th id="248">248</th><td>        <a class="local col7 ref" href="#17k" title='k' data-ref="17k">k</a> = <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"K"</q>;</td></tr>
+<tr><th id="249">249</th><td>        <a class="local col6 ref" href="#16x" title='x' data-ref="16x">x</a> &gt;&gt;= <var>10</var>;</td></tr>
+<tr><th id="250">250</th><td>        }</td></tr>
+<tr><th id="251">251</th><td>      <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"\n"</q></td></tr>
+<tr><th id="252">252</th><td>        <q>"------ No more than %d%s characters of the body are included.\n\n"</q>,</td></tr>
+<tr><th id="253">253</th><td>          <a class="local col6 ref" href="#16x" title='x' data-ref="16x">x</a>, <a class="local col7 ref" href="#17k" title='k' data-ref="17k">k</a>);</td></tr>
+<tr><th id="254">254</th><td>      }</td></tr>
+<tr><th id="255">255</th><td>    <b>else</b> <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>" ------\n\n"</q>);</td></tr>
+<tr><th id="256">256</th><td>    }</td></tr>
+<tr><th id="257">257</th><td>  <b>else</b></td></tr>
+<tr><th id="258">258</th><td>    {</td></tr>
+<tr><th id="259">259</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"\n"</q></td></tr>
+<tr><th id="260">260</th><td>      <q>"------ This is a copy of the headers that were received before the "</q></td></tr>
+<tr><th id="261">261</th><td>      <q>"error\n       was detected.\n\n"</q>);</td></tr>
+<tr><th id="262">262</th><td>    }</td></tr>
+<tr><th id="263">263</th><td></td></tr>
+<tr><th id="264">264</th><td>  <i>/* If the error occurred before the Received: header was created, its text</i></td></tr>
+<tr><th id="265">265</th><td><i>  field will still be NULL; just omit such a header line. */</i></td></tr>
+<tr><th id="266">266</th><td></td></tr>
+<tr><th id="267">267</th><td>  <b>while</b> (<a class="local col6 ref" href="#6headers" title='headers' data-ref="6headers">headers</a>)</td></tr>
+<tr><th id="268">268</th><td>    {</td></tr>
+<tr><th id="269">269</th><td>    <b>if</b> (<a class="local col6 ref" href="#6headers" title='headers' data-ref="6headers">headers</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::text" title='header_line::text' data-ref="header_line::text">text</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"%s"</q>, <a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col6 ref" href="#6headers" title='headers' data-ref="6headers">headers</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::text" title='header_line::text' data-ref="header_line::text">text</a>);</td></tr>
+<tr><th id="270">270</th><td>    <a class="local col6 ref" href="#6headers" title='headers' data-ref="6headers">headers</a> = <a class="local col6 ref" href="#6headers" title='headers' data-ref="6headers">headers</a>-&gt;<a class="ref field" href="local_scan.h.html#header_line::next" title='header_line::next' data-ref="header_line::next">next</a>;</td></tr>
+<tr><th id="271">271</th><td>    }</td></tr>
+<tr><th id="272">272</th><td></td></tr>
+<tr><th id="273">273</th><td>  <b>if</b> (<a class="local col4 ref" href="#4ident" title='ident' data-ref="4ident">ident</a> != <a class="enum" href="macros.h.html#ERRMESS_VLONGHEADER" title='ERRMESS_VLONGHEADER' data-ref="ERRMESS_VLONGHEADER">ERRMESS_VLONGHEADER</a> &amp;&amp; <a class="local col4 ref" href="#4ident" title='ident' data-ref="4ident">ident</a> != <a class="enum" href="macros.h.html#ERRMESS_VLONGHDRLINE" title='ERRMESS_VLONGHDRLINE' data-ref="ERRMESS_VLONGHDRLINE">ERRMESS_VLONGHDRLINE</a>)</td></tr>
+<tr><th id="274">274</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fputc" title='fputc' data-ref="fputc">fputc</a>(<kbd>'\n'</kbd>, <a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>);</td></tr>
+<tr><th id="275">275</th><td></td></tr>
+<tr><th id="276">276</th><td>  <i>/* After early detection of an error, the message file may be STDIN,</i></td></tr>
+<tr><th id="277">277</th><td><i>  in which case we might have to terminate on a line containing just "."</i></td></tr>
+<tr><th id="278">278</th><td><i>  as well as on EOF. We may already have the first line in memory. */</i></td></tr>
+<tr><th id="279">279</th><td></td></tr>
+<tr><th id="280">280</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#bounce_return_body" title='bounce_return_body' data-ref="bounce_return_body">bounce_return_body</a> &amp;&amp; <a class="local col7 ref" href="#7message_file" title='message_file' data-ref="7message_file">message_file</a>)</td></tr>
+<tr><th id="281">281</th><td>    {</td></tr>
+<tr><th id="282">282</th><td>    <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col8 decl" id="18enddot" title='enddot' data-type='BOOL' data-ref="18enddot">enddot</dfn> = <a class="ref" href="globals.h.html#dot_ends" title='dot_ends' data-ref="dot_ends">dot_ends</a> &amp;&amp; <a class="local col7 ref" href="#7message_file" title='message_file' data-ref="7message_file">message_file</a> == <a class="macro" href="../../include/stdio.h.html#172" title="stdin" data-ref="_M/stdin">stdin</a>;</td></tr>
+<tr><th id="283">283</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="local col9 decl" id="19buf" title='buf' data-type='uschar *' data-ref="19buf">buf</dfn> = <a class="macro" href="store.h.html#34" title="store_get_3(bounce_return_linesize_limit+2, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/moan.c&quot;, 283)" data-ref="_M/store_get">store_get</a>(<a class="ref" href="globals.h.html#bounce_return_linesize_limit" title='bounce_return_linesize_limit' data-ref="bounce_return_linesize_limit">bounce_return_linesize_limit</a>+<var>2</var>);</td></tr>
+<tr><th id="284">284</th><td></td></tr>
+<tr><th id="285">285</th><td>    <b>if</b> (<a class="local col8 ref" href="#8firstline" title='firstline' data-ref="8firstline">firstline</a>) <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>, <q>"%s"</q>, <a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col8 ref" href="#8firstline" title='firstline' data-ref="8firstline">firstline</a>);</td></tr>
+<tr><th id="286">286</th><td></td></tr>
+<tr><th id="287">287</th><td>    <b>while</b> (<a class="ref fn" href="../../include/stdio.h.html#fgets" title='fgets' data-ref="fgets">fgets</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col9 ref" href="#19buf" title='buf' data-ref="19buf">buf</a>, <a class="ref" href="globals.h.html#bounce_return_linesize_limit" title='bounce_return_linesize_limit' data-ref="bounce_return_linesize_limit">bounce_return_linesize_limit</a>+<var>2</var>, <a class="local col7 ref" href="#7message_file" title='message_file' data-ref="7message_file">message_file</a>))</td></tr>
+<tr><th id="288">288</th><td>      {</td></tr>
+<tr><th id="289">289</th><td>      <em>int</em> <dfn class="local col0 decl" id="20len" title='len' data-type='int' data-ref="20len">len</dfn>;</td></tr>
+<tr><th id="290">290</th><td></td></tr>
+<tr><th id="291">291</th><td>      <b>if</b> (<a class="local col8 ref" href="#18enddot" title='enddot' data-ref="18enddot">enddot</a> &amp;&amp; *<a class="local col9 ref" href="#19buf" title='buf' data-ref="19buf">buf</a> == <kbd>'.'</kbd> &amp;&amp; <a class="local col9 ref" href="#19buf" title='buf' data-ref="19buf">buf</a>[<var>1</var>] == <kbd>'\n'</kbd>)</td></tr>
+<tr><th id="292">292</th><td>	{</td></tr>
+<tr><th id="293">293</th><td>	<a class="ref fn" href="../../include/stdio.h.html#fputc" title='fputc' data-ref="fputc">fputc</a>(<kbd>'.'</kbd>, <a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>);</td></tr>
+<tr><th id="294">294</th><td>	<b>break</b>;</td></tr>
+<tr><th id="295">295</th><td>	}</td></tr>
+<tr><th id="296">296</th><td></td></tr>
+<tr><th id="297">297</th><td>      <a class="local col0 ref" href="#20len" title='len' data-ref="20len">len</a> = <a class="macro" href="mytypes.h.html#104" title="(int)strlen((const char *)(buf))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col9 ref" href="#19buf" title='buf' data-ref="19buf">buf</a>);</td></tr>
+<tr><th id="298">298</th><td>      <b>if</b> (<a class="local col9 ref" href="#19buf" title='buf' data-ref="19buf">buf</a>[<a class="local col0 ref" href="#20len" title='len' data-ref="20len">len</a>-<var>1</var>] != <kbd>'\n'</kbd>)</td></tr>
+<tr><th id="299">299</th><td>	{	<i>/* eat rest of partial line */</i></td></tr>
+<tr><th id="300">300</th><td>	<em>int</em> <dfn class="local col1 decl" id="21ch" title='ch' data-type='int' data-ref="21ch">ch</dfn>;</td></tr>
+<tr><th id="301">301</th><td>	<b>while</b> ((<a class="local col1 ref" href="#21ch" title='ch' data-ref="21ch">ch</a> = <a class="ref fn" href="../../include/stdio.h.html#fgetc" title='fgetc' data-ref="fgetc">fgetc</a>(<a class="local col7 ref" href="#7message_file" title='message_file' data-ref="7message_file">message_file</a>)) != <a class="macro" href="../../include/libio.h.html#62" title="(-1)" data-ref="_M/EOF">EOF</a> &amp;&amp; <a class="local col1 ref" href="#21ch" title='ch' data-ref="21ch">ch</a> != <kbd>'\n'</kbd>) ;</td></tr>
+<tr><th id="302">302</th><td>	}</td></tr>
+<tr><th id="303">303</th><td></td></tr>
+<tr><th id="304">304</th><td>      <b>if</b> (<a class="local col3 ref" href="#13size_limit" title='size_limit' data-ref="13size_limit">size_limit</a> &gt; <var>0</var> &amp;&amp; <a class="local col0 ref" href="#20len" title='len' data-ref="20len">len</a> &gt; <a class="local col3 ref" href="#13size_limit" title='size_limit' data-ref="13size_limit">size_limit</a> - <a class="local col9 ref" href="#9written" title='written' data-ref="9written">written</a>)</td></tr>
+<tr><th id="305">305</th><td>	{</td></tr>
+<tr><th id="306">306</th><td>	<a class="local col9 ref" href="#19buf" title='buf' data-ref="19buf">buf</a>[<a class="local col3 ref" href="#13size_limit" title='size_limit' data-ref="13size_limit">size_limit</a> - <a class="local col9 ref" href="#9written" title='written' data-ref="9written">written</a>] = <kbd>'\0'</kbd>;</td></tr>
+<tr><th id="307">307</th><td>	<a class="ref fn" href="../../include/stdio.h.html#fputs" title='fputs' data-ref="fputs">fputs</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col9 ref" href="#19buf" title='buf' data-ref="19buf">buf</a>, <a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>);</td></tr>
+<tr><th id="308">308</th><td>	<b>break</b>;</td></tr>
+<tr><th id="309">309</th><td>	}</td></tr>
+<tr><th id="310">310</th><td></td></tr>
+<tr><th id="311">311</th><td>      <a class="ref fn" href="../../include/stdio.h.html#fputs" title='fputs' data-ref="fputs">fputs</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col9 ref" href="#19buf" title='buf' data-ref="19buf">buf</a>, <a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>);</td></tr>
+<tr><th id="312">312</th><td>      }</td></tr>
+<tr><th id="313">313</th><td>    }</td></tr>
+<tr><th id="314">314</th><td><u>#<span data-ppcond="314">ifdef</span> <span class="macro" data-ref="_M/EXPERIMENTAL_DMARC">EXPERIMENTAL_DMARC</span></u></td></tr>
+<tr><th id="315">315</th><td>  <i>/* Overkill, but use exact test in case future code gets inserted */</i></td></tr>
+<tr><th id="316">316</th><td>  <b>else</b> <b>if</b> (bounce_return_body &amp;&amp; message_file == NULL)</td></tr>
+<tr><th id="317">317</th><td>    {</td></tr>
+<tr><th id="318">318</th><td>    <i>/*XXX limit line length here? */</i></td></tr>
+<tr><th id="319">319</th><td>    <i>/* This doesn't print newlines, disable until can parse and fix</i></td></tr>
+<tr><th id="320">320</th><td><i>     * output to be legible.  */</i></td></tr>
+<tr><th id="321">321</th><td>    fprintf(f, <q>"%s"</q>, expand_string(US<q>"$message_body"</q>));</td></tr>
+<tr><th id="322">322</th><td>    }</td></tr>
+<tr><th id="323">323</th><td><u>#<span data-ppcond="314">endif</span></u></td></tr>
+<tr><th id="324">324</th><td>  }</td></tr>
+<tr><th id="325">325</th><td><i>/* Close the file, which should send an EOF to the child process</i></td></tr>
+<tr><th id="326">326</th><td><i>that is receiving the message. Wait for it to finish, without a timeout. */</i></td></tr>
+<tr><th id="327">327</th><td></td></tr>
+<tr><th id="328">328</th><td>(<em>void</em>)<a class="ref fn" href="../../include/stdio.h.html#fclose" title='fclose' data-ref="fclose">fclose</a>(<a class="local col4 ref" href="#14f" title='f' data-ref="14f">f</a>);</td></tr>
+<tr><th id="329">329</th><td><a class="local col1 ref" href="#11status" title='status' data-ref="11status">status</a> = <a class="ref fn" href="local_scan.h.html#child_close" title='child_close' data-ref="child_close">child_close</a>(<a class="local col5 ref" href="#15pid" title='pid' data-ref="15pid">pid</a>, <var>0</var>);  <i>/* Waits for child to close */</i></td></tr>
+<tr><th id="330">330</th><td><b>if</b> (<a class="local col1 ref" href="#11status" title='status' data-ref="11status">status</a> != <var>0</var>)</td></tr>
+<tr><th id="331">331</th><td>  {</td></tr>
+<tr><th id="332">332</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="22msg" title='msg' data-type='uschar *' data-ref="22msg">msg</dfn> = <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"Child mail process returned status"</q>;</td></tr>
+<tr><th id="333">333</th><td>  <b>if</b> (<a class="local col1 ref" href="#11status" title='status' data-ref="11status">status</a> == -<var>257</var>)</td></tr>
+<tr><th id="334">334</th><td>    <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s %d: errno=%d: %s"</q>, <a class="local col2 ref" href="#22msg" title='msg' data-ref="22msg">msg</a>, <a class="local col1 ref" href="#11status" title='status' data-ref="11status">status</a>, <a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>,</td></tr>
+<tr><th id="335">335</th><td>      <a class="ref fn" href="../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="336">336</th><td>  <b>else</b></td></tr>
+<tr><th id="337">337</th><td>    <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s %d"</q>, <a class="local col2 ref" href="#22msg" title='msg' data-ref="22msg">msg</a>, <a class="local col1 ref" href="#11status" title='status' data-ref="11status">status</a>);</td></tr>
+<tr><th id="338">338</th><td>  <b>return</b> <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="339">339</th><td>  }</td></tr>
+<tr><th id="340">340</th><td></td></tr>
+<tr><th id="341">341</th><td><b>return</b> <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="342">342</th><td>}</td></tr>
+<tr><th id="343">343</th><td></td></tr>
+<tr><th id="344">344</th><td></td></tr>
+<tr><th id="345">345</th><td></td></tr>
+<tr><th id="346">346</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="347">347</th><td><i>*          Send message to sender                *</i></td></tr>
+<tr><th id="348">348</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="349">349</th><td></td></tr>
+<tr><th id="350">350</th><td><i>/* This function is called when errors are detected during the receipt of a</i></td></tr>
+<tr><th id="351">351</th><td><i>message. Delivery failures are handled separately in deliver.c.</i></td></tr>
+<tr><th id="352">352</th><td><i></i></td></tr>
+<tr><th id="353">353</th><td><i>If there is a valid sender_address, and the failing message is not a local</i></td></tr>
+<tr><th id="354">354</th><td><i>error message, then this function calls moan_send_message to send a message to</i></td></tr>
+<tr><th id="355">355</th><td><i>that person. If the sender's address is null, then an error has occurred with a</i></td></tr>
+<tr><th id="356">356</th><td><i>message that was generated by a mailer daemon. All we can do is to write</i></td></tr>
+<tr><th id="357">357</th><td><i>information to log files. The same action is taken if local_error_message is</i></td></tr>
+<tr><th id="358">358</th><td><i>set - this can happen for non null-senders in certain configurations where exim</i></td></tr>
+<tr><th id="359">359</th><td><i>doesn't run setuid root.</i></td></tr>
+<tr><th id="360">360</th><td><i></i></td></tr>
+<tr><th id="361">361</th><td><i>Arguments:</i></td></tr>
+<tr><th id="362">362</th><td><i>  ident         identifies the particular error</i></td></tr>
+<tr><th id="363">363</th><td><i>  eblock        chain of error_blocks containing data about the error</i></td></tr>
+<tr><th id="364">364</th><td><i>  headers       message's headers (chain)</i></td></tr>
+<tr><th id="365">365</th><td><i>  message_file  a FILE where the body of the message can be read</i></td></tr>
+<tr><th id="366">366</th><td><i>  check_sender  if TRUE, read the first line of the file for a possible</i></td></tr>
+<tr><th id="367">367</th><td><i>                  "From " sender (if a trusted caller)</i></td></tr>
+<tr><th id="368">368</th><td><i></i></td></tr>
+<tr><th id="369">369</th><td><i>Returns:        FALSE if there is no sender_address to send to;</i></td></tr>
+<tr><th id="370">370</th><td><i>                else the return from moan_send_message()</i></td></tr>
+<tr><th id="371">371</th><td><i>*/</i></td></tr>
+<tr><th id="372">372</th><td></td></tr>
+<tr><th id="373">373</th><td><a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a></td></tr>
+<tr><th id="374">374</th><td><dfn class="decl def fn" id="moan_to_sender" title='moan_to_sender' data-ref="moan_to_sender">moan_to_sender</dfn>(<em>int</em> <dfn class="local col3 decl" id="23ident" title='ident' data-type='int' data-ref="23ident">ident</dfn>, <a class="typedef" href="structs.h.html#error_block" title='error_block' data-type='struct error_block' data-ref="error_block">error_block</a> *<dfn class="local col4 decl" id="24eblock" title='eblock' data-type='error_block *' data-ref="24eblock">eblock</dfn>, <a class="typedef" href="local_scan.h.html#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *<dfn class="local col5 decl" id="25headers" title='headers' data-type='header_line *' data-ref="25headers">headers</dfn>,</td></tr>
+<tr><th id="375">375</th><td>  <a class="typedef" href="../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col6 decl" id="26message_file" title='message_file' data-type='FILE *' data-ref="26message_file">message_file</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col7 decl" id="27check_sender" title='check_sender' data-type='BOOL' data-ref="27check_sender">check_sender</dfn>)</td></tr>
+<tr><th id="376">376</th><td>{</td></tr>
+<tr><th id="377">377</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col8 decl" id="28firstline" title='firstline' data-type='uschar *' data-ref="28firstline">firstline</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="378">378</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col9 decl" id="29msg" title='msg' data-type='uschar *' data-ref="29msg">msg</dfn> = <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"Error while reading message with no usable sender address"</q>;</td></tr>
+<tr><th id="379">379</th><td></td></tr>
+<tr><th id="380">380</th><td><b>if</b> (<a class="ref" href="globals.h.html#message_reference" title='message_reference' data-ref="message_reference">message_reference</a>)</td></tr>
+<tr><th id="381">381</th><td>  <a class="local col9 ref" href="#29msg" title='msg' data-ref="29msg">msg</a> = <a class="ref fn" href="local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%s (R=%s)"</q>, <a class="local col9 ref" href="#29msg" title='msg' data-ref="29msg">msg</a>, <a class="ref" href="globals.h.html#message_reference" title='message_reference' data-ref="message_reference">message_reference</a>);</td></tr>
+<tr><th id="382">382</th><td></td></tr>
+<tr><th id="383">383</th><td><i>/* Find the sender from a From line if permitted and possible */</i></td></tr>
+<tr><th id="384">384</th><td></td></tr>
+<tr><th id="385">385</th><td><b>if</b> (<a class="local col7 ref" href="#27check_sender" title='check_sender' data-ref="27check_sender">check_sender</a> &amp;&amp; <a class="local col6 ref" href="#26message_file" title='message_file' data-ref="26message_file">message_file</a> &amp;&amp; <a class="ref" href="globals.h.html#trusted_caller" title='trusted_caller' data-ref="trusted_caller">trusted_caller</a> &amp;&amp;</td></tr>
+<tr><th id="386">386</th><td>    <a class="macro" href="mytypes.h.html#83" title="fgets((char *)(big_buffer),16384,message_file)" data-ref="_M/Ufgets">Ufgets</a>(<a class="ref" href="globals.h.html#big_buffer" title='big_buffer' data-ref="big_buffer">big_buffer</a>, <a class="macro" href="macros.h.html#167" title="16384" data-ref="_M/BIG_BUFFER_SIZE">BIG_BUFFER_SIZE</a>, <a class="local col6 ref" href="#26message_file" title='message_file' data-ref="26message_file">message_file</a>) != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="387">387</th><td>  {</td></tr>
+<tr><th id="388">388</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col0 decl" id="30new_sender" title='new_sender' data-type='uschar *' data-ref="30new_sender">new_sender</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="389">389</th><td>  <b>if</b> (<a class="ref fn" href="functions.h.html#regex_match_and_setup" title='regex_match_and_setup' data-ref="regex_match_and_setup">regex_match_and_setup</a>(<a class="ref" href="globals.h.html#regex_From" title='regex_From' data-ref="regex_From">regex_From</a>, <a class="ref" href="globals.h.html#big_buffer" title='big_buffer' data-ref="big_buffer">big_buffer</a>, <var>0</var>, -<var>1</var>))</td></tr>
+<tr><th id="390">390</th><td>    <a class="local col0 ref" href="#30new_sender" title='new_sender' data-ref="30new_sender">new_sender</a> = <a class="ref fn" href="local_scan.h.html#expand_string" title='expand_string' data-ref="expand_string">expand_string</a>(<a class="ref" href="globals.h.html#uucp_from_sender" title='uucp_from_sender' data-ref="uucp_from_sender">uucp_from_sender</a>);</td></tr>
+<tr><th id="391">391</th><td>  <b>if</b> (<a class="local col0 ref" href="#30new_sender" title='new_sender' data-ref="30new_sender">new_sender</a>) <a class="ref" href="local_scan.h.html#sender_address" title='sender_address' data-ref="sender_address">sender_address</a> = <a class="local col0 ref" href="#30new_sender" title='new_sender' data-ref="30new_sender">new_sender</a>;</td></tr>
+<tr><th id="392">392</th><td>    <b>else</b> <a class="local col8 ref" href="#28firstline" title='firstline' data-ref="28firstline">firstline</a> = <a class="ref" href="globals.h.html#big_buffer" title='big_buffer' data-ref="big_buffer">big_buffer</a>;</td></tr>
+<tr><th id="393">393</th><td>  }</td></tr>
+<tr><th id="394">394</th><td></td></tr>
+<tr><th id="395">395</th><td><i>/* If viable sender address, send a message */</i></td></tr>
+<tr><th id="396">396</th><td></td></tr>
+<tr><th id="397">397</th><td><b>if</b> (<a class="ref" href="local_scan.h.html#sender_address" title='sender_address' data-ref="sender_address">sender_address</a> &amp;&amp; <a class="ref" href="local_scan.h.html#sender_address" title='sender_address' data-ref="sender_address">sender_address</a>[<var>0</var>] &amp;&amp; !<a class="ref" href="globals.h.html#local_error_message" title='local_error_message' data-ref="local_error_message">local_error_message</a>)</td></tr>
+<tr><th id="398">398</th><td>  <b>return</b> <a class="tu ref fn" href="#moan_send_message" title='moan_send_message' data-use='c' data-ref="moan_send_message">moan_send_message</a>(<a class="ref" href="local_scan.h.html#sender_address" title='sender_address' data-ref="sender_address">sender_address</a>, <a class="local col3 ref" href="#23ident" title='ident' data-ref="23ident">ident</a>, <a class="local col4 ref" href="#24eblock" title='eblock' data-ref="24eblock">eblock</a>, <a class="local col5 ref" href="#25headers" title='headers' data-ref="25headers">headers</a>,</td></tr>
+<tr><th id="399">399</th><td>    <a class="local col6 ref" href="#26message_file" title='message_file' data-ref="26message_file">message_file</a>, <a class="local col8 ref" href="#28firstline" title='firstline' data-ref="28firstline">firstline</a>);</td></tr>
+<tr><th id="400">400</th><td></td></tr>
+<tr><th id="401">401</th><td><i>/* Otherwise, we can only log */</i></td></tr>
+<tr><th id="402">402</th><td></td></tr>
+<tr><th id="403">403</th><td><b>switch</b>(<a class="local col3 ref" href="#23ident" title='ident' data-ref="23ident">ident</a>)</td></tr>
+<tr><th id="404">404</th><td>  {</td></tr>
+<tr><th id="405">405</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_BADARGADDRESS" title='ERRMESS_BADARGADDRESS' data-ref="ERRMESS_BADARGADDRESS">ERRMESS_BADARGADDRESS</a>:</td></tr>
+<tr><th id="406">406</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_BADNOADDRESS" title='ERRMESS_BADNOADDRESS' data-ref="ERRMESS_BADNOADDRESS">ERRMESS_BADNOADDRESS</a>:</td></tr>
+<tr><th id="407">407</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_BADADDRESS" title='ERRMESS_BADADDRESS' data-ref="ERRMESS_BADADDRESS">ERRMESS_BADADDRESS</a>:</td></tr>
+<tr><th id="408">408</th><td>  <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s: at least one malformed recipient address: "</q></td></tr>
+<tr><th id="409">409</th><td>    <q>"%s - %s"</q>, <a class="local col9 ref" href="#29msg" title='msg' data-ref="29msg">msg</a>, <a class="local col4 ref" href="#24eblock" title='eblock' data-ref="24eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text1" title='error_block::text1' data-ref="error_block::text1">text1</a>, <a class="local col4 ref" href="#24eblock" title='eblock' data-ref="24eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text2" title='error_block::text2' data-ref="error_block::text2">text2</a>);</td></tr>
+<tr><th id="410">410</th><td>  <b>break</b>;</td></tr>
+<tr><th id="411">411</th><td></td></tr>
+<tr><th id="412">412</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_IGADDRESS" title='ERRMESS_IGADDRESS' data-ref="ERRMESS_IGADDRESS">ERRMESS_IGADDRESS</a>:</td></tr>
+<tr><th id="413">413</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_NOADDRESS" title='ERRMESS_NOADDRESS' data-ref="ERRMESS_NOADDRESS">ERRMESS_NOADDRESS</a>:</td></tr>
+<tr><th id="414">414</th><td>  <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s: no recipient addresses"</q>, <a class="local col9 ref" href="#29msg" title='msg' data-ref="29msg">msg</a>);</td></tr>
+<tr><th id="415">415</th><td>  <b>break</b>;</td></tr>
+<tr><th id="416">416</th><td></td></tr>
+<tr><th id="417">417</th><td>  <i>/* This error has already been logged. */</i></td></tr>
+<tr><th id="418">418</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_IOERR" title='ERRMESS_IOERR' data-ref="ERRMESS_IOERR">ERRMESS_IOERR</a>:</td></tr>
+<tr><th id="419">419</th><td>  <b>break</b>;</td></tr>
+<tr><th id="420">420</th><td></td></tr>
+<tr><th id="421">421</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_VLONGHEADER" title='ERRMESS_VLONGHEADER' data-ref="ERRMESS_VLONGHEADER">ERRMESS_VLONGHEADER</a>:</td></tr>
+<tr><th id="422">422</th><td>  <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s: excessively long message header section read "</q></td></tr>
+<tr><th id="423">423</th><td>    <q>"(more than %d characters)"</q>, <a class="local col9 ref" href="#29msg" title='msg' data-ref="29msg">msg</a>, <a class="ref" href="globals.h.html#header_maxsize" title='header_maxsize' data-ref="header_maxsize">header_maxsize</a>);</td></tr>
+<tr><th id="424">424</th><td>  <b>break</b>;</td></tr>
+<tr><th id="425">425</th><td></td></tr>
+<tr><th id="426">426</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_VLONGHDRLINE" title='ERRMESS_VLONGHDRLINE' data-ref="ERRMESS_VLONGHDRLINE">ERRMESS_VLONGHDRLINE</a>:</td></tr>
+<tr><th id="427">427</th><td>  <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s: excessively long message header line read "</q></td></tr>
+<tr><th id="428">428</th><td>    <q>"(more than %d characters)"</q>, <a class="local col9 ref" href="#29msg" title='msg' data-ref="29msg">msg</a>, <a class="ref" href="globals.h.html#header_line_maxsize" title='header_line_maxsize' data-ref="header_line_maxsize">header_line_maxsize</a>);</td></tr>
+<tr><th id="429">429</th><td>  <b>break</b>;</td></tr>
+<tr><th id="430">430</th><td></td></tr>
+<tr><th id="431">431</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_TOOBIG" title='ERRMESS_TOOBIG' data-ref="ERRMESS_TOOBIG">ERRMESS_TOOBIG</a>:</td></tr>
+<tr><th id="432">432</th><td>  <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s: message too big (limit set to %d)"</q>, <a class="local col9 ref" href="#29msg" title='msg' data-ref="29msg">msg</a>,</td></tr>
+<tr><th id="433">433</th><td>    <a class="ref" href="globals.h.html#thismessage_size_limit" title='thismessage_size_limit' data-ref="thismessage_size_limit">thismessage_size_limit</a>);</td></tr>
+<tr><th id="434">434</th><td>  <b>break</b>;</td></tr>
+<tr><th id="435">435</th><td></td></tr>
+<tr><th id="436">436</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_TOOMANYRECIP" title='ERRMESS_TOOMANYRECIP' data-ref="ERRMESS_TOOMANYRECIP">ERRMESS_TOOMANYRECIP</a>:</td></tr>
+<tr><th id="437">437</th><td>  <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s: too many recipients (max set to %d)"</q>, <a class="local col9 ref" href="#29msg" title='msg' data-ref="29msg">msg</a>,</td></tr>
+<tr><th id="438">438</th><td>    <a class="ref" href="globals.h.html#recipients_max" title='recipients_max' data-ref="recipients_max">recipients_max</a>);</td></tr>
+<tr><th id="439">439</th><td>  <b>break</b>;</td></tr>
+<tr><th id="440">440</th><td></td></tr>
+<tr><th id="441">441</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_LOCAL_SCAN" title='ERRMESS_LOCAL_SCAN' data-ref="ERRMESS_LOCAL_SCAN">ERRMESS_LOCAL_SCAN</a>:</td></tr>
+<tr><th id="442">442</th><td>  <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s: rejected by local_scan: %s"</q>, <a class="local col9 ref" href="#29msg" title='msg' data-ref="29msg">msg</a>, <a class="local col4 ref" href="#24eblock" title='eblock' data-ref="24eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text1" title='error_block::text1' data-ref="error_block::text1">text1</a>);</td></tr>
+<tr><th id="443">443</th><td>  <b>break</b>;</td></tr>
+<tr><th id="444">444</th><td></td></tr>
+<tr><th id="445">445</th><td>  <b>case</b> <a class="enum" href="macros.h.html#ERRMESS_LOCAL_ACL" title='ERRMESS_LOCAL_ACL' data-ref="ERRMESS_LOCAL_ACL">ERRMESS_LOCAL_ACL</a>:</td></tr>
+<tr><th id="446">446</th><td>  <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s: rejected by non-SMTP ACL: %s"</q>, <a class="local col9 ref" href="#29msg" title='msg' data-ref="29msg">msg</a>, <a class="local col4 ref" href="#24eblock" title='eblock' data-ref="24eblock">eblock</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text1" title='error_block::text1' data-ref="error_block::text1">text1</a>);</td></tr>
+<tr><th id="447">447</th><td>  <b>break</b>;</td></tr>
+<tr><th id="448">448</th><td></td></tr>
+<tr><th id="449">449</th><td>  <b>default</b>:</td></tr>
+<tr><th id="450">450</th><td>  <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>|<a class="macro" href="macros.h.html#792" title="2" data-ref="_M/LOG_PANIC">LOG_PANIC</a>, <q>"%s: unknown error number %d"</q>, <a class="local col9 ref" href="#29msg" title='msg' data-ref="29msg">msg</a>,</td></tr>
+<tr><th id="451">451</th><td>    <a class="local col3 ref" href="#23ident" title='ident' data-ref="23ident">ident</a>);</td></tr>
+<tr><th id="452">452</th><td>  <b>break</b>;</td></tr>
+<tr><th id="453">453</th><td>  }</td></tr>
+<tr><th id="454">454</th><td></td></tr>
+<tr><th id="455">455</th><td><b>return</b> <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="456">456</th><td>}</td></tr>
+<tr><th id="457">457</th><td></td></tr>
+<tr><th id="458">458</th><td></td></tr>
+<tr><th id="459">459</th><td></td></tr>
+<tr><th id="460">460</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="461">461</th><td><i>*            Send message to someone             *</i></td></tr>
+<tr><th id="462">462</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="463">463</th><td></td></tr>
+<tr><th id="464">464</th><td><i>/* This is called when exim is configured to tell someone (often the</i></td></tr>
+<tr><th id="465">465</th><td><i>mailmaster) about some incident.</i></td></tr>
+<tr><th id="466">466</th><td><i></i></td></tr>
+<tr><th id="467">467</th><td><i>Arguments:</i></td></tr>
+<tr><th id="468">468</th><td><i>  who           address to send mail to</i></td></tr>
+<tr><th id="469">469</th><td><i>  addr          chain of deferred addresses whose details are to be included</i></td></tr>
+<tr><th id="470">470</th><td><i>  subject       subject text for the message</i></td></tr>
+<tr><th id="471">471</th><td><i>  format        a printf() format for the body of the message</i></td></tr>
+<tr><th id="472">472</th><td><i>  ...           arguments for the format</i></td></tr>
+<tr><th id="473">473</th><td><i></i></td></tr>
+<tr><th id="474">474</th><td><i>Returns:        nothing</i></td></tr>
+<tr><th id="475">475</th><td><i>*/</i></td></tr>
+<tr><th id="476">476</th><td></td></tr>
+<tr><th id="477">477</th><td><em>void</em></td></tr>
+<tr><th id="478">478</th><td><dfn class="decl def fn" id="moan_tell_someone" title='moan_tell_someone' data-ref="moan_tell_someone">moan_tell_someone</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="31who" title='who' data-type='uschar *' data-ref="31who">who</dfn>, <a class="typedef" href="structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *<dfn class="local col2 decl" id="32addr" title='addr' data-type='address_item *' data-ref="32addr">addr</dfn>,</td></tr>
+<tr><th id="479">479</th><td>  <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="33subject" title='subject' data-type='const uschar *' data-ref="33subject">subject</dfn>, <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="34format" title='format' data-type='const char *' data-ref="34format">format</dfn>, ...)</td></tr>
+<tr><th id="480">480</th><td>{</td></tr>
+<tr><th id="481">481</th><td><a class="typedef" href="../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col5 decl" id="35f" title='f' data-type='FILE *' data-ref="35f">f</dfn>;</td></tr>
+<tr><th id="482">482</th><td><span class='typedef' title='va_list' data-type='__gnuc_va_list' data-ref="va_list">va_list</span> <dfn class="local col6 decl" id="36ap" title='ap' data-type='va_list' data-ref="36ap">ap</dfn>;</td></tr>
+<tr><th id="483">483</th><td><em>int</em> <dfn class="local col7 decl" id="37fd" title='fd' data-type='int' data-ref="37fd">fd</dfn>;</td></tr>
+<tr><th id="484">484</th><td><em>int</em> <dfn class="local col8 decl" id="38pid" title='pid' data-type='int' data-ref="38pid">pid</dfn> = <a class="ref fn" href="local_scan.h.html#child_open_exim" title='child_open_exim' data-ref="child_open_exim">child_open_exim</a>(&amp;<a class="local col7 ref" href="#37fd" title='fd' data-ref="37fd">fd</a>);</td></tr>
+<tr><th id="485">485</th><td></td></tr>
+<tr><th id="486">486</th><td><b>if</b> (<a class="local col8 ref" href="#38pid" title='pid' data-ref="38pid">pid</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="487">487</th><td>  {</td></tr>
+<tr><th id="488">488</th><td>  <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; ((0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )))" data-ref="_M/DEBUG">DEBUG</a>(<a class="macro" href="macros.h.html#413" title="(0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )" data-ref="_M/D_any">D_any</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"Failed to create child to send message: %s\n"</q>,</td></tr>
+<tr><th id="489">489</th><td>    <a class="ref fn" href="../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="490">490</th><td>  <b>return</b>;</td></tr>
+<tr><th id="491">491</th><td>  }</td></tr>
+<tr><th id="492">492</th><td></td></tr>
+<tr><th id="493">493</th><td><a class="local col5 ref" href="#35f" title='f' data-ref="35f">f</a> = <a class="ref fn" href="../../include/stdio.h.html#fdopen" title='fdopen' data-ref="fdopen">fdopen</a>(<a class="local col7 ref" href="#37fd" title='fd' data-ref="37fd">fd</a>, <q>"wb"</q>);</td></tr>
+<tr><th id="494">494</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#35f" title='f' data-ref="35f">f</a>, <q>"Auto-Submitted: auto-replied\n"</q>);</td></tr>
+<tr><th id="495">495</th><td><a class="ref fn" href="#moan_write_from" title='moan_write_from' data-ref="moan_write_from">moan_write_from</a>(<a class="local col5 ref" href="#35f" title='f' data-ref="35f">f</a>);</td></tr>
+<tr><th id="496">496</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#35f" title='f' data-ref="35f">f</a>, <q>"To: %s\n"</q>, <a class="local col1 ref" href="#31who" title='who' data-ref="31who">who</a>);</td></tr>
+<tr><th id="497">497</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#35f" title='f' data-ref="35f">f</a>, <q>"Subject: %s\n\n"</q>, <a class="local col3 ref" href="#33subject" title='subject' data-ref="33subject">subject</a>);</td></tr>
+<tr><th id="498">498</th><td><span class="macro" title="__builtin_va_start(ap, format)" data-ref="_M/va_start">va_start</span>(<a class="local col6 ref" href="#36ap" title='ap' data-ref="36ap">ap</a>, <a class="local col4 ref" href="#34format" title='format' data-ref="34format">format</a>);</td></tr>
+<tr><th id="499">499</th><td><a class="ref fn" href="../../include/stdio.h.html#vfprintf" title='vfprintf' data-ref="vfprintf">vfprintf</a>(<a class="local col5 ref" href="#35f" title='f' data-ref="35f">f</a>, <a class="local col4 ref" href="#34format" title='format' data-ref="34format">format</a>, <a class="local col6 ref" href="#36ap" title='ap' data-ref="36ap">ap</a>);</td></tr>
+<tr><th id="500">500</th><td><span class="macro" title="__builtin_va_end(ap)" data-ref="_M/va_end">va_end</span>(<a class="local col6 ref" href="#36ap" title='ap' data-ref="36ap">ap</a>);</td></tr>
+<tr><th id="501">501</th><td></td></tr>
+<tr><th id="502">502</th><td><b>if</b> (<a class="local col2 ref" href="#32addr" title='addr' data-ref="32addr">addr</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="503">503</th><td>  {</td></tr>
+<tr><th id="504">504</th><td>  <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#35f" title='f' data-ref="35f">f</a>, <q>"\nThe following address(es) have yet to be delivered:\n"</q>);</td></tr>
+<tr><th id="505">505</th><td>  <b>for</b> (; <a class="local col2 ref" href="#32addr" title='addr' data-ref="32addr">addr</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>; <a class="local col2 ref" href="#32addr" title='addr' data-ref="32addr">addr</a> = <a class="local col2 ref" href="#32addr" title='addr' data-ref="32addr">addr</a>-&gt;<a class="ref field" href="structs.h.html#address_item::next" title='address_item::next' data-ref="address_item::next">next</a>)</td></tr>
+<tr><th id="506">506</th><td>    {</td></tr>
+<tr><th id="507">507</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col9 decl" id="39parent" title='parent' data-type='uschar *' data-ref="39parent">parent</dfn> = (<a class="local col2 ref" href="#32addr" title='addr' data-ref="32addr">addr</a>-&gt;<a class="ref field" href="structs.h.html#address_item::parent" title='address_item::parent' data-ref="address_item::parent">parent</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)? <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> : <a class="local col2 ref" href="#32addr" title='addr' data-ref="32addr">addr</a>-&gt;<a class="ref field" href="structs.h.html#address_item::parent" title='address_item::parent' data-ref="address_item::parent">parent</a>-&gt;<a class="ref field" href="structs.h.html#address_item::address" title='address_item::address' data-ref="address_item::address">address</a>;</td></tr>
+<tr><th id="508">508</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#35f" title='f' data-ref="35f">f</a>, <q>"  %s"</q>, <a class="local col2 ref" href="#32addr" title='addr' data-ref="32addr">addr</a>-&gt;<a class="ref field" href="structs.h.html#address_item::address" title='address_item::address' data-ref="address_item::address">address</a>);</td></tr>
+<tr><th id="509">509</th><td>    <b>if</b> (<a class="local col9 ref" href="#39parent" title='parent' data-ref="39parent">parent</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#35f" title='f' data-ref="35f">f</a>, <q>" &lt;%s&gt;"</q>, <a class="local col9 ref" href="#39parent" title='parent' data-ref="39parent">parent</a>);</td></tr>
+<tr><th id="510">510</th><td>    <b>if</b> (<a class="local col2 ref" href="#32addr" title='addr' data-ref="32addr">addr</a>-&gt;<a class="ref field" href="structs.h.html#address_item::basic_errno" title='address_item::basic_errno' data-ref="address_item::basic_errno">basic_errno</a> &gt; <var>0</var>) <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#35f" title='f' data-ref="35f">f</a>, <q>": %s"</q>, <a class="ref fn" href="../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="local col2 ref" href="#32addr" title='addr' data-ref="32addr">addr</a>-&gt;<a class="ref field" href="structs.h.html#address_item::basic_errno" title='address_item::basic_errno' data-ref="address_item::basic_errno">basic_errno</a>));</td></tr>
+<tr><th id="511">511</th><td>    <b>if</b> (<a class="local col2 ref" href="#32addr" title='addr' data-ref="32addr">addr</a>-&gt;<a class="ref field" href="structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#35f" title='f' data-ref="35f">f</a>, <q>": %s"</q>, <a class="local col2 ref" href="#32addr" title='addr' data-ref="32addr">addr</a>-&gt;<a class="ref field" href="structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a>);</td></tr>
+<tr><th id="512">512</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col5 ref" href="#35f" title='f' data-ref="35f">f</a>, <q>"\n"</q>);</td></tr>
+<tr><th id="513">513</th><td>    }</td></tr>
+<tr><th id="514">514</th><td>  }</td></tr>
+<tr><th id="515">515</th><td></td></tr>
+<tr><th id="516">516</th><td>(<em>void</em>)<a class="ref fn" href="../../include/stdio.h.html#fclose" title='fclose' data-ref="fclose">fclose</a>(<a class="local col5 ref" href="#35f" title='f' data-ref="35f">f</a>);</td></tr>
+<tr><th id="517">517</th><td><a class="ref fn" href="local_scan.h.html#child_close" title='child_close' data-ref="child_close">child_close</a>(<a class="local col8 ref" href="#38pid" title='pid' data-ref="38pid">pid</a>, <var>0</var>);  <i>/* Waits for child to close; no timeout */</i></td></tr>
+<tr><th id="518">518</th><td>}</td></tr>
+<tr><th id="519">519</th><td></td></tr>
+<tr><th id="520">520</th><td></td></tr>
+<tr><th id="521">521</th><td></td></tr>
+<tr><th id="522">522</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="523">523</th><td><i>*            Handle SMTP batch error             *</i></td></tr>
+<tr><th id="524">524</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="525">525</th><td></td></tr>
+<tr><th id="526">526</th><td><i>/* This is called when something goes wrong in batched (-bS) SMTP input.</i></td></tr>
+<tr><th id="527">527</th><td><i>Information is written to stdout and/or stderr, and Exim exits with a non-zero</i></td></tr>
+<tr><th id="528">528</th><td><i>completion code. BSMTP is almost always called by some other program, so it is</i></td></tr>
+<tr><th id="529">529</th><td><i>up to that program to interpret the return code and do something with the error</i></td></tr>
+<tr><th id="530">530</th><td><i>information, and also to preserve the batch input file for human analysis.</i></td></tr>
+<tr><th id="531">531</th><td><i></i></td></tr>
+<tr><th id="532">532</th><td><i>Formerly, Exim used to attempt to continue after some errors, but this strategy</i></td></tr>
+<tr><th id="533">533</th><td><i>has been abandoned as it can lead to loss of messages.</i></td></tr>
+<tr><th id="534">534</th><td><i></i></td></tr>
+<tr><th id="535">535</th><td><i>Arguments:</i></td></tr>
+<tr><th id="536">536</th><td><i>  cmd_buffer   the command causing the error, or NULL</i></td></tr>
+<tr><th id="537">537</th><td><i>  format       a printf() format</i></td></tr>
+<tr><th id="538">538</th><td><i>  ...          arguments for the format</i></td></tr>
+<tr><th id="539">539</th><td><i></i></td></tr>
+<tr><th id="540">540</th><td><i>Returns:       does not return; exits from the program</i></td></tr>
+<tr><th id="541">541</th><td><i>               exit code = 1 if some messages were accepted</i></td></tr>
+<tr><th id="542">542</th><td><i>               exit code = 2 if no messages were accepted</i></td></tr>
+<tr><th id="543">543</th><td><i>*/</i></td></tr>
+<tr><th id="544">544</th><td></td></tr>
+<tr><th id="545">545</th><td><em>void</em></td></tr>
+<tr><th id="546">546</th><td><dfn class="decl def fn" id="moan_smtp_batch" title='moan_smtp_batch' data-ref="moan_smtp_batch">moan_smtp_batch</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col0 decl" id="40cmd_buffer" title='cmd_buffer' data-type='uschar *' data-ref="40cmd_buffer">cmd_buffer</dfn>, <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="41format" title='format' data-type='const char *' data-ref="41format">format</dfn>, ...)</td></tr>
+<tr><th id="547">547</th><td>{</td></tr>
+<tr><th id="548">548</th><td><span class='typedef' title='va_list' data-type='__gnuc_va_list' data-ref="va_list">va_list</span> <dfn class="local col2 decl" id="42ap" title='ap' data-type='va_list' data-ref="42ap">ap</dfn>;</td></tr>
+<tr><th id="549">549</th><td><em>int</em> <dfn class="local col3 decl" id="43yield" title='yield' data-type='int' data-ref="43yield">yield</dfn> = (<a class="ref" href="globals.h.html#receive_messagecount" title='receive_messagecount' data-ref="receive_messagecount">receive_messagecount</a> &gt; <var>0</var>)? <var>1</var> : <var>2</var>;</td></tr>
+<tr><th id="550">550</th><td></td></tr>
+<tr><th id="551">551</th><td><a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; ((0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )))" data-ref="_M/DEBUG">DEBUG</a>(<a class="macro" href="macros.h.html#413" title="(0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )" data-ref="_M/D_any">D_any</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"Handling error in batched SMTP input\n"</q>);</td></tr>
+<tr><th id="552">552</th><td></td></tr>
+<tr><th id="553">553</th><td><i>/* On stdout, write stuff that a program could parse fairly easily. */</i></td></tr>
+<tr><th id="554">554</th><td></td></tr>
+<tr><th id="555">555</th><td><span class="macro" title="__builtin_va_start(ap, format)" data-ref="_M/va_start">va_start</span>(<a class="local col2 ref" href="#42ap" title='ap' data-ref="42ap">ap</a>, <a class="local col1 ref" href="#41format" title='format' data-ref="41format">format</a>);</td></tr>
+<tr><th id="556">556</th><td><a class="ref fn" href="../../include/stdio.h.html#vfprintf" title='vfprintf' data-ref="vfprintf">vfprintf</a>(<a class="macro" href="../../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>, <a class="local col1 ref" href="#41format" title='format' data-ref="41format">format</a>, <a class="local col2 ref" href="#42ap" title='ap' data-ref="42ap">ap</a>);</td></tr>
+<tr><th id="557">557</th><td><span class="macro" title="__builtin_va_end(ap)" data-ref="_M/va_end">va_end</span>(<a class="local col2 ref" href="#42ap" title='ap' data-ref="42ap">ap</a>);</td></tr>
+<tr><th id="558">558</th><td></td></tr>
+<tr><th id="559">559</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="macro" href="../../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>, <q>"\nTransaction started in line %d\n"</q>,</td></tr>
+<tr><th id="560">560</th><td>  <a class="ref" href="globals.h.html#bsmtp_transaction_linecount" title='bsmtp_transaction_linecount' data-ref="bsmtp_transaction_linecount">bsmtp_transaction_linecount</a>);</td></tr>
+<tr><th id="561">561</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="macro" href="../../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>,   <q>"Error detected in line %d\n"</q>, <a class="ref" href="globals.h.html#receive_linecount" title='receive_linecount' data-ref="receive_linecount">receive_linecount</a>);</td></tr>
+<tr><th id="562">562</th><td><b>if</b> (<a class="local col0 ref" href="#40cmd_buffer" title='cmd_buffer' data-ref="40cmd_buffer">cmd_buffer</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="macro" href="../../include/stdio.h.html#173" title="stdout" data-ref="_M/stdout">stdout</a>, <q>"%s\n"</q>, <a class="local col0 ref" href="#40cmd_buffer" title='cmd_buffer' data-ref="40cmd_buffer">cmd_buffer</a>);</td></tr>
+<tr><th id="563">563</th><td></td></tr>
+<tr><th id="564">564</th><td><i>/* On stderr, write stuff for human consumption */</i></td></tr>
+<tr><th id="565">565</th><td></td></tr>
+<tr><th id="566">566</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="macro" href="../../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>,</td></tr>
+<tr><th id="567">567</th><td>  <q>"An error was detected while processing a file of BSMTP input.\n"</q></td></tr>
+<tr><th id="568">568</th><td>  <q>"The error message was:\n\n  "</q>);</td></tr>
+<tr><th id="569">569</th><td></td></tr>
+<tr><th id="570">570</th><td><span class="macro" title="__builtin_va_start(ap, format)" data-ref="_M/va_start">va_start</span>(<a class="local col2 ref" href="#42ap" title='ap' data-ref="42ap">ap</a>, <a class="local col1 ref" href="#41format" title='format' data-ref="41format">format</a>);</td></tr>
+<tr><th id="571">571</th><td><a class="ref fn" href="../../include/stdio.h.html#vfprintf" title='vfprintf' data-ref="vfprintf">vfprintf</a>(<a class="macro" href="../../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>, <a class="local col1 ref" href="#41format" title='format' data-ref="41format">format</a>, <a class="local col2 ref" href="#42ap" title='ap' data-ref="42ap">ap</a>);</td></tr>
+<tr><th id="572">572</th><td><span class="macro" title="__builtin_va_end(ap)" data-ref="_M/va_end">va_end</span>(<a class="local col2 ref" href="#42ap" title='ap' data-ref="42ap">ap</a>);</td></tr>
+<tr><th id="573">573</th><td></td></tr>
+<tr><th id="574">574</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="macro" href="../../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>,</td></tr>
+<tr><th id="575">575</th><td>  <q>"\n\nThe SMTP transaction started in line %d.\n"</q></td></tr>
+<tr><th id="576">576</th><td>      <q>"The error was detected in line %d.\n"</q>,</td></tr>
+<tr><th id="577">577</th><td>  <a class="ref" href="globals.h.html#bsmtp_transaction_linecount" title='bsmtp_transaction_linecount' data-ref="bsmtp_transaction_linecount">bsmtp_transaction_linecount</a>, <a class="ref" href="globals.h.html#receive_linecount" title='receive_linecount' data-ref="receive_linecount">receive_linecount</a>);</td></tr>
+<tr><th id="578">578</th><td></td></tr>
+<tr><th id="579">579</th><td><b>if</b> (<a class="local col0 ref" href="#40cmd_buffer" title='cmd_buffer' data-ref="40cmd_buffer">cmd_buffer</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="580">580</th><td>  {</td></tr>
+<tr><th id="581">581</th><td>  <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="macro" href="../../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>, <q>"The SMTP command at fault was:\n\n   %s\n\n"</q>,</td></tr>
+<tr><th id="582">582</th><td>    <a class="local col0 ref" href="#40cmd_buffer" title='cmd_buffer' data-ref="40cmd_buffer">cmd_buffer</a>);</td></tr>
+<tr><th id="583">583</th><td>  }</td></tr>
+<tr><th id="584">584</th><td></td></tr>
+<tr><th id="585">585</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="macro" href="../../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>, <q>"%d previous message%s successfully processed.\n"</q>,</td></tr>
+<tr><th id="586">586</th><td>  <a class="ref" href="globals.h.html#receive_messagecount" title='receive_messagecount' data-ref="receive_messagecount">receive_messagecount</a>, (<a class="ref" href="globals.h.html#receive_messagecount" title='receive_messagecount' data-ref="receive_messagecount">receive_messagecount</a> == <var>1</var>)? <q>" was"</q> : <q>"s were"</q>);</td></tr>
+<tr><th id="587">587</th><td></td></tr>
+<tr><th id="588">588</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="macro" href="../../include/stdio.h.html#174" title="stderr" data-ref="_M/stderr">stderr</a>, <q>"The rest of the batch was abandoned.\n"</q>);</td></tr>
+<tr><th id="589">589</th><td></td></tr>
+<tr><th id="590">590</th><td><a class="ref fn" href="functions.h.html#exim_exit" title='exim_exit' data-ref="exim_exit">exim_exit</a>(<a class="local col3 ref" href="#43yield" title='yield' data-ref="43yield">yield</a>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"batch"</q>);</td></tr>
+<tr><th id="591">591</th><td>}</td></tr>
+<tr><th id="592">592</th><td></td></tr>
+<tr><th id="593">593</th><td></td></tr>
+<tr><th id="594">594</th><td></td></tr>
+<tr><th id="595">595</th><td></td></tr>
+<tr><th id="596">596</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="597">597</th><td><i>*         Check for error copies                 *</i></td></tr>
+<tr><th id="598">598</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="599">599</th><td></td></tr>
+<tr><th id="600">600</th><td><i>/* This function is passed the recipient of an error message, and must check</i></td></tr>
+<tr><th id="601">601</th><td><i>the error_copies string to see whether there is an additional recipient list to</i></td></tr>
+<tr><th id="602">602</th><td><i>which errors for this recipient must be bcc'd. The incoming recipient is always</i></td></tr>
+<tr><th id="603">603</th><td><i>fully qualified.</i></td></tr>
+<tr><th id="604">604</th><td><i></i></td></tr>
+<tr><th id="605">605</th><td><i>Argument:   recipient address</i></td></tr>
+<tr><th id="606">606</th><td><i>Returns:    additional recipient list or NULL</i></td></tr>
+<tr><th id="607">607</th><td><i>*/</i></td></tr>
+<tr><th id="608">608</th><td></td></tr>
+<tr><th id="609">609</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *</td></tr>
+<tr><th id="610">610</th><td><dfn class="decl def fn" id="moan_check_errorcopy" title='moan_check_errorcopy' data-ref="moan_check_errorcopy">moan_check_errorcopy</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="44recipient" title='recipient' data-type='uschar *' data-ref="44recipient">recipient</dfn>)</td></tr>
+<tr><th id="611">611</th><td>{</td></tr>
+<tr><th id="612">612</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col5 decl" id="45item" title='item' data-type='uschar *' data-ref="45item">item</dfn>, *<dfn class="local col6 decl" id="46localpart" title='localpart' data-type='uschar *' data-ref="46localpart">localpart</dfn>, *<dfn class="local col7 decl" id="47domain" title='domain' data-type='uschar *' data-ref="47domain">domain</dfn>;</td></tr>
+<tr><th id="613">613</th><td><em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col8 decl" id="48listptr" title='listptr' data-type='const uschar *' data-ref="48listptr">listptr</dfn> = <a class="ref" href="globals.h.html#errors_copy" title='errors_copy' data-ref="errors_copy">errors_copy</a>;</td></tr>
+<tr><th id="614">614</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col9 decl" id="49yield" title='yield' data-type='uschar *' data-ref="49yield">yield</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="615">615</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col0 decl" id="50buffer" title='buffer' data-type='uschar [256]' data-ref="50buffer">buffer</dfn>[<var>256</var>];</td></tr>
+<tr><th id="616">616</th><td><em>int</em> <dfn class="local col1 decl" id="51sep" title='sep' data-type='int' data-ref="51sep">sep</dfn> = <var>0</var>;</td></tr>
+<tr><th id="617">617</th><td><em>int</em> <dfn class="local col2 decl" id="52llen" title='llen' data-type='int' data-ref="52llen">llen</dfn>;</td></tr>
+<tr><th id="618">618</th><td></td></tr>
+<tr><th id="619">619</th><td><b>if</b> (<a class="ref" href="globals.h.html#errors_copy" title='errors_copy' data-ref="errors_copy">errors_copy</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <b>return</b> <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="620">620</th><td></td></tr>
+<tr><th id="621">621</th><td><i>/* Set up pointer to the local part and domain, and compute the</i></td></tr>
+<tr><th id="622">622</th><td><i>length of the local part. */</i></td></tr>
+<tr><th id="623">623</th><td></td></tr>
+<tr><th id="624">624</th><td><a class="local col6 ref" href="#46localpart" title='localpart' data-ref="46localpart">localpart</a> = <a class="local col4 ref" href="#44recipient" title='recipient' data-ref="44recipient">recipient</a>;</td></tr>
+<tr><th id="625">625</th><td><a class="local col7 ref" href="#47domain" title='domain' data-ref="47domain">domain</a> = <a class="macro" href="mytypes.h.html#109" title="(unsigned char *) strrchr((const char *)(recipient),&apos;@&apos;)" data-ref="_M/Ustrrchr">Ustrrchr</a>(<a class="local col4 ref" href="#44recipient" title='recipient' data-ref="44recipient">recipient</a>, <kbd>'@'</kbd>);</td></tr>
+<tr><th id="626">626</th><td><b>if</b> (<a class="local col7 ref" href="#47domain" title='domain' data-ref="47domain">domain</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <b>return</b> <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;  <i>/* should not occur, but avoid crash */</i></td></tr>
+<tr><th id="627">627</th><td><a class="local col2 ref" href="#52llen" title='llen' data-ref="52llen">llen</a> = <a class="local col7 ref" href="#47domain" title='domain' data-ref="47domain">domain</a>++ - <a class="local col4 ref" href="#44recipient" title='recipient' data-ref="44recipient">recipient</a>;</td></tr>
+<tr><th id="628">628</th><td></td></tr>
+<tr><th id="629">629</th><td><i>/* Scan through the configured items */</i></td></tr>
+<tr><th id="630">630</th><td></td></tr>
+<tr><th id="631">631</th><td><b>while</b> ((<a class="local col5 ref" href="#45item" title='item' data-ref="45item">item</a> = <a class="ref fn" href="functions.h.html#string_nextinlist" title='string_nextinlist' data-ref="string_nextinlist">string_nextinlist</a>(&amp;<a class="local col8 ref" href="#48listptr" title='listptr' data-ref="48listptr">listptr</a>, &amp;<a class="local col1 ref" href="#51sep" title='sep' data-ref="51sep">sep</a>, <a class="local col0 ref" href="#50buffer" title='buffer' data-ref="50buffer">buffer</a>, <b>sizeof</b>(<a class="local col0 ref" href="#50buffer" title='buffer' data-ref="50buffer">buffer</a>)))</td></tr>
+<tr><th id="632">632</th><td>       != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="633">633</th><td>  {</td></tr>
+<tr><th id="634">634</th><td>  <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="53newaddress" title='newaddress' data-type='const uschar *' data-ref="53newaddress">newaddress</dfn> = <a class="local col5 ref" href="#45item" title='item' data-ref="45item">item</a>;</td></tr>
+<tr><th id="635">635</th><td>  <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="54pattern" title='pattern' data-type='const uschar *' data-ref="54pattern">pattern</dfn> = <a class="ref fn" href="functions.h.html#string_dequote" title='string_dequote' data-ref="string_dequote">string_dequote</a>(&amp;<a class="local col3 ref" href="#53newaddress" title='newaddress' data-ref="53newaddress">newaddress</a>);</td></tr>
+<tr><th id="636">636</th><td></td></tr>
+<tr><th id="637">637</th><td>  <i>/* If no new address found, just skip this item. */</i></td></tr>
+<tr><th id="638">638</th><td></td></tr>
+<tr><th id="639">639</th><td>  <b>while</b> (<a class="macro" href="../../include/ctype.h.html#205" title="((*__ctype_b_loc ())[(int) ((*newaddress))] &amp; (unsigned short int) _ISspace)" data-ref="_M/isspace">isspace</a>(*<a class="local col3 ref" href="#53newaddress" title='newaddress' data-ref="53newaddress">newaddress</a>)) <a class="local col3 ref" href="#53newaddress" title='newaddress' data-ref="53newaddress">newaddress</a>++;</td></tr>
+<tr><th id="640">640</th><td>  <b>if</b> (*<a class="local col3 ref" href="#53newaddress" title='newaddress' data-ref="53newaddress">newaddress</a> == <var>0</var>) <b>continue</b>;</td></tr>
+<tr><th id="641">641</th><td></td></tr>
+<tr><th id="642">642</th><td>  <i>/* We now have an item to match as an address in item, and the additional</i></td></tr>
+<tr><th id="643">643</th><td><i>  address in newaddress. If the pattern matches, expand the new address string</i></td></tr>
+<tr><th id="644">644</th><td><i>  and return it. During expansion, make local part and domain available for</i></td></tr>
+<tr><th id="645">645</th><td><i>  insertion. This requires a copy to be made; we can't just temporarily</i></td></tr>
+<tr><th id="646">646</th><td><i>  terminate it, as the whole address is required for $0. */</i></td></tr>
+<tr><th id="647">647</th><td></td></tr>
+<tr><th id="648">648</th><td>  <b>if</b> (<a class="ref fn" href="functions.h.html#match_address_list" title='match_address_list' data-ref="match_address_list">match_address_list</a>(<a class="local col4 ref" href="#44recipient" title='recipient' data-ref="44recipient">recipient</a>, <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>, <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>, &amp;<a class="local col4 ref" href="#54pattern" title='pattern' data-ref="54pattern">pattern</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <var>0</var>, <span class="macro" title="(127*2 +1)" data-ref="_M/UCHAR_MAX">UCHAR_MAX</span>+<var>1</var>,</td></tr>
+<tr><th id="649">649</th><td>        <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) == <a class="macro" href="macros.h.html#283" title="0" data-ref="_M/OK">OK</a>)</td></tr>
+<tr><th id="650">650</th><td>    {</td></tr>
+<tr><th id="651">651</th><td>    <a class="ref" href="globals.h.html#deliver_localpart" title='deliver_localpart' data-ref="deliver_localpart">deliver_localpart</a> = <a class="ref fn" href="local_scan.h.html#string_copyn" title='string_copyn' data-ref="string_copyn">string_copyn</a>(<a class="local col6 ref" href="#46localpart" title='localpart' data-ref="46localpart">localpart</a>, <a class="local col2 ref" href="#52llen" title='llen' data-ref="52llen">llen</a>);</td></tr>
+<tr><th id="652">652</th><td>    <a class="ref" href="globals.h.html#deliver_domain" title='deliver_domain' data-ref="deliver_domain">deliver_domain</a> = <a class="local col7 ref" href="#47domain" title='domain' data-ref="47domain">domain</a>;</td></tr>
+<tr><th id="653">653</th><td>    <a class="local col9 ref" href="#49yield" title='yield' data-ref="49yield">yield</a> = <a class="ref fn" href="functions.h.html#expand_string_copy" title='expand_string_copy' data-ref="expand_string_copy">expand_string_copy</a>(<a class="local col3 ref" href="#53newaddress" title='newaddress' data-ref="53newaddress">newaddress</a>);</td></tr>
+<tr><th id="654">654</th><td>    <a class="ref" href="globals.h.html#deliver_domain" title='deliver_domain' data-ref="deliver_domain">deliver_domain</a> = <a class="ref" href="globals.h.html#deliver_localpart" title='deliver_localpart' data-ref="deliver_localpart">deliver_localpart</a> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="655">655</th><td>    <b>if</b> (<a class="local col9 ref" href="#49yield" title='yield' data-ref="49yield">yield</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="656">656</th><td>      <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>|<a class="macro" href="macros.h.html#792" title="2" data-ref="_M/LOG_PANIC">LOG_PANIC</a>, <q>"Failed to expand %s when processing "</q></td></tr>
+<tr><th id="657">657</th><td>        <q>"errors_copy: %s"</q>, <a class="local col3 ref" href="#53newaddress" title='newaddress' data-ref="53newaddress">newaddress</a>, <a class="ref" href="local_scan.h.html#expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</a>);</td></tr>
+<tr><th id="658">658</th><td>    <b>break</b>;</td></tr>
+<tr><th id="659">659</th><td>    }</td></tr>
+<tr><th id="660">660</th><td>  }</td></tr>
+<tr><th id="661">661</th><td></td></tr>
+<tr><th id="662">662</th><td><a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; ((0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )))" data-ref="_M/DEBUG">DEBUG</a>(<a class="macro" href="macros.h.html#413" title="(0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )" data-ref="_M/D_any">D_any</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"errors_copy check returned %s\n"</q>,</td></tr>
+<tr><th id="663">663</th><td>  (<a class="local col9 ref" href="#49yield" title='yield' data-ref="49yield">yield</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)? <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"NULL"</q> : <a class="local col9 ref" href="#49yield" title='yield' data-ref="49yield">yield</a>);</td></tr>
+<tr><th id="664">664</th><td></td></tr>
+<tr><th id="665">665</th><td><a class="ref" href="globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a> = -<var>1</var>;</td></tr>
+<tr><th id="666">666</th><td><b>return</b> <a class="local col9 ref" href="#49yield" title='yield' data-ref="49yield">yield</a>;</td></tr>
+<tr><th id="667">667</th><td>}</td></tr>
+<tr><th id="668">668</th><td></td></tr>
+<tr><th id="669">669</th><td></td></tr>
+<tr><th id="670">670</th><td></td></tr>
+<tr><th id="671">671</th><td><i>/************************************************</i></td></tr>
+<tr><th id="672">672</th><td><i>*        Handle skipped syntax errors           *</i></td></tr>
+<tr><th id="673">673</th><td><i>************************************************/</i></td></tr>
+<tr><th id="674">674</th><td></td></tr>
+<tr><th id="675">675</th><td><i>/* This function is called by the redirect router when it has skipped over one</i></td></tr>
+<tr><th id="676">676</th><td><i>or more syntax errors in the list of addresses. If there is an address to mail</i></td></tr>
+<tr><th id="677">677</th><td><i>to, send a message, and always write the information to the log. In the case of</i></td></tr>
+<tr><th id="678">678</th><td><i>a filter file, a "syntax error" might actually be something else, such as the</i></td></tr>
+<tr><th id="679">679</th><td><i>inability to open a log file. Thus, the wording of the error message is</i></td></tr>
+<tr><th id="680">680</th><td><i>general.</i></td></tr>
+<tr><th id="681">681</th><td><i></i></td></tr>
+<tr><th id="682">682</th><td><i>Arguments:</i></td></tr>
+<tr><th id="683">683</th><td><i>  rname             the router name</i></td></tr>
+<tr><th id="684">684</th><td><i>  eblock            chain of error blocks</i></td></tr>
+<tr><th id="685">685</th><td><i>  syntax_errors_to  address to send mail to, or NULL</i></td></tr>
+<tr><th id="686">686</th><td><i>  some              TRUE if some addresses were generated; FALSE if none were</i></td></tr>
+<tr><th id="687">687</th><td><i>  custom            custom message text</i></td></tr>
+<tr><th id="688">688</th><td><i></i></td></tr>
+<tr><th id="689">689</th><td><i>Returns:            FALSE if string expansion failed; TRUE otherwise</i></td></tr>
+<tr><th id="690">690</th><td><i>*/</i></td></tr>
+<tr><th id="691">691</th><td></td></tr>
+<tr><th id="692">692</th><td><a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a></td></tr>
+<tr><th id="693">693</th><td><dfn class="decl def fn" id="moan_skipped_syntax_errors" title='moan_skipped_syntax_errors' data-ref="moan_skipped_syntax_errors">moan_skipped_syntax_errors</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col5 decl" id="55rname" title='rname' data-type='uschar *' data-ref="55rname">rname</dfn>, <a class="typedef" href="structs.h.html#error_block" title='error_block' data-type='struct error_block' data-ref="error_block">error_block</a> *<dfn class="local col6 decl" id="56eblock" title='eblock' data-type='error_block *' data-ref="56eblock">eblock</dfn>,</td></tr>
+<tr><th id="694">694</th><td>  <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col7 decl" id="57syntax_errors_to" title='syntax_errors_to' data-type='uschar *' data-ref="57syntax_errors_to">syntax_errors_to</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col8 decl" id="58some" title='some' data-type='BOOL' data-ref="58some">some</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col9 decl" id="59custom" title='custom' data-type='uschar *' data-ref="59custom">custom</dfn>)</td></tr>
+<tr><th id="695">695</th><td>{</td></tr>
+<tr><th id="696">696</th><td><em>int</em> <dfn class="local col0 decl" id="60pid" title='pid' data-type='int' data-ref="60pid">pid</dfn>, <dfn class="local col1 decl" id="61fd" title='fd' data-type='int' data-ref="61fd">fd</dfn>;</td></tr>
+<tr><th id="697">697</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="62s" title='s' data-type='uschar *' data-ref="62s">s</dfn>, *<dfn class="local col3 decl" id="63t" title='t' data-type='uschar *' data-ref="63t">t</dfn>;</td></tr>
+<tr><th id="698">698</th><td><a class="typedef" href="../../include/stdio.h.html#FILE" title='FILE' data-type='struct _IO_FILE' data-ref="FILE">FILE</a> *<dfn class="local col4 decl" id="64f" title='f' data-type='FILE *' data-ref="64f">f</dfn>;</td></tr>
+<tr><th id="699">699</th><td><a class="typedef" href="structs.h.html#error_block" title='error_block' data-type='struct error_block' data-ref="error_block">error_block</a> *<dfn class="local col5 decl" id="65e" title='e' data-type='error_block *' data-ref="65e">e</dfn>;</td></tr>
+<tr><th id="700">700</th><td></td></tr>
+<tr><th id="701">701</th><td><b>for</b> (<a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a> = <a class="local col6 ref" href="#56eblock" title='eblock' data-ref="56eblock">eblock</a>; <a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>; <a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a> = <a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a>-&gt;<a class="ref field" href="structs.h.html#error_block::next" title='error_block::next' data-ref="error_block::next">next</a>)</td></tr>
+<tr><th id="702">702</th><td>  {</td></tr>
+<tr><th id="703">703</th><td>  <b>if</b> (<a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text2" title='error_block::text2' data-ref="error_block::text2">text2</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="704">704</th><td>    <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s router: skipped error: %s in \"%s\""</q>,</td></tr>
+<tr><th id="705">705</th><td>      <a class="local col5 ref" href="#55rname" title='rname' data-ref="55rname">rname</a>, <a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text1" title='error_block::text1' data-ref="error_block::text1">text1</a>, <a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text2" title='error_block::text2' data-ref="error_block::text2">text2</a>);</td></tr>
+<tr><th id="706">706</th><td>  <b>else</b></td></tr>
+<tr><th id="707">707</th><td>    <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s router: skipped error: %s"</q>, <a class="local col5 ref" href="#55rname" title='rname' data-ref="55rname">rname</a>,</td></tr>
+<tr><th id="708">708</th><td>      <a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text1" title='error_block::text1' data-ref="error_block::text1">text1</a>);</td></tr>
+<tr><th id="709">709</th><td>  }</td></tr>
+<tr><th id="710">710</th><td></td></tr>
+<tr><th id="711">711</th><td><b>if</b> (<a class="local col7 ref" href="#57syntax_errors_to" title='syntax_errors_to' data-ref="57syntax_errors_to">syntax_errors_to</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <b>return</b> <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="712">712</th><td></td></tr>
+<tr><th id="713">713</th><td><a class="local col2 ref" href="#62s" title='s' data-ref="62s">s</a> = <a class="ref fn" href="local_scan.h.html#expand_string" title='expand_string' data-ref="expand_string">expand_string</a>(<a class="local col7 ref" href="#57syntax_errors_to" title='syntax_errors_to' data-ref="57syntax_errors_to">syntax_errors_to</a>);</td></tr>
+<tr><th id="714">714</th><td><b>if</b> (<a class="local col2 ref" href="#62s" title='s' data-ref="62s">s</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="715">715</th><td>  {</td></tr>
+<tr><th id="716">716</th><td>  <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s router failed to expand %s: %s"</q>, <a class="local col5 ref" href="#55rname" title='rname' data-ref="55rname">rname</a>,</td></tr>
+<tr><th id="717">717</th><td>    <a class="local col7 ref" href="#57syntax_errors_to" title='syntax_errors_to' data-ref="57syntax_errors_to">syntax_errors_to</a>, <a class="ref" href="local_scan.h.html#expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</a>);</td></tr>
+<tr><th id="718">718</th><td>  <b>return</b> <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="719">719</th><td>  }</td></tr>
+<tr><th id="720">720</th><td></td></tr>
+<tr><th id="721">721</th><td><i>/* If we can't create a process to send the message, just forget about</i></td></tr>
+<tr><th id="722">722</th><td><i>it. */</i></td></tr>
+<tr><th id="723">723</th><td></td></tr>
+<tr><th id="724">724</th><td><a class="local col0 ref" href="#60pid" title='pid' data-ref="60pid">pid</a> = <a class="ref fn" href="local_scan.h.html#child_open_exim" title='child_open_exim' data-ref="child_open_exim">child_open_exim</a>(&amp;<a class="local col1 ref" href="#61fd" title='fd' data-ref="61fd">fd</a>);</td></tr>
+<tr><th id="725">725</th><td></td></tr>
+<tr><th id="726">726</th><td><b>if</b> (<a class="local col0 ref" href="#60pid" title='pid' data-ref="60pid">pid</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="727">727</th><td>  {</td></tr>
+<tr><th id="728">728</th><td>  <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; ((0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )))" data-ref="_M/DEBUG">DEBUG</a>(<a class="macro" href="macros.h.html#413" title="(0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )" data-ref="_M/D_any">D_any</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"Failed to create child to send message: %s\n"</q>,</td></tr>
+<tr><th id="729">729</th><td>    <a class="ref fn" href="../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="730">730</th><td>  <b>return</b> <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="731">731</th><td>  }</td></tr>
+<tr><th id="732">732</th><td></td></tr>
+<tr><th id="733">733</th><td><a class="local col4 ref" href="#64f" title='f' data-ref="64f">f</a> = <a class="ref fn" href="../../include/stdio.h.html#fdopen" title='fdopen' data-ref="fdopen">fdopen</a>(<a class="local col1 ref" href="#61fd" title='fd' data-ref="61fd">fd</a>, <q>"wb"</q>);</td></tr>
+<tr><th id="734">734</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#64f" title='f' data-ref="64f">f</a>, <q>"Auto-Submitted: auto-replied\n"</q>);</td></tr>
+<tr><th id="735">735</th><td><a class="ref fn" href="#moan_write_from" title='moan_write_from' data-ref="moan_write_from">moan_write_from</a>(<a class="local col4 ref" href="#64f" title='f' data-ref="64f">f</a>);</td></tr>
+<tr><th id="736">736</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#64f" title='f' data-ref="64f">f</a>, <q>"To: %s\n"</q>, <a class="local col2 ref" href="#62s" title='s' data-ref="62s">s</a>);</td></tr>
+<tr><th id="737">737</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#64f" title='f' data-ref="64f">f</a>, <q>"Subject: error(s) in forwarding or filtering\n\n"</q>);</td></tr>
+<tr><th id="738">738</th><td></td></tr>
+<tr><th id="739">739</th><td><b>if</b> (<a class="local col9 ref" href="#59custom" title='custom' data-ref="59custom">custom</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="740">740</th><td>  {</td></tr>
+<tr><th id="741">741</th><td>  <a class="local col3 ref" href="#63t" title='t' data-ref="63t">t</a> = <a class="ref fn" href="local_scan.h.html#expand_string" title='expand_string' data-ref="expand_string">expand_string</a>(<a class="local col9 ref" href="#59custom" title='custom' data-ref="59custom">custom</a>);</td></tr>
+<tr><th id="742">742</th><td>  <b>if</b> (<a class="local col3 ref" href="#63t" title='t' data-ref="63t">t</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="743">743</th><td>    {</td></tr>
+<tr><th id="744">744</th><td>    <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>, <q>"%s router failed to expand %s: %s"</q>, <a class="local col5 ref" href="#55rname" title='rname' data-ref="55rname">rname</a>,</td></tr>
+<tr><th id="745">745</th><td>      <a class="local col9 ref" href="#59custom" title='custom' data-ref="59custom">custom</a>, <a class="ref" href="local_scan.h.html#expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</a>);</td></tr>
+<tr><th id="746">746</th><td>    <b>return</b> <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="747">747</th><td>    }</td></tr>
+<tr><th id="748">748</th><td>  <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#64f" title='f' data-ref="64f">f</a>, <q>"%s\n\n"</q>, <a class="local col3 ref" href="#63t" title='t' data-ref="63t">t</a>);</td></tr>
+<tr><th id="749">749</th><td>  }</td></tr>
+<tr><th id="750">750</th><td></td></tr>
+<tr><th id="751">751</th><td><a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#64f" title='f' data-ref="64f">f</a>, <q>"The %s router encountered the following error(s):\n\n"</q>,</td></tr>
+<tr><th id="752">752</th><td>  <a class="local col5 ref" href="#55rname" title='rname' data-ref="55rname">rname</a>);</td></tr>
+<tr><th id="753">753</th><td></td></tr>
+<tr><th id="754">754</th><td><b>for</b> (<a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a> = <a class="local col6 ref" href="#56eblock" title='eblock' data-ref="56eblock">eblock</a>; <a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>; <a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a> = <a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a>-&gt;<a class="ref field" href="structs.h.html#error_block::next" title='error_block::next' data-ref="error_block::next">next</a>)</td></tr>
+<tr><th id="755">755</th><td>  {</td></tr>
+<tr><th id="756">756</th><td>  <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#64f" title='f' data-ref="64f">f</a>, <q>"  %s"</q>, <a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text1" title='error_block::text1' data-ref="error_block::text1">text1</a>);</td></tr>
+<tr><th id="757">757</th><td>  <b>if</b> (<a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text2" title='error_block::text2' data-ref="error_block::text2">text2</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="758">758</th><td>    <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#64f" title='f' data-ref="64f">f</a>, <q>" in the address\n  \"%s\""</q>, <a class="local col5 ref" href="#65e" title='e' data-ref="65e">e</a>-&gt;<a class="ref field" href="structs.h.html#error_block::text2" title='error_block::text2' data-ref="error_block::text2">text2</a>);</td></tr>
+<tr><th id="759">759</th><td>  <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#64f" title='f' data-ref="64f">f</a>, <q>"\n\n"</q>);</td></tr>
+<tr><th id="760">760</th><td>  }</td></tr>
+<tr><th id="761">761</th><td></td></tr>
+<tr><th id="762">762</th><td><b>if</b> (<a class="local col8 ref" href="#58some" title='some' data-ref="58some">some</a>)</td></tr>
+<tr><th id="763">763</th><td>  <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#64f" title='f' data-ref="64f">f</a>, <q>"Other addresses were processed normally.\n"</q>);</td></tr>
+<tr><th id="764">764</th><td><b>else</b></td></tr>
+<tr><th id="765">765</th><td>  <a class="ref fn" href="../../include/stdio.h.html#fprintf" title='fprintf' data-ref="fprintf">fprintf</a>(<a class="local col4 ref" href="#64f" title='f' data-ref="64f">f</a>, <q>"No valid addresses were generated.\n"</q>);</td></tr>
+<tr><th id="766">766</th><td></td></tr>
+<tr><th id="767">767</th><td>(<em>void</em>)<a class="ref fn" href="../../include/stdio.h.html#fclose" title='fclose' data-ref="fclose">fclose</a>(<a class="local col4 ref" href="#64f" title='f' data-ref="64f">f</a>);</td></tr>
+<tr><th id="768">768</th><td><a class="ref fn" href="local_scan.h.html#child_close" title='child_close' data-ref="child_close">child_close</a>(<a class="local col0 ref" href="#60pid" title='pid' data-ref="60pid">pid</a>, <var>0</var>);  <i>/* Waits for child to close; no timeout */</i></td></tr>
+<tr><th id="769">769</th><td></td></tr>
+<tr><th id="770">770</th><td><b>return</b> <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="771">771</th><td>}</td></tr>
+<tr><th id="772">772</th><td></td></tr>
+<tr><th id="773">773</th><td><i>/* End of moan.c */</i></td></tr>
+<tr><th id="774">774</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

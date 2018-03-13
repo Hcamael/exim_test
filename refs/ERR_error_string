@@ -1,0 +1,12 @@
+<dec f='include/openssl/err.h' l='224' type='char * ERR_error_string(unsigned long e, char * buf)'/>
+<use f='exim/src/tls-openssl.c' l='225' u='c' c='tls_error'/>
+<use f='exim/src/tls-openssl.c' l='269' u='c' c='rsa_callback'/>
+<use f='exim/src/tls-openssl.c' l='916' u='c' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='1221' u='c' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='2486' u='c' c='tls_refill'/>
+<use f='exim/src/tls-openssl.c' l='2668' u='c' c='tls_write'/>
+<use f='exim/src/tls-openssl.c' l='2780' u='c' c='tls_validate_require_cipher'/>
+<use f='exim/src/tls-openssl.c' l='2789' u='c' c='tls_validate_require_cipher'/>
+<use f='exim/src/tlscert-openssl.c' l='39' u='c' c='tls_export_cert'/>
+<use f='exim/src/tlscert-openssl.c' l='74' u='c' c='tls_import_cert'/>
+<use f='exim/src/tlscert-openssl.c' l='481' u='c' c='tls_cert_der_b64'/>

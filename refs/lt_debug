@@ -1,0 +1,5 @@
+<dec f='exim/src/log.c' l='20' type='3'/>
+<use f='exim/src/log.c' l='411' u='r' c='open_log'/>
+<use f='exim/src/log.c' l='528' u='r' c='unlink_log'/>
+<use f='exim/src/log.c' l='1425' u='r' c='debug_logging_activate'/>
+<use f='exim/src/log.c' l='1442' u='r' c='debug_logging_stop'/>

@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='489' type='int'/>
 <doc f='exim/src/globals.h' l='489'>/* Max total length for header */</doc>
+<def f='exim/src/globals.c' l='768' type='int'/>
+<use f='exim/src/moan.c' l='423' u='r' c='moan_to_sender'/>
+<use f='exim/src/readconf.c' l='159' u='a'/>
+<use f='exim/src/readconf.c' l='159' u='a'/>
+<use f='exim/src/readconf.c' l='159' u='a'/>
+<use f='exim/src/readconf.c' l='159' u='a'/>
+<use f='exim/src/receive.c' l='1919' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1930' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='1943' u='r' c='receive_msg'/>

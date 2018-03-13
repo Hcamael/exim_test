@@ -2,3 +2,112 @@
 <use f='exim/src/lookups/lf_sqlperform.c' l='56' u='c' c='lf_sqlperform'/>
 <use f='exim/src/lookups/lf_sqlperform.c' l='104' u='c' c='lf_sqlperform'/>
 <use f='exim/src/lookups/lf_sqlperform.c' l='115' u='c' c='lf_sqlperform'/>
+<use f='exim/src/pdkim/pdkim.c' l='283' u='c' c='header_name_match'/>
+<use f='exim/src/pdkim/pdkim.c' l='648' u='c' c='pdkim_parse_pubkey_record'/>
+<use f='exim/src/pdkim/pdkim.c' l='1518' u='c' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1714' u='c' c='pdkim_feed_finish'/>
+<use f='exim/src/environment.c' l='68' u='c' c='cleanup_environment'/>
+<use f='exim/src/deliver.c' l='3211' u='c' c='sort_remote_deliveries'/>
+<use f='exim/src/verify.c' l='3472' u='c' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3496' u='c' c='one_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3690' u='c' c='verify_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3826' u='c' c='verify_check_dnsbl'/>
+<use f='exim/src/smtp_out.c' l='58' u='c' c='smtp_get_interface'/>
+<use f='exim/src/tls-openssl.c' l='447' u='c' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='1115' u='c' c='tls_expand_session_files'/>
+<use f='exim/src/tls-openssl.c' l='1138' u='c' c='tls_expand_session_files'/>
+<use f='exim/src/tls.c' l='268' u='c' c='tls_field_from_dn'/>
+<use f='exim/src/tls.c' l='277' u='c' c='tls_field_from_dn'/>
+<use f='exim/src/tls.c' l='329' u='c' c='tls_is_name_for_cert'/>
+<use f='exim/src/tls.c' l='332' u='c' c='tls_is_name_for_cert'/>
+<use f='exim/src/tls.c' l='343' u='c' c='tls_is_name_for_cert'/>
+<use f='exim/src/tls.c' l='346' u='c' c='tls_is_name_for_cert'/>
+<def f='exim/src/string.c' l='874' ll='969' type='uschar * string_nextinlist(const uschar ** listptr, int * separator, uschar * buffer, int buflen)'/>
+<doc f='exim/src/string.c' l='838'>/* Leading and trailing space is removed from each item. The separator in the
+list is controlled by the int pointed to by the separator argument as follows:
+
+  If the value is &gt; 0 it is used as the separator. This is typically used for
+  sublists such as slash-separated options. The value is always a printing
+  character.
+
+    (If the value is actually &gt; UCHAR_MAX there is only one item in the list.
+    This is used for some cases when called via functions that sometimes
+    plough through lists, and sometimes are given single items.)
+
+  If the value is &lt;= 0, the string is inspected for a leading &lt;x, where x is an
+  ispunct() or an iscntrl() character. If found, x is used as the separator. If
+  not found:
+
+      (a) if separator == 0, &apos;:&apos; is used
+      (b) if separator &lt;0, -separator is used
+
+  In all cases the value of the separator that is used is written back to the
+  int so that it is used on subsequent calls as we progress through the list.
+
+A literal ispunct() separator can be represented in an item by doubling, but
+there is no way to include an iscntrl() separator as part of the data.
+
+Arguments:
+  listptr    points to a pointer to the current start of the list; the
+             pointer gets updated to point after the end of the next item
+  separator  a pointer to the separator character in an int (see above)
+  buffer     where to put a copy of the next string in the list; or
+               NULL if the next string is returned in new memory
+  buflen     when buffer is not NULL, the size of buffer; otherwise ignored
+
+Returns:     pointer to buffer, containing the next substring,
+             or NULL if no more substrings
+*/</doc>
+<use f='exim/src/moan.c' l='631' u='c' c='moan_check_errorcopy'/>
+<use f='exim/src/filter.c' l='2020' u='c' c='interpret_commands'/>
+<use f='exim/src/queue.c' l='1428' u='c' c='queue_check_only'/>
+<use f='exim/src/auths/plaintext.c' l='131' u='c' c='auth_plaintext_server'/>
+<use f='exim/src/auths/plaintext.c' l='188' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/lookups/dbmdb.c' l='168' u='c' c='dbmjz_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='314' u='c' c='dnsdb_find'/>
+<use f='exim/src/routers/rf_get_munge_headers.c' l='44' u='c' c='rf_get_munge_headers'/>
+<use f='exim/src/routers/rf_get_munge_headers.c' l='99' u='c' c='rf_get_munge_headers'/>
+<use f='exim/src/routers/dnslookup.c' l='221' u='c' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/dnslookup.c' l='250' u='c' c='dnslookup_router_entry'/>
+<use f='exim/src/log.c' l='656' u='c' c='set_file_path'/>
+<use f='exim/src/log.c' l='789' u='c' c='log_write'/>
+<use f='exim/src/acl.c' l='1632' u='c' c='acl_verify'/>
+<use f='exim/src/acl.c' l='1666' u='c' c='acl_verify'/>
+<use f='exim/src/acl.c' l='1768' u='c' c='acl_verify'/>
+<use f='exim/src/acl.c' l='1806' u='c' c='acl_verify'/>
+<use f='exim/src/acl.c' l='2232' u='c' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2249' u='c' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2263' u='c' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2742' u='c' c='acl_udpsend'/>
+<use f='exim/src/acl.c' l='2743' u='c' c='acl_udpsend'/>
+<use f='exim/src/acl.c' l='3516' u='c' c='acl_check_condition'/>
+<use f='exim/src/match.c' l='516' u='c' c='match_check_list'/>
+<use f='exim/src/match.c' l='1102' u='c' c='check_address'/>
+<use f='exim/src/expand.c' l='1249' u='c' c='expand_getlistele'/>
+<use f='exim/src/expand.c' l='1253' u='c' c='expand_getlistele'/>
+<use f='exim/src/expand.c' l='1254' u='c' c='expand_getlistele'/>
+<use f='exim/src/expand.c' l='2833' u='c' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2955' u='c' c='eval_condition'/>
+<use f='exim/src/expand.c' l='4762' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='4769' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5813' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5979' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6002' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6009' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6035' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6037' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6578' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='6630' u='c' c='expand_string_internal'/>
+<use f='exim/src/daemon.c' l='1081' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1124' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1130' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1154' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1162' u='c' c='daemon_go'/>
+<use f='exim/src/receive.c' l='152' u='c' c='receive_statvfs'/>
+<use f='exim/src/receive.c' l='1205' u='c' c='add_acl_headers'/>
+<use f='exim/src/receive.c' l='3375' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3389' u='c' c='receive_msg'/>
+<use f='exim/src/host.c' l='326' u='c' c='host_build_hostlist'/>
+<use f='exim/src/host.c' l='741' u='c' c='host_build_ifacelist'/>
+<use f='exim/src/host.c' l='1250' u='c' c='host_is_tls_on_connect_port'/>
+<use f='exim/src/host.c' l='1688' u='c' c='host_name_lookup'/>

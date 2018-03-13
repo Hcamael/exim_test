@@ -1,1 +1,13 @@
 <dec f='exim/src/local_scan.h' l='179' type='int lss_b64decode(uschar * , uschar ** )'/>
+<def f='exim/src/lss.c' l='135' ll='139' type='int lss_b64decode(uschar * code, uschar ** ptr)'/>
+<doc f='exim/src/lss.c' l='123'>/*
+Arguments:
+  code        points to the coded string, zero-terminated
+  ptr         where to put the pointer to the result, which is in
+              dynamic store
+
+Returns:      the number of bytes in the result,
+              or -1 if the input was malformed
+
+A zero is added on to the end to make it easy in cases where the result is to
+be interpreted as text. This is not included in the count. */</doc>

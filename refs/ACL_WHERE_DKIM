@@ -1,2 +1,17 @@
 <dec f='exim/src/macros.h' l='933' type='4'/>
 <doc f='exim/src/macros.h' l='933'>/* )                                           */</doc>
+<use f='exim/src/acl.c' l='146' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='146' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='192' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='192' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='193' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='193' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='146' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='146' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='192' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='192' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='193' macro='1' u='r'/>
+<use f='exim/src/acl.c' l='193' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='1182' c='add_acl_headers'/>
+<use f='exim/src/receive.c' l='3421' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3432' u='r' c='receive_msg'/>

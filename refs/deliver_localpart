@@ -1,2 +1,40 @@
 <dec f='exim/src/globals.h' l='363' type='uschar *'/>
 <doc f='exim/src/globals.h' l='363'>/* The local part for delivery */</doc>
+<use f='exim/src/deliver.c' l='221' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='260' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='261' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='875' u='r' c='msg_event_raise'/>
+<use f='exim/src/deliver.c' l='886' u='w' c='msg_event_raise'/>
+<use f='exim/src/deliver.c' l='898' u='w' c='msg_event_raise'/>
+<use f='exim/src/deliver.c' l='6227' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6230' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6238' u='w' c='deliver_message'/>
+<use f='exim/src/verify.c' l='1824' u='r' c='verify_address'/>
+<use f='exim/src/verify.c' l='1829' u='w' c='verify_address'/>
+<use f='exim/src/verify.c' l='1832' u='w' c='verify_address'/>
+<use f='exim/src/globals.c' l='209' u='a'/>
+<use f='exim/src/globals.c' l='209' u='a'/>
+<def f='exim/src/globals.c' l='638' type='uschar *'/>
+<use f='exim/src/moan.c' l='651' u='w' c='moan_check_errorcopy'/>
+<use f='exim/src/moan.c' l='654' u='w' c='moan_check_errorcopy'/>
+<use f='exim/src/filter.c' l='2425' u='r' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2442' u='r' c='filter_personal'/>
+<use f='exim/src/exim.c' l='5589' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5591' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5608' u='r' c='main'/>
+<use f='exim/src/acl.c' l='2094' u='w' c='acl_verify'/>
+<use f='exim/src/acl.c' l='2307' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='3099' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3103' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='4315' u='r' c='acl_eval'/>
+<use f='exim/src/acl.c' l='4316' u='r' c='acl_eval'/>
+<use f='exim/src/acl.c' l='4317' u='r' c='acl_eval'/>
+<use f='exim/src/acl.c' l='4383' u='w' c='acl_check'/>
+<use f='exim/src/acl.c' l='4472' u='w' c='acl_check'/>
+<use f='exim/src/rewrite.c' l='181' u='r' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='189' u='w' c='rewrite_one'/>
+<use f='exim/src/rewrite.c' l='195' u='w' c='rewrite_one'/>
+<use f='exim/src/expand.c' l='556' u='a'/>
+<use f='exim/src/expand.c' l='556' u='a'/>
+<use f='exim/src/expand.c' l='556' u='a'/>
+<use f='exim/src/expand.c' l='556' u='a'/>

@@ -1,1 +1,2 @@
 <dec f='include/openssl/bio.h' l='544' type='int BIO_gets(BIO * bp, char * buf, int size)'/>
+<use f='exim/src/tlscert-openssl.c' l='47' u='c' c='tls_export_cert'/>

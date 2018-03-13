@@ -1,1 +1,33 @@
 <dec f='exim/src/functions.h' l='119' type='uschar ** child_exec_exim(int , BOOL , int * , BOOL , int )'/>
+<use f='exim/src/deliver.c' l='8572' u='c' c='delivery_re_exec'/>
+<use f='exim/src/smtp_in.c' l='5555' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/daemon.c' l='1872' u='c' c='daemon_go'/>
+<def f='exim/src/child.c' l='69' ll='164' type='uschar ** child_exec_exim(int exec_type, BOOL kill_v, int * pcount, BOOL minimal, int acount)'/>
+<use f='exim/src/child.c' l='238' u='c' c='child_open_exim2'/>
+<use f='exim/src/child.c' l='242' u='c' c='child_open_exim2'/>
+<use f='exim/src/child.c' l='250' u='c' c='child_open_exim2'/>
+<use f='exim/src/child.c' l='254' u='c' c='child_open_exim2'/>
+<doc f='exim/src/child.c' l='44'>/* This function is called when Exim wants to re-exec (overlay) itself in the
+current process. This is different to child_open_exim(), which runs another
+Exim process in parallel (but it then calls this function). The function&apos;s
+basic job is to build the argv list according to the values of current options
+settings. There is a basic list that all calls require, and an additional list
+that some do not require. Further additions can be given as additional
+arguments. An option specifies whether the exec() is actually to happen, and if
+so, what is to be done if it fails.
+
+Arguments:
+  exec_type      CEE_RETURN_ARGV =&gt; don&apos;t exec; return the argv list
+                 CEE_EXEC_EXIT   =&gt; just exit() on exec failure
+                 CEE_EXEC_PANIC  =&gt; panic-die on exec failure
+  kill_v         if TRUE, don&apos;t pass on the D_v flag
+  pcount         if not NULL, points to extra size of argv required, and if
+                   CEE_RETURN_ARGV is specified, it is updated to give the
+                   number of slots used
+  minimal        TRUE if only minimal argv is required
+  acount         number of additional arguments
+  ...            further values to add to argv
+
+Returns:         if CEE_RETURN_ARGV is given, returns a pointer to argv;
+                 otherwise, does not return
+*/</doc>

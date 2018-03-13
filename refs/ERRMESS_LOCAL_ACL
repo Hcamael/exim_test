@@ -1,2 +1,5 @@
 <dec f='exim/src/macros.h' l='247' type='11'/>
 <doc f='exim/src/macros.h' l='247'>/* Rejected by non-SMTP ACL */</doc>
+<use f='exim/src/moan.c' l='192' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='445' c='moan_to_sender'/>
+<use f='exim/src/receive.c' l='3611' u='r' c='receive_msg'/>

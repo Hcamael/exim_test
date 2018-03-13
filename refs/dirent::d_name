@@ -1,3 +1,31 @@
 <dec f='include/x86_64-linux-gnu/bits/dirent.h' l='33' type='char [256]'/>
 <offset>152</offset>
 <doc f='include/x86_64-linux-gnu/bits/dirent.h' l='33'>/* We must not include limits.h! */</doc>
+<use f='exim/src/queue.c' l='219' u='r' c='queue_get_spool_list'/>
+<use f='exim/src/transports/tf_maildir.c' l='266' u='r' c='maildir_compute_size'/>
+<use f='exim/src/dbfn.c' l='201' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='201' u='r' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='204' u='r' c='dbfn_open'/>
+<use f='exim/src/sieve.c' l='3487' u='r' c='parse_start'/>
+<use f='exim/src/sieve.c' l='3489' c='parse_start'/>

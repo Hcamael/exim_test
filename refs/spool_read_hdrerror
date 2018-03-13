@@ -1,2 +1,7 @@
 <dec f='exim/src/macros.h' l='851' type='3'/>
 <doc f='exim/src/macros.h' l='851'>/* error in the headers */</doc>
+<use f='exim/src/deliver.c' l='5616' u='r' c='deliver_message'/>
+<use f='exim/src/queue.c' l='871' u='r' c='queue_list'/>
+<use f='exim/src/queue.c' l='935' u='r' c='queue_list'/>
+<use f='exim/src/spool_in.c' l='934' u='r' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='945' u='r' c='spool_read_header'/>

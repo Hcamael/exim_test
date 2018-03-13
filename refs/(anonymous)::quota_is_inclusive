@@ -1,0 +1,4 @@
+<dec f='exim/src/transports/appendfile.h' l='72' type='BOOL'/>
+<offset>2752</offset>
+<use f='exim/src/transports/tf_maildir.c' l='499' u='r' c='maildir_ensure_sizefile'/>
+<use f='exim/src/transports/tf_maildir.c' l='501' u='r' c='maildir_ensure_sizefile'/>

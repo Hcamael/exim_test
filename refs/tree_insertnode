@@ -1,1 +1,20 @@
 <dec f='exim/src/functions.h' l='517' type='int tree_insertnode(tree_node ** , tree_node * )'/>
+<def f='exim/src/tree.c' l='177' ll='315' type='int tree_insertnode(tree_node ** treebase, tree_node * node)'/>
+<doc f='exim/src/tree.c' l='167'>/* The node-&gt;name field must (obviously) be set, but the other
+fields need not be initialized.
+
+Arguments:
+  treebase   pointer to the root of the tree
+  node       the note to insert, with name field set
+
+Returns:     TRUE if node inserted; FALSE if not (duplicate)
+*/</doc>
+<use f='exim/src/verify.c' l='3379' u='c' c='one_check_dnsbl'/>
+<use f='exim/src/macro.c' l='49' u='c' c='macro_create'/>
+<use f='exim/src/search.c' l='428' u='c' c='search_open'/>
+<use f='exim/src/search.c' l='549' u='c' c='internal_search_find'/>
+<use f='exim/src/acl.c' l='1388' u='c' c='acl_verify_csa'/>
+<use f='exim/src/acl.c' l='2698' u='c' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='4053' u='c' c='acl_check_internal'/>
+<use f='exim/src/acl.c' l='4530' u='c' c='acl_var_create'/>
+<use f='exim/src/dns.c' l='627' u='c' c='dns_return'/>

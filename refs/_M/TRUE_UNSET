@@ -1,1 +1,15 @@
 <dec f='exim/src/mytypes.h' l='25'/>
+<use f='exim/src/globals.c' l='1218' u='c'/>
+<use f='exim/src/globals.c' l='1223' u='c'/>
+<use f='exim/src/globals.c' l='1495' u='c'/>
+<use f='exim/src/filter.c' l='944' u='c'/>
+<use f='exim/src/filter.c' l='953' u='c'/>
+<use f='exim/src/smtp_in.c' l='1596' u='c'/>
+<use f='exim/src/smtp_in.c' l='2366' u='c'/>
+<use f='exim/src/routers/redirect.c' l='185' u='c'/>
+<use f='exim/src/routers/redirect.c' l='186' u='c'/>
+<use f='exim/src/routers/redirect.c' l='240' u='c'/>
+<use f='exim/src/routers/redirect.c' l='244' u='c'/>
+<use f='exim/src/receive.c' l='1630' u='c'/>
+<use f='exim/src/receive.c' l='1843' u='c'/>
+<use f='exim/src/receive.c' l='1896' u='c'/>

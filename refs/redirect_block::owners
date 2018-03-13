@@ -1,3 +1,8 @@
 <dec f='exim/src/structs.h' l='836' type='uid_t *'/>
 <offset>64</offset>
 <doc f='exim/src/structs.h' l='836'>/* allowed file owners */</doc>
+<use f='exim/src/deliver.c' l='5856' u='w' c='deliver_message'/>
+<use f='exim/src/rda.c' l='252' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/rda.c' l='255' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/rda.c' l='256' u='r' c='rda_get_file_contents'/>
+<use f='exim/src/routers/redirect.c' l='706' u='w' c='redirect_router_entry'/>

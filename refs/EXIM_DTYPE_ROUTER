@@ -1,1 +1,14 @@
 <dec f='exim/src/macros.h' l='228' type='1'/>
+<use f='exim/src/deliver.c' l='1482' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='6094' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6212' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6345' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6412' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6422' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6430' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6441' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6609' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6662' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6704' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6715' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6780' u='r' c='deliver_message'/>

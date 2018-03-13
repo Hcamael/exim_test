@@ -1,1 +1,20 @@
 <dec f='exim/src/functions.h' l='441' type='int spool_open_datafile(uschar * )'/>
+<use f='exim/src/deliver.c' l='5583' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8492' u='c' c='deliver_get_sender_address'/>
+<use f='exim/src/exim.c' l='4965' u='c' c='main'/>
+<use f='exim/src/queue.c' l='1076' u='c' c='queue_action'/>
+<def f='exim/src/spool_in.c' l='36' ll='119' type='int spool_open_datafile(uschar * id)'/>
+<doc f='exim/src/spool_in.c' l='21'>/* The data file is the one that is used for locking, because the header file
+can get replaced during delivery because of header rewriting. The file has
+to opened with write access so that we can get an exclusive lock, but in
+fact it won&apos;t be written to. Just in case there&apos;s a major disaster (e.g.
+overwriting some other file descriptor with the value of this one), open it
+with append.
+
+As called by deliver_message() (at least) we are operating as root.
+
+Argument: the id of the message
+Returns:  fd if file successfully opened and locked, else -1
+
+Side effect: message_subdir is set for the (possibly split) spool directory
+*/</doc>

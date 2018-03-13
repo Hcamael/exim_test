@@ -1,1 +1,11 @@
 <dec f='exim/src/macros.h' l='229' type='2'/>
+<use f='exim/src/deliver.c' l='1472' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='2676' u='r' c='tpt_parallel_check'/>
+<use f='exim/src/deliver.c' l='2738' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2873' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2975' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2998' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3155' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3803' u='r' c='remote_post_process'/>
+<use f='exim/src/deliver.c' l='6453' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7083' u='r' c='deliver_message'/>

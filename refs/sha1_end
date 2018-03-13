@@ -1,1 +1,5 @@
 <dec f='exim/src/functions.h' l='397' type='void sha1_end(hctx * , const uschar * , int , uschar * )'/>
+<use f='exim/src/expand.c' l='2731' u='c' c='eval_condition'/>
+<use f='exim/src/expand.c' l='3366' u='c' c='chash_end'/>
+<use f='exim/src/expand.c' l='6436' u='c' c='expand_string_internal'/>
+<def f='exim/src/hash.c' l='509' ll='516' type='void sha1_end(hctx * h, const uschar * data, int len, uschar * digest)'/>

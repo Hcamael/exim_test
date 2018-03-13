@@ -1,3 +1,7 @@
 <dec f='exim/src/dbstuff.h' l='784' type='time_t'/>
 <offset>192</offset>
 <doc f='exim/src/dbstuff.h' l='784'>/* When the Bloom filter was last reset */</doc>
+<use f='exim/src/exim_dbutil.c' l='906' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1059' u='r' c='main'/>
+<use f='exim/src/acl.c' l='2437' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2477' u='w' c='acl_ratelimit'/>

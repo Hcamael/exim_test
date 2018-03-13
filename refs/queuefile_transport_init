@@ -1,0 +1,5 @@
+<dec f='exim/src/transports/queuefile.h' l='27' type='void queuefile_transport_init(transport_instance * )'/>
+<def f='exim/src/transports/queuefile.c' l='53' ll='61' type='void queuefile_transport_init(transport_instance * tblock)'/>
+<doc f='exim/src/transports/queuefile.c' l='49'>/*************************************************
+*          Initialization entry point            *
+*************************************************/</doc>

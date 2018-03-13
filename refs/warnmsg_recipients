@@ -1,2 +1,20 @@
 <dec f='exim/src/globals.h' l='974' type='uschar *'/>
 <doc f='exim/src/globals.h' l='974'>/* Recipients of warning message */</doc>
+<use f='exim/src/deliver.c' l='8139' u='w' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1561' type='uschar *'/>
+<use f='exim/src/expand.c' l='773' u='a'/>
+<use f='exim/src/expand.c' l='773' u='a'/>
+<use f='exim/src/expand.c' l='774' u='a'/>
+<use f='exim/src/expand.c' l='774' u='a'/>
+<use f='exim/src/expand.c' l='776' u='a'/>
+<use f='exim/src/expand.c' l='776' u='a'/>
+<use f='exim/src/expand.c' l='777' u='a'/>
+<use f='exim/src/expand.c' l='777' u='a'/>
+<use f='exim/src/expand.c' l='773' u='a'/>
+<use f='exim/src/expand.c' l='773' u='a'/>
+<use f='exim/src/expand.c' l='774' u='a'/>
+<use f='exim/src/expand.c' l='774' u='a'/>
+<use f='exim/src/expand.c' l='776' u='a'/>
+<use f='exim/src/expand.c' l='776' u='a'/>
+<use f='exim/src/expand.c' l='777' u='a'/>
+<use f='exim/src/expand.c' l='777' u='a'/>

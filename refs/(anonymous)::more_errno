@@ -1,3 +1,10 @@
 <dec f='exim/src/dbstuff.h' l='688' type='int'/>
 <offset>320</offset>
 <doc f='exim/src/dbstuff.h' l='688'>/* Additional information */</doc>
+<use f='exim/src/exim_dbutil.c' l='821' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='993' u='r' c='main'/>
+<use f='exim/src/retry.c' l='47' u='r' c='retry_ultimate_address_timeout'/>
+<use f='exim/src/retry.c' l='827' u='w' c='retry_update'/>
+<use f='exim/src/retry.c' l='833' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='840' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='843' u='r' c='retry_update'/>

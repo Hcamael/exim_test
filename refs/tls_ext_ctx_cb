@@ -1,0 +1,12 @@
+<def f='exim/src/tls-openssl.c' l='151' ll='178'/>
+<size>96</size>
+<mbr r='tls_ext_ctx_cb::certificate' o='0' t='uschar *'/>
+<mbr r='tls_ext_ctx_cb::privatekey' o='64' t='uschar *'/>
+<mbr r='tls_ext_ctx_cb::is_server' o='128' t='BOOL'/>
+<mbr r='tls_ext_ctx_cb::verify_stack' o='192' t='struct stack_st_X509 *'/>
+<mbr r='tls_ext_ctx_cb::u_ocsp' o='256' t='union (anonymous union at /home/ubuntu/exim/src/build-Linux-x86_64/tls-openssl.c:157:3)'/>
+<mbr r='tls_ext_ctx_cb::dhparam' o='448' t='uschar *'/>
+<mbr r='tls_ext_ctx_cb::server_cipher_list' o='512' t='uschar *'/>
+<mbr r='tls_ext_ctx_cb::host' o='576' t='host_item *'/>
+<mbr r='tls_ext_ctx_cb::verify_cert_hostnames' o='640' t='const uschar *'/>
+<mbr r='tls_ext_ctx_cb::event_action' o='704' t='uschar *'/>

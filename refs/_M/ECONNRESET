@@ -1,1 +1,5 @@
 <dec f='include/asm-generic/errno.h' l='86'/>
+<use f='exim/src/smtp_out.c' l='305' u='c'/>
+<use f='exim/src/daemon.c' l='188' u='c'/>
+<use f='exim/src/daemon.c' l='730' u='c'/>
+<use f='exim/src/daemon.c' l='739' u='c'/>

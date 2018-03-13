@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>rf_change_domain.c source code [exim/src/routers/rf_change_domain.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/routers/rf_change_domain.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>routers</a>/<a href='rf_change_domain.c.html'>rf_change_domain.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><u>#include <a href="../exim.h.html">"../exim.h"</a></u></td></tr>
+<tr><th id="10">10</th><td><u>#include <a href="rf_functions.h.html">"rf_functions.h"</a></u></td></tr>
+<tr><th id="11">11</th><td></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="15">15</th><td><i>*          Change domain in an address           *</i></td></tr>
+<tr><th id="16">16</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><i>/* When a router wants to change the address that is being routed, it is like a</i></td></tr>
+<tr><th id="19">19</th><td><i>redirection. We insert a new parent of the current address to hold the original</i></td></tr>
+<tr><th id="20">20</th><td><i>information, and change the data in the original address, which is now the</i></td></tr>
+<tr><th id="21">21</th><td><i>child. The child address is put onto the addr_new chain. Pick up the local part</i></td></tr>
+<tr><th id="22">22</th><td><i>from the "address" field so as to get it in external form - caseful, and with</i></td></tr>
+<tr><th id="23">23</th><td><i>any quoting retained.</i></td></tr>
+<tr><th id="24">24</th><td><i></i></td></tr>
+<tr><th id="25">25</th><td><i>Arguments:</i></td></tr>
+<tr><th id="26">26</th><td><i>  addr        the address block</i></td></tr>
+<tr><th id="27">27</th><td><i>  domain      the new domain</i></td></tr>
+<tr><th id="28">28</th><td><i>  rewrite     TRUE if headers lines are to be rewritten</i></td></tr>
+<tr><th id="29">29</th><td><i>  addr_new    the new address chain</i></td></tr>
+<tr><th id="30">30</th><td><i></i></td></tr>
+<tr><th id="31">31</th><td><i>Returns:      nothing</i></td></tr>
+<tr><th id="32">32</th><td><i>*/</i></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><em>void</em></td></tr>
+<tr><th id="35">35</th><td><dfn class="decl def fn" id="rf_change_domain" title='rf_change_domain' data-ref="rf_change_domain">rf_change_domain</dfn>(<a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *<dfn class="local col1 decl" id="1addr" title='addr' data-type='address_item *' data-ref="1addr">addr</dfn>, <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="2domain" title='domain' data-type='const uschar *' data-ref="2domain">domain</dfn>, <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col3 decl" id="3rewrite" title='rewrite' data-type='BOOL' data-ref="3rewrite">rewrite</dfn>,</td></tr>
+<tr><th id="36">36</th><td>  <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> **<dfn class="local col4 decl" id="4addr_new" title='addr_new' data-type='address_item **' data-ref="4addr_new">addr_new</dfn>)</td></tr>
+<tr><th id="37">37</th><td>{</td></tr>
+<tr><th id="38">38</th><td><a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *<dfn class="local col5 decl" id="5parent" title='parent' data-type='address_item *' data-ref="5parent">parent</dfn> = <a class="macro" href="../store.h.html#34" title="store_get_3(sizeof(address_item), &quot;/home/ubuntu/exim/src/build-Linux-x86_64/routers/rf_change_domain.c&quot;, 38)" data-ref="_M/store_get">store_get</a>(<b>sizeof</b>(<a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a>));</td></tr>
+<tr><th id="39">39</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="6at" title='at' data-type='uschar *' data-ref="6at">at</dfn> = <a class="macro" href="../mytypes.h.html#109" title="(unsigned char *) strrchr((const char *)(addr-&gt;address),&apos;@&apos;)" data-ref="_M/Ustrrchr">Ustrrchr</a>(<a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::address" title='address_item::address' data-ref="address_item::address">address</a>, <kbd>'@'</kbd>);</td></tr>
+<tr><th id="40">40</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col7 decl" id="7address" title='address' data-type='uschar *' data-ref="7address">address</dfn> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%.*s@%s"</q>,</td></tr>
+<tr><th id="41">41</th><td>  (<em>int</em>)(<a class="local col6 ref" href="#6at" title='at' data-ref="6at">at</a> - <a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::address" title='address_item::address' data-ref="address_item::address">address</a>), <a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::address" title='address_item::address' data-ref="address_item::address">address</a>, <a class="local col2 ref" href="#2domain" title='domain' data-ref="2domain">domain</a>);</td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_route))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#401" title='D_route' data-ref="D_route">D_route</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"domain changed to %s\n"</q>, <a class="local col2 ref" href="#2domain" title='domain' data-ref="2domain">domain</a>);</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><i>/* The current address item is made into the parent, and a new address is set</i></td></tr>
+<tr><th id="46">46</th><td><i>up in the old space. */</i></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td>*<a class="local col5 ref" href="#5parent" title='parent' data-ref="5parent">parent</a> = *<a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>;</td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><i>/* First copy in initializing values, to wipe out stuff such as the named</i></td></tr>
+<tr><th id="51">51</th><td><i>domain cache. Then copy over the propagating fields from the parent. Then set</i></td></tr>
+<tr><th id="52">52</th><td><i>up the new fields. */</i></td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td>*<a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a> = <a class="ref" href="../globals.h.html#address_defaults" title='address_defaults' data-ref="address_defaults">address_defaults</a>;</td></tr>
+<tr><th id="55">55</th><td><a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::prop" title='address_item::prop' data-ref="address_item::prop">prop</a> = <a class="local col5 ref" href="#5parent" title='parent' data-ref="5parent">parent</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::prop" title='address_item::prop' data-ref="address_item::prop">prop</a>;</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::address" title='address_item::address' data-ref="address_item::address">address</a> = <a class="local col7 ref" href="#7address" title='address' data-ref="7address">address</a>;</td></tr>
+<tr><th id="58">58</th><td><a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::unique" title='address_item::unique' data-ref="address_item::unique">unique</a> = <a class="ref fn" href="../local_scan.h.html#string_copy" title='string_copy' data-ref="string_copy">string_copy</a>(<a class="local col7 ref" href="#7address" title='address' data-ref="7address">address</a>);</td></tr>
+<tr><th id="59">59</th><td><a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::parent" title='address_item::parent' data-ref="address_item::parent">parent</a> = <a class="local col5 ref" href="#5parent" title='parent' data-ref="5parent">parent</a>;</td></tr>
+<tr><th id="60">60</th><td><a class="local col5 ref" href="#5parent" title='parent' data-ref="5parent">parent</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::child_count" title='address_item::child_count' data-ref="address_item::child_count">child_count</a> = <var>1</var>;</td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::next" title='address_item::next' data-ref="address_item::next">next</a> = *<a class="local col4 ref" href="#4addr_new" title='addr_new' data-ref="4addr_new">addr_new</a>;</td></tr>
+<tr><th id="63">63</th><td>*<a class="local col4 ref" href="#4addr_new" title='addr_new' data-ref="4addr_new">addr_new</a> = <a class="local col1 ref" href="#1addr" title='addr' data-ref="1addr">addr</a>;</td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><i>/* Rewrite header lines if requested */</i></td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td><b>if</b> (<a class="local col3 ref" href="#3rewrite" title='rewrite' data-ref="3rewrite">rewrite</a>)</td></tr>
+<tr><th id="68">68</th><td>  {</td></tr>
+<tr><th id="69">69</th><td>  <a class="typedef" href="../local_scan.h.html#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *<dfn class="local col8 decl" id="8h" title='h' data-type='header_line *' data-ref="8h">h</dfn>;</td></tr>
+<tr><th id="70">70</th><td>  <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_route|D_rewrite))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#401" title='D_route' data-ref="D_route">D_route</a>|<a class="enum" href="../macros.h.html#400" title='D_rewrite' data-ref="D_rewrite">D_rewrite</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"rewriting header lines\n"</q>);</td></tr>
+<tr><th id="71">71</th><td>  <b>for</b> (<a class="local col8 ref" href="#8h" title='h' data-ref="8h">h</a> = <a class="ref" href="../local_scan.h.html#header_list" title='header_list' data-ref="header_list">header_list</a>; <a class="local col8 ref" href="#8h" title='h' data-ref="8h">h</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>; <a class="local col8 ref" href="#8h" title='h' data-ref="8h">h</a> = <a class="local col8 ref" href="#8h" title='h' data-ref="8h">h</a>-&gt;<a class="ref field" href="../local_scan.h.html#header_line::next" title='header_line::next' data-ref="header_line::next">next</a>)</td></tr>
+<tr><th id="72">72</th><td>    {</td></tr>
+<tr><th id="73">73</th><td>    <a class="typedef" href="../local_scan.h.html#header_line" title='header_line' data-type='struct header_line' data-ref="header_line">header_line</a> *<dfn class="local col9 decl" id="9newh" title='newh' data-type='header_line *' data-ref="9newh">newh</dfn> =</td></tr>
+<tr><th id="74">74</th><td>      <a class="ref fn" href="../functions.h.html#rewrite_header" title='rewrite_header' data-ref="rewrite_header">rewrite_header</a>(<a class="local col8 ref" href="#8h" title='h' data-ref="8h">h</a>, <a class="local col5 ref" href="#5parent" title='parent' data-ref="5parent">parent</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::domain" title='address_item::domain' data-ref="address_item::domain">domain</a>, <a class="local col2 ref" href="#2domain" title='domain' data-ref="2domain">domain</a>,</td></tr>
+<tr><th id="75">75</th><td>        <a class="ref" href="../globals.h.html#global_rewrite_rules" title='global_rewrite_rules' data-ref="global_rewrite_rules">global_rewrite_rules</a>, <a class="ref" href="../globals.h.html#rewrite_existflags" title='rewrite_existflags' data-ref="rewrite_existflags">rewrite_existflags</a>, <a class="macro" href="../mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>);</td></tr>
+<tr><th id="76">76</th><td>    <b>if</b> (<a class="local col9 ref" href="#9newh" title='newh' data-ref="9newh">newh</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="77">77</th><td>      {</td></tr>
+<tr><th id="78">78</th><td>      <a class="local col8 ref" href="#8h" title='h' data-ref="8h">h</a> = <a class="local col9 ref" href="#9newh" title='newh' data-ref="9newh">newh</a>;</td></tr>
+<tr><th id="79">79</th><td>      <a class="ref" href="../globals.h.html#header_rewritten" title='header_rewritten' data-ref="header_rewritten">header_rewritten</a> = <a class="macro" href="../mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="80">80</th><td>      }</td></tr>
+<tr><th id="81">81</th><td>    }</td></tr>
+<tr><th id="82">82</th><td>  }</td></tr>
+<tr><th id="83">83</th><td>}</td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td><i>/* End of rf_change_domain.c */</i></td></tr>
+<tr><th id="86">86</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,3 +1,9 @@
 <dec f='include/x86_64-linux-gnu/sys/un.h' l='32' type='char [108]'/>
 <offset>16</offset>
 <doc f='include/x86_64-linux-gnu/sys/un.h' l='32'>/* Path name.  */</doc>
+<use f='exim/src/ip.c' l='476' u='r' c='ip_unixsocket'/>
+<use f='exim/src/ip.c' l='476' u='r' c='ip_unixsocket'/>
+<use f='exim/src/ip.c' l='477' u='w' c='ip_unixsocket'/>
+<use f='exim/src/ip.c' l='477' u='r' c='ip_unixsocket'/>
+<use f='exim/src/expand.c' l='4845' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='4845' u='r' c='expand_string_internal'/>

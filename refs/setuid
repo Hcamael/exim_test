@@ -3,3 +3,7 @@
    If the calling process is the super-user, set the real
    and effective user IDs, and the saved set-user-ID to UID;
    if not, the effective user ID is set to UID.  */</doc>
+<use f='exim/src/exim.c' l='614' u='c' c='exim_setugid'/>
+<use f='exim/src/exim.c' l='1847' u='c' c='main'/>
+<use f='exim/src/log.c' l='322' u='c' c='log_create_as_exim'/>
+<use f='exim/src/child.c' l='356' u='c' c='child_open_uid'/>

@@ -1,2 +1,11 @@
 <dec f='include/resolv.h' l='289'/>
 <use f='include/resolv.h' l='357' u='c'/>
+<use f='exim/src/lookups/dnsdb.c' l='507' u='c'/>
+<use f='exim/src/lookups/dnsdb.c' l='528' u='c'/>
+<use f='exim/src/acl.c' l='1456' u='c'/>
+<use f='exim/src/host.c' l='1740' u='c'/>
+<use f='exim/src/host.c' l='2820' u='c'/>
+<use f='exim/src/dns.c' l='358' u='c'/>
+<use f='exim/src/dns.c' l='389' u='c'/>
+<use f='exim/src/dns.c' l='419' u='c'/>
+<use f='exim/src/dns.c' l='943' u='c'/>

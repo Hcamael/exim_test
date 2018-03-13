@@ -1,0 +1,538 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>child.c source code [exim/src/child.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/child.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='child.c.html'>child.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2015 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><u>#include <a href="exim.h.html">"exim.h"</a></u></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><em>static</em> <em>void</em> (*<dfn class="tu decl def" id="oldsignal" title='oldsignal' data-type='void (*)(int)' data-ref="oldsignal">oldsignal</dfn>)(<em>int</em>);</td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="15">15</th><td><i>*          Ensure an fd has a given value        *</i></td></tr>
+<tr><th id="16">16</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><i  data-doc="force_fd">/* This function is called when we want to ensure that a certain fd has a</i></td></tr>
+<tr><th id="19">19</th><td><i  data-doc="force_fd">specific value (one of 0, 1, 2). If it hasn't got it already, close the value</i></td></tr>
+<tr><th id="20">20</th><td><i  data-doc="force_fd">we want, duplicate the fd, then close the old one.</i></td></tr>
+<tr><th id="21">21</th><td><i  data-doc="force_fd"></i></td></tr>
+<tr><th id="22">22</th><td><i  data-doc="force_fd">Arguments:</i></td></tr>
+<tr><th id="23">23</th><td><i  data-doc="force_fd">  oldfd        original fd</i></td></tr>
+<tr><th id="24">24</th><td><i  data-doc="force_fd">  newfd        the fd we want</i></td></tr>
+<tr><th id="25">25</th><td><i  data-doc="force_fd"></i></td></tr>
+<tr><th id="26">26</th><td><i  data-doc="force_fd">Returns:       nothing</i></td></tr>
+<tr><th id="27">27</th><td><i  data-doc="force_fd">*/</i></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="30">30</th><td><dfn class="tu decl def fn" id="force_fd" title='force_fd' data-type='void force_fd(int oldfd, int newfd)' data-ref="force_fd">force_fd</dfn>(<em>int</em> <dfn class="local col1 decl" id="1oldfd" title='oldfd' data-type='int' data-ref="1oldfd">oldfd</dfn>, <em>int</em> <dfn class="local col2 decl" id="2newfd" title='newfd' data-type='int' data-ref="2newfd">newfd</dfn>)</td></tr>
+<tr><th id="31">31</th><td>{</td></tr>
+<tr><th id="32">32</th><td><b>if</b> (<a class="local col1 ref" href="#1oldfd" title='oldfd' data-ref="1oldfd">oldfd</a> == <a class="local col2 ref" href="#2newfd" title='newfd' data-ref="2newfd">newfd</a>) <b>return</b>;</td></tr>
+<tr><th id="33">33</th><td>(<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col2 ref" href="#2newfd" title='newfd' data-ref="2newfd">newfd</a>);</td></tr>
+<tr><th id="34">34</th><td>(<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#dup2" title='dup2' data-ref="dup2">dup2</a>(<a class="local col1 ref" href="#1oldfd" title='oldfd' data-ref="1oldfd">oldfd</a>, <a class="local col2 ref" href="#2newfd" title='newfd' data-ref="2newfd">newfd</a>);</td></tr>
+<tr><th id="35">35</th><td>(<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col1 ref" href="#1oldfd" title='oldfd' data-ref="1oldfd">oldfd</a>);</td></tr>
+<tr><th id="36">36</th><td>}</td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><u>#<span data-ppcond="39">ifndef</span> <span class="macro" data-ref="_M/STAND_ALONE">STAND_ALONE</span></u></td></tr>
+<tr><th id="40">40</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="41">41</th><td><i>*   Build argv list and optionally re-exec Exim  *</i></td></tr>
+<tr><th id="42">42</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><i>/* This function is called when Exim wants to re-exec (overlay) itself in the</i></td></tr>
+<tr><th id="45">45</th><td><i>current process. This is different to child_open_exim(), which runs another</i></td></tr>
+<tr><th id="46">46</th><td><i>Exim process in parallel (but it then calls this function). The function's</i></td></tr>
+<tr><th id="47">47</th><td><i>basic job is to build the argv list according to the values of current options</i></td></tr>
+<tr><th id="48">48</th><td><i>settings. There is a basic list that all calls require, and an additional list</i></td></tr>
+<tr><th id="49">49</th><td><i>that some do not require. Further additions can be given as additional</i></td></tr>
+<tr><th id="50">50</th><td><i>arguments. An option specifies whether the exec() is actually to happen, and if</i></td></tr>
+<tr><th id="51">51</th><td><i>so, what is to be done if it fails.</i></td></tr>
+<tr><th id="52">52</th><td><i></i></td></tr>
+<tr><th id="53">53</th><td><i>Arguments:</i></td></tr>
+<tr><th id="54">54</th><td><i>  exec_type      CEE_RETURN_ARGV =&gt; don't exec; return the argv list</i></td></tr>
+<tr><th id="55">55</th><td><i>                 CEE_EXEC_EXIT   =&gt; just exit() on exec failure</i></td></tr>
+<tr><th id="56">56</th><td><i>                 CEE_EXEC_PANIC  =&gt; panic-die on exec failure</i></td></tr>
+<tr><th id="57">57</th><td><i>  kill_v         if TRUE, don't pass on the D_v flag</i></td></tr>
+<tr><th id="58">58</th><td><i>  pcount         if not NULL, points to extra size of argv required, and if</i></td></tr>
+<tr><th id="59">59</th><td><i>                   CEE_RETURN_ARGV is specified, it is updated to give the</i></td></tr>
+<tr><th id="60">60</th><td><i>                   number of slots used</i></td></tr>
+<tr><th id="61">61</th><td><i>  minimal        TRUE if only minimal argv is required</i></td></tr>
+<tr><th id="62">62</th><td><i>  acount         number of additional arguments</i></td></tr>
+<tr><th id="63">63</th><td><i>  ...            further values to add to argv</i></td></tr>
+<tr><th id="64">64</th><td><i></i></td></tr>
+<tr><th id="65">65</th><td><i>Returns:         if CEE_RETURN_ARGV is given, returns a pointer to argv;</i></td></tr>
+<tr><th id="66">66</th><td><i>                 otherwise, does not return</i></td></tr>
+<tr><th id="67">67</th><td><i>*/</i></td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **</td></tr>
+<tr><th id="70">70</th><td><dfn class="decl def fn" id="child_exec_exim" title='child_exec_exim' data-ref="child_exec_exim">child_exec_exim</dfn>(<em>int</em> <dfn class="local col3 decl" id="3exec_type" title='exec_type' data-type='int' data-ref="3exec_type">exec_type</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col4 decl" id="4kill_v" title='kill_v' data-type='BOOL' data-ref="4kill_v">kill_v</dfn>, <em>int</em> *<dfn class="local col5 decl" id="5pcount" title='pcount' data-type='int *' data-ref="5pcount">pcount</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col6 decl" id="6minimal" title='minimal' data-type='BOOL' data-ref="6minimal">minimal</dfn>,</td></tr>
+<tr><th id="71">71</th><td>  <em>int</em> <dfn class="local col7 decl" id="7acount" title='acount' data-type='int' data-ref="7acount">acount</dfn>, ...)</td></tr>
+<tr><th id="72">72</th><td>{</td></tr>
+<tr><th id="73">73</th><td><em>int</em> <dfn class="local col8 decl" id="8first_special" title='first_special' data-type='int' data-ref="8first_special">first_special</dfn> = -<var>1</var>;</td></tr>
+<tr><th id="74">74</th><td><em>int</em> <dfn class="local col9 decl" id="9n" title='n' data-type='int' data-ref="9n">n</dfn> = <var>0</var>;</td></tr>
+<tr><th id="75">75</th><td><em>int</em> <dfn class="local col0 decl" id="10extra" title='extra' data-type='int' data-ref="10extra">extra</dfn> = <a class="local col5 ref" href="#5pcount" title='pcount' data-ref="5pcount">pcount</a> ? *<a class="local col5 ref" href="#5pcount" title='pcount' data-ref="5pcount">pcount</a> : <var>0</var>;</td></tr>
+<tr><th id="76">76</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col1 decl" id="11argv" title='argv' data-type='uschar **' data-ref="11argv">argv</dfn> =</td></tr>
+<tr><th id="77">77</th><td>  <a class="macro" href="store.h.html#34" title="store_get_3((extra + acount + 10 + 18) * sizeof(char *), &quot;/home/ubuntu/exim/src/build-Linux-x86_64/child.c&quot;, 77)" data-ref="_M/store_get">store_get</a>((<a class="local col0 ref" href="#10extra" title='extra' data-ref="10extra">extra</a> + <a class="local col7 ref" href="#7acount" title='acount' data-ref="7acount">acount</a> + <a class="macro" href="macros.h.html#134" title="10" data-ref="_M/MAX_CLMACROS">MAX_CLMACROS</a> + <var>18</var>) * <b>sizeof</b>(<em>char</em> *));</td></tr>
+<tr><th id="78">78</th><td></td></tr>
+<tr><th id="79">79</th><td><i>/* In all case, the list starts out with the path, any macros, and a changed</i></td></tr>
+<tr><th id="80">80</th><td><i>config file. */</i></td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>++] = <a class="ref" href="globals.h.html#exim_path" title='exim_path' data-ref="exim_path">exim_path</a>;</td></tr>
+<tr><th id="83">83</th><td><b>if</b> (<a class="ref" href="globals.h.html#clmacro_count" title='clmacro_count' data-ref="clmacro_count">clmacro_count</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="84">84</th><td>  {</td></tr>
+<tr><th id="85">85</th><td>  <a class="ref fn" href="../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a>(<a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a> + <a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>, <a class="ref" href="globals.h.html#clmacros" title='clmacros' data-ref="clmacros">clmacros</a>, <a class="ref" href="globals.h.html#clmacro_count" title='clmacro_count' data-ref="clmacro_count">clmacro_count</a> * <b>sizeof</b>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *));</td></tr>
+<tr><th id="86">86</th><td>  <a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a> += <a class="ref" href="globals.h.html#clmacro_count" title='clmacro_count' data-ref="clmacro_count">clmacro_count</a>;</td></tr>
+<tr><th id="87">87</th><td>  }</td></tr>
+<tr><th id="88">88</th><td><b>if</b> (<a class="ref" href="globals.h.html#config_changed" title='config_changed' data-ref="config_changed">config_changed</a>)</td></tr>
+<tr><th id="89">89</th><td>  {</td></tr>
+<tr><th id="90">90</th><td>  <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>++] = <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-C"</q>;</td></tr>
+<tr><th id="91">91</th><td>  <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>++] = <a class="ref" href="globals.h.html#config_main_filename" title='config_main_filename' data-ref="config_main_filename">config_main_filename</a>;</td></tr>
+<tr><th id="92">92</th><td>  }</td></tr>
+<tr><th id="93">93</th><td></td></tr>
+<tr><th id="94">94</th><td><i>/* These values are added only for non-minimal cases. If debug_selector is</i></td></tr>
+<tr><th id="95">95</th><td><i>precisely D_v, we have to assume this was started by a non-admin user, and</i></td></tr>
+<tr><th id="96">96</th><td><i>we suppress the flag when requested. (This happens when passing on an SMTP</i></td></tr>
+<tr><th id="97">97</th><td><i>connection, and after ETRN.) If there's more debugging going on, an admin user</i></td></tr>
+<tr><th id="98">98</th><td><i>was involved, so we do pass it on. */</i></td></tr>
+<tr><th id="99">99</th><td></td></tr>
+<tr><th id="100">100</th><td><b>if</b> (!<a class="local col6 ref" href="#6minimal" title='minimal' data-ref="6minimal">minimal</a>)</td></tr>
+<tr><th id="101">101</th><td>  {</td></tr>
+<tr><th id="102">102</th><td>  <b>if</b> (<a class="ref" href="local_scan.h.html#debug_selector" title='debug_selector' data-ref="debug_selector">debug_selector</a> == <a class="macro" href="local_scan.h.html#71" title="0x00000001" data-ref="_M/D_v">D_v</a>)</td></tr>
+<tr><th id="103">103</th><td>    {</td></tr>
+<tr><th id="104">104</th><td>    <b>if</b> (!<a class="local col4 ref" href="#4kill_v" title='kill_v' data-ref="4kill_v">kill_v</a>) <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>++] = <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-v"</q>;</td></tr>
+<tr><th id="105">105</th><td>    }</td></tr>
+<tr><th id="106">106</th><td>  <b>else</b></td></tr>
+<tr><th id="107">107</th><td>    {</td></tr>
+<tr><th id="108">108</th><td>    <b>if</b> (<a class="ref" href="local_scan.h.html#debug_selector" title='debug_selector' data-ref="debug_selector">debug_selector</a> != <var>0</var>)</td></tr>
+<tr><th id="109">109</th><td>      <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>++] = <a class="ref fn" href="local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"-d=0x%x"</q>, <a class="ref" href="local_scan.h.html#debug_selector" title='debug_selector' data-ref="debug_selector">debug_selector</a>);</td></tr>
+<tr><th id="110">110</th><td>    }</td></tr>
+<tr><th id="111">111</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#dont_deliver" title='dont_deliver' data-ref="dont_deliver">dont_deliver</a>) <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>++] = <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-N"</q>;</td></tr>
+<tr><th id="112">112</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#queue_smtp" title='queue_smtp' data-ref="queue_smtp">queue_smtp</a>) <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>++] = <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-odqs"</q>;</td></tr>
+<tr><th id="113">113</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#synchronous_delivery" title='synchronous_delivery' data-ref="synchronous_delivery">synchronous_delivery</a>) <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>++] = <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-odi"</q>;</td></tr>
+<tr><th id="114">114</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#connection_max_messages" title='connection_max_messages' data-ref="connection_max_messages">connection_max_messages</a> &gt;= <var>0</var>)</td></tr>
+<tr><th id="115">115</th><td>    <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>++] = <a class="ref fn" href="local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"-oB%d"</q>, <a class="ref" href="globals.h.html#connection_max_messages" title='connection_max_messages' data-ref="connection_max_messages">connection_max_messages</a>);</td></tr>
+<tr><th id="116">116</th><td>  <b>if</b> (*<a class="ref" href="globals.h.html#queue_name" title='queue_name' data-ref="queue_name">queue_name</a>)</td></tr>
+<tr><th id="117">117</th><td>    {</td></tr>
+<tr><th id="118">118</th><td>    <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>++] = <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-MCG"</q>;</td></tr>
+<tr><th id="119">119</th><td>    <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>++] = <a class="ref" href="globals.h.html#queue_name" title='queue_name' data-ref="queue_name">queue_name</a>;</td></tr>
+<tr><th id="120">120</th><td>    }</td></tr>
+<tr><th id="121">121</th><td>  }</td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td><i>/* Now add in any others that are in the call. Remember which they were,</i></td></tr>
+<tr><th id="124">124</th><td><i>for more helpful diagnosis on failure. */</i></td></tr>
+<tr><th id="125">125</th><td></td></tr>
+<tr><th id="126">126</th><td><b>if</b> (<a class="local col7 ref" href="#7acount" title='acount' data-ref="7acount">acount</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="127">127</th><td>  {</td></tr>
+<tr><th id="128">128</th><td>  <span class='typedef' title='va_list' data-type='__gnuc_va_list' data-ref="va_list">va_list</span> <dfn class="local col2 decl" id="12ap" title='ap' data-type='va_list' data-ref="12ap">ap</dfn>;</td></tr>
+<tr><th id="129">129</th><td>  <span class="macro" title="__builtin_va_start(ap, acount)" data-ref="_M/va_start">va_start</span>(<a class="local col2 ref" href="#12ap" title='ap' data-ref="12ap">ap</a>, <a class="local col7 ref" href="#7acount" title='acount' data-ref="7acount">acount</a>);</td></tr>
+<tr><th id="130">130</th><td>  <a class="local col8 ref" href="#8first_special" title='first_special' data-ref="8first_special">first_special</a> = <a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>;</td></tr>
+<tr><th id="131">131</th><td>  <b>while</b> (<a class="local col7 ref" href="#7acount" title='acount' data-ref="7acount">acount</a>-- &gt; <var>0</var>)</td></tr>
+<tr><th id="132">132</th><td>    <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>++] = <span class="macro" title="__builtin_va_arg(ap, uschar *)" data-ref="_M/va_arg">va_arg</span>(<a class="local col2 ref" href="#12ap" title='ap' data-ref="12ap">ap</a>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *);</td></tr>
+<tr><th id="133">133</th><td>  <span class="macro" title="__builtin_va_end(ap)" data-ref="_M/va_end">va_end</span>(<a class="local col2 ref" href="#12ap" title='ap' data-ref="12ap">ap</a>);</td></tr>
+<tr><th id="134">134</th><td>  }</td></tr>
+<tr><th id="135">135</th><td></td></tr>
+<tr><th id="136">136</th><td><i>/* Terminate the list, and return it, if that is what is wanted. */</i></td></tr>
+<tr><th id="137">137</th><td></td></tr>
+<tr><th id="138">138</th><td><a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>] = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="139">139</th><td><b>if</b> (<a class="local col3 ref" href="#3exec_type" title='exec_type' data-ref="3exec_type">exec_type</a> == <a class="enum" href="macros.h.html#CEE_RETURN_ARGV" title='CEE_RETURN_ARGV' data-ref="CEE_RETURN_ARGV">CEE_RETURN_ARGV</a>)</td></tr>
+<tr><th id="140">140</th><td>  {</td></tr>
+<tr><th id="141">141</th><td>  <b>if</b> (<a class="local col5 ref" href="#5pcount" title='pcount' data-ref="5pcount">pcount</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) *<a class="local col5 ref" href="#5pcount" title='pcount' data-ref="5pcount">pcount</a> = <a class="local col9 ref" href="#9n" title='n' data-ref="9n">n</a>;</td></tr>
+<tr><th id="142">142</th><td>  <b>return</b> <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>;</td></tr>
+<tr><th id="143">143</th><td>  }</td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td><i>/* Otherwise, do the exec() here, and handle the consequences of an unexpected</i></td></tr>
+<tr><th id="146">146</th><td><i>failure. We know that there will always be at least one extra option in the</i></td></tr>
+<tr><th id="147">147</th><td><i>call when exec() is done here, so it can be used to add to the panic data. */</i></td></tr>
+<tr><th id="148">148</th><td></td></tr>
+<tr><th id="149">149</th><td><a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_exec))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#383" title='D_exec' data-ref="D_exec">D_exec</a>) <a class="ref fn" href="functions.h.html#debug_print_argv" title='debug_print_argv' data-ref="debug_print_argv">debug_print_argv</a>(<a class="macro" href="mytypes.h.html#71" title="(const unsigned char **)" data-ref="_M/CUSS">CUSS</a> <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>);</td></tr>
+<tr><th id="150">150</th><td><a class="ref fn" href="functions.h.html#exim_nullstd" title='exim_nullstd' data-ref="exim_nullstd">exim_nullstd</a>();                            <i>/* Make sure std{in,out,err} exist */</i></td></tr>
+<tr><th id="151">151</th><td><a class="ref fn" href="../../include/unistd.h.html#execv" title='execv' data-ref="execv">execv</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<var>0</var>], (<em>char</em> *<em>const</em> *)<a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>);</td></tr>
+<tr><th id="152">152</th><td></td></tr>
+<tr><th id="153">153</th><td><a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>,</td></tr>
+<tr><th id="154">154</th><td>  <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a> | ((<a class="local col3 ref" href="#3exec_type" title='exec_type' data-ref="3exec_type">exec_type</a> == <a class="enum" href="macros.h.html#CEE_EXEC_EXIT" title='CEE_EXEC_EXIT' data-ref="CEE_EXEC_EXIT">CEE_EXEC_EXIT</a>)? <a class="macro" href="macros.h.html#792" title="2" data-ref="_M/LOG_PANIC">LOG_PANIC</a> : <a class="macro" href="macros.h.html#793" title="6" data-ref="_M/LOG_PANIC_DIE">LOG_PANIC_DIE</a>),</td></tr>
+<tr><th id="155">155</th><td>  <q>"re-exec of exim (%s) with %s failed: %s"</q>, <a class="ref" href="globals.h.html#exim_path" title='exim_path' data-ref="exim_path">exim_path</a>, <a class="local col1 ref" href="#11argv" title='argv' data-ref="11argv">argv</a>[<a class="local col8 ref" href="#8first_special" title='first_special' data-ref="8first_special">first_special</a>],</td></tr>
+<tr><th id="156">156</th><td>  <a class="ref fn" href="../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="157">157</th><td></td></tr>
+<tr><th id="158">158</th><td><i>/* Get here if exec_type == CEE_EXEC_EXIT.</i></td></tr>
+<tr><th id="159">159</th><td><i>Note: this must be _exit(), not exit(). */</i></td></tr>
+<tr><th id="160">160</th><td></td></tr>
+<tr><th id="161">161</th><td><a class="ref fn" href="../../include/unistd.h.html#_exit" title='_exit' data-ref="_exit">_exit</a>(<a class="macro" href="exim.h.html#178" title="127" data-ref="_M/EX_EXECFAILED">EX_EXECFAILED</a>);</td></tr>
+<tr><th id="162">162</th><td></td></tr>
+<tr><th id="163">163</th><td><b>return</b> <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;   <i>/* To keep compilers happy */</i></td></tr>
+<tr><th id="164">164</th><td>}</td></tr>
+<tr><th id="165">165</th><td></td></tr>
+<tr><th id="166">166</th><td></td></tr>
+<tr><th id="167">167</th><td></td></tr>
+<tr><th id="168">168</th><td></td></tr>
+<tr><th id="169">169</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="170">170</th><td><i>*          Create a child Exim process           *</i></td></tr>
+<tr><th id="171">171</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="172">172</th><td></td></tr>
+<tr><th id="173">173</th><td><i>/* This function is called when Exim wants to run a parallel instance of itself</i></td></tr>
+<tr><th id="174">174</th><td><i>in order to inject a message via the standard input. The function creates a</i></td></tr>
+<tr><th id="175">175</th><td><i>child process and runs Exim in it. It sets up a pipe to the standard input of</i></td></tr>
+<tr><th id="176">176</th><td><i>the new process, and returns that to the caller via fdptr. The function returns</i></td></tr>
+<tr><th id="177">177</th><td><i>the pid of the new process, or -1 if things go wrong. If debug_fd is</i></td></tr>
+<tr><th id="178">178</th><td><i>non-negative, it is passed as stderr.</i></td></tr>
+<tr><th id="179">179</th><td><i></i></td></tr>
+<tr><th id="180">180</th><td><i>This interface is now a just wrapper for the more complicated function</i></td></tr>
+<tr><th id="181">181</th><td><i>child_open_exim2(), which has additional arguments. The wrapper must continue</i></td></tr>
+<tr><th id="182">182</th><td><i>to exist, even if all calls from within Exim are changed, because it is</i></td></tr>
+<tr><th id="183">183</th><td><i>documented for use from local_scan().</i></td></tr>
+<tr><th id="184">184</th><td><i></i></td></tr>
+<tr><th id="185">185</th><td><i>Argument: fdptr   pointer to int for the stdin fd</i></td></tr>
+<tr><th id="186">186</th><td><i>Returns:          pid of the created process or -1 if anything has gone wrong</i></td></tr>
+<tr><th id="187">187</th><td><i>*/</i></td></tr>
+<tr><th id="188">188</th><td></td></tr>
+<tr><th id="189">189</th><td><a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a></td></tr>
+<tr><th id="190">190</th><td><dfn class="decl def fn" id="child_open_exim" title='child_open_exim' data-ref="child_open_exim">child_open_exim</dfn>(<em>int</em> *<dfn class="local col3 decl" id="13fdptr" title='fdptr' data-type='int *' data-ref="13fdptr">fdptr</dfn>)</td></tr>
+<tr><th id="191">191</th><td>{</td></tr>
+<tr><th id="192">192</th><td><b>return</b> <a class="ref fn" href="#child_open_exim2" title='child_open_exim2' data-ref="child_open_exim2">child_open_exim2</a>(<a class="local col3 ref" href="#13fdptr" title='fdptr' data-ref="13fdptr">fdptr</a>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"&lt;&gt;"</q>, <a class="ref" href="globals.h.html#bounce_sender_authentication" title='bounce_sender_authentication' data-ref="bounce_sender_authentication">bounce_sender_authentication</a>);</td></tr>
+<tr><th id="193">193</th><td>}</td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td></td></tr>
+<tr><th id="196">196</th><td><i>/* This is a more complicated function for creating a child Exim process, with</i></td></tr>
+<tr><th id="197">197</th><td><i>more arguments.</i></td></tr>
+<tr><th id="198">198</th><td><i></i></td></tr>
+<tr><th id="199">199</th><td><i>Arguments:</i></td></tr>
+<tr><th id="200">200</th><td><i>  fdptr                   pointer to int for the stdin fd</i></td></tr>
+<tr><th id="201">201</th><td><i>  sender                  for a sender address (data for -f)</i></td></tr>
+<tr><th id="202">202</th><td><i>  sender_authentication   authenticated sender address or NULL</i></td></tr>
+<tr><th id="203">203</th><td><i></i></td></tr>
+<tr><th id="204">204</th><td><i>Returns:          pid of the created process or -1 if anything has gone wrong</i></td></tr>
+<tr><th id="205">205</th><td><i>*/</i></td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td><a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a></td></tr>
+<tr><th id="208">208</th><td><dfn class="decl def fn" id="child_open_exim2" title='child_open_exim2' data-ref="child_open_exim2">child_open_exim2</dfn>(<em>int</em> *<dfn class="local col4 decl" id="14fdptr" title='fdptr' data-type='int *' data-ref="14fdptr">fdptr</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col5 decl" id="15sender" title='sender' data-type='uschar *' data-ref="15sender">sender</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="16sender_authentication" title='sender_authentication' data-type='uschar *' data-ref="16sender_authentication">sender_authentication</dfn>)</td></tr>
+<tr><th id="209">209</th><td>{</td></tr>
+<tr><th id="210">210</th><td><em>int</em> <dfn class="local col7 decl" id="17pfd" title='pfd' data-type='int [2]' data-ref="17pfd">pfd</dfn>[<var>2</var>];</td></tr>
+<tr><th id="211">211</th><td><em>int</em> <dfn class="local col8 decl" id="18save_errno" title='save_errno' data-type='int' data-ref="18save_errno">save_errno</dfn>;</td></tr>
+<tr><th id="212">212</th><td><a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a> <dfn class="local col9 decl" id="19pid" title='pid' data-type='pid_t' data-ref="19pid">pid</dfn>;</td></tr>
+<tr><th id="213">213</th><td></td></tr>
+<tr><th id="214">214</th><td><i>/* Create the pipe and fork the process. Ensure that SIGCHLD is set to</i></td></tr>
+<tr><th id="215">215</th><td><i>SIG_DFL before forking, so that the child process can be waited for. We</i></td></tr>
+<tr><th id="216">216</th><td><i>sometimes get here with it set otherwise. Save the old state for resetting</i></td></tr>
+<tr><th id="217">217</th><td><i>on the wait. */</i></td></tr>
+<tr><th id="218">218</th><td></td></tr>
+<tr><th id="219">219</th><td><b>if</b> (<a class="ref fn" href="../../include/unistd.h.html#pipe" title='pipe' data-ref="pipe">pipe</a>(<a class="local col7 ref" href="#17pfd" title='pfd' data-ref="17pfd">pfd</a>) != <var>0</var>) <b>return</b> (<a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a>)(-<var>1</var>);</td></tr>
+<tr><th id="220">220</th><td><a class="tu ref" href="#oldsignal" title='oldsignal' data-use='w' data-ref="oldsignal">oldsignal</a> = <a class="ref fn" href="../../include/signal.h.html#signal" title='signal' data-ref="signal">signal</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/signum.h.html#50" title="17" data-ref="_M/SIGCHLD">SIGCHLD</a>, <a class="macro" href="../../include/x86_64-linux-gnu/bits/signum.h.html#23" title="((__sighandler_t) 0)" data-ref="_M/SIG_DFL">SIG_DFL</a>);</td></tr>
+<tr><th id="221">221</th><td><a class="local col9 ref" href="#19pid" title='pid' data-ref="19pid">pid</a> = <a class="ref fn" href="../../include/unistd.h.html#fork" title='fork' data-ref="fork">fork</a>();</td></tr>
+<tr><th id="222">222</th><td></td></tr>
+<tr><th id="223">223</th><td><i>/* Child process: make the reading end of the pipe into the standard input and</i></td></tr>
+<tr><th id="224">224</th><td><i>close the writing end. If debugging, pass debug_fd as stderr. Then re-exec</i></td></tr>
+<tr><th id="225">225</th><td><i>Exim with appropriate options. In the test harness, use -odi unless queue_only</i></td></tr>
+<tr><th id="226">226</th><td><i>is set, so that the bounce is fully delivered before returning. Failure is</i></td></tr>
+<tr><th id="227">227</th><td><i>signalled with EX_EXECFAILED (specified by CEE_EXEC_EXIT), but this shouldn't</i></td></tr>
+<tr><th id="228">228</th><td><i>occur. */</i></td></tr>
+<tr><th id="229">229</th><td></td></tr>
+<tr><th id="230">230</th><td><b>if</b> (<a class="local col9 ref" href="#19pid" title='pid' data-ref="19pid">pid</a> == <var>0</var>)</td></tr>
+<tr><th id="231">231</th><td>  {</td></tr>
+<tr><th id="232">232</th><td>  <a class="tu ref fn" href="#force_fd" title='force_fd' data-use='c' data-ref="force_fd">force_fd</a>(<a class="local col7 ref" href="#17pfd" title='pfd' data-ref="17pfd">pfd</a>[<a class="macro" href="macros.h.html#97" title="0" data-ref="_M/pipe_read">pipe_read</a>], <var>0</var>);</td></tr>
+<tr><th id="233">233</th><td>  (<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col7 ref" href="#17pfd" title='pfd' data-ref="17pfd">pfd</a>[<a class="macro" href="macros.h.html#98" title="1" data-ref="_M/pipe_write">pipe_write</a>]);</td></tr>
+<tr><th id="234">234</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#debug_fd" title='debug_fd' data-ref="debug_fd">debug_fd</a> &gt; <var>0</var>) <a class="tu ref fn" href="#force_fd" title='force_fd' data-use='c' data-ref="force_fd">force_fd</a>(<a class="ref" href="globals.h.html#debug_fd" title='debug_fd' data-ref="debug_fd">debug_fd</a>, <var>2</var>);</td></tr>
+<tr><th id="235">235</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#running_in_test_harness" title='running_in_test_harness' data-ref="running_in_test_harness">running_in_test_harness</a> &amp;&amp; !<a class="ref" href="globals.h.html#queue_only" title='queue_only' data-ref="queue_only">queue_only</a>)</td></tr>
+<tr><th id="236">236</th><td>    {</td></tr>
+<tr><th id="237">237</th><td>    <b>if</b> (<a class="local col6 ref" href="#16sender_authentication" title='sender_authentication' data-ref="16sender_authentication">sender_authentication</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="238">238</th><td>      <a class="ref fn" href="#child_exec_exim" title='child_exec_exim' data-ref="child_exec_exim">child_exec_exim</a>(<a class="enum" href="macros.h.html#CEE_EXEC_EXIT" title='CEE_EXEC_EXIT' data-ref="CEE_EXEC_EXIT">CEE_EXEC_EXIT</a>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <var>9</var>,</td></tr>
+<tr><th id="239">239</th><td>        <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <q>"-odi"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-t"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-oem"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-oi"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-f"</q>, <a class="local col5 ref" href="#15sender" title='sender' data-ref="15sender">sender</a>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-oMas"</q>,</td></tr>
+<tr><th id="240">240</th><td>        <a class="local col6 ref" href="#16sender_authentication" title='sender_authentication' data-ref="16sender_authentication">sender_authentication</a>, <a class="ref" href="globals.h.html#message_id_option" title='message_id_option' data-ref="message_id_option">message_id_option</a>);</td></tr>
+<tr><th id="241">241</th><td>    <b>else</b></td></tr>
+<tr><th id="242">242</th><td>      <a class="ref fn" href="#child_exec_exim" title='child_exec_exim' data-ref="child_exec_exim">child_exec_exim</a>(<a class="enum" href="macros.h.html#CEE_EXEC_EXIT" title='CEE_EXEC_EXIT' data-ref="CEE_EXEC_EXIT">CEE_EXEC_EXIT</a>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <var>7</var>,</td></tr>
+<tr><th id="243">243</th><td>        <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <q>"-odi"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-t"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-oem"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-oi"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-f"</q>, <a class="local col5 ref" href="#15sender" title='sender' data-ref="15sender">sender</a>,</td></tr>
+<tr><th id="244">244</th><td>        <a class="ref" href="globals.h.html#message_id_option" title='message_id_option' data-ref="message_id_option">message_id_option</a>);</td></tr>
+<tr><th id="245">245</th><td>    <i>/* Control does not return here. */</i></td></tr>
+<tr><th id="246">246</th><td>    }</td></tr>
+<tr><th id="247">247</th><td>  <b>else</b>   <i>/* Not test harness */</i></td></tr>
+<tr><th id="248">248</th><td>    {</td></tr>
+<tr><th id="249">249</th><td>    <b>if</b> (<a class="local col6 ref" href="#16sender_authentication" title='sender_authentication' data-ref="16sender_authentication">sender_authentication</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="250">250</th><td>      <a class="ref fn" href="#child_exec_exim" title='child_exec_exim' data-ref="child_exec_exim">child_exec_exim</a>(<a class="enum" href="macros.h.html#CEE_EXEC_EXIT" title='CEE_EXEC_EXIT' data-ref="CEE_EXEC_EXIT">CEE_EXEC_EXIT</a>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <var>8</var>,</td></tr>
+<tr><th id="251">251</th><td>        <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-t"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-oem"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-oi"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-f"</q>, <a class="local col5 ref" href="#15sender" title='sender' data-ref="15sender">sender</a>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-oMas"</q>,</td></tr>
+<tr><th id="252">252</th><td>        <a class="local col6 ref" href="#16sender_authentication" title='sender_authentication' data-ref="16sender_authentication">sender_authentication</a>, <a class="ref" href="globals.h.html#message_id_option" title='message_id_option' data-ref="message_id_option">message_id_option</a>);</td></tr>
+<tr><th id="253">253</th><td>    <b>else</b></td></tr>
+<tr><th id="254">254</th><td>      <a class="ref fn" href="#child_exec_exim" title='child_exec_exim' data-ref="child_exec_exim">child_exec_exim</a>(<a class="enum" href="macros.h.html#CEE_EXEC_EXIT" title='CEE_EXEC_EXIT' data-ref="CEE_EXEC_EXIT">CEE_EXEC_EXIT</a>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>, <var>6</var>,</td></tr>
+<tr><th id="255">255</th><td>        <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-t"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-oem"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-oi"</q>, <a class="macro" href="mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"-f"</q>, <a class="local col5 ref" href="#15sender" title='sender' data-ref="15sender">sender</a>, <a class="ref" href="globals.h.html#message_id_option" title='message_id_option' data-ref="message_id_option">message_id_option</a>);</td></tr>
+<tr><th id="256">256</th><td>    <i>/* Control does not return here. */</i></td></tr>
+<tr><th id="257">257</th><td>    }</td></tr>
+<tr><th id="258">258</th><td>  }</td></tr>
+<tr><th id="259">259</th><td></td></tr>
+<tr><th id="260">260</th><td><i>/* Parent process. Save fork() errno and close the reading end of the stdin</i></td></tr>
+<tr><th id="261">261</th><td><i>pipe. */</i></td></tr>
+<tr><th id="262">262</th><td></td></tr>
+<tr><th id="263">263</th><td><a class="local col8 ref" href="#18save_errno" title='save_errno' data-ref="18save_errno">save_errno</a> = <a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>;</td></tr>
+<tr><th id="264">264</th><td>(<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col7 ref" href="#17pfd" title='pfd' data-ref="17pfd">pfd</a>[<a class="macro" href="macros.h.html#97" title="0" data-ref="_M/pipe_read">pipe_read</a>]);</td></tr>
+<tr><th id="265">265</th><td></td></tr>
+<tr><th id="266">266</th><td><i>/* Fork succeeded */</i></td></tr>
+<tr><th id="267">267</th><td></td></tr>
+<tr><th id="268">268</th><td><b>if</b> (<a class="local col9 ref" href="#19pid" title='pid' data-ref="19pid">pid</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="269">269</th><td>  {</td></tr>
+<tr><th id="270">270</th><td>  *<a class="local col4 ref" href="#14fdptr" title='fdptr' data-ref="14fdptr">fdptr</a> = <a class="local col7 ref" href="#17pfd" title='pfd' data-ref="17pfd">pfd</a>[<a class="macro" href="macros.h.html#98" title="1" data-ref="_M/pipe_write">pipe_write</a>];   <i>/* return writing end of stdin pipe */</i></td></tr>
+<tr><th id="271">271</th><td>  <b>return</b> <a class="local col9 ref" href="#19pid" title='pid' data-ref="19pid">pid</a>;                 <i>/* and pid of new process */</i></td></tr>
+<tr><th id="272">272</th><td>  }</td></tr>
+<tr><th id="273">273</th><td></td></tr>
+<tr><th id="274">274</th><td><i>/* Fork failed */</i></td></tr>
+<tr><th id="275">275</th><td></td></tr>
+<tr><th id="276">276</th><td>(<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col7 ref" href="#17pfd" title='pfd' data-ref="17pfd">pfd</a>[<a class="macro" href="macros.h.html#98" title="1" data-ref="_M/pipe_write">pipe_write</a>]);</td></tr>
+<tr><th id="277">277</th><td><a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a> = <a class="local col8 ref" href="#18save_errno" title='save_errno' data-ref="18save_errno">save_errno</a>;</td></tr>
+<tr><th id="278">278</th><td><b>return</b> (<a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a>)(-<var>1</var>);</td></tr>
+<tr><th id="279">279</th><td>}</td></tr>
+<tr><th id="280">280</th><td><u>#<span data-ppcond="39">endif</span>   /* STAND_ALONE */</u></td></tr>
+<tr><th id="281">281</th><td></td></tr>
+<tr><th id="282">282</th><td></td></tr>
+<tr><th id="283">283</th><td></td></tr>
+<tr><th id="284">284</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="285">285</th><td><i>*         Create a non-Exim child process        *</i></td></tr>
+<tr><th id="286">286</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="287">287</th><td></td></tr>
+<tr><th id="288">288</th><td><i>/* This function creates a child process and runs the given command in it. It</i></td></tr>
+<tr><th id="289">289</th><td><i>sets up pipes to the standard input and output of the new process, and returns</i></td></tr>
+<tr><th id="290">290</th><td><i>them to the caller. The standard error is cloned to the output. If there are</i></td></tr>
+<tr><th id="291">291</th><td><i>any file descriptors "in the way" in the new process, they are closed. A new</i></td></tr>
+<tr><th id="292">292</th><td><i>umask is supplied for the process, and an optional new uid and gid are also</i></td></tr>
+<tr><th id="293">293</th><td><i>available. These are used by the queryprogram router to set an unprivileged id.</i></td></tr>
+<tr><th id="294">294</th><td><i>SIGUSR1 is always disabled in the new process, as it is not going to be running</i></td></tr>
+<tr><th id="295">295</th><td><i>Exim (the function child_open_exim() is provided for that). This function</i></td></tr>
+<tr><th id="296">296</th><td><i>returns the pid of the new process, or -1 if things go wrong.</i></td></tr>
+<tr><th id="297">297</th><td><i></i></td></tr>
+<tr><th id="298">298</th><td><i>Arguments:</i></td></tr>
+<tr><th id="299">299</th><td><i>  argv        the argv for exec in the new process</i></td></tr>
+<tr><th id="300">300</th><td><i>  envp        the envp for exec in the new process</i></td></tr>
+<tr><th id="301">301</th><td><i>  newumask    umask to set in the new process</i></td></tr>
+<tr><th id="302">302</th><td><i>  newuid      point to uid for the new process or NULL for no change</i></td></tr>
+<tr><th id="303">303</th><td><i>  newgid      point to gid for the new process or NULL for no change</i></td></tr>
+<tr><th id="304">304</th><td><i>  infdptr     pointer to int into which the fd of the stdin of the new process</i></td></tr>
+<tr><th id="305">305</th><td><i>                is placed</i></td></tr>
+<tr><th id="306">306</th><td><i>  outfdptr    pointer to int into which the fd of the stdout/stderr of the new</i></td></tr>
+<tr><th id="307">307</th><td><i>                process is placed</i></td></tr>
+<tr><th id="308">308</th><td><i>  wd          if not NULL, a path to be handed to chdir() in the new process</i></td></tr>
+<tr><th id="309">309</th><td><i>  make_leader if TRUE, make the new process a process group leader</i></td></tr>
+<tr><th id="310">310</th><td><i></i></td></tr>
+<tr><th id="311">311</th><td><i>Returns:      the pid of the created process or -1 if anything has gone wrong</i></td></tr>
+<tr><th id="312">312</th><td><i>*/</i></td></tr>
+<tr><th id="313">313</th><td></td></tr>
+<tr><th id="314">314</th><td><a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a></td></tr>
+<tr><th id="315">315</th><td><dfn class="decl def fn" id="child_open_uid" title='child_open_uid' data-ref="child_open_uid">child_open_uid</dfn>(<em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col0 decl" id="20argv" title='argv' data-type='const uschar **' data-ref="20argv">argv</dfn>, <em>const</em> <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col1 decl" id="21envp" title='envp' data-type='const uschar **' data-ref="21envp">envp</dfn>, <em>int</em> <dfn class="local col2 decl" id="22newumask" title='newumask' data-type='int' data-ref="22newumask">newumask</dfn>,</td></tr>
+<tr><th id="316">316</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#uid_t" title='uid_t' data-type='__uid_t' data-ref="uid_t">uid_t</a> *<dfn class="local col3 decl" id="23newuid" title='newuid' data-type='uid_t *' data-ref="23newuid">newuid</dfn>, <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#gid_t" title='gid_t' data-type='__gid_t' data-ref="gid_t">gid_t</a> *<dfn class="local col4 decl" id="24newgid" title='newgid' data-type='gid_t *' data-ref="24newgid">newgid</dfn>, <em>int</em> *<dfn class="local col5 decl" id="25infdptr" title='infdptr' data-type='int *' data-ref="25infdptr">infdptr</dfn>, <em>int</em> *<dfn class="local col6 decl" id="26outfdptr" title='outfdptr' data-type='int *' data-ref="26outfdptr">outfdptr</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col7 decl" id="27wd" title='wd' data-type='uschar *' data-ref="27wd">wd</dfn>,</td></tr>
+<tr><th id="317">317</th><td>  <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col8 decl" id="28make_leader" title='make_leader' data-type='BOOL' data-ref="28make_leader">make_leader</dfn>)</td></tr>
+<tr><th id="318">318</th><td>{</td></tr>
+<tr><th id="319">319</th><td><em>int</em> <dfn class="local col9 decl" id="29save_errno" title='save_errno' data-type='int' data-ref="29save_errno">save_errno</dfn>;</td></tr>
+<tr><th id="320">320</th><td><em>int</em> <dfn class="local col0 decl" id="30inpfd" title='inpfd' data-type='int [2]' data-ref="30inpfd">inpfd</dfn>[<var>2</var>], <dfn class="local col1 decl" id="31outpfd" title='outpfd' data-type='int [2]' data-ref="31outpfd">outpfd</dfn>[<var>2</var>];</td></tr>
+<tr><th id="321">321</th><td><a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a> <dfn class="local col2 decl" id="32pid" title='pid' data-type='pid_t' data-ref="32pid">pid</dfn>;</td></tr>
+<tr><th id="322">322</th><td></td></tr>
+<tr><th id="323">323</th><td><i>/* Create the pipes. */</i></td></tr>
+<tr><th id="324">324</th><td></td></tr>
+<tr><th id="325">325</th><td><b>if</b> (<a class="ref fn" href="../../include/unistd.h.html#pipe" title='pipe' data-ref="pipe">pipe</a>(<a class="local col0 ref" href="#30inpfd" title='inpfd' data-ref="30inpfd">inpfd</a>) != <var>0</var>) <b>return</b> (<a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a>)(-<var>1</var>);</td></tr>
+<tr><th id="326">326</th><td><b>if</b> (<a class="ref fn" href="../../include/unistd.h.html#pipe" title='pipe' data-ref="pipe">pipe</a>(<a class="local col1 ref" href="#31outpfd" title='outpfd' data-ref="31outpfd">outpfd</a>) != <var>0</var>)</td></tr>
+<tr><th id="327">327</th><td>  {</td></tr>
+<tr><th id="328">328</th><td>  (<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col0 ref" href="#30inpfd" title='inpfd' data-ref="30inpfd">inpfd</a>[<a class="macro" href="macros.h.html#97" title="0" data-ref="_M/pipe_read">pipe_read</a>]);</td></tr>
+<tr><th id="329">329</th><td>  (<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col0 ref" href="#30inpfd" title='inpfd' data-ref="30inpfd">inpfd</a>[<a class="macro" href="macros.h.html#98" title="1" data-ref="_M/pipe_write">pipe_write</a>]);</td></tr>
+<tr><th id="330">330</th><td>  <b>return</b> (<a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a>)(-<var>1</var>);</td></tr>
+<tr><th id="331">331</th><td>  }</td></tr>
+<tr><th id="332">332</th><td></td></tr>
+<tr><th id="333">333</th><td><i>/* Fork the process. Ensure that SIGCHLD is set to SIG_DFL before forking, so</i></td></tr>
+<tr><th id="334">334</th><td><i>that the child process can be waited for. We sometimes get here with it set</i></td></tr>
+<tr><th id="335">335</th><td><i>otherwise. Save the old state for resetting on the wait. */</i></td></tr>
+<tr><th id="336">336</th><td></td></tr>
+<tr><th id="337">337</th><td><a class="tu ref" href="#oldsignal" title='oldsignal' data-use='w' data-ref="oldsignal">oldsignal</a> = <a class="ref fn" href="../../include/signal.h.html#signal" title='signal' data-ref="signal">signal</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/signum.h.html#50" title="17" data-ref="_M/SIGCHLD">SIGCHLD</a>, <a class="macro" href="../../include/x86_64-linux-gnu/bits/signum.h.html#23" title="((__sighandler_t) 0)" data-ref="_M/SIG_DFL">SIG_DFL</a>);</td></tr>
+<tr><th id="338">338</th><td><a class="local col2 ref" href="#32pid" title='pid' data-ref="32pid">pid</a> = <a class="ref fn" href="../../include/unistd.h.html#fork" title='fork' data-ref="fork">fork</a>();</td></tr>
+<tr><th id="339">339</th><td></td></tr>
+<tr><th id="340">340</th><td><i>/* Handle the child process. First, set the required environment. We must do</i></td></tr>
+<tr><th id="341">341</th><td><i>this before messing with the pipes, in order to be able to write debugging</i></td></tr>
+<tr><th id="342">342</th><td><i>output when things go wrong. */</i></td></tr>
+<tr><th id="343">343</th><td></td></tr>
+<tr><th id="344">344</th><td><b>if</b> (<a class="local col2 ref" href="#32pid" title='pid' data-ref="32pid">pid</a> == <var>0</var>)</td></tr>
+<tr><th id="345">345</th><td>  {</td></tr>
+<tr><th id="346">346</th><td>  <a class="ref fn" href="../../include/signal.h.html#signal" title='signal' data-ref="signal">signal</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/signum.h.html#42" title="10" data-ref="_M/SIGUSR1">SIGUSR1</a>, <a class="macro" href="../../include/x86_64-linux-gnu/bits/signum.h.html#24" title="((__sighandler_t) 1)" data-ref="_M/SIG_IGN">SIG_IGN</a>);</td></tr>
+<tr><th id="347">347</th><td>  <a class="ref fn" href="../../include/signal.h.html#signal" title='signal' data-ref="signal">signal</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/signum.h.html#45" title="13" data-ref="_M/SIGPIPE">SIGPIPE</a>, <a class="macro" href="../../include/x86_64-linux-gnu/bits/signum.h.html#23" title="((__sighandler_t) 0)" data-ref="_M/SIG_DFL">SIG_DFL</a>);</td></tr>
+<tr><th id="348">348</th><td></td></tr>
+<tr><th id="349">349</th><td>  <b>if</b> (<a class="local col4 ref" href="#24newgid" title='newgid' data-ref="24newgid">newgid</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> &amp;&amp; <a class="ref fn" href="../../include/unistd.h.html#setgid" title='setgid' data-ref="setgid">setgid</a>(*<a class="local col4 ref" href="#24newgid" title='newgid' data-ref="24newgid">newgid</a>) &lt; <var>0</var>)</td></tr>
+<tr><th id="350">350</th><td>    {</td></tr>
+<tr><th id="351">351</th><td>    <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; ((0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )))" data-ref="_M/DEBUG">DEBUG</a>(<a class="macro" href="macros.h.html#413" title="(0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )" data-ref="_M/D_any">D_any</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"failed to set gid=%ld in subprocess: %s\n"</q>,</td></tr>
+<tr><th id="352">352</th><td>      (<em>long</em> <em>int</em>)(*<a class="local col4 ref" href="#24newgid" title='newgid' data-ref="24newgid">newgid</a>), <a class="ref fn" href="../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="353">353</th><td>    <b>goto</b> <a class="lbl" href="#33CHILD_FAILED" data-ref="33CHILD_FAILED">CHILD_FAILED</a>;</td></tr>
+<tr><th id="354">354</th><td>    }</td></tr>
+<tr><th id="355">355</th><td></td></tr>
+<tr><th id="356">356</th><td>  <b>if</b> (<a class="local col3 ref" href="#23newuid" title='newuid' data-ref="23newuid">newuid</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> &amp;&amp; <a class="ref fn" href="../../include/unistd.h.html#setuid" title='setuid' data-ref="setuid">setuid</a>(*<a class="local col3 ref" href="#23newuid" title='newuid' data-ref="23newuid">newuid</a>) &lt; <var>0</var>)</td></tr>
+<tr><th id="357">357</th><td>    {</td></tr>
+<tr><th id="358">358</th><td>    <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; ((0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )))" data-ref="_M/DEBUG">DEBUG</a>(<a class="macro" href="macros.h.html#413" title="(0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )" data-ref="_M/D_any">D_any</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"failed to set uid=%ld in subprocess: %s\n"</q>,</td></tr>
+<tr><th id="359">359</th><td>      (<em>long</em> <em>int</em>)(*<a class="local col3 ref" href="#23newuid" title='newuid' data-ref="23newuid">newuid</a>), <a class="ref fn" href="../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="360">360</th><td>    <b>goto</b> <a class="lbl" href="#33CHILD_FAILED" data-ref="33CHILD_FAILED">CHILD_FAILED</a>;</td></tr>
+<tr><th id="361">361</th><td>    }</td></tr>
+<tr><th id="362">362</th><td></td></tr>
+<tr><th id="363">363</th><td>  (<em>void</em>)<a class="ref fn" href="../../include/x86_64-linux-gnu/sys/stat.h.html#umask" title='umask' data-ref="umask">umask</a>(<a class="local col2 ref" href="#22newumask" title='newumask' data-ref="22newumask">newumask</a>);</td></tr>
+<tr><th id="364">364</th><td></td></tr>
+<tr><th id="365">365</th><td>  <b>if</b> (<a class="local col7 ref" href="#27wd" title='wd' data-ref="27wd">wd</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> &amp;&amp; <a class="macro" href="mytypes.h.html#80" title="chdir((const char *)(wd))" data-ref="_M/Uchdir">Uchdir</a>(<a class="local col7 ref" href="#27wd" title='wd' data-ref="27wd">wd</a>) &lt; <var>0</var>)</td></tr>
+<tr><th id="366">366</th><td>    {</td></tr>
+<tr><th id="367">367</th><td>    <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; ((0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )))" data-ref="_M/DEBUG">DEBUG</a>(<a class="macro" href="macros.h.html#413" title="(0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )" data-ref="_M/D_any">D_any</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"failed to chdir to %s: %s\n"</q>, <a class="local col7 ref" href="#27wd" title='wd' data-ref="27wd">wd</a>,</td></tr>
+<tr><th id="368">368</th><td>      <a class="ref fn" href="../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="369">369</th><td>    <b>goto</b> <a class="lbl" href="#33CHILD_FAILED" data-ref="33CHILD_FAILED">CHILD_FAILED</a>;</td></tr>
+<tr><th id="370">370</th><td>    }</td></tr>
+<tr><th id="371">371</th><td></td></tr>
+<tr><th id="372">372</th><td>  <i>/* Becomes a process group leader if requested, and then organize the pipes.</i></td></tr>
+<tr><th id="373">373</th><td><i>  Any unexpected failure is signalled with EX_EXECFAILED; these are all "should</i></td></tr>
+<tr><th id="374">374</th><td><i>  never occur" failures, except for exec failing because the command doesn't</i></td></tr>
+<tr><th id="375">375</th><td><i>  exist. */</i></td></tr>
+<tr><th id="376">376</th><td></td></tr>
+<tr><th id="377">377</th><td>  <b>if</b> (<a class="local col8 ref" href="#28make_leader" title='make_leader' data-ref="28make_leader">make_leader</a> &amp;&amp; <a class="ref fn" href="../../include/unistd.h.html#setpgid" title='setpgid' data-ref="setpgid">setpgid</a>(<var>0</var>,<var>0</var>) &lt; <var>0</var>)</td></tr>
+<tr><th id="378">378</th><td>    {</td></tr>
+<tr><th id="379">379</th><td>    <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; ((0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )))" data-ref="_M/DEBUG">DEBUG</a>(<a class="macro" href="macros.h.html#413" title="(0xffffffff &amp; ~(0x00000001 | D_pid | D_timestamp) )" data-ref="_M/D_any">D_any</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"failed to set group leader in subprocess: %s\n"</q>,</td></tr>
+<tr><th id="380">380</th><td>      <a class="ref fn" href="../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="381">381</th><td>    <b>goto</b> <a class="lbl" href="#33CHILD_FAILED" data-ref="33CHILD_FAILED">CHILD_FAILED</a>;</td></tr>
+<tr><th id="382">382</th><td>    }</td></tr>
+<tr><th id="383">383</th><td></td></tr>
+<tr><th id="384">384</th><td>  (<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col0 ref" href="#30inpfd" title='inpfd' data-ref="30inpfd">inpfd</a>[<a class="macro" href="macros.h.html#98" title="1" data-ref="_M/pipe_write">pipe_write</a>]);</td></tr>
+<tr><th id="385">385</th><td>  <a class="tu ref fn" href="#force_fd" title='force_fd' data-use='c' data-ref="force_fd">force_fd</a>(<a class="local col0 ref" href="#30inpfd" title='inpfd' data-ref="30inpfd">inpfd</a>[<a class="macro" href="macros.h.html#97" title="0" data-ref="_M/pipe_read">pipe_read</a>], <var>0</var>);</td></tr>
+<tr><th id="386">386</th><td></td></tr>
+<tr><th id="387">387</th><td>  (<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col1 ref" href="#31outpfd" title='outpfd' data-ref="31outpfd">outpfd</a>[<a class="macro" href="macros.h.html#97" title="0" data-ref="_M/pipe_read">pipe_read</a>]);</td></tr>
+<tr><th id="388">388</th><td>  <a class="tu ref fn" href="#force_fd" title='force_fd' data-use='c' data-ref="force_fd">force_fd</a>(<a class="local col1 ref" href="#31outpfd" title='outpfd' data-ref="31outpfd">outpfd</a>[<a class="macro" href="macros.h.html#98" title="1" data-ref="_M/pipe_write">pipe_write</a>], <var>1</var>);</td></tr>
+<tr><th id="389">389</th><td></td></tr>
+<tr><th id="390">390</th><td>  (<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<var>2</var>);</td></tr>
+<tr><th id="391">391</th><td>  (<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#dup2" title='dup2' data-ref="dup2">dup2</a>(<var>1</var>, <var>2</var>);</td></tr>
+<tr><th id="392">392</th><td></td></tr>
+<tr><th id="393">393</th><td>  <i>/* Now do the exec */</i></td></tr>
+<tr><th id="394">394</th><td></td></tr>
+<tr><th id="395">395</th><td>  <b>if</b> (<a class="local col1 ref" href="#21envp" title='envp' data-ref="21envp">envp</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="ref fn" href="../../include/unistd.h.html#execv" title='execv' data-ref="execv">execv</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col0 ref" href="#20argv" title='argv' data-ref="20argv">argv</a>[<var>0</var>], (<em>char</em> *<em>const</em> *)<a class="local col0 ref" href="#20argv" title='argv' data-ref="20argv">argv</a>);</td></tr>
+<tr><th id="396">396</th><td>  <b>else</b> <a class="ref fn" href="../../include/unistd.h.html#execve" title='execve' data-ref="execve">execve</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col0 ref" href="#20argv" title='argv' data-ref="20argv">argv</a>[<var>0</var>], (<em>char</em> *<em>const</em> *)<a class="local col0 ref" href="#20argv" title='argv' data-ref="20argv">argv</a>, (<em>char</em> *<em>const</em> *)<a class="local col1 ref" href="#21envp" title='envp' data-ref="21envp">envp</a>);</td></tr>
+<tr><th id="397">397</th><td></td></tr>
+<tr><th id="398">398</th><td>  <i>/* Failed to execv. Signal this failure using EX_EXECFAILED. We are</i></td></tr>
+<tr><th id="399">399</th><td><i>  losing the actual errno we got back, because there is no way to return</i></td></tr>
+<tr><th id="400">400</th><td><i>  this information. */</i></td></tr>
+<tr><th id="401">401</th><td></td></tr>
+<tr><th id="402">402</th><td>  <dfn class="lbl" id="33CHILD_FAILED" data-ref="33CHILD_FAILED">CHILD_FAILED</dfn>:</td></tr>
+<tr><th id="403">403</th><td>  <a class="ref fn" href="../../include/unistd.h.html#_exit" title='_exit' data-ref="_exit">_exit</a>(<a class="macro" href="exim.h.html#178" title="127" data-ref="_M/EX_EXECFAILED">EX_EXECFAILED</a>);      <i>/* Note: must be _exit(), NOT exit() */</i></td></tr>
+<tr><th id="404">404</th><td>  }</td></tr>
+<tr><th id="405">405</th><td></td></tr>
+<tr><th id="406">406</th><td><i>/* Parent process. Save any fork failure code, and close the reading end of the</i></td></tr>
+<tr><th id="407">407</th><td><i>stdin pipe, and the writing end of the stdout pipe. */</i></td></tr>
+<tr><th id="408">408</th><td></td></tr>
+<tr><th id="409">409</th><td><a class="local col9 ref" href="#29save_errno" title='save_errno' data-ref="29save_errno">save_errno</a> = <a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>;</td></tr>
+<tr><th id="410">410</th><td>(<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col0 ref" href="#30inpfd" title='inpfd' data-ref="30inpfd">inpfd</a>[<a class="macro" href="macros.h.html#97" title="0" data-ref="_M/pipe_read">pipe_read</a>]);</td></tr>
+<tr><th id="411">411</th><td>(<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col1 ref" href="#31outpfd" title='outpfd' data-ref="31outpfd">outpfd</a>[<a class="macro" href="macros.h.html#98" title="1" data-ref="_M/pipe_write">pipe_write</a>]);</td></tr>
+<tr><th id="412">412</th><td></td></tr>
+<tr><th id="413">413</th><td><i>/* Fork succeeded; return the input/output pipes and the pid */</i></td></tr>
+<tr><th id="414">414</th><td></td></tr>
+<tr><th id="415">415</th><td><b>if</b> (<a class="local col2 ref" href="#32pid" title='pid' data-ref="32pid">pid</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="416">416</th><td>  {</td></tr>
+<tr><th id="417">417</th><td>  *<a class="local col5 ref" href="#25infdptr" title='infdptr' data-ref="25infdptr">infdptr</a> = <a class="local col0 ref" href="#30inpfd" title='inpfd' data-ref="30inpfd">inpfd</a>[<a class="macro" href="macros.h.html#98" title="1" data-ref="_M/pipe_write">pipe_write</a>];</td></tr>
+<tr><th id="418">418</th><td>  *<a class="local col6 ref" href="#26outfdptr" title='outfdptr' data-ref="26outfdptr">outfdptr</a> = <a class="local col1 ref" href="#31outpfd" title='outpfd' data-ref="31outpfd">outpfd</a>[<a class="macro" href="macros.h.html#97" title="0" data-ref="_M/pipe_read">pipe_read</a>];</td></tr>
+<tr><th id="419">419</th><td>  <b>return</b> <a class="local col2 ref" href="#32pid" title='pid' data-ref="32pid">pid</a>;</td></tr>
+<tr><th id="420">420</th><td>  }</td></tr>
+<tr><th id="421">421</th><td></td></tr>
+<tr><th id="422">422</th><td><i>/* Fork failed; reset fork errno before returning */</i></td></tr>
+<tr><th id="423">423</th><td></td></tr>
+<tr><th id="424">424</th><td>(<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col0 ref" href="#30inpfd" title='inpfd' data-ref="30inpfd">inpfd</a>[<a class="macro" href="macros.h.html#98" title="1" data-ref="_M/pipe_write">pipe_write</a>]);</td></tr>
+<tr><th id="425">425</th><td>(<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col1 ref" href="#31outpfd" title='outpfd' data-ref="31outpfd">outpfd</a>[<a class="macro" href="macros.h.html#97" title="0" data-ref="_M/pipe_read">pipe_read</a>]);</td></tr>
+<tr><th id="426">426</th><td><a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a> = <a class="local col9 ref" href="#29save_errno" title='save_errno' data-ref="29save_errno">save_errno</a>;</td></tr>
+<tr><th id="427">427</th><td><b>return</b> (<a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a>)(-<var>1</var>);</td></tr>
+<tr><th id="428">428</th><td>}</td></tr>
+<tr><th id="429">429</th><td></td></tr>
+<tr><th id="430">430</th><td></td></tr>
+<tr><th id="431">431</th><td></td></tr>
+<tr><th id="432">432</th><td></td></tr>
+<tr><th id="433">433</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="434">434</th><td><i>*    Create child process without uid change     *</i></td></tr>
+<tr><th id="435">435</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="436">436</th><td></td></tr>
+<tr><th id="437">437</th><td><i>/* This function is a wrapper for child_open_uid() that doesn't have the uid,</i></td></tr>
+<tr><th id="438">438</th><td><i>gid and working directory changing arguments. The function is provided so as to</i></td></tr>
+<tr><th id="439">439</th><td><i>have a clean interface for use from local_scan(), but also saves writing NULL</i></td></tr>
+<tr><th id="440">440</th><td><i>arguments several calls that would otherwise use child_open_uid().</i></td></tr>
+<tr><th id="441">441</th><td><i></i></td></tr>
+<tr><th id="442">442</th><td><i>Arguments:</i></td></tr>
+<tr><th id="443">443</th><td><i>  argv        the argv for exec in the new process</i></td></tr>
+<tr><th id="444">444</th><td><i>  envp        the envp for exec in the new process</i></td></tr>
+<tr><th id="445">445</th><td><i>  newumask    umask to set in the new process</i></td></tr>
+<tr><th id="446">446</th><td><i>  infdptr     pointer to int into which the fd of the stdin of the new process</i></td></tr>
+<tr><th id="447">447</th><td><i>                is placed</i></td></tr>
+<tr><th id="448">448</th><td><i>  outfdptr    pointer to int into which the fd of the stdout/stderr of the new</i></td></tr>
+<tr><th id="449">449</th><td><i>                process is placed</i></td></tr>
+<tr><th id="450">450</th><td><i>  make_leader if TRUE, make the new process a process group leader</i></td></tr>
+<tr><th id="451">451</th><td><i></i></td></tr>
+<tr><th id="452">452</th><td><i>Returns:      the pid of the created process or -1 if anything has gone wrong</i></td></tr>
+<tr><th id="453">453</th><td><i>*/</i></td></tr>
+<tr><th id="454">454</th><td></td></tr>
+<tr><th id="455">455</th><td><a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a></td></tr>
+<tr><th id="456">456</th><td><dfn class="decl def fn" id="child_open" title='child_open' data-ref="child_open">child_open</dfn>(<a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col4 decl" id="34argv" title='argv' data-type='uschar **' data-ref="34argv">argv</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col5 decl" id="35envp" title='envp' data-type='uschar **' data-ref="35envp">envp</dfn>, <em>int</em> <dfn class="local col6 decl" id="36newumask" title='newumask' data-type='int' data-ref="36newumask">newumask</dfn>, <em>int</em> *<dfn class="local col7 decl" id="37infdptr" title='infdptr' data-type='int *' data-ref="37infdptr">infdptr</dfn>,</td></tr>
+<tr><th id="457">457</th><td>  <em>int</em> *<dfn class="local col8 decl" id="38outfdptr" title='outfdptr' data-type='int *' data-ref="38outfdptr">outfdptr</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col9 decl" id="39make_leader" title='make_leader' data-type='BOOL' data-ref="39make_leader">make_leader</dfn>)</td></tr>
+<tr><th id="458">458</th><td>{</td></tr>
+<tr><th id="459">459</th><td><b>return</b> <a class="ref fn" href="#child_open_uid" title='child_open_uid' data-ref="child_open_uid">child_open_uid</a>(<a class="macro" href="mytypes.h.html#71" title="(const unsigned char **)" data-ref="_M/CUSS">CUSS</a> <a class="local col4 ref" href="#34argv" title='argv' data-ref="34argv">argv</a>, <a class="macro" href="mytypes.h.html#71" title="(const unsigned char **)" data-ref="_M/CUSS">CUSS</a> <a class="local col5 ref" href="#35envp" title='envp' data-ref="35envp">envp</a>, <a class="local col6 ref" href="#36newumask" title='newumask' data-ref="36newumask">newumask</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,</td></tr>
+<tr><th id="460">460</th><td>  <a class="local col7 ref" href="#37infdptr" title='infdptr' data-ref="37infdptr">infdptr</a>, <a class="local col8 ref" href="#38outfdptr" title='outfdptr' data-ref="38outfdptr">outfdptr</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="local col9 ref" href="#39make_leader" title='make_leader' data-ref="39make_leader">make_leader</a>);</td></tr>
+<tr><th id="461">461</th><td>}</td></tr>
+<tr><th id="462">462</th><td></td></tr>
+<tr><th id="463">463</th><td></td></tr>
+<tr><th id="464">464</th><td></td></tr>
+<tr><th id="465">465</th><td></td></tr>
+<tr><th id="466">466</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="467">467</th><td><i>*           Close down child process             *</i></td></tr>
+<tr><th id="468">468</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="469">469</th><td></td></tr>
+<tr><th id="470">470</th><td><i>/* Wait for the given process to finish, with optional timeout.</i></td></tr>
+<tr><th id="471">471</th><td><i></i></td></tr>
+<tr><th id="472">472</th><td><i>Arguments</i></td></tr>
+<tr><th id="473">473</th><td><i>  pid:      the pid to wait for</i></td></tr>
+<tr><th id="474">474</th><td><i>  timeout:  maximum time to wait; 0 means for as long as it takes</i></td></tr>
+<tr><th id="475">475</th><td><i></i></td></tr>
+<tr><th id="476">476</th><td><i>Returns:    &gt;= 0          process terminated by exiting; value is process</i></td></tr>
+<tr><th id="477">477</th><td><i>                            ending status; if an execve() failed, the value</i></td></tr>
+<tr><th id="478">478</th><td><i>                            is typically 127 (defined as EX_EXECFAILED)</i></td></tr>
+<tr><th id="479">479</th><td><i>            &lt; 0 &amp; &gt; -256  process was terminated by a signal; value is the</i></td></tr>
+<tr><th id="480">480</th><td><i>                            negation of the signal number</i></td></tr>
+<tr><th id="481">481</th><td><i>            -256          timed out</i></td></tr>
+<tr><th id="482">482</th><td><i>            -257          other error in wait(); errno still set</i></td></tr>
+<tr><th id="483">483</th><td><i>*/</i></td></tr>
+<tr><th id="484">484</th><td></td></tr>
+<tr><th id="485">485</th><td><em>int</em></td></tr>
+<tr><th id="486">486</th><td><dfn class="decl def fn" id="child_close" title='child_close' data-ref="child_close">child_close</dfn>(<a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a> <dfn class="local col0 decl" id="40pid" title='pid' data-type='pid_t' data-ref="40pid">pid</dfn>, <em>int</em> <dfn class="local col1 decl" id="41timeout" title='timeout' data-type='int' data-ref="41timeout">timeout</dfn>)</td></tr>
+<tr><th id="487">487</th><td>{</td></tr>
+<tr><th id="488">488</th><td><em>int</em> <dfn class="local col2 decl" id="42yield" title='yield' data-type='int' data-ref="42yield">yield</dfn>;</td></tr>
+<tr><th id="489">489</th><td></td></tr>
+<tr><th id="490">490</th><td><b>if</b> (<a class="local col1 ref" href="#41timeout" title='timeout' data-ref="41timeout">timeout</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="491">491</th><td>  {</td></tr>
+<tr><th id="492">492</th><td>  <a class="ref" href="globals.h.html#sigalrm_seen" title='sigalrm_seen' data-ref="sigalrm_seen">sigalrm_seen</a> = <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="493">493</th><td>  <a class="ref fn" href="../../include/unistd.h.html#alarm" title='alarm' data-ref="alarm">alarm</a>(<a class="local col1 ref" href="#41timeout" title='timeout' data-ref="41timeout">timeout</a>);</td></tr>
+<tr><th id="494">494</th><td>  }</td></tr>
+<tr><th id="495">495</th><td></td></tr>
+<tr><th id="496">496</th><td><b>for</b>(;;)</td></tr>
+<tr><th id="497">497</th><td>  {</td></tr>
+<tr><th id="498">498</th><td>  <em>int</em> <dfn class="local col3 decl" id="43status" title='status' data-type='int' data-ref="43status">status</dfn>;</td></tr>
+<tr><th id="499">499</th><td>  <a class="typedef" href="../../include/x86_64-linux-gnu/sys/types.h.html#pid_t" title='pid_t' data-type='__pid_t' data-ref="pid_t">pid_t</a> <dfn class="local col4 decl" id="44rc" title='rc' data-type='pid_t' data-ref="44rc">rc</dfn> = <a class="ref fn" href="../../include/x86_64-linux-gnu/sys/wait.h.html#waitpid" title='waitpid' data-ref="waitpid">waitpid</a>(<a class="local col0 ref" href="#40pid" title='pid' data-ref="40pid">pid</a>, &amp;<a class="local col3 ref" href="#43status" title='status' data-ref="43status">status</a>, <var>0</var>);</td></tr>
+<tr><th id="500">500</th><td>  <b>if</b> (<a class="local col4 ref" href="#44rc" title='rc' data-ref="44rc">rc</a> == <a class="local col0 ref" href="#40pid" title='pid' data-ref="40pid">pid</a>)</td></tr>
+<tr><th id="501">501</th><td>    {</td></tr>
+<tr><th id="502">502</th><td>    <em>int</em> <dfn class="local col5 decl" id="45lowbyte" title='lowbyte' data-type='int' data-ref="45lowbyte">lowbyte</dfn> = <a class="local col3 ref" href="#43status" title='status' data-ref="43status">status</a> &amp; <var>255</var>;</td></tr>
+<tr><th id="503">503</th><td>    <b>if</b> (<a class="local col5 ref" href="#45lowbyte" title='lowbyte' data-ref="45lowbyte">lowbyte</a> == <var>0</var>) <a class="local col2 ref" href="#42yield" title='yield' data-ref="42yield">yield</a> = (<a class="local col3 ref" href="#43status" title='status' data-ref="43status">status</a> &gt;&gt; <var>8</var>) &amp; <var>255</var>;</td></tr>
+<tr><th id="504">504</th><td>      <b>else</b> <a class="local col2 ref" href="#42yield" title='yield' data-ref="42yield">yield</a> = -<a class="local col5 ref" href="#45lowbyte" title='lowbyte' data-ref="45lowbyte">lowbyte</a>;</td></tr>
+<tr><th id="505">505</th><td>    <b>break</b>;</td></tr>
+<tr><th id="506">506</th><td>    }</td></tr>
+<tr><th id="507">507</th><td>  <b>if</b> (<a class="local col4 ref" href="#44rc" title='rc' data-ref="44rc">rc</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="508">508</th><td>    {</td></tr>
+<tr><th id="509">509</th><td>    <a class="local col2 ref" href="#42yield" title='yield' data-ref="42yield">yield</a> = (<a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a> == <a class="macro" href="../../include/asm-generic/errno-base.h.html#7" title="4" data-ref="_M/EINTR">EINTR</a> &amp;&amp; <a class="ref" href="globals.h.html#sigalrm_seen" title='sigalrm_seen' data-ref="sigalrm_seen">sigalrm_seen</a>)? -<var>256</var> : -<var>257</var>;</td></tr>
+<tr><th id="510">510</th><td>    <b>break</b>;</td></tr>
+<tr><th id="511">511</th><td>    }</td></tr>
+<tr><th id="512">512</th><td>  }</td></tr>
+<tr><th id="513">513</th><td></td></tr>
+<tr><th id="514">514</th><td><b>if</b> (<a class="local col1 ref" href="#41timeout" title='timeout' data-ref="41timeout">timeout</a> &gt; <var>0</var>) <a class="ref fn" href="../../include/unistd.h.html#alarm" title='alarm' data-ref="alarm">alarm</a>(<var>0</var>);</td></tr>
+<tr><th id="515">515</th><td></td></tr>
+<tr><th id="516">516</th><td><a class="ref fn" href="../../include/signal.h.html#signal" title='signal' data-ref="signal">signal</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/signum.h.html#50" title="17" data-ref="_M/SIGCHLD">SIGCHLD</a>, <a class="tu ref" href="#oldsignal" title='oldsignal' data-use='r' data-ref="oldsignal">oldsignal</a>);   <i>/* restore */</i></td></tr>
+<tr><th id="517">517</th><td><b>return</b> <a class="local col2 ref" href="#42yield" title='yield' data-ref="42yield">yield</a>;</td></tr>
+<tr><th id="518">518</th><td>}</td></tr>
+<tr><th id="519">519</th><td></td></tr>
+<tr><th id="520">520</th><td><i>/* End of child.c */</i></td></tr>
+<tr><th id="521">521</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

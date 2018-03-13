@@ -3,3 +3,9 @@
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */</doc>
+<use f='exim/src/verify.c' l='1195' u='c' c='cutthrough_send'/>
+<use f='exim/src/smtp_out.c' l='274' u='c' c='smtp_sock_connect'/>
+<use f='exim/src/smtp_out.c' l='418' u='c' c='flush_buffer'/>
+<use f='exim/src/acl.c' l='2792' u='c' c='acl_udpsend'/>
+<use f='exim/src/ip.c' l='282' u='c' c='ip_connect'/>
+<use f='exim/src/ip.c' l='300' u='c' c='ip_connect'/>

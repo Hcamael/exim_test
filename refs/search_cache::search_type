@@ -1,3 +1,7 @@
 <dec f='exim/src/structs.h' l='746' type='int'/>
 <offset>64</offset>
 <doc f='exim/src/structs.h' l='746'>/* search type */</doc>
+<use f='exim/src/search.c' l='238' u='r' c='tidyup_subtree'/>
+<use f='exim/src/search.c' l='239' u='r' c='tidyup_subtree'/>
+<use f='exim/src/search.c' l='389' u='r' c='search_open'/>
+<use f='exim/src/search.c' l='433' u='w' c='search_open'/>

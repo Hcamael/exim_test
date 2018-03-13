@@ -4,3 +4,4 @@
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */</doc>
+<use f='exim/src/host.c' l='1555' u='c' c='host_name_lookup_byaddr'/>

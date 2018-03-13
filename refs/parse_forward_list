@@ -1,1 +1,67 @@
 <dec f='exim/src/functions.h' l='309' type='int parse_forward_list(uschar * , int , address_item ** , uschar ** , const uschar * , uschar * , error_block ** )'/>
+<def f='exim/src/parse.c' l='1246' ll='1710' type='int parse_forward_list(uschar * s, int options, address_item ** anchor, uschar ** error, const uschar * incoming_domain, uschar * directory, error_block ** syntax_errors)'/>
+<use f='exim/src/parse.c' l='1562' u='c' c='parse_forward_list'/>
+<doc f='exim/src/parse.c' l='1183'>/* This function is called by the redirect router to scan a string containing a
+list of addresses separated by commas (with optional white space) or by
+newlines, and to generate a chain of address items from them. In other words,
+to unpick data from an alias or .forward file.
+
+The SunOS5 documentation for alias files is not very clear on the syntax; it
+does not say that either a comma or a newline can be used for separation.
+However, that is the way Smail does it, so we follow suit.
+
+If a # character is encountered in a white space position, then characters from
+there to the next newline are skipped.
+
+If an unqualified address begins with &apos;\&apos;, just skip that character. This gives
+compatibility with Sendmail&apos;s use of \ to prevent looping. Exim has its own
+loop prevention scheme which handles other cases too - see the code in
+route_address().
+
+An &quot;address&quot; can be a specification of a file or a pipe; the latter may often
+need to be quoted because it may contain spaces, but we don&apos;t want to retain
+the quotes. Quotes may appear in normal addresses too, and should be retained.
+We can distinguish between these cases, because in addresses, quotes are used
+only for parts of the address, not the whole thing. Therefore, we remove quotes
+from items when they entirely enclose them, but not otherwise.
+
+An &quot;address&quot; can also be of the form :include:pathname to include a list of
+addresses contained in the specified file.
+
+Any unqualified addresses are qualified with and rewritten if necessary, via
+the rewrite_address() function.
+
+Arguments:
+  s                the list of addresses (typically a complete
+                     .forward file or a list of entries in an alias file)
+  options          option bits for permitting or denying various special cases;
+                     not all bits are relevant here - some are for filter
+                     files; those we use here are:
+                       RDO_DEFER
+                       RDO_FREEZE
+                       RDO_FAIL
+                       RDO_BLACKHOLE
+                       RDO_REWRITE
+                       RDO_INCLUDE
+  anchor           where to hang the chain of newly-created addresses. This
+                     should be initialized to NULL.
+  error            where to return an error text
+  incoming domain  domain of the incoming address; used to qualify unqualified
+                     local parts preceded by \
+  directory        if NULL, no checks are done on :include: files
+                   otherwise, included file names must start with the given
+                     directory
+  syntax_errors    if not NULL, it carries on after syntax errors in addresses,
+                     building up a list of errors as error blocks chained on
+                     here.
+
+Returns:      FF_DELIVERED      addresses extracted
+              FF_NOTDELIVERED   no addresses extracted, but no errors
+              FF_BLACKHOLE      :blackhole:
+              FF_DEFER          :defer:
+              FF_FAIL           :fail:
+              FF_INCLUDEFAIL    some problem with :include:; *error set
+              FF_ERROR          other problems; *error is set
+*/</doc>
+<use f='exim/src/filtertest.c' l='211' u='c' c='filter_runtest'/>
+<use f='exim/src/rda.c' l='420' u='c' c='rda_extract'/>

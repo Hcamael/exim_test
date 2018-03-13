@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='848' type='int'/>
 <doc f='exim/src/globals.h' l='848'>/* Base interval for MAIL rate limit */</doc>
+<def f='exim/src/globals.c' l='1348' type='int'/>
+<use f='exim/src/smtp_in.c' l='2368' u='r' c='smtp_start_session'/>

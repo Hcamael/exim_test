@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='384' type='BOOL'/>
 <doc f='exim/src/globals.h' l='384'>/* Disables log writing when TRUE */</doc>
+<use f='exim/src/deliver.c' l='1478' u='w' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1488' u='w' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1731' u='w' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='2734' u='w' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2752' u='w' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='4254' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4670' u='w' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='7069' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7127' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7386' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7388' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7883' u='w' c='deliver_message'/>
+<def f='exim/src/globals.c' l='659' type='BOOL'/>
+<use f='exim/src/log.c' l='886' u='r' c='log_write'/>

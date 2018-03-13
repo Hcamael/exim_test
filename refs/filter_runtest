@@ -1,1 +1,18 @@
 <dec f='exim/src/functions.h' l='204' type='BOOL filter_runtest(int , uschar * , BOOL , BOOL )'/>
+<def f='exim/src/filtertest.c' l='163' ll='279' type='BOOL filter_runtest(int fd, uschar * filename, BOOL is_system, BOOL dot_ended)'/>
+<doc f='exim/src/filtertest.c' l='148'>/* This is called when exim is run with the -bf option. At this point it is
+running under an unprivileged uid/gid. A test message&apos;s headers have been read
+into store, and the body of the message is still accessible on the standard
+input if this is the first time this function has been called. It may be called
+twice if both system and user filters are being tested.
+
+Argument:
+  fd          an fd containing the filter file
+  filename    the name of the filter file
+  is_system   TRUE if testing is to be as a system filter
+  dot_ended   TRUE if message already terminated by &apos;.&apos;
+
+Returns:      TRUE if no errors
+*/</doc>
+<use f='exim/src/exim.c' l='5628' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5634' u='c' c='main'/>

@@ -1,1 +1,11 @@
 <dec f='exim/src/functions.h' l='59' type='int tls_getc(unsigned int )'/>
+<use f='exim/src/tls-openssl.c' l='2102' u='r' c='tls_server_start'/>
+<def f='exim/src/tls-openssl.c' l='2521' ll='2531' type='int tls_getc(unsigned int lim)'/>
+<doc f='exim/src/tls-openssl.c' l='2512'>/* This gets the next byte from the TLS input buffer. If the buffer is empty,
+it refills the buffer via the SSL reading function.
+
+Arguments:  lim		Maximum amount to read/buffer
+Returns:    the next character or EOF
+
+Only used by the server-side TLS.
+*/</doc>

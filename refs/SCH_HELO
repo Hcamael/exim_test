@@ -1,1 +1,2 @@
 <dec f='exim/src/macros.h' l='810' type='7'/>
+<use f='exim/src/smtp_in.c' l='3988' u='r' c='smtp_setup_msg'/>

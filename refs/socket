@@ -2,3 +2,6 @@
 <doc f='include/x86_64-linux-gnu/sys/socket.h' l='110'>/* Create a new socket of type TYPE in domain DOMAIN, using
    protocol PROTOCOL.  If PROTOCOL is zero, one is chosen automatically.
    Returns a file descriptor for the new socket, or -1 for errors.  */</doc>
+<use f='exim/src/ip.c' l='34' u='c' c='ip_socket'/>
+<use f='exim/src/ip.c' l='468' u='c' c='ip_unixsocket'/>
+<use f='exim/src/expand.c' l='4837' u='c' c='expand_string_internal'/>

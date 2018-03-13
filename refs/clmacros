@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='283' type='uschar *[]'/>
 <doc f='exim/src/globals.h' l='283'>/* Copy of them, for re-exec */</doc>
+<def f='exim/src/globals.c' l='516' type='uschar *[10]'/>
+<use f='exim/src/exim.c' l='2444' u='w' c='main'/>
+<use f='exim/src/child.c' l='85' u='r' c='child_exec_exim'/>

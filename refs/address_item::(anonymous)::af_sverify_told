@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='595' type='BOOL'/>
 <offset>16</offset>
 <doc f='exim/src/structs.h' l='595'>/* sender verify failure notified */</doc>
+<use f='exim/src/smtp_in.c' l='3223' u='r' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3228' u='w' c='smtp_handle_acl_fail'/>
+<use f='exim/src/acl.c' l='1971' u='w' c='acl_verify'/>

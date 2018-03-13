@@ -1,0 +1,1 @@
+<def f='exim/src/auths/tls.c' l='48' ll='49' type='int auth_tls_client(auth_instance * ablock, smtp_inblock * inblock, smtp_outblock * outblock, int timeout, uschar * buffer, int buffsize)'/>

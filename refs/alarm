@@ -6,3 +6,33 @@
    There is no return value to indicate an error, but you can set `errno&apos;
    to 0 and check its value after calling `alarm&apos;, and this might tell you.
    The signal may come late due to processor scheduling.  */</doc>
+<use f='exim/src/tls-openssl.c' l='2060' u='c' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2062' u='c' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2406' u='c' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2408' u='c' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2449' u='c' c='tls_refill'/>
+<use f='exim/src/tls-openssl.c' l='2453' u='c' c='tls_refill'/>
+<use f='exim/src/exim_dbutil.c' l='281' u='c' c='dbfn_open'/>
+<use f='exim/src/exim_dbutil.c' l='283' u='c' c='dbfn_open'/>
+<use f='exim/src/smtp_in.c' l='440' u='c' c='smtp_refill'/>
+<use f='exim/src/smtp_in.c' l='446' u='c' c='smtp_refill'/>
+<use f='exim/src/rda.c' l='113' u='c' c='rda_exists'/>
+<use f='exim/src/rda.c' l='121' u='c' c='rda_exists'/>
+<use f='exim/src/ip.c' l='246' u='c' c='ip_connect'/>
+<use f='exim/src/ip.c' l='305' u='c' c='ip_connect'/>
+<use f='exim/src/expand.c' l='4849' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='4851' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='4899' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='4901' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5025' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5027' u='c' c='expand_string_internal'/>
+<use f='exim/src/daemon.c' l='1795' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1908' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='2095' u='c' c='daemon_go'/>
+<use f='exim/src/child.c' l='493' u='c' c='child_close'/>
+<use f='exim/src/child.c' l='514' u='c' c='child_close'/>
+<use f='exim/src/receive.c' l='1760' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3657' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3659' u='c' c='receive_msg'/>
+<use f='exim/src/dbfn.c' l='137' u='c' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='139' u='c' c='dbfn_open'/>

@@ -1,1 +1,2 @@
 <dec f='include/openssl/dh.h' l='124' type='void DH_free(DH * dh)'/>
+<use f='exim/src/tls-openssl.c' l='691' u='c' c='init_dh'/>

@@ -1,1 +1,5 @@
 <dec f='include/x86_64-linux-gnu/bits/fcntl-linux.h' l='169'/>
+<use f='exim/src/deliver.c' l='2344' u='c'/>
+<use f='exim/src/deliver.c' l='4691' u='c'/>
+<use f='exim/src/daemon.c' l='421' u='c'/>
+<use f='exim/src/daemon.c' l='423' u='c'/>

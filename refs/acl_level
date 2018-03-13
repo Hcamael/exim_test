@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='165' type='int'/>
 <doc f='exim/src/globals.h' l='165'>/* Nesting depth and debug indent */</doc>
+<def f='exim/src/globals.c' l='233' type='int'/>
+<use f='exim/src/debug.c' l='156' u='r' c='debug_printf_indent'/>
+<use f='exim/src/acl.c' l='3947' u='r' c='acl_check_internal'/>
+<use f='exim/src/acl.c' l='3962' u='r' c='acl_check_internal'/>
+<use f='exim/src/acl.c' l='4064' u='r' c='acl_check_internal'/>
+<use f='exim/src/acl.c' l='4076' u='r' c='acl_check_internal'/>
+<use f='exim/src/acl.c' l='4275' u='w' c='acl_check_wargs'/>
+<use f='exim/src/acl.c' l='4277' u='w' c='acl_check_wargs'/>
+<use f='exim/src/acl.c' l='4320' u='w' c='acl_eval'/>
+<use f='exim/src/acl.c' l='4322' u='w' c='acl_eval'/>
+<use f='exim/src/acl.c' l='4387' u='w' c='acl_check'/>
+<use f='exim/src/acl.c' l='4389' u='w' c='acl_check'/>

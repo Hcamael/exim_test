@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='406' type='int smtp_connect(host_item * , int , uschar * , int , transport_instance * )'/>
+<def f='exim/src/smtp_out.c' l='355' ll='385' type='int smtp_connect(host_item * host, int host_af, uschar * interface, int timeout, transport_instance * tb)'/>
+<doc f='exim/src/smtp_out.c' l='340'>/* Create a socket, and connect it to a remote host. IPv6 addresses are
+detected by checking for a colon in the address. AF_INET6 is defined even on
+non-IPv6 systems, to enable the code to be less messy. However, on such systems
+host-&gt;address will always be an IPv4 address.
+
+Arguments:
+  host        host item containing name and address and port
+  host_af     AF_INET or AF_INET6
+  interface   outgoing interface address or NULL
+  timeout     timeout value or 0
+  tb          transport
+
+Returns:      connected socket number, or -1 with errno set
+*/</doc>

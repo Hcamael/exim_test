@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='633' type='optionlist []'/>
 <doc f='exim/src/globals.h' l='633'>/* see them for printing out   */</doc>
+<def f='exim/src/route.c' l='18' ll='141' type='optionlist [54]'/>
+<use f='exim/src/route.c' l='143' u='r'/>
+<use f='exim/src/route.c' l='143' u='r'/>
+<use f='exim/src/route.c' l='156' u='r' c='options_routers'/>
+<use f='exim/src/route.c' l='156' u='r' c='options_routers'/>
+<use f='exim/src/route.c' l='156' u='r' c='options_routers'/>
+<doc f='exim/src/route.c' l='15'>/* Generic options for routers, all of which live inside router_instance
+data blocks and which therefore have the opt_public flag set. */</doc>

@@ -1,0 +1,18 @@
+<dec f='exim/src/routers/rf_functions.h' l='18' type='int rf_get_munge_headers(address_item * , router_instance * , header_line ** , uschar ** )'/>
+<def f='exim/src/routers/rf_get_munge_headers.c' l='30' ll='117' type='int rf_get_munge_headers(address_item * addr, router_instance * rblock, header_line ** extra_headers, uschar ** remove_headers)'/>
+<doc f='exim/src/routers/rf_get_munge_headers.c' l='16'>/* This function is called by routers to sort out the additional headers
+and header remove list for a particular address.
+
+Arguments:
+  addr           the input address
+  rblock         the router instance
+  extra_headers  points to where to hang the header chain
+  remove_headers points to where to hang the remove list
+
+Returns:         OK if no problem
+                 DEFER if expanding a string caused a deferment
+                   or a big disaster (e.g. expansion failure)
+*/</doc>
+<use f='exim/src/routers/dnslookup.c' l='462' u='c' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/queryprogram.c' l='239' u='c' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='298' u='c' c='sort_errors_and_headers'/>

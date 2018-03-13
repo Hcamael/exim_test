@@ -1,0 +1,3 @@
+<dec f='exim/src/drtables.c' l='555' type='lookup_module_info'/>
+<use f='exim/src/drtables.c' l='637' u='a' c='init_lookup_list'/>
+<def f='exim/src/lookups/lsearch.c' l='482' type='lookup_module_info'/>

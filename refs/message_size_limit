@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='591' type='uschar *'/>
 <doc f='exim/src/globals.h' l='591'>/* As it says */</doc>
+<def f='exim/src/globals.c' l='979' type='uschar *'/>
+<use f='exim/src/exim.c' l='5302' u='r' c='main'/>
+<use f='exim/src/smtp_in.c' l='2439' u='r' c='smtp_start_session'/>
+<use f='exim/src/readconf.c' l='211' u='a'/>
+<use f='exim/src/readconf.c' l='211' u='a'/>
+<use f='exim/src/readconf.c' l='211' u='a'/>
+<use f='exim/src/readconf.c' l='211' u='a'/>

@@ -1,2 +1,9 @@
 lstat64|lstat
 lstat64|lstat64
+lsearch_version_report|lsearch_version_report
+lss_b64decode|lss_b64decode
+lss_b64encode|lss_b64encode
+lss_match_address|lss_match_address
+lss_match_domain|lss_match_domain
+lss_match_host|lss_match_host
+lss_match_local_part|lss_match_local_part

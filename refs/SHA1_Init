@@ -1,1 +1,2 @@
 <dec f='include/openssl/sha.h' l='41' type='int SHA1_Init(SHA_CTX * c)'/>
+<use f='exim/src/hash.c' l='39' u='c' c='exim_sha_init'/>

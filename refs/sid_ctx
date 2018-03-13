@@ -1,0 +1,5 @@
+<def f='exim/src/tls-openssl.c' l='112' type='const uschar *'/>
+<use f='exim/src/tls-openssl.c' l='2043' u='r' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2043' u='r' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2338' u='r' c='tls_client_start'/>
+<use f='exim/src/tls-openssl.c' l='2338' u='r' c='tls_client_start'/>

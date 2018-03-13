@@ -1,1 +1,20 @@
 <dec f='exim/src/functions.h' l='202' type='int filter_interpret(uschar * , int , address_item ** , uschar ** )'/>
+<use f='exim/src/filtertest.c' l='264' u='c' c='filter_runtest'/>
+<use f='exim/src/filtertest.c' l='275' u='c' c='filter_runtest'/>
+<def f='exim/src/filter.c' l='2506' ll='2598' type='int filter_interpret(uschar * filter, int options, address_item ** generated, uschar ** error)'/>
+<doc f='exim/src/filter.c' l='2490'>/*
+Arguments:
+  filter      points to the entire file, read into store as a single string
+  options     controls whether various special things are allowed, and requests
+              special actions
+  generated   where to hang newly-generated addresses
+  error       where to pass back an error text
+
+Returns:      FF_DELIVERED     success, a significant action was taken
+              FF_NOTDELIVERED  success, no significant action
+              FF_DEFER         defer requested
+              FF_FAIL          fail requested
+              FF_FREEZE        freeze requested
+              FF_ERROR         there was a problem
+*/</doc>
+<use f='exim/src/rda.c' l='398' u='c' c='rda_extract'/>

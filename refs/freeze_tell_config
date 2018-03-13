@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='481' type='uschar *'/>
 <doc f='exim/src/globals.h' l='481'>/* The configured setting */</doc>
+<def f='exim/src/globals.c' l='757' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='1971' u='r' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='3157' u='r' c='acl_check_condition'/>

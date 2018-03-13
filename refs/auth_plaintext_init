@@ -1,0 +1,10 @@
+<dec f='exim/src/auths/plaintext.h' l='27' type='void auth_plaintext_init(auth_instance * )'/>
+<use f='exim/src/drtables.c' l='139'/>
+<use f='exim/src/drtables.c' l='139'/>
+<use f='exim/src/drtables.c' l='139'/>
+<use f='exim/src/drtables.c' l='139'/>
+<doc f='exim/src/auths/plaintext.h' l='25'>/* The entry points for the mechanism */</doc>
+<def f='exim/src/auths/plaintext.c' l='58' ll='66' type='void auth_plaintext_init(auth_instance * ablock)'/>
+<doc f='exim/src/auths/plaintext.c' l='54'>/* Called for each instance, after its options have been read, to
+enable consistency checks to be done, or anything else that needs
+to be set up. */</doc>

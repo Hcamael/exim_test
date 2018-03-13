@@ -1,0 +1,4 @@
+<dec f='include/openssl/x509v3.h' l='838' type='int X509v3_asid_is_canonical(ASIdentifiers * asid)'/>
+<doc f='include/openssl/x509v3.h' l='835'>/*
+ * Canonical forms.
+ */</doc>

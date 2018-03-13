@@ -1,2 +1,22 @@
 <dec f='exim/src/globals.h' l='657' type='uschar *'/>
 <doc f='exim/src/globals.h' l='657'>/* Primary name of this computer */</doc>
+<use f='exim/src/deliver.c' l='8189' u='r' c='deliver_message'/>
+<use f='exim/src/verify.c' l='2857' u='r' c='check_host'/>
+<def f='exim/src/globals.c' l='1034' type='uschar *'/>
+<use f='exim/src/exim.c' l='5044' u='r' c='main'/>
+<use f='exim/src/spool_in.c' l='286' u='r' c='spool_read_header'/>
+<use f='exim/src/auths/cram_md5.c' l='78' u='r' c='auth_cram_md5_init'/>
+<use f='exim/src/auths/cram_md5.c' l='170' u='r' c='auth_cram_md5_server'/>
+<use f='exim/src/match.c' l='172' u='r' c='check_string'/>
+<use f='exim/src/transports/tf_maildir.c' l='560' u='r' c='maildir_ensure_sizefile'/>
+<use f='exim/src/expand.c' l='623' u='a'/>
+<use f='exim/src/expand.c' l='623' u='a'/>
+<use f='exim/src/expand.c' l='623' u='a'/>
+<use f='exim/src/expand.c' l='623' u='a'/>
+<use f='exim/src/daemon.c' l='384' u='r' c='handle_smtp_call'/>
+<use f='exim/src/readconf.c' l='241' u='a'/>
+<use f='exim/src/readconf.c' l='241' u='a'/>
+<use f='exim/src/readconf.c' l='241' u='a'/>
+<use f='exim/src/readconf.c' l='241' u='a'/>
+<use f='exim/src/receive.c' l='2663' u='r' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='181' u='r' c='spool_write_header'/>

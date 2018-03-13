@@ -1,3 +1,6 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='191'/>
 <doc f='exim/build-Linux-x86_64/config.h' l='189'>/* WANT_DEEPER_PRINTF_CHECKS not set */</doc>
 <use f='exim/src/structs.h' l='756' u='c'/>
+<use f='exim/src/dns.c' l='359' u='c'/>
+<use f='exim/src/dns.c' l='390' u='c'/>
+<use f='exim/src/dns.c' l='420' u='c'/>

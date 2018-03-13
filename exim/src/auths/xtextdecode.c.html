@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>xtextdecode.c source code [exim/src/auths/xtextdecode.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/auths/xtextdecode.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>auths</a>/<a href='xtextdecode.c.html'>xtextdecode.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2009 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><u>#include <a href="../exim.h.html">"../exim.h"</a></u></td></tr>
+<tr><th id="9">9</th><td></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="12">12</th><td><i>*          Decode byte-string in xtext           *</i></td></tr>
+<tr><th id="13">13</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><i>/* This function decodes a string in xtextformat as defined in RFC 1891 and</i></td></tr>
+<tr><th id="16">16</th><td><i>required by the SMTP AUTH extension (RFC 2554). We put the result in a piece of</i></td></tr>
+<tr><th id="17">17</th><td><i>store of equal length - it cannot be longer than this. Although in general the</i></td></tr>
+<tr><th id="18">18</th><td><i>result of decoding an xtext may be binary, in the context in which it is used</i></td></tr>
+<tr><th id="19">19</th><td><i>by Exim (for decoding the value of AUTH on a MAIL command), the result is</i></td></tr>
+<tr><th id="20">20</th><td><i>expected to be an addr-spec. We therefore add on a terminating zero, for</i></td></tr>
+<tr><th id="21">21</th><td><i>convenience.</i></td></tr>
+<tr><th id="22">22</th><td><i></i></td></tr>
+<tr><th id="23">23</th><td><i>Arguments:</i></td></tr>
+<tr><th id="24">24</th><td><i>  code        points to the coded string, zero-terminated</i></td></tr>
+<tr><th id="25">25</th><td><i>  ptr         where to put the pointer to the result, which is in</i></td></tr>
+<tr><th id="26">26</th><td><i>              dynamic store</i></td></tr>
+<tr><th id="27">27</th><td><i></i></td></tr>
+<tr><th id="28">28</th><td><i>Returns:      the number of bytes in the result, excluding the final zero;</i></td></tr>
+<tr><th id="29">29</th><td><i>              -1 if the input is malformed</i></td></tr>
+<tr><th id="30">30</th><td><i>*/</i></td></tr>
+<tr><th id="31">31</th><td></td></tr>
+<tr><th id="32">32</th><td><em>int</em></td></tr>
+<tr><th id="33">33</th><td><dfn class="decl def fn" id="auth_xtextdecode" title='auth_xtextdecode' data-ref="auth_xtextdecode">auth_xtextdecode</dfn>(<a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="1code" title='code' data-type='uschar *' data-ref="1code">code</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **<dfn class="local col2 decl" id="2ptr" title='ptr' data-type='uschar **' data-ref="2ptr">ptr</dfn>)</td></tr>
+<tr><th id="34">34</th><td>{</td></tr>
+<tr><th id="35">35</th><td><em>register</em> <em>int</em> <dfn class="local col3 decl" id="3x" title='x' data-type='int' data-ref="3x">x</dfn>;</td></tr>
+<tr><th id="36">36</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="4result" title='result' data-type='uschar *' data-ref="4result">result</dfn> = <a class="macro" href="../store.h.html#34" title="store_get_3((int)strlen((const char *)(code)) + 1, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/auths/xtextdecode.c&quot;, 36)" data-ref="_M/store_get">store_get</a>(<a class="macro" href="../mytypes.h.html#104" title="(int)strlen((const char *)(code))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col1 ref" href="#1code" title='code' data-ref="1code">code</a>) + <var>1</var>);</td></tr>
+<tr><th id="37">37</th><td>*<a class="local col2 ref" href="#2ptr" title='ptr' data-ref="2ptr">ptr</a> = <a class="local col4 ref" href="#4result" title='result' data-ref="4result">result</a>;</td></tr>
+<tr><th id="38">38</th><td></td></tr>
+<tr><th id="39">39</th><td><b>while</b> ((<a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a> = (*<a class="local col1 ref" href="#1code" title='code' data-ref="1code">code</a>++)) != <var>0</var>)</td></tr>
+<tr><th id="40">40</th><td>  {</td></tr>
+<tr><th id="41">41</th><td>  <b>if</b> (<a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a> &lt; <var>33</var> || <a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a> &gt; <var>127</var> || <a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a> == <kbd>'='</kbd>) <b>return</b> -<var>1</var>;</td></tr>
+<tr><th id="42">42</th><td>  <b>if</b> (<a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a> == <kbd>'+'</kbd>)</td></tr>
+<tr><th id="43">43</th><td>    {</td></tr>
+<tr><th id="44">44</th><td>    <em>register</em> <em>int</em> <dfn class="local col5 decl" id="5y" title='y' data-type='int' data-ref="5y">y</dfn>;</td></tr>
+<tr><th id="45">45</th><td>    <b>if</b> (!<a class="macro" href="../../../include/ctype.h.html#207" title="((*__ctype_b_loc ())[(int) (((x = (*code++))))] &amp; (unsigned short int) _ISxdigit)" data-ref="_M/isxdigit">isxdigit</a>((<a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a> = (*<a class="local col1 ref" href="#1code" title='code' data-ref="1code">code</a>++)))) <b>return</b> -<var>1</var>;</td></tr>
+<tr><th id="46">46</th><td>    <a class="local col5 ref" href="#5y" title='y' data-ref="5y">y</a> = ((<a class="macro" href="../../../include/ctype.h.html#200" title="((*__ctype_b_loc ())[(int) ((x))] &amp; (unsigned short int) _ISdigit)" data-ref="_M/isdigit">isdigit</a>(<a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a>))? <a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a> - <kbd>'0'</kbd> : (<a class="macro" href="../../../include/ctype.h.html#228" title="(__extension__ ({ int __res; if (sizeof (x) &gt; 1) { if (__builtin_constant_p (x)) { int __c = (x); __res = __c &lt; -128 || __c &gt; 255 ? __c : (*__ctype_tolower_loc ())[__c]; } else __res = tolower (x); } else __res = (*__ctype_tolower_loc ())[(int) (x)]; __res; }))" data-ref="_M/tolower">tolower</a>(<a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a>) - <kbd>'a'</kbd> + <var>10</var>)) &lt;&lt; <var>4</var>;</td></tr>
+<tr><th id="47">47</th><td>    <b>if</b> (!<a class="macro" href="../../../include/ctype.h.html#207" title="((*__ctype_b_loc ())[(int) (((x = (*code++))))] &amp; (unsigned short int) _ISxdigit)" data-ref="_M/isxdigit">isxdigit</a>((<a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a> = (*<a class="local col1 ref" href="#1code" title='code' data-ref="1code">code</a>++)))) <b>return</b> -<var>1</var>;</td></tr>
+<tr><th id="48">48</th><td>    *<a class="local col4 ref" href="#4result" title='result' data-ref="4result">result</a>++ = <a class="local col5 ref" href="#5y" title='y' data-ref="5y">y</a> | ((<a class="macro" href="../../../include/ctype.h.html#200" title="((*__ctype_b_loc ())[(int) ((x))] &amp; (unsigned short int) _ISdigit)" data-ref="_M/isdigit">isdigit</a>(<a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a>))? <a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a> - <kbd>'0'</kbd> : (<a class="macro" href="../../../include/ctype.h.html#228" title="(__extension__ ({ int __res; if (sizeof (x) &gt; 1) { if (__builtin_constant_p (x)) { int __c = (x); __res = __c &lt; -128 || __c &gt; 255 ? __c : (*__ctype_tolower_loc ())[__c]; } else __res = tolower (x); } else __res = (*__ctype_tolower_loc ())[(int) (x)]; __res; }))" data-ref="_M/tolower">tolower</a>(<a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a>) - <kbd>'a'</kbd> + <var>10</var>));</td></tr>
+<tr><th id="49">49</th><td>    }</td></tr>
+<tr><th id="50">50</th><td>  <b>else</b> *<a class="local col4 ref" href="#4result" title='result' data-ref="4result">result</a>++ = <a class="local col3 ref" href="#3x" title='x' data-ref="3x">x</a>;</td></tr>
+<tr><th id="51">51</th><td>  }</td></tr>
+<tr><th id="52">52</th><td></td></tr>
+<tr><th id="53">53</th><td>*<a class="local col4 ref" href="#4result" title='result' data-ref="4result">result</a> = <var>0</var>;</td></tr>
+<tr><th id="54">54</th><td><b>return</b> <a class="local col4 ref" href="#4result" title='result' data-ref="4result">result</a> - *<a class="local col2 ref" href="#2ptr" title='ptr' data-ref="2ptr">ptr</a>;</td></tr>
+<tr><th id="55">55</th><td>}</td></tr>
+<tr><th id="56">56</th><td></td></tr>
+<tr><th id="57">57</th><td><i>/* End of xtextdecode.c */</i></td></tr>
+<tr><th id="58">58</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

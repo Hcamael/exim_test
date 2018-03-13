@@ -1,1 +1,2 @@
 <dec f='include/openssl/ssl.h' l='1336' type='const char * SSL_CIPHER_get_name(const SSL_CIPHER * c)'/>
+<use f='exim/src/tls-openssl.c' l='1713' u='c' c='construct_cipher_name'/>

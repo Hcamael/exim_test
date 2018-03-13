@@ -1,2 +1,15 @@
 <dec f='include/arpa/nameser.h' l='286' type='33'/>
 <doc f='include/arpa/nameser.h' l='286'>/*%&lt; Server Selection. */</doc>
+<use f='exim/src/lookups/dnsdb.c' l='66' macro='1'/>
+<use f='exim/src/lookups/dnsdb.c' l='66' macro='1'/>
+<use f='exim/src/lookups/dnsdb.c' l='309' macro='1' c='dnsdb_find'/>
+<use f='exim/src/lookups/dnsdb.c' l='317' macro='1' u='r'/>
+<use f='exim/src/lookups/dnsdb.c' l='463' macro='1' c='dnsdb_find'/>
+<use f='exim/src/acl.c' l='1416' macro='1' u='r'/>
+<use f='exim/src/host.c' l='2608' macro='1' u='r'/>
+<use f='exim/src/host.c' l='2946' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='585' macro='1' c='dns_text_type'/>
+<use f='exim/src/dns.c' l='729' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='1034' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='1126' macro='1' u='r'/>
+<use f='exim/src/dns.c' l='1135' macro='1' u='r'/>

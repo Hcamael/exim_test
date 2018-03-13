@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='391' type='uschar *'/>
 <doc f='exim/src/globals.h' l='391'>/* Expansion variable, holds colon-separated list of domains and identities that have signed a message */</doc>
+<def f='exim/src/globals.c' l='666' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='2000' u='w' c='smtp_reset'/>
+<use f='exim/src/spool_in.c' l='298' u='w' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='510' u='a'/>
+<use f='exim/src/expand.c' l='510' u='a'/>
+<use f='exim/src/expand.c' l='510' u='a'/>
+<use f='exim/src/expand.c' l='510' u='a'/>

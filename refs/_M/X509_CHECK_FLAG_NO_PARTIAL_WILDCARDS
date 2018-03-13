@@ -1,0 +1,4 @@
+<dec f='include/openssl/x509v3.h' l='688'/>
+<use f='exim/src/tls-openssl.c' l='437' u='a'/>
+<use f='exim/src/tls-openssl.c' l='449' u='c'/>
+<doc f='include/openssl/x509v3.h' l='687'>/* Wildcards must not match a partial label. */</doc>

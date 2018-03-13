@@ -1,1 +1,5 @@
 <dec f='include/openssl/ssl.h' l='2055' type='int OPENSSL_init_ssl(uint64_t opts, const OPENSSL_INIT_SETTINGS * settings)'/>
+<use f='exim/src/tls-openssl.c' l='1531' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='1532' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='2753' macro='1' u='c'/>
+<use f='exim/src/tls-openssl.c' l='2754' macro='1' u='c'/>

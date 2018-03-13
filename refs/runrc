@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='772' type='int'/>
 <doc f='exim/src/globals.h' l='772'>/* rc from ${run} */</doc>
+<def f='exim/src/globals.c' l='1261' type='int'/>
+<use f='exim/src/expand.c' l='657' u='a'/>
+<use f='exim/src/expand.c' l='657' u='a'/>
+<use f='exim/src/expand.c' l='657' u='a'/>
+<use f='exim/src/expand.c' l='657' u='a'/>
+<use f='exim/src/expand.c' l='4990' u='w' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5034' u='w' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5036' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5042' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5048' u='r' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='5058' u='r' c='expand_string_internal'/>

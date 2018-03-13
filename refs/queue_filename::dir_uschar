@@ -1,2 +1,6 @@
 <dec f='exim/src/structs.h' l='660' type='uschar'/>
 <offset>64</offset>
+<use f='exim/src/queue.c' l='244' u='w' c='queue_get_spool_list'/>
+<use f='exim/src/queue.c' l='512' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='838' u='w' c='queue_list'/>
+<use f='exim/src/queue.c' l='866' u='r' c='queue_list'/>

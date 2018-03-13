@@ -1,0 +1,3 @@
+<dec f='exim/src/routers/iplookup.h' l='35' type='int iplookup_router_entry(router_instance * , address_item * , struct passwd * , int , address_item ** , address_item ** , address_item ** , address_item ** )'/>
+<def f='exim/src/routers/iplookup.c' l='53' ll='56' type='int iplookup_router_entry(router_instance * rblock, address_item * addr, struct passwd * pw, int verify, address_item ** addr_local, address_item ** addr_remote, address_item ** addr_new, address_item ** addr_succeed)'/>
+<doc f='exim/src/routers/iplookup.h' l='33'>/* The main and initialization entry points for the router */</doc>

@@ -1,1 +1,7 @@
 <dec f='include/x86_64-linux-gnu/sys/select.h' l='93'/>
+<use f='exim/src/deliver.c' l='3943' u='c'/>
+<use f='exim/src/exim.c' l='5559' u='c'/>
+<use f='exim/src/smtp_in.c' l='351' u='c'/>
+<use f='exim/src/ip.c' l='551' u='c'/>
+<use f='exim/src/daemon.c' l='1930' u='c'/>
+<use f='exim/src/receive.c' l='4094' u='c'/>

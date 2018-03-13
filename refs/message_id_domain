@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='585' type='uschar *'/>
 <doc f='exim/src/globals.h' l='585'>/* Expanded to form domain-part of message_id */</doc>
+<def f='exim/src/globals.c' l='971' type='uschar *'/>
+<use f='exim/src/readconf.c' l='208' u='a'/>
+<use f='exim/src/readconf.c' l='208' u='a'/>
+<use f='exim/src/readconf.c' l='208' u='a'/>
+<use f='exim/src/readconf.c' l='208' u='a'/>
+<use f='exim/src/receive.c' l='2667' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2669' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2675' u='r' c='receive_msg'/>

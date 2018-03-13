@@ -1,2 +1,17 @@
 <dec f='exim/src/functions.h' l='85' type='acl_block * acl_read(uschar *(*)(void) , uschar ** )'/>
 <doc f='exim/src/functions.h' l='83'>/* Everything else... */</doc>
+<def f='exim/src/acl.c' l='724' ll='918' type='acl_block * acl_read(uschar *(*)(void) func, uschar ** error)'/>
+<use f='exim/src/acl.c' l='4045' u='c' c='acl_check_internal'/>
+<doc f='exim/src/acl.c' l='710'>/* This function is called both from readconf in order to parse the ACLs in the
+configuration file, and also when an ACL is encountered dynamically (e.g. as
+the result of an expansion). It is given a function to call in order to
+retrieve the lines of the ACL. This function handles skipping comments and
+blank lines (where relevant).
+
+Arguments:
+  func        function to get next line of ACL
+  error       where to put an error message
+
+Returns:      pointer to ACL, or NULL
+              NULL can be legal (empty ACL); in this case error will be NULL
+*/</doc>

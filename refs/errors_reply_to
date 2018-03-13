@@ -1,2 +1,17 @@
 <dec f='exim/src/globals.h' l='444' type='uschar *'/>
 <doc f='exim/src/globals.h' l='444'>/* Reply-to for error messages */</doc>
+<use f='exim/src/deliver.c' l='2622' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2623' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='7283' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7284' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7524' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7525' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8144' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8145' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='716' type='uschar *'/>
+<use f='exim/src/moan.c' l='89' u='r' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='89' u='r' c='moan_send_message'/>
+<use f='exim/src/readconf.c' l='141' u='a'/>
+<use f='exim/src/readconf.c' l='141' u='a'/>
+<use f='exim/src/readconf.c' l='141' u='a'/>
+<use f='exim/src/readconf.c' l='141' u='a'/>

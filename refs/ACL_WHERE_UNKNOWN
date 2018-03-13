@@ -1,2 +1,5 @@
 <dec f='exim/src/macros.h' l='953' type='20'/>
 <doc f='exim/src/macros.h' l='953'>/* Currently used by a ${acl:name} expansion */</doc>
+<use f='exim/src/deliver.c' l='8425' u='r' c='deliver_message'/>
+<use f='exim/src/acl.c' l='4346'/>
+<use f='exim/src/acl.c' l='4390' u='r' c='acl_check'/>

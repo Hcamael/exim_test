@@ -1,2 +1,4 @@
 <dec f='include/ctype.h' l='58' type='4'/>
 <doc f='include/ctype.h' l='58'>/* Punctuation.  */</doc>
+<use f='exim/src/string.c' l='894' macro='1' u='r'/>
+<use f='exim/src/search.c' l='152' macro='1' u='r'/>

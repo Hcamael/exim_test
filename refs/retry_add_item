@@ -1,1 +1,29 @@
 <dec f='exim/src/functions.h' l='358' type='void retry_add_item(address_item * , uschar * , int )'/>
+<use f='exim/src/deliver.c' l='3145' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='6743' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6759' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6760' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6761' u='c' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6763' u='c' c='deliver_message'/>
+<def f='exim/src/retry.c' l='292' ll='319' type='void retry_add_item(address_item * addr, uschar * key, int flags)'/>
+<doc f='exim/src/retry.c' l='270'>/* Retry items are chained onto an address when it is deferred either by router
+or by a transport, or if it succeeds or fails and there was a previous retry
+item that now needs to be deleted. Sometimes there can be both kinds of item:
+for example, if routing was deferred but then succeeded, and delivery then
+deferred. In that case there is a delete item for the routing retry, and an
+updating item for the delivery.
+
+(But note that that is only visible at the outer level, because in remote
+delivery subprocesses, the address starts &quot;clean&quot;, with no retry items carried
+in.)
+
+These items are used at the end of a delivery attempt to update the retry
+database. The keys start R: for routing delays and T: for transport delays.
+
+Arguments:
+  addr    the address block onto which to hang the item
+  key     the retry key
+  flags   delete, host, and message flags, copied into the block
+
+Returns:  nothing
+*/</doc>

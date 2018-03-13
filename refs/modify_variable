@@ -1,1 +1,7 @@
 <dec f='exim/src/functions.h' l='198' type='void modify_variable(uschar * , void * )'/>
+<use f='exim/src/tls.c' l='214' u='c' c='tls_modify_variables'/>
+<use f='exim/src/tls.c' l='215' u='c' c='tls_modify_variables'/>
+<use f='exim/src/tls.c' l='216' u='c' c='tls_modify_variables'/>
+<use f='exim/src/tls.c' l='217' u='c' c='tls_modify_variables'/>
+<use f='exim/src/tls.c' l='219' u='c' c='tls_modify_variables'/>
+<def f='exim/src/expand.c' l='1948' ll='1954' type='void modify_variable(uschar * name, void * value)'/>

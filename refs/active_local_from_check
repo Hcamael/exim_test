@@ -1,2 +1,7 @@
 <dec f='exim/src/globals.h' l='203' type='BOOL'/>
 <doc f='exim/src/globals.h' l='203'>/* For adding Sender: (switchable) */</doc>
+<def f='exim/src/globals.c' l='324' type='BOOL'/>
+<use f='exim/src/exim.c' l='5436' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='1978' u='w' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='3185' u='w' c='acl_check_condition'/>
+<use f='exim/src/receive.c' l='2828' u='r' c='receive_msg'/>

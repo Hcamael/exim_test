@@ -1,2 +1,5 @@
 <dec f='exim/src/structs.h' l='885' type='acl_condition_block *'/>
 <offset>64</offset>
+<use f='exim/src/acl.c' l='786' u='w' c='acl_read'/>
+<use f='exim/src/acl.c' l='787' u='a' c='acl_read'/>
+<use f='exim/src/acl.c' l='4076' u='r' c='acl_check_internal'/>

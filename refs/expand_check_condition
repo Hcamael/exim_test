@@ -1,1 +1,25 @@
 <dec f='exim/src/functions.h' l='192' type='BOOL expand_check_condition(uschar * , uschar * , uschar * )'/>
+<use f='exim/src/deliver.c' l='3027' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='8067' u='c' c='deliver_message'/>
+<use f='exim/src/smtp_in.c' l='4266' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4572' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/routers/dnslookup.c' l='267' u='c' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/dnslookup.c' l='272' u='c' c='dnslookup_router_entry'/>
+<def f='exim/src/expand.c' l='906' ll='921' type='BOOL expand_check_condition(uschar * condition, uschar * m1, uschar * m2)'/>
+<doc f='exim/src/expand.c' l='888'>/* This function is called to expand a string, and test the result for a &quot;true&quot;
+or &quot;false&quot; value. Failure of the expansion yields FALSE; logged unless it was a
+forced fail or lookup defer.
+
+We used to release all store used, but this is not not safe due
+to ${dlfunc } and ${acl }.  In any case expand_string_internal()
+is reasonably careful to release what it can.
+
+The actual false-value tests should be replicated for ECOND_BOOL_LAX.
+
+Arguments:
+  condition     the condition string
+  m1            text to be incorporated in panic error
+  m2            ditto
+
+Returns:        TRUE if condition is met, FALSE if not
+*/</doc>

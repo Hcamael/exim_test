@@ -1,0 +1,6 @@
+<dec f='exim/src/pdkim/pdkim.h' l='281' type='uschar *(*)(char *)'/>
+<use f='exim/src/pdkim/pdkim.c' l='1322' u='r' c='pdkim_key_from_dns'/>
+<use f='exim/src/pdkim/pdkim.c' l='1786' u='w' c='pdkim_init_verify'/>
+<use f='exim/src/pdkim/pdkim.c' l='1919' u='w' c='pdkim_init_context'/>
+<offset>192</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='280'>/* Callback for dns/txt query method (verification only) */</doc>

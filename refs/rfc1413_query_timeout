@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='761' type='int'/>
 <doc f='exim/src/globals.h' l='761'>/* Timeout on RFC 1413 calls */</doc>
+<use f='exim/src/verify.c' l='2669' u='r' c='verify_get_ident'/>
+<use f='exim/src/verify.c' l='2696' u='r' c='verify_get_ident'/>
+<use f='exim/src/verify.c' l='2719' u='r' c='verify_get_ident'/>
+<def f='exim/src/globals.c' l='1160' type='int'/>
+<use f='exim/src/readconf.c' l='273' u='a'/>
+<use f='exim/src/readconf.c' l='273' u='a'/>
+<use f='exim/src/readconf.c' l='273' u='a'/>
+<use f='exim/src/readconf.c' l='273' u='a'/>

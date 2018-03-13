@@ -1,0 +1,13 @@
+<def f='exim/src/tls-openssl.c' l='588' ll='594' type='void info_callback(SSL * s, int where, int ret)'/>
+<use f='exim/src/tls-openssl.c' l='1577' u='r' c='tls_init'/>
+<doc f='exim/src/tls-openssl.c' l='576'>/* The SSL library functions call this from time to time to indicate what they
+are doing. We copy the string to the debugging output when TLS debugging has
+been requested.
+
+Arguments:
+  s         the SSL connection
+  where
+  ret
+
+Returns:    nothing
+*/</doc>

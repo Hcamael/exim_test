@@ -1,0 +1,1 @@
+<dec f='include/openssl/x509v3.h' l='830' type='unsigned int X509v3_addr_get_afi(const IPAddressFamily * f)'/>

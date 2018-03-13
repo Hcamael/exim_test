@@ -1,1 +1,2 @@
 <dec f='include/x86_64-linux-gnu/bits/fcntl-linux.h' l='56'/>
+<use f='exim/src/dkim_transport.c' l='225' u='c'/>

@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='553' type='bit_table []'/>
 <doc f='exim/src/globals.h' l='553'>/* Table of options */</doc>
+<def f='exim/src/globals.c' l='885' ll='942' type='bit_table [51]'/>
+<use f='exim/src/globals.c' l='943' u='r'/>
+<use f='exim/src/globals.c' l='943' u='r'/>
+<doc f='exim/src/globals.c' l='885'>/* must be in alphabetical order */</doc>
+<use f='exim/src/exim.c' l='3866' u='r' c='main'/>
+<use f='exim/src/log.c' l='851' u='m' c='log_write'/>
+<use f='exim/src/log.c' l='855' u='m' c='log_write'/>

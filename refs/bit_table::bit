@@ -1,2 +1,4 @@
 <dec f='exim/src/structs.h' l='39' type='int'/>
 <offset>64</offset>
+<use f='exim/src/log.c' l='851' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='1330' u='r' c='decode_bits'/>

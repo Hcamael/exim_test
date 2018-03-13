@@ -1,1 +1,2 @@
 <dec f='exim/build-Linux-x86_64/os.h' l='59' type='struct ip_address_item * os_find_running_interfaces_linux()'/>
+<use f='exim/src/host.c' l='848' macro='1' u='c'/>

@@ -1,0 +1,4 @@
+<dec f='exim/src/acl.c' l='356' type='9'/>
+<use f='exim/src/acl.c' l='444'/>
+<use f='exim/src/acl.c' l='3138' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3139' u='r' c='acl_check_condition'/>

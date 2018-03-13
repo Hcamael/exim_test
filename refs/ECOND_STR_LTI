@@ -1,0 +1,3 @@
+<dec f='exim/src/expand.c' l='373' type='31'/>
+<use f='exim/src/expand.c' l='2474' c='eval_condition'/>
+<use f='exim/src/expand.c' l='2560' c='eval_condition'/>

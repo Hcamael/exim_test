@@ -1,0 +1,10 @@
+<def f='exim/src/tls-openssl.c' l='248' ll='275' type='RSA * rsa_callback(SSL * s, int export, int keylength)'/>
+<use f='exim/src/tls-openssl.c' l='995' u='c' c='tls_install_selfsign'/>
+<doc f='exim/src/tls-openssl.c' l='239'>/*
+Arguments:
+  s          SSL connection (not used)
+  export     not used
+  keylength  keylength
+
+Returns:     pointer to generated key
+*/</doc>

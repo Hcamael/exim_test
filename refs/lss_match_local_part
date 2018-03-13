@@ -1,1 +1,10 @@
 <dec f='exim/src/local_scan.h' l='182' type='int lss_match_local_part(uschar * , uschar * , BOOL )'/>
+<def f='exim/src/lss.c' l='49' ll='54' type='int lss_match_local_part(uschar * local_part, uschar * list, BOOL caseless)'/>
+<doc f='exim/src/lss.c' l='40'>/*
+Arguments:
+  local_part     the local part we are testing
+  list           the local part list
+  caseless       TRUE for caseless matching
+
+Returns:         OK/FAIL/DEFER
+*/</doc>

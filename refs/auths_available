@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='225' type='auth_info []'/>
 <doc f='exim/src/globals.h' l='225'>/* Vector of available auth mechanisms */</doc>
+<def f='exim/src/drtables.c' l='58' ll='175' type='auth_info [4]'/>
+<use f='exim/src/drtables.c' l='182' u='r' c='auth_show_supported'/>
+<use f='exim/src/exim.c' l='1008' u='r' c='show_whats_supported'/>
+<use f='exim/src/readconf.c' l='398' u='r' c='options_auths'/>

@@ -1,1 +1,2 @@
 <dec f='include/netdb.h' l='76'/>
+<use f='exim/src/host.c' l='2070' u='c'/>

@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='228' type='uschar *'/>
 <doc f='exim/src/globals.h' l='228'>/* Error message for log */</doc>
+<def f='exim/src/globals.c' l='449' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='3642' u='w' c='smtp_in_auth'/>
+<use f='exim/src/smtp_in.c' l='3650' u='r' c='smtp_in_auth'/>
+<use f='exim/src/auths/check_serv_cond.c' l='106' u='w' c='auth_check_some_cond'/>
+<use f='exim/src/auths/check_serv_cond.c' l='125' u='w' c='auth_check_some_cond'/>
+<use f='exim/src/auths/plaintext.c' l='94' u='w' c='auth_plaintext_server'/>
+<use f='exim/src/auths/cram_md5.c' l='216' u='w' c='auth_cram_md5_server'/>

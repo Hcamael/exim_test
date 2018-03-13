@@ -1,0 +1,6 @@
+<dec f='exim/src/pdkim/pdkim.h' l='253' type='pdkim_stringlist *'/>
+<use f='exim/src/pdkim/pdkim.c' l='950' u='w' c='pdkim_header_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='950' u='r' c='pdkim_header_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='1491' u='r' c='pdkim_feed_finish'/>
+<offset>1280</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='253'>/* Raw headers included in the sig */</doc>

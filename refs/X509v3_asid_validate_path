@@ -1,0 +1,4 @@
+<dec f='include/openssl/x509v3.h' l='854' type='int X509v3_asid_validate_path(X509_STORE_CTX * )'/>
+<doc f='include/openssl/x509v3.h' l='851'>/*
+ * Check whether RFC 3779 extensions nest properly in chains.
+ */</doc>

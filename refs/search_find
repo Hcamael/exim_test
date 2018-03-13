@@ -1,1 +1,26 @@
 <dec f='exim/src/functions.h' l='389' type='uschar * search_find(void * , uschar * , uschar * , int , const uschar * , int , int , int * )'/>
+<use f='exim/src/verify.c' l='2977' u='c' c='check_host'/>
+<def f='exim/src/search.c' l='607' ll='826' type='uschar * search_find(void * handle, uschar * filename, uschar * keystring, int partial, const uschar * affix, int affixlen, int starflags, int * expand_setup)'/>
+<doc f='exim/src/search.c' l='585'>/* This function calls the internal function above; once only if there
+is no partial matching, but repeatedly when partial matching is requested.
+
+Arguments:
+  handle         the handle from search_open
+  filename       the filename that was handed to search_open, or
+                   NULL for query-style searches
+  keystring      the keystring for single-key+file lookups, or
+                   the querystring for query-style lookups
+  partial        -1 means no partial matching;
+                   otherwise it&apos;s the minimum number of components;
+  affix          the affix string for partial matching
+  affixlen       the length of the affix string
+  starflags      SEARCH_STAR and SEARCH_STARAT flags
+  expand_setup   pointer to offset for setting up expansion strings;
+                 don&apos;t do any if &lt; 0
+
+Returns:         a pointer to a dynamic string containing the answer,
+                 or NULL if the query failed or was deferred; in the
+                 latter case, search_find_defer is set TRUE
+*/</doc>
+<use f='exim/src/match.c' l='303' u='c' c='check_string'/>
+<use f='exim/src/expand.c' l='4356' u='c' c='expand_string_internal'/>

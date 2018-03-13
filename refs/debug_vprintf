@@ -1,1 +1,4 @@
 <dec f='exim/src/functions.h' l='144' type='void debug_vprintf(int , const char * , struct __va_list_tag * )'/>
+<use f='exim/src/debug.c' l='156' u='c' c='debug_printf_indent'/>
+<use f='exim/src/debug.c' l='165' u='c' c='debug_printf'/>
+<def f='exim/src/debug.c' l='169' ll='269' type='void debug_vprintf(int indent, const char * format, struct __va_list_tag * ap)'/>

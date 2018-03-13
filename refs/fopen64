@@ -1,2 +1,15 @@
 <dec f='include/stdio.h' l='283' type='FILE * fopen(const char *restrict __filename, const char *restrict __modes)'/>
 <dec f='include/stdio.h' l='297' type='FILE * fopen64(const char *restrict __filename, const char *restrict __modes)'/>
+<use f='exim/src/deliver.c' l='1540' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='7542' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='7669' macro='1' u='c'/>
+<use f='exim/src/deliver.c' l='8135' macro='1' u='c'/>
+<use f='exim/src/exim_dbmbuild.c' l='179' u='c' c='main'/>
+<use f='exim/src/parse.c' l='1516' macro='1' u='c'/>
+<use f='exim/src/exim.c' l='455' macro='1' u='c'/>
+<use f='exim/src/queue.c' l='900' macro='1' u='c'/>
+<use f='exim/src/rda.c' l='187' macro='1' u='c'/>
+<use f='exim/src/spool_in.c' l='341' macro='1' u='c'/>
+<use f='exim/src/lookups/lsearch.c' l='31' macro='1' u='c'/>
+<use f='exim/src/match.c' l='786' macro='1' u='c'/>
+<use f='exim/src/expand.c' l='4706' macro='1' u='c'/>

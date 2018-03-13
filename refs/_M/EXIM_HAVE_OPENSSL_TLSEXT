@@ -1,0 +1,7 @@
+<dec f='exim/src/tls-openssl.c' l='42'/>
+<use f='exim/src/tls-openssl.c' l='92' u='a'/>
+<use f='exim/src/tls-openssl.c' l='138' u='a'/>
+<use f='exim/src/tls-openssl.c' l='191' u='a'/>
+<use f='exim/src/tls-openssl.c' l='1191' u='a'/>
+<use f='exim/src/tls-openssl.c' l='1623' u='a'/>
+<use f='exim/src/tls-openssl.c' l='2354' u='a'/>

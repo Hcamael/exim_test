@@ -1,0 +1,2 @@
+<dec f='exim/src/pdkim/signing.h' l='92' type='const uschar * exim_dkim_sign(es_ctx * , hashmethod , blob * , blob * )'/>
+<use f='exim/src/pdkim/pdkim.c' l='1641' u='c' c='pdkim_feed_finish'/>

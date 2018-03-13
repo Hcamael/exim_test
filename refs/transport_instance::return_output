@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='189' type='BOOL'/>
 <offset>2240</offset>
 <doc f='exim/src/structs.h' l='189'>/* TRUE if output should always be returned */</doc>
+<use f='exim/src/deliver.c' l='1563' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='2238' u='r' c='deliver_local'/>
+<use f='exim/src/globals.c' l='1490' u='w'/>

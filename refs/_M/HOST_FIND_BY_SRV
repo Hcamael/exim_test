@@ -1,2 +1,4 @@
 <dec f='exim/src/macros.h' l='827'/>
 <doc f='exim/src/macros.h' l='825'>/* Flags for host_find_bydns() */</doc>
+<use f='exim/src/routers/dnslookup.c' l='192' u='c'/>
+<use f='exim/src/host.c' l='2600' u='c'/>

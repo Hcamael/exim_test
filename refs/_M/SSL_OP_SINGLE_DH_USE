@@ -1,2 +1,6 @@
 <dec f='include/openssl/ssl.h' l='370'/>
 <doc f='include/openssl/ssl.h' l='369'>/* Removed from OpenSSL 1.1.0. Was 0x00100000L */</doc>
+<use f='exim/src/tls-openssl.c' l='3023' u='a'/>
+<use f='exim/src/tls-openssl.c' l='3024' u='c'/>
+<use f='exim/src/tls-openssl.c' l='3102' u='a'/>
+<use f='exim/src/tls-openssl.c' l='3103' u='c'/>

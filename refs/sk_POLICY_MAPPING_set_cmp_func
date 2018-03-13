@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='261' macro='1' type='sk_POLICY_MAPPING_compfunc sk_POLICY_MAPPING_set_cmp_func(struct stack_st_POLICY_MAPPING * sk, sk_POLICY_MAPPING_compfunc compare)'/>

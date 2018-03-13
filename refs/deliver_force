@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='353' type='BOOL'/>
 <doc f='exim/src/globals.h' l='353'>/* TRUE if delivery was forced */</doc>
+<use f='exim/src/deliver.c' l='2939' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='5559' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6644' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6688' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='629' type='BOOL'/>
+<use f='exim/src/retry.c' l='220' u='r' c='retry_check_address'/>
+<use f='exim/src/retry.c' l='248' u='r' c='retry_check_address'/>

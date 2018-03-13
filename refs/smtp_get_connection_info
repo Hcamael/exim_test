@@ -1,1 +1,22 @@
 <dec f='exim/src/functions.h' l='412' type='uschar * smtp_get_connection_info()'/>
+<use f='exim/src/exim.c' l='5103' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5290' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='947' u='c' c='command_sigterm_handler'/>
+<def f='exim/src/smtp_in.c' l='1689' ll='1709' type='uschar * smtp_get_connection_info()'/>
+<use f='exim/src/smtp_in.c' l='2303' u='c' c='smtp_log_tls_fail'/>
+<use f='exim/src/smtp_in.c' l='3324' u='c' c='smtp_handle_acl_fail'/>
+<use f='exim/src/smtp_in.c' l='3731' u='c' c='smtp_quit_handler'/>
+<use f='exim/src/smtp_in.c' l='5382' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5404' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5488' u='c' c='smtp_setup_msg'/>
+<doc f='exim/src/smtp_in.c' l='1680'>/* This function is called when logging information about an SMTP connection.
+It sets up appropriate source information, depending on the type of connection.
+If sender_fullhost is NULL, we are at a very early stage of the connection;
+just use the IP address.
+
+Argument:    none
+Returns:     a string describing the connection
+*/</doc>
+<use f='exim/src/receive.c' l='452' u='c' c='data_sigterm_sigint_handler'/>
+<use f='exim/src/receive.c' l='1104' u='c' c='handle_lost_connection'/>
+<use f='exim/src/host.c' l='2167' u='c' c='host_find_byname'/>

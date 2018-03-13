@@ -1,3 +1,33 @@
 <dec f='exim/src/structs.h' l='547' type='uschar *'/>
 <offset>1664</offset>
 <doc f='exim/src/structs.h' l='547'>/* saved original parent for onetime */</doc>
+<use f='exim/src/deliver.c' l='1037' u='r' c='string_log_address'/>
+<use f='exim/src/deliver.c' l='1068' u='r' c='string_log_address'/>
+<use f='exim/src/deliver.c' l='1068' u='r' c='string_log_address'/>
+<use f='exim/src/deliver.c' l='5290' u='r' c='print_address_information'/>
+<use f='exim/src/deliver.c' l='6146' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6250' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6250' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8009' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8019' u='r' c='deliver_message'/>
+<use f='exim/src/globals.c' l='357' u='w'/>
+<use f='exim/src/routers/redirect.c' l='365' u='w' c='add_generated'/>

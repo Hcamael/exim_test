@@ -1,0 +1,8 @@
+<dec f='exim/src/routers/queryprogram.h' l='26' type='int'/>
+<use f='exim/src/drtables.c' l='320' u='a'/>
+<use f='exim/src/drtables.c' l='320' u='a'/>
+<use f='exim/src/drtables.c' l='320' u='a'/>
+<use f='exim/src/drtables.c' l='320' u='a'/>
+<def f='exim/src/routers/queryprogram.c' l='40' ll='41' type='int'/>
+<doc f='exim/src/routers/queryprogram.c' l='37'>/* Size of the options list. An extern variable has to be used so that its
+address can appear in the tables drtables.c. */</doc>

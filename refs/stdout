@@ -6,3 +6,20 @@
 <use f='include/x86_64-linux-gnu/bits/stdio.h' l='107' macro='1' u='r'/>
 <use f='include/x86_64-linux-gnu/bits/stdio.h' l='107' macro='1' u='r'/>
 <doc f='include/stdio.h' l='169'>/* Standard output stream.  */</doc>
+<use f='exim/src/moan.c' l='556' macro='1' u='r'/>
+<use f='exim/src/moan.c' l='559' macro='1' u='r'/>
+<use f='exim/src/moan.c' l='561' macro='1' u='r'/>
+<use f='exim/src/moan.c' l='562' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='728' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='733' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='1202' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='2235' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='5090' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='5095' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='5149' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='5286' macro='1' u='r'/>
+<use f='exim/src/queue.c' l='767' macro='1' u='r'/>
+<use f='exim/src/queue.c' l='912' macro='1' u='r'/>
+<use f='exim/src/queue.c' l='913' macro='1' u='r'/>
+<use f='exim/src/queue.c' l='1065' macro='1' u='r'/>
+<use f='exim/src/receive.c' l='4269' macro='1' u='r'/>

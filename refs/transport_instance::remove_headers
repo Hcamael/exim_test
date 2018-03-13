@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='174' type='uschar *'/>
 <offset>1536</offset>
 <doc f='exim/src/structs.h' l='174'>/* Remove these headers */</doc>
+<use f='exim/src/globals.c' l='1475' u='w'/>

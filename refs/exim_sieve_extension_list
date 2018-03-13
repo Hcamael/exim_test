@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='457' type='const uschar *[]'/>
 <doc f='exim/src/globals.h' l='457'>/* list of sieve extensions */</doc>
+<use f='exim/src/exim.c' l='1073' u='r' c='show_exim_information'/>
+<def f='exim/src/sieve.c' l='121' ll='142' type='const uschar *[9]'/>
+<doc f='exim/src/sieve.c' l='112'>/* This should be a complete list of supported extensions, so that an external
+ManageSieve (RFC 5804) program can interrogate the current Exim binary for the
+list of extensions and provide correct information to a client.
+
+We&apos;ll emit the list in the order given here; keep it alphabetically sorted, so
+that callers don&apos;t get surprised.
+
+List *MUST* end with a NULL.  Which at least makes ifdef-vs-comma easier. */</doc>

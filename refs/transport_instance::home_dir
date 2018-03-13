@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='151' type='uschar *'/>
 <offset>512</offset>
 <doc f='exim/src/structs.h' l='151'>/* ) Used only for local transports   */</doc>
+<use f='exim/src/deliver.c' l='2183' u='r' c='deliver_local'/>
+<use f='exim/src/globals.c' l='1454' u='w'/>

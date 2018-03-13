@@ -1,2 +1,24 @@
 <dec f='include/stdio.h' l='433' type='int sscanf(const char *restrict __s, const char *restrict __format)'/>
 <doc f='include/stdio.h' l='432'>/* Read formatted input from S.  */</doc>
+<use f='exim/src/verify.c' l='2756' u='c' c='verify_get_ident'/>
+<use f='exim/src/exim_dbutil.c' l='764' u='c' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='769' u='c' c='main'/>
+<use f='exim/src/filter.c' l='391' u='c' c='get_number'/>
+<use f='exim/src/smtp_in.c' l='633' u='c' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='5080' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/spool_in.c' l='400' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='464' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='495' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='538' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='601' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='694' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='772' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='781' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='794' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='800' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='814' u='c' c='spool_read_header'/>
+<use f='exim/src/ip.c' l='447' u='c' c='ip_tcpsocket'/>
+<use f='exim/src/expand.c' l='3568' u='c' c='eval_number'/>
+<use f='exim/src/expand.c' l='4622' u='c' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='4623' u='c' c='expand_string_internal'/>
+<use f='exim/src/host.c' l='1068' u='c' c='host_aton'/>

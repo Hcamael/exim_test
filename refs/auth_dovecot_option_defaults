@@ -1,0 +1,4 @@
+<dec f='exim/src/auths/dovecot.h' l='21' type='auth_dovecot_options_block'/>
+<def f='exim/src/auths/dovecot.c' l='69' ll='71' type='auth_dovecot_options_block'/>
+<doc f='exim/src/auths/dovecot.c' l='67'>/* Default private options block for the authentication method. */</doc>
+<doc f='exim/src/auths/dovecot.h' l='19'>/* Block containing default values. */</doc>

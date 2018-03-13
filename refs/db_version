@@ -1,1 +1,2 @@
 <dec f='include/db.h' l='3074' type='char * db_version(int * , int * , int * )'/>
+<use f='exim/src/exim.c' l='754' u='c' c='show_db_version'/>

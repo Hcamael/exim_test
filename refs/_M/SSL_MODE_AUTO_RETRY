@@ -2,3 +2,4 @@
 <doc f='include/openssl/ssl.h' l='396'>/*
  * Never bother the application with retries if the transport is blocking:
  */</doc>
+<use f='exim/src/tls-openssl.c' l='1580' u='c'/>

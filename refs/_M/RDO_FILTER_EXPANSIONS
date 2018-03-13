@@ -1,2 +1,4 @@
 <dec f='exim/src/macros.h' l='614'/>
 <doc f='exim/src/macros.h' l='612'>/* This is the set that apply to expansions in filters */</doc>
+<use f='exim/src/rda.c' l='386' u='c'/>
+<use f='exim/src/rda.c' l='387' u='c'/>

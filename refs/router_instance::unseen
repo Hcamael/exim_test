@@ -1,3 +1,5 @@
 <dec f='exim/src/structs.h' l='324' type='BOOL'/>
 <offset>2752</offset>
 <doc f='exim/src/structs.h' l='324'>/* If TRUE carry on, even after success */</doc>
+<use f='exim/src/globals.c' l='1231' u='w'/>
+<use f='exim/src/routers/redirect.c' l='230' u='r' c='redirect_router_init'/>

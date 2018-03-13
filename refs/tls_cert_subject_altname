@@ -1,1 +1,8 @@
 <dec f='exim/src/functions.h' l='39' type='uschar * tls_cert_subject_altname(void * , uschar * mod)'/>
+<def f='exim/src/tlscert-openssl.c' l='345' ll='405' type='uschar * tls_cert_subject_altname(void * cert, uschar * mod)'/>
+<use f='exim/src/tls.c' l='320' u='c' c='tls_is_name_for_cert'/>
+<use f='exim/src/tls.c' l='326' u='c' c='tls_is_name_for_cert'/>
+<use f='exim/src/expand.c' l='1278' u='a'/>
+<use f='exim/src/expand.c' l='1278' u='a'/>
+<use f='exim/src/expand.c' l='1278' u='a'/>
+<use f='exim/src/expand.c' l='1278' u='a'/>

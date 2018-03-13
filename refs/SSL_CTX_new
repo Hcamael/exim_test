@@ -1,1 +1,4 @@
 <dec f='include/openssl/ssl.h' l='1321' type='SSL_CTX * SSL_CTX_new(const SSL_METHOD * meth)'/>
+<use f='exim/src/tls-openssl.c' l='1219' u='c' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1548' u='c' c='tls_init'/>
+<use f='exim/src/tls-openssl.c' l='2777' u='c' c='tls_validate_require_cipher'/>

@@ -1,0 +1,4 @@
+<dec f='exim/src/auths/auth-spa.h' l='82' type='void spa_build_auth_response(SPAAuthChallenge * challenge, SPAAuthResponse * response, char * user, char * password)'/>
+<use f='exim/src/auths/spa.c' l='350' u='c' c='auth_spa_client'/>
+<def f='exim/src/auths/auth-spa.c' l='1486' ll='1534' type='void spa_build_auth_response(SPAAuthChallenge * challenge, SPAAuthResponse * response, char * user, char * password)'/>
+<doc f='exim/src/auths/auth-spa.c' l='1484'>/* This is the re-organized version (see comments above) */</doc>

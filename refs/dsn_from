@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='437' type='uschar *'/>
 <doc f='exim/src/globals.h' l='437'>/* From: string for DSNs */</doc>
+<def f='exim/src/globals.c' l='709' type='uschar *'/>
+<use f='exim/src/moan.c' l='31' u='r' c='moan_write_from'/>
+<use f='exim/src/readconf.c' l='138' u='a'/>
+<use f='exim/src/readconf.c' l='138' u='a'/>
+<use f='exim/src/readconf.c' l='138' u='a'/>
+<use f='exim/src/readconf.c' l='138' u='a'/>

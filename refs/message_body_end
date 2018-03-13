@@ -1,2 +1,28 @@
 <dec f='exim/src/globals.h' l='577' type='uschar *'/>
 <doc f='exim/src/globals.h' l='577'>/* End of message body for filter */</doc>
+<def f='exim/src/globals.c' l='964' type='uschar *'/>
+<use f='exim/src/filtertest.c' l='42' u='w' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='43' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='58' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='58' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='87' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='88' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='95' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='95' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='100' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='111' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='116' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='117' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='118' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='119' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='124' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='136' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='137' u='r' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='138' u='r' c='read_message_body'/>
+<use f='exim/src/smtp_in.c' l='2039' u='r' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='2041' u='r' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='2042' u='w' c='smtp_reset'/>
+<use f='exim/src/expand.c' l='574' u='a'/>
+<use f='exim/src/expand.c' l='574' u='a'/>
+<use f='exim/src/expand.c' l='574' u='a'/>
+<use f='exim/src/expand.c' l='574' u='a'/>

@@ -1,0 +1,22 @@
+<dec f='exim/src/tls-openssl.c' l='2944' type='uschar *'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<use f='exim/src/tls-openssl.c' l='3057' u='r' c='tls_openssl_one_option_parse'/>
+<offset>0</offset>

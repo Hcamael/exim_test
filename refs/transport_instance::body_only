@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='183' type='BOOL'/>
 <offset>2048</offset>
 <doc f='exim/src/structs.h' l='183'>/* Deliver only the body */</doc>
+<use f='exim/src/globals.c' l='1484' u='w'/>

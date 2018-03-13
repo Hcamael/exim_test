@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='867' type='namedlist_cacheblock *'/>
 <offset>64</offset>
 <doc f='exim/src/structs.h' l='867'>/* cached domain_data or localpart_data */</doc>
+<use f='exim/src/match.c' l='678' u='r' c='match_check_list'/>
+<use f='exim/src/match.c' l='679' u='w' c='match_check_list'/>
+<use f='exim/src/match.c' l='701' u='r' c='match_check_list'/>

@@ -1,2 +1,4 @@
 <dec f='include/x86_64-linux-gnu/bits/poll.h' l='41'/>
 <use f='exim/src/exim.h' l='602' u='a'/>
+<use f='exim/src/acl.c' l='3400' u='a'/>
+<use f='exim/src/acl.c' l='3407' u='c'/>

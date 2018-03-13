@@ -1,0 +1,8 @@
+<dec f='exim/src/routers/manualroute.h' l='29' type='manualroute_router_options_block'/>
+<use f='exim/src/drtables.c' l='308' u='a'/>
+<use f='exim/src/drtables.c' l='308' u='a'/>
+<use f='exim/src/drtables.c' l='308' u='a'/>
+<use f='exim/src/drtables.c' l='308' u='a'/>
+<doc f='exim/src/routers/manualroute.h' l='27'>/* Block containing default values. */</doc>
+<def f='exim/src/routers/manualroute.c' l='41' type='manualroute_router_options_block'/>
+<doc f='exim/src/routers/manualroute.c' l='40'>/* Dummy entries */</doc>

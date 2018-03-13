@@ -1,2 +1,5 @@
 <dec f='include/netinet/in.h' l='33' type='in_addr_t'/>
 <offset>0</offset>
+<use f='exim/src/ip.c' l='132' u='w' c='ip_addr'/>
+<use f='exim/src/ip.c' l='236' u='w' c='ip_connect'/>
+<use f='exim/src/host.c' l='1554' u='w' c='host_name_lookup_byaddr'/>

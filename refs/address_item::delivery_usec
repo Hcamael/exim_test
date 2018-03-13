@@ -2,3 +2,17 @@
 <offset>2848</offset>
 <doc f='exim/src/structs.h' l='624'>/* (may need to hold a timestamp) */</doc>
 <doc f='exim/src/structs.h' l='625'>/* subsecond part of delivery time */</doc>
+<use f='exim/src/deliver.c' l='432' u='w' c='replicate_status'/>
+<use f='exim/src/deliver.c' l='432' u='r' c='replicate_status'/>
+<use f='exim/src/deliver.c' l='1276' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1276' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='2418' u='a' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2486' u='a' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='3153' u='w' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3616' u='a' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3616' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='3617' u='r' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4930' u='a' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4930' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4931' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/globals.c' l='386' u='w'/>

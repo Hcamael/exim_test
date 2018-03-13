@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='676' type='uschar *'/>
 <doc f='exim/src/globals.h' l='676'>/* Set during prvscheck expansion item */</doc>
+<def f='exim/src/globals.c' l='1053' type='uschar *'/>
+<use f='exim/src/expand.c' l='633' u='a'/>
+<use f='exim/src/expand.c' l='633' u='a'/>
+<use f='exim/src/expand.c' l='633' u='a'/>
+<use f='exim/src/expand.c' l='633' u='a'/>
+<use f='exim/src/expand.c' l='4559' u='w' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='4631' u='w' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='4636' u='w' c='expand_string_internal'/>
+<use f='exim/src/expand.c' l='4642' u='w' c='expand_string_internal'/>

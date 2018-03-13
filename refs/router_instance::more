@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='312' type='BOOL'/>
 <offset>2368</offset>
 <doc f='exim/src/structs.h' l='312'>/* If FALSE, do no more if this one fails */</doc>
+<use f='exim/src/globals.c' l='1219' u='w'/>

@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='961' type='BOOL'/>
 <doc f='exim/src/globals.h' l='961'>/* Configuration file is trusted */</doc>
+<def f='exim/src/globals.c' l='1516' type='BOOL'/>
+<use f='exim/src/exim.c' l='2384' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3076' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3697' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4038' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4045' u='r' c='main'/>

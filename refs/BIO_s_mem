@@ -1,1 +1,9 @@
 <dec f='include/openssl/bio.h' l='572' type='const BIO_METHOD * BIO_s_mem()'/>
+<use f='exim/src/tlscert-openssl.c' l='34' u='c' c='tls_export_cert'/>
+<use f='exim/src/tlscert-openssl.c' l='123' u='c' c='asn1_time_copy'/>
+<use f='exim/src/tlscert-openssl.c' l='184' u='c' c='x509_name_copy'/>
+<use f='exim/src/tlscert-openssl.c' l='228' u='c' c='tls_cert_serial_number'/>
+<use f='exim/src/tlscert-openssl.c' l='246' u='c' c='tls_cert_signature'/>
+<use f='exim/src/tlscert-openssl.c' l='272' u='c' c='tls_cert_signature_algorithm'/>
+<use f='exim/src/tlscert-openssl.c' l='316' u='c' c='tls_cert_ext_by_oid'/>
+<use f='exim/src/tlscert-openssl.c' l='476' u='c' c='tls_cert_der_b64'/>

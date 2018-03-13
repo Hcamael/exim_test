@@ -1,0 +1,14 @@
+<def f='exim/src/deliver.c' l='1980' ll='2008' type='int check_message_size(transport_instance * tp, address_item * addr)'/>
+<use f='exim/src/deliver.c' l='2866' u='c' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='4271' u='c' c='do_remote_deliveries'/>
+<doc f='exim/src/deliver.c' l='1968'>/* Checks that the message isn&apos;t too big for the selected transport.
+This is called only when it is known that the limit is set.
+
+Arguments:
+  tp          the transport
+  addr        the (first) address being delivered
+
+Returns:      OK
+              DEFER   expansion failed or did not yield an integer
+              FAIL    message too big
+*/</doc>

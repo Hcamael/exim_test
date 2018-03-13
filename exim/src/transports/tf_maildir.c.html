@@ -1,0 +1,618 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>tf_maildir.c source code [exim/src/transports/tf_maildir.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/transports/tf_maildir.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>transports</a>/<a href='tf_maildir.c.html'>tf_maildir.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Functions in support of the use of maildirsize files for handling quotas in</i></td></tr>
+<tr><th id="9">9</th><td><i>maildir directories. Some of the rules are a bit baroque:</i></td></tr>
+<tr><th id="10">10</th><td><i></i></td></tr>
+<tr><th id="11">11</th><td><i>http://www.inter7.com/courierimap/README.maildirquota.html</i></td></tr>
+<tr><th id="12">12</th><td><i></i></td></tr>
+<tr><th id="13">13</th><td><i>We try to follow most of that, except that the directories to skip for quota</i></td></tr>
+<tr><th id="14">14</th><td><i>calculations are not hard wired in, but are supplied as a regex. */</i></td></tr>
+<tr><th id="15">15</th><td></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#include <a href="../exim.h.html">"../exim.h"</a></u></td></tr>
+<tr><th id="18">18</th><td><u>#include <a href="appendfile.h.html">"appendfile.h"</a></u></td></tr>
+<tr><th id="19">19</th><td><u>#include <a href="tf_maildir.h.html">"tf_maildir.h"</a></u></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><u>#define <dfn class="macro" id="_M/MAX_FILE_SIZE" data-ref="_M/MAX_FILE_SIZE">MAX_FILE_SIZE</dfn>  5120</u></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="26">26</th><td><i>*      Ensure maildir directories exist          *</i></td></tr>
+<tr><th id="27">27</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+<tr><th id="29">29</th><td><i>/* This function is called at the start of a maildir delivery, to ensure that</i></td></tr>
+<tr><th id="30">30</th><td><i>all the relevant directories exist. It also creates a maildirfolder file if the</i></td></tr>
+<tr><th id="31">31</th><td><i>base directory matches a given pattern.</i></td></tr>
+<tr><th id="32">32</th><td><i></i></td></tr>
+<tr><th id="33">33</th><td><i>Argument:</i></td></tr>
+<tr><th id="34">34</th><td><i>  path              the base directory name</i></td></tr>
+<tr><th id="35">35</th><td><i>  addr              the address item (for setting an error message)</i></td></tr>
+<tr><th id="36">36</th><td><i>  create_directory  true if we are allowed to create missing directories</i></td></tr>
+<tr><th id="37">37</th><td><i>  dirmode           the mode for created directories</i></td></tr>
+<tr><th id="38">38</th><td><i>  maildirfolder_create_regex</i></td></tr>
+<tr><th id="39">39</th><td><i>                    the pattern to match for maildirfolder creation</i></td></tr>
+<tr><th id="40">40</th><td><i></i></td></tr>
+<tr><th id="41">41</th><td><i>Returns:            TRUE on success; FALSE on failure</i></td></tr>
+<tr><th id="42">42</th><td><i>*/</i></td></tr>
+<tr><th id="43">43</th><td></td></tr>
+<tr><th id="44">44</th><td><a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="decl def fn" id="maildir_ensure_directories" title='maildir_ensure_directories' data-ref="maildir_ensure_directories">maildir_ensure_directories</dfn>(<a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="1path" title='path' data-type='uschar *' data-ref="1path">path</dfn>, <a class="typedef" href="../structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *<dfn class="local col2 decl" id="2addr" title='addr' data-type='address_item *' data-ref="2addr">addr</dfn>,</td></tr>
+<tr><th id="45">45</th><td>  <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col3 decl" id="3create_directory" title='create_directory' data-type='BOOL' data-ref="3create_directory">create_directory</dfn>, <em>int</em> <dfn class="local col4 decl" id="4dirmode" title='dirmode' data-type='int' data-ref="4dirmode">dirmode</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col5 decl" id="5maildirfolder_create_regex" title='maildirfolder_create_regex' data-type='uschar *' data-ref="5maildirfolder_create_regex">maildirfolder_create_regex</dfn>)</td></tr>
+<tr><th id="46">46</th><td>{</td></tr>
+<tr><th id="47">47</th><td><em>int</em> <dfn class="local col6 decl" id="6i" title='i' data-type='int' data-ref="6i">i</dfn>;</td></tr>
+<tr><th id="48">48</th><td><b>struct</b> <a class="type" href="../../../include/x86_64-linux-gnu/bits/stat.h.html#stat" title='stat' data-ref="stat">stat</a> <dfn class="local col7 decl" id="7statbuf" title='statbuf' data-type='struct stat' data-ref="7statbuf">statbuf</dfn>;</td></tr>
+<tr><th id="49">49</th><td><em>const</em> <em>char</em> *<dfn class="local col8 decl" id="8subdirs" title='subdirs' data-type='const char *[3]' data-ref="8subdirs">subdirs</dfn>[] = { <q>"/tmp"</q>, <q>"/new"</q>, <q>"/cur"</q> };</td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td><a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="52">52</th><td>  <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"ensuring maildir directories exist in %s\n"</q>, <a class="local col1 ref" href="#1path" title='path' data-ref="1path">path</a>);</td></tr>
+<tr><th id="53">53</th><td></td></tr>
+<tr><th id="54">54</th><td><i>/* First ensure that the path we have is a directory; if it does not exist,</i></td></tr>
+<tr><th id="55">55</th><td><i>create it. Then make sure the tmp, new &amp; cur subdirs of the maildir are</i></td></tr>
+<tr><th id="56">56</th><td><i>there. If not, fail. This aborts the delivery (even though the cur subdir is</i></td></tr>
+<tr><th id="57">57</th><td><i>not actually needed for delivery). Handle all 4 directory tests/creates in a</i></td></tr>
+<tr><th id="58">58</th><td><i>loop so that code can be shared. */</i></td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td><b>for</b> (<a class="local col6 ref" href="#6i" title='i' data-ref="6i">i</a> = <var>0</var>; <a class="local col6 ref" href="#6i" title='i' data-ref="6i">i</a> &lt; <var>4</var>; <a class="local col6 ref" href="#6i" title='i' data-ref="6i">i</a>++)</td></tr>
+<tr><th id="61">61</th><td>  {</td></tr>
+<tr><th id="62">62</th><td>  <em>int</em> <dfn class="local col9 decl" id="9j" title='j' data-type='int' data-ref="9j">j</dfn>;</td></tr>
+<tr><th id="63">63</th><td>  <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col0 decl" id="10dir" title='dir' data-type='const uschar *' data-ref="10dir">dir</dfn>, *<dfn class="local col1 decl" id="11mdir" title='mdir' data-type='const uschar *' data-ref="11mdir">mdir</dfn>;</td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td>  <b>if</b> (<a class="local col6 ref" href="#6i" title='i' data-ref="6i">i</a> == <var>0</var>)</td></tr>
+<tr><th id="66">66</th><td>    {</td></tr>
+<tr><th id="67">67</th><td>    <a class="local col1 ref" href="#11mdir" title='mdir' data-ref="11mdir">mdir</a> = <a class="macro" href="../mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a><q>""</q>;</td></tr>
+<tr><th id="68">68</th><td>    <a class="local col0 ref" href="#10dir" title='dir' data-ref="10dir">dir</a> = <a class="local col1 ref" href="#1path" title='path' data-ref="1path">path</a>;</td></tr>
+<tr><th id="69">69</th><td>    }</td></tr>
+<tr><th id="70">70</th><td>  <b>else</b></td></tr>
+<tr><th id="71">71</th><td>    {</td></tr>
+<tr><th id="72">72</th><td>    <a class="local col1 ref" href="#11mdir" title='mdir' data-ref="11mdir">mdir</a> = <a class="macro" href="../mytypes.h.html#69" title="(const unsigned char *)" data-ref="_M/CUS">CUS</a> <a class="local col8 ref" href="#8subdirs" title='subdirs' data-ref="8subdirs">subdirs</a>[<a class="local col6 ref" href="#6i" title='i' data-ref="6i">i</a>-<var>1</var>];</td></tr>
+<tr><th id="73">73</th><td>    <a class="local col0 ref" href="#10dir" title='dir' data-ref="10dir">dir</a> = <a class="local col1 ref" href="#11mdir" title='mdir' data-ref="11mdir">mdir</a> + <var>1</var>;</td></tr>
+<tr><th id="74">74</th><td>    }</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td>  <i>/* Check an existing path is a directory. This is inside a loop because</i></td></tr>
+<tr><th id="77">77</th><td><i>  there is a potential race condition when creating the directory - some</i></td></tr>
+<tr><th id="78">78</th><td><i>  other process may get there first. Give up after trying several times,</i></td></tr>
+<tr><th id="79">79</th><td><i>  though. */</i></td></tr>
+<tr><th id="80">80</th><td></td></tr>
+<tr><th id="81">81</th><td>  <b>for</b> (<a class="local col9 ref" href="#9j" title='j' data-ref="9j">j</a> = <var>0</var>; <a class="local col9 ref" href="#9j" title='j' data-ref="9j">j</a> &lt; <var>10</var>; <a class="local col9 ref" href="#9j" title='j' data-ref="9j">j</a>++)</td></tr>
+<tr><th id="82">82</th><td>    {</td></tr>
+<tr><th id="83">83</th><td>    <b>if</b> (<a class="macro" href="../mytypes.h.html#95" title="stat((const char *)(dir),&amp;statbuf)" data-ref="_M/Ustat">Ustat</a>(<a class="local col0 ref" href="#10dir" title='dir' data-ref="10dir">dir</a>, &amp;<a class="local col7 ref" href="#7statbuf" title='statbuf' data-ref="7statbuf">statbuf</a>) == <var>0</var>)</td></tr>
+<tr><th id="84">84</th><td>      {</td></tr>
+<tr><th id="85">85</th><td>      <b>if</b> (<a class="macro" href="../../../include/x86_64-linux-gnu/sys/stat.h.html#128" title="((((statbuf.st_mode)) &amp; 0170000) == (0040000))" data-ref="_M/S_ISDIR">S_ISDIR</a>(<a class="local col7 ref" href="#7statbuf" title='statbuf' data-ref="7statbuf">statbuf</a>.<a class="ref field" href="../../../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_mode" title='stat::st_mode' data-ref="stat::st_mode">st_mode</a>)) <b>break</b>;   <i>/* out of the race loop */</i></td></tr>
+<tr><th id="86">86</th><td>      <a class="local col2 ref" href="#2addr" title='addr' data-ref="2addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%s%s is not a directory"</q>, <a class="local col1 ref" href="#1path" title='path' data-ref="1path">path</a>,</td></tr>
+<tr><th id="87">87</th><td>        <a class="local col1 ref" href="#11mdir" title='mdir' data-ref="11mdir">mdir</a>);</td></tr>
+<tr><th id="88">88</th><td>      <a class="local col2 ref" href="#2addr" title='addr' data-ref="2addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::basic_errno" title='address_item::basic_errno' data-ref="address_item::basic_errno">basic_errno</a> = <a class="macro" href="../macros.h.html#505" title="(-5)" data-ref="_M/ERRNO_NOTDIRECTORY">ERRNO_NOTDIRECTORY</a>;</td></tr>
+<tr><th id="89">89</th><td>      <b>return</b> <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="90">90</th><td>      }</td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td>    <i>/* Try to make if non-existent and configured to do so */</i></td></tr>
+<tr><th id="93">93</th><td></td></tr>
+<tr><th id="94">94</th><td>    <b>if</b> (<a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a> == <a class="macro" href="../../../include/asm-generic/errno-base.h.html#5" title="2" data-ref="_M/ENOENT">ENOENT</a> &amp;&amp; <a class="local col3 ref" href="#3create_directory" title='create_directory' data-ref="3create_directory">create_directory</a>)</td></tr>
+<tr><th id="95">95</th><td>      {</td></tr>
+<tr><th id="96">96</th><td>      <b>if</b> (!<a class="ref fn" href="../functions.h.html#directory_make" title='directory_make' data-ref="directory_make">directory_make</a>(<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="local col0 ref" href="#10dir" title='dir' data-ref="10dir">dir</a>, <a class="local col4 ref" href="#4dirmode" title='dirmode' data-ref="4dirmode">dirmode</a>, <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>))</td></tr>
+<tr><th id="97">97</th><td>        {</td></tr>
+<tr><th id="98">98</th><td>        <b>if</b> (<a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a> == <a class="macro" href="../../../include/asm-generic/errno-base.h.html#20" title="17" data-ref="_M/EEXIST">EEXIST</a>) <b>continue</b>;     <i>/* repeat the race loop */</i></td></tr>
+<tr><th id="99">99</th><td>        <a class="local col2 ref" href="#2addr" title='addr' data-ref="2addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"cannot create %s%s"</q>, <a class="local col1 ref" href="#1path" title='path' data-ref="1path">path</a>, <a class="local col1 ref" href="#11mdir" title='mdir' data-ref="11mdir">mdir</a>);</td></tr>
+<tr><th id="100">100</th><td>        <a class="local col2 ref" href="#2addr" title='addr' data-ref="2addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::basic_errno" title='address_item::basic_errno' data-ref="address_item::basic_errno">basic_errno</a> = <a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>;</td></tr>
+<tr><th id="101">101</th><td>        <b>return</b> <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="102">102</th><td>        }</td></tr>
+<tr><th id="103">103</th><td>      <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="104">104</th><td>        <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"created directory %s%s\n"</q>, <a class="local col1 ref" href="#1path" title='path' data-ref="1path">path</a>, <a class="local col1 ref" href="#11mdir" title='mdir' data-ref="11mdir">mdir</a>);</td></tr>
+<tr><th id="105">105</th><td>      <b>break</b>;   <i>/* out of the race loop */</i></td></tr>
+<tr><th id="106">106</th><td>      }</td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td>    <i>/* stat() error other than ENOENT, or ENOENT and not creatable */</i></td></tr>
+<tr><th id="109">109</th><td></td></tr>
+<tr><th id="110">110</th><td>    <a class="local col2 ref" href="#2addr" title='addr' data-ref="2addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"stat() error for %s%s: %s"</q>, <a class="local col1 ref" href="#1path" title='path' data-ref="1path">path</a>, <a class="local col1 ref" href="#11mdir" title='mdir' data-ref="11mdir">mdir</a>,</td></tr>
+<tr><th id="111">111</th><td>      <a class="ref fn" href="../../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="112">112</th><td>    <a class="local col2 ref" href="#2addr" title='addr' data-ref="2addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::basic_errno" title='address_item::basic_errno' data-ref="address_item::basic_errno">basic_errno</a> = <a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>;</td></tr>
+<tr><th id="113">113</th><td>    <b>return</b> <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="114">114</th><td>    }</td></tr>
+<tr><th id="115">115</th><td></td></tr>
+<tr><th id="116">116</th><td>  <i>/* If we went round the loop 10 times, the directory was flickering in</i></td></tr>
+<tr><th id="117">117</th><td><i>  and out of existence like someone in a malfunctioning Star Trek</i></td></tr>
+<tr><th id="118">118</th><td><i>  transporter. */</i></td></tr>
+<tr><th id="119">119</th><td></td></tr>
+<tr><th id="120">120</th><td>  <b>if</b> (<a class="local col9 ref" href="#9j" title='j' data-ref="9j">j</a> &gt;= <var>10</var>)</td></tr>
+<tr><th id="121">121</th><td>    {</td></tr>
+<tr><th id="122">122</th><td>    <a class="local col2 ref" href="#2addr" title='addr' data-ref="2addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"existence of %s%s unclear\n"</q>, <a class="local col1 ref" href="#1path" title='path' data-ref="1path">path</a>,</td></tr>
+<tr><th id="123">123</th><td>      <a class="local col1 ref" href="#11mdir" title='mdir' data-ref="11mdir">mdir</a>);</td></tr>
+<tr><th id="124">124</th><td>    <a class="local col2 ref" href="#2addr" title='addr' data-ref="2addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::basic_errno" title='address_item::basic_errno' data-ref="address_item::basic_errno">basic_errno</a> = <a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>;</td></tr>
+<tr><th id="125">125</th><td>    <a class="local col2 ref" href="#2addr" title='addr' data-ref="2addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::special_action" title='address_item::special_action' data-ref="address_item::special_action">special_action</a> = <a class="enum" href="../macros.h.html#SPECIAL_FREEZE" title='SPECIAL_FREEZE' data-ref="SPECIAL_FREEZE">SPECIAL_FREEZE</a>;</td></tr>
+<tr><th id="126">126</th><td>    <b>return</b> <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="127">127</th><td>    }</td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td>  <i>/* First time through the directories loop, cd to the main directory */</i></td></tr>
+<tr><th id="130">130</th><td></td></tr>
+<tr><th id="131">131</th><td>  <b>if</b> (<a class="local col6 ref" href="#6i" title='i' data-ref="6i">i</a> == <var>0</var> &amp;&amp; <a class="macro" href="../mytypes.h.html#80" title="chdir((const char *)(path))" data-ref="_M/Uchdir">Uchdir</a>(<a class="local col1 ref" href="#1path" title='path' data-ref="1path">path</a>) != <var>0</var>)</td></tr>
+<tr><th id="132">132</th><td>    {</td></tr>
+<tr><th id="133">133</th><td>    <a class="local col2 ref" href="#2addr" title='addr' data-ref="2addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a> (<q>"cannot chdir to %s"</q>, <a class="local col1 ref" href="#1path" title='path' data-ref="1path">path</a>);</td></tr>
+<tr><th id="134">134</th><td>    <a class="local col2 ref" href="#2addr" title='addr' data-ref="2addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::basic_errno" title='address_item::basic_errno' data-ref="address_item::basic_errno">basic_errno</a> = <a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>;</td></tr>
+<tr><th id="135">135</th><td>    <b>return</b> <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="136">136</th><td>    }</td></tr>
+<tr><th id="137">137</th><td>  }</td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td><i>/* If the basic path matches maildirfolder_create_regex, we are dealing with</i></td></tr>
+<tr><th id="140">140</th><td><i>a subfolder, and should ensure that a maildirfolder file exists. */</i></td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td><b>if</b> (<a class="local col5 ref" href="#5maildirfolder_create_regex" title='maildirfolder_create_regex' data-ref="5maildirfolder_create_regex">maildirfolder_create_regex</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="143">143</th><td>  {</td></tr>
+<tr><th id="144">144</th><td>  <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="12error" title='error' data-type='const uschar *' data-ref="12error">error</dfn>;</td></tr>
+<tr><th id="145">145</th><td>  <em>int</em> <dfn class="local col3 decl" id="13offset" title='offset' data-type='int' data-ref="13offset">offset</dfn>;</td></tr>
+<tr><th id="146">146</th><td>  <em>const</em> <a class="typedef" href="../../../include/pcre.h.html#pcre" title='pcre' data-type='struct real_pcre' data-ref="pcre">pcre</a> *<dfn class="local col4 decl" id="14regex" title='regex' data-type='const pcre *' data-ref="14regex">regex</dfn>;</td></tr>
+<tr><th id="147">147</th><td></td></tr>
+<tr><th id="148">148</th><td>  <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"checking for maildirfolder requirement\n"</q>);</td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td>  <a class="local col4 ref" href="#14regex" title='regex' data-ref="14regex">regex</a> = <a class="ref fn" href="../../../include/pcre.h.html#pcre_compile" title='pcre_compile' data-ref="pcre_compile">pcre_compile</a>(<a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col5 ref" href="#5maildirfolder_create_regex" title='maildirfolder_create_regex' data-ref="5maildirfolder_create_regex">maildirfolder_create_regex</a>, <a class="macro" href="../macros.h.html#205" title="0" data-ref="_M/PCRE_COPT">PCRE_COPT</a>,</td></tr>
+<tr><th id="151">151</th><td>    (<em>const</em> <em>char</em> **)&amp;<a class="local col2 ref" href="#12error" title='error' data-ref="12error">error</a>, &amp;<a class="local col3 ref" href="#13offset" title='offset' data-ref="13offset">offset</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="152">152</th><td></td></tr>
+<tr><th id="153">153</th><td>  <b>if</b> (<a class="local col4 ref" href="#14regex" title='regex' data-ref="14regex">regex</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="154">154</th><td>    {</td></tr>
+<tr><th id="155">155</th><td>    <a class="local col2 ref" href="#2addr" title='addr' data-ref="2addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"appendfile: regular expression "</q></td></tr>
+<tr><th id="156">156</th><td>      <q>"error: %s at offset %d while compiling %s"</q>, <a class="local col2 ref" href="#12error" title='error' data-ref="12error">error</a>, <a class="local col3 ref" href="#13offset" title='offset' data-ref="13offset">offset</a>,</td></tr>
+<tr><th id="157">157</th><td>      <a class="local col5 ref" href="#5maildirfolder_create_regex" title='maildirfolder_create_regex' data-ref="5maildirfolder_create_regex">maildirfolder_create_regex</a>);</td></tr>
+<tr><th id="158">158</th><td>    <b>return</b> <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="159">159</th><td>    }</td></tr>
+<tr><th id="160">160</th><td></td></tr>
+<tr><th id="161">161</th><td>  <b>if</b> (<a class="ref fn" href="../../../include/pcre.h.html#pcre_exec" title='pcre_exec' data-ref="pcre_exec">pcre_exec</a>(<a class="local col4 ref" href="#14regex" title='regex' data-ref="14regex">regex</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col1 ref" href="#1path" title='path' data-ref="1path">path</a>, <a class="macro" href="../mytypes.h.html#104" title="(int)strlen((const char *)(path))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col1 ref" href="#1path" title='path' data-ref="1path">path</a>), <var>0</var>, <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <var>0</var>) &gt;= <var>0</var>)</td></tr>
+<tr><th id="162">162</th><td>    {</td></tr>
+<tr><th id="163">163</th><td>    <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col5 decl" id="15fname" title='fname' data-type='uschar *' data-ref="15fname">fname</dfn> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%s/maildirfolder"</q>, <a class="local col1 ref" href="#1path" title='path' data-ref="1path">path</a>);</td></tr>
+<tr><th id="164">164</th><td>    <b>if</b> (<a class="macro" href="../mytypes.h.html#95" title="stat((const char *)(fname),&amp;statbuf)" data-ref="_M/Ustat">Ustat</a>(<a class="local col5 ref" href="#15fname" title='fname' data-ref="15fname">fname</a>, &amp;<a class="local col7 ref" href="#7statbuf" title='statbuf' data-ref="7statbuf">statbuf</a>) == <var>0</var>)</td></tr>
+<tr><th id="165">165</th><td>      {</td></tr>
+<tr><th id="166">166</th><td>      <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"maildirfolder already exists\n"</q>);</td></tr>
+<tr><th id="167">167</th><td>      }</td></tr>
+<tr><th id="168">168</th><td>    <b>else</b></td></tr>
+<tr><th id="169">169</th><td>      {</td></tr>
+<tr><th id="170">170</th><td>      <em>int</em> <dfn class="local col6 decl" id="16fd" title='fd' data-type='int' data-ref="16fd">fd</dfn> = <a class="macro" href="../mytypes.h.html#91" title="open((const char *)(fname),01|02000|0100,0600)" data-ref="_M/Uopen">Uopen</a>(<a class="local col5 ref" href="#15fname" title='fname' data-ref="15fname">fname</a>, <a class="macro" href="../../../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#44" title="01" data-ref="_M/O_WRONLY">O_WRONLY</a>|<a class="macro" href="../../../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#59" title="02000" data-ref="_M/O_APPEND">O_APPEND</a>|<a class="macro" href="../../../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#47" title="0100" data-ref="_M/O_CREAT">O_CREAT</a>, <var>0600</var>);</td></tr>
+<tr><th id="171">171</th><td>      <b>if</b> (<a class="local col6 ref" href="#16fd" title='fd' data-ref="16fd">fd</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="172">172</th><td>        {</td></tr>
+<tr><th id="173">173</th><td>        <a class="local col2 ref" href="#2addr" title='addr' data-ref="2addr">addr</a>-&gt;<a class="ref field" href="../structs.h.html#address_item::message" title='address_item::message' data-ref="address_item::message">message</a> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"appendfile: failed to create "</q></td></tr>
+<tr><th id="174">174</th><td>          <q>"maildirfolder file in %s directory: %s"</q>, <a class="local col1 ref" href="#1path" title='path' data-ref="1path">path</a>, <a class="ref fn" href="../../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="175">175</th><td>        <b>return</b> <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="176">176</th><td>        }</td></tr>
+<tr><th id="177">177</th><td>      (<em>void</em>)<a class="ref fn" href="../../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col6 ref" href="#16fd" title='fd' data-ref="16fd">fd</a>);</td></tr>
+<tr><th id="178">178</th><td>      <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"created maildirfolder file\n"</q>);</td></tr>
+<tr><th id="179">179</th><td>      }</td></tr>
+<tr><th id="180">180</th><td>    }</td></tr>
+<tr><th id="181">181</th><td>  <b>else</b></td></tr>
+<tr><th id="182">182</th><td>    {</td></tr>
+<tr><th id="183">183</th><td>    <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"maildirfolder file not required\n"</q>);</td></tr>
+<tr><th id="184">184</th><td>    }</td></tr>
+<tr><th id="185">185</th><td>  }</td></tr>
+<tr><th id="186">186</th><td></td></tr>
+<tr><th id="187">187</th><td><b>return</b> <a class="macro" href="../mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;   <i>/* Everything exists that should exist */</i></td></tr>
+<tr><th id="188">188</th><td>}</td></tr>
+<tr><th id="189">189</th><td></td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td></td></tr>
+<tr><th id="192">192</th><td></td></tr>
+<tr><th id="193">193</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="194">194</th><td><i>*       Update maildirsizefile for new file      *</i></td></tr>
+<tr><th id="195">195</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="196">196</th><td></td></tr>
+<tr><th id="197">197</th><td><i>/* This function is called to add a new line to the file, recording the length</i></td></tr>
+<tr><th id="198">198</th><td><i>of the newly added message. There isn't much we can do on failure...</i></td></tr>
+<tr><th id="199">199</th><td><i></i></td></tr>
+<tr><th id="200">200</th><td><i>Arguments:</i></td></tr>
+<tr><th id="201">201</th><td><i>  fd           the open file descriptor</i></td></tr>
+<tr><th id="202">202</th><td><i>  size         the size of the message</i></td></tr>
+<tr><th id="203">203</th><td><i></i></td></tr>
+<tr><th id="204">204</th><td><i>Returns:       nothing</i></td></tr>
+<tr><th id="205">205</th><td><i>*/</i></td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td><em>void</em></td></tr>
+<tr><th id="208">208</th><td><dfn class="decl def fn" id="maildir_record_length" title='maildir_record_length' data-ref="maildir_record_length">maildir_record_length</dfn>(<em>int</em> <dfn class="local col7 decl" id="17fd" title='fd' data-type='int' data-ref="17fd">fd</dfn>, <em>int</em> <dfn class="local col8 decl" id="18size" title='size' data-type='int' data-ref="18size">size</dfn>)</td></tr>
+<tr><th id="209">209</th><td>{</td></tr>
+<tr><th id="210">210</th><td><em>int</em> <dfn class="local col9 decl" id="19len" title='len' data-type='int' data-ref="19len">len</dfn>;</td></tr>
+<tr><th id="211">211</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col0 decl" id="20buffer" title='buffer' data-type='uschar [256]' data-ref="20buffer">buffer</dfn>[<var>256</var>];</td></tr>
+<tr><th id="212">212</th><td><a class="ref fn" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col0 ref" href="#20buffer" title='buffer' data-ref="20buffer">buffer</a>, <q>"%d 1\n"</q>, <a class="local col8 ref" href="#18size" title='size' data-ref="18size">size</a>);</td></tr>
+<tr><th id="213">213</th><td><a class="local col9 ref" href="#19len" title='len' data-ref="19len">len</a> = <a class="macro" href="../mytypes.h.html#104" title="(int)strlen((const char *)(buffer))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col0 ref" href="#20buffer" title='buffer' data-ref="20buffer">buffer</a>);</td></tr>
+<tr><th id="214">214</th><td><b>if</b> (<a class="ref fn" href="../../../include/unistd.h.html#340" title='lseek' data-ref="lseek64">lseek</a>(<a class="local col7 ref" href="#17fd" title='fd' data-ref="17fd">fd</a>, <var>0</var>, <a class="macro" href="../../../include/fcntl.h.html#138" title="2" data-ref="_M/SEEK_END">SEEK_END</a>) &gt;= <var>0</var>)</td></tr>
+<tr><th id="215">215</th><td>  {</td></tr>
+<tr><th id="216">216</th><td>  <a class="local col9 ref" href="#19len" title='len' data-ref="19len">len</a> = <a class="ref fn" href="../../../include/unistd.h.html#write" title='write' data-ref="write">write</a>(<a class="local col7 ref" href="#17fd" title='fd' data-ref="17fd">fd</a>, <a class="local col0 ref" href="#20buffer" title='buffer' data-ref="20buffer">buffer</a>, <a class="local col9 ref" href="#19len" title='len' data-ref="19len">len</a>);</td></tr>
+<tr><th id="217">217</th><td>  <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="218">218</th><td>    <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"added '%.*s' to maildirsize file\n"</q>, <a class="local col9 ref" href="#19len" title='len' data-ref="19len">len</a>-<var>1</var>, <a class="local col0 ref" href="#20buffer" title='buffer' data-ref="20buffer">buffer</a>);</td></tr>
+<tr><th id="219">219</th><td>  }</td></tr>
+<tr><th id="220">220</th><td>}</td></tr>
+<tr><th id="221">221</th><td></td></tr>
+<tr><th id="222">222</th><td></td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="225">225</th><td><i>*          Find the size of a maildir            *</i></td></tr>
+<tr><th id="226">226</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="227">227</th><td></td></tr>
+<tr><th id="228">228</th><td><i>/* This function is called when we have to recalculate the size of a maildir by</i></td></tr>
+<tr><th id="229">229</th><td><i>scanning all the files and directories therein. There are rules and conventions</i></td></tr>
+<tr><th id="230">230</th><td><i>about which files or directories are included. We support this by the use of a</i></td></tr>
+<tr><th id="231">231</th><td><i>regex to match directories that are to be included.</i></td></tr>
+<tr><th id="232">232</th><td><i></i></td></tr>
+<tr><th id="233">233</th><td><i>Maildirs can only be one level deep. However, this function recurses, so it</i></td></tr>
+<tr><th id="234">234</th><td><i>might cope with deeper nestings. We use the existing check_dir_size() function</i></td></tr>
+<tr><th id="235">235</th><td><i>to add up the sizes of the files in a directory that contains messages.</i></td></tr>
+<tr><th id="236">236</th><td><i></i></td></tr>
+<tr><th id="237">237</th><td><i>The function returns the most recent timestamp encountered. It can also be run</i></td></tr>
+<tr><th id="238">238</th><td><i>in a dummy mode in which it does not scan for sizes, but just returns the</i></td></tr>
+<tr><th id="239">239</th><td><i>timestamp.</i></td></tr>
+<tr><th id="240">240</th><td><i></i></td></tr>
+<tr><th id="241">241</th><td><i>Arguments:</i></td></tr>
+<tr><th id="242">242</th><td><i>  path            the path to the maildir</i></td></tr>
+<tr><th id="243">243</th><td><i>  filecount       where to store the count of messages</i></td></tr>
+<tr><th id="244">244</th><td><i>  latest          where to store the latest timestamp encountered</i></td></tr>
+<tr><th id="245">245</th><td><i>  regex           a regex for getting files sizes from file names</i></td></tr>
+<tr><th id="246">246</th><td><i>  dir_regex       a regex for matching directories to be included</i></td></tr>
+<tr><th id="247">247</th><td><i>  timestamp_only  don't actually compute any sizes</i></td></tr>
+<tr><th id="248">248</th><td><i></i></td></tr>
+<tr><th id="249">249</th><td><i>Returns:      the sum of the sizes of the messages</i></td></tr>
+<tr><th id="250">250</th><td><i>*/</i></td></tr>
+<tr><th id="251">251</th><td></td></tr>
+<tr><th id="252">252</th><td><a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#off_t" title='off_t' data-type='__off64_t' data-ref="off_t">off_t</a></td></tr>
+<tr><th id="253">253</th><td><dfn class="decl def fn" id="maildir_compute_size" title='maildir_compute_size' data-ref="maildir_compute_size">maildir_compute_size</dfn>(<a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="21path" title='path' data-type='uschar *' data-ref="21path">path</dfn>, <em>int</em> *<dfn class="local col2 decl" id="22filecount" title='filecount' data-type='int *' data-ref="22filecount">filecount</dfn>, <a class="typedef" href="../../../include/time.h.html#time_t" title='time_t' data-type='__time_t' data-ref="time_t">time_t</a> *<dfn class="local col3 decl" id="23latest" title='latest' data-type='time_t *' data-ref="23latest">latest</dfn>,</td></tr>
+<tr><th id="254">254</th><td>  <em>const</em> <a class="typedef" href="../../../include/pcre.h.html#pcre" title='pcre' data-type='struct real_pcre' data-ref="pcre">pcre</a> *<dfn class="local col4 decl" id="24regex" title='regex' data-type='const pcre *' data-ref="24regex">regex</dfn>, <em>const</em> <a class="typedef" href="../../../include/pcre.h.html#pcre" title='pcre' data-type='struct real_pcre' data-ref="pcre">pcre</a> *<dfn class="local col5 decl" id="25dir_regex" title='dir_regex' data-type='const pcre *' data-ref="25dir_regex">dir_regex</dfn>, <a class="typedef" href="../mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col6 decl" id="26timestamp_only" title='timestamp_only' data-type='BOOL' data-ref="26timestamp_only">timestamp_only</dfn>)</td></tr>
+<tr><th id="255">255</th><td>{</td></tr>
+<tr><th id="256">256</th><td><a class="typedef" href="../../../include/dirent.h.html#DIR" title='DIR' data-type='struct __dirstream' data-ref="DIR">DIR</a> *<dfn class="local col7 decl" id="27dir" title='dir' data-type='DIR *' data-ref="27dir">dir</dfn>;</td></tr>
+<tr><th id="257">257</th><td><a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#off_t" title='off_t' data-type='__off64_t' data-ref="off_t">off_t</a> <dfn class="local col8 decl" id="28sum" title='sum' data-type='off_t' data-ref="28sum">sum</dfn> = <var>0</var>;</td></tr>
+<tr><th id="258">258</th><td><b>struct</b> <a class="type" href="../../../include/x86_64-linux-gnu/bits/dirent.h.html#dirent" title='dirent' data-ref="dirent">dirent</a> *<dfn class="local col9 decl" id="29ent" title='ent' data-type='struct dirent *' data-ref="29ent">ent</dfn>;</td></tr>
+<tr><th id="259">259</th><td><b>struct</b> <a class="type" href="../../../include/x86_64-linux-gnu/bits/stat.h.html#stat" title='stat' data-ref="stat">stat</a> <dfn class="local col0 decl" id="30statbuf" title='statbuf' data-type='struct stat' data-ref="30statbuf">statbuf</dfn>;</td></tr>
+<tr><th id="260">260</th><td></td></tr>
+<tr><th id="261">261</th><td><a class="local col7 ref" href="#27dir" title='dir' data-ref="27dir">dir</a> = <a class="ref fn" href="../../../include/dirent.h.html#opendir" title='opendir' data-ref="opendir">opendir</a>(<a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col1 ref" href="#21path" title='path' data-ref="21path">path</a>);</td></tr>
+<tr><th id="262">262</th><td><b>if</b> (<a class="local col7 ref" href="#27dir" title='dir' data-ref="27dir">dir</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <b>return</b> <var>0</var>;</td></tr>
+<tr><th id="263">263</th><td></td></tr>
+<tr><th id="264">264</th><td><b>while</b> ((<a class="local col9 ref" href="#29ent" title='ent' data-ref="29ent">ent</a> = <a class="ref fn" href="../../../include/dirent.h.html#165" title='readdir' data-ref="readdir64">readdir</a>(<a class="local col7 ref" href="#27dir" title='dir' data-ref="27dir">dir</a>)) != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="265">265</th><td>  {</td></tr>
+<tr><th id="266">266</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="31name" title='name' data-type='uschar *' data-ref="31name">name</dfn> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="local col9 ref" href="#29ent" title='ent' data-ref="29ent">ent</a>-&gt;<a class="ref field" href="../../../include/x86_64-linux-gnu/bits/dirent.h.html#dirent::d_name" title='dirent::d_name' data-ref="dirent::d_name">d_name</a>;</td></tr>
+<tr><th id="267">267</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col2 decl" id="32buffer" title='buffer' data-type='uschar [1024]' data-ref="32buffer">buffer</dfn>[<var>1024</var>];</td></tr>
+<tr><th id="268">268</th><td></td></tr>
+<tr><th id="269">269</th><td>  <b>if</b> (<a class="macro" href="../mytypes.h.html#100" title="__extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p ((const char *)(name)) &amp;&amp; __builtin_constant_p ((const char *)(&quot;.&quot;)) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(name)), __s2_len = __builtin_strlen ((const char *)(&quot;.&quot;)), (!((size_t)(const void *)(((const char *)(name)) + 1) - (size_t)(const void *)((const char *)(name)) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)(((const char *)(&quot;.&quot;)) + 1) - (size_t)(const void *)((const char *)(&quot;.&quot;)) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp ((const char *)(name), (const char *)(&quot;.&quot;)) : (__builtin_constant_p ((const char *)(name)) &amp;&amp; ((size_t)(const void *)(((const char *)(name)) + 1) - (size_t)(const void *)((const char *)(name)) == 1) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(name)), __s1_len &lt; 4) ? (__builtin_constant_p ((const char *)(&quot;.&quot;)) &amp;&amp; ((size_t)(const void *)(((const char *)(&quot;.&quot;)) + 1) - (size_t)(const void *)((const char *)(&quot;.&quot;)) == 1) ? __builtin_strcmp ((const char *)(name), (const char *)(&quot;.&quot;)) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(&quot;.&quot;)); int __result = (((const unsigned char *) (const char *) ((const char *)(name)))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(name)))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(name)))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(name)))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p ((const char *)(&quot;.&quot;)) &amp;&amp; ((size_t)(const void *)(((const char *)(&quot;.&quot;)) + 1) - (size_t)(const void *)((const char *)(&quot;.&quot;)) == 1) &amp;&amp; (__s2_len = __builtin_strlen ((const char *)(&quot;.&quot;)), __s2_len &lt; 4) ? (__builtin_constant_p ((const char *)(name)) &amp;&amp; ((size_t)(const void *)(((const char *)(name)) + 1) - (size_t)(const void *)((const char *)(name)) == 1) ? __builtin_strcmp ((const char *)(name), (const char *)(&quot;.&quot;)) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(name)); int __result = (((const unsigned char *) (const char *) ((const char *)(&quot;.&quot;)))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(&quot;.&quot;)))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(&quot;.&quot;)))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(&quot;.&quot;)))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp ((const char *)(name), (const char *)(&quot;.&quot;))))); })" data-ref="_M/Ustrcmp">Ustrcmp</a>(<a class="local col1 ref" href="#31name" title='name' data-ref="31name">name</a>, <q>"."</q>) == <var>0</var> || <a class="macro" href="../mytypes.h.html#100" title="__extension__ ({ size_t __s1_len, __s2_len; (__builtin_constant_p ((const char *)(name)) &amp;&amp; __builtin_constant_p ((const char *)(&quot;..&quot;)) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(name)), __s2_len = __builtin_strlen ((const char *)(&quot;..&quot;)), (!((size_t)(const void *)(((const char *)(name)) + 1) - (size_t)(const void *)((const char *)(name)) == 1) || __s1_len &gt;= 4) &amp;&amp; (!((size_t)(const void *)(((const char *)(&quot;..&quot;)) + 1) - (size_t)(const void *)((const char *)(&quot;..&quot;)) == 1) || __s2_len &gt;= 4)) ? __builtin_strcmp ((const char *)(name), (const char *)(&quot;..&quot;)) : (__builtin_constant_p ((const char *)(name)) &amp;&amp; ((size_t)(const void *)(((const char *)(name)) + 1) - (size_t)(const void *)((const char *)(name)) == 1) &amp;&amp; (__s1_len = __builtin_strlen ((const char *)(name)), __s1_len &lt; 4) ? (__builtin_constant_p ((const char *)(&quot;..&quot;)) &amp;&amp; ((size_t)(const void *)(((const char *)(&quot;..&quot;)) + 1) - (size_t)(const void *)((const char *)(&quot;..&quot;)) == 1) ? __builtin_strcmp ((const char *)(name), (const char *)(&quot;..&quot;)) : (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(&quot;..&quot;)); int __result = (((const unsigned char *) (const char *) ((const char *)(name)))[0] - __s2[0]); if (__s1_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(name)))[1] - __s2[1]); if (__s1_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(name)))[2] - __s2[2]); if (__s1_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(name)))[3] - __s2[3]); } } __result; }))) : (__builtin_constant_p ((const char *)(&quot;..&quot;)) &amp;&amp; ((size_t)(const void *)(((const char *)(&quot;..&quot;)) + 1) - (size_t)(const void *)((const char *)(&quot;..&quot;)) == 1) &amp;&amp; (__s2_len = __builtin_strlen ((const char *)(&quot;..&quot;)), __s2_len &lt; 4) ? (__builtin_constant_p ((const char *)(name)) &amp;&amp; ((size_t)(const void *)(((const char *)(name)) + 1) - (size_t)(const void *)((const char *)(name)) == 1) ? __builtin_strcmp ((const char *)(name), (const char *)(&quot;..&quot;)) : (- (__extension__ ({ const unsigned char *__s2 = (const unsigned char *) (const char *) ((const char *)(name)); int __result = (((const unsigned char *) (const char *) ((const char *)(&quot;..&quot;)))[0] - __s2[0]); if (__s2_len &gt; 0 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(&quot;..&quot;)))[1] - __s2[1]); if (__s2_len &gt; 1 &amp;&amp; __result == 0) { __result = (((const unsigned char *) (const char *) ((const char *)(&quot;..&quot;)))[2] - __s2[2]); if (__s2_len &gt; 2 &amp;&amp; __result == 0) __result = (((const unsigned char *) (const char *) ((const char *)(&quot;..&quot;)))[3] - __s2[3]); } } __result; })))) : __builtin_strcmp ((const char *)(name), (const char *)(&quot;..&quot;))))); })" data-ref="_M/Ustrcmp">Ustrcmp</a>(<a class="local col1 ref" href="#31name" title='name' data-ref="31name">name</a>, <q>".."</q>) == <var>0</var>) <b>continue</b>;</td></tr>
+<tr><th id="270">270</th><td></td></tr>
+<tr><th id="271">271</th><td>  <i>/* We are normally supplied with a regex for choosing which directories to</i></td></tr>
+<tr><th id="272">272</th><td><i>  scan. We do the regex match first, because that avoids a stat() for names</i></td></tr>
+<tr><th id="273">273</th><td><i>  we aren't interested in. */</i></td></tr>
+<tr><th id="274">274</th><td></td></tr>
+<tr><th id="275">275</th><td>  <b>if</b> (<a class="local col5 ref" href="#25dir_regex" title='dir_regex' data-ref="25dir_regex">dir_regex</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> &amp;&amp;</td></tr>
+<tr><th id="276">276</th><td>      <a class="ref fn" href="../../../include/pcre.h.html#pcre_exec" title='pcre_exec' data-ref="pcre_exec">pcre_exec</a>(<a class="local col5 ref" href="#25dir_regex" title='dir_regex' data-ref="25dir_regex">dir_regex</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col1 ref" href="#31name" title='name' data-ref="31name">name</a>, <a class="macro" href="../mytypes.h.html#104" title="(int)strlen((const char *)(name))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col1 ref" href="#31name" title='name' data-ref="31name">name</a>), <var>0</var>, <var>0</var>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <var>0</var>) &lt; <var>0</var>)</td></tr>
+<tr><th id="277">277</th><td>    {</td></tr>
+<tr><th id="278">278</th><td>    <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="279">279</th><td>      <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"skipping %s/%s: dir_regex does not match\n"</q>, <a class="local col1 ref" href="#21path" title='path' data-ref="21path">path</a>, <a class="local col1 ref" href="#31name" title='name' data-ref="31name">name</a>);</td></tr>
+<tr><th id="280">280</th><td>    <b>continue</b>;</td></tr>
+<tr><th id="281">281</th><td>    }</td></tr>
+<tr><th id="282">282</th><td></td></tr>
+<tr><th id="283">283</th><td>  <i>/* The name is OK; stat it. */</i></td></tr>
+<tr><th id="284">284</th><td></td></tr>
+<tr><th id="285">285</th><td>  <b>if</b> (!<a class="ref fn" href="../functions.h.html#string_format" title='string_format' data-ref="string_format">string_format</a>(<a class="local col2 ref" href="#32buffer" title='buffer' data-ref="32buffer">buffer</a>, <b>sizeof</b>(<a class="local col2 ref" href="#32buffer" title='buffer' data-ref="32buffer">buffer</a>), <q>"%s/%s"</q>, <a class="local col1 ref" href="#21path" title='path' data-ref="21path">path</a>, <a class="local col1 ref" href="#31name" title='name' data-ref="31name">name</a>))</td></tr>
+<tr><th id="286">286</th><td>    {</td></tr>
+<tr><th id="287">287</th><td>    <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="288">288</th><td>      <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"maildir_compute_size: name too long: dir=%s name=%s\n"</q>,</td></tr>
+<tr><th id="289">289</th><td>        <a class="local col1 ref" href="#21path" title='path' data-ref="21path">path</a>, <a class="local col1 ref" href="#31name" title='name' data-ref="31name">name</a>);</td></tr>
+<tr><th id="290">290</th><td>    <b>continue</b>;</td></tr>
+<tr><th id="291">291</th><td>    }</td></tr>
+<tr><th id="292">292</th><td></td></tr>
+<tr><th id="293">293</th><td>  <b>if</b> (<a class="macro" href="../mytypes.h.html#95" title="stat((const char *)(buffer),&amp;statbuf)" data-ref="_M/Ustat">Ustat</a>(<a class="local col2 ref" href="#32buffer" title='buffer' data-ref="32buffer">buffer</a>, &amp;<a class="local col0 ref" href="#30statbuf" title='statbuf' data-ref="30statbuf">statbuf</a>) &lt; <var>0</var>)</td></tr>
+<tr><th id="294">294</th><td>    {</td></tr>
+<tr><th id="295">295</th><td>    <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="296">296</th><td>      <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"maildir_compute_size: stat error %d for %s: %s\n"</q>, <a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>,</td></tr>
+<tr><th id="297">297</th><td>        <a class="local col2 ref" href="#32buffer" title='buffer' data-ref="32buffer">buffer</a>, <a class="ref fn" href="../../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="298">298</th><td>    <b>continue</b>;</td></tr>
+<tr><th id="299">299</th><td>    }</td></tr>
+<tr><th id="300">300</th><td></td></tr>
+<tr><th id="301">301</th><td>  <b>if</b> ((<a class="local col0 ref" href="#30statbuf" title='statbuf' data-ref="30statbuf">statbuf</a>.<a class="ref field" href="../../../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_mode" title='stat::st_mode' data-ref="stat::st_mode">st_mode</a> &amp; <a class="macro" href="../../../include/x86_64-linux-gnu/sys/stat.h.html#107" title="0170000" data-ref="_M/S_IFMT">S_IFMT</a>) != <a class="macro" href="../../../include/x86_64-linux-gnu/sys/stat.h.html#108" title="0040000" data-ref="_M/S_IFDIR">S_IFDIR</a>)</td></tr>
+<tr><th id="302">302</th><td>    {</td></tr>
+<tr><th id="303">303</th><td>    <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="304">304</th><td>      <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"skipping %s/%s: not a directory\n"</q>, <a class="local col1 ref" href="#21path" title='path' data-ref="21path">path</a>, <a class="local col1 ref" href="#31name" title='name' data-ref="31name">name</a>);</td></tr>
+<tr><th id="305">305</th><td>    <b>continue</b>;</td></tr>
+<tr><th id="306">306</th><td>    }</td></tr>
+<tr><th id="307">307</th><td></td></tr>
+<tr><th id="308">308</th><td>  <i>/* Keep the latest timestamp encountered */</i></td></tr>
+<tr><th id="309">309</th><td></td></tr>
+<tr><th id="310">310</th><td>  <b>if</b> (<a class="local col0 ref" href="#30statbuf" title='statbuf' data-ref="30statbuf">statbuf</a>.<a class="macro" href="../../../include/x86_64-linux-gnu/bits/stat.h.html#95" title="st_mtim.tv_sec" data-ref="_M/st_mtime">st_mtime</a> &gt; *<a class="local col3 ref" href="#23latest" title='latest' data-ref="23latest">latest</a>) *<a class="local col3 ref" href="#23latest" title='latest' data-ref="23latest">latest</a> = <a class="local col0 ref" href="#30statbuf" title='statbuf' data-ref="30statbuf">statbuf</a>.<a class="macro" href="../../../include/x86_64-linux-gnu/bits/stat.h.html#95" title="st_mtim.tv_sec" data-ref="_M/st_mtime">st_mtime</a>;</td></tr>
+<tr><th id="311">311</th><td></td></tr>
+<tr><th id="312">312</th><td>  <i>/* If this is a maildir folder, call this function recursively. */</i></td></tr>
+<tr><th id="313">313</th><td></td></tr>
+<tr><th id="314">314</th><td>  <b>if</b> (<a class="local col1 ref" href="#31name" title='name' data-ref="31name">name</a>[<var>0</var>] == <kbd>'.'</kbd>)</td></tr>
+<tr><th id="315">315</th><td>    {</td></tr>
+<tr><th id="316">316</th><td>    <a class="local col8 ref" href="#28sum" title='sum' data-ref="28sum">sum</a> += <a class="ref fn" href="#maildir_compute_size" title='maildir_compute_size' data-ref="maildir_compute_size">maildir_compute_size</a>(<a class="local col2 ref" href="#32buffer" title='buffer' data-ref="32buffer">buffer</a>, <a class="local col2 ref" href="#22filecount" title='filecount' data-ref="22filecount">filecount</a>, <a class="local col3 ref" href="#23latest" title='latest' data-ref="23latest">latest</a>, <a class="local col4 ref" href="#24regex" title='regex' data-ref="24regex">regex</a>, <a class="local col5 ref" href="#25dir_regex" title='dir_regex' data-ref="25dir_regex">dir_regex</a>,</td></tr>
+<tr><th id="317">317</th><td>      <a class="local col6 ref" href="#26timestamp_only" title='timestamp_only' data-ref="26timestamp_only">timestamp_only</a>);</td></tr>
+<tr><th id="318">318</th><td>    }</td></tr>
+<tr><th id="319">319</th><td></td></tr>
+<tr><th id="320">320</th><td>  <i>/* Otherwise it must be a folder that contains messages (e.g. new or cur), so</i></td></tr>
+<tr><th id="321">321</th><td><i>  we need to get its size, unless all we are interested in is the timestamp. */</i></td></tr>
+<tr><th id="322">322</th><td></td></tr>
+<tr><th id="323">323</th><td>  <b>else</b> <b>if</b> (!<a class="local col6 ref" href="#26timestamp_only" title='timestamp_only' data-ref="26timestamp_only">timestamp_only</a>)</td></tr>
+<tr><th id="324">324</th><td>    {</td></tr>
+<tr><th id="325">325</th><td>    <a class="local col8 ref" href="#28sum" title='sum' data-ref="28sum">sum</a> += <a class="ref fn" href="appendfile.h.html#check_dir_size" title='check_dir_size' data-ref="check_dir_size">check_dir_size</a>(<a class="local col2 ref" href="#32buffer" title='buffer' data-ref="32buffer">buffer</a>, <a class="local col2 ref" href="#22filecount" title='filecount' data-ref="22filecount">filecount</a>, <a class="local col4 ref" href="#24regex" title='regex' data-ref="24regex">regex</a>);</td></tr>
+<tr><th id="326">326</th><td>    }</td></tr>
+<tr><th id="327">327</th><td>  }</td></tr>
+<tr><th id="328">328</th><td></td></tr>
+<tr><th id="329">329</th><td><a class="ref fn" href="../../../include/dirent.h.html#closedir" title='closedir' data-ref="closedir">closedir</a>(<a class="local col7 ref" href="#27dir" title='dir' data-ref="27dir">dir</a>);</td></tr>
+<tr><th id="330">330</th><td><a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="331">331</th><td>  {</td></tr>
+<tr><th id="332">332</th><td>  <b>if</b> (<a class="local col6 ref" href="#26timestamp_only" title='timestamp_only' data-ref="26timestamp_only">timestamp_only</a>)</td></tr>
+<tr><th id="333">333</th><td>    <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"maildir_compute_size (timestamp_only): %ld\n"</q>,</td></tr>
+<tr><th id="334">334</th><td>    (<em>long</em> <em>int</em>) *<a class="local col3 ref" href="#23latest" title='latest' data-ref="23latest">latest</a>);</td></tr>
+<tr><th id="335">335</th><td>  <b>else</b></td></tr>
+<tr><th id="336">336</th><td>    <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"maildir_compute_size: path=%s\n  sum="</q> <a class="macro" href="../../build-Linux-x86_64/config.h.html#10" title="&quot;%ld&quot;" data-ref="_M/OFF_T_FMT">OFF_T_FMT</a></td></tr>
+<tr><th id="337">337</th><td>      <q>" filecount=%d timestamp=%ld\n"</q>,</td></tr>
+<tr><th id="338">338</th><td>      <a class="local col1 ref" href="#21path" title='path' data-ref="21path">path</a>, <a class="local col8 ref" href="#28sum" title='sum' data-ref="28sum">sum</a>, *<a class="local col2 ref" href="#22filecount" title='filecount' data-ref="22filecount">filecount</a>, (<em>long</em> <em>int</em>) *<a class="local col3 ref" href="#23latest" title='latest' data-ref="23latest">latest</a>);</td></tr>
+<tr><th id="339">339</th><td>  }</td></tr>
+<tr><th id="340">340</th><td><b>return</b> <a class="local col8 ref" href="#28sum" title='sum' data-ref="28sum">sum</a>;</td></tr>
+<tr><th id="341">341</th><td>}</td></tr>
+<tr><th id="342">342</th><td></td></tr>
+<tr><th id="343">343</th><td></td></tr>
+<tr><th id="344">344</th><td></td></tr>
+<tr><th id="345">345</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="346">346</th><td><i>*        Create or update maildirsizefile        *</i></td></tr>
+<tr><th id="347">347</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="348">348</th><td></td></tr>
+<tr><th id="349">349</th><td><i>/* This function is called before a delivery if the option to use</i></td></tr>
+<tr><th id="350">350</th><td><i>maildirsizefile is enabled. Its function is to create the file if it does not</i></td></tr>
+<tr><th id="351">351</th><td><i>exist, or to update it if that is necessary.</i></td></tr>
+<tr><th id="352">352</th><td><i></i></td></tr>
+<tr><th id="353">353</th><td><i>The logic in this function follows the rules that are described in</i></td></tr>
+<tr><th id="354">354</th><td><i></i></td></tr>
+<tr><th id="355">355</th><td><i>  <a href="http://www.inter7.com/courierimap/README.maildirquota.html">http://www.inter7.com/courierimap/README.maildirquota.html</a></i></td></tr>
+<tr><th id="356">356</th><td><i></i></td></tr>
+<tr><th id="357">357</th><td><i>Or, at least, it is supposed to!</i></td></tr>
+<tr><th id="358">358</th><td><i></i></td></tr>
+<tr><th id="359">359</th><td><i>Arguments:</i></td></tr>
+<tr><th id="360">360</th><td><i>  path             the path to the maildir directory; this is already backed-up</i></td></tr>
+<tr><th id="361">361</th><td><i>                     to the parent if the delivery directory is a maildirfolder</i></td></tr>
+<tr><th id="362">362</th><td><i>  ob               the appendfile options block</i></td></tr>
+<tr><th id="363">363</th><td><i>  regex            a compiled regex for getting a file's size from its name</i></td></tr>
+<tr><th id="364">364</th><td><i>  dir_regex        a compiled regex for selecting maildir directories</i></td></tr>
+<tr><th id="365">365</th><td><i>  returned_size    where to return the current size of the maildir, even if</i></td></tr>
+<tr><th id="366">366</th><td><i>                     the maildirsizefile is removed because of a race</i></td></tr>
+<tr><th id="367">367</th><td><i></i></td></tr>
+<tr><th id="368">368</th><td><i>Returns:           &gt;=0  a file descriptor for an open maildirsize file</i></td></tr>
+<tr><th id="369">369</th><td><i>                   -1   there was an error opening or accessing the file</i></td></tr>
+<tr><th id="370">370</th><td><i>                   -2   the file was removed because of a race</i></td></tr>
+<tr><th id="371">371</th><td><i>*/</i></td></tr>
+<tr><th id="372">372</th><td></td></tr>
+<tr><th id="373">373</th><td><em>int</em></td></tr>
+<tr><th id="374">374</th><td><dfn class="decl def fn" id="maildir_ensure_sizefile" title='maildir_ensure_sizefile' data-ref="maildir_ensure_sizefile">maildir_ensure_sizefile</dfn>(<a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="33path" title='path' data-type='uschar *' data-ref="33path">path</dfn>, <a class="typedef" href="appendfile.h.html#appendfile_transport_options_block" title='appendfile_transport_options_block' data-type='struct appendfile_transport_options_block' data-ref="appendfile_transport_options_block">appendfile_transport_options_block</a> *<dfn class="local col4 decl" id="34ob" title='ob' data-type='appendfile_transport_options_block *' data-ref="34ob">ob</dfn>,</td></tr>
+<tr><th id="375">375</th><td>  <em>const</em> <a class="typedef" href="../../../include/pcre.h.html#pcre" title='pcre' data-type='struct real_pcre' data-ref="pcre">pcre</a> *<dfn class="local col5 decl" id="35regex" title='regex' data-type='const pcre *' data-ref="35regex">regex</dfn>, <em>const</em> <a class="typedef" href="../../../include/pcre.h.html#pcre" title='pcre' data-type='struct real_pcre' data-ref="pcre">pcre</a> *<dfn class="local col6 decl" id="36dir_regex" title='dir_regex' data-type='const pcre *' data-ref="36dir_regex">dir_regex</dfn>, <a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#off_t" title='off_t' data-type='__off64_t' data-ref="off_t">off_t</a> *<dfn class="local col7 decl" id="37returned_size" title='returned_size' data-type='off_t *' data-ref="37returned_size">returned_size</dfn>,</td></tr>
+<tr><th id="376">376</th><td>  <em>int</em> *<dfn class="local col8 decl" id="38returned_filecount" title='returned_filecount' data-type='int *' data-ref="38returned_filecount">returned_filecount</dfn>)</td></tr>
+<tr><th id="377">377</th><td>{</td></tr>
+<tr><th id="378">378</th><td><em>int</em> <dfn class="local col9 decl" id="39count" title='count' data-type='int' data-ref="39count">count</dfn>, <dfn class="local col0 decl" id="40fd" title='fd' data-type='int' data-ref="40fd">fd</dfn>;</td></tr>
+<tr><th id="379">379</th><td><a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#off_t" title='off_t' data-type='__off64_t' data-ref="off_t">off_t</a> <dfn class="local col1 decl" id="41cached_quota" title='cached_quota' data-type='off_t' data-ref="41cached_quota">cached_quota</dfn> = <var>0</var>;</td></tr>
+<tr><th id="380">380</th><td><em>int</em> <dfn class="local col2 decl" id="42cached_quota_filecount" title='cached_quota_filecount' data-type='int' data-ref="42cached_quota_filecount">cached_quota_filecount</dfn> = <var>0</var>;</td></tr>
+<tr><th id="381">381</th><td><em>int</em> <dfn class="local col3 decl" id="43filecount" title='filecount' data-type='int' data-ref="43filecount">filecount</dfn> = <var>0</var>;</td></tr>
+<tr><th id="382">382</th><td><em>int</em> <dfn class="local col4 decl" id="44linecount" title='linecount' data-type='int' data-ref="44linecount">linecount</dfn> = <var>0</var>;</td></tr>
+<tr><th id="383">383</th><td><a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#off_t" title='off_t' data-type='__off64_t' data-ref="off_t">off_t</a> <dfn class="local col5 decl" id="45size" title='size' data-type='off_t' data-ref="45size">size</dfn> = <var>0</var>;</td></tr>
+<tr><th id="384">384</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="46filename" title='filename' data-type='uschar *' data-ref="46filename">filename</dfn>;</td></tr>
+<tr><th id="385">385</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col7 decl" id="47buffer" title='buffer' data-type='uschar [5120]' data-ref="47buffer">buffer</dfn>[<a class="macro" href="#21" title="5120" data-ref="_M/MAX_FILE_SIZE">MAX_FILE_SIZE</a>];</td></tr>
+<tr><th id="386">386</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col8 decl" id="48ptr" title='ptr' data-type='uschar *' data-ref="48ptr">ptr</dfn> = <a class="local col7 ref" href="#47buffer" title='buffer' data-ref="47buffer">buffer</a>;</td></tr>
+<tr><th id="387">387</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col9 decl" id="49endptr" title='endptr' data-type='uschar *' data-ref="49endptr">endptr</dfn>;</td></tr>
+<tr><th id="388">388</th><td></td></tr>
+<tr><th id="389">389</th><td><i>/* Try a few times to open or create the file, in case another process is doing</i></td></tr>
+<tr><th id="390">390</th><td><i>the same thing. */</i></td></tr>
+<tr><th id="391">391</th><td></td></tr>
+<tr><th id="392">392</th><td><a class="local col6 ref" href="#46filename" title='filename' data-ref="46filename">filename</a> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%s/maildirsize"</q>, <a class="local col3 ref" href="#33path" title='path' data-ref="33path">path</a>);</td></tr>
+<tr><th id="393">393</th><td></td></tr>
+<tr><th id="394">394</th><td><a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"looking for maildirsize in %s\n"</q>, <a class="local col3 ref" href="#33path" title='path' data-ref="33path">path</a>);</td></tr>
+<tr><th id="395">395</th><td><a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a> = <a class="macro" href="../mytypes.h.html#91" title="open((const char *)(filename),02|02000,ob-&gt;mode ? ob-&gt;mode : 0600)" data-ref="_M/Uopen">Uopen</a>(<a class="local col6 ref" href="#46filename" title='filename' data-ref="46filename">filename</a>, <a class="macro" href="../../../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#45" title="02" data-ref="_M/O_RDWR">O_RDWR</a>|<a class="macro" href="../../../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#59" title="02000" data-ref="_M/O_APPEND">O_APPEND</a>, <a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::mode" title='(anonymous struct)::mode' data-ref="(anonymous)::mode">mode</a> ? <a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::mode" title='(anonymous struct)::mode' data-ref="(anonymous)::mode">mode</a> : <var>0600</var>);</td></tr>
+<tr><th id="396">396</th><td><b>if</b> (<a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="397">397</th><td>  {</td></tr>
+<tr><th id="398">398</th><td>  <b>if</b> (<a class="macro" href="../../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a> != <a class="macro" href="../../../include/asm-generic/errno-base.h.html#5" title="2" data-ref="_M/ENOENT">ENOENT</a>) <b>return</b> -<var>1</var>;</td></tr>
+<tr><th id="399">399</th><td>  <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="400">400</th><td>    <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"%s does not exist: recalculating\n"</q>, <a class="local col6 ref" href="#46filename" title='filename' data-ref="46filename">filename</a>);</td></tr>
+<tr><th id="401">401</th><td>  <b>goto</b> <a class="lbl" href="#50RECALCULATE" data-ref="50RECALCULATE">RECALCULATE</a>;</td></tr>
+<tr><th id="402">402</th><td>  }</td></tr>
+<tr><th id="403">403</th><td></td></tr>
+<tr><th id="404">404</th><td><i>/* The file has been successfully opened. Check that the cached quota value is</i></td></tr>
+<tr><th id="405">405</th><td><i>still correct, and that the size of the file is still small enough. If so,</i></td></tr>
+<tr><th id="406">406</th><td><i>compute the maildir size from the file. */</i></td></tr>
+<tr><th id="407">407</th><td></td></tr>
+<tr><th id="408">408</th><td><a class="local col9 ref" href="#39count" title='count' data-ref="39count">count</a> = <a class="ref fn" href="../../../include/unistd.h.html#read" title='read' data-ref="read">read</a>(<a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a>, <a class="local col7 ref" href="#47buffer" title='buffer' data-ref="47buffer">buffer</a>, <b>sizeof</b>(<a class="local col7 ref" href="#47buffer" title='buffer' data-ref="47buffer">buffer</a>));</td></tr>
+<tr><th id="409">409</th><td><b>if</b> (<a class="local col9 ref" href="#39count" title='count' data-ref="39count">count</a> &gt;= <b>sizeof</b>(<a class="local col7 ref" href="#47buffer" title='buffer' data-ref="47buffer">buffer</a>))</td></tr>
+<tr><th id="410">410</th><td>  {</td></tr>
+<tr><th id="411">411</th><td>  <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="412">412</th><td>    <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"maildirsize file too big (%d): recalculating\n"</q>, <a class="local col9 ref" href="#39count" title='count' data-ref="39count">count</a>);</td></tr>
+<tr><th id="413">413</th><td>  <b>goto</b> <a class="lbl" href="#50RECALCULATE" data-ref="50RECALCULATE">RECALCULATE</a>;</td></tr>
+<tr><th id="414">414</th><td>  }</td></tr>
+<tr><th id="415">415</th><td><a class="local col7 ref" href="#47buffer" title='buffer' data-ref="47buffer">buffer</a>[<a class="local col9 ref" href="#39count" title='count' data-ref="39count">count</a>] = <var>0</var>;   <i>/* Ensure string terminated */</i></td></tr>
+<tr><th id="416">416</th><td></td></tr>
+<tr><th id="417">417</th><td><i>/* Read the quota parameters from the first line of the data. */</i></td></tr>
+<tr><th id="418">418</th><td></td></tr>
+<tr><th id="419">419</th><td><a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="420">420</th><td>  <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"reading quota parameters from maildirsize data\n"</q>);</td></tr>
+<tr><th id="421">421</th><td></td></tr>
+<tr><th id="422">422</th><td><b>for</b> (;;)</td></tr>
+<tr><th id="423">423</th><td>  {</td></tr>
+<tr><th id="424">424</th><td>  <a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#off_t" title='off_t' data-type='__off64_t' data-ref="off_t">off_t</a> <dfn class="local col1 decl" id="51n" title='n' data-type='off_t' data-ref="51n">n</dfn> = (<a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#off_t" title='off_t' data-type='__off64_t' data-ref="off_t">off_t</a>)<a class="macro" href="../mytypes.h.html#114" title="strtod((const char *)(ptr),(char **)(&amp;endptr))" data-ref="_M/Ustrtod">Ustrtod</a>(<a class="local col8 ref" href="#48ptr" title='ptr' data-ref="48ptr">ptr</a>, &amp;<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a>);</td></tr>
+<tr><th id="425">425</th><td></td></tr>
+<tr><th id="426">426</th><td>  <i>/* Only two data items are currently defined; ignore any others that</i></td></tr>
+<tr><th id="427">427</th><td><i>  may be present. The spec is for a number followed by a letter. Anything</i></td></tr>
+<tr><th id="428">428</th><td><i>  else we reject and recalculate. */</i></td></tr>
+<tr><th id="429">429</th><td></td></tr>
+<tr><th id="430">430</th><td>  <b>if</b> (*<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a> == <kbd>'S'</kbd>) <a class="local col1 ref" href="#41cached_quota" title='cached_quota' data-ref="41cached_quota">cached_quota</a> = <a class="local col1 ref" href="#51n" title='n' data-ref="51n">n</a>;</td></tr>
+<tr><th id="431">431</th><td>    <b>else</b> <b>if</b> (*<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a> == <kbd>'C'</kbd>) <a class="local col2 ref" href="#42cached_quota_filecount" title='cached_quota_filecount' data-ref="42cached_quota_filecount">cached_quota_filecount</a> = (<em>int</em>)<a class="local col1 ref" href="#51n" title='n' data-ref="51n">n</a>;</td></tr>
+<tr><th id="432">432</th><td>  <b>if</b> (!<a class="macro" href="../../../include/ctype.h.html#198" title="((*__ctype_b_loc ())[(int) ((*endptr++))] &amp; (unsigned short int) _ISalpha)" data-ref="_M/isalpha">isalpha</a>(*<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a>++))</td></tr>
+<tr><th id="433">433</th><td>    {</td></tr>
+<tr><th id="434">434</th><td>    <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="435">435</th><td>      <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"quota parameter number not followed by letter in "</q></td></tr>
+<tr><th id="436">436</th><td>        <q>"\"%.*s\": recalculating maildirsize\n"</q>, (<em>int</em>)(<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a> - <a class="local col7 ref" href="#47buffer" title='buffer' data-ref="47buffer">buffer</a>),</td></tr>
+<tr><th id="437">437</th><td>        <a class="local col7 ref" href="#47buffer" title='buffer' data-ref="47buffer">buffer</a>);</td></tr>
+<tr><th id="438">438</th><td>    <b>goto</b> <a class="lbl" href="#50RECALCULATE" data-ref="50RECALCULATE">RECALCULATE</a>;</td></tr>
+<tr><th id="439">439</th><td>    }</td></tr>
+<tr><th id="440">440</th><td>  <b>if</b> (*<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a> == <kbd>'\n'</kbd> || *<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a> == <var>0</var>) <b>break</b>;</td></tr>
+<tr><th id="441">441</th><td>  <b>if</b> (*<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a>++ != <kbd>','</kbd>)</td></tr>
+<tr><th id="442">442</th><td>    {</td></tr>
+<tr><th id="443">443</th><td>    <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="444">444</th><td>      <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"quota parameter not followed by comma in "</q></td></tr>
+<tr><th id="445">445</th><td>        <q>"\"%.*s\": recalculating maildirsize\n"</q>, (<em>int</em>)(<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a> - <a class="local col7 ref" href="#47buffer" title='buffer' data-ref="47buffer">buffer</a>),</td></tr>
+<tr><th id="446">446</th><td>        <a class="local col7 ref" href="#47buffer" title='buffer' data-ref="47buffer">buffer</a>);</td></tr>
+<tr><th id="447">447</th><td>    <b>goto</b> <a class="lbl" href="#50RECALCULATE" data-ref="50RECALCULATE">RECALCULATE</a>;</td></tr>
+<tr><th id="448">448</th><td>    }</td></tr>
+<tr><th id="449">449</th><td>  <a class="local col8 ref" href="#48ptr" title='ptr' data-ref="48ptr">ptr</a> = <a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a>;</td></tr>
+<tr><th id="450">450</th><td>  }</td></tr>
+<tr><th id="451">451</th><td></td></tr>
+<tr><th id="452">452</th><td><i>/* Check the cached values against the current settings */</i></td></tr>
+<tr><th id="453">453</th><td></td></tr>
+<tr><th id="454">454</th><td><b>if</b> (<a class="local col1 ref" href="#41cached_quota" title='cached_quota' data-ref="41cached_quota">cached_quota</a> != <a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::quota_value" title='(anonymous struct)::quota_value' data-ref="(anonymous)::quota_value">quota_value</a> ||</td></tr>
+<tr><th id="455">455</th><td>    <a class="local col2 ref" href="#42cached_quota_filecount" title='cached_quota_filecount' data-ref="42cached_quota_filecount">cached_quota_filecount</a> != <a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::quota_filecount_value" title='(anonymous struct)::quota_filecount_value' data-ref="(anonymous)::quota_filecount_value">quota_filecount_value</a>)</td></tr>
+<tr><th id="456">456</th><td>  {</td></tr>
+<tr><th id="457">457</th><td>  <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="458">458</th><td>    <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"cached quota is out of date: recalculating\n"</q></td></tr>
+<tr><th id="459">459</th><td>      <q>"  quota="</q> <a class="macro" href="../../build-Linux-x86_64/config.h.html#10" title="&quot;%ld&quot;" data-ref="_M/OFF_T_FMT">OFF_T_FMT</a> <q>" cached_quota="</q> <a class="macro" href="../../build-Linux-x86_64/config.h.html#10" title="&quot;%ld&quot;" data-ref="_M/OFF_T_FMT">OFF_T_FMT</a> <q>" filecount_quota=%d "</q></td></tr>
+<tr><th id="460">460</th><td>      <q>"cached_quota_filecount=%d\n"</q>, <a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::quota_value" title='(anonymous struct)::quota_value' data-ref="(anonymous)::quota_value">quota_value</a>,</td></tr>
+<tr><th id="461">461</th><td>      <a class="local col1 ref" href="#41cached_quota" title='cached_quota' data-ref="41cached_quota">cached_quota</a>, <a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::quota_filecount_value" title='(anonymous struct)::quota_filecount_value' data-ref="(anonymous)::quota_filecount_value">quota_filecount_value</a>, <a class="local col2 ref" href="#42cached_quota_filecount" title='cached_quota_filecount' data-ref="42cached_quota_filecount">cached_quota_filecount</a>);</td></tr>
+<tr><th id="462">462</th><td>  <b>goto</b> <a class="lbl" href="#50RECALCULATE" data-ref="50RECALCULATE">RECALCULATE</a>;</td></tr>
+<tr><th id="463">463</th><td>  }</td></tr>
+<tr><th id="464">464</th><td></td></tr>
+<tr><th id="465">465</th><td><i>/* Quota values agree; parse the rest of the data to get the sizes. At this</i></td></tr>
+<tr><th id="466">466</th><td><i>stage, *endptr points either to 0 or to '\n'.  */</i></td></tr>
+<tr><th id="467">467</th><td></td></tr>
+<tr><th id="468">468</th><td><a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="469">469</th><td>  <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"computing maildir size from maildirsize data\n"</q>);</td></tr>
+<tr><th id="470">470</th><td></td></tr>
+<tr><th id="471">471</th><td><b>while</b> (*<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a>++ == <kbd>'\n'</kbd>)</td></tr>
+<tr><th id="472">472</th><td>  {</td></tr>
+<tr><th id="473">473</th><td>  <b>if</b> (*<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a> == <var>0</var>) <b>break</b>;</td></tr>
+<tr><th id="474">474</th><td>  <a class="local col4 ref" href="#44linecount" title='linecount' data-ref="44linecount">linecount</a>++;</td></tr>
+<tr><th id="475">475</th><td>  <a class="local col8 ref" href="#48ptr" title='ptr' data-ref="48ptr">ptr</a> = <a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a>;</td></tr>
+<tr><th id="476">476</th><td>  <a class="local col5 ref" href="#45size" title='size' data-ref="45size">size</a> += (<a class="typedef" href="../../../include/x86_64-linux-gnu/sys/types.h.html#off_t" title='off_t' data-type='__off64_t' data-ref="off_t">off_t</a>)<a class="macro" href="../mytypes.h.html#114" title="strtod((const char *)(ptr),(char **)(&amp;endptr))" data-ref="_M/Ustrtod">Ustrtod</a>(<a class="local col8 ref" href="#48ptr" title='ptr' data-ref="48ptr">ptr</a>, &amp;<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a>);</td></tr>
+<tr><th id="477">477</th><td>  <b>if</b> (*<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a> != <kbd>' '</kbd>) <b>break</b>;</td></tr>
+<tr><th id="478">478</th><td>  <a class="local col8 ref" href="#48ptr" title='ptr' data-ref="48ptr">ptr</a> = <a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a> + <var>1</var>;</td></tr>
+<tr><th id="479">479</th><td>  <a class="local col3 ref" href="#43filecount" title='filecount' data-ref="43filecount">filecount</a> += <a class="macro" href="../mytypes.h.html#115" title="strtol((const char *)(ptr),(char **)(&amp;endptr),10)" data-ref="_M/Ustrtol">Ustrtol</a>(<a class="local col8 ref" href="#48ptr" title='ptr' data-ref="48ptr">ptr</a>, &amp;<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a>, <var>10</var>);</td></tr>
+<tr><th id="480">480</th><td>  }</td></tr>
+<tr><th id="481">481</th><td></td></tr>
+<tr><th id="482">482</th><td><i>/* If *endptr is zero, we have successfully parsed the file, and we now have</i></td></tr>
+<tr><th id="483">483</th><td><i>the size of the mailbox as cached in the file. The "rules" say that if this</i></td></tr>
+<tr><th id="484">484</th><td><i>value indicates that the mailbox is over quota, we must recalculate if there is</i></td></tr>
+<tr><th id="485">485</th><td><i>more than one entry in the file, or if the file is older than 15 minutes. Also,</i></td></tr>
+<tr><th id="486">486</th><td><i>just in case there are weird values in the file, recalculate if either of the</i></td></tr>
+<tr><th id="487">487</th><td><i>values is negative. */</i></td></tr>
+<tr><th id="488">488</th><td></td></tr>
+<tr><th id="489">489</th><td><b>if</b> (*<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a> == <var>0</var>)</td></tr>
+<tr><th id="490">490</th><td>  {</td></tr>
+<tr><th id="491">491</th><td>  <b>if</b> (<a class="local col5 ref" href="#45size" title='size' data-ref="45size">size</a> &lt; <var>0</var> || <a class="local col3 ref" href="#43filecount" title='filecount' data-ref="43filecount">filecount</a> &lt; <var>0</var>)</td></tr>
+<tr><th id="492">492</th><td>    {</td></tr>
+<tr><th id="493">493</th><td>    <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"negative value in maildirsize "</q></td></tr>
+<tr><th id="494">494</th><td>      <q>"(size="</q> <a class="macro" href="../../build-Linux-x86_64/config.h.html#10" title="&quot;%ld&quot;" data-ref="_M/OFF_T_FMT">OFF_T_FMT</a> <q>" count=%d): recalculating\n"</q>, <a class="local col5 ref" href="#45size" title='size' data-ref="45size">size</a>, <a class="local col3 ref" href="#43filecount" title='filecount' data-ref="43filecount">filecount</a>);</td></tr>
+<tr><th id="495">495</th><td>    <b>goto</b> <a class="lbl" href="#50RECALCULATE" data-ref="50RECALCULATE">RECALCULATE</a>;</td></tr>
+<tr><th id="496">496</th><td>    }</td></tr>
+<tr><th id="497">497</th><td></td></tr>
+<tr><th id="498">498</th><td>  <b>if</b> (<a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::quota_value" title='(anonymous struct)::quota_value' data-ref="(anonymous)::quota_value">quota_value</a> &gt; <var>0</var> &amp;&amp;</td></tr>
+<tr><th id="499">499</th><td>      (<a class="local col5 ref" href="#45size" title='size' data-ref="45size">size</a> + (<a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::quota_is_inclusive" title='(anonymous struct)::quota_is_inclusive' data-ref="(anonymous)::quota_is_inclusive">quota_is_inclusive</a>? <a class="ref" href="../globals.h.html#message_size" title='message_size' data-ref="message_size">message_size</a> : <var>0</var>) &gt; <a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::quota_value" title='(anonymous struct)::quota_value' data-ref="(anonymous)::quota_value">quota_value</a> ||</td></tr>
+<tr><th id="500">500</th><td>        (<a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::quota_filecount_value" title='(anonymous struct)::quota_filecount_value' data-ref="(anonymous)::quota_filecount_value">quota_filecount_value</a> &gt; <var>0</var> &amp;&amp;</td></tr>
+<tr><th id="501">501</th><td>          <a class="local col3 ref" href="#43filecount" title='filecount' data-ref="43filecount">filecount</a> + (<a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::quota_is_inclusive" title='(anonymous struct)::quota_is_inclusive' data-ref="(anonymous)::quota_is_inclusive">quota_is_inclusive</a> ? <var>1</var>:<var>0</var>) &gt;</td></tr>
+<tr><th id="502">502</th><td>            <a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::quota_filecount_value" title='(anonymous struct)::quota_filecount_value' data-ref="(anonymous)::quota_filecount_value">quota_filecount_value</a>)</td></tr>
+<tr><th id="503">503</th><td>      ))</td></tr>
+<tr><th id="504">504</th><td>    {</td></tr>
+<tr><th id="505">505</th><td>    <b>struct</b> <a class="type" href="../../../include/x86_64-linux-gnu/bits/stat.h.html#stat" title='stat' data-ref="stat">stat</a> <dfn class="local col2 decl" id="52statbuf" title='statbuf' data-type='struct stat' data-ref="52statbuf">statbuf</dfn>;</td></tr>
+<tr><th id="506">506</th><td>    <b>if</b> (<a class="local col4 ref" href="#44linecount" title='linecount' data-ref="44linecount">linecount</a> &gt; <var>1</var>)</td></tr>
+<tr><th id="507">507</th><td>      {</td></tr>
+<tr><th id="508">508</th><td>      <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"over quota and maildirsize has "</q></td></tr>
+<tr><th id="509">509</th><td>        <q>"more than 1 entry: recalculating\n"</q>);</td></tr>
+<tr><th id="510">510</th><td>      <b>goto</b> <a class="lbl" href="#50RECALCULATE" data-ref="50RECALCULATE">RECALCULATE</a>;</td></tr>
+<tr><th id="511">511</th><td>      }</td></tr>
+<tr><th id="512">512</th><td></td></tr>
+<tr><th id="513">513</th><td>    <b>if</b> (<a class="ref fn" href="../../../include/x86_64-linux-gnu/sys/stat.h.html#219" title='fstat' data-ref="fstat64">fstat</a>(<a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a>, &amp;<a class="local col2 ref" href="#52statbuf" title='statbuf' data-ref="52statbuf">statbuf</a>) &lt; <var>0</var>) <b>goto</b> <a class="lbl" href="#50RECALCULATE" data-ref="50RECALCULATE">RECALCULATE</a>;  <i>/* Should never occur */</i></td></tr>
+<tr><th id="514">514</th><td></td></tr>
+<tr><th id="515">515</th><td>    <b>if</b> (<a class="ref fn" href="../../../include/time.h.html#time" title='time' data-ref="time">time</a>(<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) - <a class="local col2 ref" href="#52statbuf" title='statbuf' data-ref="52statbuf">statbuf</a>.<a class="macro" href="../../../include/x86_64-linux-gnu/bits/stat.h.html#95" title="st_mtim.tv_sec" data-ref="_M/st_mtime">st_mtime</a> &gt; <var>15</var>*<var>60</var>)</td></tr>
+<tr><th id="516">516</th><td>      {</td></tr>
+<tr><th id="517">517</th><td>      <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"over quota and maildirsize is older "</q></td></tr>
+<tr><th id="518">518</th><td>        <q>"than 15 minutes: recalculating\n"</q>);</td></tr>
+<tr><th id="519">519</th><td>      <b>goto</b> <a class="lbl" href="#50RECALCULATE" data-ref="50RECALCULATE">RECALCULATE</a>;</td></tr>
+<tr><th id="520">520</th><td>      }</td></tr>
+<tr><th id="521">521</th><td>    }</td></tr>
+<tr><th id="522">522</th><td>  }</td></tr>
+<tr><th id="523">523</th><td></td></tr>
+<tr><th id="524">524</th><td></td></tr>
+<tr><th id="525">525</th><td><i>/* If *endptr is not zero, there was a syntax error in the file. */</i></td></tr>
+<tr><th id="526">526</th><td></td></tr>
+<tr><th id="527">527</th><td><b>else</b></td></tr>
+<tr><th id="528">528</th><td>  {</td></tr>
+<tr><th id="529">529</th><td>  <em>int</em> <dfn class="local col3 decl" id="53len" title='len' data-type='int' data-ref="53len">len</dfn>;</td></tr>
+<tr><th id="530">530</th><td>  <a class="typedef" href="../../../include/time.h.html#time_t" title='time_t' data-type='__time_t' data-ref="time_t">time_t</a> <dfn class="local col4 decl" id="54old_latest" title='old_latest' data-type='time_t' data-ref="54old_latest">old_latest</dfn>, <dfn class="local col5 decl" id="55new_latest" title='new_latest' data-type='time_t' data-ref="55new_latest">new_latest</dfn>;</td></tr>
+<tr><th id="531">531</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="56tempname" title='tempname' data-type='uschar *' data-ref="56tempname">tempname</dfn>;</td></tr>
+<tr><th id="532">532</th><td>  <b>struct</b> <a class="type" href="../../../include/x86_64-linux-gnu/bits/time.h.html#timeval" title='timeval' data-ref="timeval">timeval</a> <dfn class="local col7 decl" id="57tv" title='tv' data-type='struct timeval' data-ref="57tv">tv</dfn>;</td></tr>
+<tr><th id="533">533</th><td></td></tr>
+<tr><th id="534">534</th><td>  <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>)</td></tr>
+<tr><th id="535">535</th><td>    {</td></tr>
+<tr><th id="536">536</th><td>    <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col8 decl" id="58p" title='p' data-type='uschar *' data-ref="58p">p</dfn> = <a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a>;</td></tr>
+<tr><th id="537">537</th><td>    <b>while</b> (<a class="local col8 ref" href="#58p" title='p' data-ref="58p">p</a> &gt; <a class="local col7 ref" href="#47buffer" title='buffer' data-ref="47buffer">buffer</a> &amp;&amp; <a class="local col8 ref" href="#58p" title='p' data-ref="58p">p</a>[-<var>1</var>] != <kbd>'\n'</kbd>) <a class="local col8 ref" href="#58p" title='p' data-ref="58p">p</a>--;</td></tr>
+<tr><th id="538">538</th><td>    <a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a>[<var>1</var>] = <var>0</var>;</td></tr>
+<tr><th id="539">539</th><td></td></tr>
+<tr><th id="540">540</th><td>    <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"error in maildirsizefile: unexpected character %d in "</q></td></tr>
+<tr><th id="541">541</th><td>      <q>"line %d (starting '%s'): recalculating\n"</q>,</td></tr>
+<tr><th id="542">542</th><td>      *<a class="local col9 ref" href="#49endptr" title='endptr' data-ref="49endptr">endptr</a>, <a class="local col4 ref" href="#44linecount" title='linecount' data-ref="44linecount">linecount</a> + <var>1</var>, <a class="macro" href="../macros.h.html#45" title="string_printing2((p), 1)" data-ref="_M/string_printing">string_printing</a>(<a class="local col8 ref" href="#58p" title='p' data-ref="58p">p</a>));</td></tr>
+<tr><th id="543">543</th><td>    }</td></tr>
+<tr><th id="544">544</th><td></td></tr>
+<tr><th id="545">545</th><td>  <i>/* Either there is no file, or the quota value has changed, or the file has</i></td></tr>
+<tr><th id="546">546</th><td><i>  got too big, or there was some format error in the file. Recalculate the size</i></td></tr>
+<tr><th id="547">547</th><td><i>  and write new contents to a temporary file; then rename it. After any</i></td></tr>
+<tr><th id="548">548</th><td><i>  error, just return -1 as the file descriptor. */</i></td></tr>
+<tr><th id="549">549</th><td></td></tr>
+<tr><th id="550">550</th><td>  <dfn class="lbl" id="50RECALCULATE" data-ref="50RECALCULATE">RECALCULATE</dfn>:</td></tr>
+<tr><th id="551">551</th><td></td></tr>
+<tr><th id="552">552</th><td>  <b>if</b> (<a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a> &gt;= <var>0</var>) (<em>void</em>)<a class="ref fn" href="../../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a>);</td></tr>
+<tr><th id="553">553</th><td>  <a class="local col4 ref" href="#54old_latest" title='old_latest' data-ref="54old_latest">old_latest</a> = <var>0</var>;</td></tr>
+<tr><th id="554">554</th><td>  <a class="local col3 ref" href="#43filecount" title='filecount' data-ref="43filecount">filecount</a> = <var>0</var>;</td></tr>
+<tr><th id="555">555</th><td>  <a class="local col5 ref" href="#45size" title='size' data-ref="45size">size</a> = <a class="ref fn" href="#maildir_compute_size" title='maildir_compute_size' data-ref="maildir_compute_size">maildir_compute_size</a>(<a class="local col3 ref" href="#33path" title='path' data-ref="33path">path</a>, &amp;<a class="local col3 ref" href="#43filecount" title='filecount' data-ref="43filecount">filecount</a>, &amp;<a class="local col4 ref" href="#54old_latest" title='old_latest' data-ref="54old_latest">old_latest</a>, <a class="local col5 ref" href="#35regex" title='regex' data-ref="35regex">regex</a>, <a class="local col6 ref" href="#36dir_regex" title='dir_regex' data-ref="36dir_regex">dir_regex</a>,</td></tr>
+<tr><th id="556">556</th><td>    <a class="macro" href="../mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>);</td></tr>
+<tr><th id="557">557</th><td></td></tr>
+<tr><th id="558">558</th><td>  (<em>void</em>)<a class="ref fn" href="../../../include/x86_64-linux-gnu/sys/time.h.html#gettimeofday" title='gettimeofday' data-ref="gettimeofday">gettimeofday</a>(&amp;<a class="local col7 ref" href="#57tv" title='tv' data-ref="57tv">tv</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);</td></tr>
+<tr><th id="559">559</th><td>  <a class="local col6 ref" href="#56tempname" title='tempname' data-ref="56tempname">tempname</a> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"%s/tmp/"</q> <a class="macro" href="../../build-Linux-x86_64/config.h.html#15" title="&quot;%ld&quot;" data-ref="_M/TIME_T_FMT">TIME_T_FMT</a> <q>".H%luP%lu.%s"</q>,</td></tr>
+<tr><th id="560">560</th><td>    <a class="local col3 ref" href="#33path" title='path' data-ref="33path">path</a>, <a class="local col7 ref" href="#57tv" title='tv' data-ref="57tv">tv</a>.<a class="ref field" href="../../../include/x86_64-linux-gnu/bits/time.h.html#timeval::tv_sec" title='timeval::tv_sec' data-ref="timeval::tv_sec">tv_sec</a>, <a class="local col7 ref" href="#57tv" title='tv' data-ref="57tv">tv</a>.<a class="ref field" href="../../../include/x86_64-linux-gnu/bits/time.h.html#timeval::tv_usec" title='timeval::tv_usec' data-ref="timeval::tv_usec">tv_usec</a>, (<em>long</em> <em>unsigned</em>) <a class="ref fn" href="../../../include/unistd.h.html#getpid" title='getpid' data-ref="getpid">getpid</a>(), <a class="ref" href="../globals.h.html#primary_hostname" title='primary_hostname' data-ref="primary_hostname">primary_hostname</a>);</td></tr>
+<tr><th id="561">561</th><td></td></tr>
+<tr><th id="562">562</th><td>  <a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a> = <a class="macro" href="../mytypes.h.html#91" title="open((const char *)(tempname),02|0100|0200,ob-&gt;mode ? ob-&gt;mode : 0600)" data-ref="_M/Uopen">Uopen</a>(<a class="local col6 ref" href="#56tempname" title='tempname' data-ref="56tempname">tempname</a>, <a class="macro" href="../../../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#45" title="02" data-ref="_M/O_RDWR">O_RDWR</a>|<a class="macro" href="../../../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#47" title="0100" data-ref="_M/O_CREAT">O_CREAT</a>|<a class="macro" href="../../../include/x86_64-linux-gnu/bits/fcntl-linux.h.html#50" title="0200" data-ref="_M/O_EXCL">O_EXCL</a>, <a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::mode" title='(anonymous struct)::mode' data-ref="(anonymous)::mode">mode</a> ? <a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::mode" title='(anonymous struct)::mode' data-ref="(anonymous)::mode">mode</a> : <var>0600</var>);</td></tr>
+<tr><th id="563">563</th><td>  <b>if</b> (<a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a> &gt;= <var>0</var>)</td></tr>
+<tr><th id="564">564</th><td>    {</td></tr>
+<tr><th id="565">565</th><td>    (<em>void</em>)<a class="ref fn" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col7 ref" href="#47buffer" title='buffer' data-ref="47buffer">buffer</a>, <a class="macro" href="../../build-Linux-x86_64/config.h.html#10" title="&quot;%ld&quot;" data-ref="_M/OFF_T_FMT">OFF_T_FMT</a> <q>"S,%dC\n"</q> <a class="macro" href="../../build-Linux-x86_64/config.h.html#10" title="&quot;%ld&quot;" data-ref="_M/OFF_T_FMT">OFF_T_FMT</a> <q>" %d\n"</q>,</td></tr>
+<tr><th id="566">566</th><td>      <a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::quota_value" title='(anonymous struct)::quota_value' data-ref="(anonymous)::quota_value">quota_value</a>, <a class="local col4 ref" href="#34ob" title='ob' data-ref="34ob">ob</a>-&gt;<a class="ref field" href="appendfile.h.html#(anonymous)::quota_filecount_value" title='(anonymous struct)::quota_filecount_value' data-ref="(anonymous)::quota_filecount_value">quota_filecount_value</a>, <a class="local col5 ref" href="#45size" title='size' data-ref="45size">size</a>, <a class="local col3 ref" href="#43filecount" title='filecount' data-ref="43filecount">filecount</a>);</td></tr>
+<tr><th id="567">567</th><td>    <a class="local col3 ref" href="#53len" title='len' data-ref="53len">len</a> = <a class="macro" href="../mytypes.h.html#104" title="(int)strlen((const char *)(buffer))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col7 ref" href="#47buffer" title='buffer' data-ref="47buffer">buffer</a>);</td></tr>
+<tr><th id="568">568</th><td>    <b>if</b> (<a class="ref fn" href="../../../include/unistd.h.html#write" title='write' data-ref="write">write</a>(<a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a>, <a class="local col7 ref" href="#47buffer" title='buffer' data-ref="47buffer">buffer</a>, <a class="local col3 ref" href="#53len" title='len' data-ref="53len">len</a>) != <a class="local col3 ref" href="#53len" title='len' data-ref="53len">len</a> || <a class="macro" href="../mytypes.h.html#94" title="rename((const char *)(tempname),(const char *)(filename))" data-ref="_M/Urename">Urename</a>(<a class="local col6 ref" href="#56tempname" title='tempname' data-ref="56tempname">tempname</a>, <a class="local col6 ref" href="#46filename" title='filename' data-ref="46filename">filename</a>) &lt; <var>0</var>)</td></tr>
+<tr><th id="569">569</th><td>      {</td></tr>
+<tr><th id="570">570</th><td>      (<em>void</em>)<a class="ref fn" href="../../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a>);</td></tr>
+<tr><th id="571">571</th><td>      <a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a> = -<var>1</var>;</td></tr>
+<tr><th id="572">572</th><td>      }</td></tr>
+<tr><th id="573">573</th><td>    }</td></tr>
+<tr><th id="574">574</th><td></td></tr>
+<tr><th id="575">575</th><td>  <i>/* If any of the directories have been modified since the last timestamp we</i></td></tr>
+<tr><th id="576">576</th><td><i>  saw, we have to junk this maildirsize file. */</i></td></tr>
+<tr><th id="577">577</th><td></td></tr>
+<tr><th id="578">578</th><td>  <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"checking subdirectory timestamps\n"</q>);</td></tr>
+<tr><th id="579">579</th><td>  <a class="local col5 ref" href="#55new_latest" title='new_latest' data-ref="55new_latest">new_latest</a> = <var>0</var>;</td></tr>
+<tr><th id="580">580</th><td>  (<em>void</em>)<a class="ref fn" href="#maildir_compute_size" title='maildir_compute_size' data-ref="maildir_compute_size">maildir_compute_size</a>(<a class="local col3 ref" href="#33path" title='path' data-ref="33path">path</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, &amp;<a class="local col5 ref" href="#55new_latest" title='new_latest' data-ref="55new_latest">new_latest</a> , <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <a class="local col6 ref" href="#36dir_regex" title='dir_regex' data-ref="36dir_regex">dir_regex</a>, <a class="macro" href="../mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>);</td></tr>
+<tr><th id="581">581</th><td>  <b>if</b> (<a class="local col5 ref" href="#55new_latest" title='new_latest' data-ref="55new_latest">new_latest</a> &gt; <a class="local col4 ref" href="#54old_latest" title='old_latest' data-ref="54old_latest">old_latest</a>)</td></tr>
+<tr><th id="582">582</th><td>    {</td></tr>
+<tr><th id="583">583</th><td>    <a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"abandoning maildirsize because of "</q></td></tr>
+<tr><th id="584">584</th><td>      <q>"a later subdirectory modification\n"</q>);</td></tr>
+<tr><th id="585">585</th><td>    (<em>void</em>)<a class="macro" href="../mytypes.h.html#117" title="unlink((const char *)(filename))" data-ref="_M/Uunlink">Uunlink</a>(<a class="local col6 ref" href="#46filename" title='filename' data-ref="46filename">filename</a>);</td></tr>
+<tr><th id="586">586</th><td>    (<em>void</em>)<a class="ref fn" href="../../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a>);</td></tr>
+<tr><th id="587">587</th><td>    <a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a> = -<var>2</var>;</td></tr>
+<tr><th id="588">588</th><td>    }</td></tr>
+<tr><th id="589">589</th><td>  }</td></tr>
+<tr><th id="590">590</th><td></td></tr>
+<tr><th id="591">591</th><td><i>/* Return the sizes and the file descriptor, if any */</i></td></tr>
+<tr><th id="592">592</th><td></td></tr>
+<tr><th id="593">593</th><td><a class="macro" href="../macros.h.html#110" title="if (debug_selector &amp; (D_transport))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="../macros.h.html#404" title='D_transport' data-ref="D_transport">D_transport</a>) <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"returning maildir size="</q> <a class="macro" href="../../build-Linux-x86_64/config.h.html#10" title="&quot;%ld&quot;" data-ref="_M/OFF_T_FMT">OFF_T_FMT</a></td></tr>
+<tr><th id="594">594</th><td>  <q>" filecount=%d\n"</q>, <a class="local col5 ref" href="#45size" title='size' data-ref="45size">size</a>, <a class="local col3 ref" href="#43filecount" title='filecount' data-ref="43filecount">filecount</a>);</td></tr>
+<tr><th id="595">595</th><td>*<a class="local col7 ref" href="#37returned_size" title='returned_size' data-ref="37returned_size">returned_size</a> = <a class="local col5 ref" href="#45size" title='size' data-ref="45size">size</a>;</td></tr>
+<tr><th id="596">596</th><td>*<a class="local col8 ref" href="#38returned_filecount" title='returned_filecount' data-ref="38returned_filecount">returned_filecount</a> = <a class="local col3 ref" href="#43filecount" title='filecount' data-ref="43filecount">filecount</a>;</td></tr>
+<tr><th id="597">597</th><td><b>return</b> <a class="local col0 ref" href="#40fd" title='fd' data-ref="40fd">fd</a>;</td></tr>
+<tr><th id="598">598</th><td>}</td></tr>
+<tr><th id="599">599</th><td></td></tr>
+<tr><th id="600">600</th><td><i>/* End of tf_maildir.c */</i></td></tr>
+<tr><th id="601">601</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

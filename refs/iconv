@@ -2,3 +2,4 @@
 <doc f='include/iconv.h' l='39'>/* Convert at most *INBYTESLEFT bytes from *INBUF according to the
    code conversion algorithm specified by CD and place up to
    *OUTBYTESLEFT bytes in buffer at *OUTBUF.  */</doc>
+<use f='exim/src/rfc2047.c' l='263' u='c' c='rfc2047_decode2'/>

@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='315' type='BOOL'/>
 <offset>2464</offset>
 <doc f='exim/src/structs.h' l='315'>/* If FALSE, skip if ancestor used it */</doc>
+<use f='exim/src/globals.c' l='1222' u='w'/>

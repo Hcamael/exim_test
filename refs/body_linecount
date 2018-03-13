@@ -1,2 +1,35 @@
 <dec f='exim/src/local_scan.h' l='143' type='int'/>
 <doc f='exim/src/local_scan.h' l='143'>/* Line count in body */</doc>
+<def f='exim/src/globals.c' l='481' type='int'/>
+<use f='exim/src/filtertest.c' l='45' u='w' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='55' u='w' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='71' u='w' c='read_message_body'/>
+<use f='exim/src/filtertest.c' l='100' u='w' c='read_message_body'/>
+<use f='exim/src/exim.c' l='4988' u='r' c='main'/>
+<use f='exim/src/smtp_in.c' l='2019' u='w' c='smtp_reset'/>
+<use f='exim/src/spool_in.c' l='257' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='515' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='910' u='r' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='913' u='r' c='spool_read_header'/>
+<use f='exim/src/expand.c' l='475' u='a'/>
+<use f='exim/src/expand.c' l='475' u='a'/>
+<use f='exim/src/expand.c' l='475' u='a'/>
+<use f='exim/src/expand.c' l='475' u='a'/>
+<use f='exim/src/receive.c' l='638' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='648' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='660' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='678' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='691' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='696' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='725' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='746' u='w' c='read_message_data'/>
+<use f='exim/src/receive.c' l='807' u='w' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='820' u='w' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='859' u='w' c='read_message_data_smtp'/>
+<use f='exim/src/receive.c' l='968' u='w' c='read_message_bdat_smtp'/>
+<use f='exim/src/receive.c' l='982' u='w' c='read_message_bdat_smtp'/>
+<use f='exim/src/receive.c' l='1722' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3075' u='w' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3095' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3096' u='r' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='205' u='r' c='spool_write_header'/>

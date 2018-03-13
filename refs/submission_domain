@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='902' type='uschar *'/>
 <doc f='exim/src/globals.h' l='902'>/* Domain for submission mode */</doc>
+<def f='exim/src/globals.c' l='1404' type='uschar *'/>
+<use f='exim/src/acl.c' l='3191' u='w' c='acl_check_condition'/>
+<use f='exim/src/receive.c' l='2783' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2788' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2794' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2842' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2845' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2848' u='r' c='receive_msg'/>

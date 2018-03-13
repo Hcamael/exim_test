@@ -1,1 +1,4 @@
 <dec f='include/openssl/ssl.h' l='1038'/>
+<use f='exim/src/tls-openssl.c' l='2492' u='c'/>
+<use f='exim/src/tls-openssl.c' l='2607' u='c'/>
+<use f='exim/src/tls-openssl.c' l='2672' u='c'/>

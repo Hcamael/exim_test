@@ -1,2 +1,36 @@
 <dec f='exim/src/globals.h' l='715' type='uid_t'/>
 <doc f='exim/src/globals.h' l='715'>/* Real user running program */</doc>
+<use f='exim/src/deliver.c' l='5812' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5814' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1093' type='uid_t'/>
+<use f='exim/src/exim.c' l='1835' u='w' c='main'/>
+<use f='exim/src/exim.c' l='1838' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1847' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1851' u='r' c='main'/>
+<use f='exim/src/exim.c' l='1859' u='r' c='main'/>
+<use f='exim/src/exim.c' l='2290' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3565' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3699' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3707' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3720' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3816' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3816' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3835' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3835' u='r' c='main'/>
+<use f='exim/src/exim.c' l='3843' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4039' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4148' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4199' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4199' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4272' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4272' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4688' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4774' u='r' c='main'/>
+<use f='exim/src/exim.c' l='4787' u='r' c='main'/>
+<use f='exim/src/queue.c' l='1120' u='r' c='queue_action'/>
+<use f='exim/src/queue.c' l='1130' u='r' c='queue_action'/>
+<use f='exim/src/queue.c' l='1132' u='r' c='queue_action'/>
+<use f='exim/src/expand.c' l='480' u='a'/>
+<use f='exim/src/expand.c' l='480' u='a'/>
+<use f='exim/src/expand.c' l='480' u='a'/>
+<use f='exim/src/expand.c' l='480' u='a'/>

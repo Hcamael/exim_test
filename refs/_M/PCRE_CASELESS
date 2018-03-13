@@ -27,3 +27,5 @@ Options that can be set for pcre_exec() and/or pcre_dfa_exec() are flagged with
 E and D, respectively. They take precedence over C3, C4, and C5 settings passed
 from pcre_compile(). Those that are compatible with JIT execution are flagged
 with J. */</doc>
+<use f='exim/src/filter.c' l='1599' u='c'/>
+<use f='exim/src/exim.c' l='106' u='c'/>

@@ -1,1 +1,40 @@
 <dec f='exim/src/functions.h' l='298' type='void moan_smtp_batch(uschar * , const char * )'/>
+<def f='exim/src/moan.c' l='545' ll='591' type='void moan_smtp_batch(uschar * cmd_buffer, const char * format)'/>
+<doc f='exim/src/moan.c' l='526'>/* This is called when something goes wrong in batched (-bS) SMTP input.
+Information is written to stdout and/or stderr, and Exim exits with a non-zero
+completion code. BSMTP is almost always called by some other program, so it is
+up to that program to interpret the return code and do something with the error
+information, and also to preserve the batch input file for human analysis.
+
+Formerly, Exim used to attempt to continue after some errors, but this strategy
+has been abandoned as it can lead to loss of messages.
+
+Arguments:
+  cmd_buffer   the command causing the error, or NULL
+  format       a printf() format
+  ...          arguments for the format
+
+Returns:       does not return; exits from the program
+               exit code = 1 if some messages were accepted
+               exit code = 2 if no messages were accepted
+*/</doc>
+<use f='exim/src/smtp_in.c' l='925' u='c' c='command_timeout_handler'/>
+<use f='exim/src/smtp_in.c' l='949' u='c' c='command_sigterm_handler'/>
+<use f='exim/src/smtp_in.c' l='2133' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2137' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2158' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2174' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2189' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2193' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2200' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2216' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2230' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2245' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2248' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2277' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2283' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/smtp_in.c' l='2289' u='c' c='smtp_setup_batch_msg'/>
+<use f='exim/src/receive.c' l='338' u='c' c='receive_bomb_out'/>
+<use f='exim/src/receive.c' l='3605' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3782' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='4316' u='c' c='receive_msg'/>

@@ -1,2 +1,3 @@
 <dec f='exim/src/globals.h' l='946' type='BOOL'/>
 <doc f='exim/src/globals.h' l='946'>/* True if it did */</doc>
+<def f='exim/src/globals.c' l='1507' type='BOOL'/>

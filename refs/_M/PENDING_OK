@@ -1,0 +1,4 @@
+<dec f='exim/src/transports/smtp.h' l='12'/>
+<use f='exim/src/verify.c' l='801' u='c'/>
+<use f='exim/src/verify.c' l='868' u='c'/>
+<use f='exim/src/verify.c' l='932' u='c'/>

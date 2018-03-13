@@ -1,1 +1,15 @@
 <dec f='exim/src/functions.h' l='349' type='BOOL receive_check_set_sender(uschar * )'/>
+<use f='exim/src/exim.c' l='4859' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5381' u='c' c='main'/>
+<def f='exim/src/receive.c' l='82' ll='91' type='BOOL receive_check_set_sender(uschar * newsender)'/>
+<use f='exim/src/receive.c' l='2072' u='c' c='receive_msg'/>
+<doc f='exim/src/receive.c' l='71'>/* This function is called when a local caller sets an explicit sender address.
+It checks whether this is permitted, which it is for trusted callers.
+Otherwise, it must match the pattern(s) in untrusted_set_sender.
+
+Arguments:  the proposed sender address
+Returns:    TRUE for a trusted caller
+            TRUE if the address has been set, untrusted_set_sender has been
+              set, and the address matches something in the list
+            FALSE otherwise
+*/</doc>

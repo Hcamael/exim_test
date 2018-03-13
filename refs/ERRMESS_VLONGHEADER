@@ -1,2 +1,6 @@
 <dec f='exim/src/macros.h' l='242' type='6'/>
 <doc f='exim/src/macros.h' l='242'>/* Excessively long message header */</doc>
+<use f='exim/src/moan.c' l='161' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='273' u='r' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='421' c='moan_to_sender'/>
+<use f='exim/src/receive.c' l='1941' u='r' c='receive_msg'/>

@@ -1,1 +1,14 @@
 <dec f='exim/src/functions.h' l='225' type='BOOL host_is_tls_on_connect_port(int )'/>
+<use f='exim/src/exim.c' l='4270' u='c' c='main'/>
+<use f='exim/src/daemon.c' l='378' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='1642' u='c' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1677' u='c' c='daemon_go'/>
+<def f='exim/src/host.c' l='1239' ll='1255' type='BOOL host_is_tls_on_connect_port(int port)'/>
+<doc f='exim/src/host.c' l='1230'>/* This function checks whether a given incoming port is configured for tls-
+on-connect. It is called from the daemon and from inetd handling. If the global
+option tls_on_connect is already set, all ports operate this way. Otherwise, we
+check the tls_on_connect_ports option for a list of ports.
+
+Argument:  a port number
+Returns:   TRUE or FALSE
+*/</doc>

@@ -1,1 +1,21 @@
 <dec f='exim/src/functions.h' l='109' type='int bdat_getc(unsigned int )'/>
+<def f='exim/src/smtp_in.c' l='534' ll='665' type='int bdat_getc(unsigned int lim)'/>
+<use f='exim/src/smtp_in.c' l='655' u='r' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='5099' u='r' c='smtp_setup_msg'/>
+<doc f='exim/src/smtp_in.c' l='518'>/* Get a byte from the smtp input, in CHUNKING mode.  Handle ack of the
+previous BDAT chunk and getting new ones when we run out.  Uses the
+underlying smtp_getc or tls_getc both for that and for getting the
+(buffered) data byte.  EOD signals (an expected) no further data.
+ERR signals a protocol error, and EOF a closed input stream.
+
+Called from read_bdat_smtp() in receive.c for the message body, but also
+by the headers read loop in receive_msg(); manipulates chunking_state
+to handle the BDAT command/response.
+Placed here due to the correlation with the above smtp_getc(), which it wraps,
+and also by the need to do smtp command/response handling.
+
+Arguments:  lim		(ignored)
+Returns:    the next character or ERR, EOD or EOF
+*/</doc>
+<use f='exim/src/receive.c' l='922' u='c' c='read_message_bdat_smtp'/>
+<use f='exim/src/receive.c' l='1040' u='c' c='read_message_bdat_smtp_wire'/>

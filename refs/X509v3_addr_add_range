@@ -1,0 +1,1 @@
+<dec f='include/openssl/x509v3.h' l='827' type='int X509v3_addr_add_range(IPAddrBlocks * addr, const unsigned int afi, const unsigned int * safi, unsigned char * min, unsigned char * max)'/>

@@ -3,3 +3,10 @@
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */</doc>
+<use f='exim/src/receive.c' l='941' u='c' c='read_message_bdat_smtp'/>
+<use f='exim/src/receive.c' l='3140' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3202' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3244' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3610' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3788' u='c' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3863' u='c' c='receive_msg'/>

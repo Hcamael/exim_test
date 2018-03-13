@@ -1,3 +1,16 @@
 <dec f='exim/src/structs.h' l='571' type='int'/>
 <offset>2560</offset>
 <doc f='exim/src/structs.h' l='571'>/* DSN flags */</doc>
+<use f='exim/src/deliver.c' l='6150' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6153' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7226' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7235' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7237' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7238' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7304' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7343' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7424' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7425' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8061' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8062' u='r' c='deliver_message'/>
+<use f='exim/src/globals.c' l='377' u='w'/>

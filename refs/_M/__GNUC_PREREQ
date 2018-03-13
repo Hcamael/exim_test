@@ -62,3 +62,6 @@
 <use f='include/string.h' l='640' u='c'/>
 <use f='include/x86_64-linux-gnu/bits/sched.h' l='131' u='c'/>
 <use f='include/x86_64-linux-gnu/bits/sched.h' l='169' u='c'/>
+<use f='include/assert.h' l='37' u='c'/>
+<use f='include/assert.h' l='105' u='c'/>
+<use f='include/assert.h' l='105' u='c'/>

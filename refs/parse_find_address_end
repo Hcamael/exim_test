@@ -1,1 +1,27 @@
 <dec f='exim/src/functions.h' l='311' type='uschar * parse_find_address_end(uschar * , BOOL )'/>
+<use f='exim/src/verify.c' l='2209' u='c' c='verify_check_headers'/>
+<use f='exim/src/verify.c' l='2369' u='c' c='verify_check_notblind'/>
+<use f='exim/src/verify.c' l='2511' u='c' c='verify_check_header_address'/>
+<use f='exim/src/header.c' l='388' u='c' c='one_pattern_match'/>
+<def f='exim/src/parse.c' l='66' ll='124' type='uschar * parse_find_address_end(uschar * s, BOOL nl_ends)'/>
+<use f='exim/src/parse.c' l='1309' u='c' c='parse_forward_list'/>
+<doc f='exim/src/parse.c' l='53'>/* Scan over a string looking for the termination of an address at a comma,
+or end of the string. It&apos;s the source-routed addresses which cause much pain
+here. Although Exim ignores source routes, it must recognize such addresses, so
+we cannot get rid of this logic.
+
+Argument:
+  s        pointer to the start of an address
+  nl_ends  if TRUE, &apos;\n&apos; terminates an address
+
+Returns:   pointer past the end of the address
+           (i.e. points to null or comma)
+*/</doc>
+<use f='exim/src/filter.c' l='1505' u='c' c='test_condition'/>
+<use f='exim/src/filter.c' l='2260' u='c' c='interpret_commands'/>
+<use f='exim/src/exim.c' l='4926' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5456' u='c' c='main'/>
+<use f='exim/src/rewrite.c' l='480' u='c' c='rewrite_one_header'/>
+<use f='exim/src/expand.c' l='6791' u='c' c='expand_string_internal'/>
+<use f='exim/src/receive.c' l='2472' u='c' c='receive_msg'/>
+<use f='exim/src/sieve.c' l='2146' u='c' c='parse_test'/>

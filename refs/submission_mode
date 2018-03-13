@@ -1,2 +1,15 @@
 <dec f='exim/src/globals.h' l='903' type='BOOL'/>
 <doc f='exim/src/globals.h' l='903'>/* Can be forced from ACL */</doc>
+<def f='exim/src/globals.c' l='1405' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='1976' u='w' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='3178' u='w' c='acl_check_condition'/>
+<use f='exim/src/receive.c' l='2381' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2659' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2745' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2781' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2830' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2841' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2879' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2885' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2891' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2956' u='r' c='receive_msg'/>

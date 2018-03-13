@@ -1,3 +1,29 @@
 <dec f='exim/src/globals.h' l='359' type='const uschar *'/>
 <doc f='exim/src/globals.h' l='358'>/* Remote host for filter */</doc>
 <doc f='exim/src/globals.h' l='359'>/* Address for remote delivery filter */</doc>
+<use f='exim/src/deliver.c' l='188' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='194' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='846' u='r' c='event_raise'/>
+<use f='exim/src/deliver.c' l='877' u='r' c='msg_event_raise'/>
+<use f='exim/src/deliver.c' l='896' u='w' c='msg_event_raise'/>
+<use f='exim/src/deliver.c' l='1211' u='w' c='delivery_log'/>
+<use f='exim/src/verify.c' l='384' u='w' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='658' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='709' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='898' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='3156' u='r' c='verify_check_this_host'/>
+<use f='exim/src/verify.c' l='3174' u='w' c='verify_check_this_host'/>
+<use f='exim/src/verify.c' l='3186' u='w' c='verify_check_this_host'/>
+<use f='exim/src/smtp_out.c' l='219' u='w' c='smtp_sock_connect'/>
+<use f='exim/src/tls-openssl.c' l='324' u='r' c='verify_event'/>
+<use f='exim/src/tls-openssl.c' l='393' u='r' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='456' u='r' c='verify_callback'/>
+<use f='exim/src/tls-openssl.c' l='472' u='r' c='verify_callback'/>
+<def f='exim/src/globals.c' l='634' type='const uschar *'/>
+<use f='exim/src/exim.c' l='5782' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='2006' u='w' c='smtp_reset'/>
+<use f='exim/src/expand.c' l='542' u='a'/>
+<use f='exim/src/expand.c' l='542' u='a'/>
+<use f='exim/src/expand.c' l='542' u='a'/>
+<use f='exim/src/expand.c' l='542' u='a'/>
+<use f='exim/src/daemon.c' l='569' u='w' c='handle_smtp_call'/>

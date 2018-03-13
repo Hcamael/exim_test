@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='719' type='int'/>
 <doc f='exim/src/globals.h' l='719'>/* Mainly for BSMTP errors */</doc>
+<def f='exim/src/globals.c' l='1097' type='int'/>
+<use f='exim/src/moan.c' l='549' u='r' c='moan_smtp_batch'/>
+<use f='exim/src/moan.c' l='586' u='r' c='moan_smtp_batch'/>
+<use f='exim/src/moan.c' l='586' u='r' c='moan_smtp_batch'/>
+<use f='exim/src/exim.c' l='5647' u='r' c='main'/>
+<use f='exim/src/daemon.c' l='586' u='r' c='handle_smtp_call'/>
+<use f='exim/src/receive.c' l='3873' u='w' c='receive_msg'/>

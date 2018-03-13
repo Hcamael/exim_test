@@ -1,2 +1,6 @@
 <dec f='exim/src/macros.h' l='26'/>
 <doc f='exim/src/macros.h' l='24'>/* When running in the test harness, the load average is fudged. */</doc>
+<use f='exim/src/exim.c' l='5666' u='c'/>
+<use f='exim/src/expand.c' l='1796' u='c'/>
+<use f='exim/src/daemon.c' l='236' u='c'/>
+<use f='exim/src/daemon.c' l='605' u='c'/>

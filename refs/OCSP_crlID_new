@@ -1,0 +1,1 @@
+<dec f='include/openssl/ocsp.h' l='266' type='X509_EXTENSION * OCSP_crlID_new(const char * url, long * n, char * tim)'/>

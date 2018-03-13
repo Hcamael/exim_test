@@ -4,3 +4,9 @@
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */</doc>
+<use f='exim/src/deliver.c' l='399' u='c' c='deliver_msglog'/>
+<use f='exim/src/verify.c' l='1536' u='c' c='respond_printf'/>
+<use f='exim/src/moan.c' l='499' u='c' c='moan_tell_someone'/>
+<use f='exim/src/moan.c' l='556' u='c' c='moan_smtp_batch'/>
+<use f='exim/src/moan.c' l='571' u='c' c='moan_smtp_batch'/>
+<use f='exim/src/exim_dbutil.c' l='147' u='c' c='log_write'/>

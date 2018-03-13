@@ -363,3 +363,6 @@
 <use f='include/pthread.h' l='1099' u='c'/>
 <use f='include/pthread.h' l='1113' u='c'/>
 <use f='include/pthread.h' l='1130' u='c'/>
+<use f='include/crypt.h' l='33' u='c'/>
+<use f='include/crypt.h' l='36' u='c'/>
+<use f='include/crypt.h' l='41' u='c'/>

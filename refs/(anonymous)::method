@@ -1,2 +1,5 @@
 <dec f='exim/src/hash.h' l='46' type='hashmethod'/>
 <offset>0</offset>
+<use f='exim/src/hash.c' l='37' u='w' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='66' u='r' c='exim_sha_update'/>
+<use f='exim/src/hash.c' l='89' u='r' c='exim_sha_finish'/>

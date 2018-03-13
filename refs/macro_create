@@ -1,1 +1,11 @@
 <dec f='exim/src/functions.h' l='258' type='macro_item * macro_create(const uschar * , const uschar * , BOOL )'/>
+<def f='exim/src/macro.c' l='30' ll='52' type='macro_item * macro_create(const uschar * name, const uschar * val, BOOL command_line)'/>
+<doc f='exim/src/macro.c' l='22'>/* We have a new definition; add to the collection.
+Items are numbered so we can avoid recursion in expansions.
+
+Args:
+ name	Name of the macro.  Will be copied.
+ val	Expansion result for the macro.  Will be copied.
+*/</doc>
+<use f='exim/src/macro_predef.c' l='27' u='c' c='builtin_macro_create_var'/>
+<use f='exim/src/exim.c' l='2437' u='c' c='main'/>

@@ -1,1 +1,19 @@
 <dec f='exim/src/functions.h' l='90' type='void acl_var_write(uschar * , uschar * , void * )'/>
+<def f='exim/src/acl.c' l='4558' ll='4563' type='void acl_var_write(uschar * name, uschar * value, void * ctx)'/>
+<doc f='exim/src/acl.c' l='4542'>/* This function is used as a callback for tree_walk when writing variables to
+the spool file. To retain spool file compatibility, what is written is -aclc or
+-aclm followed by the rest of the name and the data length, space separated,
+then the value itself, starting on a new line, and terminated by an additional
+newline. When we had only numbered ACL variables, the first line might look
+like this: &quot;-aclc 5 20&quot;. Now it might be &quot;-aclc foo 20&quot; for the variable called
+acl_cfoo.
+
+Arguments:
+  name    of the variable
+  value   of the variable
+  ctx     FILE pointer (as a void pointer)
+
+Returns:  nothing
+*/</doc>
+<use f='exim/src/spool_out.c' l='197' u='a' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='198' u='a' c='spool_write_header'/>

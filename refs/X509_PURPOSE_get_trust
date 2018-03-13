@@ -1,0 +1,1 @@
+<dec f='include/openssl/x509v3.h' l='671' type='int X509_PURPOSE_get_trust(const X509_PURPOSE * xp)'/>

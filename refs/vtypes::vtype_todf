@@ -1,0 +1,7 @@
+<dec f='exim/src/expand.c' l='408' type='17'/>
+<use f='exim/src/expand.c' l='763'/>
+<use f='exim/src/expand.c' l='763'/>
+<use f='exim/src/expand.c' l='763'/>
+<use f='exim/src/expand.c' l='763'/>
+<use f='exim/src/expand.c' l='1876' c='find_variable'/>
+<doc f='exim/src/expand.c' l='408'>/* value not used; generate full tod */</doc>

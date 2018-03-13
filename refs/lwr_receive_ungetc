@@ -1,1 +1,5 @@
 <dec f='exim/src/globals.h' l='141' type='int (*)(int)'/>
+<use f='exim/src/smtp_in.c' l='551' u='r' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='692' u='r' c='bdat_flush_data'/>
+<use f='exim/src/smtp_in.c' l='729' u='r' c='bdat_ungetc'/>
+<use f='exim/src/smtp_in.c' l='5097' u='w' c='smtp_setup_msg'/>

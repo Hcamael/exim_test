@@ -1,1 +1,2 @@
 <dec f='exim/src/functions.h' l='156' type='uschar * deliver_get_sender_address(uschar * id)'/>
+<def f='exim/src/deliver.c' l='8477' ll='8520' type='uschar * deliver_get_sender_address(uschar * id)'/>

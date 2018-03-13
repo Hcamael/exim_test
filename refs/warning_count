@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='983' type='int'/>
 <doc f='exim/src/globals.h' l='983'>/* Delay warnings sent for this msg */</doc>
+<use f='exim/src/deliver.c' l='8113' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8120' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8298' u='w' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1559' type='int'/>
+<use f='exim/src/spool_in.c' l='400' u='a' c='spool_read_header'/>
+<use f='exim/src/receive.c' l='1715' u='w' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='157' u='r' c='spool_write_header'/>

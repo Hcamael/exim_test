@@ -1,2 +1,12 @@
 <dec f='exim/src/globals.h' l='741' type='const pcre *'/>
 <doc f='exim/src/globals.h' l='741'>/* Compiled r.e. for message it */</doc>
+<def f='exim/src/globals.c' l='1140' type='const pcre *'/>
+<use f='exim/src/exim.c' l='1746' u='w' c='main'/>
+<use f='exim/src/exim.c' l='2490' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='2681' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='2872' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='2886' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='3071' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='3272' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='3275' macro='1' u='r'/>
+<use f='exim/src/exim.c' l='3277' macro='1' u='r'/>

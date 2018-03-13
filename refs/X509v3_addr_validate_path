@@ -1,0 +1,1 @@
+<dec f='include/openssl/x509v3.h' l='855' type='int X509v3_addr_validate_path(X509_STORE_CTX * )'/>

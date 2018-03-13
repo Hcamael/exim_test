@@ -2,3 +2,5 @@
 <doc f='exim/src/macros.h' l='663'>/* These values are used only when adding new headers from an ACL; they too
 never get onto the spool. The type of the added header is set by reference
 to the header name, by calling header_checkname(). */</doc>
+<use f='exim/src/acl.c' l='992' u='c'/>
+<use f='exim/src/receive.c' l='1225' u='c'/>

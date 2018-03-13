@@ -1,3 +1,15 @@
 <dec f='exim/src/structs.h' l='490' type='uschar *'/>
 <offset>0</offset>
 <doc f='exim/src/structs.h' l='490'>/* arbitrary data to keep with the address */</doc>
+<use f='exim/src/deliver.c' l='199' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/verify.c' l='1497' u='w' c='copy_error'/>
+<use f='exim/src/verify.c' l='1497' u='r' c='copy_error'/>
+<use f='exim/src/verify.c' l='2055' u='w' c='verify_address'/>
+<use f='exim/src/verify.c' l='2055' u='r' c='verify_address'/>
+<use f='exim/src/globals.c' l='393' u='w'/>
+<use f='exim/src/globals.c' l='393' u='w'/>
+<use f='exim/src/routers/queryprogram.c' l='234' u='w' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/queryprogram.c' l='482' u='w' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='559' u='w' c='redirect_router_entry'/>
+<use f='exim/src/acl.c' l='2026' u='r' c='acl_verify'/>
+<use f='exim/src/acl.c' l='2056' u='r' c='acl_verify'/>

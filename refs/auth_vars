@@ -1,2 +1,18 @@
 <dec f='exim/src/globals.h' l='230' type='uschar *[]'/>
 <doc f='exim/src/globals.h' l='230'>/* $authn variables */</doc>
+<def f='exim/src/globals.c' l='451' type='uschar *[3]'/>
+<use f='exim/src/smtp_in.c' l='3595' u='w' c='smtp_in_auth'/>
+<use f='exim/src/smtp_in.c' l='3602' u='w' c='smtp_in_auth'/>
+<use f='exim/src/auths/check_serv_cond.c' l='71' u='r' c='auth_check_some_cond'/>
+<use f='exim/src/auths/check_serv_cond.c' l='72' u='r' c='auth_check_some_cond'/>
+<use f='exim/src/auths/spa.c' l='216' u='w' c='auth_spa_server'/>
+<use f='exim/src/auths/plaintext.c' l='109' u='w' c='auth_plaintext_server'/>
+<use f='exim/src/auths/plaintext.c' l='118' u='w' c='auth_plaintext_server'/>
+<use f='exim/src/auths/plaintext.c' l='142' u='w' c='auth_plaintext_server'/>
+<use f='exim/src/auths/plaintext.c' l='301' u='w' c='auth_plaintext_client'/>
+<use f='exim/src/auths/cram_md5.c' l='195' u='w' c='auth_cram_md5_server'/>
+<use f='exim/src/auths/cram_md5.c' l='227' u='r' c='auth_cram_md5_server'/>
+<use f='exim/src/expand.c' l='1740' u='r' c='find_variable'/>
+<use f='exim/src/expand.c' l='1740' u='r' c='find_variable'/>
+<use f='exim/src/expand.c' l='7856' u='r' c='assert_no_variables'/>
+<use f='exim/src/expand.c' l='7857' u='r' c='assert_no_variables'/>

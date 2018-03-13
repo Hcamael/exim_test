@@ -1,1 +1,2 @@
 <dec f='include/openssl/ec.h' l='396' type='int EC_curve_nist2nid(const char * name)'/>
+<use f='exim/src/tls-openssl.c' l='784' u='c' c='init_ecdh'/>

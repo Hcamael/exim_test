@@ -1,1 +1,4 @@
 <dec f='exim/src/functions.h' l='381' type='BOOL route_find_expanded_group(uschar * , uschar * , uschar * , gid_t * , uschar ** )'/>
+<use f='exim/src/deliver.c' l='1856' u='c' c='findugid'/>
+<use f='exim/src/routers/queryprogram.c' l='263' u='c' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/rf_get_ugid.c' l='54' u='c' c='rf_get_ugid'/>

@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='266' type='uschar *'/>
 <offset>320</offset>
 <doc f='exim/src/structs.h' l='266'>/* Arbitrary data */</doc>
+<use f='exim/src/globals.c' l='1173' u='w'/>

@@ -2,3 +2,13 @@
 <doc f='exim/src/store.h' l='17'>/* This variable (the one for the current pool) is set by store_get() to its
 yield, and by store_reset() to NULL. This allows string_cat() to optimize its
 store handling. */</doc>
+<def f='exim/src/store.c' l='107' type='void *[3]'/>
+<use f='exim/src/store.c' l='186' u='w' c='store_get_3'/>
+<use f='exim/src/store.c' l='201' u='r' c='store_get_3'/>
+<use f='exim/src/store.c' l='205' u='r' c='store_get_3'/>
+<use f='exim/src/store.c' l='211' u='r' c='store_get_3'/>
+<use f='exim/src/store.c' l='335' u='w' c='store_reset_3'/>
+<use f='exim/src/store.c' l='510' u='r' c='store_newblock_3'/>
+<doc f='exim/src/store.c' l='103'>/* This variable is set by store_get() to its yield, and by store_reset() to
+NULL. This enables string_cat() to optimize its store handling for very long
+strings. That&apos;s why the variable is global. */</doc>

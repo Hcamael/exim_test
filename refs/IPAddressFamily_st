@@ -1,0 +1,4 @@
+<def f='include/openssl/x509v3.h' l='786' ll='789'/>
+<size>16</size>
+<mbr r='IPAddressFamily_st::addressFamily' o='0' t='ASN1_OCTET_STRING *'/>
+<mbr r='IPAddressFamily_st::ipAddressChoice' o='64' t='IPAddressChoice *'/>

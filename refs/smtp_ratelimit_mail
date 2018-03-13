@@ -1,2 +1,7 @@
 <dec f='exim/src/globals.h' l='841' type='uschar *'/>
 <doc f='exim/src/globals.h' l='841'>/* Parameters for MAIL limiting */</doc>
+<def f='exim/src/globals.c' l='1341' type='uschar *'/>
+<use f='exim/src/readconf.c' l='296' u='a'/>
+<use f='exim/src/readconf.c' l='296' u='a'/>
+<use f='exim/src/readconf.c' l='296' u='a'/>
+<use f='exim/src/readconf.c' l='296' u='a'/>

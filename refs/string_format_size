@@ -1,1 +1,14 @@
 <dec f='exim/src/functions.h' l='462' type='uschar * string_format_size(int , uschar * )'/>
+<def f='exim/src/string.c' l='168' ll='182' type='uschar * string_format_size(int size, uschar * buffer)'/>
+<doc f='exim/src/string.c' l='156'>/* Convert a message size in bytes to printing form, rounding
+according to the magnitude of the number. A value of zero causes
+a string of spaces to be returned.
+
+Arguments:
+  size        the message size in bytes
+  buffer      where to put the answer
+
+Returns:      pointer to the buffer
+              a string of exactly 5 characters is normally returned
+*/</doc>
+<use f='exim/src/queue.c' l='912' u='c' c='queue_list'/>

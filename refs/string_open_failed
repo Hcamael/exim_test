@@ -1,1 +1,25 @@
 <dec f='exim/src/functions.h' l='471' type='uschar * string_open_failed(int , const char * )'/>
+<def f='exim/src/string.c' l='1536' ll='1557' type='uschar * string_open_failed(int eno, const char * format)'/>
+<doc f='exim/src/string.c' l='1524'>/* This function creates a message after failure to open a file. It includes a
+string supplied as data, adds the strerror() text, and if the failure was
+&quot;Permission denied&quot;, reads and includes the euid and egid.
+
+Arguments:
+  eno           the value of errno after the failure
+  format        a text format string - deliberately not uschar *
+  ...           arguments for the format string
+
+Returns:        a message, in dynamic store
+*/</doc>
+<use f='exim/src/parse.c' l='1520' u='c' c='parse_forward_list'/>
+<use f='exim/src/filter.c' l='1970' u='c' c='interpret_commands'/>
+<use f='exim/src/exim.c' l='494' u='c' c='exim_nullstd'/>
+<use f='exim/src/rda.c' l='217' u='c' c='rda_get_file_contents'/>
+<use f='exim/src/lookups/lsearch.c' l='35' u='c' c='lsearch_open'/>
+<use f='exim/src/lookups/dbmdb.c' l='30' u='c' c='dbmdb_open'/>
+<use f='exim/src/match.c' l='798' u='c' c='match_check_list'/>
+<use f='exim/src/expand.c' l='4708' u='c' c='expand_string_internal'/>
+<use f='exim/src/daemon.c' l='1551' u='c' c='daemon_go'/>
+<use f='exim/src/dbfn.c' l='122' u='c' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='223' u='c' c='dbfn_open'/>
+<use f='exim/src/dbfn.c' l='227' u='c' c='dbfn_open'/>

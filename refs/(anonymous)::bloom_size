@@ -1,3 +1,7 @@
 <dec f='exim/src/dbstuff.h' l='785' type='unsigned int'/>
 <offset>256</offset>
 <doc f='exim/src/dbstuff.h' l='785'>/* Number of bytes in the Bloom filter */</doc>
+<use f='exim/src/exim_dbutil.c' l='933' u='r' c='main'/>
+<use f='exim/src/acl.c' l='2478' u='w' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2479' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2557' u='r' c='acl_ratelimit'/>

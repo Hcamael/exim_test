@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='749' type='5'/>
+<use f='exim/src/host.c' l='3082' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3099' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3117' u='r' c='host_find_bydns'/>

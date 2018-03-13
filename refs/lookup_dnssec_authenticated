@@ -1,2 +1,21 @@
 <dec f='exim/src/globals.h' l='564' type='uschar *'/>
 <doc f='exim/src/globals.h' l='564'>/* AD status of dns lookup */</doc>
+<use f='exim/src/deliver.c' l='1136' u='w' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1216' u='w' c='delivery_log'/>
+<def f='exim/src/globals.c' l='952' type='uschar *'/>
+<use f='exim/src/lookups/dnsdb.c' l='359' u='w' c='dnsdb_find'/>
+<use f='exim/src/acl.c' l='1494' u='w' c='acl_verify_csa'/>
+<use f='exim/src/expand.c' l='566' u='a'/>
+<use f='exim/src/expand.c' l='566' u='a'/>
+<use f='exim/src/expand.c' l='566' u='a'/>
+<use f='exim/src/expand.c' l='566' u='a'/>
+<use f='exim/src/host.c' l='241' u='w' c='host_fake_gethostbyname'/>
+<use f='exim/src/host.c' l='2340' u='w' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2393' u='w' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2615' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2627' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2629' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2667' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2680' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2684' u='w' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='2735' u='w' c='host_find_bydns'/>

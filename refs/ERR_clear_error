@@ -1,0 +1,2 @@
+<dec f='include/openssl/err.h' l='223' type='void ERR_clear_error()'/>
+<use f='exim/src/tls-openssl.c' l='418' u='c' c='verify_callback'/>

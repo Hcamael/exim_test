@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='916' type='uschar *'/>
 <doc f='exim/src/globals.h' l='916'>/* system filter */</doc>
+<use f='exim/src/deliver.c' l='6050' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1418' type='uschar *'/>
+<use f='exim/src/readconf.c' l='335' u='a'/>
+<use f='exim/src/readconf.c' l='335' u='a'/>
+<use f='exim/src/readconf.c' l='335' u='a'/>
+<use f='exim/src/readconf.c' l='335' u='a'/>

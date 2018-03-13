@@ -1,0 +1,4 @@
+<dec f='exim/src/tls-openssl.c' l='192' type='int tls_servername_cb(SSL * s, int * ad, void * arg)'/>
+<def f='exim/src/tls-openssl.c' l='1192' ll='1264' type='int tls_servername_cb(SSL * s, int * ad, void * arg)'/>
+<use f='exim/src/tls-openssl.c' l='1233' u='r' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1647' u='r' c='tls_init'/>

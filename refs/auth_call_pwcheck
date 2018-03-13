@@ -1,1 +1,15 @@
 <dec f='exim/src/functions.h' l='93' type='int auth_call_pwcheck(uschar * , uschar ** )'/>
+<def f='exim/src/auths/call_pwcheck.c' l='35' ll='67' type='int auth_call_pwcheck(uschar * s, uschar ** errptr)'/>
+<doc f='exim/src/auths/call_pwcheck.c' l='21'>/* This function calls the now-deprecated &quot;pwcheck&quot; Cyrus-SASL authentication
+daemon, passing over a colon-separated user name and password. As this is
+called from the string expander, the string will always be in dynamic store and
+can be overwritten.
+
+Arguments:
+  s        a colon-separated username:password string
+  errptr   where to point an error message
+
+Returns:   OK if authentication succeeded
+           FAIL if authentication failed
+           ERROR some other error condition
+*/</doc>

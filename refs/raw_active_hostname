@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='707' type='uschar *'/>
 <doc f='exim/src/globals.h' l='707'>/* Pre-expansion */</doc>
+<def f='exim/src/globals.c' l='1084' type='uschar *'/>
+<use f='exim/src/exim.c' l='5045' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5047' u='r' c='main'/>
+<use f='exim/src/exim.c' l='5052' u='r' c='main'/>
+<use f='exim/src/daemon.c' l='385' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='387' u='r' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='393' u='r' c='handle_smtp_call'/>
+<use f='exim/src/readconf.c' l='285' u='a'/>
+<use f='exim/src/readconf.c' l='285' u='a'/>
+<use f='exim/src/readconf.c' l='285' u='a'/>
+<use f='exim/src/readconf.c' l='285' u='a'/>

@@ -1,3 +1,11 @@
 <dec f='exim/src/structs.h' l='575' type='gid_t'/>
 <offset>2656</offset>
 <doc f='exim/src/structs.h' l='575'>/* gid for transporting */</doc>
+<use f='exim/src/deliver.c' l='611' u='r' c='same_ugid'/>
+<use f='exim/src/deliver.c' l='611' u='r' c='same_ugid'/>
+<use f='exim/src/deliver.c' l='1869' u='r' c='findugid'/>
+<use f='exim/src/deliver.c' l='6020' u='w' c='deliver_message'/>
+<use f='exim/src/globals.c' l='380' u='w'/>
+<use f='exim/src/routers/rf_set_ugid.c' l='37' u='w' c='rf_set_ugid'/>
+<use f='exim/src/routers/rf_queue_add.c' l='56' u='w' c='rf_queue_add'/>
+<use f='exim/src/routers/redirect.c' l='487' u='r' c='add_generated'/>

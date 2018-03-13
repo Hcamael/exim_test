@@ -1,2 +1,5 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='154'/>
 <doc f='exim/build-Linux-x86_64/config.h' l='153'>/* TRANSPORT_LMTP not set */</doc>
+<use f='exim/src/drtables.c' l='235' u='a'/>
+<use f='exim/src/drtables.c' l='402' u='a'/>
+<use f='exim/src/drtables.c' l='469' u='a'/>

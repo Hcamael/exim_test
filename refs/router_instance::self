@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='291' type='uschar *'/>
 <offset>1728</offset>
 <doc f='exim/src/structs.h' l='291'>/* Text option for handling self reference */</doc>
+<use f='exim/src/globals.c' l='1198' u='w'/>
+<use f='exim/src/routers/dnslookup.c' l='443' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='246' u='r' c='rf_lookup_hostlist'/>

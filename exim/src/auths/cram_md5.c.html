@@ -1,0 +1,380 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>cram_md5.c source code [exim/src/auths/cram_md5.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/auths/cram_md5.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>auths</a>/<a href='cram_md5.c.html'>cram_md5.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><i>/* The stand-alone version just tests the algorithm. We have to drag</i></td></tr>
+<tr><th id="10">10</th><td><i>in the MD5 computation functions, without their own stand-alone main</i></td></tr>
+<tr><th id="11">11</th><td><i>program. */</i></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><u>#<span data-ppcond="13">ifdef</span> <span class="macro" data-ref="_M/STAND_ALONE">STAND_ALONE</span></u></td></tr>
+<tr><th id="14">14</th><td><u>#define CRAM_STAND_ALONE</u></td></tr>
+<tr><th id="15">15</th><td><u>#include "md5.c"</u></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td></td></tr>
+<tr><th id="18">18</th><td><i>/* This is the normal, non-stand-alone case */</i></td></tr>
+<tr><th id="19">19</th><td></td></tr>
+<tr><th id="20">20</th><td><u>#<span data-ppcond="13">else</span></u></td></tr>
+<tr><th id="21">21</th><td><u>#include <a href="../exim.h.html">"../exim.h"</a></u></td></tr>
+<tr><th id="22">22</th><td><u>#include <a href="cram_md5.h.html">"cram_md5.h"</a></u></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td><i>/* Options specific to the cram_md5 authentication mechanism. */</i></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a> <dfn class="decl def" id="auth_cram_md5_options" title='auth_cram_md5_options' data-ref="auth_cram_md5_options">auth_cram_md5_options</dfn>[] = {</td></tr>
+<tr><th id="27">27</th><td>  { <q>"client_name"</q>,        <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="28">28</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(auth_cram_md5_options_block, client_name)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="cram_md5.h.html#auth_cram_md5_options_block" title='auth_cram_md5_options_block' data-type='struct auth_cram_md5_options_block' data-ref="auth_cram_md5_options_block">auth_cram_md5_options_block</a>, client_name)) },</td></tr>
+<tr><th id="29">29</th><td>  { <q>"client_secret"</q>,      <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="30">30</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(auth_cram_md5_options_block, client_secret)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="cram_md5.h.html#auth_cram_md5_options_block" title='auth_cram_md5_options_block' data-type='struct auth_cram_md5_options_block' data-ref="auth_cram_md5_options_block">auth_cram_md5_options_block</a>, client_secret)) },</td></tr>
+<tr><th id="31">31</th><td>  { <q>"server_secret"</q>,      <a class="enum" href="../local_scan.h.html#opt_stringptr" title='opt_stringptr' data-ref="opt_stringptr">opt_stringptr</a>,</td></tr>
+<tr><th id="32">32</th><td>      (<em>void</em> *)(<span class="macro" title="__builtin_offsetof(auth_cram_md5_options_block, server_secret)" data-ref="_M/offsetof">offsetof</span>(<a class="typedef" href="cram_md5.h.html#auth_cram_md5_options_block" title='auth_cram_md5_options_block' data-type='struct auth_cram_md5_options_block' data-ref="auth_cram_md5_options_block">auth_cram_md5_options_block</a>, server_secret)) }</td></tr>
+<tr><th id="33">33</th><td>};</td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><i>/* Size of the options list. An extern variable has to be used so that its</i></td></tr>
+<tr><th id="36">36</th><td><i>address can appear in the tables drtables.c. */</i></td></tr>
+<tr><th id="37">37</th><td></td></tr>
+<tr><th id="38">38</th><td><em>int</em> <dfn class="decl def" id="auth_cram_md5_options_count" title='auth_cram_md5_options_count' data-ref="auth_cram_md5_options_count">auth_cram_md5_options_count</dfn> =</td></tr>
+<tr><th id="39">39</th><td>  <b>sizeof</b>(<a class="ref" href="cram_md5.h.html#auth_cram_md5_options" title='auth_cram_md5_options' data-ref="auth_cram_md5_options">auth_cram_md5_options</a>)/<b>sizeof</b>(<a class="typedef" href="../local_scan.h.html#optionlist" title='optionlist' data-type='struct optionlist' data-ref="optionlist">optionlist</a>);</td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><i>/* Default private options block for the condition authentication method. */</i></td></tr>
+<tr><th id="42">42</th><td></td></tr>
+<tr><th id="43">43</th><td><a class="typedef" href="cram_md5.h.html#auth_cram_md5_options_block" title='auth_cram_md5_options_block' data-type='struct auth_cram_md5_options_block' data-ref="auth_cram_md5_options_block">auth_cram_md5_options_block</a> <dfn class="decl def" id="auth_cram_md5_option_defaults" title='auth_cram_md5_option_defaults' data-ref="auth_cram_md5_option_defaults">auth_cram_md5_option_defaults</dfn> = {</td></tr>
+<tr><th id="44">44</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,             <i>/* server_secret */</i></td></tr>
+<tr><th id="45">45</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,             <i>/* client_secret */</i></td></tr>
+<tr><th id="46">46</th><td>  <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>              <i>/* client_name */</i></td></tr>
+<tr><th id="47">47</th><td>};</td></tr>
+<tr><th id="48">48</th><td></td></tr>
+<tr><th id="49">49</th><td></td></tr>
+<tr><th id="50">50</th><td><u>#<span data-ppcond="50">ifdef</span> <span class="macro" data-ref="_M/MACRO_PREDEF">MACRO_PREDEF</span></u></td></tr>
+<tr><th id="51">51</th><td></td></tr>
+<tr><th id="52">52</th><td><i>/* Dummy values */</i></td></tr>
+<tr><th id="53">53</th><td><em>void</em> auth_cram_md5_init(auth_instance *ablock) {}</td></tr>
+<tr><th id="54">54</th><td><em>int</em> auth_cram_md5_server(auth_instance *ablock, uschar *data) {<b>return</b> <var>0</var>;}</td></tr>
+<tr><th id="55">55</th><td><em>int</em> auth_cram_md5_client(auth_instance *ablock, smtp_inblock *inblock,</td></tr>
+<tr><th id="56">56</th><td>  smtp_outblock *outblock, <em>int</em> timeout, uschar *buffer, <em>int</em> buffsize) {<b>return</b> <var>0</var>;}</td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><u>#<span data-ppcond="50">else</span>	/*!MACRO_PREDEF*/</u></td></tr>
+<tr><th id="59">59</th><td></td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="62">62</th><td><i>*          Initialization entry point            *</i></td></tr>
+<tr><th id="63">63</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="64">64</th><td></td></tr>
+<tr><th id="65">65</th><td><i>/* Called for each instance, after its options have been read, to</i></td></tr>
+<tr><th id="66">66</th><td><i>enable consistency checks to be done, or anything else that needs</i></td></tr>
+<tr><th id="67">67</th><td><i>to be set up. */</i></td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td><em>void</em></td></tr>
+<tr><th id="70">70</th><td><dfn class="decl def fn" id="auth_cram_md5_init" title='auth_cram_md5_init' data-ref="auth_cram_md5_init">auth_cram_md5_init</dfn>(<a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *<dfn class="local col1 decl" id="1ablock" title='ablock' data-type='auth_instance *' data-ref="1ablock">ablock</dfn>)</td></tr>
+<tr><th id="71">71</th><td>{</td></tr>
+<tr><th id="72">72</th><td><a class="typedef" href="cram_md5.h.html#auth_cram_md5_options_block" title='auth_cram_md5_options_block' data-type='struct auth_cram_md5_options_block' data-ref="auth_cram_md5_options_block">auth_cram_md5_options_block</a> *<dfn class="local col2 decl" id="2ob" title='ob' data-type='auth_cram_md5_options_block *' data-ref="2ob">ob</dfn> =</td></tr>
+<tr><th id="73">73</th><td>  (<a class="typedef" href="cram_md5.h.html#auth_cram_md5_options_block" title='auth_cram_md5_options_block' data-type='struct auth_cram_md5_options_block' data-ref="auth_cram_md5_options_block">auth_cram_md5_options_block</a> *)(<a class="local col1 ref" href="#1ablock" title='ablock' data-ref="1ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::options_block" title='auth_instance::options_block' data-ref="auth_instance::options_block">options_block</a>);</td></tr>
+<tr><th id="74">74</th><td><b>if</b> (<a class="local col2 ref" href="#2ob" title='ob' data-ref="2ob">ob</a>-&gt;<a class="ref field" href="cram_md5.h.html#(anonymous)::server_secret" title='(anonymous struct)::server_secret' data-ref="(anonymous)::server_secret">server_secret</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="local col1 ref" href="#1ablock" title='ablock' data-ref="1ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::server" title='auth_instance::server' data-ref="auth_instance::server">server</a> = <a class="macro" href="../mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="75">75</th><td><b>if</b> (<a class="local col2 ref" href="#2ob" title='ob' data-ref="2ob">ob</a>-&gt;<a class="ref field" href="cram_md5.h.html#(anonymous)::client_secret" title='(anonymous struct)::client_secret' data-ref="(anonymous)::client_secret">client_secret</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="76">76</th><td>  {</td></tr>
+<tr><th id="77">77</th><td>  <a class="local col1 ref" href="#1ablock" title='ablock' data-ref="1ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::client" title='auth_instance::client' data-ref="auth_instance::client">client</a> = <a class="macro" href="../mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="78">78</th><td>  <b>if</b> (<a class="local col2 ref" href="#2ob" title='ob' data-ref="2ob">ob</a>-&gt;<a class="ref field" href="cram_md5.h.html#(anonymous)::client_name" title='(anonymous struct)::client_name' data-ref="(anonymous)::client_name">client_name</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="local col2 ref" href="#2ob" title='ob' data-ref="2ob">ob</a>-&gt;<a class="ref field" href="cram_md5.h.html#(anonymous)::client_name" title='(anonymous struct)::client_name' data-ref="(anonymous)::client_name">client_name</a> = <a class="ref" href="../globals.h.html#primary_hostname" title='primary_hostname' data-ref="primary_hostname">primary_hostname</a>;</td></tr>
+<tr><th id="79">79</th><td>  }</td></tr>
+<tr><th id="80">80</th><td>}</td></tr>
+<tr><th id="81">81</th><td></td></tr>
+<tr><th id="82">82</th><td><u>#<span data-ppcond="50">endif</span>	/*!MACRO_PREDEF*/</u></td></tr>
+<tr><th id="83">83</th><td><u>#<span data-ppcond="13">endif</span>  /* STAND_ALONE */</u></td></tr>
+<tr><th id="84">84</th><td></td></tr>
+<tr><th id="85">85</th><td></td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td><u>#<span data-ppcond="87">ifndef</span> <span class="macro" data-ref="_M/MACRO_PREDEF">MACRO_PREDEF</span></u></td></tr>
+<tr><th id="88">88</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="89">89</th><td><i>*      Perform the CRAM-MD5 algorithm            *</i></td></tr>
+<tr><th id="90">90</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="91">91</th><td></td></tr>
+<tr><th id="92">92</th><td><i  data-doc="compute_cram_md5">/* The CRAM-MD5 algorithm is described in RFC 2195. It computes</i></td></tr>
+<tr><th id="93">93</th><td><i  data-doc="compute_cram_md5"></i></td></tr>
+<tr><th id="94">94</th><td><i  data-doc="compute_cram_md5">  MD5((secret XOR opad), MD5((secret XOR ipad), challenge))</i></td></tr>
+<tr><th id="95">95</th><td><i  data-doc="compute_cram_md5"></i></td></tr>
+<tr><th id="96">96</th><td><i  data-doc="compute_cram_md5">where secret is padded out to 64 characters (after being reduced to an MD5</i></td></tr>
+<tr><th id="97">97</th><td><i  data-doc="compute_cram_md5">digest if longer than 64) and ipad and opad are 64-byte strings of 0x36 and</i></td></tr>
+<tr><th id="98">98</th><td><i  data-doc="compute_cram_md5">0x5c respectively, and comma means concatenation.</i></td></tr>
+<tr><th id="99">99</th><td><i  data-doc="compute_cram_md5"></i></td></tr>
+<tr><th id="100">100</th><td><i  data-doc="compute_cram_md5">Arguments:</i></td></tr>
+<tr><th id="101">101</th><td><i  data-doc="compute_cram_md5">  secret         the shared secret</i></td></tr>
+<tr><th id="102">102</th><td><i  data-doc="compute_cram_md5">  challenge      the challenge text</i></td></tr>
+<tr><th id="103">103</th><td><i  data-doc="compute_cram_md5">  digest         16-byte slot to put the answer in</i></td></tr>
+<tr><th id="104">104</th><td><i  data-doc="compute_cram_md5"></i></td></tr>
+<tr><th id="105">105</th><td><i  data-doc="compute_cram_md5">Returns:         nothing</i></td></tr>
+<tr><th id="106">106</th><td><i  data-doc="compute_cram_md5">*/</i></td></tr>
+<tr><th id="107">107</th><td></td></tr>
+<tr><th id="108">108</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="109">109</th><td><dfn class="tu decl def fn" id="compute_cram_md5" title='compute_cram_md5' data-type='void compute_cram_md5(uschar * secret, uschar * challenge, uschar * digestptr)' data-ref="compute_cram_md5">compute_cram_md5</dfn>(<a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="3secret" title='secret' data-type='uschar *' data-ref="3secret">secret</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="4challenge" title='challenge' data-type='uschar *' data-ref="4challenge">challenge</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col5 decl" id="5digestptr" title='digestptr' data-type='uschar *' data-ref="5digestptr">digestptr</dfn>)</td></tr>
+<tr><th id="110">110</th><td>{</td></tr>
+<tr><th id="111">111</th><td><a class="typedef" href="../structs.h.html#md5" title='md5' data-type='struct md5' data-ref="md5">md5</a> <dfn class="local col6 decl" id="6base" title='base' data-type='md5' data-ref="6base">base</dfn>;</td></tr>
+<tr><th id="112">112</th><td><em>int</em> <dfn class="local col7 decl" id="7i" title='i' data-type='int' data-ref="7i">i</dfn>;</td></tr>
+<tr><th id="113">113</th><td><em>int</em> <dfn class="local col8 decl" id="8len" title='len' data-type='int' data-ref="8len">len</dfn> = <a class="macro" href="../mytypes.h.html#104" title="(int)strlen((const char *)(secret))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col3 ref" href="#3secret" title='secret' data-ref="3secret">secret</a>);</td></tr>
+<tr><th id="114">114</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col9 decl" id="9isecret" title='isecret' data-type='uschar [64]' data-ref="9isecret">isecret</dfn>[<var>64</var>];</td></tr>
+<tr><th id="115">115</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col0 decl" id="10osecret" title='osecret' data-type='uschar [64]' data-ref="10osecret">osecret</dfn>[<var>64</var>];</td></tr>
+<tr><th id="116">116</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col1 decl" id="11md5secret" title='md5secret' data-type='uschar [16]' data-ref="11md5secret">md5secret</dfn>[<var>16</var>];</td></tr>
+<tr><th id="117">117</th><td></td></tr>
+<tr><th id="118">118</th><td><i>/* If the secret is longer than 64 characters, we compute its MD5 digest</i></td></tr>
+<tr><th id="119">119</th><td><i>and use that. */</i></td></tr>
+<tr><th id="120">120</th><td></td></tr>
+<tr><th id="121">121</th><td><b>if</b> (<a class="local col8 ref" href="#8len" title='len' data-ref="8len">len</a> &gt; <var>64</var>)</td></tr>
+<tr><th id="122">122</th><td>  {</td></tr>
+<tr><th id="123">123</th><td>  <a class="ref fn" href="../functions.h.html#md5_start" title='md5_start' data-ref="md5_start">md5_start</a>(&amp;<a class="local col6 ref" href="#6base" title='base' data-ref="6base">base</a>);</td></tr>
+<tr><th id="124">124</th><td>  <a class="ref fn" href="../functions.h.html#md5_end" title='md5_end' data-ref="md5_end">md5_end</a>(&amp;<a class="local col6 ref" href="#6base" title='base' data-ref="6base">base</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="local col3 ref" href="#3secret" title='secret' data-ref="3secret">secret</a>, <a class="local col8 ref" href="#8len" title='len' data-ref="8len">len</a>, <a class="local col1 ref" href="#11md5secret" title='md5secret' data-ref="11md5secret">md5secret</a>);</td></tr>
+<tr><th id="125">125</th><td>  <a class="local col3 ref" href="#3secret" title='secret' data-ref="3secret">secret</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="local col1 ref" href="#11md5secret" title='md5secret' data-ref="11md5secret">md5secret</a>;</td></tr>
+<tr><th id="126">126</th><td>  <a class="local col8 ref" href="#8len" title='len' data-ref="8len">len</a> = <var>16</var>;</td></tr>
+<tr><th id="127">127</th><td>  }</td></tr>
+<tr><th id="128">128</th><td></td></tr>
+<tr><th id="129">129</th><td><i>/* The key length is now known to be &lt;= 64. Set up the padded and xor'ed</i></td></tr>
+<tr><th id="130">130</th><td><i>versions. */</i></td></tr>
+<tr><th id="131">131</th><td></td></tr>
+<tr><th id="132">132</th><td><a class="ref fn" href="../../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a>(<a class="local col9 ref" href="#9isecret" title='isecret' data-ref="9isecret">isecret</a>, <a class="local col3 ref" href="#3secret" title='secret' data-ref="3secret">secret</a>, <a class="local col8 ref" href="#8len" title='len' data-ref="8len">len</a>);</td></tr>
+<tr><th id="133">133</th><td><a class="ref fn" href="../../../include/string.h.html#memset" title='memset' data-ref="memset">memset</a>(<a class="local col9 ref" href="#9isecret" title='isecret' data-ref="9isecret">isecret</a>+<a class="local col8 ref" href="#8len" title='len' data-ref="8len">len</a>, <var>0</var>, <var>64</var>-<a class="local col8 ref" href="#8len" title='len' data-ref="8len">len</a>);</td></tr>
+<tr><th id="134">134</th><td><a class="ref fn" href="../../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a>(<a class="local col0 ref" href="#10osecret" title='osecret' data-ref="10osecret">osecret</a>, <a class="local col9 ref" href="#9isecret" title='isecret' data-ref="9isecret">isecret</a>, <var>64</var>);</td></tr>
+<tr><th id="135">135</th><td></td></tr>
+<tr><th id="136">136</th><td><b>for</b> (<a class="local col7 ref" href="#7i" title='i' data-ref="7i">i</a> = <var>0</var>; <a class="local col7 ref" href="#7i" title='i' data-ref="7i">i</a> &lt; <var>64</var>; <a class="local col7 ref" href="#7i" title='i' data-ref="7i">i</a>++)</td></tr>
+<tr><th id="137">137</th><td>  {</td></tr>
+<tr><th id="138">138</th><td>  <a class="local col9 ref" href="#9isecret" title='isecret' data-ref="9isecret">isecret</a>[<a class="local col7 ref" href="#7i" title='i' data-ref="7i">i</a>] ^= <var>0x36</var>;</td></tr>
+<tr><th id="139">139</th><td>  <a class="local col0 ref" href="#10osecret" title='osecret' data-ref="10osecret">osecret</a>[<a class="local col7 ref" href="#7i" title='i' data-ref="7i">i</a>] ^= <var>0x5c</var>;</td></tr>
+<tr><th id="140">140</th><td>  }</td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td><i>/* Compute the inner MD5 digest */</i></td></tr>
+<tr><th id="143">143</th><td></td></tr>
+<tr><th id="144">144</th><td><a class="ref fn" href="../functions.h.html#md5_start" title='md5_start' data-ref="md5_start">md5_start</a>(&amp;<a class="local col6 ref" href="#6base" title='base' data-ref="6base">base</a>);</td></tr>
+<tr><th id="145">145</th><td><a class="ref fn" href="../functions.h.html#md5_mid" title='md5_mid' data-ref="md5_mid">md5_mid</a>(&amp;<a class="local col6 ref" href="#6base" title='base' data-ref="6base">base</a>, <a class="local col9 ref" href="#9isecret" title='isecret' data-ref="9isecret">isecret</a>);</td></tr>
+<tr><th id="146">146</th><td><a class="ref fn" href="../functions.h.html#md5_end" title='md5_end' data-ref="md5_end">md5_end</a>(&amp;<a class="local col6 ref" href="#6base" title='base' data-ref="6base">base</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="local col4 ref" href="#4challenge" title='challenge' data-ref="4challenge">challenge</a>, <a class="macro" href="../mytypes.h.html#104" title="(int)strlen((const char *)(challenge))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col4 ref" href="#4challenge" title='challenge' data-ref="4challenge">challenge</a>), <a class="local col1 ref" href="#11md5secret" title='md5secret' data-ref="11md5secret">md5secret</a>);</td></tr>
+<tr><th id="147">147</th><td></td></tr>
+<tr><th id="148">148</th><td><i>/* Compute the outer MD5 digest */</i></td></tr>
+<tr><th id="149">149</th><td></td></tr>
+<tr><th id="150">150</th><td><a class="ref fn" href="../functions.h.html#md5_start" title='md5_start' data-ref="md5_start">md5_start</a>(&amp;<a class="local col6 ref" href="#6base" title='base' data-ref="6base">base</a>);</td></tr>
+<tr><th id="151">151</th><td><a class="ref fn" href="../functions.h.html#md5_mid" title='md5_mid' data-ref="md5_mid">md5_mid</a>(&amp;<a class="local col6 ref" href="#6base" title='base' data-ref="6base">base</a>, <a class="local col0 ref" href="#10osecret" title='osecret' data-ref="10osecret">osecret</a>);</td></tr>
+<tr><th id="152">152</th><td><a class="ref fn" href="../functions.h.html#md5_end" title='md5_end' data-ref="md5_end">md5_end</a>(&amp;<a class="local col6 ref" href="#6base" title='base' data-ref="6base">base</a>, <a class="local col1 ref" href="#11md5secret" title='md5secret' data-ref="11md5secret">md5secret</a>, <var>16</var>, <a class="local col5 ref" href="#5digestptr" title='digestptr' data-ref="5digestptr">digestptr</a>);</td></tr>
+<tr><th id="153">153</th><td>}</td></tr>
+<tr><th id="154">154</th><td></td></tr>
+<tr><th id="155">155</th><td></td></tr>
+<tr><th id="156">156</th><td><u>#<span data-ppcond="156">ifndef</span> <span class="macro" data-ref="_M/STAND_ALONE">STAND_ALONE</span></u></td></tr>
+<tr><th id="157">157</th><td></td></tr>
+<tr><th id="158">158</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="159">159</th><td><i>*             Server entry point                 *</i></td></tr>
+<tr><th id="160">160</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="161">161</th><td></td></tr>
+<tr><th id="162">162</th><td><i>/* For interface, see auths/README */</i></td></tr>
+<tr><th id="163">163</th><td></td></tr>
+<tr><th id="164">164</th><td><em>int</em></td></tr>
+<tr><th id="165">165</th><td><dfn class="decl def fn" id="auth_cram_md5_server" title='auth_cram_md5_server' data-ref="auth_cram_md5_server">auth_cram_md5_server</dfn>(<a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *<dfn class="local col2 decl" id="12ablock" title='ablock' data-type='auth_instance *' data-ref="12ablock">ablock</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="13data" title='data' data-type='uschar *' data-ref="13data">data</dfn>)</td></tr>
+<tr><th id="166">166</th><td>{</td></tr>
+<tr><th id="167">167</th><td><a class="typedef" href="cram_md5.h.html#auth_cram_md5_options_block" title='auth_cram_md5_options_block' data-type='struct auth_cram_md5_options_block' data-ref="auth_cram_md5_options_block">auth_cram_md5_options_block</a> *<dfn class="local col4 decl" id="14ob" title='ob' data-type='auth_cram_md5_options_block *' data-ref="14ob">ob</dfn> =</td></tr>
+<tr><th id="168">168</th><td>  (<a class="typedef" href="cram_md5.h.html#auth_cram_md5_options_block" title='auth_cram_md5_options_block' data-type='struct auth_cram_md5_options_block' data-ref="auth_cram_md5_options_block">auth_cram_md5_options_block</a> *)(<a class="local col2 ref" href="#12ablock" title='ablock' data-ref="12ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::options_block" title='auth_instance::options_block' data-ref="auth_instance::options_block">options_block</a>);</td></tr>
+<tr><th id="169">169</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col5 decl" id="15challenge" title='challenge' data-type='uschar *' data-ref="15challenge">challenge</dfn> = <a class="ref fn" href="../local_scan.h.html#string_sprintf" title='string_sprintf' data-ref="string_sprintf">string_sprintf</a>(<q>"&lt;%d.%ld@%s&gt;"</q>, <a class="ref fn" href="../../../include/unistd.h.html#getpid" title='getpid' data-ref="getpid">getpid</a>(),</td></tr>
+<tr><th id="170">170</th><td>    (<em>long</em> <em>int</em>) <a class="ref fn" href="../../../include/time.h.html#time" title='time' data-ref="time">time</a>(<span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>), <a class="ref" href="../globals.h.html#primary_hostname" title='primary_hostname' data-ref="primary_hostname">primary_hostname</a>);</td></tr>
+<tr><th id="171">171</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="16clear" title='clear' data-type='uschar *' data-ref="16clear">clear</dfn>, *<dfn class="local col7 decl" id="17secret" title='secret' data-type='uschar *' data-ref="17secret">secret</dfn>;</td></tr>
+<tr><th id="172">172</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col8 decl" id="18digest" title='digest' data-type='uschar [16]' data-ref="18digest">digest</dfn>[<var>16</var>];</td></tr>
+<tr><th id="173">173</th><td><em>int</em> <dfn class="local col9 decl" id="19i" title='i' data-type='int' data-ref="19i">i</dfn>, <dfn class="local col0 decl" id="20rc" title='rc' data-type='int' data-ref="20rc">rc</dfn>, <dfn class="local col1 decl" id="21len" title='len' data-type='int' data-ref="21len">len</dfn>;</td></tr>
+<tr><th id="174">174</th><td></td></tr>
+<tr><th id="175">175</th><td><i>/* If we are running in the test harness, always send the same challenge,</i></td></tr>
+<tr><th id="176">176</th><td><i>an example string taken from the RFC. */</i></td></tr>
+<tr><th id="177">177</th><td></td></tr>
+<tr><th id="178">178</th><td><b>if</b> (<a class="ref" href="../globals.h.html#running_in_test_harness" title='running_in_test_harness' data-ref="running_in_test_harness">running_in_test_harness</a>)</td></tr>
+<tr><th id="179">179</th><td>  <a class="local col5 ref" href="#15challenge" title='challenge' data-ref="15challenge">challenge</a> = <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a><q>"&lt;1896.697170952@postoffice.reston.mci.net&gt;"</q>;</td></tr>
+<tr><th id="180">180</th><td></td></tr>
+<tr><th id="181">181</th><td><i>/* No data should have been sent with the AUTH command */</i></td></tr>
+<tr><th id="182">182</th><td></td></tr>
+<tr><th id="183">183</th><td><b>if</b> (*<a class="local col3 ref" href="#13data" title='data' data-ref="13data">data</a> != <var>0</var>) <b>return</b> <a class="macro" href="../macros.h.html#298" title="12" data-ref="_M/UNEXPECTED">UNEXPECTED</a>;</td></tr>
+<tr><th id="184">184</th><td></td></tr>
+<tr><th id="185">185</th><td><i>/* Send the challenge, read the return */</i></td></tr>
+<tr><th id="186">186</th><td></td></tr>
+<tr><th id="187">187</th><td><b>if</b> ((<a class="local col0 ref" href="#20rc" title='rc' data-ref="20rc">rc</a> = <a class="ref fn" href="../functions.h.html#auth_get_data" title='auth_get_data' data-ref="auth_get_data">auth_get_data</a>(&amp;<a class="local col3 ref" href="#13data" title='data' data-ref="13data">data</a>, <a class="local col5 ref" href="#15challenge" title='challenge' data-ref="15challenge">challenge</a>, <a class="macro" href="../mytypes.h.html#104" title="(int)strlen((const char *)(challenge))" data-ref="_M/Ustrlen">Ustrlen</a>(<a class="local col5 ref" href="#15challenge" title='challenge' data-ref="15challenge">challenge</a>))) != <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a>) <b>return</b> <a class="local col0 ref" href="#20rc" title='rc' data-ref="20rc">rc</a>;</td></tr>
+<tr><th id="188">188</th><td><b>if</b> ((<a class="local col1 ref" href="#21len" title='len' data-ref="21len">len</a> = <a class="ref fn" href="../functions.h.html#b64decode" title='b64decode' data-ref="b64decode">b64decode</a>(<a class="local col3 ref" href="#13data" title='data' data-ref="13data">data</a>, &amp;<a class="local col6 ref" href="#16clear" title='clear' data-ref="16clear">clear</a>)) &lt; <var>0</var>) <b>return</b> <a class="macro" href="../macros.h.html#297" title="11" data-ref="_M/BAD64">BAD64</a>;</td></tr>
+<tr><th id="189">189</th><td></td></tr>
+<tr><th id="190">190</th><td><i>/* The return consists of a user name, space-separated from the CRAM-MD5</i></td></tr>
+<tr><th id="191">191</th><td><i>digest, expressed in hex. Extract the user name and put it in $auth1 and $1.</i></td></tr>
+<tr><th id="192">192</th><td><i>The former is now the preferred variable; the latter is the original one. Then</i></td></tr>
+<tr><th id="193">193</th><td><i>check that the remaining length is 32. */</i></td></tr>
+<tr><th id="194">194</th><td></td></tr>
+<tr><th id="195">195</th><td><a class="ref" href="../globals.h.html#auth_vars" title='auth_vars' data-ref="auth_vars">auth_vars</a>[<var>0</var>] = <a class="ref" href="../globals.h.html#expand_nstring" title='expand_nstring' data-ref="expand_nstring">expand_nstring</a>[<var>1</var>] = <a class="local col6 ref" href="#16clear" title='clear' data-ref="16clear">clear</a>;</td></tr>
+<tr><th id="196">196</th><td><b>while</b> (*<a class="local col6 ref" href="#16clear" title='clear' data-ref="16clear">clear</a> != <var>0</var> &amp;&amp; !<a class="macro" href="../../../include/ctype.h.html#205" title="((*__ctype_b_loc ())[(int) ((*clear))] &amp; (unsigned short int) _ISspace)" data-ref="_M/isspace">isspace</a>(*<a class="local col6 ref" href="#16clear" title='clear' data-ref="16clear">clear</a>)) <a class="local col6 ref" href="#16clear" title='clear' data-ref="16clear">clear</a>++;</td></tr>
+<tr><th id="197">197</th><td><b>if</b> (!<a class="macro" href="../../../include/ctype.h.html#205" title="((*__ctype_b_loc ())[(int) ((*clear))] &amp; (unsigned short int) _ISspace)" data-ref="_M/isspace">isspace</a>(*<a class="local col6 ref" href="#16clear" title='clear' data-ref="16clear">clear</a>)) <b>return</b> <a class="macro" href="../macros.h.html#285" title="2" data-ref="_M/FAIL">FAIL</a>;</td></tr>
+<tr><th id="198">198</th><td>*<a class="local col6 ref" href="#16clear" title='clear' data-ref="16clear">clear</a>++ = <var>0</var>;</td></tr>
+<tr><th id="199">199</th><td></td></tr>
+<tr><th id="200">200</th><td><a class="ref" href="../globals.h.html#expand_nlength" title='expand_nlength' data-ref="expand_nlength">expand_nlength</a>[<var>1</var>] = <a class="local col6 ref" href="#16clear" title='clear' data-ref="16clear">clear</a> - <a class="ref" href="../globals.h.html#expand_nstring" title='expand_nstring' data-ref="expand_nstring">expand_nstring</a>[<var>1</var>] - <var>1</var>;</td></tr>
+<tr><th id="201">201</th><td><b>if</b> (<a class="local col1 ref" href="#21len" title='len' data-ref="21len">len</a> - <a class="ref" href="../globals.h.html#expand_nlength" title='expand_nlength' data-ref="expand_nlength">expand_nlength</a>[<var>1</var>] - <var>1</var> != <var>32</var>) <b>return</b> <a class="macro" href="../macros.h.html#285" title="2" data-ref="_M/FAIL">FAIL</a>;</td></tr>
+<tr><th id="202">202</th><td><a class="ref" href="../globals.h.html#expand_nmax" title='expand_nmax' data-ref="expand_nmax">expand_nmax</a> = <var>1</var>;</td></tr>
+<tr><th id="203">203</th><td></td></tr>
+<tr><th id="204">204</th><td><i>/* Expand the server_secret string so that it can compute a value dependent on</i></td></tr>
+<tr><th id="205">205</th><td><i>the user name if necessary. */</i></td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td><a class="ref fn" href="../functions.h.html#debug_print_string" title='debug_print_string' data-ref="debug_print_string">debug_print_string</a>(<a class="local col2 ref" href="#12ablock" title='ablock' data-ref="12ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::server_debug_string" title='auth_instance::server_debug_string' data-ref="auth_instance::server_debug_string">server_debug_string</a>);    <i>/* customized debugging */</i></td></tr>
+<tr><th id="208">208</th><td><a class="local col7 ref" href="#17secret" title='secret' data-ref="17secret">secret</a> = <a class="ref fn" href="../local_scan.h.html#expand_string" title='expand_string' data-ref="expand_string">expand_string</a>(<a class="local col4 ref" href="#14ob" title='ob' data-ref="14ob">ob</a>-&gt;<a class="ref field" href="cram_md5.h.html#(anonymous)::server_secret" title='(anonymous struct)::server_secret' data-ref="(anonymous)::server_secret">server_secret</a>);</td></tr>
+<tr><th id="209">209</th><td></td></tr>
+<tr><th id="210">210</th><td><i>/* A forced fail implies failure of authentication - i.e. we have no secret for</i></td></tr>
+<tr><th id="211">211</th><td><i>the given name. */</i></td></tr>
+<tr><th id="212">212</th><td></td></tr>
+<tr><th id="213">213</th><td><b>if</b> (<a class="local col7 ref" href="#17secret" title='secret' data-ref="17secret">secret</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="214">214</th><td>  {</td></tr>
+<tr><th id="215">215</th><td>  <b>if</b> (<a class="ref" href="../globals.h.html#expand_string_forcedfail" title='expand_string_forcedfail' data-ref="expand_string_forcedfail">expand_string_forcedfail</a>) <b>return</b> <a class="macro" href="../macros.h.html#285" title="2" data-ref="_M/FAIL">FAIL</a>;</td></tr>
+<tr><th id="216">216</th><td>  <a class="ref" href="../globals.h.html#auth_defer_msg" title='auth_defer_msg' data-ref="auth_defer_msg">auth_defer_msg</a> = <a class="ref" href="../local_scan.h.html#expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</a>;</td></tr>
+<tr><th id="217">217</th><td>  <b>return</b> <a class="macro" href="../macros.h.html#284" title="1" data-ref="_M/DEFER">DEFER</a>;</td></tr>
+<tr><th id="218">218</th><td>  }</td></tr>
+<tr><th id="219">219</th><td></td></tr>
+<tr><th id="220">220</th><td><i>/* Compute the CRAM-MD5 digest that we should have received from the client. */</i></td></tr>
+<tr><th id="221">221</th><td></td></tr>
+<tr><th id="222">222</th><td><a class="tu ref fn" href="#compute_cram_md5" title='compute_cram_md5' data-use='c' data-ref="compute_cram_md5">compute_cram_md5</a>(<a class="local col7 ref" href="#17secret" title='secret' data-ref="17secret">secret</a>, <a class="local col5 ref" href="#15challenge" title='challenge' data-ref="15challenge">challenge</a>, <a class="local col8 ref" href="#18digest" title='digest' data-ref="18digest">digest</a>);</td></tr>
+<tr><th id="223">223</th><td></td></tr>
+<tr><th id="224">224</th><td><a class="macro" href="../macros.h.html#111" title="if (host_checking || (debug_selector &amp; (D_auth)))" data-ref="_M/HDEBUG">HDEBUG</a>(<a class="enum" href="../macros.h.html#379" title='D_auth' data-ref="D_auth">D_auth</a>)</td></tr>
+<tr><th id="225">225</th><td>  {</td></tr>
+<tr><th id="226">226</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col2 decl" id="22buff" title='buff' data-type='uschar [64]' data-ref="22buff">buff</dfn>[<var>64</var>];</td></tr>
+<tr><th id="227">227</th><td>  <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"CRAM-MD5: user name = %s\n"</q>, <a class="ref" href="../globals.h.html#auth_vars" title='auth_vars' data-ref="auth_vars">auth_vars</a>[<var>0</var>]);</td></tr>
+<tr><th id="228">228</th><td>  <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"          challenge = %s\n"</q>, <a class="local col5 ref" href="#15challenge" title='challenge' data-ref="15challenge">challenge</a>);</td></tr>
+<tr><th id="229">229</th><td>  <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"          received  = %s\n"</q>, <a class="local col6 ref" href="#16clear" title='clear' data-ref="16clear">clear</a>);</td></tr>
+<tr><th id="230">230</th><td>  <a class="macro" href="../mytypes.h.html#101" title="strcpy((char *)(buff),(const char *)(&quot;          digest    = &quot;))" data-ref="_M/Ustrcpy">Ustrcpy</a>(<a class="local col2 ref" href="#22buff" title='buff' data-ref="22buff">buff</a>,<q>"          digest    = "</q>);</td></tr>
+<tr><th id="231">231</th><td>  <b>for</b> (<a class="local col9 ref" href="#19i" title='i' data-ref="19i">i</a> = <var>0</var>; <a class="local col9 ref" href="#19i" title='i' data-ref="19i">i</a> &lt; <var>16</var>; <a class="local col9 ref" href="#19i" title='i' data-ref="19i">i</a>++) <a class="ref fn" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col2 ref" href="#22buff" title='buff' data-ref="22buff">buff</a>+<var>22</var>+<var>2</var>*<a class="local col9 ref" href="#19i" title='i' data-ref="19i">i</a>, <q>"%02x"</q>, <a class="local col8 ref" href="#18digest" title='digest' data-ref="18digest">digest</a>[<a class="local col9 ref" href="#19i" title='i' data-ref="19i">i</a>]);</td></tr>
+<tr><th id="232">232</th><td>  <a class="ref fn" href="../local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"%.54s\n"</q>, <a class="local col2 ref" href="#22buff" title='buff' data-ref="22buff">buff</a>);</td></tr>
+<tr><th id="233">233</th><td>  }</td></tr>
+<tr><th id="234">234</th><td></td></tr>
+<tr><th id="235">235</th><td><i>/* We now have to compare the digest, which is 16 bytes in binary, with the</i></td></tr>
+<tr><th id="236">236</th><td><i>data received, which is expressed in lower case hex. We checked above that</i></td></tr>
+<tr><th id="237">237</th><td><i>there were 32 characters of data left. */</i></td></tr>
+<tr><th id="238">238</th><td></td></tr>
+<tr><th id="239">239</th><td><b>for</b> (<a class="local col9 ref" href="#19i" title='i' data-ref="19i">i</a> = <var>0</var>; <a class="local col9 ref" href="#19i" title='i' data-ref="19i">i</a> &lt; <var>16</var>; <a class="local col9 ref" href="#19i" title='i' data-ref="19i">i</a>++)</td></tr>
+<tr><th id="240">240</th><td>  {</td></tr>
+<tr><th id="241">241</th><td>  <em>int</em> <dfn class="local col3 decl" id="23a" title='a' data-type='int' data-ref="23a">a</dfn> = *<a class="local col6 ref" href="#16clear" title='clear' data-ref="16clear">clear</a>++;</td></tr>
+<tr><th id="242">242</th><td>  <em>int</em> <dfn class="local col4 decl" id="24b" title='b' data-type='int' data-ref="24b">b</dfn> = *<a class="local col6 ref" href="#16clear" title='clear' data-ref="16clear">clear</a>++;</td></tr>
+<tr><th id="243">243</th><td>  <b>if</b> (((((<a class="local col3 ref" href="#23a" title='a' data-ref="23a">a</a> &gt;= <kbd>'a'</kbd>)? <a class="local col3 ref" href="#23a" title='a' data-ref="23a">a</a> - <kbd>'a'</kbd> + <var>10</var> : <a class="local col3 ref" href="#23a" title='a' data-ref="23a">a</a> - <kbd>'0'</kbd>) &lt;&lt; <var>4</var>) +</td></tr>
+<tr><th id="244">244</th><td>        ((<a class="local col4 ref" href="#24b" title='b' data-ref="24b">b</a> &gt;= <kbd>'a'</kbd>)? <a class="local col4 ref" href="#24b" title='b' data-ref="24b">b</a> - <kbd>'a'</kbd> + <var>10</var> : <a class="local col4 ref" href="#24b" title='b' data-ref="24b">b</a> - <kbd>'0'</kbd>)) != <a class="local col8 ref" href="#18digest" title='digest' data-ref="18digest">digest</a>[<a class="local col9 ref" href="#19i" title='i' data-ref="19i">i</a>]) <b>return</b> <a class="macro" href="../macros.h.html#285" title="2" data-ref="_M/FAIL">FAIL</a>;</td></tr>
+<tr><th id="245">245</th><td>  }</td></tr>
+<tr><th id="246">246</th><td></td></tr>
+<tr><th id="247">247</th><td><i>/* Expand server_condition as an authorization check */</i></td></tr>
+<tr><th id="248">248</th><td><b>return</b> <a class="ref fn" href="../functions.h.html#auth_check_serv_cond" title='auth_check_serv_cond' data-ref="auth_check_serv_cond">auth_check_serv_cond</a>(<a class="local col2 ref" href="#12ablock" title='ablock' data-ref="12ablock">ablock</a>);</td></tr>
+<tr><th id="249">249</th><td>}</td></tr>
+<tr><th id="250">250</th><td></td></tr>
+<tr><th id="251">251</th><td></td></tr>
+<tr><th id="252">252</th><td></td></tr>
+<tr><th id="253">253</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="254">254</th><td><i>*              Client entry point                *</i></td></tr>
+<tr><th id="255">255</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="256">256</th><td></td></tr>
+<tr><th id="257">257</th><td><i>/* For interface, see auths/README */</i></td></tr>
+<tr><th id="258">258</th><td></td></tr>
+<tr><th id="259">259</th><td><em>int</em></td></tr>
+<tr><th id="260">260</th><td><dfn class="decl def fn" id="auth_cram_md5_client" title='auth_cram_md5_client' data-ref="auth_cram_md5_client">auth_cram_md5_client</dfn>(</td></tr>
+<tr><th id="261">261</th><td>  <a class="typedef" href="../structs.h.html#auth_instance" title='auth_instance' data-type='struct auth_instance' data-ref="auth_instance">auth_instance</a> *<dfn class="local col5 decl" id="25ablock" title='ablock' data-type='auth_instance *' data-ref="25ablock">ablock</dfn>,                 <i>/* authenticator block */</i></td></tr>
+<tr><th id="262">262</th><td>  <a class="typedef" href="../structs.h.html#smtp_inblock" title='smtp_inblock' data-type='struct smtp_inblock' data-ref="smtp_inblock">smtp_inblock</a> *<dfn class="local col6 decl" id="26inblock" title='inblock' data-type='smtp_inblock *' data-ref="26inblock">inblock</dfn>,                 <i>/* input connection */</i></td></tr>
+<tr><th id="263">263</th><td>  <a class="typedef" href="../structs.h.html#smtp_outblock" title='smtp_outblock' data-type='struct smtp_outblock' data-ref="smtp_outblock">smtp_outblock</a> *<dfn class="local col7 decl" id="27outblock" title='outblock' data-type='smtp_outblock *' data-ref="27outblock">outblock</dfn>,               <i>/* output connection */</i></td></tr>
+<tr><th id="264">264</th><td>  <em>int</em> <dfn class="local col8 decl" id="28timeout" title='timeout' data-type='int' data-ref="28timeout">timeout</dfn>,                           <i>/* command timeout */</i></td></tr>
+<tr><th id="265">265</th><td>  <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col9 decl" id="29buffer" title='buffer' data-type='uschar *' data-ref="29buffer">buffer</dfn>,                        <i>/* for reading response */</i></td></tr>
+<tr><th id="266">266</th><td>  <em>int</em> <dfn class="local col0 decl" id="30buffsize" title='buffsize' data-type='int' data-ref="30buffsize">buffsize</dfn>)                          <i>/* size of buffer */</i></td></tr>
+<tr><th id="267">267</th><td>{</td></tr>
+<tr><th id="268">268</th><td><a class="typedef" href="cram_md5.h.html#auth_cram_md5_options_block" title='auth_cram_md5_options_block' data-type='struct auth_cram_md5_options_block' data-ref="auth_cram_md5_options_block">auth_cram_md5_options_block</a> *<dfn class="local col1 decl" id="31ob" title='ob' data-type='auth_cram_md5_options_block *' data-ref="31ob">ob</dfn> =</td></tr>
+<tr><th id="269">269</th><td>  (<a class="typedef" href="cram_md5.h.html#auth_cram_md5_options_block" title='auth_cram_md5_options_block' data-type='struct auth_cram_md5_options_block' data-ref="auth_cram_md5_options_block">auth_cram_md5_options_block</a> *)(<a class="local col5 ref" href="#25ablock" title='ablock' data-ref="25ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::options_block" title='auth_instance::options_block' data-ref="auth_instance::options_block">options_block</a>);</td></tr>
+<tr><th id="270">270</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col2 decl" id="32secret" title='secret' data-type='uschar *' data-ref="32secret">secret</dfn> = <a class="ref fn" href="../local_scan.h.html#expand_string" title='expand_string' data-ref="expand_string">expand_string</a>(<a class="local col1 ref" href="#31ob" title='ob' data-ref="31ob">ob</a>-&gt;<a class="ref field" href="cram_md5.h.html#(anonymous)::client_secret" title='(anonymous struct)::client_secret' data-ref="(anonymous)::client_secret">client_secret</a>);</td></tr>
+<tr><th id="271">271</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="33name" title='name' data-type='uschar *' data-ref="33name">name</dfn> = <a class="ref fn" href="../local_scan.h.html#expand_string" title='expand_string' data-ref="expand_string">expand_string</a>(<a class="local col1 ref" href="#31ob" title='ob' data-ref="31ob">ob</a>-&gt;<a class="ref field" href="cram_md5.h.html#(anonymous)::client_name" title='(anonymous struct)::client_name' data-ref="(anonymous)::client_name">client_name</a>);</td></tr>
+<tr><th id="272">272</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col4 decl" id="34challenge" title='challenge' data-type='uschar *' data-ref="34challenge">challenge</dfn>, *<dfn class="local col5 decl" id="35p" title='p' data-type='uschar *' data-ref="35p">p</dfn>;</td></tr>
+<tr><th id="273">273</th><td><em>int</em> <dfn class="local col6 decl" id="36i" title='i' data-type='int' data-ref="36i">i</dfn>;</td></tr>
+<tr><th id="274">274</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col7 decl" id="37digest" title='digest' data-type='uschar [16]' data-ref="37digest">digest</dfn>[<var>16</var>];</td></tr>
+<tr><th id="275">275</th><td></td></tr>
+<tr><th id="276">276</th><td><i>/* If expansion of either the secret or the user name failed, return CANCELLED</i></td></tr>
+<tr><th id="277">277</th><td><i>or ERROR, as appropriate. */</i></td></tr>
+<tr><th id="278">278</th><td></td></tr>
+<tr><th id="279">279</th><td><b>if</b> (!<a class="local col2 ref" href="#32secret" title='secret' data-ref="32secret">secret</a> || !<a class="local col3 ref" href="#33name" title='name' data-ref="33name">name</a>)</td></tr>
+<tr><th id="280">280</th><td>  {</td></tr>
+<tr><th id="281">281</th><td>  <b>if</b> (<a class="ref" href="../globals.h.html#expand_string_forcedfail" title='expand_string_forcedfail' data-ref="expand_string_forcedfail">expand_string_forcedfail</a>)</td></tr>
+<tr><th id="282">282</th><td>    {</td></tr>
+<tr><th id="283">283</th><td>    *<a class="local col9 ref" href="#29buffer" title='buffer' data-ref="29buffer">buffer</a> = <var>0</var>;           <i>/* No message */</i></td></tr>
+<tr><th id="284">284</th><td>    <b>return</b> <a class="macro" href="../macros.h.html#299" title="13" data-ref="_M/CANCELLED">CANCELLED</a>;</td></tr>
+<tr><th id="285">285</th><td>    }</td></tr>
+<tr><th id="286">286</th><td>  <a class="ref fn" href="../functions.h.html#string_format" title='string_format' data-ref="string_format">string_format</a>(<a class="local col9 ref" href="#29buffer" title='buffer' data-ref="29buffer">buffer</a>, <a class="local col0 ref" href="#30buffsize" title='buffsize' data-ref="30buffsize">buffsize</a>, <q>"expansion of \"%s\" failed in "</q></td></tr>
+<tr><th id="287">287</th><td>    <q>"%s authenticator: %s"</q>,</td></tr>
+<tr><th id="288">288</th><td>    !<a class="local col2 ref" href="#32secret" title='secret' data-ref="32secret">secret</a> ? <a class="local col1 ref" href="#31ob" title='ob' data-ref="31ob">ob</a>-&gt;<a class="ref field" href="cram_md5.h.html#(anonymous)::client_secret" title='(anonymous struct)::client_secret' data-ref="(anonymous)::client_secret">client_secret</a> : <a class="local col1 ref" href="#31ob" title='ob' data-ref="31ob">ob</a>-&gt;<a class="ref field" href="cram_md5.h.html#(anonymous)::client_name" title='(anonymous struct)::client_name' data-ref="(anonymous)::client_name">client_name</a>,</td></tr>
+<tr><th id="289">289</th><td>    <a class="local col5 ref" href="#25ablock" title='ablock' data-ref="25ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::name" title='auth_instance::name' data-ref="auth_instance::name">name</a>, <a class="ref" href="../local_scan.h.html#expand_string_message" title='expand_string_message' data-ref="expand_string_message">expand_string_message</a>);</td></tr>
+<tr><th id="290">290</th><td>  <b>return</b> <a class="macro" href="../macros.h.html#286" title="3" data-ref="_M/ERROR">ERROR</a>;</td></tr>
+<tr><th id="291">291</th><td>  }</td></tr>
+<tr><th id="292">292</th><td></td></tr>
+<tr><th id="293">293</th><td><i>/* Initiate the authentication exchange and read the challenge, which arrives</i></td></tr>
+<tr><th id="294">294</th><td><i>in base 64. */</i></td></tr>
+<tr><th id="295">295</th><td></td></tr>
+<tr><th id="296">296</th><td><b>if</b> (<a class="ref fn" href="../functions.h.html#smtp_write_command" title='smtp_write_command' data-ref="smtp_write_command">smtp_write_command</a>(<a class="local col7 ref" href="#27outblock" title='outblock' data-ref="27outblock">outblock</a>, <a class="enum" href="../macros.h.html#SCMD_FLUSH" title='SCMD_FLUSH' data-ref="SCMD_FLUSH">SCMD_FLUSH</a>, <q>"AUTH %s\r\n"</q>,</td></tr>
+<tr><th id="297">297</th><td>		       	<a class="local col5 ref" href="#25ablock" title='ablock' data-ref="25ablock">ablock</a>-&gt;<a class="ref field" href="../structs.h.html#auth_instance::public_name" title='auth_instance::public_name' data-ref="auth_instance::public_name">public_name</a>) &lt; <var>0</var>)</td></tr>
+<tr><th id="298">298</th><td>  <b>return</b> <a class="macro" href="../macros.h.html#300" title="14" data-ref="_M/FAIL_SEND">FAIL_SEND</a>;</td></tr>
+<tr><th id="299">299</th><td><b>if</b> (!<a class="ref fn" href="../functions.h.html#smtp_read_response" title='smtp_read_response' data-ref="smtp_read_response">smtp_read_response</a>(<a class="local col6 ref" href="#26inblock" title='inblock' data-ref="26inblock">inblock</a>, <a class="local col9 ref" href="#29buffer" title='buffer' data-ref="29buffer">buffer</a>, <a class="local col0 ref" href="#30buffsize" title='buffsize' data-ref="30buffsize">buffsize</a>, <kbd>'3'</kbd>, <a class="local col8 ref" href="#28timeout" title='timeout' data-ref="28timeout">timeout</a>))</td></tr>
+<tr><th id="300">300</th><td>  <b>return</b> <a class="macro" href="../macros.h.html#285" title="2" data-ref="_M/FAIL">FAIL</a>;</td></tr>
+<tr><th id="301">301</th><td></td></tr>
+<tr><th id="302">302</th><td><b>if</b> (<a class="ref fn" href="../functions.h.html#b64decode" title='b64decode' data-ref="b64decode">b64decode</a>(<a class="local col9 ref" href="#29buffer" title='buffer' data-ref="29buffer">buffer</a> + <var>4</var>, &amp;<a class="local col4 ref" href="#34challenge" title='challenge' data-ref="34challenge">challenge</a>) &lt; <var>0</var>)</td></tr>
+<tr><th id="303">303</th><td>  {</td></tr>
+<tr><th id="304">304</th><td>  <a class="ref fn" href="../functions.h.html#string_format" title='string_format' data-ref="string_format">string_format</a>(<a class="local col9 ref" href="#29buffer" title='buffer' data-ref="29buffer">buffer</a>, <a class="local col0 ref" href="#30buffsize" title='buffsize' data-ref="30buffsize">buffsize</a>, <q>"bad base 64 string in challenge: %s"</q>,</td></tr>
+<tr><th id="305">305</th><td>    <a class="ref" href="../globals.h.html#big_buffer" title='big_buffer' data-ref="big_buffer">big_buffer</a> + <var>4</var>);</td></tr>
+<tr><th id="306">306</th><td>  <b>return</b> <a class="macro" href="../macros.h.html#286" title="3" data-ref="_M/ERROR">ERROR</a>;</td></tr>
+<tr><th id="307">307</th><td>  }</td></tr>
+<tr><th id="308">308</th><td></td></tr>
+<tr><th id="309">309</th><td><i>/* Run the CRAM-MD5 algorithm on the secret and the challenge */</i></td></tr>
+<tr><th id="310">310</th><td></td></tr>
+<tr><th id="311">311</th><td><a class="tu ref fn" href="#compute_cram_md5" title='compute_cram_md5' data-use='c' data-ref="compute_cram_md5">compute_cram_md5</a>(<a class="local col2 ref" href="#32secret" title='secret' data-ref="32secret">secret</a>, <a class="local col4 ref" href="#34challenge" title='challenge' data-ref="34challenge">challenge</a>, <a class="local col7 ref" href="#37digest" title='digest' data-ref="37digest">digest</a>);</td></tr>
+<tr><th id="312">312</th><td></td></tr>
+<tr><th id="313">313</th><td><i>/* Create the response from the user name plus the CRAM-MD5 digest */</i></td></tr>
+<tr><th id="314">314</th><td></td></tr>
+<tr><th id="315">315</th><td><a class="ref fn" href="../functions.h.html#string_format" title='string_format' data-ref="string_format">string_format</a>(<a class="ref" href="../globals.h.html#big_buffer" title='big_buffer' data-ref="big_buffer">big_buffer</a>, <a class="ref" href="../globals.h.html#big_buffer_size" title='big_buffer_size' data-ref="big_buffer_size">big_buffer_size</a> - <var>36</var>, <q>"%s"</q>, <a class="local col3 ref" href="#33name" title='name' data-ref="33name">name</a>);</td></tr>
+<tr><th id="316">316</th><td><b>for</b> (<a class="local col5 ref" href="#35p" title='p' data-ref="35p">p</a> = <a class="ref" href="../globals.h.html#big_buffer" title='big_buffer' data-ref="big_buffer">big_buffer</a>; *<a class="local col5 ref" href="#35p" title='p' data-ref="35p">p</a>; ) <a class="local col5 ref" href="#35p" title='p' data-ref="35p">p</a>++;</td></tr>
+<tr><th id="317">317</th><td>*<a class="local col5 ref" href="#35p" title='p' data-ref="35p">p</a>++ = <kbd>' '</kbd>;</td></tr>
+<tr><th id="318">318</th><td></td></tr>
+<tr><th id="319">319</th><td><b>for</b> (<a class="local col6 ref" href="#36i" title='i' data-ref="36i">i</a> = <var>0</var>; <a class="local col6 ref" href="#36i" title='i' data-ref="36i">i</a> &lt; <var>16</var>; <a class="local col6 ref" href="#36i" title='i' data-ref="36i">i</a>++)</td></tr>
+<tr><th id="320">320</th><td>  <a class="local col5 ref" href="#35p" title='p' data-ref="35p">p</a> += <a class="ref fn" href="../../../include/stdio.h.html#sprintf" title='sprintf' data-ref="sprintf">sprintf</a>(<a class="macro" href="../mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col5 ref" href="#35p" title='p' data-ref="35p">p</a>, <q>"%02x"</q>, <a class="local col7 ref" href="#37digest" title='digest' data-ref="37digest">digest</a>[<a class="local col6 ref" href="#36i" title='i' data-ref="36i">i</a>]);</td></tr>
+<tr><th id="321">321</th><td></td></tr>
+<tr><th id="322">322</th><td><i>/* Send the response, in base 64, and check the result. The response is</i></td></tr>
+<tr><th id="323">323</th><td><i>in big_buffer, but b64encode() returns its result in working store,</i></td></tr>
+<tr><th id="324">324</th><td><i>so calling smtp_write_command(), which uses big_buffer, is OK. */</i></td></tr>
+<tr><th id="325">325</th><td></td></tr>
+<tr><th id="326">326</th><td><a class="local col9 ref" href="#29buffer" title='buffer' data-ref="29buffer">buffer</a>[<var>0</var>] = <var>0</var>;</td></tr>
+<tr><th id="327">327</th><td><b>if</b> (<a class="ref fn" href="../functions.h.html#smtp_write_command" title='smtp_write_command' data-ref="smtp_write_command">smtp_write_command</a>(<a class="local col7 ref" href="#27outblock" title='outblock' data-ref="27outblock">outblock</a>, <a class="enum" href="../macros.h.html#SCMD_FLUSH" title='SCMD_FLUSH' data-ref="SCMD_FLUSH">SCMD_FLUSH</a>, <q>"%s\r\n"</q>, <a class="ref fn" href="../functions.h.html#b64encode" title='b64encode' data-ref="b64encode">b64encode</a>(<a class="ref" href="../globals.h.html#big_buffer" title='big_buffer' data-ref="big_buffer">big_buffer</a>,</td></tr>
+<tr><th id="328">328</th><td>  <a class="local col5 ref" href="#35p" title='p' data-ref="35p">p</a> - <a class="ref" href="../globals.h.html#big_buffer" title='big_buffer' data-ref="big_buffer">big_buffer</a>)) &lt; <var>0</var>) <b>return</b> <a class="macro" href="../macros.h.html#300" title="14" data-ref="_M/FAIL_SEND">FAIL_SEND</a>;</td></tr>
+<tr><th id="329">329</th><td></td></tr>
+<tr><th id="330">330</th><td><b>return</b> <a class="ref fn" href="../functions.h.html#smtp_read_response" title='smtp_read_response' data-ref="smtp_read_response">smtp_read_response</a>(<a class="local col6 ref" href="#26inblock" title='inblock' data-ref="26inblock">inblock</a>, <a class="macro" href="../mytypes.h.html#68" title="(unsigned char *)" data-ref="_M/US">US</a> <a class="local col9 ref" href="#29buffer" title='buffer' data-ref="29buffer">buffer</a>, <a class="local col0 ref" href="#30buffsize" title='buffsize' data-ref="30buffsize">buffsize</a>, <kbd>'2'</kbd>, <a class="local col8 ref" href="#28timeout" title='timeout' data-ref="28timeout">timeout</a>)</td></tr>
+<tr><th id="331">331</th><td>  ? <a class="macro" href="../macros.h.html#283" title="0" data-ref="_M/OK">OK</a> : <a class="macro" href="../macros.h.html#285" title="2" data-ref="_M/FAIL">FAIL</a>;</td></tr>
+<tr><th id="332">332</th><td>}</td></tr>
+<tr><th id="333">333</th><td><u>#<span data-ppcond="156">endif</span>  /* STAND_ALONE */</u></td></tr>
+<tr><th id="334">334</th><td></td></tr>
+<tr><th id="335">335</th><td></td></tr>
+<tr><th id="336">336</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="337">337</th><td><i>**************************************************</i></td></tr>
+<tr><th id="338">338</th><td><i>*             Stand-alone test program           *</i></td></tr>
+<tr><th id="339">339</th><td><i>**************************************************</i></td></tr>
+<tr><th id="340">340</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="341">341</th><td></td></tr>
+<tr><th id="342">342</th><td><u>#<span data-ppcond="342">ifdef</span> <span class="macro" data-ref="_M/STAND_ALONE">STAND_ALONE</span></u></td></tr>
+<tr><th id="343">343</th><td></td></tr>
+<tr><th id="344">344</th><td><em>int</em> main(<em>int</em> argc, <em>char</em> **argv)</td></tr>
+<tr><th id="345">345</th><td>{</td></tr>
+<tr><th id="346">346</th><td><em>int</em> i;</td></tr>
+<tr><th id="347">347</th><td>uschar *secret = US argv[<var>1</var>];</td></tr>
+<tr><th id="348">348</th><td>uschar *challenge = US argv[<var>2</var>];</td></tr>
+<tr><th id="349">349</th><td>uschar digest[<var>16</var>];</td></tr>
+<tr><th id="350">350</th><td></td></tr>
+<tr><th id="351">351</th><td>compute_cram_md5(secret, challenge, digest);</td></tr>
+<tr><th id="352">352</th><td></td></tr>
+<tr><th id="353">353</th><td><b>for</b> (i = <var>0</var>; i &lt; <var>16</var>; i++) printf(<q>"%02x"</q>, digest[i]);</td></tr>
+<tr><th id="354">354</th><td>printf(<q>"\n"</q>);</td></tr>
+<tr><th id="355">355</th><td></td></tr>
+<tr><th id="356">356</th><td><b>return</b> <var>0</var>;</td></tr>
+<tr><th id="357">357</th><td>}</td></tr>
+<tr><th id="358">358</th><td></td></tr>
+<tr><th id="359">359</th><td><u>#<span data-ppcond="342">endif</span></u></td></tr>
+<tr><th id="360">360</th><td></td></tr>
+<tr><th id="361">361</th><td><u>#<span data-ppcond="87">endif</span>	/*!MACRO_PREDEF*/</u></td></tr>
+<tr><th id="362">362</th><td><i>/* End of cram_md5.c */</i></td></tr>
+<tr><th id="363">363</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

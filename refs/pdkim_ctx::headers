@@ -1,0 +1,7 @@
+<dec f='exim/src/pdkim/pdkim.h' l='288' type='pdkim_stringlist *'/>
+<use f='exim/src/pdkim/pdkim.c' l='986' u='w' c='pdkim_header_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='986' u='r' c='pdkim_header_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='1543' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1553' u='r' c='pdkim_feed_finish'/>
+<offset>448</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='288'>/* Raw headers for verification         */</doc>

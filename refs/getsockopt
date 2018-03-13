@@ -2,3 +2,6 @@
 <doc f='include/x86_64-linux-gnu/sys/socket.h' l='216'>/* Put the current value for socket FD&apos;s option OPTNAME at protocol level LEVEL
    into OPTVAL (which is *OPTLEN bytes long), and set *OPTLEN to the value&apos;s
    actual length.  Returns 0 on success, -1 for errors.  */</doc>
+<use f='exim/src/smtp_out.c' l='151' u='c' c='tfo_out_check'/>
+<use f='exim/src/smtp_in.c' l='2323' u='c' c='tfo_in_check'/>
+<use f='exim/src/smtp_in.c' l='2530' u='c' c='smtp_start_session'/>

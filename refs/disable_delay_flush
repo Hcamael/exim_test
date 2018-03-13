@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='379' type='BOOL'/>
 <doc f='exim/src/globals.h' l='379'>/* Don&apos;t flush before &quot;delay&quot; in ACL */</doc>
+<def f='exim/src/globals.c' l='654' type='BOOL'/>
+<use f='exim/src/acl.c' l='3129' u='w' c='acl_check_condition'/>
+<use f='exim/src/acl.c' l='3397' u='r' c='acl_check_condition'/>

@@ -1,1 +1,22 @@
 <dec f='exim/src/functions.h' l='361' type='retry_config * retry_find_config(const uschar * , const uschar * , int , int )'/>
+<use f='exim/src/exim.c' l='4511' u='c' c='main'/>
+<use f='exim/src/retry.c' l='46' u='c' c='retry_ultimate_address_timeout'/>
+<def f='exim/src/retry.c' l='345' ll='492' type='retry_config * retry_find_config(const uschar * key, const uschar * alternate, int basic_errno, int more_errno)'/>
+<use f='exim/src/retry.c' l='629' u='c' c='retry_update'/>
+<doc f='exim/src/retry.c' l='327'>/* Search the in-store retry information for the first retry item that applies
+to a given destination. If the key contains an @ we are probably handling a
+local delivery and have a complete address to search for; this happens when
+retry_use_local_part is set on a router. Otherwise, the key is likely to be a
+host name for a remote delivery, or a domain name for a local delivery. We
+prepend *@ on the front of it so that it will match a retry item whose address
+item pattern is independent of the local part. The alternate key, if set, is
+always just a domain, so we treat it likewise.
+
+Arguments:
+  key          key for which retry info is wanted
+  alternate    alternative key, always just a domain
+  basic_errno  specific error predicate on the retry rule, or zero
+  more_errno   additional data for errno predicate
+
+Returns:       pointer to retry rule, or NULL
+*/</doc>

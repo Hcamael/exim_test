@@ -1,0 +1,4 @@
+<dec f='exim/src/auths/spa.h' l='26' type='int'/>
+<def f='exim/src/auths/spa.c' l='61' ll='62' type='int'/>
+<doc f='exim/src/auths/spa.c' l='58'>/* Size of the options list. An extern variable has to be used so that its
+address can appear in the tables drtables.c. */</doc>

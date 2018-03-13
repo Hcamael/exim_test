@@ -1,2 +1,5 @@
 <dec f='exim/src/structs.h' l='254' type='uschar *'/>
 <offset>64</offset>
+<use f='exim/src/smtp_in.c' l='3521' u='w' c='smtp_verify_helo'/>
+<use f='exim/src/host.c' l='1842' u='w' c='host_name_lookup'/>
+<use f='exim/src/host.c' l='2578' u='a' c='host_find_bydns'/>

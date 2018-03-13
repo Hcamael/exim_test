@@ -1,1 +1,57 @@
 <dec f='exim/src/functions.h' l='461' type='BOOL string_format(uschar * , int , const char * )'/>
+<use f='exim/src/deliver.c' l='2033' u='c' c='previously_transported'/>
+<use f='exim/src/verify.c' l='3341' u='c' c='one_check_dnsbl'/>
+<use f='exim/src/tls-openssl.c' l='1712' u='c' c='construct_cipher_name'/>
+<def f='exim/src/string.c' l='1234' ll='1243' type='BOOL string_format(uschar * buffer, int buflen, const char * format)'/>
+<doc f='exim/src/string.c' l='1212'>/* This function is used to format a string with checking of the length of the
+output for all conversions. It protects Exim from absent-mindedness when
+calling functions like debug_printf and string_sprintf, and elsewhere. There
+are two different entry points to what is actually the same function, depending
+on whether the variable length list of data arguments are given explicitly or
+as a va_list item.
+
+The formats are the usual printf() ones, with some omissions (never used) and
+three additions for strings: %S forces lower case, %T forces upper case, and
+%#s or %#S prints nothing for a NULL string. Without the # &quot;NULL&quot; is printed
+(useful in debugging). There is also the addition of %D and %M, which insert
+the date in the form used for datestamped log files.
+
+Arguments:
+  buffer       a buffer in which to put the formatted string
+  buflen       the length of the buffer
+  format       the format string - deliberately char * and not uschar *
+  ... or ap    variable list of supplementary arguments
+
+Returns:       TRUE if the result fitted in the buffer
+*/</doc>
+<use f='exim/src/parse.c' l='883' u='c' c='parse_quote_2047'/>
+<use f='exim/src/exim.c' l='4084' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4711' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4964' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='2583' u='c' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='2603' u='c' c='smtp_start_session'/>
+<use f='exim/src/spool_in.c' l='501' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='503' u='c' c='spool_read_header'/>
+<use f='exim/src/auths/spa.c' l='293' u='c' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='302' u='c' c='auth_spa_client'/>
+<use f='exim/src/auths/spa.c' l='313' u='c' c='auth_spa_client'/>
+<use f='exim/src/auths/plaintext.c' l='212' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='270' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/auths/plaintext.c' l='292' u='c' c='auth_plaintext_client'/>
+<use f='exim/src/auths/cram_md5.c' l='286' u='c' c='auth_cram_md5_client'/>
+<use f='exim/src/auths/cram_md5.c' l='304' u='c' c='auth_cram_md5_client'/>
+<use f='exim/src/auths/cram_md5.c' l='315' u='c' c='auth_cram_md5_client'/>
+<use f='exim/src/log.c' l='387' u='c' c='open_log'/>
+<use f='exim/src/log.c' l='417' u='c' c='open_log'/>
+<use f='exim/src/log.c' l='1043' u='c' c='log_write'/>
+<use f='exim/src/log.c' l='1049' u='c' c='log_write'/>
+<use f='exim/src/log.c' l='1055' u='c' c='log_write'/>
+<use f='exim/src/log.c' l='1062' u='c' c='log_write'/>
+<use f='exim/src/log.c' l='1072' u='c' c='log_write'/>
+<use f='exim/src/transports/tf_maildir.c' l='285' u='c' c='maildir_compute_size'/>
+<use f='exim/src/expand.c' l='3394' u='c' c='prvs_daystamp'/>
+<use f='exim/src/receive.c' l='2644' u='c' c='receive_msg'/>
+<use f='exim/src/host.c' l='690' u='c' c='host_and_ident'/>
+<use f='exim/src/host.c' l='700' u='c' c='host_and_ident'/>
+<use f='exim/src/host.c' l='703' u='c' c='host_and_ident'/>
+<use f='exim/src/dns.c' l='56' u='c' c='fakens_search'/>

@@ -1,1 +1,14 @@
 <dec f='include/netinet/in.h' l='403'/>
+<use f='exim/src/smtp_out.c' l='134' u='c'/>
+<use f='exim/src/expand.c' l='4819' u='c'/>
+<use f='exim/src/daemon.c' l='1145' u='c'/>
+<use f='exim/src/daemon.c' l='1169' u='c'/>
+<use f='exim/src/host.c' l='949' u='c'/>
+<use f='exim/src/dns.c' l='349' u='c'/>
+<use f='exim/src/dns.c' l='368' u='c'/>
+<use f='exim/src/dns.c' l='378' u='c'/>
+<use f='exim/src/dns.c' l='401' u='c'/>
+<use f='exim/src/dns.c' l='401' u='c'/>
+<use f='exim/src/dns.c' l='1095' u='c'/>
+<use f='exim/src/dns.c' l='1095' u='c'/>
+<use f='exim/src/dns.c' l='1096' u='c'/>

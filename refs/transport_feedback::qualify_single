@@ -1,2 +1,4 @@
 <dec f='exim/src/structs.h' l='99' type='BOOL'/>
 <offset>416</offset>
+<use f='exim/src/verify.c' l='1804' u='w' c='verify_address'/>
+<use f='exim/src/verify.c' l='1853' u='r' c='verify_address'/>

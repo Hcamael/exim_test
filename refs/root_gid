@@ -1,2 +1,4 @@
 <dec f='exim/src/globals.h' l='763' type='uid_t'/>
 <doc f='exim/src/globals.h' l='763'>/* The gid for root */</doc>
+<def f='exim/src/globals.c' l='1162' type='uid_t'/>
+<doc f='exim/src/globals.c' l='1161'>/* BOOL    rfc821_domains         = FALSE;  &lt;&lt;&lt; on the way out */</doc>

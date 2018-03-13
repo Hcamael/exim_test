@@ -1,2 +1,3 @@
 <dec f='exim/src/local_scan.h' l='34' type='4'/>
 <doc f='exim/src/local_scan.h' l='34'>/* Permanent rejection, no log header */</doc>
+<use f='exim/src/receive.c' l='3743' c='receive_msg'/>

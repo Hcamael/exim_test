@@ -1,0 +1,4 @@
+<dec f='exim/src/valgrind.h' l='4433' type='int VALGRIND_PRINTF(const char * format)'/>
+<def f='exim/src/valgrind.h' l='4436' ll='4460' type='int VALGRIND_PRINTF(const char * format)'/>
+<doc f='exim/src/valgrind.h' l='4431'>/* Modern GCC will optimize the static routine out if unused,
+   and unused attribute will shut down warnings about it.  */</doc>

@@ -1,3 +1,16 @@
 <dec f='exim/src/structs.h' l='584' type='BOOL'/>
 <offset>5</offset>
 <doc f='exim/src/structs.h' l='584'>/* file delivery; always with pfr */</doc>
+<use f='exim/src/deliver.c' l='259' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='290' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='1001' u='r' c='string_log_address'/>
+<use f='exim/src/deliver.c' l='2427' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2491' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2763' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2809' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2809' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='6406' u='r' c='deliver_message'/>
+<use f='exim/src/parse.c' l='1641' u='w' c='parse_forward_list'/>
+<use f='exim/src/filter.c' l='1859' u='w' c='interpret_commands'/>
+<use f='exim/src/sieve.c' l='1055' u='r' c='add_addr'/>
+<use f='exim/src/sieve.c' l='1072' u='w' c='add_addr'/>

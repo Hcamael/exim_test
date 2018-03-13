@@ -1,1 +1,10 @@
 <dec f='exim/src/local_scan.h' l='188' type='int smtp_fflush()'/>
+<def f='exim/src/smtp_in.c' l='896' ll='901' type='int smtp_fflush()'/>
+<doc f='exim/src/smtp_in.c' l='887'>/* This function isn&apos;t currently used within Exim (it detects errors when it
+tries to read the next SMTP input), but is available for use in local_scan().
+For non-TLS connections, it flushes the output and checks for errors. For
+TLS-connections, it checks for a previously-detected TLS write error.
+
+Arguments:  none
+Returns:    0 for no error; -1 after an error
+*/</doc>

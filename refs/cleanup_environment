@@ -1,1 +1,12 @@
 <dec f='exim/src/functions.h' l='122' type='BOOL cleanup_environment()'/>
+<def f='exim/src/environment.c' l='24' ll='72' type='BOOL cleanup_environment()'/>
+<doc f='exim/src/environment.c' l='14'>/* The cleanup_environment() function is used during the startup phase
+of the Exim process, right after reading the configurations main
+part, before any expansions take place. It retains the environment
+variables we trust (via the keep_environment option) and allows to
+set additional variables (via add_environment).
+
+Returns:    TRUE if successful
+            FALSE otherwise
+*/</doc>
+<use f='exim/src/exim.c' l='3804' u='c' c='main'/>

@@ -1,0 +1,629 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>store.c source code [exim/src/store.c] - Woboq Code Browser</title>
+<meta name="woboq:interestingDefinitions" content="storeblock "/>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/store.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='store.c.html'>store.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* Exim gets and frees all its store through these functions. In the original</i></td></tr>
+<tr><th id="9">9</th><td><i>implementation there was a lot of mallocing and freeing of small bits of store.</i></td></tr>
+<tr><th id="10">10</th><td><i>The philosophy has now changed to a scheme which includes the concept of</i></td></tr>
+<tr><th id="11">11</th><td><i>"stacking pools" of store. For the short-lived processes, there isn't any real</i></td></tr>
+<tr><th id="12">12</th><td><i>need to do any garbage collection, but the stack concept allows quick resetting</i></td></tr>
+<tr><th id="13">13</th><td><i>in places where this seems sensible.</i></td></tr>
+<tr><th id="14">14</th><td><i></i></td></tr>
+<tr><th id="15">15</th><td><i>Obviously the long-running processes (the daemon, the queue runner, and eximon)</i></td></tr>
+<tr><th id="16">16</th><td><i>must take care not to eat store.</i></td></tr>
+<tr><th id="17">17</th><td><i></i></td></tr>
+<tr><th id="18">18</th><td><i>The following different types of store are recognized:</i></td></tr>
+<tr><th id="19">19</th><td><i></i></td></tr>
+<tr><th id="20">20</th><td><i>. Long-lived, large blocks: This is implemented by retaining the original</i></td></tr>
+<tr><th id="21">21</th><td><i>  malloc/free functions, and it used for permanent working buffers and for</i></td></tr>
+<tr><th id="22">22</th><td><i>  getting blocks to cut up for the other types.</i></td></tr>
+<tr><th id="23">23</th><td><i></i></td></tr>
+<tr><th id="24">24</th><td><i>. Long-lived, small blocks: This is used for blocks that have to survive until</i></td></tr>
+<tr><th id="25">25</th><td><i>  the process exits. It is implemented as a stacking pool (POOL_PERM). This is</i></td></tr>
+<tr><th id="26">26</th><td><i>  functionally the same as store_malloc(), except that the store can't be</i></td></tr>
+<tr><th id="27">27</th><td><i>  freed, but I expect it to be more efficient for handling small blocks.</i></td></tr>
+<tr><th id="28">28</th><td><i></i></td></tr>
+<tr><th id="29">29</th><td><i>. Short-lived, short blocks: Most of the dynamic store falls into this</i></td></tr>
+<tr><th id="30">30</th><td><i>  category. It is implemented as a stacking pool (POOL_MAIN) which is reset</i></td></tr>
+<tr><th id="31">31</th><td><i>  after accepting a message when multiple messages are received by a single</i></td></tr>
+<tr><th id="32">32</th><td><i>  process. Resetting happens at some other times as well, usually fairly</i></td></tr>
+<tr><th id="33">33</th><td><i>  locally after some specific processing that needs working store.</i></td></tr>
+<tr><th id="34">34</th><td><i></i></td></tr>
+<tr><th id="35">35</th><td><i>. There is a separate pool (POOL_SEARCH) that is used only for lookup storage.</i></td></tr>
+<tr><th id="36">36</th><td><i>  This means it can be freed when search_tidyup() is called to close down all</i></td></tr>
+<tr><th id="37">37</th><td><i>  the lookup caching.</i></td></tr>
+<tr><th id="38">38</th><td><i>*/</i></td></tr>
+<tr><th id="39">39</th><td></td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><u>#include <a href="exim.h.html">"exim.h"</a></u></td></tr>
+<tr><th id="42">42</th><td><i>/* keep config.h before memcheck.h, for NVALGRIND */</i></td></tr>
+<tr><th id="43">43</th><td><u>#include <a href="../build-Linux-x86_64/config.h.html">"config.h"</a></u></td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td><u>#include <a href="memcheck.h.html">"memcheck.h"</a></u></td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><i>/* We need to know how to align blocks of data for general use. I'm not sure</i></td></tr>
+<tr><th id="49">49</th><td><i>how to get an alignment factor in general. In the current world, a value of 8</i></td></tr>
+<tr><th id="50">50</th><td><i>is probably right, and this is sizeof(double) on some systems and sizeof(void</i></td></tr>
+<tr><th id="51">51</th><td><i>*) on others, so take the larger of those. Since everything in this expression</i></td></tr>
+<tr><th id="52">52</th><td><i>is a constant, the compiler should optimize it to a simple constant wherever it</i></td></tr>
+<tr><th id="53">53</th><td><i>appears (I checked that gcc does do this). */</i></td></tr>
+<tr><th id="54">54</th><td></td></tr>
+<tr><th id="55">55</th><td><u>#define <dfn class="macro" id="_M/alignment" data-ref="_M/alignment">alignment</dfn> \</u></td></tr>
+<tr><th id="56">56</th><td><u>  ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))</u></td></tr>
+<tr><th id="57">57</th><td></td></tr>
+<tr><th id="58">58</th><td><i>/* Size of block to get from malloc to carve up into smaller ones. This</i></td></tr>
+<tr><th id="59">59</th><td><i>must be a multiple of the alignment. We assume that 8192 is going to be</i></td></tr>
+<tr><th id="60">60</th><td><i>suitably aligned. */</i></td></tr>
+<tr><th id="61">61</th><td></td></tr>
+<tr><th id="62">62</th><td><u>#define <dfn class="macro" id="_M/STORE_BLOCK_SIZE" data-ref="_M/STORE_BLOCK_SIZE">STORE_BLOCK_SIZE</dfn> 8192</u></td></tr>
+<tr><th id="63">63</th><td></td></tr>
+<tr><th id="64">64</th><td><i>/* store_reset() will not free the following block if the last used block has</i></td></tr>
+<tr><th id="65">65</th><td><i>less than this much left in it. */</i></td></tr>
+<tr><th id="66">66</th><td></td></tr>
+<tr><th id="67">67</th><td><u>#define <dfn class="macro" id="_M/STOREPOOL_MIN_SIZE" data-ref="_M/STOREPOOL_MIN_SIZE">STOREPOOL_MIN_SIZE</dfn> 256</u></td></tr>
+<tr><th id="68">68</th><td></td></tr>
+<tr><th id="69">69</th><td><i>/* Structure describing the beginning of each big block. */</i></td></tr>
+<tr><th id="70">70</th><td></td></tr>
+<tr><th id="71">71</th><td><b>typedef</b> <b>struct</b> <dfn class="type def" id="storeblock" title='storeblock' data-ref="storeblock"><a class="type" href="#storeblock" title='storeblock' data-ref="storeblock">storeblock</a></dfn> {</td></tr>
+<tr><th id="72">72</th><td>  <b>struct</b> <a class="type" href="#storeblock" title='storeblock' data-ref="storeblock">storeblock</a> *<dfn class="tu decl field" id="storeblock::next" title='storeblock::next' data-type='struct storeblock *' data-ref="storeblock::next">next</dfn>;</td></tr>
+<tr><th id="73">73</th><td>  <span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span> <dfn class="tu decl field" id="storeblock::length" title='storeblock::length' data-type='size_t' data-ref="storeblock::length">length</dfn>;</td></tr>
+<tr><th id="74">74</th><td>} <dfn class="typedef" id="storeblock" title='storeblock' data-type='struct storeblock' data-ref="storeblock">storeblock</dfn>;</td></tr>
+<tr><th id="75">75</th><td></td></tr>
+<tr><th id="76">76</th><td><i>/* Just in case we find ourselves on a system where the structure above has a</i></td></tr>
+<tr><th id="77">77</th><td><i>length that is not a multiple of the alignment, set up a macro for the padded</i></td></tr>
+<tr><th id="78">78</th><td><i>length. */</i></td></tr>
+<tr><th id="79">79</th><td></td></tr>
+<tr><th id="80">80</th><td><u>#define <dfn class="macro" id="_M/ALIGNED_SIZEOF_STOREBLOCK" data-ref="_M/ALIGNED_SIZEOF_STOREBLOCK">ALIGNED_SIZEOF_STOREBLOCK</dfn> \</u></td></tr>
+<tr><th id="81">81</th><td><u>  (((sizeof(<a class="typedef" href="#storeblock" title='storeblock' data-type='struct storeblock' data-ref="storeblock">storeblock</a>) + alignment - 1) / alignment) * alignment)</u></td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td><i>/* Variables holding data for the local pools of store. The current pool number</i></td></tr>
+<tr><th id="84">84</th><td><i>is held in store_pool, which is global so that it can be changed from outside.</i></td></tr>
+<tr><th id="85">85</th><td><i>Setting the initial length values to -1 forces a malloc for the first call,</i></td></tr>
+<tr><th id="86">86</th><td><i>even if the length is zero (which is used for getting a point to reset to). */</i></td></tr>
+<tr><th id="87">87</th><td></td></tr>
+<tr><th id="88">88</th><td><em>int</em> <dfn class="decl def" id="store_pool" title='store_pool' data-ref="store_pool">store_pool</dfn> = <a class="enum" href="store.h.html#POOL_PERM" title='POOL_PERM' data-ref="POOL_PERM">POOL_PERM</a>;</td></tr>
+<tr><th id="89">89</th><td></td></tr>
+<tr><th id="90">90</th><td><em>static</em> <a class="typedef" href="#storeblock" title='storeblock' data-type='struct storeblock' data-ref="storeblock">storeblock</a> *<dfn class="tu decl def" id="chainbase" title='chainbase' data-type='storeblock *[3]' data-ref="chainbase">chainbase</dfn>[<var>3</var>] = { <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> };</td></tr>
+<tr><th id="91">91</th><td><em>static</em> <a class="typedef" href="#storeblock" title='storeblock' data-type='struct storeblock' data-ref="storeblock">storeblock</a> *<dfn class="tu decl def" id="current_block" title='current_block' data-type='storeblock *[3]' data-ref="current_block">current_block</dfn>[<var>3</var>] = { <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> };</td></tr>
+<tr><th id="92">92</th><td><em>static</em> <em>void</em> *<dfn class="tu decl def" id="next_yield" title='next_yield' data-type='void *[3]' data-ref="next_yield">next_yield</dfn>[<var>3</var>] = { <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> };</td></tr>
+<tr><th id="93">93</th><td><em>static</em> <em>int</em> <dfn class="tu decl def" id="yield_length" title='yield_length' data-type='int [3]' data-ref="yield_length">yield_length</dfn>[<var>3</var>] = { -<var>1</var>, -<var>1</var>, -<var>1</var> };</td></tr>
+<tr><th id="94">94</th><td></td></tr>
+<tr><th id="95">95</th><td><i  data-doc="pool_malloc">/* pool_malloc holds the amount of memory used by the store pools; this goes up</i></td></tr>
+<tr><th id="96">96</th><td><i  data-doc="pool_malloc">and down as store is reset or released. nonpool_malloc is the total got by</i></td></tr>
+<tr><th id="97">97</th><td><i  data-doc="pool_malloc">malloc from other calls; this doesn't go down because it is just freed by</i></td></tr>
+<tr><th id="98">98</th><td><i  data-doc="pool_malloc">pointer. */</i></td></tr>
+<tr><th id="99">99</th><td></td></tr>
+<tr><th id="100">100</th><td><em>static</em> <em>int</em> <dfn class="tu decl def" id="pool_malloc" title='pool_malloc' data-type='int' data-ref="pool_malloc">pool_malloc</dfn> = <var>0</var>;</td></tr>
+<tr><th id="101">101</th><td><em>static</em> <em>int</em> <dfn class="tu decl def" id="nonpool_malloc" title='nonpool_malloc' data-type='int' data-ref="nonpool_malloc">nonpool_malloc</dfn> = <var>0</var>;</td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td><i>/* This variable is set by store_get() to its yield, and by store_reset() to</i></td></tr>
+<tr><th id="104">104</th><td><i>NULL. This enables string_cat() to optimize its store handling for very long</i></td></tr>
+<tr><th id="105">105</th><td><i>strings. That's why the variable is global. */</i></td></tr>
+<tr><th id="106">106</th><td></td></tr>
+<tr><th id="107">107</th><td><em>void</em> *<dfn class="decl def" id="store_last_get" title='store_last_get' data-ref="store_last_get">store_last_get</dfn>[<var>3</var>] = { <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span> };</td></tr>
+<tr><th id="108">108</th><td></td></tr>
+<tr><th id="109">109</th><td></td></tr>
+<tr><th id="110">110</th><td></td></tr>
+<tr><th id="111">111</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="112">112</th><td><i>*       Get a block from the current pool        *</i></td></tr>
+<tr><th id="113">113</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="114">114</th><td></td></tr>
+<tr><th id="115">115</th><td><i>/* Running out of store is a total disaster. This function is called via the</i></td></tr>
+<tr><th id="116">116</th><td><i>macro store_get(). It passes back a block of store within the current big</i></td></tr>
+<tr><th id="117">117</th><td><i>block, getting a new one if necessary. The address is saved in</i></td></tr>
+<tr><th id="118">118</th><td><i>store_last_was_get.</i></td></tr>
+<tr><th id="119">119</th><td><i></i></td></tr>
+<tr><th id="120">120</th><td><i>Arguments:</i></td></tr>
+<tr><th id="121">121</th><td><i>  size        amount wanted</i></td></tr>
+<tr><th id="122">122</th><td><i>  filename    source file from which called</i></td></tr>
+<tr><th id="123">123</th><td><i>  linenumber  line number in source file.</i></td></tr>
+<tr><th id="124">124</th><td><i></i></td></tr>
+<tr><th id="125">125</th><td><i>Returns:      pointer to store (panic on malloc failure)</i></td></tr>
+<tr><th id="126">126</th><td><i>*/</i></td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td><em>void</em> *</td></tr>
+<tr><th id="129">129</th><td><dfn class="decl def fn" id="store_get_3" title='store_get_3' data-ref="store_get_3">store_get_3</dfn>(<em>int</em> <dfn class="local col3 decl" id="13size" title='size' data-type='int' data-ref="13size">size</dfn>, <em>const</em> <em>char</em> *<dfn class="local col4 decl" id="14filename" title='filename' data-type='const char *' data-ref="14filename">filename</dfn>, <em>int</em> <dfn class="local col5 decl" id="15linenumber" title='linenumber' data-type='int' data-ref="15linenumber">linenumber</dfn>)</td></tr>
+<tr><th id="130">130</th><td>{</td></tr>
+<tr><th id="131">131</th><td><i>/* Round up the size to a multiple of the alignment. Although this looks a</i></td></tr>
+<tr><th id="132">132</th><td><i>messy statement, because "alignment" is a constant expression, the compiler can</i></td></tr>
+<tr><th id="133">133</th><td><i>do a reasonable job of optimizing, especially if the value of "alignment" is a</i></td></tr>
+<tr><th id="134">134</th><td><i>power of two. I checked this with -O2, and gcc did very well, compiling it to 4</i></td></tr>
+<tr><th id="135">135</th><td><i>instructions on a Sparc (alignment = 8). */</i></td></tr>
+<tr><th id="136">136</th><td></td></tr>
+<tr><th id="137">137</th><td><b>if</b> (<a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a> % <a class="macro" href="#55" title="((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))" data-ref="_M/alignment">alignment</a> != <var>0</var>) <a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a> += <a class="macro" href="#55" title="((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))" data-ref="_M/alignment">alignment</a> - (<a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a> % <a class="macro" href="#55" title="((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))" data-ref="_M/alignment">alignment</a>);</td></tr>
+<tr><th id="138">138</th><td></td></tr>
+<tr><th id="139">139</th><td><i>/* If there isn't room in the current block, get a new one. The minimum</i></td></tr>
+<tr><th id="140">140</th><td><i>size is STORE_BLOCK_SIZE, and we would expect this to be the norm, since</i></td></tr>
+<tr><th id="141">141</th><td><i>these functions are mostly called for small amounts of store. */</i></td></tr>
+<tr><th id="142">142</th><td></td></tr>
+<tr><th id="143">143</th><td><b>if</b> (<a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a> &gt; <a class="tu ref" href="#yield_length" title='yield_length' data-use='r' data-ref="yield_length">yield_length</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>])</td></tr>
+<tr><th id="144">144</th><td>  {</td></tr>
+<tr><th id="145">145</th><td>  <em>int</em> <dfn class="local col6 decl" id="16length" title='length' data-type='int' data-ref="16length">length</dfn> = (<a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a> &lt;= <a class="macro" href="#62" title="8192" data-ref="_M/STORE_BLOCK_SIZE">STORE_BLOCK_SIZE</a>)? <a class="macro" href="#62" title="8192" data-ref="_M/STORE_BLOCK_SIZE">STORE_BLOCK_SIZE</a> : <a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a>;</td></tr>
+<tr><th id="146">146</th><td>  <em>int</em> <dfn class="local col7 decl" id="17mlength" title='mlength' data-type='int' data-ref="17mlength">mlength</dfn> = <a class="local col6 ref" href="#16length" title='length' data-ref="16length">length</a> + <a class="macro" href="#80" title="(((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)))" data-ref="_M/ALIGNED_SIZEOF_STOREBLOCK">ALIGNED_SIZEOF_STOREBLOCK</a>;</td></tr>
+<tr><th id="147">147</th><td>  <a class="typedef" href="#storeblock" title='storeblock' data-type='struct storeblock' data-ref="storeblock">storeblock</a> * <dfn class="local col8 decl" id="18newblock" title='newblock' data-type='storeblock *' data-ref="18newblock">newblock</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="148">148</th><td></td></tr>
+<tr><th id="149">149</th><td>  <i>/* Sometimes store_reset() may leave a block for us; check if we can use it */</i></td></tr>
+<tr><th id="150">150</th><td></td></tr>
+<tr><th id="151">151</th><td>  <b>if</b> (  (<a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a> = <a class="tu ref" href="#current_block" title='current_block' data-use='r' data-ref="current_block">current_block</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>])</td></tr>
+<tr><th id="152">152</th><td>     &amp;&amp; (<a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a> = <a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a>-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='r' data-ref="storeblock::next">next</a>)</td></tr>
+<tr><th id="153">153</th><td>     &amp;&amp; <a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a>-&gt;<a class="tu ref field" href="#storeblock::length" title='storeblock::length' data-use='r' data-ref="storeblock::length">length</a> &lt; <a class="local col6 ref" href="#16length" title='length' data-ref="16length">length</a></td></tr>
+<tr><th id="154">154</th><td>     )</td></tr>
+<tr><th id="155">155</th><td>    {</td></tr>
+<tr><th id="156">156</th><td>    <i>/* Give up on this block, because it's too small */</i></td></tr>
+<tr><th id="157">157</th><td>    <a class="macro" href="store.h.html#33" title="store_free_3(newblock, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/store.c&quot;, 157)" data-ref="_M/store_free">store_free</a>(<a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a>);</td></tr>
+<tr><th id="158">158</th><td>    <a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="159">159</th><td>    }</td></tr>
+<tr><th id="160">160</th><td></td></tr>
+<tr><th id="161">161</th><td>  <i>/* If there was no free block, get a new one */</i></td></tr>
+<tr><th id="162">162</th><td></td></tr>
+<tr><th id="163">163</th><td>  <b>if</b> (!<a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a>)</td></tr>
+<tr><th id="164">164</th><td>    {</td></tr>
+<tr><th id="165">165</th><td>    <a class="tu ref" href="#pool_malloc" title='pool_malloc' data-use='w' data-ref="pool_malloc">pool_malloc</a> += <a class="local col7 ref" href="#17mlength" title='mlength' data-ref="17mlength">mlength</a>;           <i>/* Used in pools */</i></td></tr>
+<tr><th id="166">166</th><td>    <a class="tu ref" href="#nonpool_malloc" title='nonpool_malloc' data-use='w' data-ref="nonpool_malloc">nonpool_malloc</a> -= <a class="local col7 ref" href="#17mlength" title='mlength' data-ref="17mlength">mlength</a>;        <i>/* Exclude from overall total */</i></td></tr>
+<tr><th id="167">167</th><td>    <a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a> = <a class="macro" href="store.h.html#36" title="store_malloc_3(mlength, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/store.c&quot;, 167)" data-ref="_M/store_malloc">store_malloc</a>(<a class="local col7 ref" href="#17mlength" title='mlength' data-ref="17mlength">mlength</a>);</td></tr>
+<tr><th id="168">168</th><td>    <a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a>-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='w' data-ref="storeblock::next">next</a> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="169">169</th><td>    <a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a>-&gt;<a class="tu ref field" href="#storeblock::length" title='storeblock::length' data-use='w' data-ref="storeblock::length">length</a> = <a class="local col6 ref" href="#16length" title='length' data-ref="16length">length</a>;</td></tr>
+<tr><th id="170">170</th><td>    <b>if</b> (!<a class="tu ref" href="#chainbase" title='chainbase' data-use='r' data-ref="chainbase">chainbase</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>])</td></tr>
+<tr><th id="171">171</th><td>      <a class="tu ref" href="#chainbase" title='chainbase' data-use='w' data-ref="chainbase">chainbase</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] = <a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a>;</td></tr>
+<tr><th id="172">172</th><td>    <b>else</b></td></tr>
+<tr><th id="173">173</th><td>      <a class="tu ref" href="#current_block" title='current_block' data-use='r' data-ref="current_block">current_block</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>]-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='w' data-ref="storeblock::next">next</a> = <a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a>;</td></tr>
+<tr><th id="174">174</th><td>    }</td></tr>
+<tr><th id="175">175</th><td></td></tr>
+<tr><th id="176">176</th><td>  <a class="tu ref" href="#current_block" title='current_block' data-use='w' data-ref="current_block">current_block</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] = <a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a>;</td></tr>
+<tr><th id="177">177</th><td>  <a class="tu ref" href="#yield_length" title='yield_length' data-use='w' data-ref="yield_length">yield_length</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] = <a class="local col8 ref" href="#18newblock" title='newblock' data-ref="18newblock">newblock</a>-&gt;<a class="tu ref field" href="#storeblock::length" title='storeblock::length' data-use='r' data-ref="storeblock::length">length</a>;</td></tr>
+<tr><th id="178">178</th><td>  <a class="tu ref" href="#next_yield" title='next_yield' data-use='w' data-ref="next_yield">next_yield</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] =</td></tr>
+<tr><th id="179">179</th><td>    (<em>void</em> *)(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#current_block" title='current_block' data-use='r' data-ref="current_block">current_block</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] + <a class="macro" href="#80" title="(((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)))" data-ref="_M/ALIGNED_SIZEOF_STOREBLOCK">ALIGNED_SIZEOF_STOREBLOCK</a>);</td></tr>
+<tr><th id="180">180</th><td>  (<em>void</em>) <a class="macro" href="memcheck.h.html#109" title="(__extension__({unsigned int _zzq_rlval; { volatile unsigned long long int _zzq_args[6]; volatile unsigned long long int _zzq_result; _zzq_args[0] = (unsigned long long int)(VG_USERREQ__MAKE_MEM_NOACCESS); _zzq_args[1] = (unsigned long long int)((next_yield[store_pool])); _zzq_args[2] = (unsigned long long int)((yield_length[store_pool])); _zzq_args[3] = (unsigned long long int)(0); _zzq_args[4] = (unsigned long long int)(0); _zzq_args[5] = (unsigned long long int)(0); __asm__ volatile(&quot;rolq $3,  %%rdi ; rolq $13, %%rdi\n\t&quot; &quot;rolq $61, %%rdi ; rolq $51, %%rdi\n\t&quot; &quot;xchgq %%rbx,%%rbx&quot; : &quot;=d&quot; (_zzq_result) : &quot;a&quot; (&amp;_zzq_args[0]), &quot;0&quot; (0) : &quot;cc&quot;, &quot;memory&quot; ); _zzq_rlval = _zzq_result; } _zzq_rlval; }))" data-ref="_M/VALGRIND_MAKE_MEM_NOACCESS">VALGRIND_MAKE_MEM_NOACCESS</a>(<a class="tu ref" href="#next_yield" title='next_yield' data-use='r' data-ref="next_yield">next_yield</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>], <a class="tu ref" href="#yield_length" title='yield_length' data-use='r' data-ref="yield_length">yield_length</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>]);</td></tr>
+<tr><th id="181">181</th><td>  }</td></tr>
+<tr><th id="182">182</th><td></td></tr>
+<tr><th id="183">183</th><td><i>/* There's (now) enough room in the current block; the yield is the next</i></td></tr>
+<tr><th id="184">184</th><td><i>pointer. */</i></td></tr>
+<tr><th id="185">185</th><td></td></tr>
+<tr><th id="186">186</th><td><a class="ref" href="store.h.html#store_last_get" title='store_last_get' data-ref="store_last_get">store_last_get</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] = <a class="tu ref" href="#next_yield" title='next_yield' data-use='r' data-ref="next_yield">next_yield</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>];</td></tr>
+<tr><th id="187">187</th><td></td></tr>
+<tr><th id="188">188</th><td><i>/* Cut out the debugging stuff for utilities, but stop picky compilers from</i></td></tr>
+<tr><th id="189">189</th><td><i>giving warnings. */</i></td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td><u>#<span data-ppcond="191">ifdef</span> <span class="macro" data-ref="_M/COMPILE_UTILITY">COMPILE_UTILITY</span></u></td></tr>
+<tr><th id="192">192</th><td>filename = filename;</td></tr>
+<tr><th id="193">193</th><td>linenumber = linenumber;</td></tr>
+<tr><th id="194">194</th><td><u>#<span data-ppcond="191">else</span></u></td></tr>
+<tr><th id="195">195</th><td><a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_memory))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#393" title='D_memory' data-ref="D_memory">D_memory</a>)</td></tr>
+<tr><th id="196">196</th><td>  {</td></tr>
+<tr><th id="197">197</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#running_in_test_harness" title='running_in_test_harness' data-ref="running_in_test_harness">running_in_test_harness</a>)</td></tr>
+<tr><th id="198">198</th><td>    <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"---%d Get %5d\n"</q>, <a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>, <a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a>);</td></tr>
+<tr><th id="199">199</th><td>  <b>else</b></td></tr>
+<tr><th id="200">200</th><td>    <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"---%d Get %6p %5d %-14s %4d\n"</q>, <a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>,</td></tr>
+<tr><th id="201">201</th><td>      <a class="ref" href="store.h.html#store_last_get" title='store_last_get' data-ref="store_last_get">store_last_get</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>], <a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a>, <a class="local col4 ref" href="#14filename" title='filename' data-ref="14filename">filename</a>, <a class="local col5 ref" href="#15linenumber" title='linenumber' data-ref="15linenumber">linenumber</a>);</td></tr>
+<tr><th id="202">202</th><td>  }</td></tr>
+<tr><th id="203">203</th><td><u>#<span data-ppcond="191">endif</span>  /* COMPILE_UTILITY */</u></td></tr>
+<tr><th id="204">204</th><td></td></tr>
+<tr><th id="205">205</th><td>(<em>void</em>) <a class="macro" href="memcheck.h.html#116" title="(__extension__({unsigned int _zzq_rlval; { volatile unsigned long long int _zzq_args[6]; volatile unsigned long long int _zzq_result; _zzq_args[0] = (unsigned long long int)(VG_USERREQ__MAKE_MEM_UNDEFINED); _zzq_args[1] = (unsigned long long int)((store_last_get[store_pool])); _zzq_args[2] = (unsigned long long int)((size)); _zzq_args[3] = (unsigned long long int)(0); _zzq_args[4] = (unsigned long long int)(0); _zzq_args[5] = (unsigned long long int)(0); __asm__ volatile(&quot;rolq $3,  %%rdi ; rolq $13, %%rdi\n\t&quot; &quot;rolq $61, %%rdi ; rolq $51, %%rdi\n\t&quot; &quot;xchgq %%rbx,%%rbx&quot; : &quot;=d&quot; (_zzq_result) : &quot;a&quot; (&amp;_zzq_args[0]), &quot;0&quot; (0) : &quot;cc&quot;, &quot;memory&quot; ); _zzq_rlval = _zzq_result; } _zzq_rlval; }))" data-ref="_M/VALGRIND_MAKE_MEM_UNDEFINED">VALGRIND_MAKE_MEM_UNDEFINED</a>(<a class="ref" href="store.h.html#store_last_get" title='store_last_get' data-ref="store_last_get">store_last_get</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>], <a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a>);</td></tr>
+<tr><th id="206">206</th><td><i>/* Update next pointer and number of bytes left in the current block. */</i></td></tr>
+<tr><th id="207">207</th><td></td></tr>
+<tr><th id="208">208</th><td><a class="tu ref" href="#next_yield" title='next_yield' data-use='w' data-ref="next_yield">next_yield</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] = (<em>void</em> *)(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="tu ref" href="#next_yield" title='next_yield' data-use='r' data-ref="next_yield">next_yield</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] + <a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a>);</td></tr>
+<tr><th id="209">209</th><td><a class="tu ref" href="#yield_length" title='yield_length' data-use='w' data-ref="yield_length">yield_length</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] -= <a class="local col3 ref" href="#13size" title='size' data-ref="13size">size</a>;</td></tr>
+<tr><th id="210">210</th><td></td></tr>
+<tr><th id="211">211</th><td><b>return</b> <a class="ref" href="store.h.html#store_last_get" title='store_last_get' data-ref="store_last_get">store_last_get</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>];</td></tr>
+<tr><th id="212">212</th><td>}</td></tr>
+<tr><th id="213">213</th><td></td></tr>
+<tr><th id="214">214</th><td></td></tr>
+<tr><th id="215">215</th><td></td></tr>
+<tr><th id="216">216</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="217">217</th><td><i>*       Get a block from the PERM pool           *</i></td></tr>
+<tr><th id="218">218</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="219">219</th><td></td></tr>
+<tr><th id="220">220</th><td><i>/* This is just a convenience function, useful when just a single block is to</i></td></tr>
+<tr><th id="221">221</th><td><i>be obtained.</i></td></tr>
+<tr><th id="222">222</th><td><i></i></td></tr>
+<tr><th id="223">223</th><td><i>Arguments:</i></td></tr>
+<tr><th id="224">224</th><td><i>  size        amount wanted</i></td></tr>
+<tr><th id="225">225</th><td><i>  filename    source file from which called</i></td></tr>
+<tr><th id="226">226</th><td><i>  linenumber  line number in source file.</i></td></tr>
+<tr><th id="227">227</th><td><i></i></td></tr>
+<tr><th id="228">228</th><td><i>Returns:      pointer to store (panic on malloc failure)</i></td></tr>
+<tr><th id="229">229</th><td><i>*/</i></td></tr>
+<tr><th id="230">230</th><td></td></tr>
+<tr><th id="231">231</th><td><em>void</em> *</td></tr>
+<tr><th id="232">232</th><td><dfn class="decl def fn" id="store_get_perm_3" title='store_get_perm_3' data-ref="store_get_perm_3">store_get_perm_3</dfn>(<em>int</em> <dfn class="local col9 decl" id="19size" title='size' data-type='int' data-ref="19size">size</dfn>, <em>const</em> <em>char</em> *<dfn class="local col0 decl" id="20filename" title='filename' data-type='const char *' data-ref="20filename">filename</dfn>, <em>int</em> <dfn class="local col1 decl" id="21linenumber" title='linenumber' data-type='int' data-ref="21linenumber">linenumber</dfn>)</td></tr>
+<tr><th id="233">233</th><td>{</td></tr>
+<tr><th id="234">234</th><td><em>void</em> *<dfn class="local col2 decl" id="22yield" title='yield' data-type='void *' data-ref="22yield">yield</dfn>;</td></tr>
+<tr><th id="235">235</th><td><em>int</em> <dfn class="local col3 decl" id="23old_pool" title='old_pool' data-type='int' data-ref="23old_pool">old_pool</dfn> = <a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>;</td></tr>
+<tr><th id="236">236</th><td><a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a> = <a class="enum" href="store.h.html#POOL_PERM" title='POOL_PERM' data-ref="POOL_PERM">POOL_PERM</a>;</td></tr>
+<tr><th id="237">237</th><td><a class="local col2 ref" href="#22yield" title='yield' data-ref="22yield">yield</a> = <a class="ref fn" href="#store_get_3" title='store_get_3' data-ref="store_get_3">store_get_3</a>(<a class="local col9 ref" href="#19size" title='size' data-ref="19size">size</a>, <a class="local col0 ref" href="#20filename" title='filename' data-ref="20filename">filename</a>, <a class="local col1 ref" href="#21linenumber" title='linenumber' data-ref="21linenumber">linenumber</a>);</td></tr>
+<tr><th id="238">238</th><td><a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a> = <a class="local col3 ref" href="#23old_pool" title='old_pool' data-ref="23old_pool">old_pool</a>;</td></tr>
+<tr><th id="239">239</th><td><b>return</b> <a class="local col2 ref" href="#22yield" title='yield' data-ref="22yield">yield</a>;</td></tr>
+<tr><th id="240">240</th><td>}</td></tr>
+<tr><th id="241">241</th><td></td></tr>
+<tr><th id="242">242</th><td></td></tr>
+<tr><th id="243">243</th><td></td></tr>
+<tr><th id="244">244</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="245">245</th><td><i>*      Extend a block if it is at the top        *</i></td></tr>
+<tr><th id="246">246</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="247">247</th><td></td></tr>
+<tr><th id="248">248</th><td><i>/* While reading strings of unknown length, it is often the case that the</i></td></tr>
+<tr><th id="249">249</th><td><i>string is being read into the block at the top of the stack. If it needs to be</i></td></tr>
+<tr><th id="250">250</th><td><i>extended, it is more efficient just to extend the top block rather than</i></td></tr>
+<tr><th id="251">251</th><td><i>allocate a new block and then have to copy the data. This function is provided</i></td></tr>
+<tr><th id="252">252</th><td><i>for the use of string_cat(), but of course can be used elsewhere too.</i></td></tr>
+<tr><th id="253">253</th><td><i></i></td></tr>
+<tr><th id="254">254</th><td><i>Arguments:</i></td></tr>
+<tr><th id="255">255</th><td><i>  ptr        pointer to store block</i></td></tr>
+<tr><th id="256">256</th><td><i>  oldsize    current size of the block, as requested by user</i></td></tr>
+<tr><th id="257">257</th><td><i>  newsize    new size required</i></td></tr>
+<tr><th id="258">258</th><td><i>  filename   source file from which called</i></td></tr>
+<tr><th id="259">259</th><td><i>  linenumber line number in source file</i></td></tr>
+<tr><th id="260">260</th><td><i></i></td></tr>
+<tr><th id="261">261</th><td><i>Returns:     TRUE if the block is at the top of the stack and has been</i></td></tr>
+<tr><th id="262">262</th><td><i>             extended; FALSE if it isn't at the top of the stack, or cannot</i></td></tr>
+<tr><th id="263">263</th><td><i>             be extended</i></td></tr>
+<tr><th id="264">264</th><td><i>*/</i></td></tr>
+<tr><th id="265">265</th><td></td></tr>
+<tr><th id="266">266</th><td><a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a></td></tr>
+<tr><th id="267">267</th><td><dfn class="decl def fn" id="store_extend_3" title='store_extend_3' data-ref="store_extend_3">store_extend_3</dfn>(<em>void</em> *<dfn class="local col4 decl" id="24ptr" title='ptr' data-type='void *' data-ref="24ptr">ptr</dfn>, <em>int</em> <dfn class="local col5 decl" id="25oldsize" title='oldsize' data-type='int' data-ref="25oldsize">oldsize</dfn>, <em>int</em> <dfn class="local col6 decl" id="26newsize" title='newsize' data-type='int' data-ref="26newsize">newsize</dfn>, <em>const</em> <em>char</em> *<dfn class="local col7 decl" id="27filename" title='filename' data-type='const char *' data-ref="27filename">filename</dfn>,</td></tr>
+<tr><th id="268">268</th><td>  <em>int</em> <dfn class="local col8 decl" id="28linenumber" title='linenumber' data-type='int' data-ref="28linenumber">linenumber</dfn>)</td></tr>
+<tr><th id="269">269</th><td>{</td></tr>
+<tr><th id="270">270</th><td><em>int</em> <dfn class="local col9 decl" id="29inc" title='inc' data-type='int' data-ref="29inc">inc</dfn> = <a class="local col6 ref" href="#26newsize" title='newsize' data-ref="26newsize">newsize</a> - <a class="local col5 ref" href="#25oldsize" title='oldsize' data-ref="25oldsize">oldsize</a>;</td></tr>
+<tr><th id="271">271</th><td><em>int</em> <dfn class="local col0 decl" id="30rounded_oldsize" title='rounded_oldsize' data-type='int' data-ref="30rounded_oldsize">rounded_oldsize</dfn> = <a class="local col5 ref" href="#25oldsize" title='oldsize' data-ref="25oldsize">oldsize</a>;</td></tr>
+<tr><th id="272">272</th><td></td></tr>
+<tr><th id="273">273</th><td><b>if</b> (<a class="local col0 ref" href="#30rounded_oldsize" title='rounded_oldsize' data-ref="30rounded_oldsize">rounded_oldsize</a> % <a class="macro" href="#55" title="((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))" data-ref="_M/alignment">alignment</a> != <var>0</var>)</td></tr>
+<tr><th id="274">274</th><td>  <a class="local col0 ref" href="#30rounded_oldsize" title='rounded_oldsize' data-ref="30rounded_oldsize">rounded_oldsize</a> += <a class="macro" href="#55" title="((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))" data-ref="_M/alignment">alignment</a> - (<a class="local col0 ref" href="#30rounded_oldsize" title='rounded_oldsize' data-ref="30rounded_oldsize">rounded_oldsize</a> % <a class="macro" href="#55" title="((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))" data-ref="_M/alignment">alignment</a>);</td></tr>
+<tr><th id="275">275</th><td></td></tr>
+<tr><th id="276">276</th><td><b>if</b> (<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col4 ref" href="#24ptr" title='ptr' data-ref="24ptr">ptr</a> + <a class="local col0 ref" href="#30rounded_oldsize" title='rounded_oldsize' data-ref="30rounded_oldsize">rounded_oldsize</a> != <a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> (<a class="tu ref" href="#next_yield" title='next_yield' data-use='r' data-ref="next_yield">next_yield</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>]) ||</td></tr>
+<tr><th id="277">277</th><td>    <a class="local col9 ref" href="#29inc" title='inc' data-ref="29inc">inc</a> &gt; <a class="tu ref" href="#yield_length" title='yield_length' data-use='r' data-ref="yield_length">yield_length</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] + <a class="local col0 ref" href="#30rounded_oldsize" title='rounded_oldsize' data-ref="30rounded_oldsize">rounded_oldsize</a> - <a class="local col5 ref" href="#25oldsize" title='oldsize' data-ref="25oldsize">oldsize</a>)</td></tr>
+<tr><th id="278">278</th><td>  <b>return</b> <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="279">279</th><td></td></tr>
+<tr><th id="280">280</th><td><i>/* Cut out the debugging stuff for utilities, but stop picky compilers from</i></td></tr>
+<tr><th id="281">281</th><td><i>giving warnings. */</i></td></tr>
+<tr><th id="282">282</th><td></td></tr>
+<tr><th id="283">283</th><td><u>#<span data-ppcond="283">ifdef</span> <span class="macro" data-ref="_M/COMPILE_UTILITY">COMPILE_UTILITY</span></u></td></tr>
+<tr><th id="284">284</th><td>filename = filename;</td></tr>
+<tr><th id="285">285</th><td>linenumber = linenumber;</td></tr>
+<tr><th id="286">286</th><td><u>#<span data-ppcond="283">else</span></u></td></tr>
+<tr><th id="287">287</th><td><a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_memory))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#393" title='D_memory' data-ref="D_memory">D_memory</a>)</td></tr>
+<tr><th id="288">288</th><td>  {</td></tr>
+<tr><th id="289">289</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#running_in_test_harness" title='running_in_test_harness' data-ref="running_in_test_harness">running_in_test_harness</a>)</td></tr>
+<tr><th id="290">290</th><td>    <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"---%d Ext %5d\n"</q>, <a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>, <a class="local col6 ref" href="#26newsize" title='newsize' data-ref="26newsize">newsize</a>);</td></tr>
+<tr><th id="291">291</th><td>  <b>else</b></td></tr>
+<tr><th id="292">292</th><td>    <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"---%d Ext %6p %5d %-14s %4d\n"</q>, <a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>, <a class="local col4 ref" href="#24ptr" title='ptr' data-ref="24ptr">ptr</a>, <a class="local col6 ref" href="#26newsize" title='newsize' data-ref="26newsize">newsize</a>,</td></tr>
+<tr><th id="293">293</th><td>      <a class="local col7 ref" href="#27filename" title='filename' data-ref="27filename">filename</a>, <a class="local col8 ref" href="#28linenumber" title='linenumber' data-ref="28linenumber">linenumber</a>);</td></tr>
+<tr><th id="294">294</th><td>  }</td></tr>
+<tr><th id="295">295</th><td><u>#<span data-ppcond="283">endif</span>  /* COMPILE_UTILITY */</u></td></tr>
+<tr><th id="296">296</th><td></td></tr>
+<tr><th id="297">297</th><td><b>if</b> (<a class="local col6 ref" href="#26newsize" title='newsize' data-ref="26newsize">newsize</a> % <a class="macro" href="#55" title="((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))" data-ref="_M/alignment">alignment</a> != <var>0</var>) <a class="local col6 ref" href="#26newsize" title='newsize' data-ref="26newsize">newsize</a> += <a class="macro" href="#55" title="((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))" data-ref="_M/alignment">alignment</a> - (<a class="local col6 ref" href="#26newsize" title='newsize' data-ref="26newsize">newsize</a> % <a class="macro" href="#55" title="((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))" data-ref="_M/alignment">alignment</a>);</td></tr>
+<tr><th id="298">298</th><td><a class="tu ref" href="#next_yield" title='next_yield' data-use='w' data-ref="next_yield">next_yield</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] = <a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col4 ref" href="#24ptr" title='ptr' data-ref="24ptr">ptr</a> + <a class="local col6 ref" href="#26newsize" title='newsize' data-ref="26newsize">newsize</a>;</td></tr>
+<tr><th id="299">299</th><td><a class="tu ref" href="#yield_length" title='yield_length' data-use='w' data-ref="yield_length">yield_length</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] -= <a class="local col6 ref" href="#26newsize" title='newsize' data-ref="26newsize">newsize</a> - <a class="local col0 ref" href="#30rounded_oldsize" title='rounded_oldsize' data-ref="30rounded_oldsize">rounded_oldsize</a>;</td></tr>
+<tr><th id="300">300</th><td>(<em>void</em>) <a class="macro" href="memcheck.h.html#116" title="(__extension__({unsigned int _zzq_rlval; { volatile unsigned long long int _zzq_args[6]; volatile unsigned long long int _zzq_result; _zzq_args[0] = (unsigned long long int)(VG_USERREQ__MAKE_MEM_UNDEFINED); _zzq_args[1] = (unsigned long long int)((ptr + oldsize)); _zzq_args[2] = (unsigned long long int)((inc)); _zzq_args[3] = (unsigned long long int)(0); _zzq_args[4] = (unsigned long long int)(0); _zzq_args[5] = (unsigned long long int)(0); __asm__ volatile(&quot;rolq $3,  %%rdi ; rolq $13, %%rdi\n\t&quot; &quot;rolq $61, %%rdi ; rolq $51, %%rdi\n\t&quot; &quot;xchgq %%rbx,%%rbx&quot; : &quot;=d&quot; (_zzq_result) : &quot;a&quot; (&amp;_zzq_args[0]), &quot;0&quot; (0) : &quot;cc&quot;, &quot;memory&quot; ); _zzq_rlval = _zzq_result; } _zzq_rlval; }))" data-ref="_M/VALGRIND_MAKE_MEM_UNDEFINED">VALGRIND_MAKE_MEM_UNDEFINED</a>(<a class="local col4 ref" href="#24ptr" title='ptr' data-ref="24ptr">ptr</a> + <a class="local col5 ref" href="#25oldsize" title='oldsize' data-ref="25oldsize">oldsize</a>, <a class="local col9 ref" href="#29inc" title='inc' data-ref="29inc">inc</a>);</td></tr>
+<tr><th id="301">301</th><td><b>return</b> <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="302">302</th><td>}</td></tr>
+<tr><th id="303">303</th><td></td></tr>
+<tr><th id="304">304</th><td></td></tr>
+<tr><th id="305">305</th><td></td></tr>
+<tr><th id="306">306</th><td></td></tr>
+<tr><th id="307">307</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="308">308</th><td><i>*    Back up to a previous point on the stack    *</i></td></tr>
+<tr><th id="309">309</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="310">310</th><td></td></tr>
+<tr><th id="311">311</th><td><i>/* This function resets the next pointer, freeing any subsequent whole blocks</i></td></tr>
+<tr><th id="312">312</th><td><i>that are now unused. Normally it is given a pointer that was the yield of a</i></td></tr>
+<tr><th id="313">313</th><td><i>call to store_get, and is therefore aligned, but it may be given an offset</i></td></tr>
+<tr><th id="314">314</th><td><i>after such a pointer in order to release the end of a block and anything that</i></td></tr>
+<tr><th id="315">315</th><td><i>follows.</i></td></tr>
+<tr><th id="316">316</th><td><i></i></td></tr>
+<tr><th id="317">317</th><td><i>Arguments:</i></td></tr>
+<tr><th id="318">318</th><td><i>  ptr         place to back up to</i></td></tr>
+<tr><th id="319">319</th><td><i>  filename    source file from which called</i></td></tr>
+<tr><th id="320">320</th><td><i>  linenumber  line number in source file</i></td></tr>
+<tr><th id="321">321</th><td><i></i></td></tr>
+<tr><th id="322">322</th><td><i>Returns:      nothing</i></td></tr>
+<tr><th id="323">323</th><td><i>*/</i></td></tr>
+<tr><th id="324">324</th><td></td></tr>
+<tr><th id="325">325</th><td><em>void</em></td></tr>
+<tr><th id="326">326</th><td><dfn class="decl def fn" id="store_reset_3" title='store_reset_3' data-ref="store_reset_3">store_reset_3</dfn>(<em>void</em> *<dfn class="local col1 decl" id="31ptr" title='ptr' data-type='void *' data-ref="31ptr">ptr</dfn>, <em>const</em> <em>char</em> *<dfn class="local col2 decl" id="32filename" title='filename' data-type='const char *' data-ref="32filename">filename</dfn>, <em>int</em> <dfn class="local col3 decl" id="33linenumber" title='linenumber' data-type='int' data-ref="33linenumber">linenumber</dfn>)</td></tr>
+<tr><th id="327">327</th><td>{</td></tr>
+<tr><th id="328">328</th><td><a class="typedef" href="#storeblock" title='storeblock' data-type='struct storeblock' data-ref="storeblock">storeblock</a> * <dfn class="local col4 decl" id="34bb" title='bb' data-type='storeblock *' data-ref="34bb">bb</dfn>;</td></tr>
+<tr><th id="329">329</th><td><a class="typedef" href="#storeblock" title='storeblock' data-type='struct storeblock' data-ref="storeblock">storeblock</a> * <dfn class="local col5 decl" id="35b" title='b' data-type='storeblock *' data-ref="35b">b</dfn> = <a class="tu ref" href="#current_block" title='current_block' data-use='r' data-ref="current_block">current_block</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>];</td></tr>
+<tr><th id="330">330</th><td><em>char</em> * <dfn class="local col6 decl" id="36bc" title='bc' data-type='char *' data-ref="36bc">bc</dfn> = <a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a> + <a class="macro" href="#80" title="(((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)))" data-ref="_M/ALIGNED_SIZEOF_STOREBLOCK">ALIGNED_SIZEOF_STOREBLOCK</a>;</td></tr>
+<tr><th id="331">331</th><td><em>int</em> <dfn class="local col7 decl" id="37newlength" title='newlength' data-type='int' data-ref="37newlength">newlength</dfn>;</td></tr>
+<tr><th id="332">332</th><td></td></tr>
+<tr><th id="333">333</th><td><i>/* Last store operation was not a get */</i></td></tr>
+<tr><th id="334">334</th><td></td></tr>
+<tr><th id="335">335</th><td><a class="ref" href="store.h.html#store_last_get" title='store_last_get' data-ref="store_last_get">store_last_get</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="336">336</th><td></td></tr>
+<tr><th id="337">337</th><td><i>/* See if the place is in the current block - as it often will be. Otherwise,</i></td></tr>
+<tr><th id="338">338</th><td><i>search for the block in which it lies. */</i></td></tr>
+<tr><th id="339">339</th><td></td></tr>
+<tr><th id="340">340</th><td><b>if</b> (<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col1 ref" href="#31ptr" title='ptr' data-ref="31ptr">ptr</a> &lt; <a class="local col6 ref" href="#36bc" title='bc' data-ref="36bc">bc</a> || <a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col1 ref" href="#31ptr" title='ptr' data-ref="31ptr">ptr</a> &gt; <a class="local col6 ref" href="#36bc" title='bc' data-ref="36bc">bc</a> + <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>-&gt;<a class="tu ref field" href="#storeblock::length" title='storeblock::length' data-use='r' data-ref="storeblock::length">length</a>)</td></tr>
+<tr><th id="341">341</th><td>  {</td></tr>
+<tr><th id="342">342</th><td>  <b>for</b> (<a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a> = <a class="tu ref" href="#chainbase" title='chainbase' data-use='r' data-ref="chainbase">chainbase</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>]; <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>; <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a> = <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='r' data-ref="storeblock::next">next</a>)</td></tr>
+<tr><th id="343">343</th><td>    {</td></tr>
+<tr><th id="344">344</th><td>    <a class="local col6 ref" href="#36bc" title='bc' data-ref="36bc">bc</a> = <a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a> + <a class="macro" href="#80" title="(((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)))" data-ref="_M/ALIGNED_SIZEOF_STOREBLOCK">ALIGNED_SIZEOF_STOREBLOCK</a>;</td></tr>
+<tr><th id="345">345</th><td>    <b>if</b> (<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col1 ref" href="#31ptr" title='ptr' data-ref="31ptr">ptr</a> &gt;= <a class="local col6 ref" href="#36bc" title='bc' data-ref="36bc">bc</a> &amp;&amp; <a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col1 ref" href="#31ptr" title='ptr' data-ref="31ptr">ptr</a> &lt;= <a class="local col6 ref" href="#36bc" title='bc' data-ref="36bc">bc</a> + <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>-&gt;<a class="tu ref field" href="#storeblock::length" title='storeblock::length' data-use='r' data-ref="storeblock::length">length</a>) <b>break</b>;</td></tr>
+<tr><th id="346">346</th><td>    }</td></tr>
+<tr><th id="347">347</th><td>  <b>if</b> (!<a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>)</td></tr>
+<tr><th id="348">348</th><td>    <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>|<a class="macro" href="macros.h.html#793" title="6" data-ref="_M/LOG_PANIC_DIE">LOG_PANIC_DIE</a>, <q>"internal error: store_reset(%p) "</q></td></tr>
+<tr><th id="349">349</th><td>      <q>"failed: pool=%d %-14s %4d"</q>, <a class="local col1 ref" href="#31ptr" title='ptr' data-ref="31ptr">ptr</a>, <a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>, <a class="local col2 ref" href="#32filename" title='filename' data-ref="32filename">filename</a>, <a class="local col3 ref" href="#33linenumber" title='linenumber' data-ref="33linenumber">linenumber</a>);</td></tr>
+<tr><th id="350">350</th><td>  }</td></tr>
+<tr><th id="351">351</th><td></td></tr>
+<tr><th id="352">352</th><td><i>/* Back up, rounding to the alignment if necessary. When testing, flatten</i></td></tr>
+<tr><th id="353">353</th><td><i>the released memory. */</i></td></tr>
+<tr><th id="354">354</th><td></td></tr>
+<tr><th id="355">355</th><td><a class="local col7 ref" href="#37newlength" title='newlength' data-ref="37newlength">newlength</a> = <a class="local col6 ref" href="#36bc" title='bc' data-ref="36bc">bc</a> + <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>-&gt;<a class="tu ref field" href="#storeblock::length" title='storeblock::length' data-use='r' data-ref="storeblock::length">length</a> - <a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col1 ref" href="#31ptr" title='ptr' data-ref="31ptr">ptr</a>;</td></tr>
+<tr><th id="356">356</th><td><u>#<span data-ppcond="356">ifndef</span> <span class="macro" data-ref="_M/COMPILE_UTILITY">COMPILE_UTILITY</span></u></td></tr>
+<tr><th id="357">357</th><td><b>if</b> (<a class="ref" href="globals.h.html#running_in_test_harness" title='running_in_test_harness' data-ref="running_in_test_harness">running_in_test_harness</a> || <a class="ref" href="globals.h.html#debug_store" title='debug_store' data-ref="debug_store">debug_store</a>)</td></tr>
+<tr><th id="358">358</th><td>  {</td></tr>
+<tr><th id="359">359</th><td>  <a class="ref fn" href="functions.h.html#assert_no_variables" title='assert_no_variables' data-ref="assert_no_variables">assert_no_variables</a>(<a class="local col1 ref" href="#31ptr" title='ptr' data-ref="31ptr">ptr</a>, <a class="local col7 ref" href="#37newlength" title='newlength' data-ref="37newlength">newlength</a>, <a class="local col2 ref" href="#32filename" title='filename' data-ref="32filename">filename</a>, <a class="local col3 ref" href="#33linenumber" title='linenumber' data-ref="33linenumber">linenumber</a>);</td></tr>
+<tr><th id="360">360</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#running_in_test_harness" title='running_in_test_harness' data-ref="running_in_test_harness">running_in_test_harness</a>)</td></tr>
+<tr><th id="361">361</th><td>    {</td></tr>
+<tr><th id="362">362</th><td>    (<em>void</em>) <a class="macro" href="memcheck.h.html#123" title="(__extension__({unsigned int _zzq_rlval; { volatile unsigned long long int _zzq_args[6]; volatile unsigned long long int _zzq_result; _zzq_args[0] = (unsigned long long int)(VG_USERREQ__MAKE_MEM_DEFINED); _zzq_args[1] = (unsigned long long int)((ptr)); _zzq_args[2] = (unsigned long long int)((newlength)); _zzq_args[3] = (unsigned long long int)(0); _zzq_args[4] = (unsigned long long int)(0); _zzq_args[5] = (unsigned long long int)(0); __asm__ volatile(&quot;rolq $3,  %%rdi ; rolq $13, %%rdi\n\t&quot; &quot;rolq $61, %%rdi ; rolq $51, %%rdi\n\t&quot; &quot;xchgq %%rbx,%%rbx&quot; : &quot;=d&quot; (_zzq_result) : &quot;a&quot; (&amp;_zzq_args[0]), &quot;0&quot; (0) : &quot;cc&quot;, &quot;memory&quot; ); _zzq_rlval = _zzq_result; } _zzq_rlval; }))" data-ref="_M/VALGRIND_MAKE_MEM_DEFINED">VALGRIND_MAKE_MEM_DEFINED</a>(<a class="local col1 ref" href="#31ptr" title='ptr' data-ref="31ptr">ptr</a>, <a class="local col7 ref" href="#37newlength" title='newlength' data-ref="37newlength">newlength</a>);</td></tr>
+<tr><th id="363">363</th><td>    <a class="ref fn" href="../../include/string.h.html#memset" title='memset' data-ref="memset">memset</a>(<a class="local col1 ref" href="#31ptr" title='ptr' data-ref="31ptr">ptr</a>, <var>0xF0</var>, <a class="local col7 ref" href="#37newlength" title='newlength' data-ref="37newlength">newlength</a>);</td></tr>
+<tr><th id="364">364</th><td>    }</td></tr>
+<tr><th id="365">365</th><td>  }</td></tr>
+<tr><th id="366">366</th><td><u>#<span data-ppcond="356">endif</span></u></td></tr>
+<tr><th id="367">367</th><td>(<em>void</em>) <a class="macro" href="memcheck.h.html#109" title="(__extension__({unsigned int _zzq_rlval; { volatile unsigned long long int _zzq_args[6]; volatile unsigned long long int _zzq_result; _zzq_args[0] = (unsigned long long int)(VG_USERREQ__MAKE_MEM_NOACCESS); _zzq_args[1] = (unsigned long long int)((ptr)); _zzq_args[2] = (unsigned long long int)((newlength)); _zzq_args[3] = (unsigned long long int)(0); _zzq_args[4] = (unsigned long long int)(0); _zzq_args[5] = (unsigned long long int)(0); __asm__ volatile(&quot;rolq $3,  %%rdi ; rolq $13, %%rdi\n\t&quot; &quot;rolq $61, %%rdi ; rolq $51, %%rdi\n\t&quot; &quot;xchgq %%rbx,%%rbx&quot; : &quot;=d&quot; (_zzq_result) : &quot;a&quot; (&amp;_zzq_args[0]), &quot;0&quot; (0) : &quot;cc&quot;, &quot;memory&quot; ); _zzq_rlval = _zzq_result; } _zzq_rlval; }))" data-ref="_M/VALGRIND_MAKE_MEM_NOACCESS">VALGRIND_MAKE_MEM_NOACCESS</a>(<a class="local col1 ref" href="#31ptr" title='ptr' data-ref="31ptr">ptr</a>, <a class="local col7 ref" href="#37newlength" title='newlength' data-ref="37newlength">newlength</a>);</td></tr>
+<tr><th id="368">368</th><td><a class="tu ref" href="#yield_length" title='yield_length' data-use='w' data-ref="yield_length">yield_length</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] = <a class="local col7 ref" href="#37newlength" title='newlength' data-ref="37newlength">newlength</a> - (<a class="local col7 ref" href="#37newlength" title='newlength' data-ref="37newlength">newlength</a> % <a class="macro" href="#55" title="((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))" data-ref="_M/alignment">alignment</a>);</td></tr>
+<tr><th id="369">369</th><td><a class="tu ref" href="#next_yield" title='next_yield' data-use='w' data-ref="next_yield">next_yield</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] = <a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col1 ref" href="#31ptr" title='ptr' data-ref="31ptr">ptr</a> + (<a class="local col7 ref" href="#37newlength" title='newlength' data-ref="37newlength">newlength</a> % <a class="macro" href="#55" title="((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))" data-ref="_M/alignment">alignment</a>);</td></tr>
+<tr><th id="370">370</th><td><a class="tu ref" href="#current_block" title='current_block' data-use='w' data-ref="current_block">current_block</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] = <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>;</td></tr>
+<tr><th id="371">371</th><td></td></tr>
+<tr><th id="372">372</th><td><i>/* Free any subsequent block. Do NOT free the first successor, if our</i></td></tr>
+<tr><th id="373">373</th><td><i>current block has less than 256 bytes left. This should prevent us from</i></td></tr>
+<tr><th id="374">374</th><td><i>flapping memory. However, keep this block only when it has the default size. */</i></td></tr>
+<tr><th id="375">375</th><td></td></tr>
+<tr><th id="376">376</th><td><b>if</b> (<a class="tu ref" href="#yield_length" title='yield_length' data-use='r' data-ref="yield_length">yield_length</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] &lt; <a class="macro" href="#67" title="256" data-ref="_M/STOREPOOL_MIN_SIZE">STOREPOOL_MIN_SIZE</a> &amp;&amp;</td></tr>
+<tr><th id="377">377</th><td>    <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='r' data-ref="storeblock::next">next</a> &amp;&amp;</td></tr>
+<tr><th id="378">378</th><td>    <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='r' data-ref="storeblock::next">next</a>-&gt;<a class="tu ref field" href="#storeblock::length" title='storeblock::length' data-use='r' data-ref="storeblock::length">length</a> == <a class="macro" href="#62" title="8192" data-ref="_M/STORE_BLOCK_SIZE">STORE_BLOCK_SIZE</a>)</td></tr>
+<tr><th id="379">379</th><td>  {</td></tr>
+<tr><th id="380">380</th><td>  <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a> = <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='r' data-ref="storeblock::next">next</a>;</td></tr>
+<tr><th id="381">381</th><td><u>#<span data-ppcond="381">ifndef</span> <span class="macro" data-ref="_M/COMPILE_UTILITY">COMPILE_UTILITY</span></u></td></tr>
+<tr><th id="382">382</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#running_in_test_harness" title='running_in_test_harness' data-ref="running_in_test_harness">running_in_test_harness</a> || <a class="ref" href="globals.h.html#debug_store" title='debug_store' data-ref="debug_store">debug_store</a>)</td></tr>
+<tr><th id="383">383</th><td>    <a class="ref fn" href="functions.h.html#assert_no_variables" title='assert_no_variables' data-ref="assert_no_variables">assert_no_variables</a>(<a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>, <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>-&gt;<a class="tu ref field" href="#storeblock::length" title='storeblock::length' data-use='r' data-ref="storeblock::length">length</a> + <a class="macro" href="#80" title="(((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)))" data-ref="_M/ALIGNED_SIZEOF_STOREBLOCK">ALIGNED_SIZEOF_STOREBLOCK</a>,</td></tr>
+<tr><th id="384">384</th><td>			<a class="local col2 ref" href="#32filename" title='filename' data-ref="32filename">filename</a>, <a class="local col3 ref" href="#33linenumber" title='linenumber' data-ref="33linenumber">linenumber</a>);</td></tr>
+<tr><th id="385">385</th><td><u>#<span data-ppcond="381">endif</span></u></td></tr>
+<tr><th id="386">386</th><td>  (<em>void</em>) <a class="macro" href="memcheck.h.html#109" title="(__extension__({unsigned int _zzq_rlval; { volatile unsigned long long int _zzq_args[6]; volatile unsigned long long int _zzq_result; _zzq_args[0] = (unsigned long long int)(VG_USERREQ__MAKE_MEM_NOACCESS); _zzq_args[1] = (unsigned long long int)(((char *) b + (((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))))); _zzq_args[2] = (unsigned long long int)((b-&gt;length - (((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))))); _zzq_args[3] = (unsigned long long int)(0); _zzq_args[4] = (unsigned long long int)(0); _zzq_args[5] = (unsigned long long int)(0); __asm__ volatile(&quot;rolq $3,  %%rdi ; rolq $13, %%rdi\n\t&quot; &quot;rolq $61, %%rdi ; rolq $51, %%rdi\n\t&quot; &quot;xchgq %%rbx,%%rbx&quot; : &quot;=d&quot; (_zzq_result) : &quot;a&quot; (&amp;_zzq_args[0]), &quot;0&quot; (0) : &quot;cc&quot;, &quot;memory&quot; ); _zzq_rlval = _zzq_result; } _zzq_rlval; }))" data-ref="_M/VALGRIND_MAKE_MEM_NOACCESS">VALGRIND_MAKE_MEM_NOACCESS</a>(<a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a> + <a class="macro" href="#80" title="(((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)))" data-ref="_M/ALIGNED_SIZEOF_STOREBLOCK">ALIGNED_SIZEOF_STOREBLOCK</a>,</td></tr>
+<tr><th id="387">387</th><td>		<a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>-&gt;<a class="tu ref field" href="#storeblock::length" title='storeblock::length' data-use='r' data-ref="storeblock::length">length</a> - <a class="macro" href="#80" title="(((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)))" data-ref="_M/ALIGNED_SIZEOF_STOREBLOCK">ALIGNED_SIZEOF_STOREBLOCK</a>);</td></tr>
+<tr><th id="388">388</th><td>  }</td></tr>
+<tr><th id="389">389</th><td></td></tr>
+<tr><th id="390">390</th><td><a class="local col4 ref" href="#34bb" title='bb' data-ref="34bb">bb</a> = <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='r' data-ref="storeblock::next">next</a>;</td></tr>
+<tr><th id="391">391</th><td><a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='w' data-ref="storeblock::next">next</a> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="392">392</th><td></td></tr>
+<tr><th id="393">393</th><td><b>while</b> ((<a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a> = <a class="local col4 ref" href="#34bb" title='bb' data-ref="34bb">bb</a>))</td></tr>
+<tr><th id="394">394</th><td>  {</td></tr>
+<tr><th id="395">395</th><td><u>#<span data-ppcond="395">ifndef</span> <span class="macro" data-ref="_M/COMPILE_UTILITY">COMPILE_UTILITY</span></u></td></tr>
+<tr><th id="396">396</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#running_in_test_harness" title='running_in_test_harness' data-ref="running_in_test_harness">running_in_test_harness</a> || <a class="ref" href="globals.h.html#debug_store" title='debug_store' data-ref="debug_store">debug_store</a>)</td></tr>
+<tr><th id="397">397</th><td>    <a class="ref fn" href="functions.h.html#assert_no_variables" title='assert_no_variables' data-ref="assert_no_variables">assert_no_variables</a>(<a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>, <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>-&gt;<a class="tu ref field" href="#storeblock::length" title='storeblock::length' data-use='r' data-ref="storeblock::length">length</a> + <a class="macro" href="#80" title="(((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)))" data-ref="_M/ALIGNED_SIZEOF_STOREBLOCK">ALIGNED_SIZEOF_STOREBLOCK</a>,</td></tr>
+<tr><th id="398">398</th><td>			<a class="local col2 ref" href="#32filename" title='filename' data-ref="32filename">filename</a>, <a class="local col3 ref" href="#33linenumber" title='linenumber' data-ref="33linenumber">linenumber</a>);</td></tr>
+<tr><th id="399">399</th><td><u>#<span data-ppcond="395">endif</span></u></td></tr>
+<tr><th id="400">400</th><td>  <a class="local col4 ref" href="#34bb" title='bb' data-ref="34bb">bb</a> = <a class="local col4 ref" href="#34bb" title='bb' data-ref="34bb">bb</a>-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='r' data-ref="storeblock::next">next</a>;</td></tr>
+<tr><th id="401">401</th><td>  <a class="tu ref" href="#pool_malloc" title='pool_malloc' data-use='w' data-ref="pool_malloc">pool_malloc</a> -= <a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>-&gt;<a class="tu ref field" href="#storeblock::length" title='storeblock::length' data-use='r' data-ref="storeblock::length">length</a> + <a class="macro" href="#80" title="(((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)))" data-ref="_M/ALIGNED_SIZEOF_STOREBLOCK">ALIGNED_SIZEOF_STOREBLOCK</a>;</td></tr>
+<tr><th id="402">402</th><td>  <a class="ref fn" href="#store_free_3" title='store_free_3' data-ref="store_free_3">store_free_3</a>(<a class="local col5 ref" href="#35b" title='b' data-ref="35b">b</a>, <a class="local col2 ref" href="#32filename" title='filename' data-ref="32filename">filename</a>, <a class="local col3 ref" href="#33linenumber" title='linenumber' data-ref="33linenumber">linenumber</a>);</td></tr>
+<tr><th id="403">403</th><td>  }</td></tr>
+<tr><th id="404">404</th><td></td></tr>
+<tr><th id="405">405</th><td><i>/* Cut out the debugging stuff for utilities, but stop picky compilers from</i></td></tr>
+<tr><th id="406">406</th><td><i>giving warnings. */</i></td></tr>
+<tr><th id="407">407</th><td></td></tr>
+<tr><th id="408">408</th><td><u>#<span data-ppcond="408">ifdef</span> <span class="macro" data-ref="_M/COMPILE_UTILITY">COMPILE_UTILITY</span></u></td></tr>
+<tr><th id="409">409</th><td>filename = filename;</td></tr>
+<tr><th id="410">410</th><td>linenumber = linenumber;</td></tr>
+<tr><th id="411">411</th><td><u>#<span data-ppcond="408">else</span></u></td></tr>
+<tr><th id="412">412</th><td><a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_memory))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#393" title='D_memory' data-ref="D_memory">D_memory</a>)</td></tr>
+<tr><th id="413">413</th><td>  {</td></tr>
+<tr><th id="414">414</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#running_in_test_harness" title='running_in_test_harness' data-ref="running_in_test_harness">running_in_test_harness</a>)</td></tr>
+<tr><th id="415">415</th><td>    <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"---%d Rst    ** %d\n"</q>, <a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>, <a class="tu ref" href="#pool_malloc" title='pool_malloc' data-use='r' data-ref="pool_malloc">pool_malloc</a>);</td></tr>
+<tr><th id="416">416</th><td>  <b>else</b></td></tr>
+<tr><th id="417">417</th><td>    <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"---%d Rst %6p    ** %-14s %4d %d\n"</q>, <a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>, <a class="local col1 ref" href="#31ptr" title='ptr' data-ref="31ptr">ptr</a>,</td></tr>
+<tr><th id="418">418</th><td>      <a class="local col2 ref" href="#32filename" title='filename' data-ref="32filename">filename</a>, <a class="local col3 ref" href="#33linenumber" title='linenumber' data-ref="33linenumber">linenumber</a>, <a class="tu ref" href="#pool_malloc" title='pool_malloc' data-use='r' data-ref="pool_malloc">pool_malloc</a>);</td></tr>
+<tr><th id="419">419</th><td>  }</td></tr>
+<tr><th id="420">420</th><td><u>#<span data-ppcond="408">endif</span>  /* COMPILE_UTILITY */</u></td></tr>
+<tr><th id="421">421</th><td>}</td></tr>
+<tr><th id="422">422</th><td></td></tr>
+<tr><th id="423">423</th><td></td></tr>
+<tr><th id="424">424</th><td></td></tr>
+<tr><th id="425">425</th><td></td></tr>
+<tr><th id="426">426</th><td></td></tr>
+<tr><th id="427">427</th><td><i>/************************************************</i></td></tr>
+<tr><th id="428">428</th><td><i>*             Release store                     *</i></td></tr>
+<tr><th id="429">429</th><td><i>************************************************/</i></td></tr>
+<tr><th id="430">430</th><td></td></tr>
+<tr><th id="431">431</th><td><i  data-doc="store_release_3">/* This function checks that the pointer it is given is the first thing in a</i></td></tr>
+<tr><th id="432">432</th><td><i  data-doc="store_release_3">block, and if so, releases that block.</i></td></tr>
+<tr><th id="433">433</th><td><i  data-doc="store_release_3"></i></td></tr>
+<tr><th id="434">434</th><td><i  data-doc="store_release_3">Arguments:</i></td></tr>
+<tr><th id="435">435</th><td><i  data-doc="store_release_3">  block       block of store to consider</i></td></tr>
+<tr><th id="436">436</th><td><i  data-doc="store_release_3">  filename    source file from which called</i></td></tr>
+<tr><th id="437">437</th><td><i  data-doc="store_release_3">  linenumber  line number in source file</i></td></tr>
+<tr><th id="438">438</th><td><i  data-doc="store_release_3"></i></td></tr>
+<tr><th id="439">439</th><td><i  data-doc="store_release_3">Returns:      nothing</i></td></tr>
+<tr><th id="440">440</th><td><i  data-doc="store_release_3">*/</i></td></tr>
+<tr><th id="441">441</th><td></td></tr>
+<tr><th id="442">442</th><td><em>static</em> <em>void</em></td></tr>
+<tr><th id="443">443</th><td><dfn class="tu decl def fn" id="store_release_3" title='store_release_3' data-type='void store_release_3(void * block, const char * filename, int linenumber)' data-ref="store_release_3">store_release_3</dfn>(<em>void</em> * <dfn class="local col8 decl" id="38block" title='block' data-type='void *' data-ref="38block">block</dfn>, <em>const</em> <em>char</em> * <dfn class="local col9 decl" id="39filename" title='filename' data-type='const char *' data-ref="39filename">filename</dfn>, <em>int</em> <dfn class="local col0 decl" id="40linenumber" title='linenumber' data-type='int' data-ref="40linenumber">linenumber</dfn>)</td></tr>
+<tr><th id="444">444</th><td>{</td></tr>
+<tr><th id="445">445</th><td><a class="typedef" href="#storeblock" title='storeblock' data-type='struct storeblock' data-ref="storeblock">storeblock</a> * <dfn class="local col1 decl" id="41b" title='b' data-type='storeblock *' data-ref="41b">b</dfn>;</td></tr>
+<tr><th id="446">446</th><td></td></tr>
+<tr><th id="447">447</th><td><i>/* It will never be the first block, so no need to check that. */</i></td></tr>
+<tr><th id="448">448</th><td></td></tr>
+<tr><th id="449">449</th><td><b>for</b> (<a class="local col1 ref" href="#41b" title='b' data-ref="41b">b</a> = <a class="tu ref" href="#chainbase" title='chainbase' data-use='r' data-ref="chainbase">chainbase</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>]; <a class="local col1 ref" href="#41b" title='b' data-ref="41b">b</a>; <a class="local col1 ref" href="#41b" title='b' data-ref="41b">b</a> = <a class="local col1 ref" href="#41b" title='b' data-ref="41b">b</a>-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='r' data-ref="storeblock::next">next</a>)</td></tr>
+<tr><th id="450">450</th><td>  {</td></tr>
+<tr><th id="451">451</th><td>  <a class="typedef" href="#storeblock" title='storeblock' data-type='struct storeblock' data-ref="storeblock">storeblock</a> * <dfn class="local col2 decl" id="42bb" title='bb' data-type='storeblock *' data-ref="42bb">bb</dfn> = <a class="local col1 ref" href="#41b" title='b' data-ref="41b">b</a>-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='r' data-ref="storeblock::next">next</a>;</td></tr>
+<tr><th id="452">452</th><td>  <b>if</b> (<a class="local col2 ref" href="#42bb" title='bb' data-ref="42bb">bb</a> &amp;&amp; <a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col8 ref" href="#38block" title='block' data-ref="38block">block</a> == <a class="macro" href="mytypes.h.html#65" title="(char *)" data-ref="_M/CS">CS</a> <a class="local col2 ref" href="#42bb" title='bb' data-ref="42bb">bb</a> + <a class="macro" href="#80" title="(((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)))" data-ref="_M/ALIGNED_SIZEOF_STOREBLOCK">ALIGNED_SIZEOF_STOREBLOCK</a>)</td></tr>
+<tr><th id="453">453</th><td>    {</td></tr>
+<tr><th id="454">454</th><td>    <a class="local col1 ref" href="#41b" title='b' data-ref="41b">b</a>-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='w' data-ref="storeblock::next">next</a> = <a class="local col2 ref" href="#42bb" title='bb' data-ref="42bb">bb</a>-&gt;<a class="tu ref field" href="#storeblock::next" title='storeblock::next' data-use='r' data-ref="storeblock::next">next</a>;</td></tr>
+<tr><th id="455">455</th><td>    <a class="tu ref" href="#pool_malloc" title='pool_malloc' data-use='w' data-ref="pool_malloc">pool_malloc</a> -= <a class="local col2 ref" href="#42bb" title='bb' data-ref="42bb">bb</a>-&gt;<a class="tu ref field" href="#storeblock::length" title='storeblock::length' data-use='r' data-ref="storeblock::length">length</a> + <a class="macro" href="#80" title="(((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)))" data-ref="_M/ALIGNED_SIZEOF_STOREBLOCK">ALIGNED_SIZEOF_STOREBLOCK</a>;</td></tr>
+<tr><th id="456">456</th><td></td></tr>
+<tr><th id="457">457</th><td>    <i>/* Cut out the debugging stuff for utilities, but stop picky compilers</i></td></tr>
+<tr><th id="458">458</th><td><i>    from giving warnings. */</i></td></tr>
+<tr><th id="459">459</th><td></td></tr>
+<tr><th id="460">460</th><td><u>#<span data-ppcond="460">ifdef</span> <span class="macro" data-ref="_M/COMPILE_UTILITY">COMPILE_UTILITY</span></u></td></tr>
+<tr><th id="461">461</th><td>    filename = filename;</td></tr>
+<tr><th id="462">462</th><td>    linenumber = linenumber;</td></tr>
+<tr><th id="463">463</th><td><u>#<span data-ppcond="460">else</span></u></td></tr>
+<tr><th id="464">464</th><td>    <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_memory))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#393" title='D_memory' data-ref="D_memory">D_memory</a>)</td></tr>
+<tr><th id="465">465</th><td>      <b>if</b> (<a class="ref" href="globals.h.html#running_in_test_harness" title='running_in_test_harness' data-ref="running_in_test_harness">running_in_test_harness</a>)</td></tr>
+<tr><th id="466">466</th><td>        <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"-Release       %d\n"</q>, <a class="tu ref" href="#pool_malloc" title='pool_malloc' data-use='r' data-ref="pool_malloc">pool_malloc</a>);</td></tr>
+<tr><th id="467">467</th><td>      <span class='warning' title="add explicit braces to avoid dangling else"><b>else</b></span></td></tr>
+<tr><th id="468">468</th><td>        <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"-Release %6p %-20s %4d %d\n"</q>, (<em>void</em> *)<a class="local col2 ref" href="#42bb" title='bb' data-ref="42bb">bb</a>, <a class="local col9 ref" href="#39filename" title='filename' data-ref="39filename">filename</a>,</td></tr>
+<tr><th id="469">469</th><td>          <a class="local col0 ref" href="#40linenumber" title='linenumber' data-ref="40linenumber">linenumber</a>, <a class="tu ref" href="#pool_malloc" title='pool_malloc' data-use='r' data-ref="pool_malloc">pool_malloc</a>);</td></tr>
+<tr><th id="470">470</th><td></td></tr>
+<tr><th id="471">471</th><td>    <b>if</b> (<a class="ref" href="globals.h.html#running_in_test_harness" title='running_in_test_harness' data-ref="running_in_test_harness">running_in_test_harness</a>)</td></tr>
+<tr><th id="472">472</th><td>      <a class="ref fn" href="../../include/string.h.html#memset" title='memset' data-ref="memset">memset</a>(<a class="local col2 ref" href="#42bb" title='bb' data-ref="42bb">bb</a>, <var>0xF0</var>, <a class="local col2 ref" href="#42bb" title='bb' data-ref="42bb">bb</a>-&gt;<a class="tu ref field" href="#storeblock::length" title='storeblock::length' data-use='r' data-ref="storeblock::length">length</a>+<a class="macro" href="#80" title="(((sizeof(storeblock) + ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)) - 1) / ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double))) * ((sizeof(void *) &gt; sizeof(double))? sizeof(void *) : sizeof(double)))" data-ref="_M/ALIGNED_SIZEOF_STOREBLOCK">ALIGNED_SIZEOF_STOREBLOCK</a>);</td></tr>
+<tr><th id="473">473</th><td><u>#<span data-ppcond="460">endif</span>  /* COMPILE_UTILITY */</u></td></tr>
+<tr><th id="474">474</th><td></td></tr>
+<tr><th id="475">475</th><td>    <a class="ref fn" href="../../include/stdlib.h.html#free" title='free' data-ref="free">free</a>(<a class="local col2 ref" href="#42bb" title='bb' data-ref="42bb">bb</a>);</td></tr>
+<tr><th id="476">476</th><td>    <b>return</b>;</td></tr>
+<tr><th id="477">477</th><td>    }</td></tr>
+<tr><th id="478">478</th><td>  }</td></tr>
+<tr><th id="479">479</th><td>}</td></tr>
+<tr><th id="480">480</th><td></td></tr>
+<tr><th id="481">481</th><td></td></tr>
+<tr><th id="482">482</th><td><i>/************************************************</i></td></tr>
+<tr><th id="483">483</th><td><i>*             Move store                        *</i></td></tr>
+<tr><th id="484">484</th><td><i>************************************************/</i></td></tr>
+<tr><th id="485">485</th><td></td></tr>
+<tr><th id="486">486</th><td><i>/* Allocate a new block big enough to expend to the given size and</i></td></tr>
+<tr><th id="487">487</th><td><i>copy the current data into it.  Free the old one if possible.</i></td></tr>
+<tr><th id="488">488</th><td><i></i></td></tr>
+<tr><th id="489">489</th><td><i>This function is specifically provided for use when reading very</i></td></tr>
+<tr><th id="490">490</th><td><i>long strings, e.g. header lines. When the string gets longer than a</i></td></tr>
+<tr><th id="491">491</th><td><i>complete block, it gets copied to a new block. It is helpful to free</i></td></tr>
+<tr><th id="492">492</th><td><i>the old block iff the previous copy of the string is at its start,</i></td></tr>
+<tr><th id="493">493</th><td><i>and therefore the only thing in it. Otherwise, for very long strings,</i></td></tr>
+<tr><th id="494">494</th><td><i>dead store can pile up somewhat disastrously. This function checks that</i></td></tr>
+<tr><th id="495">495</th><td><i>the pointer it is given is the first thing in a block, and that nothing</i></td></tr>
+<tr><th id="496">496</th><td><i>has been allocated since. If so, releases that block.</i></td></tr>
+<tr><th id="497">497</th><td><i></i></td></tr>
+<tr><th id="498">498</th><td><i>Arguments:</i></td></tr>
+<tr><th id="499">499</th><td><i>  block</i></td></tr>
+<tr><th id="500">500</th><td><i>  newsize</i></td></tr>
+<tr><th id="501">501</th><td><i>  len</i></td></tr>
+<tr><th id="502">502</th><td><i></i></td></tr>
+<tr><th id="503">503</th><td><i>Returns:	new location of data</i></td></tr>
+<tr><th id="504">504</th><td><i>*/</i></td></tr>
+<tr><th id="505">505</th><td></td></tr>
+<tr><th id="506">506</th><td><em>void</em> *</td></tr>
+<tr><th id="507">507</th><td><dfn class="decl def fn" id="store_newblock_3" title='store_newblock_3' data-ref="store_newblock_3">store_newblock_3</dfn>(<em>void</em> * <dfn class="local col3 decl" id="43block" title='block' data-type='void *' data-ref="43block">block</dfn>, <em>int</em> <dfn class="local col4 decl" id="44newsize" title='newsize' data-type='int' data-ref="44newsize">newsize</dfn>, <em>int</em> <dfn class="local col5 decl" id="45len" title='len' data-type='int' data-ref="45len">len</dfn>,</td></tr>
+<tr><th id="508">508</th><td>  <em>const</em> <em>char</em> * <dfn class="local col6 decl" id="46filename" title='filename' data-type='const char *' data-ref="46filename">filename</dfn>, <em>int</em> <dfn class="local col7 decl" id="47linenumber" title='linenumber' data-type='int' data-ref="47linenumber">linenumber</dfn>)</td></tr>
+<tr><th id="509">509</th><td>{</td></tr>
+<tr><th id="510">510</th><td><a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col8 decl" id="48release_ok" title='release_ok' data-type='BOOL' data-ref="48release_ok">release_ok</dfn> = <a class="ref" href="store.h.html#store_last_get" title='store_last_get' data-ref="store_last_get">store_last_get</a>[<a class="ref" href="store.h.html#store_pool" title='store_pool' data-ref="store_pool">store_pool</a>] == <a class="local col3 ref" href="#43block" title='block' data-ref="43block">block</a>;</td></tr>
+<tr><th id="511">511</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> * <dfn class="local col9 decl" id="49newtext" title='newtext' data-type='uschar *' data-ref="49newtext">newtext</dfn> = <a class="macro" href="store.h.html#34" title="store_get_3(newsize, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/store.c&quot;, 511)" data-ref="_M/store_get">store_get</a>(<a class="local col4 ref" href="#44newsize" title='newsize' data-ref="44newsize">newsize</a>);</td></tr>
+<tr><th id="512">512</th><td></td></tr>
+<tr><th id="513">513</th><td><a class="ref fn" href="../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a>(<a class="local col9 ref" href="#49newtext" title='newtext' data-ref="49newtext">newtext</a>, <a class="local col3 ref" href="#43block" title='block' data-ref="43block">block</a>, <a class="local col5 ref" href="#45len" title='len' data-ref="45len">len</a>);</td></tr>
+<tr><th id="514">514</th><td><b>if</b> (<a class="local col8 ref" href="#48release_ok" title='release_ok' data-ref="48release_ok">release_ok</a>) <a class="tu ref fn" href="#store_release_3" title='store_release_3' data-use='c' data-ref="store_release_3">store_release_3</a>(<a class="local col3 ref" href="#43block" title='block' data-ref="43block">block</a>, <a class="local col6 ref" href="#46filename" title='filename' data-ref="46filename">filename</a>, <a class="local col7 ref" href="#47linenumber" title='linenumber' data-ref="47linenumber">linenumber</a>);</td></tr>
+<tr><th id="515">515</th><td><b>return</b> (<em>void</em> *)<a class="local col9 ref" href="#49newtext" title='newtext' data-ref="49newtext">newtext</a>;</td></tr>
+<tr><th id="516">516</th><td>}</td></tr>
+<tr><th id="517">517</th><td></td></tr>
+<tr><th id="518">518</th><td></td></tr>
+<tr><th id="519">519</th><td></td></tr>
+<tr><th id="520">520</th><td></td></tr>
+<tr><th id="521">521</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="522">522</th><td><i>*                Malloc store                    *</i></td></tr>
+<tr><th id="523">523</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="524">524</th><td></td></tr>
+<tr><th id="525">525</th><td><i>/* Running out of store is a total disaster for exim. Some malloc functions</i></td></tr>
+<tr><th id="526">526</th><td><i>do not run happily on very small sizes, nor do they document this fact. This</i></td></tr>
+<tr><th id="527">527</th><td><i>function is called via the macro store_malloc().</i></td></tr>
+<tr><th id="528">528</th><td><i></i></td></tr>
+<tr><th id="529">529</th><td><i>Arguments:</i></td></tr>
+<tr><th id="530">530</th><td><i>  size        amount of store wanted</i></td></tr>
+<tr><th id="531">531</th><td><i>  filename    source file from which called</i></td></tr>
+<tr><th id="532">532</th><td><i>  linenumber  line number in source file</i></td></tr>
+<tr><th id="533">533</th><td><i></i></td></tr>
+<tr><th id="534">534</th><td><i>Returns:      pointer to gotten store (panic on failure)</i></td></tr>
+<tr><th id="535">535</th><td><i>*/</i></td></tr>
+<tr><th id="536">536</th><td></td></tr>
+<tr><th id="537">537</th><td><em>void</em> *</td></tr>
+<tr><th id="538">538</th><td><dfn class="decl def fn" id="store_malloc_3" title='store_malloc_3' data-ref="store_malloc_3">store_malloc_3</dfn>(<em>int</em> <dfn class="local col0 decl" id="50size" title='size' data-type='int' data-ref="50size">size</dfn>, <em>const</em> <em>char</em> *<dfn class="local col1 decl" id="51filename" title='filename' data-type='const char *' data-ref="51filename">filename</dfn>, <em>int</em> <dfn class="local col2 decl" id="52linenumber" title='linenumber' data-type='int' data-ref="52linenumber">linenumber</dfn>)</td></tr>
+<tr><th id="539">539</th><td>{</td></tr>
+<tr><th id="540">540</th><td><em>void</em> *<dfn class="local col3 decl" id="53yield" title='yield' data-type='void *' data-ref="53yield">yield</dfn>;</td></tr>
+<tr><th id="541">541</th><td></td></tr>
+<tr><th id="542">542</th><td><b>if</b> (<a class="local col0 ref" href="#50size" title='size' data-ref="50size">size</a> &lt; <var>16</var>) <a class="local col0 ref" href="#50size" title='size' data-ref="50size">size</a> = <var>16</var>;</td></tr>
+<tr><th id="543">543</th><td></td></tr>
+<tr><th id="544">544</th><td><b>if</b> (!(<a class="local col3 ref" href="#53yield" title='yield' data-ref="53yield">yield</a> = <a class="ref fn" href="../../include/stdlib.h.html#malloc" title='malloc' data-ref="malloc">malloc</a>((<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>)<a class="local col0 ref" href="#50size" title='size' data-ref="50size">size</a>)))</td></tr>
+<tr><th id="545">545</th><td>  <a class="ref fn" href="local_scan.h.html#log_write" title='log_write' data-ref="log_write">log_write</a>(<var>0</var>, <a class="macro" href="macros.h.html#791" title="1" data-ref="_M/LOG_MAIN">LOG_MAIN</a>|<a class="macro" href="macros.h.html#793" title="6" data-ref="_M/LOG_PANIC_DIE">LOG_PANIC_DIE</a>, <q>"failed to malloc %d bytes of memory: "</q></td></tr>
+<tr><th id="546">546</th><td>    <q>"called from line %d of %s"</q>, <a class="local col0 ref" href="#50size" title='size' data-ref="50size">size</a>, <a class="local col2 ref" href="#52linenumber" title='linenumber' data-ref="52linenumber">linenumber</a>, <a class="local col1 ref" href="#51filename" title='filename' data-ref="51filename">filename</a>);</td></tr>
+<tr><th id="547">547</th><td></td></tr>
+<tr><th id="548">548</th><td><a class="tu ref" href="#nonpool_malloc" title='nonpool_malloc' data-use='w' data-ref="nonpool_malloc">nonpool_malloc</a> += <a class="local col0 ref" href="#50size" title='size' data-ref="50size">size</a>;</td></tr>
+<tr><th id="549">549</th><td></td></tr>
+<tr><th id="550">550</th><td><i>/* Cut out the debugging stuff for utilities, but stop picky compilers from</i></td></tr>
+<tr><th id="551">551</th><td><i>giving warnings. */</i></td></tr>
+<tr><th id="552">552</th><td></td></tr>
+<tr><th id="553">553</th><td><u>#<span data-ppcond="553">ifdef</span> <span class="macro" data-ref="_M/COMPILE_UTILITY">COMPILE_UTILITY</span></u></td></tr>
+<tr><th id="554">554</th><td>filename = filename;</td></tr>
+<tr><th id="555">555</th><td>linenumber = linenumber;</td></tr>
+<tr><th id="556">556</th><td><u>#<span data-ppcond="553">else</span></u></td></tr>
+<tr><th id="557">557</th><td></td></tr>
+<tr><th id="558">558</th><td><i>/* If running in test harness, spend time making sure all the new store</i></td></tr>
+<tr><th id="559">559</th><td><i>is not filled with zeros so as to catch problems. */</i></td></tr>
+<tr><th id="560">560</th><td></td></tr>
+<tr><th id="561">561</th><td><b>if</b> (<a class="ref" href="globals.h.html#running_in_test_harness" title='running_in_test_harness' data-ref="running_in_test_harness">running_in_test_harness</a>)</td></tr>
+<tr><th id="562">562</th><td>  {</td></tr>
+<tr><th id="563">563</th><td>  <a class="ref fn" href="../../include/string.h.html#memset" title='memset' data-ref="memset">memset</a>(<a class="local col3 ref" href="#53yield" title='yield' data-ref="53yield">yield</a>, <var>0xF0</var>, (<span class='typedef' title='size_t' data-type='unsigned long' data-ref="size_t">size_t</span>)<a class="local col0 ref" href="#50size" title='size' data-ref="50size">size</a>);</td></tr>
+<tr><th id="564">564</th><td>  <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_memory))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#393" title='D_memory' data-ref="D_memory">D_memory</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"--Malloc %5d %d %d\n"</q>, <a class="local col0 ref" href="#50size" title='size' data-ref="50size">size</a>, <a class="tu ref" href="#pool_malloc" title='pool_malloc' data-use='r' data-ref="pool_malloc">pool_malloc</a>,</td></tr>
+<tr><th id="565">565</th><td>    <a class="tu ref" href="#nonpool_malloc" title='nonpool_malloc' data-use='r' data-ref="nonpool_malloc">nonpool_malloc</a>);</td></tr>
+<tr><th id="566">566</th><td>  }</td></tr>
+<tr><th id="567">567</th><td><b>else</b></td></tr>
+<tr><th id="568">568</th><td>  {</td></tr>
+<tr><th id="569">569</th><td>  <a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_memory))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#393" title='D_memory' data-ref="D_memory">D_memory</a>) <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"--Malloc %6p %5d %-14s %4d %d %d\n"</q>, <a class="local col3 ref" href="#53yield" title='yield' data-ref="53yield">yield</a>,</td></tr>
+<tr><th id="570">570</th><td>    <a class="local col0 ref" href="#50size" title='size' data-ref="50size">size</a>, <a class="local col1 ref" href="#51filename" title='filename' data-ref="51filename">filename</a>, <a class="local col2 ref" href="#52linenumber" title='linenumber' data-ref="52linenumber">linenumber</a>, <a class="tu ref" href="#pool_malloc" title='pool_malloc' data-use='r' data-ref="pool_malloc">pool_malloc</a>, <a class="tu ref" href="#nonpool_malloc" title='nonpool_malloc' data-use='r' data-ref="nonpool_malloc">nonpool_malloc</a>);</td></tr>
+<tr><th id="571">571</th><td>  }</td></tr>
+<tr><th id="572">572</th><td><u>#<span data-ppcond="553">endif</span>  /* COMPILE_UTILITY */</u></td></tr>
+<tr><th id="573">573</th><td></td></tr>
+<tr><th id="574">574</th><td><b>return</b> <a class="local col3 ref" href="#53yield" title='yield' data-ref="53yield">yield</a>;</td></tr>
+<tr><th id="575">575</th><td>}</td></tr>
+<tr><th id="576">576</th><td></td></tr>
+<tr><th id="577">577</th><td></td></tr>
+<tr><th id="578">578</th><td><i>/************************************************</i></td></tr>
+<tr><th id="579">579</th><td><i>*             Free store                        *</i></td></tr>
+<tr><th id="580">580</th><td><i>************************************************/</i></td></tr>
+<tr><th id="581">581</th><td></td></tr>
+<tr><th id="582">582</th><td><i>/* This function is called by the macro store_free().</i></td></tr>
+<tr><th id="583">583</th><td><i></i></td></tr>
+<tr><th id="584">584</th><td><i>Arguments:</i></td></tr>
+<tr><th id="585">585</th><td><i>  block       block of store to free</i></td></tr>
+<tr><th id="586">586</th><td><i>  filename    source file from which called</i></td></tr>
+<tr><th id="587">587</th><td><i>  linenumber  line number in source file</i></td></tr>
+<tr><th id="588">588</th><td><i></i></td></tr>
+<tr><th id="589">589</th><td><i>Returns:      nothing</i></td></tr>
+<tr><th id="590">590</th><td><i>*/</i></td></tr>
+<tr><th id="591">591</th><td></td></tr>
+<tr><th id="592">592</th><td><em>void</em></td></tr>
+<tr><th id="593">593</th><td><dfn class="decl def fn" id="store_free_3" title='store_free_3' data-ref="store_free_3">store_free_3</dfn>(<em>void</em> *<dfn class="local col4 decl" id="54block" title='block' data-type='void *' data-ref="54block">block</dfn>, <em>const</em> <em>char</em> *<dfn class="local col5 decl" id="55filename" title='filename' data-type='const char *' data-ref="55filename">filename</dfn>, <em>int</em> <dfn class="local col6 decl" id="56linenumber" title='linenumber' data-type='int' data-ref="56linenumber">linenumber</dfn>)</td></tr>
+<tr><th id="594">594</th><td>{</td></tr>
+<tr><th id="595">595</th><td><u>#<span data-ppcond="595">ifdef</span> <span class="macro" data-ref="_M/COMPILE_UTILITY">COMPILE_UTILITY</span></u></td></tr>
+<tr><th id="596">596</th><td>filename = filename;</td></tr>
+<tr><th id="597">597</th><td>linenumber = linenumber;</td></tr>
+<tr><th id="598">598</th><td><u>#<span data-ppcond="595">else</span></u></td></tr>
+<tr><th id="599">599</th><td><a class="macro" href="macros.h.html#110" title="if (debug_selector &amp; (D_memory))" data-ref="_M/DEBUG">DEBUG</a>(<a class="enum" href="macros.h.html#393" title='D_memory' data-ref="D_memory">D_memory</a>)</td></tr>
+<tr><th id="600">600</th><td>  {</td></tr>
+<tr><th id="601">601</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#running_in_test_harness" title='running_in_test_harness' data-ref="running_in_test_harness">running_in_test_harness</a>)</td></tr>
+<tr><th id="602">602</th><td>    <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"----Free\n"</q>);</td></tr>
+<tr><th id="603">603</th><td>  <b>else</b></td></tr>
+<tr><th id="604">604</th><td>    <a class="ref fn" href="local_scan.h.html#debug_printf" title='debug_printf' data-ref="debug_printf">debug_printf</a>(<q>"----Free %6p %-20s %4d\n"</q>, <a class="local col4 ref" href="#54block" title='block' data-ref="54block">block</a>, <a class="local col5 ref" href="#55filename" title='filename' data-ref="55filename">filename</a>, <a class="local col6 ref" href="#56linenumber" title='linenumber' data-ref="56linenumber">linenumber</a>);</td></tr>
+<tr><th id="605">605</th><td>  }</td></tr>
+<tr><th id="606">606</th><td><u>#<span data-ppcond="595">endif</span>  /* COMPILE_UTILITY */</u></td></tr>
+<tr><th id="607">607</th><td><a class="ref fn" href="../../include/stdlib.h.html#free" title='free' data-ref="free">free</a>(<a class="local col4 ref" href="#54block" title='block' data-ref="54block">block</a>);</td></tr>
+<tr><th id="608">608</th><td>}</td></tr>
+<tr><th id="609">609</th><td></td></tr>
+<tr><th id="610">610</th><td><i>/* End of store.c */</i></td></tr>
+<tr><th id="611">611</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,2 +1,5 @@
 <dec f='exim/src/macros.h' l='236' type='0'/>
 <doc f='exim/src/macros.h' l='236'>/* Bad address via argument list */</doc>
+<use f='exim/src/moan.c' l='96' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='405' c='moan_to_sender'/>
+<use f='exim/src/exim.c' l='5510' u='r' c='main'/>

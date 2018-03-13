@@ -1,0 +1,8 @@
+<dec f='exim/src/expand.c' l='790' type='1'/>
+<use f='exim/src/expand.c' l='3456' u='r' c='prvs_hmac_sha1'/>
+<use f='exim/src/expand.c' l='3457' u='r' c='prvs_hmac_sha1'/>
+<use f='exim/src/expand.c' l='3458' u='r' c='prvs_hmac_sha1'/>
+<use f='exim/src/expand.c' l='3460' u='r' c='prvs_hmac_sha1'/>
+<use f='exim/src/expand.c' l='3461' u='r' c='prvs_hmac_sha1'/>
+<use f='exim/src/expand.c' l='3462' u='r' c='prvs_hmac_sha1'/>
+<use f='exim/src/expand.c' l='5215' u='r' c='expand_string_internal'/>

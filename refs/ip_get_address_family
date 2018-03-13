@@ -1,1 +1,14 @@
 <dec f='exim/src/functions.h' l='242' type='int ip_get_address_family(int )'/>
+<use f='exim/src/acl.c' l='3062' u='c' c='acl_check_condition'/>
+<def f='exim/src/ip.c' l='647' ll='657' type='int ip_get_address_family(int fd)'/>
+<doc f='exim/src/ip.c' l='635'>/* Given a file-descriptor, check to see if it&apos;s a socket and, if so,
+return the address family; detects IPv4 vs IPv6.  If not a socket then
+return -1.
+
+The value 0 is typically AF_UNSPEC, which should not be seen on a connected
+fd.  If the return is -1, the errno will be from getsockname(); probably
+ENOTSOCK or ECONNRESET.
+
+Arguments:     socket-or-not fd
+Returns:       address family or -1
+*/</doc>

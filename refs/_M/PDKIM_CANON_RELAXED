@@ -1,0 +1,11 @@
+<dec f='exim/src/pdkim/pdkim.h' l='79'/>
+<use f='exim/src/pdkim/pdkim.c' l='105' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='106' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='107' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='107' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='109' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='707' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='888' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1500' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1561' u='c'/>
+<use f='exim/src/pdkim/pdkim.c' l='1594' u='c'/>

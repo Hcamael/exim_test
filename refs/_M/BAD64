@@ -1,1 +1,7 @@
 <dec f='exim/src/macros.h' l='297'/>
+<use f='exim/src/smtp_in.c' l='3653' u='c'/>
+<use f='exim/src/auths/get_no64_data.c' l='37' u='c'/>
+<use f='exim/src/auths/plaintext.c' l='114' u='c'/>
+<use f='exim/src/auths/plaintext.c' l='136' u='c'/>
+<use f='exim/src/auths/cram_md5.c' l='188' u='c'/>
+<use f='exim/src/auths/get_data.c' l='36' u='c'/>

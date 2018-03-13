@@ -1,3 +1,7 @@
 <dec f='exim/src/structs.h' l='581' type='BOOL'/>
 <offset>2</offset>
 <doc f='exim/src/structs.h' l='581'>/* allow autoreply in generated address */</doc>
+<use f='exim/src/deliver.c' l='6025' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6426' u='r' c='deliver_message'/>
+<use f='exim/src/verify.c' l='1738' u='r' c='verify_address'/>
+<use f='exim/src/routers/redirect.c' l='427' u='w' c='add_generated'/>

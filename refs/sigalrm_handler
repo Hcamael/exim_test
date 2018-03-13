@@ -1,1 +1,23 @@
 <dec f='exim/src/functions.h' l='402' type='void sigalrm_handler(int )'/>
+<def f='exim/src/exim_dbutil.c' l='77' ll='82' type='void sigalrm_handler(int sig)'/>
+<use f='exim/src/exim_dbutil.c' l='280' u='r' c='dbfn_open'/>
+<def f='exim/src/exim.c' l='258' ll='264' type='void sigalrm_handler(int sig)'/>
+<use f='exim/src/exim.c' l='263' u='r' c='sigalrm_handler'/>
+<use f='exim/src/exim.c' l='1640' u='r' c='main'/>
+<doc f='exim/src/exim.c' l='244'>/* This handler is enabled most of the time that Exim is running. The handler
+doesn&apos;t actually get used unless alarm() has been called to set a timer, to
+place a time limit on a system call of some kind. When the handler is run, it
+re-enables itself.
+
+There are some other SIGALRM handlers that are used in special cases when more
+than just a flag setting is required; for example, when reading a message&apos;s
+input. These are normally set up in the code module that uses them, and the
+SIGALRM handler is reset to this one afterwards.
+
+Argument: the signal value (SIGALRM)
+Returns:  nothing
+*/</doc>
+<use f='exim/src/smtp_in.c' l='1518' u='r' c='smtp_read_command'/>
+<use f='exim/src/smtp_in.c' l='1530' u='r' c='smtp_read_command'/>
+<use f='exim/src/receive.c' l='3162' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='3660' u='r' c='receive_msg'/>

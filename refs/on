@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='628' type='const int'/>
 <doc f='exim/src/globals.h' l='628'>/* For setsockopt */</doc>
+<use f='exim/src/smtp_out.c' l='228' u='a' c='smtp_sock_connect'/>
+<use f='exim/src/smtp_out.c' l='228' u='r' c='smtp_sock_connect'/>
+<def f='exim/src/globals.c' l='1015' type='const int'/>
+<doc f='exim/src/globals.c' l='1015'>/* for setsockopt */</doc>
+<use f='exim/src/smtp_in.c' l='5184' u='a' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5184' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/daemon.c' l='968' u='a' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='968' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1396' u='a' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1397' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1407' u='a' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1407' u='r' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1415' u='a' c='daemon_go'/>
+<use f='exim/src/daemon.c' l='1415' u='r' c='daemon_go'/>

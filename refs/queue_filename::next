@@ -1,2 +1,16 @@
 <dec f='exim/src/structs.h' l='659' type='struct queue_filename *'/>
 <offset>0</offset>
+<use f='exim/src/queue.c' l='90' u='a' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='91' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='96' u='a' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='97' u='r' c='merge_queue_lists'/>
+<use f='exim/src/queue.c' l='255' u='w' c='queue_get_spool_list'/>
+<use f='exim/src/queue.c' l='264' u='w' c='queue_get_spool_list'/>
+<use f='exim/src/queue.c' l='269' u='w' c='queue_get_spool_list'/>
+<use f='exim/src/queue.c' l='270' u='w' c='queue_get_spool_list'/>
+<use f='exim/src/queue.c' l='281' u='w' c='queue_get_spool_list'/>
+<use f='exim/src/queue.c' l='477' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='766' u='r' c='queue_count'/>
+<use f='exim/src/queue.c' l='839' u='w' c='queue_list'/>
+<use f='exim/src/queue.c' l='840' u='w' c='queue_list'/>
+<use f='exim/src/queue.c' l='859' u='r' c='queue_list'/>

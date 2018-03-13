@@ -1,0 +1,3 @@
+<dec f='exim/src/pdkim/pdkim.h' l='306' type='pdkim_signature * pdkim_init_sign(pdkim_ctx * , uschar * , uschar * , uschar * , uschar * , const uschar ** )'/>
+<def f='exim/src/pdkim/pdkim.c' l='1794' ll='1838' type='pdkim_signature * pdkim_init_sign(pdkim_ctx * ctx, uschar * domain, uschar * selector, uschar * privkey, uschar * hashname, const uschar ** errstr)'/>
+<doc f='exim/src/pdkim/pdkim.c' l='1792'>/* -------------------------------------------------------------------------- */</doc>

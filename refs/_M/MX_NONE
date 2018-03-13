@@ -2,3 +2,13 @@
 <doc f='exim/src/macros.h' l='985'>/* MX fields for hosts not obtained from MX records are always negative.
 MX_NONE is the default case; lesser values are used when the hosts are
 randomized in batches. */</doc>
+<use f='exim/src/deliver.c' l='478' u='c'/>
+<use f='exim/src/verify.c' l='3012' u='c'/>
+<use f='exim/src/smtp_in.c' l='3518' u='c'/>
+<use f='exim/src/routers/dnslookup.c' l='285' u='c'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='103' u='c'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='218' u='c'/>
+<use f='exim/src/acl.c' l='2772' u='c'/>
+<use f='exim/src/host.c' l='318' u='c'/>
+<use f='exim/src/host.c' l='1839' u='c'/>
+<use f='exim/src/host.c' l='2732' u='c'/>

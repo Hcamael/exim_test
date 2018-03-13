@@ -1,0 +1,9 @@
+<dec f='exim/src/routers/accept.h' l='21' type='accept_router_options_block'/>
+<use f='exim/src/drtables.c' l='256' u='a'/>
+<use f='exim/src/drtables.c' l='256' u='a'/>
+<use f='exim/src/drtables.c' l='256' u='a'/>
+<use f='exim/src/drtables.c' l='256' u='a'/>
+<doc f='exim/src/routers/accept.h' l='19'>/* Block containing default values. */</doc>
+<def f='exim/src/routers/accept.c' l='30' ll='32' type='accept_router_options_block'/>
+<doc f='exim/src/routers/accept.c' l='27'>/* Default private options block for the accept router. Again, a dummy
+value is used. */</doc>

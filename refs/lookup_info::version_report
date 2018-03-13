@@ -1,3 +1,5 @@
 <dec f='exim/src/lookupapi.h' l='44' type='void (*)(FILE *)'/>
 <offset>512</offset>
 <doc f='exim/src/lookupapi.h' l='44'>/* diagnostic function */</doc>
+<use f='exim/src/exim.c' l='1030' u='r' c='show_whats_supported'/>
+<use f='exim/src/exim.c' l='1031' u='r' c='show_whats_supported'/>

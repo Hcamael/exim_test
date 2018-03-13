@@ -1,1 +1,37 @@
 <dec f='exim/src/functions.h' l='532' type='int verify_check_header_address(uschar ** , uschar ** , int , int , int , uschar * , uschar * , int , int * )'/>
+<def f='exim/src/verify.c' l='2478' ll='2632' type='int verify_check_header_address(uschar ** user_msgptr, uschar ** log_msgptr, int callout, int callout_overall, int callout_connect, uschar * se_mailfrom, uschar * pm_mailfrom, int options, int * verrno)'/>
+<doc f='exim/src/verify.c' l='2443'>/* Scan the originator headers of the message, looking for an address that
+verifies successfully. RFC 822 says:
+
+    o   The &quot;Sender&quot; field mailbox should be sent  notices  of
+        any  problems in transport or delivery of the original
+        messages.  If there is no  &quot;Sender&quot;  field,  then  the
+        &quot;From&quot; field mailbox should be used.
+
+    o   If the &quot;Reply-To&quot; field exists, then the reply  should
+        go to the addresses indicated in that field and not to
+        the address(es) indicated in the &quot;From&quot; field.
+
+So we check a Sender field if there is one, else a Reply_to field, else a From
+field. As some strange messages may have more than one of these fields,
+especially if they are resent- fields, check all of them if there is more than
+one.
+
+Arguments:
+  user_msgptr      points to where to put a user error message
+  log_msgptr       points to where to put a log error message
+  callout          timeout for callout check (passed to verify_address())
+  callout_overall  overall callout timeout (ditto)
+  callout_connect  connect callout timeout (ditto)
+  se_mailfrom      mailfrom for verify; NULL =&gt; &quot;&quot;
+  pm_mailfrom      sender for pm callout check (passed to verify_address())
+  options          callout options (passed to verify_address())
+  verrno           where to put the address basic_errno
+
+If log_msgptr is set to something without setting user_msgptr, the caller
+normally uses log_msgptr for both things.
+
+Returns:           result of the verification attempt: OK, FAIL, or DEFER;
+                   FAIL is given if no appropriate headers are found
+*/</doc>
+<use f='exim/src/acl.c' l='1891' u='c' c='acl_verify'/>

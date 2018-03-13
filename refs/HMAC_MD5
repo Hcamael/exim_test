@@ -1,0 +1,5 @@
+<dec f='exim/src/expand.c' l='790' type='0'/>
+<use f='exim/src/expand.c' l='3345' u='r' c='chash_start'/>
+<use f='exim/src/expand.c' l='3354' u='r' c='chash_mid'/>
+<use f='exim/src/expand.c' l='3363' u='r' c='chash_end'/>
+<use f='exim/src/expand.c' l='5208' u='r' c='expand_string_internal'/>

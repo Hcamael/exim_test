@@ -1,0 +1,1 @@
+<def f='include/openssl/ocsp.h' l='106' macro='1' type='int sk_OCSP_SINGLERESP_insert(struct stack_st_OCSP_SINGLERESP * sk, OCSP_SINGLERESP * ptr, int idx)'/>

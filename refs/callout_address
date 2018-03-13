@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='262' type='uschar *'/>
 <doc f='exim/src/globals.h' l='262'>/* Address used for a malware/spamd/verify etc. callout */</doc>
+<use f='exim/src/smtp_out.c' l='365' u='w' c='smtp_connect'/>
+<use f='exim/src/smtp_out.c' l='374' u='r' c='smtp_connect'/>
+<def f='exim/src/globals.c' l='492' type='uschar *'/>
+<use f='exim/src/exim.c' l='5125' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5787' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='1985' u='w' c='smtp_reset'/>
+<use f='exim/src/ip.c' l='244' u='w' c='ip_connect'/>
+<use f='exim/src/ip.c' l='474' u='w' c='ip_unixsocket'/>
+<use f='exim/src/expand.c' l='481' u='a'/>
+<use f='exim/src/expand.c' l='481' u='a'/>
+<use f='exim/src/expand.c' l='481' u='a'/>
+<use f='exim/src/expand.c' l='481' u='a'/>
+<use f='exim/src/expand.c' l='4824' u='w' c='expand_string_internal'/>
+<use f='exim/src/daemon.c' l='572' u='w' c='handle_smtp_call'/>

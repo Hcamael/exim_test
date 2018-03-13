@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='216' type='BOOL'/>
 <doc f='exim/src/globals.h' l='216'>/* Allow MX records to -&gt; ip address */</doc>
+<def f='exim/src/globals.c' l='420' type='BOOL'/>
+<use f='exim/src/routers/dnslookup.c' l='384' u='r' c='dnslookup_router_entry'/>
+<use f='exim/src/readconf.c' l='67' u='a'/>
+<use f='exim/src/readconf.c' l='67' u='a'/>
+<use f='exim/src/readconf.c' l='67' u='a'/>
+<use f='exim/src/readconf.c' l='67' u='a'/>
+<use f='exim/src/host.c' l='3071' u='r' c='host_find_bydns'/>

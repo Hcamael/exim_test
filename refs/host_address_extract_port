@@ -1,1 +1,24 @@
 <dec f='exim/src/functions.h' l='212' type='int host_address_extract_port(uschar * )'/>
+<use f='exim/src/exim.c' l='692' u='c' c='check_port'/>
+<use f='exim/src/spool_in.c' l='561' u='c' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='569' u='c' c='spool_read_header'/>
+<def f='exim/src/host.c' l='397' ll='439' type='int host_address_extract_port(uschar * address)'/>
+<use f='exim/src/host.c' l='744' u='c' c='host_build_ifacelist'/>
+<doc f='exim/src/host.c' l='378'>/* In the spool file, and in the -oMa and -oMi options, a host plus port is
+given as an IP address followed by a dot and a port number. This function
+decodes this.
+
+An alternative format for the -oMa and -oMi options is [ip address]:port which
+is what Exim 4 uses for output, because it seems to becoming commonly used,
+whereas the dot form confuses some programs/people. So we recognize that form
+too.
+
+Argument:
+  address    points to the string; if there is a port, the &apos;.&apos; in the string
+             is overwritten with zero to terminate the address; if the string
+             is in the [xxx]:ppp format, the address is shifted left and the
+             brackets are removed
+
+Returns:     0 if there is no port, else the port number. If there&apos;s a syntax
+             error, leave the incoming address alone, and return 0.
+*/</doc>

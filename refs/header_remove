@@ -1,1 +1,13 @@
 <dec f='exim/src/local_scan.h' l='175' type='void header_remove(int , const uschar * )'/>
+<def f='exim/src/header.c' l='265' ll='279' type='void header_remove(int occ, const uschar * name)'/>
+<doc f='exim/src/header.c' l='254'>/* This function is used by the filter code; it is also exported in the
+local_scan() API. If no header is found, the function does nothing.
+
+Arguments:
+  occ           the occurrence number for multiply-defined headers
+                  &lt;= 0 means &quot;all&quot;; deleted headers are not counted
+  name          the header name
+
+Returns:        nothing
+*/</doc>
+<use f='exim/src/filter.c' l='2022' u='c' c='interpret_commands'/>

@@ -1,1 +1,8 @@
 <dec f='exim/src/globals.h' l='143' type='uschar *(*)(unsigned int *)'/>
+<use f='exim/src/tls-openssl.c' l='2103' u='w' c='tls_server_start'/>
+<use f='exim/src/tls-openssl.c' l='2464' u='w' c='tls_refill'/>
+<use f='exim/src/smtp_in.c' l='550' u='w' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='656' u='w' c='bdat_getc'/>
+<use f='exim/src/smtp_in.c' l='691' u='w' c='bdat_flush_data'/>
+<use f='exim/src/smtp_in.c' l='2428' u='w' c='smtp_start_session'/>
+<use f='exim/src/smtp_in.c' l='5096' u='r' c='smtp_setup_msg'/>

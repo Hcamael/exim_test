@@ -1,1 +1,4 @@
 <dec f='exim/src/functions.h' l='171' type='void dns_pattern_init()'/>
+<use f='exim/src/daemon.c' l='1721' u='c' c='daemon_go'/>
+<use f='exim/src/dns.c' l='724' u='c' c='dns_basic_lookup'/>
+<def f='exim/src/dns.c' l='1223' ll='1229' type='void dns_pattern_init()'/>

@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='550' type='int []'/>
 <doc f='exim/src/globals.h' l='550'>/* Initialization list for log_selector */</doc>
+<def f='exim/src/globals.c' l='857' ll='877' type='int [19]'/>
+<doc f='exim/src/globals.c' l='857'>/* for initializing log_selector */</doc>
+<use f='exim/src/exim.c' l='1653' u='r' c='main'/>

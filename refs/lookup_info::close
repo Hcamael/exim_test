@@ -1,3 +1,7 @@
 <dec f='exim/src/lookupapi.h' l='38' type='void (*)(void *)'/>
 <offset>320</offset>
 <doc f='exim/src/lookupapi.h' l='38'>/* close function */</doc>
+<use f='exim/src/search.c' l='238' u='r' c='tidyup_subtree'/>
+<use f='exim/src/search.c' l='239' u='r' c='tidyup_subtree'/>
+<use f='exim/src/search.c' l='389' u='r' c='search_open'/>
+<use f='exim/src/search.c' l='409' u='r' c='search_open'/>

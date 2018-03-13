@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='773' macro='1' type='struct stack_st_IPAddressOrRange * sk_IPAddressOrRange_deep_copy(const struct stack_st_IPAddressOrRange * sk, sk_IPAddressOrRange_copyfunc copyfunc, sk_IPAddressOrRange_freefunc freefunc)'/>

@@ -1,1 +1,2 @@
 <dec f='include/openssl/ssl.h' l='1584' type='int SSL_write(SSL * ssl, const void * buf, int num)'/>
+<use f='exim/src/tls-openssl.c' l='2662' u='c' c='tls_write'/>

@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='689' type='int'/>
 <doc f='exim/src/globals.h' l='689'>/* Pipe for synchronizing */</doc>
+<def f='exim/src/globals.c' l='1075' type='int'/>
+<use f='exim/src/exim.c' l='2679' u='w' c='main'/>
+<use f='exim/src/queue.c' l='623' u='w' c='queue_run'/>
+<use f='exim/src/queue.c' l='628' u='r' c='queue_run'/>
+<use f='exim/src/queue.c' l='630' u='w' c='queue_run'/>
+<use f='exim/src/queue.c' l='630' u='r' c='queue_run'/>

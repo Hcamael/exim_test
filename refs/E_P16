@@ -1,0 +1,4 @@
+<dec f='exim/src/auths/auth-spa.c' l='336' type='void E_P16(uschar * p14, uschar * p16)'/>
+<def f='exim/src/auths/auth-spa.c' l='734' ll='740' type='void E_P16(uschar * p14, uschar * p16)'/>
+<use f='exim/src/auths/auth-spa.c' l='862' u='c' c='spa_smb_encrypt'/>
+<use f='exim/src/auths/auth-spa.c' l='958' u='c' c='nt_lm_owf_gen'/>

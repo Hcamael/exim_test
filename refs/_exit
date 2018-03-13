@@ -1,2 +1,18 @@
 <dec f='include/unistd.h' l='606' type='void _exit(int __status)'/>
 <doc f='include/unistd.h' l='605'>/* Terminate program execution with the low-order 8 bits of STATUS.  */</doc>
+<use f='exim/src/deliver.c' l='8584' u='c' c='delivery_re_exec'/>
+<use f='exim/src/exim.c' l='4644' u='c' c='main'/>
+<use f='exim/src/exim.c' l='5738' u='c' c='main'/>
+<use f='exim/src/smtp_in.c' l='5612' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5634' u='c' c='smtp_setup_msg'/>
+<use f='exim/src/queue.c' l='655' u='c' c='queue_run'/>
+<use f='exim/src/rda.c' l='780' u='c' c='rda_interpret'/>
+<use f='exim/src/log.c' l='325' u='c' c='log_create_as_exim'/>
+<use f='exim/src/daemon.c' l='399' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='485' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='513' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='536' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='675' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='1881' u='c' c='daemon_go'/>
+<use f='exim/src/child.c' l='161' u='c' c='child_exec_exim'/>
+<use f='exim/src/child.c' l='403' u='c' c='child_open_uid'/>

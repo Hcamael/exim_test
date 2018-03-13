@@ -1,1 +1,22 @@
 <dec f='exim/src/functions.h' l='356' type='BOOL regex_match_and_setup(const pcre * , const uschar * , int , int )'/>
+<use f='exim/src/moan.c' l='389' u='c' c='moan_to_sender'/>
+<use f='exim/src/filter.c' l='1610' u='c' c='test_condition'/>
+<def f='exim/src/exim.c' l='137' ll='158' type='BOOL regex_match_and_setup(const pcre * re, const uschar * subject, int options, int setup)'/>
+<use f='exim/src/exim.c' l='4725' u='c' c='main'/>
+<doc f='exim/src/exim.c' l='123'>/* This function runs a regular expression match, and sets up the pointers to
+the matched substrings.
+
+Arguments:
+  re          the compiled expression
+  subject     the subject string
+  options     additional PCRE options
+  setup       if &lt; 0 do full setup
+              if &gt;= 0 setup from setup+1 onwards,
+                excluding the full matched string
+
+Returns:      TRUE or FALSE
+*/</doc>
+<use f='exim/src/match.c' l='136' u='c' c='check_string'/>
+<use f='exim/src/expand.c' l='2605' u='c' c='eval_condition'/>
+<use f='exim/src/expand.c' l='4573' u='c' c='expand_string_internal'/>
+<use f='exim/src/receive.c' l='2051' u='c' c='receive_msg'/>

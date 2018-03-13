@@ -1,1 +1,12 @@
 <dec f='include/x86_64-linux-gnu/bits/signum.h' l='47'/>
+<use f='exim/src/deliver.c' l='2336' u='c'/>
+<use f='exim/src/deliver.c' l='2594' u='c'/>
+<use f='exim/src/deliver.c' l='4054' u='c'/>
+<use f='exim/src/deliver.c' l='7143' u='c'/>
+<use f='exim/src/smtp_in.c' l='3803' u='c'/>
+<use f='exim/src/receive.c' l='453' u='c'/>
+<use f='exim/src/receive.c' l='460' u='c'/>
+<use f='exim/src/receive.c' l='462' u='c'/>
+<use f='exim/src/receive.c' l='1765' u='c'/>
+<use f='exim/src/receive.c' l='3799' u='c'/>
+<use f='exim/src/receive.c' l='4222' u='c'/>

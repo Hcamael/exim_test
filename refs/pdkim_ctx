@@ -1,0 +1,12 @@
+<def f='exim/src/pdkim/pdkim.h' l='264' ll='289'/>
+<size>64</size>
+<doc f='exim/src/pdkim/pdkim.h' l='263'>/* Context to keep state between all operations. */</doc>
+<mbr r='pdkim_ctx::flags' o='0' t='unsigned int'/>
+<mbr r='pdkim_ctx::sig' o='64' t='pdkim_signature *'/>
+<mbr r='pdkim_ctx::bodyhash' o='128' t='pdkim_bodyhash *'/>
+<mbr r='pdkim_ctx::dns_txt_callback' o='192' t='uschar *(*)(char *)'/>
+<mbr r='pdkim_ctx::cur_header' o='256' t='gstring *'/>
+<mbr r='pdkim_ctx::linebuf' o='320' t='uschar *'/>
+<mbr r='pdkim_ctx::linebuf_offset' o='384' t='int'/>
+<mbr r='pdkim_ctx::num_headers' o='416' t='int'/>
+<mbr r='pdkim_ctx::headers' o='448' t='pdkim_stringlist *'/>

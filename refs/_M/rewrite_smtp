@@ -1,1 +1,17 @@
 <dec f='exim/src/macros.h' l='780'/>
+<use f='exim/src/smtp_in.c' l='2146' u='c'/>
+<use f='exim/src/smtp_in.c' l='2147' u='c'/>
+<use f='exim/src/smtp_in.c' l='2206' u='c'/>
+<use f='exim/src/smtp_in.c' l='2207' u='c'/>
+<use f='exim/src/smtp_in.c' l='4657' u='c'/>
+<use f='exim/src/smtp_in.c' l='4658' u='c'/>
+<use f='exim/src/smtp_in.c' l='4913' u='c'/>
+<use f='exim/src/smtp_in.c' l='4914' u='c'/>
+<use f='exim/src/rewrite.c' l='42' u='c'/>
+<use f='exim/src/rewrite.c' l='43' u='c'/>
+<use f='exim/src/rewrite.c' l='140' u='c'/>
+<use f='exim/src/rewrite.c' l='220' u='c'/>
+<use f='exim/src/rewrite.c' l='234' u='c'/>
+<use f='exim/src/rewrite.c' l='786' u='c'/>
+<use f='exim/src/rewrite.c' l='788' u='c'/>
+<use f='exim/src/rewrite.c' l='802' u='c'/>

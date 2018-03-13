@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='838' type='uschar *'/>
 <doc f='exim/src/globals.h' l='838'>/* Global for disconnect reason */</doc>
+<def f='exim/src/globals.c' l='1339' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='3383' u='w' c='smtp_notquit_exit'/>
+<use f='exim/src/expand.c' l='685' u='a'/>
+<use f='exim/src/expand.c' l='685' u='a'/>
+<use f='exim/src/expand.c' l='685' u='a'/>
+<use f='exim/src/expand.c' l='685' u='a'/>

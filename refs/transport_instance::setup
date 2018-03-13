@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='141' type='int (*)(struct transport_instance *, struct address_item *, struct transport_feedback *, uid_t, gid_t, uschar **)'/>
 <offset>320</offset>
 <doc f='exim/src/structs.h' l='141'>/* Setup entry point */</doc>
+<use f='exim/src/deliver.c' l='2317' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='2318' u='r' c='deliver_local'/>
+<use f='exim/src/deliver.c' l='4474' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4475' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/verify.c' l='1814' u='r' c='verify_address'/>
+<use f='exim/src/globals.c' l='1451' u='w'/>

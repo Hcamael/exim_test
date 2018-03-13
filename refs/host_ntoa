@@ -1,1 +1,29 @@
 <dec f='exim/src/functions.h' l='230' type='uschar * host_ntoa(int , const void * , uschar * , int * )'/>
+<use f='exim/src/smtp_out.c' l='302' u='c' c='smtp_sock_connect'/>
+<use f='exim/src/exim.c' l='2693' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4267' u='c' c='main'/>
+<use f='exim/src/exim.c' l='4275' u='c' c='main'/>
+<use f='exim/src/daemon.c' l='154' u='c' c='handle_smtp_call'/>
+<use f='exim/src/daemon.c' l='194' u='c' c='handle_smtp_call'/>
+<def f='exim/src/host.c' l='902' ll='965' type='uschar * host_ntoa(int type, const void * arg, uschar * buffer, int * portptr)'/>
+<use f='exim/src/host.c' l='2110' u='c' c='host_find_byname'/>
+<doc f='exim/src/host.c' l='881'>/* Given an IPv4 or IPv6 address in binary, convert it to a text
+string and return the result in a piece of new store. The address can
+either be given directly, or passed over in a sockaddr structure. Note
+that this isn&apos;t the converse of host_aton() because of byte ordering
+differences. See host_nmtoa() below.
+
+Arguments:
+  type       if &lt; 0 then arg points to a sockaddr, else
+             either AF_INET or AF_INET6
+  arg        points to a sockaddr if type is &lt; 0, or
+             points to an IPv4 address (32 bits), or
+             points to an IPv6 address (128 bits),
+             in both cases, in network byte order
+  buffer     if NULL, the result is returned in gotten store;
+             else points to a buffer to hold the answer
+  portptr    points to where to put the port number, if non NULL; only
+             used when type &lt; 0
+
+Returns:     pointer to character string
+*/</doc>

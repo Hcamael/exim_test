@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='132' type='int'/>
 <doc f='exim/src/globals.h' l='132'>/* DSN ret type*/</doc>
+<use f='exim/src/deliver.c' l='7227' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7769' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7780' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='139' type='int'/>
+<use f='exim/src/smtp_in.c' l='2004' u='w' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='4497' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4503' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4508' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4510' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/spool_in.c' l='329' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='529' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_out.c' l='267' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='268' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='268' u='r' c='spool_write_header'/>

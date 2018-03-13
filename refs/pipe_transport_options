@@ -1,0 +1,14 @@
+<dec f='exim/src/transports/pipe.h' l='39' type='optionlist []'/>
+<use f='exim/src/drtables.c' l='405'/>
+<use f='exim/src/drtables.c' l='405'/>
+<use f='exim/src/drtables.c' l='405'/>
+<use f='exim/src/drtables.c' l='405'/>
+<doc f='exim/src/transports/pipe.h' l='37'>/* Data for reading the private options. */</doc>
+<def f='exim/src/transports/pipe.c' l='25' ll='90' type='optionlist [30]'/>
+<use f='exim/src/transports/pipe.c' l='96' u='r'/>
+<doc f='exim/src/transports/pipe.c' l='18'>/* Options specific to the pipe transport. They must be in alphabetic
+order (note that &quot;_&quot; comes before the lower case letters). Those starting
+with &quot;*&quot; are not settable by the user but are used by the option-reading
+software for alternative value types. Some options are stored in the transport
+instance block so as to be publicly visible; these are flagged with opt_public.
+*/</doc>

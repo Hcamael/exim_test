@@ -1,0 +1,7 @@
+<dec f='include/openssl/x509v3.h' l='811'/>
+<doc f='include/openssl/x509v3.h' l='805'>/*
+ * AFI values, assigned by IANA.  It&apos;d be nice to make the AFI
+ * handling code totally generic, but there are too many little things
+ * that would need to be defined for other address families for it to
+ * be worth the trouble.
+ */</doc>

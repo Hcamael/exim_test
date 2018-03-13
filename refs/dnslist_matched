@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='426' type='uschar *'/>
 <doc f='exim/src/globals.h' l='426'>/* DNS (black) list matched key */</doc>
+<use f='exim/src/verify.c' l='3808' u='w' c='verify_check_dnsbl'/>
+<use f='exim/src/verify.c' l='3843' u='w' c='verify_check_dnsbl'/>
+<def f='exim/src/globals.c' l='701' type='uschar *'/>
+<use f='exim/src/exim.c' l='5118' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5783' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='1998' u='w' c='smtp_reset'/>
+<use f='exim/src/expand.c' l='522' u='a'/>
+<use f='exim/src/expand.c' l='522' u='a'/>
+<use f='exim/src/expand.c' l='522' u='a'/>
+<use f='exim/src/expand.c' l='522' u='a'/>
+<use f='exim/src/daemon.c' l='571' u='w' c='handle_smtp_call'/>

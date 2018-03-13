@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='524' type='uschar *'/>
 <doc f='exim/src/globals.h' l='524'>/* The directory we where in at startup */</doc>
+<def f='exim/src/globals.c' l='822' type='uschar *'/>
+<use f='exim/src/exim.c' l='3781' u='w' c='main'/>
+<use f='exim/src/exim.c' l='4081' u='r' c='main'/>
+<use f='exim/src/expand.c' l='547' u='a'/>
+<use f='exim/src/expand.c' l='547' u='a'/>
+<use f='exim/src/expand.c' l='547' u='a'/>
+<use f='exim/src/expand.c' l='547' u='a'/>

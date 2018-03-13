@@ -1,0 +1,299 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>filtertest.c source code [exim/src/filtertest.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/filtertest.c'; var root_path = '../..'; var data_path = '../../../data';</script>
+<script src='../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='..'>exim</a>/<a href='./'>src</a>/<a href='filtertest.c.html'>filtertest.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2009 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td></td></tr>
+<tr><th id="9">9</th><td><i>/* Code for the filter test function. */</i></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><u>#include <a href="exim.h.html">"exim.h"</a></u></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td></td></tr>
+<tr><th id="15">15</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="16">16</th><td><i>*    Read message and set body/size variables    *</i></td></tr>
+<tr><th id="17">17</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="18">18</th><td></td></tr>
+<tr><th id="19">19</th><td><i>/* We have to read the remainder of the message in order to find its size, so</i></td></tr>
+<tr><th id="20">20</th><td><i>we can set up the message_body variables at the same time (in normal use, the</i></td></tr>
+<tr><th id="21">21</th><td><i>message_body variables are not set up unless needed). The reading code is</i></td></tr>
+<tr><th id="22">22</th><td><i>written out here rather than having options in read_message_data, in order to</i></td></tr>
+<tr><th id="23">23</th><td><i>keep that function as efficient as possible. (Later: this function is now</i></td></tr>
+<tr><th id="24">24</th><td><i>global because it is also used by the -bem testing option.) Handling</i></td></tr>
+<tr><th id="25">25</th><td><i>message_body_end is somewhat more tedious. Pile it all into a circular buffer</i></td></tr>
+<tr><th id="26">26</th><td><i>and sort out at the end.</i></td></tr>
+<tr><th id="27">27</th><td><i></i></td></tr>
+<tr><th id="28">28</th><td><i>Arguments:</i></td></tr>
+<tr><th id="29">29</th><td><i>  dot_ended   TRUE if message already terminated by '.'</i></td></tr>
+<tr><th id="30">30</th><td><i></i></td></tr>
+<tr><th id="31">31</th><td><i>Returns:      nothing</i></td></tr>
+<tr><th id="32">32</th><td><i>*/</i></td></tr>
+<tr><th id="33">33</th><td></td></tr>
+<tr><th id="34">34</th><td><em>void</em></td></tr>
+<tr><th id="35">35</th><td><dfn class="decl def fn" id="read_message_body" title='read_message_body' data-ref="read_message_body">read_message_body</dfn>(<a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col1 decl" id="1dot_ended" title='dot_ended' data-type='BOOL' data-ref="1dot_ended">dot_ended</dfn>)</td></tr>
+<tr><th id="36">36</th><td>{</td></tr>
+<tr><th id="37">37</th><td><em>register</em> <em>int</em> <dfn class="local col2 decl" id="2ch" title='ch' data-type='int' data-ref="2ch">ch</dfn>;</td></tr>
+<tr><th id="38">38</th><td><em>int</em> <dfn class="local col3 decl" id="3body_len" title='body_len' data-type='int' data-ref="3body_len">body_len</dfn>, <dfn class="local col4 decl" id="4body_end_len" title='body_end_len' data-type='int' data-ref="4body_end_len">body_end_len</dfn>, <dfn class="local col5 decl" id="5header_size" title='header_size' data-type='int' data-ref="5header_size">header_size</dfn>;</td></tr>
+<tr><th id="39">39</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col6 decl" id="6s" title='s' data-type='uschar *' data-ref="6s">s</dfn>;</td></tr>
+<tr><th id="40">40</th><td></td></tr>
+<tr><th id="41">41</th><td><a class="ref" href="globals.h.html#message_body" title='message_body' data-ref="message_body">message_body</a> = <a class="macro" href="store.h.html#36" title="store_malloc_3(message_body_visible + 1, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/filtertest.c&quot;, 41)" data-ref="_M/store_malloc">store_malloc</a>(<a class="ref" href="globals.h.html#message_body_visible" title='message_body_visible' data-ref="message_body_visible">message_body_visible</a> + <var>1</var>);</td></tr>
+<tr><th id="42">42</th><td><a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a> = <a class="macro" href="store.h.html#36" title="store_malloc_3(message_body_visible + 1, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/filtertest.c&quot;, 42)" data-ref="_M/store_malloc">store_malloc</a>(<a class="ref" href="globals.h.html#message_body_visible" title='message_body_visible' data-ref="message_body_visible">message_body_visible</a> + <var>1</var>);</td></tr>
+<tr><th id="43">43</th><td><a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a> = <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a>;</td></tr>
+<tr><th id="44">44</th><td><a class="local col3 ref" href="#3body_len" title='body_len' data-ref="3body_len">body_len</a> = <var>0</var>;</td></tr>
+<tr><th id="45">45</th><td><a class="ref" href="local_scan.h.html#body_linecount" title='body_linecount' data-ref="body_linecount">body_linecount</a> = <var>0</var>;</td></tr>
+<tr><th id="46">46</th><td><a class="local col5 ref" href="#5header_size" title='header_size' data-ref="5header_size">header_size</a> = <a class="ref" href="globals.h.html#message_size" title='message_size' data-ref="message_size">message_size</a>;</td></tr>
+<tr><th id="47">47</th><td></td></tr>
+<tr><th id="48">48</th><td><b>if</b> (!<a class="local col1 ref" href="#1dot_ended" title='dot_ended' data-ref="1dot_ended">dot_ended</a> &amp;&amp; !<a class="ref fn" href="../../include/stdio.h.html#feof" title='feof' data-ref="feof">feof</a>(<a class="macro" href="../../include/stdio.h.html#172" title="stdin" data-ref="_M/stdin">stdin</a>))</td></tr>
+<tr><th id="49">49</th><td>  {</td></tr>
+<tr><th id="50">50</th><td>  <b>if</b> (!<a class="ref" href="globals.h.html#dot_ends" title='dot_ends' data-ref="dot_ends">dot_ends</a>)</td></tr>
+<tr><th id="51">51</th><td>    {</td></tr>
+<tr><th id="52">52</th><td>    <b>while</b> ((<a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a> = <a class="macro" href="../../include/stdio.h.html#543" title="_IO_getc (stdin)" data-ref="_M/getc">getc</a>(<a class="macro" href="../../include/stdio.h.html#172" title="stdin" data-ref="_M/stdin">stdin</a>)) != <a class="macro" href="../../include/libio.h.html#62" title="(-1)" data-ref="_M/EOF">EOF</a>)</td></tr>
+<tr><th id="53">53</th><td>      {</td></tr>
+<tr><th id="54">54</th><td>      <b>if</b> (<a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a> == <var>0</var>) <a class="ref" href="local_scan.h.html#body_zerocount" title='body_zerocount' data-ref="body_zerocount">body_zerocount</a>++;</td></tr>
+<tr><th id="55">55</th><td>      <b>if</b> (<a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a> == <kbd>'\n'</kbd>) <a class="ref" href="local_scan.h.html#body_linecount" title='body_linecount' data-ref="body_linecount">body_linecount</a>++;</td></tr>
+<tr><th id="56">56</th><td>      <b>if</b> (<a class="local col3 ref" href="#3body_len" title='body_len' data-ref="3body_len">body_len</a> &lt; <a class="ref" href="globals.h.html#message_body_visible" title='message_body_visible' data-ref="message_body_visible">message_body_visible</a>) <a class="ref" href="globals.h.html#message_body" title='message_body' data-ref="message_body">message_body</a>[<a class="local col3 ref" href="#3body_len" title='body_len' data-ref="3body_len">body_len</a>++] = <a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a>;</td></tr>
+<tr><th id="57">57</th><td>      *<a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a>++ = <a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a>;</td></tr>
+<tr><th id="58">58</th><td>      <b>if</b> (<a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a> &gt; <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a> + <a class="ref" href="globals.h.html#message_body_visible" title='message_body_visible' data-ref="message_body_visible">message_body_visible</a>) <a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a> = <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a>;</td></tr>
+<tr><th id="59">59</th><td>      <a class="ref" href="globals.h.html#message_size" title='message_size' data-ref="message_size">message_size</a>++;</td></tr>
+<tr><th id="60">60</th><td>      }</td></tr>
+<tr><th id="61">61</th><td>    }</td></tr>
+<tr><th id="62">62</th><td>  <b>else</b></td></tr>
+<tr><th id="63">63</th><td>    {</td></tr>
+<tr><th id="64">64</th><td>    <em>int</em> <dfn class="local col7 decl" id="7ch_state" title='ch_state' data-type='int' data-ref="7ch_state">ch_state</dfn> = <var>1</var>;</td></tr>
+<tr><th id="65">65</th><td>    <b>while</b> ((<a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a> = <a class="macro" href="../../include/stdio.h.html#543" title="_IO_getc (stdin)" data-ref="_M/getc">getc</a>(<a class="macro" href="../../include/stdio.h.html#172" title="stdin" data-ref="_M/stdin">stdin</a>)) != <a class="macro" href="../../include/libio.h.html#62" title="(-1)" data-ref="_M/EOF">EOF</a>)</td></tr>
+<tr><th id="66">66</th><td>      {</td></tr>
+<tr><th id="67">67</th><td>      <b>if</b> (<a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a> == <var>0</var>) <a class="ref" href="local_scan.h.html#body_zerocount" title='body_zerocount' data-ref="body_zerocount">body_zerocount</a>++;</td></tr>
+<tr><th id="68">68</th><td>      <b>switch</b> (<a class="local col7 ref" href="#7ch_state" title='ch_state' data-ref="7ch_state">ch_state</a>)</td></tr>
+<tr><th id="69">69</th><td>        {</td></tr>
+<tr><th id="70">70</th><td>        <b>case</b> <var>0</var>:                         <i>/* Normal state */</i></td></tr>
+<tr><th id="71">71</th><td>        <b>if</b> (<a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a> == <kbd>'\n'</kbd>) { <a class="ref" href="local_scan.h.html#body_linecount" title='body_linecount' data-ref="body_linecount">body_linecount</a>++; <a class="local col7 ref" href="#7ch_state" title='ch_state' data-ref="7ch_state">ch_state</a> = <var>1</var>; }</td></tr>
+<tr><th id="72">72</th><td>        <b>break</b>;</td></tr>
+<tr><th id="73">73</th><td></td></tr>
+<tr><th id="74">74</th><td>        <b>case</b> <var>1</var>:                         <i>/* After "\n" */</i></td></tr>
+<tr><th id="75">75</th><td>        <b>if</b> (<a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a> == <kbd>'.'</kbd>)</td></tr>
+<tr><th id="76">76</th><td>          {</td></tr>
+<tr><th id="77">77</th><td>          <a class="local col7 ref" href="#7ch_state" title='ch_state' data-ref="7ch_state">ch_state</a> = <var>2</var>;</td></tr>
+<tr><th id="78">78</th><td>          <b>continue</b>;</td></tr>
+<tr><th id="79">79</th><td>          }</td></tr>
+<tr><th id="80">80</th><td>        <b>if</b> (<a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a> != <kbd>'\n'</kbd>) <a class="local col7 ref" href="#7ch_state" title='ch_state' data-ref="7ch_state">ch_state</a> = <var>0</var>;</td></tr>
+<tr><th id="81">81</th><td>        <b>break</b>;</td></tr>
+<tr><th id="82">82</th><td></td></tr>
+<tr><th id="83">83</th><td>        <b>case</b> <var>2</var>:                         <i>/* After "\n." */</i></td></tr>
+<tr><th id="84">84</th><td>        <b>if</b> (<a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a> == <kbd>'\n'</kbd>) <b>goto</b> <a class="lbl" href="#8READ_END" data-ref="8READ_END">READ_END</a>;</td></tr>
+<tr><th id="85">85</th><td>        <b>if</b> (<a class="local col3 ref" href="#3body_len" title='body_len' data-ref="3body_len">body_len</a> &lt; <a class="ref" href="globals.h.html#message_body_visible" title='message_body_visible' data-ref="message_body_visible">message_body_visible</a>) <a class="ref" href="globals.h.html#message_body" title='message_body' data-ref="message_body">message_body</a>[<a class="local col3 ref" href="#3body_len" title='body_len' data-ref="3body_len">body_len</a>++] = <kbd>'.'</kbd>;</td></tr>
+<tr><th id="86">86</th><td>        *<a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a>++ = <kbd>'.'</kbd>;</td></tr>
+<tr><th id="87">87</th><td>        <b>if</b> (<a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a> &gt; <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a> + <a class="ref" href="globals.h.html#message_body_visible" title='message_body_visible' data-ref="message_body_visible">message_body_visible</a>)</td></tr>
+<tr><th id="88">88</th><td>          <a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a> = <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a>;</td></tr>
+<tr><th id="89">89</th><td>        <a class="ref" href="globals.h.html#message_size" title='message_size' data-ref="message_size">message_size</a>++;</td></tr>
+<tr><th id="90">90</th><td>        <a class="local col7 ref" href="#7ch_state" title='ch_state' data-ref="7ch_state">ch_state</a> = <var>0</var>;</td></tr>
+<tr><th id="91">91</th><td>        <b>break</b>;</td></tr>
+<tr><th id="92">92</th><td>        }</td></tr>
+<tr><th id="93">93</th><td>      <b>if</b> (<a class="local col3 ref" href="#3body_len" title='body_len' data-ref="3body_len">body_len</a> &lt; <a class="ref" href="globals.h.html#message_body_visible" title='message_body_visible' data-ref="message_body_visible">message_body_visible</a>) <a class="ref" href="globals.h.html#message_body" title='message_body' data-ref="message_body">message_body</a>[<a class="local col3 ref" href="#3body_len" title='body_len' data-ref="3body_len">body_len</a>++] = <a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a>;</td></tr>
+<tr><th id="94">94</th><td>      *<a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a>++ = <a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a>;</td></tr>
+<tr><th id="95">95</th><td>      <b>if</b> (<a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a> &gt; <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a> + <a class="ref" href="globals.h.html#message_body_visible" title='message_body_visible' data-ref="message_body_visible">message_body_visible</a>) <a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a> = <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a>;</td></tr>
+<tr><th id="96">96</th><td>      <a class="ref" href="globals.h.html#message_size" title='message_size' data-ref="message_size">message_size</a>++;</td></tr>
+<tr><th id="97">97</th><td>      }</td></tr>
+<tr><th id="98">98</th><td>    <dfn class="lbl" id="8READ_END" data-ref="8READ_END">READ_END</dfn>: <a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a> = <a class="local col2 ref" href="#2ch" title='ch' data-ref="2ch">ch</a>;  <i>/* Some compilers don't like null statements */</i></td></tr>
+<tr><th id="99">99</th><td>    }</td></tr>
+<tr><th id="100">100</th><td>  <b>if</b> (<a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a> == <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a> || <a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a>[-<var>1</var>] != <kbd>'\n'</kbd>) <a class="ref" href="local_scan.h.html#body_linecount" title='body_linecount' data-ref="body_linecount">body_linecount</a>++;</td></tr>
+<tr><th id="101">101</th><td>  }</td></tr>
+<tr><th id="102">102</th><td></td></tr>
+<tr><th id="103">103</th><td><a class="ref" href="globals.h.html#message_body" title='message_body' data-ref="message_body">message_body</a>[<a class="local col3 ref" href="#3body_len" title='body_len' data-ref="3body_len">body_len</a>] = <var>0</var>;</td></tr>
+<tr><th id="104">104</th><td><a class="ref" href="globals.h.html#message_body_size" title='message_body_size' data-ref="message_body_size">message_body_size</a> = <a class="ref" href="globals.h.html#message_size" title='message_size' data-ref="message_size">message_size</a> - <a class="local col5 ref" href="#5header_size" title='header_size' data-ref="5header_size">header_size</a>;</td></tr>
+<tr><th id="105">105</th><td></td></tr>
+<tr><th id="106">106</th><td><i>/* body_len stops at message_body_visible; it if got there, we may have</i></td></tr>
+<tr><th id="107">107</th><td><i>wrapped round in message_body_end. */</i></td></tr>
+<tr><th id="108">108</th><td></td></tr>
+<tr><th id="109">109</th><td><b>if</b> (<a class="local col3 ref" href="#3body_len" title='body_len' data-ref="3body_len">body_len</a> &gt;= <a class="ref" href="globals.h.html#message_body_visible" title='message_body_visible' data-ref="message_body_visible">message_body_visible</a>)</td></tr>
+<tr><th id="110">110</th><td>  {</td></tr>
+<tr><th id="111">111</th><td>  <em>int</em> <dfn class="local col9 decl" id="9below" title='below' data-type='int' data-ref="9below">below</dfn> = <a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a> - <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a>;</td></tr>
+<tr><th id="112">112</th><td>  <em>int</em> <dfn class="local col0 decl" id="10above" title='above' data-type='int' data-ref="10above">above</dfn> = <a class="ref" href="globals.h.html#message_body_visible" title='message_body_visible' data-ref="message_body_visible">message_body_visible</a> - <a class="local col9 ref" href="#9below" title='below' data-ref="9below">below</a>;</td></tr>
+<tr><th id="113">113</th><td>  <b>if</b> (<a class="local col0 ref" href="#10above" title='above' data-ref="10above">above</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="114">114</th><td>    {</td></tr>
+<tr><th id="115">115</th><td>    <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="11temp" title='temp' data-type='uschar *' data-ref="11temp">temp</dfn> = <a class="macro" href="store.h.html#34" title="store_get_3(below, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/filtertest.c&quot;, 115)" data-ref="_M/store_get">store_get</a>(<a class="local col9 ref" href="#9below" title='below' data-ref="9below">below</a>);</td></tr>
+<tr><th id="116">116</th><td>    <a class="ref fn" href="../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a>(<a class="local col1 ref" href="#11temp" title='temp' data-ref="11temp">temp</a>, <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a>, <a class="local col9 ref" href="#9below" title='below' data-ref="9below">below</a>);</td></tr>
+<tr><th id="117">117</th><td>    <a class="ref fn" href="../../include/string.h.html#memmove" title='memmove' data-ref="memmove">memmove</a>(<a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a>, <a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a>+<var>1</var>, <a class="local col0 ref" href="#10above" title='above' data-ref="10above">above</a>);</td></tr>
+<tr><th id="118">118</th><td>    <a class="ref fn" href="../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a>(<a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a> + <a class="local col0 ref" href="#10above" title='above' data-ref="10above">above</a>, <a class="local col1 ref" href="#11temp" title='temp' data-ref="11temp">temp</a>, <a class="local col9 ref" href="#9below" title='below' data-ref="9below">below</a>);</td></tr>
+<tr><th id="119">119</th><td>    <a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a> = <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a> + <a class="ref" href="globals.h.html#message_body_visible" title='message_body_visible' data-ref="message_body_visible">message_body_visible</a>;</td></tr>
+<tr><th id="120">120</th><td>    }</td></tr>
+<tr><th id="121">121</th><td>  }</td></tr>
+<tr><th id="122">122</th><td></td></tr>
+<tr><th id="123">123</th><td>*<a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a> = <var>0</var>;</td></tr>
+<tr><th id="124">124</th><td><a class="local col4 ref" href="#4body_end_len" title='body_end_len' data-ref="4body_end_len">body_end_len</a> = <a class="local col6 ref" href="#6s" title='s' data-ref="6s">s</a> - <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a>;</td></tr>
+<tr><th id="125">125</th><td></td></tr>
+<tr><th id="126">126</th><td><i>/* Convert newlines and nulls in the body variables to spaces */</i></td></tr>
+<tr><th id="127">127</th><td></td></tr>
+<tr><th id="128">128</th><td><b>while</b> (<a class="local col3 ref" href="#3body_len" title='body_len' data-ref="3body_len">body_len</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="129">129</th><td>  {</td></tr>
+<tr><th id="130">130</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#message_body" title='message_body' data-ref="message_body">message_body</a>[--<a class="local col3 ref" href="#3body_len" title='body_len' data-ref="3body_len">body_len</a>] == <kbd>'\n'</kbd> || <a class="ref" href="globals.h.html#message_body" title='message_body' data-ref="message_body">message_body</a>[<a class="local col3 ref" href="#3body_len" title='body_len' data-ref="3body_len">body_len</a>] == <var>0</var>)</td></tr>
+<tr><th id="131">131</th><td>    <a class="ref" href="globals.h.html#message_body" title='message_body' data-ref="message_body">message_body</a>[<a class="local col3 ref" href="#3body_len" title='body_len' data-ref="3body_len">body_len</a>] = <kbd>' '</kbd>;</td></tr>
+<tr><th id="132">132</th><td>  }</td></tr>
+<tr><th id="133">133</th><td></td></tr>
+<tr><th id="134">134</th><td><b>while</b> (<a class="local col4 ref" href="#4body_end_len" title='body_end_len' data-ref="4body_end_len">body_end_len</a> &gt; <var>0</var>)</td></tr>
+<tr><th id="135">135</th><td>  {</td></tr>
+<tr><th id="136">136</th><td>  <b>if</b> (<a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a>[--<a class="local col4 ref" href="#4body_end_len" title='body_end_len' data-ref="4body_end_len">body_end_len</a>] == <kbd>'\n'</kbd> ||</td></tr>
+<tr><th id="137">137</th><td>      <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a>[<a class="local col4 ref" href="#4body_end_len" title='body_end_len' data-ref="4body_end_len">body_end_len</a>] == <var>0</var>)</td></tr>
+<tr><th id="138">138</th><td>    <a class="ref" href="globals.h.html#message_body_end" title='message_body_end' data-ref="message_body_end">message_body_end</a>[<a class="local col4 ref" href="#4body_end_len" title='body_end_len' data-ref="4body_end_len">body_end_len</a>] = <kbd>' '</kbd>;</td></tr>
+<tr><th id="139">139</th><td>  }</td></tr>
+<tr><th id="140">140</th><td>}</td></tr>
+<tr><th id="141">141</th><td></td></tr>
+<tr><th id="142">142</th><td></td></tr>
+<tr><th id="143">143</th><td></td></tr>
+<tr><th id="144">144</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="145">145</th><td><i>*            Test a mail filter                  *</i></td></tr>
+<tr><th id="146">146</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="147">147</th><td></td></tr>
+<tr><th id="148">148</th><td><i>/* This is called when exim is run with the -bf option. At this point it is</i></td></tr>
+<tr><th id="149">149</th><td><i>running under an unprivileged uid/gid. A test message's headers have been read</i></td></tr>
+<tr><th id="150">150</th><td><i>into store, and the body of the message is still accessible on the standard</i></td></tr>
+<tr><th id="151">151</th><td><i>input if this is the first time this function has been called. It may be called</i></td></tr>
+<tr><th id="152">152</th><td><i>twice if both system and user filters are being tested.</i></td></tr>
+<tr><th id="153">153</th><td><i></i></td></tr>
+<tr><th id="154">154</th><td><i>Argument:</i></td></tr>
+<tr><th id="155">155</th><td><i>  fd          an fd containing the filter file</i></td></tr>
+<tr><th id="156">156</th><td><i>  filename    the name of the filter file</i></td></tr>
+<tr><th id="157">157</th><td><i>  is_system   TRUE if testing is to be as a system filter</i></td></tr>
+<tr><th id="158">158</th><td><i>  dot_ended   TRUE if message already terminated by '.'</i></td></tr>
+<tr><th id="159">159</th><td><i></i></td></tr>
+<tr><th id="160">160</th><td><i>Returns:      TRUE if no errors</i></td></tr>
+<tr><th id="161">161</th><td><i>*/</i></td></tr>
+<tr><th id="162">162</th><td></td></tr>
+<tr><th id="163">163</th><td><a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a></td></tr>
+<tr><th id="164">164</th><td><dfn class="decl def fn" id="filter_runtest" title='filter_runtest' data-ref="filter_runtest">filter_runtest</dfn>(<em>int</em> <dfn class="local col2 decl" id="12fd" title='fd' data-type='int' data-ref="12fd">fd</dfn>, <a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="13filename" title='filename' data-type='uschar *' data-ref="13filename">filename</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col4 decl" id="14is_system" title='is_system' data-type='BOOL' data-ref="14is_system">is_system</dfn>, <a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col5 decl" id="15dot_ended" title='dot_ended' data-type='BOOL' data-ref="15dot_ended">dot_ended</dfn>)</td></tr>
+<tr><th id="165">165</th><td>{</td></tr>
+<tr><th id="166">166</th><td><em>int</em> <dfn class="local col6 decl" id="16rc" title='rc' data-type='int' data-ref="16rc">rc</dfn>, <dfn class="local col7 decl" id="17filter_type" title='filter_type' data-type='int' data-ref="17filter_type">filter_type</dfn>;</td></tr>
+<tr><th id="167">167</th><td><a class="typedef" href="mytypes.h.html#BOOL" title='BOOL' data-type='unsigned int' data-ref="BOOL">BOOL</a> <dfn class="local col8 decl" id="18yield" title='yield' data-type='BOOL' data-ref="18yield">yield</dfn>;</td></tr>
+<tr><th id="168">168</th><td><b>struct</b> <a class="type" href="../../include/x86_64-linux-gnu/bits/stat.h.html#stat" title='stat' data-ref="stat">stat</a> <dfn class="local col9 decl" id="19statbuf" title='statbuf' data-type='struct stat' data-ref="19statbuf">statbuf</dfn>;</td></tr>
+<tr><th id="169">169</th><td><a class="typedef" href="structs.h.html#address_item" title='address_item' data-type='struct address_item' data-ref="address_item">address_item</a> *<dfn class="local col0 decl" id="20generated" title='generated' data-type='address_item *' data-ref="20generated">generated</dfn> = <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>;</td></tr>
+<tr><th id="170">170</th><td><a class="typedef" href="mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="21error" title='error' data-type='uschar *' data-ref="21error">error</dfn>, *<dfn class="local col2 decl" id="22filebuf" title='filebuf' data-type='uschar *' data-ref="22filebuf">filebuf</dfn>;</td></tr>
+<tr><th id="171">171</th><td></td></tr>
+<tr><th id="172">172</th><td><i>/* Read the filter file into store as will be done by the router in a real</i></td></tr>
+<tr><th id="173">173</th><td><i>case. */</i></td></tr>
+<tr><th id="174">174</th><td></td></tr>
+<tr><th id="175">175</th><td><b>if</b> (<a class="ref fn" href="../../include/x86_64-linux-gnu/sys/stat.h.html#219" title='fstat' data-ref="fstat64">fstat</a>(<a class="local col2 ref" href="#12fd" title='fd' data-ref="12fd">fd</a>, &amp;<a class="local col9 ref" href="#19statbuf" title='statbuf' data-ref="19statbuf">statbuf</a>) != <var>0</var>)</td></tr>
+<tr><th id="176">176</th><td>  {</td></tr>
+<tr><th id="177">177</th><td>  <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"exim: failed to get size of %s: %s\n"</q>, <a class="local col3 ref" href="#13filename" title='filename' data-ref="13filename">filename</a>, <a class="ref fn" href="../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="178">178</th><td>  <b>return</b> <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="179">179</th><td>  }</td></tr>
+<tr><th id="180">180</th><td></td></tr>
+<tr><th id="181">181</th><td><a class="local col2 ref" href="#22filebuf" title='filebuf' data-ref="22filebuf">filebuf</a> = <a class="macro" href="store.h.html#34" title="store_get_3(statbuf.st_size + 1, &quot;/home/ubuntu/exim/src/build-Linux-x86_64/filtertest.c&quot;, 181)" data-ref="_M/store_get">store_get</a>(<a class="local col9 ref" href="#19statbuf" title='statbuf' data-ref="19statbuf">statbuf</a>.<a class="ref field" href="../../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_size" title='stat::st_size' data-ref="stat::st_size">st_size</a> + <var>1</var>);</td></tr>
+<tr><th id="182">182</th><td><a class="local col6 ref" href="#16rc" title='rc' data-ref="16rc">rc</a> = <a class="ref fn" href="../../include/unistd.h.html#read" title='read' data-ref="read">read</a>(<a class="local col2 ref" href="#12fd" title='fd' data-ref="12fd">fd</a>, <a class="local col2 ref" href="#22filebuf" title='filebuf' data-ref="22filebuf">filebuf</a>, <a class="local col9 ref" href="#19statbuf" title='statbuf' data-ref="19statbuf">statbuf</a>.<a class="ref field" href="../../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_size" title='stat::st_size' data-ref="stat::st_size">st_size</a>);</td></tr>
+<tr><th id="183">183</th><td>(<em>void</em>)<a class="ref fn" href="../../include/unistd.h.html#close" title='close' data-ref="close">close</a>(<a class="local col2 ref" href="#12fd" title='fd' data-ref="12fd">fd</a>);</td></tr>
+<tr><th id="184">184</th><td></td></tr>
+<tr><th id="185">185</th><td><b>if</b> (<a class="local col6 ref" href="#16rc" title='rc' data-ref="16rc">rc</a> != <a class="local col9 ref" href="#19statbuf" title='statbuf' data-ref="19statbuf">statbuf</a>.<a class="ref field" href="../../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_size" title='stat::st_size' data-ref="stat::st_size">st_size</a>)</td></tr>
+<tr><th id="186">186</th><td>  {</td></tr>
+<tr><th id="187">187</th><td>  <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"exim: error while reading %s: %s\n"</q>, <a class="local col3 ref" href="#13filename" title='filename' data-ref="13filename">filename</a>, <a class="ref fn" href="../../include/string.h.html#strerror" title='strerror' data-ref="strerror">strerror</a>(<a class="macro" href="../../include/x86_64-linux-gnu/bits/errno.h.html#54" title="(*__errno_location ())" data-ref="_M/errno">errno</a>));</td></tr>
+<tr><th id="188">188</th><td>  <b>return</b> <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="189">189</th><td>  }</td></tr>
+<tr><th id="190">190</th><td></td></tr>
+<tr><th id="191">191</th><td><a class="local col2 ref" href="#22filebuf" title='filebuf' data-ref="22filebuf">filebuf</a>[<a class="local col9 ref" href="#19statbuf" title='statbuf' data-ref="19statbuf">statbuf</a>.<a class="ref field" href="../../include/x86_64-linux-gnu/bits/stat.h.html#stat::st_size" title='stat::st_size' data-ref="stat::st_size">st_size</a>] = <var>0</var>;</td></tr>
+<tr><th id="192">192</th><td></td></tr>
+<tr><th id="193">193</th><td><i>/* Check the filter type. User filters start with "# Exim filter" or "# Sieve</i></td></tr>
+<tr><th id="194">194</th><td><i>filter". If the filter type is not recognized, the file is treated as an</i></td></tr>
+<tr><th id="195">195</th><td><i>ordinary .forward file. System filters do not need the "# Exim filter" in order</i></td></tr>
+<tr><th id="196">196</th><td><i>to be recognized as Exim filters. */</i></td></tr>
+<tr><th id="197">197</th><td></td></tr>
+<tr><th id="198">198</th><td><a class="local col7 ref" href="#17filter_type" title='filter_type' data-ref="17filter_type">filter_type</a> = <a class="ref fn" href="functions.h.html#rda_is_filter" title='rda_is_filter' data-ref="rda_is_filter">rda_is_filter</a>(<a class="local col2 ref" href="#22filebuf" title='filebuf' data-ref="22filebuf">filebuf</a>);</td></tr>
+<tr><th id="199">199</th><td><b>if</b> (<a class="local col4 ref" href="#14is_system" title='is_system' data-ref="14is_system">is_system</a> &amp;&amp; <a class="local col7 ref" href="#17filter_type" title='filter_type' data-ref="17filter_type">filter_type</a> == <a class="enum" href="macros.h.html#FILTER_FORWARD" title='FILTER_FORWARD' data-ref="FILTER_FORWARD">FILTER_FORWARD</a>) <a class="local col7 ref" href="#17filter_type" title='filter_type' data-ref="17filter_type">filter_type</a> = <a class="enum" href="macros.h.html#FILTER_EXIM" title='FILTER_EXIM' data-ref="FILTER_EXIM">FILTER_EXIM</a>;</td></tr>
+<tr><th id="200">200</th><td></td></tr>
+<tr><th id="201">201</th><td><a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"Testing %s file \"%s\"\n\n"</q>,</td></tr>
+<tr><th id="202">202</th><td>  (<a class="local col7 ref" href="#17filter_type" title='filter_type' data-ref="17filter_type">filter_type</a> == <a class="enum" href="macros.h.html#FILTER_EXIM" title='FILTER_EXIM' data-ref="FILTER_EXIM">FILTER_EXIM</a>)? <q>"Exim filter"</q> :</td></tr>
+<tr><th id="203">203</th><td>  (<a class="local col7 ref" href="#17filter_type" title='filter_type' data-ref="17filter_type">filter_type</a> == <a class="enum" href="macros.h.html#FILTER_SIEVE" title='FILTER_SIEVE' data-ref="FILTER_SIEVE">FILTER_SIEVE</a>)? <q>"Sieve filter"</q> :</td></tr>
+<tr><th id="204">204</th><td>  <q>"forward file"</q>,</td></tr>
+<tr><th id="205">205</th><td>  <a class="local col3 ref" href="#13filename" title='filename' data-ref="13filename">filename</a>);</td></tr>
+<tr><th id="206">206</th><td></td></tr>
+<tr><th id="207">207</th><td><i>/* Handle a plain .forward file */</i></td></tr>
+<tr><th id="208">208</th><td></td></tr>
+<tr><th id="209">209</th><td><b>if</b> (<a class="local col7 ref" href="#17filter_type" title='filter_type' data-ref="17filter_type">filter_type</a> == <a class="enum" href="macros.h.html#FILTER_FORWARD" title='FILTER_FORWARD' data-ref="FILTER_FORWARD">FILTER_FORWARD</a>)</td></tr>
+<tr><th id="210">210</th><td>  {</td></tr>
+<tr><th id="211">211</th><td>  <a class="local col8 ref" href="#18yield" title='yield' data-ref="18yield">yield</a> = <a class="ref fn" href="functions.h.html#parse_forward_list" title='parse_forward_list' data-ref="parse_forward_list">parse_forward_list</a>(<a class="local col2 ref" href="#22filebuf" title='filebuf' data-ref="22filebuf">filebuf</a>,</td></tr>
+<tr><th id="212">212</th><td>    <a class="macro" href="macros.h.html#607" title="0x00020000" data-ref="_M/RDO_REWRITE">RDO_REWRITE</a>,</td></tr>
+<tr><th id="213">213</th><td>    &amp;<a class="local col0 ref" href="#20generated" title='generated' data-ref="20generated">generated</a>,                     <i>/* for generated addresses */</i></td></tr>
+<tr><th id="214">214</th><td>    &amp;<a class="local col1 ref" href="#21error" title='error' data-ref="21error">error</a>,                         <i>/* for errors */</i></td></tr>
+<tr><th id="215">215</th><td>    <a class="ref" href="globals.h.html#deliver_domain" title='deliver_domain' data-ref="deliver_domain">deliver_domain</a>,                 <i>/* incoming domain for \name */</i></td></tr>
+<tr><th id="216">216</th><td>    <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>,                           <i>/* no check on includes */</i></td></tr>
+<tr><th id="217">217</th><td>    <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>);                          <i>/* fail on syntax errors */</i></td></tr>
+<tr><th id="218">218</th><td></td></tr>
+<tr><th id="219">219</th><td>  <b>switch</b>(<a class="local col8 ref" href="#18yield" title='yield' data-ref="18yield">yield</a>)</td></tr>
+<tr><th id="220">220</th><td>    {</td></tr>
+<tr><th id="221">221</th><td>    <b>case</b> <a class="enum" href="macros.h.html#FF_FAIL" title='FF_FAIL' data-ref="FF_FAIL">FF_FAIL</a>:</td></tr>
+<tr><th id="222">222</th><td>    <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"exim: forward file contains \":fail:\"\n"</q>);</td></tr>
+<tr><th id="223">223</th><td>    <b>break</b>;</td></tr>
+<tr><th id="224">224</th><td></td></tr>
+<tr><th id="225">225</th><td>    <b>case</b> <a class="enum" href="macros.h.html#FF_BLACKHOLE" title='FF_BLACKHOLE' data-ref="FF_BLACKHOLE">FF_BLACKHOLE</a>:</td></tr>
+<tr><th id="226">226</th><td>    <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"exim: forwardfile contains \":blackhole:\"\n"</q>);</td></tr>
+<tr><th id="227">227</th><td>    <b>break</b>;</td></tr>
+<tr><th id="228">228</th><td></td></tr>
+<tr><th id="229">229</th><td>    <b>case</b> <a class="enum" href="macros.h.html#FF_ERROR" title='FF_ERROR' data-ref="FF_ERROR">FF_ERROR</a>:</td></tr>
+<tr><th id="230">230</th><td>    <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"exim: error in forward file: %s\n"</q>, <a class="local col1 ref" href="#21error" title='error' data-ref="21error">error</a>);</td></tr>
+<tr><th id="231">231</th><td>    <b>return</b> <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="232">232</th><td>    }</td></tr>
+<tr><th id="233">233</th><td></td></tr>
+<tr><th id="234">234</th><td>  <b>if</b> (<a class="local col0 ref" href="#20generated" title='generated' data-ref="20generated">generated</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="235">235</th><td>    <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"exim: no addresses generated from forward file\n"</q>);</td></tr>
+<tr><th id="236">236</th><td></td></tr>
+<tr><th id="237">237</th><td>  <b>else</b></td></tr>
+<tr><th id="238">238</th><td>    {</td></tr>
+<tr><th id="239">239</th><td>    <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"exim: forward file generated:\n"</q>);</td></tr>
+<tr><th id="240">240</th><td>    <b>while</b> (<a class="local col0 ref" href="#20generated" title='generated' data-ref="20generated">generated</a> != <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>)</td></tr>
+<tr><th id="241">241</th><td>      {</td></tr>
+<tr><th id="242">242</th><td>      <a class="ref fn" href="../../include/stdio.h.html#printf" title='printf' data-ref="printf">printf</a>(<q>"  %s\n"</q>, <a class="local col0 ref" href="#20generated" title='generated' data-ref="20generated">generated</a>-&gt;<a class="ref field" href="structs.h.html#address_item::address" title='address_item::address' data-ref="address_item::address">address</a>);</td></tr>
+<tr><th id="243">243</th><td>      <a class="local col0 ref" href="#20generated" title='generated' data-ref="20generated">generated</a> = <a class="local col0 ref" href="#20generated" title='generated' data-ref="20generated">generated</a>-&gt;<a class="ref field" href="structs.h.html#address_item::next" title='address_item::next' data-ref="address_item::next">next</a>;</td></tr>
+<tr><th id="244">244</th><td>      }</td></tr>
+<tr><th id="245">245</th><td>    }</td></tr>
+<tr><th id="246">246</th><td></td></tr>
+<tr><th id="247">247</th><td>  <b>return</b> <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="248">248</th><td>  }</td></tr>
+<tr><th id="249">249</th><td></td></tr>
+<tr><th id="250">250</th><td><i>/* For a filter, set up the message_body variables and the message size if this</i></td></tr>
+<tr><th id="251">251</th><td><i>is the first time this function has been called. */</i></td></tr>
+<tr><th id="252">252</th><td></td></tr>
+<tr><th id="253">253</th><td><b>if</b> (<a class="ref" href="globals.h.html#message_body" title='message_body' data-ref="message_body">message_body</a> == <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>) <a class="ref fn" href="#read_message_body" title='read_message_body' data-ref="read_message_body">read_message_body</a>(<a class="local col5 ref" href="#15dot_ended" title='dot_ended' data-ref="15dot_ended">dot_ended</a>);</td></tr>
+<tr><th id="254">254</th><td></td></tr>
+<tr><th id="255">255</th><td><i>/* Now pass the filter file to the function that interprets it. Because</i></td></tr>
+<tr><th id="256">256</th><td><i>filter_test is not FILTER_NONE, the interpreter will output comments about what</i></td></tr>
+<tr><th id="257">257</th><td><i>it is doing. No need to clean up store. Indeed, we must not, because we may be</i></td></tr>
+<tr><th id="258">258</th><td><i>testing a system filter that is going to be followed by a user filter test. */</i></td></tr>
+<tr><th id="259">259</th><td></td></tr>
+<tr><th id="260">260</th><td><b>if</b> (<a class="local col4 ref" href="#14is_system" title='is_system' data-ref="14is_system">is_system</a>)</td></tr>
+<tr><th id="261">261</th><td>  {</td></tr>
+<tr><th id="262">262</th><td>  <a class="ref" href="globals.h.html#system_filtering" title='system_filtering' data-ref="system_filtering">system_filtering</a> = <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>;</td></tr>
+<tr><th id="263">263</th><td>  <a class="ref" href="globals.h.html#enable_dollar_recipients" title='enable_dollar_recipients' data-ref="enable_dollar_recipients">enable_dollar_recipients</a> = <a class="macro" href="mytypes.h.html#21" title="1" data-ref="_M/TRUE">TRUE</a>; <i>/* Permit $recipients in system filter */</i></td></tr>
+<tr><th id="264">264</th><td>  <a class="local col8 ref" href="#18yield" title='yield' data-ref="18yield">yield</a> = <a class="ref fn" href="functions.h.html#filter_interpret" title='filter_interpret' data-ref="filter_interpret">filter_interpret</a></td></tr>
+<tr><th id="265">265</th><td>    (<a class="local col2 ref" href="#22filebuf" title='filebuf' data-ref="22filebuf">filebuf</a>,</td></tr>
+<tr><th id="266">266</th><td>    <a class="macro" href="macros.h.html#591" title="0x00000002" data-ref="_M/RDO_DEFER">RDO_DEFER</a>|<a class="macro" href="macros.h.html#595" title="0x00000020" data-ref="_M/RDO_FAIL">RDO_FAIL</a>|<a class="macro" href="macros.h.html#596" title="0x00000040" data-ref="_M/RDO_FILTER">RDO_FILTER</a>|<a class="macro" href="macros.h.html#597" title="0x00000080" data-ref="_M/RDO_FREEZE">RDO_FREEZE</a>|<a class="macro" href="macros.h.html#607" title="0x00020000" data-ref="_M/RDO_REWRITE">RDO_REWRITE</a>, &amp;<a class="local col0 ref" href="#20generated" title='generated' data-ref="20generated">generated</a>, &amp;<a class="local col1 ref" href="#21error" title='error' data-ref="21error">error</a>);</td></tr>
+<tr><th id="267">267</th><td>  <a class="ref" href="globals.h.html#enable_dollar_recipients" title='enable_dollar_recipients' data-ref="enable_dollar_recipients">enable_dollar_recipients</a> = <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="268">268</th><td>  <a class="ref" href="globals.h.html#system_filtering" title='system_filtering' data-ref="system_filtering">system_filtering</a> = <a class="macro" href="mytypes.h.html#17" title="0" data-ref="_M/FALSE">FALSE</a>;</td></tr>
+<tr><th id="269">269</th><td>  }</td></tr>
+<tr><th id="270">270</th><td><b>else</b></td></tr>
+<tr><th id="271">271</th><td>  {</td></tr>
+<tr><th id="272">272</th><td>  <a class="local col8 ref" href="#18yield" title='yield' data-ref="18yield">yield</a> = (<a class="local col7 ref" href="#17filter_type" title='filter_type' data-ref="17filter_type">filter_type</a> == <a class="enum" href="macros.h.html#FILTER_SIEVE" title='FILTER_SIEVE' data-ref="FILTER_SIEVE">FILTER_SIEVE</a>)?</td></tr>
+<tr><th id="273">273</th><td>    <a class="ref fn" href="functions.h.html#sieve_interpret" title='sieve_interpret' data-ref="sieve_interpret">sieve_interpret</a>(<a class="local col2 ref" href="#22filebuf" title='filebuf' data-ref="22filebuf">filebuf</a>, <a class="macro" href="macros.h.html#607" title="0x00020000" data-ref="_M/RDO_REWRITE">RDO_REWRITE</a>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, <span class="macro" title="((void*)0)" data-ref="_M/NULL">NULL</span>, &amp;<a class="local col0 ref" href="#20generated" title='generated' data-ref="20generated">generated</a>, &amp;<a class="local col1 ref" href="#21error" title='error' data-ref="21error">error</a>)</td></tr>
+<tr><th id="274">274</th><td>    :</td></tr>
+<tr><th id="275">275</th><td>    <a class="ref fn" href="functions.h.html#filter_interpret" title='filter_interpret' data-ref="filter_interpret">filter_interpret</a>(<a class="local col2 ref" href="#22filebuf" title='filebuf' data-ref="22filebuf">filebuf</a>, <a class="macro" href="macros.h.html#607" title="0x00020000" data-ref="_M/RDO_REWRITE">RDO_REWRITE</a>, &amp;<a class="local col0 ref" href="#20generated" title='generated' data-ref="20generated">generated</a>, &amp;<a class="local col1 ref" href="#21error" title='error' data-ref="21error">error</a>);</td></tr>
+<tr><th id="276">276</th><td>  }</td></tr>
+<tr><th id="277">277</th><td></td></tr>
+<tr><th id="278">278</th><td><b>return</b> <a class="local col8 ref" href="#18yield" title='yield' data-ref="18yield">yield</a> != <a class="enum" href="macros.h.html#FF_ERROR" title='FF_ERROR' data-ref="FF_ERROR">FF_ERROR</a>;</td></tr>
+<tr><th id="279">279</th><td>}</td></tr>
+<tr><th id="280">280</th><td></td></tr>
+<tr><th id="281">281</th><td><i>/* End of filtertest.c */</i></td></tr>
+<tr><th id="282">282</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

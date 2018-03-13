@@ -1,0 +1,11 @@
+<dec f='exim/src/transports/appendfile.h' l='12' type='uschar *'/>
+<offset>64</offset>
+<dec f='exim/src/transports/queuefile.h' l='12' type='uschar *'/>
+<use f='exim/src/transports/queuefile.c' l='58' u='r' c='queuefile_transport_init'/>
+<use f='exim/src/transports/queuefile.c' l='117' u='r' c='copy_spool_files'/>
+<use f='exim/src/transports/queuefile.c' l='192' u='r' c='queuefile_transport_entry'/>
+<use f='exim/src/transports/queuefile.c' l='196' u='r' c='queuefile_transport_entry'/>
+<use f='exim/src/transports/queuefile.c' l='203' u='r' c='queuefile_transport_entry'/>
+<use f='exim/src/transports/queuefile.c' l='217' u='r' c='queuefile_transport_entry'/>
+<use f='exim/src/transports/queuefile.c' l='254' u='r' c='queuefile_transport_entry'/>
+<offset>0</offset>

@@ -1,2 +1,7 @@
 <dec f='exim/src/globals.h' l='931' type='int'/>
 <doc f='exim/src/globals.h' l='931'>/* 0: no  1: conn used  2: useful */</doc>
+<use f='exim/src/smtp_out.c' l='153' u='r' c='tfo_out_check'/>
+<use f='exim/src/smtp_out.c' l='171' u='w' c='tfo_out_check'/>
+<def f='exim/src/globals.c' l='1433' type='int'/>
+<use f='exim/src/ip.c' l='265' u='w' c='ip_connect'/>
+<use f='exim/src/ip.c' l='278' u='w' c='ip_connect'/>

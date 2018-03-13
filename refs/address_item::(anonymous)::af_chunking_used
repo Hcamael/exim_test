@@ -1,3 +1,6 @@
 <dec f='exim/src/structs.h' l='610' type='BOOL'/>
 <offset>29</offset>
 <doc f='exim/src/structs.h' l='610'>/* delivery used SMTP CHUNKING */</doc>
+<use f='exim/src/deliver.c' l='1242' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='3555' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4859' u='r' c='do_remote_deliveries'/>

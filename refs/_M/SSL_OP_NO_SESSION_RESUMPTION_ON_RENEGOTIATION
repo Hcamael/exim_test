@@ -1,2 +1,4 @@
 <dec f='include/openssl/ssl.h' l='295'/>
 <doc f='include/openssl/ssl.h' l='294'>/* As server, disallow session resumption on renegotiation */</doc>
+<use f='exim/src/tls-openssl.c' l='2994' u='a'/>
+<use f='exim/src/tls-openssl.c' l='2995' u='c'/>

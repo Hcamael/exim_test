@@ -1,2 +1,15 @@
 <dec f='exim/src/globals.h' l='712' type='int'/>
 <doc f='exim/src/globals.h' l='712'>/* Those that got 5xx */</doc>
+<def f='exim/src/globals.c' l='1090' type='int'/>
+<use f='exim/src/smtp_in.c' l='1960' u='w' c='smtp_reset'/>
+<use f='exim/src/smtp_in.c' l='4813' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4823' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4922' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4941' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='4951' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5027' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5040' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/expand.c' l='639' u='a'/>
+<use f='exim/src/expand.c' l='639' u='a'/>
+<use f='exim/src/expand.c' l='639' u='a'/>
+<use f='exim/src/expand.c' l='639' u='a'/>

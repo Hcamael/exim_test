@@ -1,0 +1,1 @@
+<def f='include/openssl/ocsp.h' l='106' macro='1' type='OCSP_SINGLERESP * sk_OCSP_SINGLERESP_delete(struct stack_st_OCSP_SINGLERESP * sk, int i)'/>

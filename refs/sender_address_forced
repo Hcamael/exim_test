@@ -1,2 +1,7 @@
 <dec f='exim/src/globals.h' l='779' type='BOOL'/>
 <doc f='exim/src/globals.h' l='779'>/* Set by -f */</doc>
+<def f='exim/src/globals.c' l='1269' type='BOOL'/>
+<use f='exim/src/exim.c' l='2580' u='w' c='main'/>
+<use f='exim/src/exim.c' l='4872' u='w' c='main'/>
+<use f='exim/src/receive.c' l='2054' u='r' c='receive_msg'/>
+<use f='exim/src/receive.c' l='2757' u='r' c='receive_msg'/>

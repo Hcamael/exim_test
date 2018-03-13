@@ -1,0 +1,8 @@
+<dec f='exim/src/routers/redirect.h' l='67' type='redirect_router_options_block'/>
+<use f='exim/src/drtables.c' l='334' u='a'/>
+<use f='exim/src/drtables.c' l='334' u='a'/>
+<use f='exim/src/drtables.c' l='334' u='a'/>
+<use f='exim/src/drtables.c' l='334' u='a'/>
+<doc f='exim/src/routers/redirect.h' l='65'>/* Block containing default values. */</doc>
+<def f='exim/src/routers/redirect.c' l='153' ll='195' type='redirect_router_options_block'/>
+<doc f='exim/src/routers/redirect.c' l='151'>/* Default private options block for the redirect router. */</doc>

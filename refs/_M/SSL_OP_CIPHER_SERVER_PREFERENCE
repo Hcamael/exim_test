@@ -2,3 +2,5 @@
 <doc f='include/openssl/ssl.h' l='300'>/*
  * Set on servers to choose the cipher according to the server&apos;s preferences
  */</doc>
+<use f='exim/src/tls-openssl.c' l='2964' u='a'/>
+<use f='exim/src/tls-openssl.c' l='2965' u='c'/>

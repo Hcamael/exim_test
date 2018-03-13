@@ -1,0 +1,375 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>md5.c source code [exim/src/auths/md5.c] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/auths/md5.c'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>auths</a>/<a href='md5.c.html'>md5.c</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2017 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><u>#<span data-ppcond="8">ifndef</span> <span class="macro" data-ref="_M/STAND_ALONE">STAND_ALONE</span></u></td></tr>
+<tr><th id="9">9</th><td><u>#include <a href="../exim.h.html">"../exim.h"</a></u></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><i>/* For stand-alone testing, we need to have the structure defined, and</i></td></tr>
+<tr><th id="12">12</th><td><i>to be able to do I/O */</i></td></tr>
+<tr><th id="13">13</th><td></td></tr>
+<tr><th id="14">14</th><td><u>#<span data-ppcond="8">else</span></u></td></tr>
+<tr><th id="15">15</th><td><u>#include &lt;stdio.h&gt;</u></td></tr>
+<tr><th id="16">16</th><td><u>#include "../mytypes.h"</u></td></tr>
+<tr><th id="17">17</th><td><b>typedef</b> <b>struct</b> md5 {</td></tr>
+<tr><th id="18">18</th><td>  <em>unsigned</em> <em>int</em> length;</td></tr>
+<tr><th id="19">19</th><td>  <em>unsigned</em> <em>int</em> abcd[<var>4</var>];</td></tr>
+<tr><th id="20">20</th><td>  }</td></tr>
+<tr><th id="21">21</th><td>md5;</td></tr>
+<tr><th id="22">22</th><td><u>#<span data-ppcond="8">endif</span></u></td></tr>
+<tr><th id="23">23</th><td></td></tr>
+<tr><th id="24">24</th><td></td></tr>
+<tr><th id="25">25</th><td></td></tr>
+<tr><th id="26">26</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="27">27</th><td><i>*        Start off a new MD5 computation.        *</i></td></tr>
+<tr><th id="28">28</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="29">29</th><td></td></tr>
+<tr><th id="30">30</th><td><i>/*</i></td></tr>
+<tr><th id="31">31</th><td><i>Argument:  pointer to md5 storage structure</i></td></tr>
+<tr><th id="32">32</th><td><i>Returns:   nothing</i></td></tr>
+<tr><th id="33">33</th><td><i>*/</i></td></tr>
+<tr><th id="34">34</th><td></td></tr>
+<tr><th id="35">35</th><td><em>void</em></td></tr>
+<tr><th id="36">36</th><td><dfn class="decl def fn" id="md5_start" title='md5_start' data-ref="md5_start">md5_start</dfn>(<a class="typedef" href="../structs.h.html#md5" title='md5' data-type='struct md5' data-ref="md5">md5</a> *<dfn class="local col1 decl" id="1base" title='base' data-type='md5 *' data-ref="1base">base</dfn>)</td></tr>
+<tr><th id="37">37</th><td>{</td></tr>
+<tr><th id="38">38</th><td><a class="local col1 ref" href="#1base" title='base' data-ref="1base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::abcd" title='md5::abcd' data-ref="md5::abcd">abcd</a>[<var>0</var>] = <var>0x67452301</var>;</td></tr>
+<tr><th id="39">39</th><td><a class="local col1 ref" href="#1base" title='base' data-ref="1base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::abcd" title='md5::abcd' data-ref="md5::abcd">abcd</a>[<var>1</var>] = <var>0xefcdab89</var>;</td></tr>
+<tr><th id="40">40</th><td><a class="local col1 ref" href="#1base" title='base' data-ref="1base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::abcd" title='md5::abcd' data-ref="md5::abcd">abcd</a>[<var>2</var>] = <var>0x98badcfe</var>;</td></tr>
+<tr><th id="41">41</th><td><a class="local col1 ref" href="#1base" title='base' data-ref="1base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::abcd" title='md5::abcd' data-ref="md5::abcd">abcd</a>[<var>3</var>] = <var>0x10325476</var>;</td></tr>
+<tr><th id="42">42</th><td><a class="local col1 ref" href="#1base" title='base' data-ref="1base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::length" title='md5::length' data-ref="md5::length">length</a> = <var>0</var>;</td></tr>
+<tr><th id="43">43</th><td>}</td></tr>
+<tr><th id="44">44</th><td></td></tr>
+<tr><th id="45">45</th><td></td></tr>
+<tr><th id="46">46</th><td></td></tr>
+<tr><th id="47">47</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="48">48</th><td><i>*       Process another 64-byte block            *</i></td></tr>
+<tr><th id="49">49</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="50">50</th><td></td></tr>
+<tr><th id="51">51</th><td><i>/* This function implements central part of the algorithm which is described</i></td></tr>
+<tr><th id="52">52</th><td><i>in RFC 1321.</i></td></tr>
+<tr><th id="53">53</th><td><i></i></td></tr>
+<tr><th id="54">54</th><td><i>Arguments:</i></td></tr>
+<tr><th id="55">55</th><td><i>  base       pointer to md5 storage structure</i></td></tr>
+<tr><th id="56">56</th><td><i>  text       pointer to next 64 bytes of subject text</i></td></tr>
+<tr><th id="57">57</th><td><i></i></td></tr>
+<tr><th id="58">58</th><td><i>Returns:     nothing</i></td></tr>
+<tr><th id="59">59</th><td><i>*/</i></td></tr>
+<tr><th id="60">60</th><td></td></tr>
+<tr><th id="61">61</th><td><em>void</em></td></tr>
+<tr><th id="62">62</th><td><dfn class="decl def fn" id="md5_mid" title='md5_mid' data-ref="md5_mid">md5_mid</dfn>(<a class="typedef" href="../structs.h.html#md5" title='md5' data-type='struct md5' data-ref="md5">md5</a> *<dfn class="local col2 decl" id="2base" title='base' data-type='md5 *' data-ref="2base">base</dfn>, <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="3text" title='text' data-type='const uschar *' data-ref="3text">text</dfn>)</td></tr>
+<tr><th id="63">63</th><td>{</td></tr>
+<tr><th id="64">64</th><td><em>register</em> <em>unsigned</em> <em>int</em> <dfn class="local col4 decl" id="4a" title='a' data-type='unsigned int' data-ref="4a">a</dfn> = <a class="local col2 ref" href="#2base" title='base' data-ref="2base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::abcd" title='md5::abcd' data-ref="md5::abcd">abcd</a>[<var>0</var>];</td></tr>
+<tr><th id="65">65</th><td><em>register</em> <em>unsigned</em> <em>int</em> <dfn class="local col5 decl" id="5b" title='b' data-type='unsigned int' data-ref="5b">b</dfn> = <a class="local col2 ref" href="#2base" title='base' data-ref="2base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::abcd" title='md5::abcd' data-ref="md5::abcd">abcd</a>[<var>1</var>];</td></tr>
+<tr><th id="66">66</th><td><em>register</em> <em>unsigned</em> <em>int</em> <dfn class="local col6 decl" id="6c" title='c' data-type='unsigned int' data-ref="6c">c</dfn> = <a class="local col2 ref" href="#2base" title='base' data-ref="2base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::abcd" title='md5::abcd' data-ref="md5::abcd">abcd</a>[<var>2</var>];</td></tr>
+<tr><th id="67">67</th><td><em>register</em> <em>unsigned</em> <em>int</em> <dfn class="local col7 decl" id="7d" title='d' data-type='unsigned int' data-ref="7d">d</dfn> = <a class="local col2 ref" href="#2base" title='base' data-ref="2base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::abcd" title='md5::abcd' data-ref="md5::abcd">abcd</a>[<var>3</var>];</td></tr>
+<tr><th id="68">68</th><td><em>int</em> <dfn class="local col8 decl" id="8i" title='i' data-type='int' data-ref="8i">i</dfn>;</td></tr>
+<tr><th id="69">69</th><td><em>unsigned</em> <em>int</em> <dfn class="local col9 decl" id="9X" title='X' data-type='unsigned int [16]' data-ref="9X">X</dfn>[<var>16</var>];</td></tr>
+<tr><th id="70">70</th><td><a class="local col2 ref" href="#2base" title='base' data-ref="2base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::length" title='md5::length' data-ref="md5::length">length</a> += <var>64</var>;</td></tr>
+<tr><th id="71">71</th><td></td></tr>
+<tr><th id="72">72</th><td><i>/* Load the 64 bytes into a set of working integers, treating them as 32-bit</i></td></tr>
+<tr><th id="73">73</th><td><i>numbers in little-endian order. */</i></td></tr>
+<tr><th id="74">74</th><td></td></tr>
+<tr><th id="75">75</th><td><b>for</b> (<a class="local col8 ref" href="#8i" title='i' data-ref="8i">i</a> = <var>0</var>; <a class="local col8 ref" href="#8i" title='i' data-ref="8i">i</a> &lt; <var>16</var>; <a class="local col8 ref" href="#8i" title='i' data-ref="8i">i</a>++)</td></tr>
+<tr><th id="76">76</th><td>  {</td></tr>
+<tr><th id="77">77</th><td>  <a class="local col9 ref" href="#9X" title='X' data-ref="9X">X</a>[<a class="local col8 ref" href="#8i" title='i' data-ref="8i">i</a>] = (<em>unsigned</em> <em>int</em>)(<a class="local col3 ref" href="#3text" title='text' data-ref="3text">text</a>[<var>0</var>]) |</td></tr>
+<tr><th id="78">78</th><td>         ((<em>unsigned</em> <em>int</em>)(<a class="local col3 ref" href="#3text" title='text' data-ref="3text">text</a>[<var>1</var>]) &lt;&lt; <var>8</var>) |</td></tr>
+<tr><th id="79">79</th><td>         ((<em>unsigned</em> <em>int</em>)(<a class="local col3 ref" href="#3text" title='text' data-ref="3text">text</a>[<var>2</var>]) &lt;&lt; <var>16</var>) |</td></tr>
+<tr><th id="80">80</th><td>         ((<em>unsigned</em> <em>int</em>)(<a class="local col3 ref" href="#3text" title='text' data-ref="3text">text</a>[<var>3</var>]) &lt;&lt; <var>24</var>);</td></tr>
+<tr><th id="81">81</th><td>  <a class="local col3 ref" href="#3text" title='text' data-ref="3text">text</a> += <var>4</var>;</td></tr>
+<tr><th id="82">82</th><td>  }</td></tr>
+<tr><th id="83">83</th><td></td></tr>
+<tr><th id="84">84</th><td><i>/* For each round of processing there is a function to be applied. We define it</i></td></tr>
+<tr><th id="85">85</th><td><i>as a macro each time round. */</i></td></tr>
+<tr><th id="86">86</th><td></td></tr>
+<tr><th id="87">87</th><td><i>/***********************************************</i></td></tr>
+<tr><th id="88">88</th><td><i>*                    Round 1                   *</i></td></tr>
+<tr><th id="89">89</th><td><i>*            F(X,Y,Z) = XY v not(X) Z          *</i></td></tr>
+<tr><th id="90">90</th><td><i>* a = b + ((a + F(b,c,d) + X[k] + T[i]) &lt;&lt;&lt; s) *</i></td></tr>
+<tr><th id="91">91</th><td><i>***********************************************/</i></td></tr>
+<tr><th id="92">92</th><td></td></tr>
+<tr><th id="93">93</th><td><u>#define <dfn class="macro" id="_M/OP" data-ref="_M/OP">OP</dfn>(a, b, c, d, k, s, ti) \</u></td></tr>
+<tr><th id="94">94</th><td><u>     a += ((b &amp; c) | (~b &amp; d)) + <a class="local col9 ref" href="#9X" title='X' data-ref="9X">X</a>[k] + (unsigned int)ti; \</u></td></tr>
+<tr><th id="95">95</th><td><u>     a = b + ((a &lt;&lt; s) | (a &gt;&gt; (32 - s)))</u></td></tr>
+<tr><th id="96">96</th><td></td></tr>
+<tr><th id="97">97</th><td><a class="macro" href="#93" title="a += ((b &amp; c) | (~b &amp; d)) + X[0] + (unsigned int)0xd76aa478; a = b + ((a &lt;&lt; 7) | (a &gt;&gt; (32 - 7)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>,  <var>0</var>,  <var>7</var>, <var>0xd76aa478</var>);</td></tr>
+<tr><th id="98">98</th><td><a class="macro" href="#93" title="d += ((a &amp; b) | (~a &amp; c)) + X[1] + (unsigned int)0xe8c7b756; d = a + ((d &lt;&lt; 12) | (d &gt;&gt; (32 - 12)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>,  <var>1</var>, <var>12</var>, <var>0xe8c7b756</var>);</td></tr>
+<tr><th id="99">99</th><td><a class="macro" href="#93" title="c += ((d &amp; a) | (~d &amp; b)) + X[2] + (unsigned int)0x242070db; c = d + ((c &lt;&lt; 17) | (c &gt;&gt; (32 - 17)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>,  <var>2</var>, <var>17</var>, <var>0x242070db</var>);</td></tr>
+<tr><th id="100">100</th><td><a class="macro" href="#93" title="b += ((c &amp; d) | (~c &amp; a)) + X[3] + (unsigned int)0xc1bdceee; b = c + ((b &lt;&lt; 22) | (b &gt;&gt; (32 - 22)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>,  <var>3</var>, <var>22</var>, <var>0xc1bdceee</var>);</td></tr>
+<tr><th id="101">101</th><td><a class="macro" href="#93" title="a += ((b &amp; c) | (~b &amp; d)) + X[4] + (unsigned int)0xf57c0faf; a = b + ((a &lt;&lt; 7) | (a &gt;&gt; (32 - 7)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>,  <var>4</var>,  <var>7</var>, <var>0xf57c0faf</var>);</td></tr>
+<tr><th id="102">102</th><td><a class="macro" href="#93" title="d += ((a &amp; b) | (~a &amp; c)) + X[5] + (unsigned int)0x4787c62a; d = a + ((d &lt;&lt; 12) | (d &gt;&gt; (32 - 12)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>,  <var>5</var>, <var>12</var>, <var>0x4787c62a</var>);</td></tr>
+<tr><th id="103">103</th><td><a class="macro" href="#93" title="c += ((d &amp; a) | (~d &amp; b)) + X[6] + (unsigned int)0xa8304613; c = d + ((c &lt;&lt; 17) | (c &gt;&gt; (32 - 17)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>,  <var>6</var>, <var>17</var>, <var>0xa8304613</var>);</td></tr>
+<tr><th id="104">104</th><td><a class="macro" href="#93" title="b += ((c &amp; d) | (~c &amp; a)) + X[7] + (unsigned int)0xfd469501; b = c + ((b &lt;&lt; 22) | (b &gt;&gt; (32 - 22)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>,  <var>7</var>, <var>22</var>, <var>0xfd469501</var>);</td></tr>
+<tr><th id="105">105</th><td><a class="macro" href="#93" title="a += ((b &amp; c) | (~b &amp; d)) + X[8] + (unsigned int)0x698098d8; a = b + ((a &lt;&lt; 7) | (a &gt;&gt; (32 - 7)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>,  <var>8</var>,  <var>7</var>, <var>0x698098d8</var>);</td></tr>
+<tr><th id="106">106</th><td><a class="macro" href="#93" title="d += ((a &amp; b) | (~a &amp; c)) + X[9] + (unsigned int)0x8b44f7af; d = a + ((d &lt;&lt; 12) | (d &gt;&gt; (32 - 12)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>,  <var>9</var>, <var>12</var>, <var>0x8b44f7af</var>);</td></tr>
+<tr><th id="107">107</th><td><a class="macro" href="#93" title="c += ((d &amp; a) | (~d &amp; b)) + X[10] + (unsigned int)0xffff5bb1; c = d + ((c &lt;&lt; 17) | (c &gt;&gt; (32 - 17)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <var>10</var>, <var>17</var>, <var>0xffff5bb1</var>);</td></tr>
+<tr><th id="108">108</th><td><a class="macro" href="#93" title="b += ((c &amp; d) | (~c &amp; a)) + X[11] + (unsigned int)0x895cd7be; b = c + ((b &lt;&lt; 22) | (b &gt;&gt; (32 - 22)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <var>11</var>, <var>22</var>, <var>0x895cd7be</var>);</td></tr>
+<tr><th id="109">109</th><td><a class="macro" href="#93" title="a += ((b &amp; c) | (~b &amp; d)) + X[12] + (unsigned int)0x6b901122; a = b + ((a &lt;&lt; 7) | (a &gt;&gt; (32 - 7)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <var>12</var>,  <var>7</var>, <var>0x6b901122</var>);</td></tr>
+<tr><th id="110">110</th><td><a class="macro" href="#93" title="d += ((a &amp; b) | (~a &amp; c)) + X[13] + (unsigned int)0xfd987193; d = a + ((d &lt;&lt; 12) | (d &gt;&gt; (32 - 12)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <var>13</var>, <var>12</var>, <var>0xfd987193</var>);</td></tr>
+<tr><th id="111">111</th><td><a class="macro" href="#93" title="c += ((d &amp; a) | (~d &amp; b)) + X[14] + (unsigned int)0xa679438e; c = d + ((c &lt;&lt; 17) | (c &gt;&gt; (32 - 17)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <var>14</var>, <var>17</var>, <var>0xa679438e</var>);</td></tr>
+<tr><th id="112">112</th><td><a class="macro" href="#93" title="b += ((c &amp; d) | (~c &amp; a)) + X[15] + (unsigned int)0x49b40821; b = c + ((b &lt;&lt; 22) | (b &gt;&gt; (32 - 22)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <var>15</var>, <var>22</var>, <var>0x49b40821</var>);</td></tr>
+<tr><th id="113">113</th><td></td></tr>
+<tr><th id="114">114</th><td><u>#undef <a class="macro" href="#93" data-ref="_M/OP">OP</a></u></td></tr>
+<tr><th id="115">115</th><td></td></tr>
+<tr><th id="116">116</th><td><i>/***********************************************</i></td></tr>
+<tr><th id="117">117</th><td><i>*                    Round 2                   *</i></td></tr>
+<tr><th id="118">118</th><td><i>*            F(X,Y,Z) = XZ v Y not(Z)          *</i></td></tr>
+<tr><th id="119">119</th><td><i>* a = b + ((a + F(b,c,d) + X[k] + T[i]) &lt;&lt;&lt; s) *</i></td></tr>
+<tr><th id="120">120</th><td><i>***********************************************/</i></td></tr>
+<tr><th id="121">121</th><td></td></tr>
+<tr><th id="122">122</th><td><u>#define <dfn class="macro" id="_M/OP" data-ref="_M/OP">OP</dfn>(a, b, c, d, k, s, ti) \</u></td></tr>
+<tr><th id="123">123</th><td><u>     a += ((b &amp; d) | (c &amp; ~d)) + <a class="local col9 ref" href="#9X" title='X' data-ref="9X">X</a>[k] + (unsigned int)ti; \</u></td></tr>
+<tr><th id="124">124</th><td><u>     a = b + ((a &lt;&lt; s) | (a &gt;&gt; (32 - s)))</u></td></tr>
+<tr><th id="125">125</th><td></td></tr>
+<tr><th id="126">126</th><td><a class="macro" href="#122" title="a += ((b &amp; d) | (c &amp; ~d)) + X[1] + (unsigned int)0xf61e2562; a = b + ((a &lt;&lt; 5) | (a &gt;&gt; (32 - 5)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>,  <var>1</var>,  <var>5</var>, <var>0xf61e2562</var>);</td></tr>
+<tr><th id="127">127</th><td><a class="macro" href="#122" title="d += ((a &amp; c) | (b &amp; ~c)) + X[6] + (unsigned int)0xc040b340; d = a + ((d &lt;&lt; 9) | (d &gt;&gt; (32 - 9)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>,  <var>6</var>,  <var>9</var>, <var>0xc040b340</var>);</td></tr>
+<tr><th id="128">128</th><td><a class="macro" href="#122" title="c += ((d &amp; b) | (a &amp; ~b)) + X[11] + (unsigned int)0x265e5a51; c = d + ((c &lt;&lt; 14) | (c &gt;&gt; (32 - 14)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <var>11</var>, <var>14</var>, <var>0x265e5a51</var>);</td></tr>
+<tr><th id="129">129</th><td><a class="macro" href="#122" title="b += ((c &amp; a) | (d &amp; ~a)) + X[0] + (unsigned int)0xe9b6c7aa; b = c + ((b &lt;&lt; 20) | (b &gt;&gt; (32 - 20)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>,  <var>0</var>, <var>20</var>, <var>0xe9b6c7aa</var>);</td></tr>
+<tr><th id="130">130</th><td><a class="macro" href="#122" title="a += ((b &amp; d) | (c &amp; ~d)) + X[5] + (unsigned int)0xd62f105d; a = b + ((a &lt;&lt; 5) | (a &gt;&gt; (32 - 5)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>,  <var>5</var>,  <var>5</var>, <var>0xd62f105d</var>);</td></tr>
+<tr><th id="131">131</th><td><a class="macro" href="#122" title="d += ((a &amp; c) | (b &amp; ~c)) + X[10] + (unsigned int)0x02441453; d = a + ((d &lt;&lt; 9) | (d &gt;&gt; (32 - 9)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <var>10</var>,  <var>9</var>, <var>0x02441453</var>);</td></tr>
+<tr><th id="132">132</th><td><a class="macro" href="#122" title="c += ((d &amp; b) | (a &amp; ~b)) + X[15] + (unsigned int)0xd8a1e681; c = d + ((c &lt;&lt; 14) | (c &gt;&gt; (32 - 14)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <var>15</var>, <var>14</var>, <var>0xd8a1e681</var>);</td></tr>
+<tr><th id="133">133</th><td><a class="macro" href="#122" title="b += ((c &amp; a) | (d &amp; ~a)) + X[4] + (unsigned int)0xe7d3fbc8; b = c + ((b &lt;&lt; 20) | (b &gt;&gt; (32 - 20)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>,  <var>4</var>, <var>20</var>, <var>0xe7d3fbc8</var>);</td></tr>
+<tr><th id="134">134</th><td><a class="macro" href="#122" title="a += ((b &amp; d) | (c &amp; ~d)) + X[9] + (unsigned int)0x21e1cde6; a = b + ((a &lt;&lt; 5) | (a &gt;&gt; (32 - 5)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>,  <var>9</var>,  <var>5</var>, <var>0x21e1cde6</var>);</td></tr>
+<tr><th id="135">135</th><td><a class="macro" href="#122" title="d += ((a &amp; c) | (b &amp; ~c)) + X[14] + (unsigned int)0xc33707d6; d = a + ((d &lt;&lt; 9) | (d &gt;&gt; (32 - 9)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <var>14</var>,  <var>9</var>, <var>0xc33707d6</var>);</td></tr>
+<tr><th id="136">136</th><td><a class="macro" href="#122" title="c += ((d &amp; b) | (a &amp; ~b)) + X[3] + (unsigned int)0xf4d50d87; c = d + ((c &lt;&lt; 14) | (c &gt;&gt; (32 - 14)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>,  <var>3</var>, <var>14</var>, <var>0xf4d50d87</var>);</td></tr>
+<tr><th id="137">137</th><td><a class="macro" href="#122" title="b += ((c &amp; a) | (d &amp; ~a)) + X[8] + (unsigned int)0x455a14ed; b = c + ((b &lt;&lt; 20) | (b &gt;&gt; (32 - 20)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>,  <var>8</var>, <var>20</var>, <var>0x455a14ed</var>);</td></tr>
+<tr><th id="138">138</th><td><a class="macro" href="#122" title="a += ((b &amp; d) | (c &amp; ~d)) + X[13] + (unsigned int)0xa9e3e905; a = b + ((a &lt;&lt; 5) | (a &gt;&gt; (32 - 5)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <var>13</var>,  <var>5</var>, <var>0xa9e3e905</var>);</td></tr>
+<tr><th id="139">139</th><td><a class="macro" href="#122" title="d += ((a &amp; c) | (b &amp; ~c)) + X[2] + (unsigned int)0xfcefa3f8; d = a + ((d &lt;&lt; 9) | (d &gt;&gt; (32 - 9)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>,  <var>2</var>,  <var>9</var>, <var>0xfcefa3f8</var>);</td></tr>
+<tr><th id="140">140</th><td><a class="macro" href="#122" title="c += ((d &amp; b) | (a &amp; ~b)) + X[7] + (unsigned int)0x676f02d9; c = d + ((c &lt;&lt; 14) | (c &gt;&gt; (32 - 14)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>,  <var>7</var>, <var>14</var>, <var>0x676f02d9</var>);</td></tr>
+<tr><th id="141">141</th><td><a class="macro" href="#122" title="b += ((c &amp; a) | (d &amp; ~a)) + X[12] + (unsigned int)0x8d2a4c8a; b = c + ((b &lt;&lt; 20) | (b &gt;&gt; (32 - 20)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <var>12</var>, <var>20</var>, <var>0x8d2a4c8a</var>);</td></tr>
+<tr><th id="142">142</th><td></td></tr>
+<tr><th id="143">143</th><td><u>#undef <a class="macro" href="#122" data-ref="_M/OP">OP</a></u></td></tr>
+<tr><th id="144">144</th><td></td></tr>
+<tr><th id="145">145</th><td><i>/***********************************************</i></td></tr>
+<tr><th id="146">146</th><td><i>*                    Round 3                   *</i></td></tr>
+<tr><th id="147">147</th><td><i>*            F(X,Y,Z) = X xor Y xor Z          *</i></td></tr>
+<tr><th id="148">148</th><td><i>* a = b + ((a + F(b,c,d) + X[k] + T[i]) &lt;&lt;&lt; s) *</i></td></tr>
+<tr><th id="149">149</th><td><i>***********************************************/</i></td></tr>
+<tr><th id="150">150</th><td></td></tr>
+<tr><th id="151">151</th><td><u>#define <dfn class="macro" id="_M/OP" data-ref="_M/OP">OP</dfn>(a, b, c, d, k, s, ti) \</u></td></tr>
+<tr><th id="152">152</th><td><u>     a += (b ^ c ^ d) + <a class="local col9 ref" href="#9X" title='X' data-ref="9X">X</a>[k] + (unsigned int)ti; \</u></td></tr>
+<tr><th id="153">153</th><td><u>     a = b + ((a &lt;&lt; s) | (a &gt;&gt; (32 - s)))</u></td></tr>
+<tr><th id="154">154</th><td></td></tr>
+<tr><th id="155">155</th><td><a class="macro" href="#151" title="a += (b ^ c ^ d) + X[5] + (unsigned int)0xfffa3942; a = b + ((a &lt;&lt; 4) | (a &gt;&gt; (32 - 4)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>,  <var>5</var>,  <var>4</var>, <var>0xfffa3942</var>);</td></tr>
+<tr><th id="156">156</th><td><a class="macro" href="#151" title="d += (a ^ b ^ c) + X[8] + (unsigned int)0x8771f681; d = a + ((d &lt;&lt; 11) | (d &gt;&gt; (32 - 11)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>,  <var>8</var>, <var>11</var>, <var>0x8771f681</var>);</td></tr>
+<tr><th id="157">157</th><td><a class="macro" href="#151" title="c += (d ^ a ^ b) + X[11] + (unsigned int)0x6d9d6122; c = d + ((c &lt;&lt; 16) | (c &gt;&gt; (32 - 16)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <var>11</var>, <var>16</var>, <var>0x6d9d6122</var>);</td></tr>
+<tr><th id="158">158</th><td><a class="macro" href="#151" title="b += (c ^ d ^ a) + X[14] + (unsigned int)0xfde5380c; b = c + ((b &lt;&lt; 23) | (b &gt;&gt; (32 - 23)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <var>14</var>, <var>23</var>, <var>0xfde5380c</var>);</td></tr>
+<tr><th id="159">159</th><td><a class="macro" href="#151" title="a += (b ^ c ^ d) + X[1] + (unsigned int)0xa4beea44; a = b + ((a &lt;&lt; 4) | (a &gt;&gt; (32 - 4)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>,  <var>1</var>,  <var>4</var>, <var>0xa4beea44</var>);</td></tr>
+<tr><th id="160">160</th><td><a class="macro" href="#151" title="d += (a ^ b ^ c) + X[4] + (unsigned int)0x4bdecfa9; d = a + ((d &lt;&lt; 11) | (d &gt;&gt; (32 - 11)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>,  <var>4</var>, <var>11</var>, <var>0x4bdecfa9</var>);</td></tr>
+<tr><th id="161">161</th><td><a class="macro" href="#151" title="c += (d ^ a ^ b) + X[7] + (unsigned int)0xf6bb4b60; c = d + ((c &lt;&lt; 16) | (c &gt;&gt; (32 - 16)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>,  <var>7</var>, <var>16</var>, <var>0xf6bb4b60</var>);</td></tr>
+<tr><th id="162">162</th><td><a class="macro" href="#151" title="b += (c ^ d ^ a) + X[10] + (unsigned int)0xbebfbc70; b = c + ((b &lt;&lt; 23) | (b &gt;&gt; (32 - 23)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <var>10</var>, <var>23</var>, <var>0xbebfbc70</var>);</td></tr>
+<tr><th id="163">163</th><td><a class="macro" href="#151" title="a += (b ^ c ^ d) + X[13] + (unsigned int)0x289b7ec6; a = b + ((a &lt;&lt; 4) | (a &gt;&gt; (32 - 4)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <var>13</var>,  <var>4</var>, <var>0x289b7ec6</var>);</td></tr>
+<tr><th id="164">164</th><td><a class="macro" href="#151" title="d += (a ^ b ^ c) + X[0] + (unsigned int)0xeaa127fa; d = a + ((d &lt;&lt; 11) | (d &gt;&gt; (32 - 11)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>,  <var>0</var>, <var>11</var>, <var>0xeaa127fa</var>);</td></tr>
+<tr><th id="165">165</th><td><a class="macro" href="#151" title="c += (d ^ a ^ b) + X[3] + (unsigned int)0xd4ef3085; c = d + ((c &lt;&lt; 16) | (c &gt;&gt; (32 - 16)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>,  <var>3</var>, <var>16</var>, <var>0xd4ef3085</var>);</td></tr>
+<tr><th id="166">166</th><td><a class="macro" href="#151" title="b += (c ^ d ^ a) + X[6] + (unsigned int)0x04881d05; b = c + ((b &lt;&lt; 23) | (b &gt;&gt; (32 - 23)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>,  <var>6</var>, <var>23</var>, <var>0x04881d05</var>);</td></tr>
+<tr><th id="167">167</th><td><a class="macro" href="#151" title="a += (b ^ c ^ d) + X[9] + (unsigned int)0xd9d4d039; a = b + ((a &lt;&lt; 4) | (a &gt;&gt; (32 - 4)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>,  <var>9</var>,  <var>4</var>, <var>0xd9d4d039</var>);</td></tr>
+<tr><th id="168">168</th><td><a class="macro" href="#151" title="d += (a ^ b ^ c) + X[12] + (unsigned int)0xe6db99e5; d = a + ((d &lt;&lt; 11) | (d &gt;&gt; (32 - 11)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <var>12</var>, <var>11</var>, <var>0xe6db99e5</var>);</td></tr>
+<tr><th id="169">169</th><td><a class="macro" href="#151" title="c += (d ^ a ^ b) + X[15] + (unsigned int)0x1fa27cf8; c = d + ((c &lt;&lt; 16) | (c &gt;&gt; (32 - 16)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <var>15</var>, <var>16</var>, <var>0x1fa27cf8</var>);</td></tr>
+<tr><th id="170">170</th><td><a class="macro" href="#151" title="b += (c ^ d ^ a) + X[2] + (unsigned int)0xc4ac5665; b = c + ((b &lt;&lt; 23) | (b &gt;&gt; (32 - 23)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>,  <var>2</var>, <var>23</var>, <var>0xc4ac5665</var>);</td></tr>
+<tr><th id="171">171</th><td></td></tr>
+<tr><th id="172">172</th><td><u>#undef <a class="macro" href="#151" data-ref="_M/OP">OP</a></u></td></tr>
+<tr><th id="173">173</th><td></td></tr>
+<tr><th id="174">174</th><td><i>/***********************************************</i></td></tr>
+<tr><th id="175">175</th><td><i>*                    Round 4                   *</i></td></tr>
+<tr><th id="176">176</th><td><i>*          F(X,Y,Z) = Y xor (X v not(Z))       *</i></td></tr>
+<tr><th id="177">177</th><td><i>* a = b + ((a + F(b,c,d) + X[k] + T[i]) &lt;&lt;&lt; s) *</i></td></tr>
+<tr><th id="178">178</th><td><i>***********************************************/</i></td></tr>
+<tr><th id="179">179</th><td></td></tr>
+<tr><th id="180">180</th><td><u>#define <dfn class="macro" id="_M/OP" data-ref="_M/OP">OP</dfn>(a, b, c, d, k, s, ti) \</u></td></tr>
+<tr><th id="181">181</th><td><u>     a += (c ^ (b | ~d)) + <a class="local col9 ref" href="#9X" title='X' data-ref="9X">X</a>[k] + (unsigned int)ti; \</u></td></tr>
+<tr><th id="182">182</th><td><u>     a = b + ((a &lt;&lt; s) | (a &gt;&gt; (32 - s)))</u></td></tr>
+<tr><th id="183">183</th><td></td></tr>
+<tr><th id="184">184</th><td><a class="macro" href="#180" title="a += (c ^ (b | ~d)) + X[0] + (unsigned int)0xf4292244; a = b + ((a &lt;&lt; 6) | (a &gt;&gt; (32 - 6)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>,  <var>0</var>,  <var>6</var>, <var>0xf4292244</var>);</td></tr>
+<tr><th id="185">185</th><td><a class="macro" href="#180" title="d += (b ^ (a | ~c)) + X[7] + (unsigned int)0x432aff97; d = a + ((d &lt;&lt; 10) | (d &gt;&gt; (32 - 10)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>,  <var>7</var>, <var>10</var>, <var>0x432aff97</var>);</td></tr>
+<tr><th id="186">186</th><td><a class="macro" href="#180" title="c += (a ^ (d | ~b)) + X[14] + (unsigned int)0xab9423a7; c = d + ((c &lt;&lt; 15) | (c &gt;&gt; (32 - 15)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <var>14</var>, <var>15</var>, <var>0xab9423a7</var>);</td></tr>
+<tr><th id="187">187</th><td><a class="macro" href="#180" title="b += (d ^ (c | ~a)) + X[5] + (unsigned int)0xfc93a039; b = c + ((b &lt;&lt; 21) | (b &gt;&gt; (32 - 21)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>,  <var>5</var>, <var>21</var>, <var>0xfc93a039</var>);</td></tr>
+<tr><th id="188">188</th><td><a class="macro" href="#180" title="a += (c ^ (b | ~d)) + X[12] + (unsigned int)0x655b59c3; a = b + ((a &lt;&lt; 6) | (a &gt;&gt; (32 - 6)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <var>12</var>,  <var>6</var>, <var>0x655b59c3</var>);</td></tr>
+<tr><th id="189">189</th><td><a class="macro" href="#180" title="d += (b ^ (a | ~c)) + X[3] + (unsigned int)0x8f0ccc92; d = a + ((d &lt;&lt; 10) | (d &gt;&gt; (32 - 10)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>,  <var>3</var>, <var>10</var>, <var>0x8f0ccc92</var>);</td></tr>
+<tr><th id="190">190</th><td><a class="macro" href="#180" title="c += (a ^ (d | ~b)) + X[10] + (unsigned int)0xffeff47d; c = d + ((c &lt;&lt; 15) | (c &gt;&gt; (32 - 15)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <var>10</var>, <var>15</var>, <var>0xffeff47d</var>);</td></tr>
+<tr><th id="191">191</th><td><a class="macro" href="#180" title="b += (d ^ (c | ~a)) + X[1] + (unsigned int)0x85845dd1; b = c + ((b &lt;&lt; 21) | (b &gt;&gt; (32 - 21)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>,  <var>1</var>, <var>21</var>, <var>0x85845dd1</var>);</td></tr>
+<tr><th id="192">192</th><td><a class="macro" href="#180" title="a += (c ^ (b | ~d)) + X[8] + (unsigned int)0x6fa87e4f; a = b + ((a &lt;&lt; 6) | (a &gt;&gt; (32 - 6)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>,  <var>8</var>,  <var>6</var>, <var>0x6fa87e4f</var>);</td></tr>
+<tr><th id="193">193</th><td><a class="macro" href="#180" title="d += (b ^ (a | ~c)) + X[15] + (unsigned int)0xfe2ce6e0; d = a + ((d &lt;&lt; 10) | (d &gt;&gt; (32 - 10)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <var>15</var>, <var>10</var>, <var>0xfe2ce6e0</var>);</td></tr>
+<tr><th id="194">194</th><td><a class="macro" href="#180" title="c += (a ^ (d | ~b)) + X[6] + (unsigned int)0xa3014314; c = d + ((c &lt;&lt; 15) | (c &gt;&gt; (32 - 15)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>,  <var>6</var>, <var>15</var>, <var>0xa3014314</var>);</td></tr>
+<tr><th id="195">195</th><td><a class="macro" href="#180" title="b += (d ^ (c | ~a)) + X[13] + (unsigned int)0x4e0811a1; b = c + ((b &lt;&lt; 21) | (b &gt;&gt; (32 - 21)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <var>13</var>, <var>21</var>, <var>0x4e0811a1</var>);</td></tr>
+<tr><th id="196">196</th><td><a class="macro" href="#180" title="a += (c ^ (b | ~d)) + X[4] + (unsigned int)0xf7537e82; a = b + ((a &lt;&lt; 6) | (a &gt;&gt; (32 - 6)))" data-ref="_M/OP">OP</a>(<a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>,  <var>4</var>,  <var>6</var>, <var>0xf7537e82</var>);</td></tr>
+<tr><th id="197">197</th><td><a class="macro" href="#180" title="d += (b ^ (a | ~c)) + X[11] + (unsigned int)0xbd3af235; d = a + ((d &lt;&lt; 10) | (d &gt;&gt; (32 - 10)))" data-ref="_M/OP">OP</a>(<a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <var>11</var>, <var>10</var>, <var>0xbd3af235</var>);</td></tr>
+<tr><th id="198">198</th><td><a class="macro" href="#180" title="c += (a ^ (d | ~b)) + X[2] + (unsigned int)0x2ad7d2bb; c = d + ((c &lt;&lt; 15) | (c &gt;&gt; (32 - 15)))" data-ref="_M/OP">OP</a>(<a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>, <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>,  <var>2</var>, <var>15</var>, <var>0x2ad7d2bb</var>);</td></tr>
+<tr><th id="199">199</th><td><a class="macro" href="#180" title="b += (d ^ (c | ~a)) + X[9] + (unsigned int)0xeb86d391; b = c + ((b &lt;&lt; 21) | (b &gt;&gt; (32 - 21)))" data-ref="_M/OP">OP</a>(<a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>, <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>, <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>, <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>,  <var>9</var>, <var>21</var>, <var>0xeb86d391</var>);</td></tr>
+<tr><th id="200">200</th><td></td></tr>
+<tr><th id="201">201</th><td><u>#undef <a class="macro" href="#180" data-ref="_M/OP">OP</a></u></td></tr>
+<tr><th id="202">202</th><td></td></tr>
+<tr><th id="203">203</th><td><i>/* Add the new values back into the accumulators. */</i></td></tr>
+<tr><th id="204">204</th><td></td></tr>
+<tr><th id="205">205</th><td><a class="local col2 ref" href="#2base" title='base' data-ref="2base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::abcd" title='md5::abcd' data-ref="md5::abcd">abcd</a>[<var>0</var>] += <a class="local col4 ref" href="#4a" title='a' data-ref="4a">a</a>;</td></tr>
+<tr><th id="206">206</th><td><a class="local col2 ref" href="#2base" title='base' data-ref="2base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::abcd" title='md5::abcd' data-ref="md5::abcd">abcd</a>[<var>1</var>] += <a class="local col5 ref" href="#5b" title='b' data-ref="5b">b</a>;</td></tr>
+<tr><th id="207">207</th><td><a class="local col2 ref" href="#2base" title='base' data-ref="2base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::abcd" title='md5::abcd' data-ref="md5::abcd">abcd</a>[<var>2</var>] += <a class="local col6 ref" href="#6c" title='c' data-ref="6c">c</a>;</td></tr>
+<tr><th id="208">208</th><td><a class="local col2 ref" href="#2base" title='base' data-ref="2base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::abcd" title='md5::abcd' data-ref="md5::abcd">abcd</a>[<var>3</var>] += <a class="local col7 ref" href="#7d" title='d' data-ref="7d">d</a>;</td></tr>
+<tr><th id="209">209</th><td>}</td></tr>
+<tr><th id="210">210</th><td></td></tr>
+<tr><th id="211">211</th><td></td></tr>
+<tr><th id="212">212</th><td></td></tr>
+<tr><th id="213">213</th><td></td></tr>
+<tr><th id="214">214</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="215">215</th><td><i>*     Process the final text string              *</i></td></tr>
+<tr><th id="216">216</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="217">217</th><td></td></tr>
+<tr><th id="218">218</th><td><i>/* The string may be of any length. It is padded out according to the rules</i></td></tr>
+<tr><th id="219">219</th><td><i>for computing MD5 digests. The final result is then converted to text form</i></td></tr>
+<tr><th id="220">220</th><td><i>and returned.</i></td></tr>
+<tr><th id="221">221</th><td><i></i></td></tr>
+<tr><th id="222">222</th><td><i>Arguments:</i></td></tr>
+<tr><th id="223">223</th><td><i>  base      pointer to the md5 storage structure</i></td></tr>
+<tr><th id="224">224</th><td><i>  text      pointer to the final text vector</i></td></tr>
+<tr><th id="225">225</th><td><i>  length    length of the final text vector</i></td></tr>
+<tr><th id="226">226</th><td><i>  digest    points to 16 bytes in which to place the result</i></td></tr>
+<tr><th id="227">227</th><td><i></i></td></tr>
+<tr><th id="228">228</th><td><i>Returns:    nothing</i></td></tr>
+<tr><th id="229">229</th><td><i>*/</i></td></tr>
+<tr><th id="230">230</th><td></td></tr>
+<tr><th id="231">231</th><td><em>void</em></td></tr>
+<tr><th id="232">232</th><td><dfn class="decl def fn" id="md5_end" title='md5_end' data-ref="md5_end">md5_end</dfn>(<a class="typedef" href="../structs.h.html#md5" title='md5' data-type='struct md5' data-ref="md5">md5</a> *<dfn class="local col0 decl" id="10base" title='base' data-type='md5 *' data-ref="10base">base</dfn>, <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col1 decl" id="11text" title='text' data-type='const uschar *' data-ref="11text">text</dfn>, <em>int</em> <dfn class="local col2 decl" id="12length" title='length' data-type='int' data-ref="12length">length</dfn>, <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *<dfn class="local col3 decl" id="13digest" title='digest' data-type='uschar *' data-ref="13digest">digest</dfn>)</td></tr>
+<tr><th id="233">233</th><td>{</td></tr>
+<tr><th id="234">234</th><td><em>int</em> <dfn class="local col4 decl" id="14i" title='i' data-type='int' data-ref="14i">i</dfn>;</td></tr>
+<tr><th id="235">235</th><td><a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> <dfn class="local col5 decl" id="15work" title='work' data-type='uschar [64]' data-ref="15work">work</dfn>[<var>64</var>];</td></tr>
+<tr><th id="236">236</th><td></td></tr>
+<tr><th id="237">237</th><td><i>/* Process in chunks of 64 until we have less than 64 bytes left. */</i></td></tr>
+<tr><th id="238">238</th><td></td></tr>
+<tr><th id="239">239</th><td><b>while</b> (<a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a> &gt;= <var>64</var>)</td></tr>
+<tr><th id="240">240</th><td>  {</td></tr>
+<tr><th id="241">241</th><td>  <a class="ref fn" href="#md5_mid" title='md5_mid' data-ref="md5_mid">md5_mid</a>(<a class="local col0 ref" href="#10base" title='base' data-ref="10base">base</a>, <a class="local col1 ref" href="#11text" title='text' data-ref="11text">text</a>);</td></tr>
+<tr><th id="242">242</th><td>  <a class="local col1 ref" href="#11text" title='text' data-ref="11text">text</a> += <var>64</var>;</td></tr>
+<tr><th id="243">243</th><td>  <a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a> -= <var>64</var>;</td></tr>
+<tr><th id="244">244</th><td>  }</td></tr>
+<tr><th id="245">245</th><td></td></tr>
+<tr><th id="246">246</th><td><i>/* If the remaining string contains more than 55 bytes, we must pad it</i></td></tr>
+<tr><th id="247">247</th><td><i>out to 64, process it, and then set up the final chunk as 56 bytes of</i></td></tr>
+<tr><th id="248">248</th><td><i>padding. If it has less than 56 bytes, we pad it out to 56 bytes as the</i></td></tr>
+<tr><th id="249">249</th><td><i>final chunk. */</i></td></tr>
+<tr><th id="250">250</th><td></td></tr>
+<tr><th id="251">251</th><td><a class="ref fn" href="../../../include/string.h.html#memcpy" title='memcpy' data-ref="memcpy">memcpy</a>(<a class="local col5 ref" href="#15work" title='work' data-ref="15work">work</a>, <a class="local col1 ref" href="#11text" title='text' data-ref="11text">text</a>, <a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a>);</td></tr>
+<tr><th id="252">252</th><td><a class="local col5 ref" href="#15work" title='work' data-ref="15work">work</a>[<a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a>] = <var>0x80</var>;</td></tr>
+<tr><th id="253">253</th><td></td></tr>
+<tr><th id="254">254</th><td><b>if</b> (<a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a> &gt; <var>55</var>)</td></tr>
+<tr><th id="255">255</th><td>  {</td></tr>
+<tr><th id="256">256</th><td>  <a class="ref fn" href="../../../include/string.h.html#memset" title='memset' data-ref="memset">memset</a>(<a class="local col5 ref" href="#15work" title='work' data-ref="15work">work</a>+<a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a>+<var>1</var>, <var>0</var>, <var>63</var>-<a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a>);</td></tr>
+<tr><th id="257">257</th><td>  <a class="ref fn" href="#md5_mid" title='md5_mid' data-ref="md5_mid">md5_mid</a>(<a class="local col0 ref" href="#10base" title='base' data-ref="10base">base</a>, <a class="local col5 ref" href="#15work" title='work' data-ref="15work">work</a>);</td></tr>
+<tr><th id="258">258</th><td>  <a class="local col0 ref" href="#10base" title='base' data-ref="10base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::length" title='md5::length' data-ref="md5::length">length</a> -= <var>64</var>;</td></tr>
+<tr><th id="259">259</th><td>  <a class="ref fn" href="../../../include/string.h.html#memset" title='memset' data-ref="memset">memset</a>(<a class="local col5 ref" href="#15work" title='work' data-ref="15work">work</a>, <var>0</var>, <var>56</var>);</td></tr>
+<tr><th id="260">260</th><td>  }</td></tr>
+<tr><th id="261">261</th><td><b>else</b></td></tr>
+<tr><th id="262">262</th><td>  {</td></tr>
+<tr><th id="263">263</th><td>  <a class="ref fn" href="../../../include/string.h.html#memset" title='memset' data-ref="memset">memset</a>(<a class="local col5 ref" href="#15work" title='work' data-ref="15work">work</a>+<a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a>+<var>1</var>, <var>0</var>, <var>55</var>-<a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a>);</td></tr>
+<tr><th id="264">264</th><td>  }</td></tr>
+<tr><th id="265">265</th><td></td></tr>
+<tr><th id="266">266</th><td><i>/* The final 8 bytes of the final chunk are a 64-bit representation of the</i></td></tr>
+<tr><th id="267">267</th><td><i>length of the input string *bits*, before padding, low order word first, and</i></td></tr>
+<tr><th id="268">268</th><td><i>low order bytes first in each word. This implementation is designed for short</i></td></tr>
+<tr><th id="269">269</th><td><i>strings, and so operates with a single int counter only. */</i></td></tr>
+<tr><th id="270">270</th><td></td></tr>
+<tr><th id="271">271</th><td><a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a> += <a class="local col0 ref" href="#10base" title='base' data-ref="10base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::length" title='md5::length' data-ref="md5::length">length</a>;   <i>/* Total length in bytes */</i></td></tr>
+<tr><th id="272">272</th><td><a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a> &lt;&lt;= <var>3</var>;             <i>/* Total length in bits */</i></td></tr>
+<tr><th id="273">273</th><td></td></tr>
+<tr><th id="274">274</th><td><a class="local col5 ref" href="#15work" title='work' data-ref="15work">work</a>[<var>56</var>] = <a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a>         &amp; <var>0xff</var>;</td></tr>
+<tr><th id="275">275</th><td><a class="local col5 ref" href="#15work" title='work' data-ref="15work">work</a>[<var>57</var>] = (<a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a> &gt;&gt;  <var>8</var>) &amp; <var>0xff</var>;</td></tr>
+<tr><th id="276">276</th><td><a class="local col5 ref" href="#15work" title='work' data-ref="15work">work</a>[<var>58</var>] = (<a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a> &gt;&gt; <var>16</var>) &amp; <var>0xff</var>;</td></tr>
+<tr><th id="277">277</th><td><a class="local col5 ref" href="#15work" title='work' data-ref="15work">work</a>[<var>59</var>] = (<a class="local col2 ref" href="#12length" title='length' data-ref="12length">length</a> &gt;&gt; <var>24</var>) &amp; <var>0xff</var>;</td></tr>
+<tr><th id="278">278</th><td></td></tr>
+<tr><th id="279">279</th><td><a class="ref fn" href="../../../include/string.h.html#memset" title='memset' data-ref="memset">memset</a>(<a class="local col5 ref" href="#15work" title='work' data-ref="15work">work</a>+<var>60</var>, <var>0</var>, <var>4</var>);</td></tr>
+<tr><th id="280">280</th><td></td></tr>
+<tr><th id="281">281</th><td><i>/* Process the final 64-byte chunk */</i></td></tr>
+<tr><th id="282">282</th><td></td></tr>
+<tr><th id="283">283</th><td><a class="ref fn" href="#md5_mid" title='md5_mid' data-ref="md5_mid">md5_mid</a>(<a class="local col0 ref" href="#10base" title='base' data-ref="10base">base</a>, <a class="local col5 ref" href="#15work" title='work' data-ref="15work">work</a>);</td></tr>
+<tr><th id="284">284</th><td></td></tr>
+<tr><th id="285">285</th><td><i>/* Pass back the result, low-order byte first in each word. */</i></td></tr>
+<tr><th id="286">286</th><td></td></tr>
+<tr><th id="287">287</th><td><b>for</b> (<a class="local col4 ref" href="#14i" title='i' data-ref="14i">i</a> = <var>0</var>; <a class="local col4 ref" href="#14i" title='i' data-ref="14i">i</a> &lt; <var>4</var>; <a class="local col4 ref" href="#14i" title='i' data-ref="14i">i</a>++)</td></tr>
+<tr><th id="288">288</th><td>  {</td></tr>
+<tr><th id="289">289</th><td>  <em>register</em> <em>int</em> <dfn class="local col6 decl" id="16x" title='x' data-type='int' data-ref="16x">x</dfn> = <a class="local col0 ref" href="#10base" title='base' data-ref="10base">base</a>-&gt;<a class="ref field" href="../structs.h.html#md5::abcd" title='md5::abcd' data-ref="md5::abcd">abcd</a>[<a class="local col4 ref" href="#14i" title='i' data-ref="14i">i</a>];</td></tr>
+<tr><th id="290">290</th><td>  *<a class="local col3 ref" href="#13digest" title='digest' data-ref="13digest">digest</a>++ =  <a class="local col6 ref" href="#16x" title='x' data-ref="16x">x</a>        &amp; <var>0xff</var>;</td></tr>
+<tr><th id="291">291</th><td>  *<a class="local col3 ref" href="#13digest" title='digest' data-ref="13digest">digest</a>++ = (<a class="local col6 ref" href="#16x" title='x' data-ref="16x">x</a> &gt;&gt;  <var>8</var>) &amp; <var>0xff</var>;</td></tr>
+<tr><th id="292">292</th><td>  *<a class="local col3 ref" href="#13digest" title='digest' data-ref="13digest">digest</a>++ = (<a class="local col6 ref" href="#16x" title='x' data-ref="16x">x</a> &gt;&gt; <var>16</var>) &amp; <var>0xff</var>;</td></tr>
+<tr><th id="293">293</th><td>  *<a class="local col3 ref" href="#13digest" title='digest' data-ref="13digest">digest</a>++ = (<a class="local col6 ref" href="#16x" title='x' data-ref="16x">x</a> &gt;&gt; <var>24</var>) &amp; <var>0xff</var>;</td></tr>
+<tr><th id="294">294</th><td>  }</td></tr>
+<tr><th id="295">295</th><td>}</td></tr>
+<tr><th id="296">296</th><td></td></tr>
+<tr><th id="297">297</th><td></td></tr>
+<tr><th id="298">298</th><td></td></tr>
+<tr><th id="299">299</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="300">300</th><td><i>**************************************************</i></td></tr>
+<tr><th id="301">301</th><td><i>*             Stand-alone test program           *</i></td></tr>
+<tr><th id="302">302</th><td><i>**************************************************</i></td></tr>
+<tr><th id="303">303</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="304">304</th><td></td></tr>
+<tr><th id="305">305</th><td><u>#<span data-ppcond="305">if</span> defined <span class="macro" data-ref="_M/STAND_ALONE">STAND_ALONE</span> &amp; !defined <span class="macro" data-ref="_M/CRAM_STAND_ALONE">CRAM_STAND_ALONE</span></u></td></tr>
+<tr><th id="306">306</th><td></td></tr>
+<tr><th id="307">307</th><td><i>/* Test values */</i></td></tr>
+<tr><th id="308">308</th><td></td></tr>
+<tr><th id="309">309</th><td><em>static</em> uschar *tests[] = {</td></tr>
+<tr><th id="310">310</th><td>  <q>""</q>, <q>"d41d8cd98f00b204e9800998ecf8427e"</q>,</td></tr>
+<tr><th id="311">311</th><td></td></tr>
+<tr><th id="312">312</th><td>  <q>"a"</q>, <q>"0cc175b9c0f1b6a831c399e269772661"</q>,</td></tr>
+<tr><th id="313">313</th><td></td></tr>
+<tr><th id="314">314</th><td>  <q>"abc"</q>, <q>"900150983cd24fb0d6963f7d28e17f72"</q>,</td></tr>
+<tr><th id="315">315</th><td></td></tr>
+<tr><th id="316">316</th><td>  <q>"message digest"</q>, <q>"f96b697d7cb7938d525a2f31aaf161d0"</q>,</td></tr>
+<tr><th id="317">317</th><td></td></tr>
+<tr><th id="318">318</th><td>  <q>"abcdefghijklmnopqrstuvwxyz"</q>, <q>"c3fcd3d76192e4007dfb496cca67e13b"</q>,</td></tr>
+<tr><th id="319">319</th><td></td></tr>
+<tr><th id="320">320</th><td>  <q>"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"</q>,</td></tr>
+<tr><th id="321">321</th><td>     <q>"d174ab98d277d9f5a5611c2c9f419d9f"</q>,</td></tr>
+<tr><th id="322">322</th><td></td></tr>
+<tr><th id="323">323</th><td>  <q>"1234567890123456789012345678901234567890123456789012345678901234567890"</q></td></tr>
+<tr><th id="324">324</th><td>  <q>"1234567890"</q>,</td></tr>
+<tr><th id="325">325</th><td>    <q>"57edf4a22be3c955ac49da2e2107b67a"</q>,</td></tr>
+<tr><th id="326">326</th><td></td></tr>
+<tr><th id="327">327</th><td>  <q>"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"</q></td></tr>
+<tr><th id="328">328</th><td>  <q>"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"</q></td></tr>
+<tr><th id="329">329</th><td>  <q>"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"</q>,</td></tr>
+<tr><th id="330">330</th><td>    <q>"a0842fcc02167127b0bb9a7c38e71ba8"</q></td></tr>
+<tr><th id="331">331</th><td>};</td></tr>
+<tr><th id="332">332</th><td></td></tr>
+<tr><th id="333">333</th><td><em>int</em> main(<em>void</em>)</td></tr>
+<tr><th id="334">334</th><td>{</td></tr>
+<tr><th id="335">335</th><td>md5 base;</td></tr>
+<tr><th id="336">336</th><td><em>int</em> i = <var>0x01020304</var>;</td></tr>
+<tr><th id="337">337</th><td>uschar *ctest = US (&amp;i);</td></tr>
+<tr><th id="338">338</th><td>uschar buffer[<var>256</var>];</td></tr>
+<tr><th id="339">339</th><td>uschar digest[<var>16</var>];</td></tr>
+<tr><th id="340">340</th><td>printf(<q>"Checking md5: %s-endian\n"</q>, (ctest[<var>0</var>] == <var>0x04</var>)? <q>"little"</q> : <q>"big"</q>);</td></tr>
+<tr><th id="341">341</th><td></td></tr>
+<tr><th id="342">342</th><td><b>for</b> (i = <var>0</var>; i &lt; <b>sizeof</b>(tests)/<b>sizeof</b>(uschar *); i += <var>2</var>)</td></tr>
+<tr><th id="343">343</th><td>  {</td></tr>
+<tr><th id="344">344</th><td>  <em>int</em> j;</td></tr>
+<tr><th id="345">345</th><td>  uschar s[<var>33</var>];</td></tr>
+<tr><th id="346">346</th><td>  printf(<q>"%s\nShould be: %s\n"</q>, tests[i], tests[i+<var>1</var>]);</td></tr>
+<tr><th id="347">347</th><td>  md5_start(&amp;base);</td></tr>
+<tr><th id="348">348</th><td>  md5_end(&amp;base, tests[i], strlen(tests[i]), digest);</td></tr>
+<tr><th id="349">349</th><td>  <b>for</b> (j = <var>0</var>; j &lt; <var>16</var>; j++) sprintf(s+<var>2</var>*j, <q>"%02x"</q>, digest[j]);</td></tr>
+<tr><th id="350">350</th><td>  printf(<q>"Computed:  %s\n"</q>, s);</td></tr>
+<tr><th id="351">351</th><td>  <b>if</b> (strcmp(s, tests[i+<var>1</var>]) != <var>0</var>) printf(<q>"*** No match ***\n"</q>);</td></tr>
+<tr><th id="352">352</th><td>  printf(<q>"\n"</q>);</td></tr>
+<tr><th id="353">353</th><td>  }</td></tr>
+<tr><th id="354">354</th><td>}</td></tr>
+<tr><th id="355">355</th><td><u>#<span data-ppcond="305">endif</span></u></td></tr>
+<tr><th id="356">356</th><td></td></tr>
+<tr><th id="357">357</th><td><i>/* End of md5.c */</i></td></tr>
+<tr><th id="358">358</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

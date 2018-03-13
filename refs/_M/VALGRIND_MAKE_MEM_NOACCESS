@@ -1,0 +1,5 @@
+<dec f='exim/src/memcheck.h' l='109'/>
+<use f='exim/src/store.c' l='180' u='c'/>
+<use f='exim/src/store.c' l='367' u='c'/>
+<use f='exim/src/store.c' l='386' u='c'/>
+<doc f='exim/src/memcheck.h' l='108'>/* Mark memory at _qzz_addr as unaddressable for _qzz_len bytes. */</doc>

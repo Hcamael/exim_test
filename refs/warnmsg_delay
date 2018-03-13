@@ -1,2 +1,14 @@
 <dec f='exim/src/globals.h' l='973' type='uschar *'/>
 <doc f='exim/src/globals.h' l='973'>/* String form of delay time */</doc>
+<use f='exim/src/deliver.c' l='8140' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8162' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='8189' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='1560' type='uschar *'/>
+<use f='exim/src/expand.c' l='772' u='a'/>
+<use f='exim/src/expand.c' l='772' u='a'/>
+<use f='exim/src/expand.c' l='775' u='a'/>
+<use f='exim/src/expand.c' l='775' u='a'/>
+<use f='exim/src/expand.c' l='772' u='a'/>
+<use f='exim/src/expand.c' l='772' u='a'/>
+<use f='exim/src/expand.c' l='775' u='a'/>
+<use f='exim/src/expand.c' l='775' u='a'/>

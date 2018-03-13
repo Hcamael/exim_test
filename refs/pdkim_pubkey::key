@@ -1,0 +1,6 @@
+<dec f='exim/src/pdkim/pdkim.h' l='113' type='blob'/>
+<use f='exim/src/pdkim/pdkim.c' l='664' u='a' c='pdkim_parse_pubkey_record'/>
+<use f='exim/src/pdkim/pdkim.c' l='688' u='m' c='pdkim_parse_pubkey_record'/>
+<use f='exim/src/pdkim/pdkim.c' l='1365' u='a' c='pdkim_key_from_dns'/>
+<offset>384</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='113'>/* p=  */</doc>

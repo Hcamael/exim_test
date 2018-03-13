@@ -1,2 +1,9 @@
 <dec f='include/string.h' l='65' type='int memcmp(const void * __s1, const void * __s2, size_t __n)'/>
 <doc f='include/string.h' l='64'>/* Compare N bytes of S1 and S2.  */</doc>
+<use f='exim/src/pdkim/pdkim.c' l='805' u='c' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='870' u='c' c='pdkim_bodyline_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='874' u='c' c='pdkim_bodyline_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='879' u='c' c='pdkim_bodyline_complete'/>
+<use f='exim/src/auths/spa.c' l='248' u='c' c='auth_spa_server'/>
+<use f='exim/src/sieve.c' l='793' u='c' c='eq_asciinumeric'/>
+<use f='exim/src/sieve.c' l='3387' u='c' c='parse_commands'/>

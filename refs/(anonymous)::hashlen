@@ -1,2 +1,8 @@
 <dec f='exim/src/hash.h' l='47' type='int'/>
 <offset>32</offset>
+<use f='exim/src/hash.c' l='39' u='w' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='40' u='w' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='41' u='w' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='42' u='w' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='57' u='w' c='exim_sha_init'/>
+<use f='exim/src/hash.c' l='88' u='r' c='exim_sha_finish'/>

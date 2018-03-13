@@ -1,1 +1,8 @@
 <dec f='exim/src/functions.h' l='211' type='BOOL header_match(uschar * , BOOL , BOOL , string_item * , int )'/>
+<def f='exim/src/header.c' l='437' ll='461' type='BOOL header_match(uschar * name, BOOL has_addresses, BOOL cond, string_item * strings, int count)'/>
+<doc f='exim/src/header.c' l='435'>/* The externally visible interface */</doc>
+<use f='exim/src/filter.c' l='2459' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2463' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2466' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2472' u='c' c='filter_personal'/>
+<use f='exim/src/filter.c' l='2476' u='c' c='filter_personal'/>

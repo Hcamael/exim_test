@@ -1,3 +1,10 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='96'/>
 <doc f='exim/build-Linux-x86_64/config.h' l='95'>/* LOOKUP_LDAP not set */</doc>
 <use f='exim/src/exim.h' l='538' u='a'/>
+<use f='exim/src/drtables.c' l='554' u='a'/>
+<use f='exim/src/drtables.c' l='554' u='c'/>
+<use f='exim/src/drtables.c' l='636' u='a'/>
+<use f='exim/src/drtables.c' l='636' u='c'/>
+<use f='exim/src/macro_predef.c' l='191' u='a'/>
+<use f='exim/src/exim.c' l='893' u='a'/>
+<use f='exim/src/exim.c' l='893' u='c'/>

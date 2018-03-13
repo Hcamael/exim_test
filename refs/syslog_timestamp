@@ -1,2 +1,8 @@
 <dec f='exim/src/globals.h' l='912' type='BOOL'/>
 <doc f='exim/src/globals.h' l='912'>/* TRUE if time on syslogs */</doc>
+<def f='exim/src/globals.c' l='1414' type='BOOL'/>
+<use f='exim/src/log.c' l='150' u='r' c='write_syslog'/>
+<use f='exim/src/readconf.c' l='332' u='a'/>
+<use f='exim/src/readconf.c' l='332' u='a'/>
+<use f='exim/src/readconf.c' l='332' u='a'/>
+<use f='exim/src/readconf.c' l='332' u='a'/>

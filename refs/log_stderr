@@ -1,2 +1,21 @@
 <dec f='exim/src/globals.h' l='558' type='FILE *'/>
 <doc f='exim/src/globals.h' l='558'>/* Copy of stderr for log use, or NULL */</doc>
+<def f='exim/src/globals.c' l='948' type='FILE *'/>
+<use f='exim/src/exim.c' l='561' u='w' c='close_unwanted'/>
+<use f='exim/src/exim.c' l='1660' u='w' c='main'/>
+<use f='exim/src/exim.c' l='3720' u='r' c='main'/>
+<use f='exim/src/log.c' l='230' u='r' c='die'/>
+<use f='exim/src/log.c' l='230' u='r' c='die'/>
+<use f='exim/src/log.c' l='231' u='r' c='die'/>
+<use f='exim/src/log.c' l='504' u='r' c='open_log'/>
+<use f='exim/src/log.c' l='506' u='r' c='open_log'/>
+<use f='exim/src/log.c' l='749' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='749' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='750' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='953' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='957' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='959' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='1155' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='1155' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='1156' u='r' c='log_write'/>
+<use f='exim/src/daemon.c' l='1326' u='w' c='daemon_go'/>

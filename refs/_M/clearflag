@@ -1,1 +1,4 @@
 <dec f='exim/src/macros.h' l='34'/>
+<use f='exim/src/verify.c' l='605' u='c'/>
+<use f='exim/src/verify.c' l='606' u='c'/>
+<use f='exim/src/routers/rf_queue_add.c' l='73' u='c'/>

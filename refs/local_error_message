@@ -1,2 +1,11 @@
 <dec f='exim/src/globals.h' l='535' type='BOOL'/>
 <doc f='exim/src/globals.h' l='535'>/* True if handling one of these */</doc>
+<use f='exim/src/deliver.c' l='1703' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='8327' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='836' type='BOOL'/>
+<use f='exim/src/moan.c' l='397' u='r' c='moan_to_sender'/>
+<use f='exim/src/exim.c' l='2489' u='w' c='main'/>
+<use f='exim/src/spool_in.c' l='269' u='w' c='spool_read_header'/>
+<use f='exim/src/spool_in.c' l='580' u='w' c='spool_read_header'/>
+<use f='exim/src/receive.c' l='2776' u='r' c='receive_msg'/>
+<use f='exim/src/spool_out.c' l='223' u='r' c='spool_write_header'/>

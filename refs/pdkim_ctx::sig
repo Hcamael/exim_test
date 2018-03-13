@@ -1,0 +1,10 @@
+<dec f='exim/src/pdkim/pdkim.h' l='275' type='pdkim_signature *'/>
+<use f='exim/src/pdkim/pdkim.c' l='778' u='r' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='947' u='r' c='pdkim_header_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='976' u='r' c='pdkim_header_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='977' u='w' c='pdkim_header_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='1410' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1419' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1767' u='r' c='pdkim_feed_finish'/>
+<offset>64</offset>
+<doc f='exim/src/pdkim/pdkim.h' l='274'>/* One (signing) or several chained (verification) signatures */</doc>

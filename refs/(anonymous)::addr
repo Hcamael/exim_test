@@ -1,3 +1,19 @@
 <dec f='exim/src/globals.h' l='317' type='address_item'/>
 <offset>832</offset>
 <doc f='exim/src/globals.h' l='317'>/* (Chain of) addresses */</doc>
+<use f='exim/src/verify.c' l='375' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='424' u='r' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='425' u='w' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='426' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='427' u='m' c='cutthrough_multi'/>
+<use f='exim/src/verify.c' l='1062' u='w' c='do_callout'/>
+<use f='exim/src/verify.c' l='1063' u='m' c='do_callout'/>
+<use f='exim/src/verify.c' l='1064' u='m' c='do_callout'/>
+<use f='exim/src/verify.c' l='1066' u='m' c='do_callout'/>
+<use f='exim/src/verify.c' l='1356' u='m' c='cutthrough_headers_send'/>
+<use f='exim/src/verify.c' l='1357' u='a' c='cutthrough_headers_send'/>
+<use f='exim/src/verify.c' l='1439' u='m' c='cutthrough_finaldot'/>
+<use f='exim/src/verify.c' l='1441' u='m' c='cutthrough_finaldot'/>
+<use f='exim/src/verify.c' l='1442' u='a' c='cutthrough_finaldot'/>
+<use f='exim/src/verify.c' l='1444' u='m' c='cutthrough_finaldot'/>
+<use f='exim/src/verify.c' l='1466' u='m' c='cutthrough_finaldot'/>

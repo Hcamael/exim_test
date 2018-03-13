@@ -1,3 +1,10 @@
 <dec f='exim/src/structs.h' l='540' type='uschar *'/>
 <offset>1344</offset>
 <doc f='exim/src/structs.h' l='540'>/* retry key for domain only */</doc>
+<use f='exim/src/deliver.c' l='2908' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='3143' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='6358' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6552' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6558' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6761' u='r' c='deliver_message'/>
+<use f='exim/src/globals.c' l='352' u='w'/>

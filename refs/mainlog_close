@@ -1,1 +1,4 @@
 <dec f='exim/src/functions.h' l='265' type='void mainlog_close()'/>
+<use f='exim/src/exim.c' l='5560' u='c' c='main'/>
+<def f='exim/src/log.c' l='665' ll='672' type='void mainlog_close()'/>
+<use f='exim/src/log.c' l='1005' u='c' c='log_write'/>

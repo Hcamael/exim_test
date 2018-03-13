@@ -1,0 +1,2 @@
+<def f='exim/src/pdkim/pdkim.c' l='142' ll='158' type='const char * pdkim_verify_ext_status_str(int ext_status)'/>
+<use f='exim/src/pdkim/pdkim.c' l='1758' u='c' c='pdkim_feed_finish'/>

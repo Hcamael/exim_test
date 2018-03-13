@@ -1,2 +1,13 @@
 <dec f='exim/src/globals.h' l='198' type='tree_node *'/>
 <doc f='exim/src/globals.h' l='198'>/* ACL message variables */</doc>
+<def f='exim/src/globals.c' l='267' type='tree_node *'/>
+<use f='exim/src/exim.c' l='5122' u='w' c='main'/>
+<use f='exim/src/exim.c' l='5789' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='2027' u='w' c='smtp_reset'/>
+<use f='exim/src/queue.c' l='968' u='w' c='queue_list'/>
+<use f='exim/src/spool_in.c' l='252' u='w' c='spool_read_header'/>
+<use f='exim/src/acl.c' l='4525' u='a' c='acl_var_create'/>
+<use f='exim/src/expand.c' l='1729' u='r' c='find_variable'/>
+<use f='exim/src/expand.c' l='7853' u='r' c='assert_no_variables'/>
+<use f='exim/src/daemon.c' l='576' u='w' c='handle_smtp_call'/>
+<use f='exim/src/spool_out.c' l='198' u='r' c='spool_write_header'/>

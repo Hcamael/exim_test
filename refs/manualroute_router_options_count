@@ -1,0 +1,8 @@
+<dec f='exim/src/routers/manualroute.h' l='25' type='int'/>
+<use f='exim/src/drtables.c' l='307' u='a'/>
+<use f='exim/src/drtables.c' l='307' u='a'/>
+<use f='exim/src/drtables.c' l='307' u='a'/>
+<use f='exim/src/drtables.c' l='307' u='a'/>
+<def f='exim/src/routers/manualroute.c' l='34' ll='35' type='int'/>
+<doc f='exim/src/routers/manualroute.c' l='31'>/* Size of the options list. An extern variable has to be used so that its
+address can appear in the tables drtables.c. */</doc>

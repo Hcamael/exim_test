@@ -1,2 +1,4 @@
 <dec f='exim/src/structs.h' l='858' type='struct namedlist_cacheblock *'/>
 <offset>0</offset>
+<use f='exim/src/match.c' l='678' u='w' c='match_check_list'/>
+<use f='exim/src/match.c' l='701' u='r' c='match_check_list'/>

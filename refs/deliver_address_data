@@ -1,2 +1,16 @@
 <dec f='exim/src/globals.h' l='345' type='uschar *'/>
 <doc f='exim/src/globals.h' l='345'>/* Arbitrary data for an address */</doc>
+<use f='exim/src/deliver.c' l='199' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/globals.c' l='204' u='a'/>
+<use f='exim/src/globals.c' l='204' u='a'/>
+<def f='exim/src/globals.c' l='621' type='uschar *'/>
+<use f='exim/src/routers/queryprogram.c' l='234' u='r' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='559' u='r' c='redirect_router_entry'/>
+<use f='exim/src/acl.c' l='1961' u='r' c='acl_verify'/>
+<use f='exim/src/acl.c' l='2021' u='w' c='acl_verify'/>
+<use f='exim/src/acl.c' l='2056' u='w' c='acl_verify'/>
+<use f='exim/src/acl.c' l='4472' u='w' c='acl_check'/>
+<use f='exim/src/expand.c' l='459' u='a'/>
+<use f='exim/src/expand.c' l='459' u='a'/>
+<use f='exim/src/expand.c' l='459' u='a'/>
+<use f='exim/src/expand.c' l='459' u='a'/>

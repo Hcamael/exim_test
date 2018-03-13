@@ -1,3 +1,14 @@
 <dec f='exim/src/lookupapi.h' l='19' type='int'/>
 <offset>64</offset>
 <doc f='exim/src/lookupapi.h' l='19'>/* query/singlekey/abs-file */</doc>
+<use f='exim/src/verify.c' l='2947' macro='1' u='r'/>
+<use f='exim/src/verify.c' l='2955' macro='1' u='r'/>
+<use f='exim/src/verify.c' l='3063' macro='1' u='r'/>
+<use f='exim/src/search.c' l='189' macro='1' u='r'/>
+<use f='exim/src/search.c' l='374' u='r' c='search_open'/>
+<use f='exim/src/search.c' l='416' u='r' c='search_open'/>
+<use f='exim/src/search.c' l='628' u='r' c='search_find'/>
+<use f='exim/src/match.c' l='282' macro='1' u='r'/>
+<use f='exim/src/match.c' l='290' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='4270' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='4318' macro='1' u='r'/>

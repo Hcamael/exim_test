@@ -1,1 +1,16 @@
 <dec f='exim/src/functions.h' l='391' type='int search_findtype(const uschar * , int )'/>
+<use f='exim/src/verify.c' l='2934' u='c' c='check_host'/>
+<def f='exim/src/search.c' l='64' ll='96' type='int search_findtype(const uschar * name, int len)'/>
+<use f='exim/src/search.c' l='188' u='c' c='search_findtype_partial'/>
+<doc f='exim/src/search.c' l='52'>/* Only those names that are recognized and whose code is included in the
+binary give an OK response. Use a binary chop search now that the list has got
+so long.
+
+Arguments:
+  name       lookup type name - not necessarily zero terminated (e.g. dbm*)
+  len        length of the name
+
+Returns:     +ve =&gt; valid lookup name; value is offset in lookup_list
+             -ve =&gt; invalid name; message in search_error_message.
+*/</doc>
+<use f='exim/src/expand.c' l='6902' u='c' c='expand_string_internal'/>

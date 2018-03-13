@@ -1,1 +1,6 @@
 <dec f='exim/src/mytypes.h' l='114'/>
+<use f='exim/src/exim_dbutil.c' l='898' u='c'/>
+<use f='exim/src/acl.c' l='2236' u='c'/>
+<use f='exim/src/acl.c' l='2312' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='424' u='c'/>
+<use f='exim/src/transports/tf_maildir.c' l='476' u='c'/>

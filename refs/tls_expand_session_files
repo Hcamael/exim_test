@@ -1,0 +1,14 @@
+<def f='exim/src/tls-openssl.c' l='1081' ll='1169' type='int tls_expand_session_files(SSL_CTX * sctx, tls_ext_ctx_cb * cbinfo, uschar ** errstr)'/>
+<use f='exim/src/tls-openssl.c' l='1257' u='c' c='tls_servername_cb'/>
+<use f='exim/src/tls-openssl.c' l='1618' u='c' c='tls_init'/>
+<doc f='exim/src/tls-openssl.c' l='1069'>/* Called once during tls_init and possibly again during TLS setup, for a
+new context, if Server Name Indication was used and tls_sni was seen in
+the certificate string.
+
+Arguments:
+  sctx            the SSL_CTX* to update
+  cbinfo          various parts of session state
+  errstr	  error string pointer
+
+Returns:          OK/DEFER/FAIL
+*/</doc>

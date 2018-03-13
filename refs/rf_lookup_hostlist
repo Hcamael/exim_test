@@ -1,0 +1,34 @@
+<dec f='exim/src/routers/rf_functions.h' l='23' type='int rf_lookup_hostlist(router_instance * , address_item * , uschar * , int , int , address_item ** )'/>
+<use f='exim/src/routers/queryprogram.c' l='542' u='c' c='queryprogram_router_entry'/>
+<def f='exim/src/routers/rf_lookup_hostlist.c' l='50' ll='263' type='int rf_lookup_hostlist(router_instance * rblock, address_item * addr, uschar * ignore_target_hosts, int lookup_type, int hff_code, address_item ** addr_new)'/>
+<doc f='exim/src/routers/rf_lookup_hostlist.c' l='18'>/* This function is called by a router to fill in the IP addresses for a set of
+hosts that are attached to an address. Each host has its name and MX value set;
+and those that need processing have their address fields set NULL. Multihomed
+hosts cause additional blocks to be inserted into the chain.
+
+This function also supports pseudo-hosts whose names end with &quot;/MX&quot;. In this
+case, MX records are looked up for the name, and the list of hosts obtained
+replaces the incoming &quot;host&quot;. In other words, &quot;x/MX&quot; is shorthand for &quot;those
+hosts pointed to by x&apos;s MX records&quot;.
+
+It is also possible for a port to be specified along with the host name or IP
+address. The syntax is to add &quot;:port&quot; on to the end. This doesn&apos;t work with
+IPv6 addresses, so we allow IP addresses to be enclosed in [] in order to make
+this work. The specification of the port must come last, that is, after &quot;/MX&quot;
+if that is present.
+
+Arguments:
+  rblock               the router block
+  addr                 the address being routed
+  ignore_target_hosts  list of hosts to ignore
+  lookup_type          LK_DEFAULT or LK_BYNAME or LK_BYDNS,
+		       plus LK_IPV4_{ONLY,PREFER}
+  hff_code             what to do for host find failed
+  addr_new             passed to rf_self_action for self=reroute
+
+Returns:               OK
+                       DEFER host lookup defer
+                       PASS  timeout etc and pass_on_timeout set
+                       self_action: PASS, DECLINE, DEFER, FAIL, FREEZE
+                       hff_code after host find failed
+*/</doc>

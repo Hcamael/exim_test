@@ -1,0 +1,10 @@
+<dec f='exim/src/tls-openssl.c' l='161' type='OCSP_RESPONSE *'/>
+<use f='exim/src/tls-openssl.c' l='847' u='r' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='849' u='r' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='850' u='w' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='953' u='w' c='ocsp_load_response'/>
+<use f='exim/src/tls-openssl.c' l='1299' u='r' c='tls_server_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1302' u='r' c='tls_server_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1306' u='r' c='tls_server_stapling_cb'/>
+<use f='exim/src/tls-openssl.c' l='1519' u='w' c='tls_init'/>
+<offset>128</offset>

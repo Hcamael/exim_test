@@ -1,0 +1,7 @@
+<dec f='exim/src/expand.c' l='407' type='16'/>
+<use f='exim/src/expand.c' l='762'/>
+<use f='exim/src/expand.c' l='762'/>
+<use f='exim/src/expand.c' l='762'/>
+<use f='exim/src/expand.c' l='762'/>
+<use f='exim/src/expand.c' l='1873' c='find_variable'/>
+<doc f='exim/src/expand.c' l='407'>/* value not used; generate tod in epoch/usec format */</doc>

@@ -1,3 +1,15 @@
 <dec f='exim/src/structs.h' l='348' type='int'/>
 <offset>256</offset>
 <doc f='exim/src/structs.h' l='348'>/* Length of same in bytes */</doc>
+<use f='exim/src/drtables.c' l='257' u='w'/>
+<use f='exim/src/drtables.c' l='270' u='w'/>
+<use f='exim/src/drtables.c' l='283' u='w'/>
+<use f='exim/src/drtables.c' l='309' u='w'/>
+<use f='exim/src/drtables.c' l='322' u='w'/>
+<use f='exim/src/drtables.c' l='335' u='w'/>
+<use f='exim/src/drtables.c' l='257' u='w'/>
+<use f='exim/src/drtables.c' l='270' u='w'/>
+<use f='exim/src/drtables.c' l='283' u='w'/>
+<use f='exim/src/drtables.c' l='309' u='w'/>
+<use f='exim/src/drtables.c' l='322' u='w'/>
+<use f='exim/src/drtables.c' l='335' u='w'/>

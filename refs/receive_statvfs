@@ -1,1 +1,26 @@
 <dec f='exim/src/functions.h' l='351' type='int receive_statvfs(BOOL , int * )'/>
+<use f='exim/src/expand.c' l='1920' u='c' c='find_variable'/>
+<use f='exim/src/expand.c' l='1927' u='c' c='find_variable'/>
+<def f='exim/src/receive.c' l='121' ll='208' type='int receive_statvfs(BOOL isspool, int * inodeptr)'/>
+<use f='exim/src/receive.c' l='239' u='c' c='receive_check_fs'/>
+<use f='exim/src/receive.c' l='257' u='c' c='receive_check_fs'/>
+<doc f='exim/src/receive.c' l='100'>/* This function is called by receive_check_fs() below, and also by string
+expansion for variables such as $spool_space. The field names for the statvfs
+structure are macros, because not all OS have F_FAVAIL and it seems tidier to
+have macros for F_BAVAIL and F_FILES as well. Some kinds of file system do not
+have inodes, and they return -1 for the number available.
+
+Later: It turns out that some file systems that do not have the concept of
+inodes return 0 rather than -1. Such systems should also return 0 for the total
+number of inodes, so we require that to be greater than zero before returning
+an inode count.
+
+Arguments:
+  isspool       TRUE for spool partition, FALSE for log partition
+  inodeptr      address of int to receive inode count; -1 if there isn&apos;t one
+
+Returns:        available on-root space, in kilobytes
+                -1 for log partition if there isn&apos;t one
+
+All values are -1 if the STATFS functions are not available.
+*/</doc>

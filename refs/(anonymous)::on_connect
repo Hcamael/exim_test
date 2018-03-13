@@ -1,3 +1,11 @@
 <dec f='exim/src/globals.h' l='91' type='BOOL'/>
 <offset>192</offset>
 <doc f='exim/src/globals.h' l='91'>/* For older MTAs that don&apos;t STARTTLS */</doc>
+<use f='exim/src/tls-openssl.c' l='2044' u='r' c='tls_server_start'/>
+<use f='exim/src/globals.c' l='112' u='w'/>
+<use f='exim/src/globals.c' l='129' u='w'/>
+<use f='exim/src/exim.c' l='3406' u='w' c='main'/>
+<use f='exim/src/exim.c' l='4270' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='2821' u='r' c='smtp_start_session'/>
+<use f='exim/src/daemon.c' l='378' u='w' c='handle_smtp_call'/>
+<use f='exim/src/host.c' l='1248' u='r' c='host_is_tls_on_connect_port'/>

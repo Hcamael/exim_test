@@ -2,3 +2,8 @@
 <offset>64</offset>
 <doc f='exim/src/dbstuff.h' l='775'>/*************/</doc>
 <doc f='exim/src/dbstuff.h' l='776'>/* Fractional part of time, from gettimeofday() */</doc>
+<use f='exim/src/exim_dbutil.c' l='894' u='w' c='main'/>
+<use f='exim/src/exim_dbutil.c' l='1053' u='r' c='main'/>
+<use f='exim/src/acl.c' l='2585' u='w' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2635' u='r' c='acl_ratelimit'/>
+<use f='exim/src/acl.c' l='2652' u='w' c='acl_ratelimit'/>

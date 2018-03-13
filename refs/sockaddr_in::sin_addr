@@ -1,3 +1,6 @@
 <dec f='include/netinet/in.h' l='243' type='struct in_addr'/>
 <offset>32</offset>
 <doc f='include/netinet/in.h' l='243'>/* Internet address.  */</doc>
+<use f='exim/src/ip.c' l='132' u='m' c='ip_addr'/>
+<use f='exim/src/ip.c' l='236' u='m' c='ip_connect'/>
+<use f='exim/src/host.c' l='948' u='r' c='host_ntoa'/>

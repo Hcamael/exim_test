@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='231' type='int'/>
 <doc f='exim/src/globals.h' l='231'>/* Auto-thaw interval */</doc>
+<use f='exim/src/deliver.c' l='5747' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='5748' u='r' c='deliver_message'/>
+<def f='exim/src/globals.c' l='452' type='int'/>
+<use f='exim/src/readconf.c' l='70' u='a'/>
+<use f='exim/src/readconf.c' l='70' u='a'/>
+<use f='exim/src/readconf.c' l='70' u='a'/>
+<use f='exim/src/readconf.c' l='70' u='a'/>

@@ -1,2 +1,8 @@
 <dec f='exim/src/macros.h' l='633' type='3'/>
 <doc f='exim/src/macros.h' l='633'>/* Defer requested */</doc>
+<use f='exim/src/deliver.c' l='5909' u='r' c='deliver_message'/>
+<use f='exim/src/parse.c' l='1358' u='r' c='parse_forward_list'/>
+<use f='exim/src/filter.c' l='2039' u='r' c='interpret_commands'/>
+<use f='exim/src/filter.c' l='2556' c='filter_interpret'/>
+<use f='exim/src/routers/queryprogram.c' l='416' c='queryprogram_router_entry'/>
+<use f='exim/src/routers/redirect.c' l='753' c='redirect_router_entry'/>

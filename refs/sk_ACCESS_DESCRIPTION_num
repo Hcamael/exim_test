@@ -1,0 +1,2 @@
+<def f='include/openssl/x509v3.h' l='169' macro='1' type='int sk_ACCESS_DESCRIPTION_num(const struct stack_st_ACCESS_DESCRIPTION * sk)'/>
+<use f='exim/src/tlscert-openssl.c' l='412' u='c' c='tls_cert_ocsp_uri'/>

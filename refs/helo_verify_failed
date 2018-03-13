@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='499' type='BOOL'/>
 <doc f='exim/src/globals.h' l='499'>/* True if attempt failed */</doc>
+<def f='exim/src/globals.c' l='796' type='BOOL'/>
+<use f='exim/src/smtp_in.c' l='3544' u='w' c='smtp_verify_helo'/>
+<use f='exim/src/smtp_in.c' l='4063' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/acl.c' l='1684' u='r' c='acl_verify'/>

@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='129' type='uschar *'/>
 <doc f='exim/src/globals.h' l='129'>/* host for which TLS is advertised */</doc>
+<def f='exim/src/globals.c' l='148' type='uschar *'/>
+<use f='exim/src/smtp_in.c' l='4307' u='a' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5455' u='a' c='smtp_setup_msg'/>
+<use f='exim/src/readconf.c' l='346' u='a'/>
+<use f='exim/src/readconf.c' l='346' u='a'/>
+<use f='exim/src/readconf.c' l='346' u='a'/>
+<use f='exim/src/readconf.c' l='346' u='a'/>

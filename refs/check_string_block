@@ -1,0 +1,4 @@
+<def f='exim/src/match.c' l='17' ll='24'/>
+<size>32</size>
+<doc f='exim/src/match.c' l='14'>/* Argument block for the check_string() function. This is used for general
+strings, domains, and local parts. */</doc>

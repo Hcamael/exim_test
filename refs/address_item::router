@@ -1,3 +1,33 @@
 <dec f='exim/src/structs.h' l='520' type='router_instance *'/>
 <offset>320</offset>
 <doc f='exim/src/structs.h' l='520'>/* the router that routed */</doc>
+<use f='exim/src/deliver.c' l='234' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='236' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='248' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='250' u='r' c='deliver_set_expansions'/>
+<use f='exim/src/deliver.c' l='883' u='r' c='msg_event_raise'/>
+<use f='exim/src/deliver.c' l='883' u='r' c='msg_event_raise'/>
+<use f='exim/src/deliver.c' l='997' u='r' c='string_log_address'/>
+<use f='exim/src/deliver.c' l='997' u='r' c='string_log_address'/>
+<use f='exim/src/deliver.c' l='1180' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1181' u='r' c='delivery_log'/>
+<use f='exim/src/deliver.c' l='1323' u='r' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='1324' u='r' c='deferral_log'/>
+<use f='exim/src/deliver.c' l='1401' u='r' c='failure_log'/>
+<use f='exim/src/deliver.c' l='1402' u='r' c='failure_log'/>
+<use f='exim/src/deliver.c' l='1484' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1486' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='1488' u='r' c='post_process_one'/>
+<use f='exim/src/deliver.c' l='2735' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='2736' u='r' c='do_local_deliveries'/>
+<use f='exim/src/deliver.c' l='6744' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6808' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6834' u='w' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='6834' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7222' u='r' c='deliver_message'/>
+<use f='exim/src/deliver.c' l='7222' u='r' c='deliver_message'/>
+<use f='exim/src/verify.c' l='2117' u='r' c='verify_address'/>
+<use f='exim/src/globals.c' l='336' u='w'/>
+<use f='exim/src/routers/redirect.c' l='376' u='r' c='add_generated'/>
+<use f='exim/src/routers/redirect.c' l='376' u='r' c='add_generated'/>
+<use f='exim/src/routers/redirect.c' l='403' u='w' c='add_generated'/>

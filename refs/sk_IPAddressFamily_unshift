@@ -1,0 +1,1 @@
+<def f='include/openssl/x509v3.h' l='792' macro='1' type='int sk_IPAddressFamily_unshift(struct stack_st_IPAddressFamily * sk, IPAddressFamily * ptr)'/>

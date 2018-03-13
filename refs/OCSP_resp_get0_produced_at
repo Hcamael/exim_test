@@ -1,0 +1,1 @@
+<dec f='include/openssl/ocsp.h' l='216' type='const ASN1_GENERALIZEDTIME * OCSP_resp_get0_produced_at(const OCSP_BASICRESP * bs)'/>

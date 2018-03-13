@@ -1,2 +1,4 @@
 <dec f='exim/src/macros.h' l='122'/>
 <doc f='exim/src/macros.h' l='120'>/* The default From: text for DSNs */</doc>
+<use f='exim/src/globals.c' l='709' u='c'/>
+<use f='exim/src/moan.c' l='36' u='c'/>

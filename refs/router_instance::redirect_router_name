@@ -1,3 +1,4 @@
 <dec f='exim/src/structs.h' l='287' type='uschar *'/>
 <offset>1472</offset>
 <doc f='exim/src/structs.h' l='287'>/* Router for generated address */</doc>
+<use f='exim/src/globals.c' l='1194' u='w'/>

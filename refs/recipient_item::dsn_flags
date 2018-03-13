@@ -1,3 +1,12 @@
 <dec f='exim/src/local_scan.h' l='132' type='int'/>
 <offset>256</offset>
 <doc f='exim/src/local_scan.h' l='132'>/* DSN flags */</doc>
+<use f='exim/src/deliver.c' l='6150' u='r' c='deliver_message'/>
+<use f='exim/src/smtp_in.c' l='5012' u='w' c='smtp_setup_msg'/>
+<use f='exim/src/smtp_in.c' l='5016' u='r' c='smtp_setup_msg'/>
+<use f='exim/src/spool_in.c' l='845' u='w' c='spool_read_header'/>
+<use f='exim/src/receive.c' l='506' u='w' c='receive_add_recipient'/>
+<use f='exim/src/spool_out.c' l='281' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='283' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='293' u='r' c='spool_write_header'/>
+<use f='exim/src/spool_out.c' l='298' u='r' c='spool_write_header'/>

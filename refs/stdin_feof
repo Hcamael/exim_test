@@ -1,1 +1,2 @@
 <dec f='exim/src/functions.h' l='446' type='int stdin_feof()'/>
+<def f='exim/src/receive.c' l='52' ll='56' type='int stdin_feof()'/>

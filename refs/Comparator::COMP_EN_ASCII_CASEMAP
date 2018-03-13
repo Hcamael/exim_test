@@ -1,0 +1,11 @@
+<dec f='exim/src/sieve.c' l='89' type='1'/>
+<use f='exim/src/sieve.c' l='845' c='compare'/>
+<use f='exim/src/sieve.c' l='863' c='compare'/>
+<use f='exim/src/sieve.c' l='892' c='compare'/>
+<use f='exim/src/sieve.c' l='918' c='compare'/>
+<use f='exim/src/sieve.c' l='1912' u='r' c='parse_comparator'/>
+<use f='exim/src/sieve.c' l='1917' u='r' c='parse_comparator'/>
+<use f='exim/src/sieve.c' l='2057' u='r' c='parse_test'/>
+<use f='exim/src/sieve.c' l='2269' u='r' c='parse_test'/>
+<use f='exim/src/sieve.c' l='2395' u='r' c='parse_test'/>
+<use f='exim/src/sieve.c' l='2586' u='r' c='parse_test'/>

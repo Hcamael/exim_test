@@ -1,2 +1,4 @@
 <dec f='include/resolv.h' l='264'/>
 <use f='include/resolv.h' l='280' u='c'/>
+<use f='exim/src/dns.c' l='119' u='c'/>
+<use f='exim/src/dns.c' l='766' u='c'/>

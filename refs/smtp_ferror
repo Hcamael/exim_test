@@ -1,1 +1,10 @@
 <dec f='exim/src/functions.h' l='411' type='int smtp_ferror()'/>
+<use f='exim/src/tls-openssl.c' l='2468' u='r' c='tls_refill'/>
+<def f='exim/src/smtp_in.c' l='764' ll='769' type='int smtp_ferror()'/>
+<use f='exim/src/smtp_in.c' l='2432' u='r' c='smtp_start_session'/>
+<doc f='exim/src/smtp_in.c' l='757'>/* Tests for a previous read error, and returns with errno
+restored to what it was when the error was detected.
+
+Arguments:     none
+Returns:       non-zero if the error flag is set
+*/</doc>

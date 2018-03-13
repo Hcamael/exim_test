@@ -1,2 +1,4 @@
 <dec f='exim/src/macros.h' l='753'/>
 <doc f='exim/src/macros.h' l='751'>/* Domain lookup types for routers */</doc>
+<use f='exim/src/routers/queryprogram.c' l='523' u='c'/>
+<use f='exim/src/routers/rf_lookup_hostlist.c' l='149' u='c'/>

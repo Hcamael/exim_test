@@ -1,0 +1,2 @@
+<dec f='exim/src/transports/lmtp.h' l='30' type='void lmtp_transport_init(transport_instance * )'/>
+<def f='exim/src/transports/lmtp.c' l='48' type='void lmtp_transport_init(transport_instance * tblock)'/>

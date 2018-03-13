@@ -2,3 +2,6 @@
 <doc f='include/netinet/tcp.h' l='37'>/*
  * User-settable options (used with setsockopt).
  */</doc>
+<use f='exim/src/smtp_out.c' l='228' u='c'/>
+<use f='exim/src/daemon.c' l='968' u='c'/>
+<use f='exim/src/daemon.c' l='1414' u='c'/>

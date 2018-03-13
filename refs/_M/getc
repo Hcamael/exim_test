@@ -1,3 +1,6 @@
 <dec f='include/stdio.h' l='543'/>
 <doc f='include/stdio.h' l='541'>/* The C standard explicitly says this is a macro, so we always do the
    optimization for it.  */</doc>
+<use f='exim/src/filtertest.c' l='52' u='c'/>
+<use f='exim/src/filtertest.c' l='65' u='c'/>
+<use f='exim/src/receive.c' l='43' u='c'/>

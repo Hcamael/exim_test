@@ -1,3 +1,21 @@
 <dec f='exim/src/local_scan.h' l='91'/>
 <doc f='exim/src/local_scan.h' l='88'>/* The offset to the start of the data in the data file - this allows for
 the name of the data file to be present in the first line. */</doc>
+<use f='exim/src/dkim_transport.c' l='155' u='c'/>
+<use f='exim/src/queue.c' l='888' u='c'/>
+<use f='exim/src/spool_in.c' l='97' u='c'/>
+<use f='exim/src/spool_in.c' l='114' u='c'/>
+<use f='exim/src/expand.c' l='1835' u='c'/>
+<use f='exim/src/expand.c' l='1846' u='c'/>
+<use f='exim/src/expand.c' l='1847' u='c'/>
+<use f='exim/src/receive.c' l='3056' u='c'/>
+<use f='exim/src/receive.c' l='3140' u='c'/>
+<use f='exim/src/receive.c' l='3202' u='c'/>
+<use f='exim/src/receive.c' l='3244' u='c'/>
+<use f='exim/src/receive.c' l='3315' u='c'/>
+<use f='exim/src/receive.c' l='3324' u='c'/>
+<use f='exim/src/receive.c' l='3610' u='c'/>
+<use f='exim/src/receive.c' l='3642' u='c'/>
+<use f='exim/src/receive.c' l='3788' u='c'/>
+<use f='exim/src/receive.c' l='3863' u='c'/>
+<use f='exim/src/receive.c' l='3893' u='c'/>

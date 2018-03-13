@@ -1,0 +1,1 @@
+<dec f='include/openssl/x509v3.h' l='587' type='int X509V3_get_value_bool(const CONF_VALUE * value, int * asn1_bool)'/>

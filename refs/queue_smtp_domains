@@ -1,2 +1,9 @@
 <dec f='exim/src/globals.h' l='701' type='uschar *'/>
 <doc f='exim/src/globals.h' l='701'>/* Ditto, for these domains */</doc>
+<def f='exim/src/globals.c' l='1078' type='uschar *'/>
+<use f='exim/src/exim.c' l='5179' u='w' c='main'/>
+<use f='exim/src/queue.c' l='392' u='w' c='queue_run'/>
+<use f='exim/src/readconf.c' l='256' u='a'/>
+<use f='exim/src/readconf.c' l='256' u='a'/>
+<use f='exim/src/readconf.c' l='256' u='a'/>
+<use f='exim/src/readconf.c' l='256' u='a'/>

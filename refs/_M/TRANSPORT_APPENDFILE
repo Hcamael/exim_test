@@ -1,1 +1,5 @@
 <dec f='exim/build-Linux-x86_64/config.h' l='151'/>
+<use f='exim/src/drtables.c' l='223' u='a'/>
+<use f='exim/src/drtables.c' l='360' u='a'/>
+<use f='exim/src/drtables.c' l='451' u='a'/>
+<use f='exim/src/macro_predef.c' l='246' u='a'/>

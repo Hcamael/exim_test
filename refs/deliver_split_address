@@ -1,1 +1,18 @@
 <dec f='exim/src/functions.h' l='153' type='int deliver_split_address(address_item * )'/>
+<def f='exim/src/deliver.c' l='5074' ll='5155' type='int deliver_split_address(address_item * addr)'/>
+<use f='exim/src/deliver.c' l='6472' u='c' c='deliver_message'/>
+<doc f='exim/src/deliver.c' l='5060'>/* This function initializes an address for routing by splitting it up into a
+local part and a domain. The local part is set up twice - once in its original
+casing, and once in lower case, and it is dequoted. We also do the &quot;percent
+hack&quot; for configured domains. This may lead to a DEFER result if a lookup
+defers. When a percent-hacking takes place, we insert a copy of the original
+address as a new parent of this address, as if we have had a redirection.
+
+Argument:
+  addr      points to an addr_item block containing the address
+
+Returns:    OK
+            DEFER   - could not determine if domain is %-hackable
+*/</doc>
+<use f='exim/src/verify.c' l='1770' u='c' c='verify_address'/>
+<use f='exim/src/acl.c' l='4370' u='c' c='acl_check'/>

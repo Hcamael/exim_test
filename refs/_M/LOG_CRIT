@@ -1,1 +1,6 @@
 <dec f='include/x86_64-linux-gnu/sys/syslog.h' l='53'/>
+<use f='exim/src/log.c' l='228' u='c'/>
+<use f='exim/src/log.c' l='751' u='c'/>
+<use f='exim/src/log.c' l='752' u='c'/>
+<use f='exim/src/log.c' l='1180' u='c'/>
+<use f='exim/src/log.c' l='1183' u='c'/>

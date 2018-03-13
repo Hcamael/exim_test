@@ -1,1 +1,18 @@
 <dec f='exim/src/functions.h' l='346' type='void read_message_body(BOOL )'/>
+<def f='exim/src/filtertest.c' l='34' ll='140' type='void read_message_body(BOOL dot_ended)'/>
+<use f='exim/src/filtertest.c' l='253' u='c' c='filter_runtest'/>
+<doc f='exim/src/filtertest.c' l='19'>/* We have to read the remainder of the message in order to find its size, so
+we can set up the message_body variables at the same time (in normal use, the
+message_body variables are not set up unless needed). The reading code is
+written out here rather than having options in read_message_data, in order to
+keep that function as efficient as possible. (Later: this function is now
+global because it is also used by the -bem testing option.) Handling
+message_body_end is somewhat more tedious. Pile it all into a circular buffer
+and sort out at the end.
+
+Arguments:
+  dot_ended   TRUE if message already terminated by &apos;.&apos;
+
+Returns:      nothing
+*/</doc>
+<use f='exim/src/exim.c' l='4987' u='c' c='main'/>

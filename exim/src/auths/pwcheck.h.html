@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>pwcheck.h source code [exim/src/auths/pwcheck.h] - Woboq Code Browser</title>
+<link rel="stylesheet" href="../../../../data/qtcreator.css" title="QtCreator"/>
+<link rel="alternate stylesheet" href="../../../../data/kdevelop.css" title="KDevelop"/>
+<script type="text/javascript" src="../../../../data/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../../../data/jquery/jquery-ui.min.js"></script>
+<script>var file = 'exim/src/auths/pwcheck.h'; var root_path = '../../..'; var data_path = '../../../../data';</script>
+<script src='../../../../data/codebrowser.js'></script>
+</head>
+<body><div id='header'><h1 id='breadcrumb'><span>Browse the source code of </span><a href='../..'>exim</a>/<a href='..'>src</a>/<a href='./'>auths</a>/<a href='pwcheck.h.html'>pwcheck.h</a></h1></div>
+<hr/><div id='content'><table class="code">
+<tr><th id="1">1</th><td><i>/*************************************************</i></td></tr>
+<tr><th id="2">2</th><td><i>*     Exim - an Internet mail transport agent    *</i></td></tr>
+<tr><th id="3">3</th><td><i>*************************************************/</i></td></tr>
+<tr><th id="4">4</th><td></td></tr>
+<tr><th id="5">5</th><td><i>/* Copyright (c) University of Cambridge 1995 - 2009 */</i></td></tr>
+<tr><th id="6">6</th><td><i>/* See the file NOTICE for conditions of use and distribution. */</i></td></tr>
+<tr><th id="7">7</th><td></td></tr>
+<tr><th id="8">8</th><td><i>/* This file provides support for authentication via the Cyrus SASL pwcheck</i></td></tr>
+<tr><th id="9">9</th><td><i>daemon (whence its name) and the newer saslauthd daemon. */</i></td></tr>
+<tr><th id="10">10</th><td></td></tr>
+<tr><th id="11">11</th><td><i>/* Error codes used internally within the authentication functions */</i></td></tr>
+<tr><th id="12">12</th><td></td></tr>
+<tr><th id="13">13</th><td><i>/* PWCHECK_OK   - auth successful</i></td></tr>
+<tr><th id="14">14</th><td><i>   PWCHECK_NO   - access denied</i></td></tr>
+<tr><th id="15">15</th><td><i>   PWCHECK_FAIL - [temporary] failure */</i></td></tr>
+<tr><th id="16">16</th><td></td></tr>
+<tr><th id="17">17</th><td><u>#define <dfn class="macro" id="_M/PWCHECK_OK" data-ref="_M/PWCHECK_OK">PWCHECK_OK</dfn>   0</u></td></tr>
+<tr><th id="18">18</th><td><u>#define <dfn class="macro" id="_M/PWCHECK_NO" data-ref="_M/PWCHECK_NO">PWCHECK_NO</dfn>   1</u></td></tr>
+<tr><th id="19">19</th><td><u>#define <dfn class="macro" id="_M/PWCHECK_FAIL" data-ref="_M/PWCHECK_FAIL">PWCHECK_FAIL</dfn> 2</u></td></tr>
+<tr><th id="20">20</th><td></td></tr>
+<tr><th id="21">21</th><td><i>/* Cyrus functions for doing the business. */</i></td></tr>
+<tr><th id="22">22</th><td></td></tr>
+<tr><th id="23">23</th><td><b>extern</b> <em>int</em> <a class="decl fn" href="pwcheck.c.html#pwcheck_verify_password" title='pwcheck_verify_password' data-ref="pwcheck_verify_password" id="pwcheck_verify_password">pwcheck_verify_password</a>(<em>const</em> <em>char</em> *, <em>const</em> <em>char</em> *, <em>const</em> <em>char</em> **);</td></tr>
+<tr><th id="24">24</th><td><b>extern</b> <em>int</em> <a class="decl fn" href="pwcheck.c.html#saslauthd_verify_password" title='saslauthd_verify_password' data-ref="saslauthd_verify_password" id="saslauthd_verify_password">saslauthd_verify_password</a>(<em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *,</td></tr>
+<tr><th id="25">25</th><td>           <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> *, <em>const</em> <a class="typedef" href="../mytypes.h.html#uschar" title='uschar' data-type='unsigned char' data-ref="uschar">uschar</a> **);</td></tr>
+<tr><th id="26">26</th><td></td></tr>
+<tr><th id="27">27</th><td><i>/* End of pwcheck.h */</i></td></tr>
+<tr><th id="28">28</th><td></td></tr>
+</table><hr/><p id='footer'>
+Generated while processing <a href='pwcheck.c.html'>exim/src/auths/pwcheck.c</a><br/>Generated on <em>2018-Mar-13</em> from project exim revision <em>v4.90</em><br />Powered by <a href='https://woboq.com'><img alt='Woboq' src='https://code.woboq.org/woboq-16.png' width='41' height='16' /></a> <a href='https://code.woboq.org'>Code Browser</a> 2.1
+<br/>Generator usage only permitted with license.</p>
+</div></body></html>

@@ -1,2 +1,4 @@
 <dec f='exim/src/macros.h' l='1008'/>
 <doc f='exim/src/macros.h' l='1006'>/* Codes for ESMTP facilities offered by peer */</doc>
+<use f='exim/src/deliver.c' l='8539' u='c'/>
+<use f='exim/src/exim.c' l='2769' u='c'/>

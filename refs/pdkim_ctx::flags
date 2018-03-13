@@ -1,0 +1,27 @@
+<dec f='exim/src/pdkim/pdkim.h' l='272' type='unsigned int'/>
+<use f='exim/src/pdkim/pdkim.c' l='792' u='r' c='pdkim_finish_bodyhash'/>
+<use f='exim/src/pdkim/pdkim.c' l='843' u='w' c='pdkim_body_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='862' u='r' c='pdkim_bodyline_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='868' u='r' c='pdkim_bodyline_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='946' u='r' c='pdkim_header_complete'/>
+<use f='exim/src/pdkim/pdkim.c' l='1012' u='r' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1014' u='r' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1024' u='w' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1027' u='w' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1038' u='w' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1041' u='r' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1044' u='r' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1049' u='w' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1049' u='r' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1055' u='w' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1055' u='r' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1057' u='r' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1062' u='w' c='pdkim_feed'/>
+<use f='exim/src/pdkim/pdkim.c' l='1455' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1471' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1619' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1623' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1769' u='r' c='pdkim_feed_finish'/>
+<use f='exim/src/pdkim/pdkim.c' l='1784' u='w' c='pdkim_init_verify'/>
+<use f='exim/src/pdkim/pdkim.c' l='1917' u='w' c='pdkim_init_context'/>
+<offset>0</offset>

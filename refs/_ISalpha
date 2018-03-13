@@ -1,2 +1,10 @@
 <dec f='include/ctype.h' l='50' type='1024'/>
 <doc f='include/ctype.h' l='50'>/* Alphabetic.  */</doc>
+<use f='exim/src/smtp_in.c' l='1925' macro='1' u='r'/>
+<use f='exim/src/transports/tf_maildir.c' l='432' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='1726' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='2049' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='2513' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='3932' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='4044' macro='1' u='r'/>
+<use f='exim/src/expand.c' l='4238' macro='1' u='r'/>

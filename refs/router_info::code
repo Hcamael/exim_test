@@ -2,3 +2,15 @@
 <offset>384</offset>
 <doc f='exim/src/structs.h' l='351'>/****/</doc>
 <doc f='exim/src/structs.h' l='352'>/* Main entry point */</doc>
+<use f='exim/src/drtables.c' l='259' u='w'/>
+<use f='exim/src/drtables.c' l='272' u='w'/>
+<use f='exim/src/drtables.c' l='285' u='w'/>
+<use f='exim/src/drtables.c' l='311' u='w'/>
+<use f='exim/src/drtables.c' l='324' u='w'/>
+<use f='exim/src/drtables.c' l='337' u='w'/>
+<use f='exim/src/drtables.c' l='259' u='w'/>
+<use f='exim/src/drtables.c' l='272' u='w'/>
+<use f='exim/src/drtables.c' l='285' u='w'/>
+<use f='exim/src/drtables.c' l='311' u='w'/>
+<use f='exim/src/drtables.c' l='324' u='w'/>
+<use f='exim/src/drtables.c' l='337' u='w'/>

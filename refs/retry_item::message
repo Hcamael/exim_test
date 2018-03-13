@@ -1,3 +1,9 @@
 <dec f='exim/src/structs.h' l='450' type='uschar *'/>
 <offset>192</offset>
 <doc f='exim/src/structs.h' l='450'>/* local error message */</doc>
+<use f='exim/src/deliver.c' l='3467' u='w' c='par_read_pipe'/>
+<use f='exim/src/deliver.c' l='4879' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/deliver.c' l='4881' u='r' c='do_remote_deliveries'/>
+<use f='exim/src/retry.c' l='303' u='w' c='retry_add_item'/>
+<use f='exim/src/retry.c' l='656' u='r' c='retry_update'/>
+<use f='exim/src/retry.c' l='657' u='r' c='retry_update'/>

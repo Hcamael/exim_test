@@ -1,2 +1,4 @@
 <dec f='include/netinet/in.h' l='241' macro='1' type='sa_family_t'/>
 <offset>0</offset>
+<use f='exim/src/ip.c' l='130' u='w' c='ip_addr'/>
+<use f='exim/src/ip.c' l='234' u='w' c='ip_connect'/>

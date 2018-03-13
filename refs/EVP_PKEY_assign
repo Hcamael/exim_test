@@ -1,1 +1,2 @@
 <dec f='include/openssl/evp.h' l='903' type='int EVP_PKEY_assign(EVP_PKEY * pkey, int type, void * key)'/>
+<use f='exim/src/tls-openssl.c' l='999' macro='1' u='c'/>

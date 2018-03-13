@@ -1,1 +1,5 @@
 <dec f='exim/src/exim.h' l='437'/>
+<use f='exim/src/deliver.c' l='3957' u='c'/>
+<use f='exim/src/smtp_in.c' l='355' u='c'/>
+<use f='exim/src/ip.c' l='555' u='c'/>
+<use f='exim/src/daemon.c' l='1952' u='c'/>

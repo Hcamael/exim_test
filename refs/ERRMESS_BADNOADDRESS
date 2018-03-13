@@ -1,2 +1,5 @@
 <dec f='exim/src/macros.h' l='240' type='4'/>
 <doc f='exim/src/macros.h' l='240'>/* Bad address via -t, leaving none */</doc>
+<use f='exim/src/moan.c' l='111' c='moan_send_message'/>
+<use f='exim/src/moan.c' l='406' c='moan_to_sender'/>
+<use f='exim/src/receive.c' l='3257' u='r' c='receive_msg'/>

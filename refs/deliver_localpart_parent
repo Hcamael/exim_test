@@ -1,2 +1,10 @@
 <dec f='exim/src/globals.h' l='366' type='uschar *'/>
 <doc f='exim/src/globals.h' l='366'>/* The parent local part for delivery */</doc>
+<use f='exim/src/deliver.c' l='248' u='w' c='deliver_set_expansions'/>
+<use f='exim/src/globals.c' l='212' u='a'/>
+<use f='exim/src/globals.c' l='212' u='a'/>
+<def f='exim/src/globals.c' l='641' type='uschar *'/>
+<use f='exim/src/expand.c' l='618' u='a'/>
+<use f='exim/src/expand.c' l='618' u='a'/>
+<use f='exim/src/expand.c' l='618' u='a'/>
+<use f='exim/src/expand.c' l='618' u='a'/>

@@ -1,2 +1,6 @@
 <dec f='exim/src/globals.h' l='742' type='const pcre *'/>
 <doc f='exim/src/globals.h' l='742'>/* For recognizing SMTP codes */</doc>
+<def f='exim/src/globals.c' l='1141' type='const pcre *'/>
+<use f='exim/src/exim.c' l='1753' u='w' c='main'/>
+<use f='exim/src/smtp_in.c' l='3109' u='r' c='smtp_message_code'/>
+<use f='exim/src/routers/redirect.c' l='770' u='r' c='redirect_router_entry'/>

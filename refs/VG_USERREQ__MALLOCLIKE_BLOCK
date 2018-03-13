@@ -1,0 +1,3 @@
+<dec f='exim/src/valgrind.h' l='4297' type='4865'/>
+<doc f='exim/src/valgrind.h' l='4295'>/* These are useful and can be interpreted by any tool that
+             tracks malloc() et al, by using vg_replace_malloc.c. */</doc>

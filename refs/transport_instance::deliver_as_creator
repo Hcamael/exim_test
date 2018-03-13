@@ -2,3 +2,6 @@
 <offset>832</offset>
 <doc f='exim/src/structs.h' l='159'>/**************************************/</doc>
 <doc f='exim/src/structs.h' l='160'>/* Used only by pipe at present */</doc>
+<use f='exim/src/deliver.c' l='600' u='r' c='same_ugid'/>
+<use f='exim/src/deliver.c' l='1898' u='r' c='findugid'/>
+<use f='exim/src/globals.c' l='1461' u='w'/>

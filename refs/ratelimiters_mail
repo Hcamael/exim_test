@@ -1,2 +1,5 @@
 <dec f='exim/src/globals.h' l='706' type='tree_node *'/>
 <doc f='exim/src/globals.h' l='706'>/* Results of per-mail ratelimit checks */</doc>
+<def f='exim/src/globals.c' l='1083' type='tree_node *'/>
+<use f='exim/src/smtp_in.c' l='2022' u='w' c='smtp_reset'/>
+<use f='exim/src/acl.c' l='2383' u='a' c='acl_ratelimit'/>

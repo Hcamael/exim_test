@@ -1,2 +1,27 @@
 <dec f='exim/src/structs.h' l='38' type='uschar *'/>
 <offset>0</offset>
+<use f='exim/src/log.c' l='855' u='r' c='log_write'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1325' u='r' c='decode_bits'/>
+<use f='exim/src/log.c' l='1328' u='r' c='decode_bits'/>

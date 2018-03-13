@@ -1,2 +1,6 @@
 <dec f='exim/src/macros.h' l='822' type='5'/>
 <doc f='exim/src/macros.h' l='822'>/* found but ignored - used internally only */</doc>
+<use f='exim/src/host.c' l='2298' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2514' u='r' c='set_address_from_dns'/>
+<use f='exim/src/host.c' l='2748' u='r' c='host_find_bydns'/>
+<use f='exim/src/host.c' l='3082' c='host_find_bydns'/>
